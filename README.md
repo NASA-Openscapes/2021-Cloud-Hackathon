@@ -85,7 +85,7 @@ Participants should have the following set up ahead of the event:
 
 
 
-* **Introductions, logistics **
+* **Introductions, logistics**
     * Welcome, motivation for hackathon/goals 
     * Overview of hackweek agenda
     * ‘Tools’ we’ll be using during hackathon
@@ -122,7 +122,7 @@ Participants should have the following set up ahead of the event:
     * Demo 2.2: search programmatically using CMR-STAC API
     * Q&A 
 * **Break** 
-* **Demos **
+* **Demos**
     * Demo 2.3: EDL/authentication/S3credentials 
     * Q&A
     * Demo 2.4: in-cloud big data analysis example 
@@ -133,7 +133,7 @@ Participants should have the following set up ahead of the event:
 
 
 
-* **Demos  **
+* **Demos**
     * Demo 4.1: direct S3 access
     * Q&A 
     * Demo 4.2: access COF data via Harmony netCDF-to-Zarr 
@@ -143,13 +143,13 @@ Participants should have the following set up ahead of the event:
     * Demo 4.3: access COF data via Zarr EOSDIS Store
     * Q&A 
     * Demo 4.4: search and direct access
-* **Team hack time **(2 hours)
+* **Team hack time**(2 hours)
 
 **Day 4** (4 hours) - **_Transformations and data match-up_**
 
 
 
-* **Demos **
+* **Demos**
     * Demo 3.1: subset with Opendap in the cloud (hyrax)
     * Q&A
     * Demo 3.2: subset L2 data with Harmony L2SS-py (spatial, variable) 
@@ -158,7 +158,7 @@ Participants should have the following set up ahead of the event:
 * **Demos**
     * Demo 3.3: search, co-locate with in-situ, subset workflow
     * Q&A
-* **Team hack time **(2 hours)
+* **Team hack time**(2 hours)
 
 **Day 5** (2.5-3.5 hours) 
 
