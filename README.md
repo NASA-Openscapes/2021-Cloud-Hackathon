@@ -13,7 +13,7 @@ The Cloud Hackathon will be taking place **virtually** from **November 15-19, 20
 
 ### About 
 
-The **Cloud Hackathon: Transitioning Earthdata Workflows to the Cloud **is a virtual 5-day (4 hours per day) collaborative learning experience aimed at exploring, creating, and promoting effective cloud-based science and applications workflows using NASA Earthdata Cloud data, tools, and services (among others), in support of Earth science data processing and analysis in the era of big data. Its goals are to:
+The **Cloud Hackathon: Transitioning Earthdata Workflows to the Cloud** is a virtual 5-day (4 hours per day) collaborative learning experience aimed at exploring, creating, and promoting effective cloud-based science and applications workflows using NASA Earthdata Cloud data, tools, and services (among others), in support of Earth science data processing and analysis in the era of big data. Its goals are to:
 
 
 
@@ -81,7 +81,7 @@ Participants should have the following set up ahead of the event:
 
 ### Hackathon Schedule
 
-**Day 1 **(4 hours)**:** **_Welcome, interactive lectures, introduction of Earthdata tools & datasets _**
+**Day 1** (4 hours) **:** **_Welcome, interactive lectures, introduction of Earthdata tools & datasets _**
 
 
 
@@ -112,7 +112,7 @@ Participants should have the following set up ahead of the event:
     * Identify team lead 
     * Define problem statement for team project (working off of the ideas pitched earlier) 
 
-**Day 2 **(4 hours) -**_ Data Discovery and NASA Earthdata APIs_**
+**Day 2** (4 hours) -**_ Data Discovery and NASA Earthdata APIs_**
 
 
 
@@ -129,7 +129,7 @@ Participants should have the following set up ahead of the event:
 * **Team hack time** (2 hours)
 * Virtual Happy Hour - optional 
 
-**Day 3 **(4 hours) - **_In-Cloud Access_**
+**Day 3** (4 hours) - **_In-Cloud Access_**
 
 
 
@@ -145,7 +145,7 @@ Participants should have the following set up ahead of the event:
     * Demo 4.4: search and direct access
 * **Team hack time **(2 hours)
 
-**Day 4 **(4 hours) - **_Transformations and data match-up_**
+**Day 4** (4 hours) - **_Transformations and data match-up_**
 
 
 
@@ -160,7 +160,7 @@ Participants should have the following set up ahead of the event:
     * Q&A
 * **Team hack time **(2 hours)
 
-**Day 5 **(2.5-3.5 hours) 
+**Day 5** (2.5-3.5 hours) 
 
 
 
