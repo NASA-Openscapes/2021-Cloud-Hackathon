@@ -11,11 +11,10 @@ Welcome to **Cloud Hackathon: Transitioning Earthdata Workflows to the Cloud,** 
 The Cloud Hackathon will take place **virtually** from **November 15-19, 2021.** The event is free to attend, but an application is required. If you are interested in participating, the application period is open September 20 - October 8, 2021.
 
 
-### About 
 
 ### About 
 
-The **Cloud Hackathon: Transitioning Earthdata Workflows to the Cloud **is a virtual 5-day (4 hours per day) collaborative learning experience aimed at exploring, creating, and promoting effective cloud-based science and applications workflows using NASA Earthdata Cloud data, tools, and services (among others), in support of Earth science data processing and analysis in the era of big data. Its goals are to:
+The **Cloud Hackathon: Transitioning Earthdata Workflows to the Cloud** is a virtual 5-day (4 hours per day) collaborative learning experience aimed at exploring, creating, and promoting effective cloud-based science and applications workflows using NASA Earthdata Cloud data, tools, and services (among others), in support of Earth science data processing and analysis in the era of big data. Its goals are to:
 
 
 
@@ -34,8 +33,6 @@ This is an opportunity for researchers that might not yet have had the opportuni
 
 The Cloud Hackathon will be a virtual event held November 15-19, 2021, where participants will explore the intersection of Earth science data, cloud computing, and big data analysis through demonstration tutorials and hands-on “hacking” projects. To best benefit from the event, we recommend some familiarity or experience with: 
 
-
-
 * NASA Earthdata data (focusing on oceanography, cryosphere, hydrology and land data, including interdisciplinary applications); and 
 * Programming skills using Python. “We plan to accept participants with diverse skill levels and backgrounds in programming. However, to best benefit from and contribute to the program, participants are expected to have some experience with Python programming.”
 
@@ -48,13 +45,9 @@ If selected, participants will have the option to attend a Carpentries-style git
 
 In the <span style="text-decoration:underline;">application form</span>, we encourage you to think about and provide a science use case that you would like to prototype in the cloud. At the beginning of the hackweek, selected participants will be able to pitch their use case to support the formation of “hack” projects. During the hackweek, participants will get into teams of their choosing, around a common use case to “hack” in the cloud. The use cases provided in the application form will also help the organizers best prepare materials tailored to those use cases.
 
-
-
 The Cloud Hackathon will be a virtual event held November 15-19, 2021. Participants will explore the intersection of Earth science data, cloud computing, and big data analysis through demonstration tutorials and hands-on “hacking” projects. We will form groups to experiment (“hack”) together and it is possible to do this with your own team if you indicate other team members are also applying (e.g. your research group). Both individuals and individuals as part of research groups are welcome to apply (see Application Form).
 
 To best benefit from the event, we recommend some familiarity or experience with: 
-
-
 
 * NASA Earthdata data (focusing on oceanography, hydrology and land data, including interdisciplinary applications)
 * Programming skills using Python. 
@@ -73,8 +66,6 @@ In the [application form](https://forms.gle/JJNKZ6pGKxWVFzLr6), we encourage you
 
 ### What to expect
 
-
-
 * During the Cloud Hackathon, the selected participants will have access to cloud environments in AWS through a JupyterHub interface, provided through 2i2c. 
 * Participants will be guided on how to log into the cloud environment, import needed data recipes and resources, and will have the opportunity to explore and develop science and applications workflows in a cloud environment (hosted in AWS) using example tutorials as building blocks. 
 * Throughout the hackathon, participants will learn about NASA’s Earthdata move to the cloud and Earthdata APIs for data discovery, access, and transformations to enable faster, more efficient time to science. 
@@ -82,7 +73,6 @@ In the [application form](https://forms.gle/JJNKZ6pGKxWVFzLr6), we encourage you
 In the two to three weeks leading up to the hackathon, participants are encouraged to review **background resources** that will facilitate a more effective hackweek experience. These resources will be shared here leading up to the Hackathon dates, and will be accessible to all data users, whether they attend the hackathon or not.
 
 **The following datasets are currently available from the NASA Earthdata Cloud.** Participants can choose to prototype a cloud-based science workflow using a combination of these datasets, as well as other non-Earthdata Cloud data. If your preferred dataset is not yet available in the Earthdata Cloud, consider using a current cloud-based dataset as proxy to explore prototyping.
-
 
 
 * [https://search.earthdata.nasa.gov/portal/podaac-cloud/search](https://search.earthdata.nasa.gov/portal/podaac-cloud/search) (PO.DAAC)
@@ -102,24 +92,6 @@ This event is motivated by the dawn of the era of Big Data. NASA’s Earth Obser
 
 **If interested in participating in this event, please submit an [Application](https://forms.gle/JJNKZ6pGKxWVFzLr6).**
 
-_&lt;Website footer>_
 
 Cloud Hackathon: Transitioning Earthdata Workflows to the Cloud is co-hosted by PO.DAAC (logo), NSIDC/DAAC (logo), LP.DAAC (logo), with support from ASDC DAAC (logo), GES DISC (logo) and NASA Openscapes (logo), and cloud computing infrastructure by 2i2c (logo)?
-
-_*** Stop here with website content populating for the first initial release. Will add the following content below at a later date. ***_
-
-
----
-
-
-### Pre-requisites
-
-Participants should have the following set up ahead of the event:
-
-* An Earthdata Login account
-* A slack account
-* A github account (for access to 2i2c AWS JupyterHub)
-* Reviewed [Intro to JupyterHub](https://snowex-hackweek.github.io/website/preliminary/jupyterhub.html) if not familiar 
-* Optional: python setup
-
 
