@@ -1,8 +1,7 @@
 
 ## Cloud Hackathon: Transitioning Earthdata Workflows to the Cloud
 
-&lt;any header images?>
-
+![banner](https://user-images.githubusercontent.com/2915555/133526401-b79abf6c-ab0d-438d-9927-da39b7c17b96.jpg)
 
 ### Welcome
 
@@ -93,5 +92,8 @@ This event is motivated by the dawn of the era of Big Data. NASA’s Earth Obser
 **If interested in participating in this event, please submit an [Application](https://forms.gle/JJNKZ6pGKxWVFzLr6).**
 
 
-Cloud Hackathon: Transitioning Earthdata Workflows to the Cloud is co-hosted by PO.DAAC (logo), NSIDC/DAAC (logo), LP.DAAC (logo), with support from ASDC DAAC (logo), GES DISC (logo) and NASA Openscapes (logo), and cloud computing infrastructure by 2i2c (logo)?
+Cloud Hackathon: Transitioning Earthdata Workflows to the Cloud is co-hosted by PO.DAAC, NSIDC/DAAC, LP.DAAC, with support from ASDC DAAC, GES DISC and the NASA Openscapes Project, and cloud computing infrastructure by 2i2c. <br>
+![Screen Shot 2021-09-15 at 5 22 15 PM](https://user-images.githubusercontent.com/2915555/133525653-2a2278b1-1015-4350-b2a5-160d125aaaf7.png) <br>
+
+
 
