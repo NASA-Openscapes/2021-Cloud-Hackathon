@@ -39,23 +39,6 @@ No cloud computing experience is required, but we encourage both beginner and mo
 
 If selected, participants will have the option to attend a Carpentries-style github, python, shell scripting clinic ahead of the Cloud Hachathon.
 
-
-### Application form
-
-In the <span style="text-decoration:underline;">application form</span>, we encourage you to think about and provide a science use case that you would like to prototype in the cloud. At the beginning of the hackweek, selected participants will be able to pitch their use case to support the formation of “hack” projects. During the hackweek, participants will get into teams of their choosing, around a common use case to “hack” in the cloud. The use cases provided in the application form will also help the organizers best prepare materials tailored to those use cases.
-
-The Cloud Hackathon will be a virtual event held November 15-19, 2021. Participants will explore the intersection of Earth science data, cloud computing, and big data analysis through demonstration tutorials and hands-on “hacking” projects. We will form groups to experiment (“hack”) together and it is possible to do this with your own team if you indicate other team members are also applying (e.g. your research group). Both individuals and individuals as part of research groups are welcome to apply (see Application Form).
-
-To best benefit from the event, we recommend some familiarity or experience with: 
-
-* NASA Earthdata data (focusing on oceanography, hydrology and land data, including interdisciplinary applications)
-* Programming skills using Python. 
-
-No cloud computing experience is required, but we encourage both beginner and more experienced participants with AWS and Earthdata Cloud to apply. We will accept participants with diverse skill levels and backgrounds in programming. However, to best benefit from and contribute to the program, participants are expected to have some experience with Python programming.
-
-If selected, participants will have the option to attend a Carpentries-style github, python, shell scripting clinic ahead of the Cloud Hackathon.
-
-
 #### Application Form
 
 In the [application form](https://forms.gle/JJNKZ6pGKxWVFzLr6), we encourage you to think about and provide a science use case that you would like to prototype in the cloud. At the beginning of the hackweek, participants will be able to pitch their use case to support the formation of “hack” projects - by which we mean collaboratively experiment working in with NASA Earthdata data and capabilities in the Cloud. During the hackweek, participants will get into teams of their choosing, around a common use case to “hack” in the cloud. The use cases provided in the application form will also help the organizers best prepare materials tailored to those use cases.
