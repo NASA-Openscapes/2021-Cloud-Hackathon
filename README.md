@@ -52,7 +52,7 @@ In the [application form](https://forms.gle/JJNKZ6pGKxWVFzLr6), we encourage you
 * Participants will be guided on how to log into the cloud environment, import needed data recipes and resources, and will have the opportunity to explore and develop science and applications workflows in a cloud environment (hosted in AWS) using example tutorials as building blocks.
 * Throughout the hackathon, participants will learn about NASA’s Earthdata move to the cloud and Earthdata APIs for data discovery, access, and transformations to enable faster, more efficient time to science.
 
-In the two to three weeks leading up to the hackathon, participants are encouraged to review **background resources** that will facilitate a more effective hackweek experience. These resources will be shared here leading up to the Hackathon dates, and will be accessible to all data users, whether they attend the hackathon or not.
+In the two to three weeks leading up to the hackathon, participants are encouraged to review **background resources** that will facilitate a more effective hackathon experience. These resources will be shared here leading up to the Hackathon dates, and will be accessible to all data users, whether they attend the hackathon or not.
 
 **The following datasets are currently available from the NASA Earthdata Cloud.** Participants can choose to prototype a cloud-based science workflow using a combination of these datasets, as well as other non-Earthdata Cloud data. If your preferred dataset is not yet available in the Earthdata Cloud, consider using a current cloud-based dataset as proxy to explore prototyping.
 
