@@ -72,6 +72,8 @@ In the two to three weeks leading up to the hackathon, participants are encourag
     * Acquire the data based on archived location and combine in order to produce a homogenous time series
 * Explore/leverage cloud-optimized formats (COFs) such as Zarr to compute global or regional climatology and anomalies for a large-volume dataset (e.g. 1-km MUR SST) without having to download data (in-cloud analysis).
 * Subset Level 2 swath dataset of interest spatially and for specific variable and do some exploratory analysis and visualization from within the cloud.
+* Use NASA’s CMR-STAC API to search and discover Harmonized Landsat Sentinel-2 (HLS) cloud assets based on cloud data products, area of interest, and date range query parameters.
+* Harmonized Landsat Sentinel-2 (HLS) for land monitoring: access, explore, and visualize time series surface reflectance data in the cloud.
 
 
 
