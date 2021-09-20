@@ -57,7 +57,7 @@ In the two to three weeks leading up to the hackathon, participants are encourag
 **The following datasets are currently available from the NASA Earthdata Cloud.** Participants can choose to prototype a cloud-based science workflow using a combination of these datasets, as well as other non-Earthdata Cloud data. If your preferred dataset is not yet available in the Earthdata Cloud, consider using a current cloud-based dataset as proxy to explore prototyping.
 
 
-* [https://search.earthdata.nasa.gov/search?ff=Available%20from%20AWS%20Cloud](https://search.earthdata.nasa.gov/search?ff=Available%20from%20AWS%20Cloud) (PO.DAAC)
+* [https://search.earthdata.nasa.gov/search?ff=Available%20from%20AWS%20Cloud](https://search.earthdata.nasa.gov/search?ff=Available%20from%20AWS%20Cloud))
 
 **Example** **use** **cases** to explore in the cloud (note these are for inspiration only, you are not limited to these workflows):
 
