@@ -13,7 +13,7 @@ The Cloud Hackathon will take place **virtually** from **November 15-19, 2021.**
 
 ### About
 
-The **Cloud Hackathon: Transitioning Earthdata Workflows to the Cloud** is a virtual 5-day (4 hours per day) collaborative learning experience aimed at exploring, creating, and promoting effective cloud-based science and applications workflows using NASA Earthdata Cloud data, tools, and services (among others), in support of Earth science data processing and analysis in the era of big data. Its goals are to:
+The **Cloud Hackathon: Transitioning Earthdata Workflows to the Cloud** is a virtual 5-day (4 hours per day) collaborative open science learning experience aimed at exploring, creating, and promoting effective cloud-based science and applications workflows using NASA Earthdata Cloud data, tools, and services (among others), in support of Earth science data processing and analysis in the era of big data. Its goals are to:
 
 
 
@@ -50,6 +50,7 @@ In the [application form](https://forms.gle/JJNKZ6pGKxWVFzLr6), we encourage you
 
 * During the Cloud Hackathon, the selected participants will have access to cloud environments in AWS through a JupyterHub interface, provided through 2i2c.
 * Participants will be guided on how to log into the cloud environment, import needed data recipes and resources, and will have the opportunity to explore and develop science and applications workflows in a cloud environment (hosted in AWS) using example tutorials as building blocks.
+* The Cloud Hackathon is an open science event: all tutorials and examples are developed openly and will be publicly available during and following hackathon. Participants will strengthen their practice open science, using open source code and “hacking” their projects openly to enable further discovery and contributions by the broader open community following the hackathon.
 * Throughout the hackathon, participants will learn about NASA’s Earthdata move to the cloud and Earthdata APIs for data discovery, access, and transformations to enable faster, more efficient time to science.
 
 In the two to three weeks leading up to the hackathon, participants are encouraged to review **background resources** that will facilitate a more effective hackathon experience. These resources will be shared here leading up to the Hackathon dates, and will be accessible to all data users, whether they attend the hackathon or not.
