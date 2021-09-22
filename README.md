@@ -7,7 +7,7 @@
 
 Welcome to **Cloud Hackathon: Transitioning Earthdata Workflows to the Cloud,** co-hosted by the NASA EOSDIS Physical Oceanography Distributed Active Archive Center ([PO.DAAC](https://podaac.jpl.nasa.gov/)), National Snow and Ice Data Center DAAC ([NSIDC DAAC](https://nsidc.org/daac)), Land Processes Distributed Active Archive Center ([LP.DAAC](https://lpdaac.usgs.gov/)), with support provided by [ASDC DAAC](https://asdc.larc.nasa.gov/), [GES DISC](https://disc.gsfc.nasa.gov/) and [NASA Openscapes](https://nasa-openscapes.github.io/) Project.
 
-The Cloud Hackathon will take place **virtually** from **November 15-19, 2021.** The event is free to attend, but an [application](https://forms.gle/JJNKZ6pGKxWVFzLr6) is required. If you are interested in participating, the application period is open September 20 - October 8, 2021.
+The Cloud Hackathon will take place **virtually** from **November 15-19, 2021.** The event is free to attend, but an [application](https://forms.gle/JJNKZ6pGKxWVFzLr6) is required. If you are interested in participating, the application period is open September 21 - October 12, 2021.
 
 
 
