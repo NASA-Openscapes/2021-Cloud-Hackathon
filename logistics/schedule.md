@@ -1,5 +1,0 @@
----
-title: Schedule
----
-
-text here
