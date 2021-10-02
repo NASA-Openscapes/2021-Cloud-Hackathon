@@ -1,16 +1,14 @@
 ---
 title: "2021 Cloud Hackathon"
-subtitle: "NASA Cloud Hackathon co-hosted by PODAAC, NSIDC and LPDAAC. Support is provided by ASDC, GESDISC and Openscapes" 
-author: "NASA Openscapes Team"
+subtitle: "Transitioning Earthdata Workflows to the Cloud"
+ 
+author: "This Hackathon is co-hosted by PODAAC, NSIDC DAAC and LPDAAC. Additional support is provided by ASDC, GESDISC and Openscapes"
 ---
-
-## Welcome 
 
 ## Cloud Hackathon: Transitioning Earthdata Workflows to the Cloud
 
 ![banner](https://user-images.githubusercontent.com/2915555/133526401-b79abf6c-ab0d-438d-9927-da39b7c17b96.jpg)
 
-### Welcome
 
 Welcome to **Cloud Hackathon: Transitioning Earthdata Workflows to the Cloud,** co-hosted by the NASA EOSDIS Physical Oceanography Distributed Active Archive Center ([PO.DAAC](https://podaac.jpl.nasa.gov/)), National Snow and Ice Data Center DAAC ([NSIDC DAAC](https://nsidc.org/daac)), Land Processes Distributed Active Archive Center ([LP.DAAC](https://lpdaac.usgs.gov/)), with support provided by [ASDC DAAC](https://asdc.larc.nasa.gov/), [GES DISC](https://disc.gsfc.nasa.gov/) and [NASA Openscapes](https://nasa-openscapes.github.io/) Project.
 
