@@ -1,5 +1,0 @@
----
-title: About
----
-
-text here
