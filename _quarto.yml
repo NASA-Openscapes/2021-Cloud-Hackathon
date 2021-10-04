@@ -12,7 +12,7 @@ site:
   page-navigation: true
   sidebar:
     title: "2021 Cloud Hackathon"
-    logo: nasa-openscapes.png
+    logo: https://user-images.githubusercontent.com/2915555/133525653-2a2278b1-1015-4350-b2a5-160d125aaaf7.png
     style: "docked"
     background: light
     search: true
@@ -52,7 +52,7 @@ site:
           - projects/hacking.md
           - projects/hackathon-projects.md
 
-  footer: "NASA Openscapes Team (2021). 2021 Cloud Hackathon"
+  footer: "PODAAC, NSIDC DAAC and LPDAAC (2021). 2021 Cloud Hackathon"
 
 format:
   html:
