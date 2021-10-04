@@ -24,19 +24,10 @@ site:
     contents:
       - text: "Welcome"
         href: index.md
-      - section: overview/index.md
-        contents:
-          - overview/about.md
-          - overview/code-of-conduct.md
       - section: logistics/index.md
         contents:
-          - logistics/logistics-overview.md
-          - section: logistics/schedule.md
-            contents:
-              - logistics/carpentries.md
-              - logistics/hackathon.md
+          - logistics/schedule.md
           - logistics/getting-help.md
-          - logistics/coffee-breaks.md
       - section: preparation/index.md
         contents:
           - preparation/shell-for-github.md
@@ -48,7 +39,6 @@ site:
           - tutorials/Data_Discovery__CMR-STAC_API.ipynb
       - section: projects/index.md
         contents:
-          - projects/project-overview.md
           - projects/hacking.md
           - projects/hackathon-projects.md
 
