@@ -45,6 +45,7 @@ site:
       - section: tutorials/index.md
         contents: 
           - tutorials/getting-started.md
+          - tutorials/Data_Discovery__CMR-STAC_API.ipynb
       - section: projects/index.md
         contents:
           - projects/project-overview.md
