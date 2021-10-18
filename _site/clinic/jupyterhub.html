@@ -23,7 +23,7 @@
   <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
   <script src="../site_libs/quarto-search/fuse.min.js"></script>
   <script src="../site_libs/quarto-search/quarto-search.js"></script>
-  <link href="../clinic/shell-for-github.html" rel="next">
+  <link href="../clinic/notebooks.html" rel="next">
   <link href="../clinic/index.html" rel="prev">
   <script src="../site_libs/quarto-html/quarto.js"></script>
   <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -129,10 +129,7 @@
   <a href="../clinic/jupyterhub.html" class="active">JupyterHub, repos, environments</a>
 </li>
           <li class="sidebar-item">
-  <a href="../clinic/shell-for-github.html" class="">Shell for GitHub</a>
-</li>
-          <li class="sidebar-item">
-  <a href="../clinic/python.html" class="">Python</a>
+  <a href="../clinic/notebooks.html" class="">Notebooks, Python, GitHub</a>
 </li>
         </ul>
       </div>
@@ -196,8 +193,19 @@
   <div id="quarto-toc-sidebar" class=" pt-0 col col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-toc order-last"><nav id="TOC" role="doc-toc">
 <h2 id="toc-title">On this page</h2>
 <ul>
-<li><a href="#overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+<li><a href="#welcome" class="nav-link active" data-scroll-target="#welcome">Welcome!</a></li>
 <li><a href="#log-into-2i2c" class="nav-link" data-scroll-target="#log-into-2i2c">Log into 2i2c</a></li>
+<li><a href="#github-overview" class="nav-link" data-scroll-target="#github-overview">GitHub overview</a>
+<ul class="collapse">
+<li><a href="#fork-and-clone" class="nav-link" data-scroll-target="#fork-and-clone">Fork and Clone</a></li>
+</ul></li>
+<li><a href="#jupyter-hub-overview" class="nav-link" data-scroll-target="#jupyter-hub-overview">Jupyter Hub Overview</a>
+<ul class="collapse">
+<li><a href="#open-the-terminal" class="nav-link" data-scroll-target="#open-the-terminal">Open the terminal</a></li>
+</ul></li>
+<li><a href="#clone-repo-to-2i2c" class="nav-link" data-scroll-target="#clone-repo-to-2i2c">Clone repo to 2i2c</a></li>
+<li><a href="#python-environments" class="nav-link" data-scroll-target="#python-environments">Python environments</a></li>
+<li><a href="#jupyter-notebook" class="nav-link" data-scroll-target="#jupyter-notebook">Jupyter notebook</a></li>
 </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon/edit/main/clinic/jupyterhub.md" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon/issues/new" class="toc-action">Report an issue</a></p></div></div></nav></div>
   <div class="col mx-auto col-sm-12 col-md-9 col-lg-7 col-xl-7 px-lg-4 pe-xxl-4 ps-xxl-0">
@@ -206,13 +214,59 @@
 <h1 class="title d-none d-lg-block display-7">JupyterHub, repos, environments</h1>
 </header>
 
-<section id="overview" class="level2">
-<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<section id="welcome" class="level2">
+<h2 class="anchored" data-anchor-id="welcome">Welcome!</h2>
+<p>Thanks for being here.</p>
+<p>Who instructors &amp; helpers are, how to ask for help.</p>
+<p>Code of Conduct reminder</p>
 <p>Summary of what we’ll do</p>
 </section>
 <section id="log-into-2i2c" class="level2">
 <h2 class="anchored" data-anchor-id="log-into-2i2c">Log into 2i2c</h2>
-<p>Go to <a href="https://openscapes.2i2c.cloud/hub/" class="uri">https://openscapes.2i2c.cloud/hub/</a>. You will be asked to log in to</p>
+<p>Go to <a href="https://openscapes.2i2c.cloud/hub/" class="uri">https://openscapes.2i2c.cloud/hub/</a>. You will be asked to log in with your GitHub Account.</p>
+<p>This will take several minutes. While we wait, we’ll get set up with GitHub and a brief overview.</p>
+</section>
+<section id="github-overview" class="level2">
+<h2 class="anchored" data-anchor-id="github-overview">GitHub overview</h2>
+<p>TODO Julie - images and narration:</p>
+<ul>
+<li>main unit: a repo</li>
+<li>remote and local</li>
+<li>commits, push, pull</li>
+<li>fork</li>
+</ul>
+<section id="fork-and-clone" class="level3">
+<h3 class="anchored" data-anchor-id="fork-and-clone">Fork and Clone</h3>
+<p>Go to <a href="https://github.com/NASA-Openscapes/2021-Cloud-Clinic" class="uri">https://github.com/NASA-Openscapes/2021-Cloud-Clinic</a></p>
+<p>Click Fork. This will make a copy of this repo in your GitHub account.</p>
+</section>
+</section>
+<section id="jupyter-hub-overview" class="level2">
+<h2 class="anchored" data-anchor-id="jupyter-hub-overview">Jupyter Hub Overview</h2>
+<p>Now an intro to 2i2c, a which is a Jupyter Hub.</p>
+<p>TODO: insert images</p>
+<p>Orient to 2i2c</p>
+<section id="open-the-terminal" class="level3">
+<h3 class="anchored" data-anchor-id="open-the-terminal">Open the terminal</h3>
+<p>The command line, also called the Shell or Terminal, is available in 2i2c.</p>
+<p>Open a terminal in 2i2c: File &gt; New… &gt; Terminal. Note that you can toggle between “Simple” display mode in the bottom left.</p>
+</section>
+</section>
+<section id="clone-repo-to-2i2c" class="level2">
+<h2 class="anchored" data-anchor-id="clone-repo-to-2i2c">Clone repo to 2i2c</h2>
+<p>We will clone our repo into 2i2c so that we can run it in the Cloud. We do this from the Terminal.</p>
+<p>Make sure you clone from your forked repo. For example, my url has my username “betolink”, not “NASA-Openscapes”.</p>
+<p><code>git clone https://github.com/betolink/2021-Cloud-Clinic</code></p>
+</section>
+<section id="python-environments" class="level2">
+<h2 class="anchored" data-anchor-id="python-environments">Python environments</h2>
+<p>TODO overview discussion</p>
+<p>Walk through <code>environment.yml</code> file from <a href="https://github.com/NASA-Openscapes/2021-Cloud-Clinic" class="uri">https://github.com/NASA-Openscapes/2021-Cloud-Clinic</a></p>
+</section>
+<section id="jupyter-notebook" class="level2">
+<h2 class="anchored" data-anchor-id="jupyter-notebook">Jupyter notebook</h2>
+<p>Talk through the example from <a href="https://github.com/NASA-Openscapes/2021-Cloud-Clinic" class="uri">https://github.com/NASA-Openscapes/2021-Cloud-Clinic</a></p>
+<p>Import the library you defined in the environment. (If you don’t have the library defined in the environment and try to import it, it will give you an error (unless it’s part of core Python))</p>
 
 
 </section>
@@ -391,8 +445,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../clinic/shell-for-github.html">
-        <span class="nav-page-text">Shell for GitHub</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../clinic/notebooks.html">
+        <span class="nav-page-text">Notebooks, Python, GitHub</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </div>

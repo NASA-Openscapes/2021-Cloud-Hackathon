@@ -53,7 +53,7 @@
     "href": "index.html#code-of-conduct",
     "title": "2021 Cloud Hackathon",
     "section": "Code of Conduct",
-    "text": "The 2021 Cloud Hackathon is a safe learning space and all participants are required to abide by our Code of Conduct (TODO Link)."
+    "text": "The 2021 Cloud Hackathon is a safe learning space and all participants are required to abide by our Code of Conduct."
   },
   {
     "objectID": "tutorials/getting-started.html#introduction",
@@ -249,7 +249,7 @@
     "href": "clinic/jupyterhub.html#log-into-2i2c",
     "title": "JupyterHub, repos, environments",
     "section": "Log into 2i2c",
-    "text": "Go to https://openscapes.2i2c.cloud/hub/. You will be asked to log in to"
+    "text": "Go to https://openscapes.2i2c.cloud/hub/. You will be asked to log in with your GitHub Account.\nThis will take several minutes. While we wait, we’ll get set up with GitHub and a brief overview."
   },
   {
     "objectID": "logistics/prerequisites.html",
@@ -257,5 +257,103 @@
     "title": "Prerequisites & setup",
     "section": "",
     "text": "Before the Hackathon, please do the following (20 minutes). All software is free. If you are attending the Clinic, please do this in advance of the Clinic.\n\nCreate a GitHub account\n\nGitHub: https://github.com\nFollow optional advice on choosing your username\nSend us your username at least 24 hours before the event (TODO revisit process)\nRemember your username, email and password; you will need to be logged in them during the workshop!\n\nOthers? TODO revisit\nGet comfortable. Consider your computer set-up in advance, including an external monitor if possible. You will be following along in Jupyter Hub on your own computer while also watching an instructor live-code over Zoom (or equivalent), and will also want quick-access to Slack to ask for help and follow links."
+  },
+  {
+    "objectID": "clinic/notebooks.html#intro-python",
+    "href": "clinic/notebooks.html#intro-python",
+    "title": "Notebooks, Python, GitHub",
+    "section": "Intro Python",
+    "text": "How to import libraries, talk through some code structure"
+  },
+  {
+    "objectID": "clinic/notebooks.html#run-notebook",
+    "href": "clinic/notebooks.html#run-notebook",
+    "title": "Notebooks, Python, GitHub",
+    "section": "Run notebook",
+    "text": "see how it works, but that you might want to make a change"
+  },
+  {
+    "objectID": "clinic/notebooks.html#commit-changes",
+    "href": "clinic/notebooks.html#commit-changes",
+    "title": "Notebooks, Python, GitHub",
+    "section": "Commit changes",
+    "text": "Make some edits – TODO\nCommit"
+  },
+  {
+    "objectID": "clinic/notebooks.html#push-changes",
+    "href": "clinic/notebooks.html#push-changes",
+    "title": "Notebooks, Python, GitHub",
+    "section": "Push changes",
+    "text": "TODO"
+  },
+  {
+    "objectID": "clinic/notebooks.html#commit-and-push-again",
+    "href": "clinic/notebooks.html#commit-and-push-again",
+    "title": "Notebooks, Python, GitHub",
+    "section": "Commit and push again",
+    "text": "some more python concepts?\nTODO"
+  },
+  {
+    "objectID": "clinic/notebooks.html#update-your-fork",
+    "href": "clinic/notebooks.html#update-your-fork",
+    "title": "Notebooks, Python, GitHub",
+    "section": "Update your fork",
+    "text": "(During the break, Luis/someone added something to the notebook)\nAnd how to update your fork from main. 2 step process:\n\nFrom github.com, click these buttons\nFrom 2i2c, git fetch (I think?)\n\nDiscuss merge conflicts and philosophy: best way to deal with merge conflicts is to avoid them; talk to your colleagues, commit often. Also can work with branches (out of the scope of this Clinic?)"
+  },
+  {
+    "objectID": "clinic/notebooks.html#closing",
+    "href": "clinic/notebooks.html#closing",
+    "title": "Notebooks, Python, GitHub",
+    "section": "Closing",
+    "text": "Thanks for coming!"
+  },
+  {
+    "objectID": "clinic/index.html#further-resources",
+    "href": "clinic/index.html#further-resources",
+    "title": "Pre-Hackathon Clinic",
+    "section": "Further resources",
+    "text": "The Clinic will introduce concepts that you can learn self-paced in more detail in the following materials:\n\nCarpentries intro Git\netc"
+  },
+  {
+    "objectID": "clinic/jupyterhub.html#welcome",
+    "href": "clinic/jupyterhub.html#welcome",
+    "title": "JupyterHub, repos, environments",
+    "section": "Welcome!",
+    "text": "Thanks for being here.\nWho instructors & helpers are, how to ask for help.\nCode of Conduct reminder\nSummary of what we’ll do"
+  },
+  {
+    "objectID": "clinic/jupyterhub.html#github-overview",
+    "href": "clinic/jupyterhub.html#github-overview",
+    "title": "JupyterHub, repos, environments",
+    "section": "GitHub overview",
+    "text": "TODO Julie - images and narration:\n\nmain unit: a repo\nremote and local\ncommits, push, pull\nfork\n\n\nFork and Clone\nGo to https://github.com/NASA-Openscapes/2021-Cloud-Clinic\nClick Fork. This will make a copy of this repo in your GitHub account."
+  },
+  {
+    "objectID": "clinic/jupyterhub.html#jupyter-hub-overview",
+    "href": "clinic/jupyterhub.html#jupyter-hub-overview",
+    "title": "JupyterHub, repos, environments",
+    "section": "Jupyter Hub Overview",
+    "text": "Now an intro to 2i2c, a which is a Jupyter Hub.\nTODO: insert images\nOrient to 2i2c\n\nOpen the terminal\nThe command line, also called the Shell or Terminal, is available in 2i2c.\nOpen a terminal in 2i2c: File > New… > Terminal. Note that you can toggle between “Simple” display mode in the bottom left."
+  },
+  {
+    "objectID": "clinic/jupyterhub.html#clone-repo-to-2i2c",
+    "href": "clinic/jupyterhub.html#clone-repo-to-2i2c",
+    "title": "JupyterHub, repos, environments",
+    "section": "Clone repo to 2i2c",
+    "text": "We will clone our repo into 2i2c so that we can run it in the Cloud. We do this from the Terminal.\nMake sure you clone from your forked repo. For example, my url has my username “betolink”, not “NASA-Openscapes”.\ngit clone https://github.com/betolink/2021-Cloud-Clinic"
+  },
+  {
+    "objectID": "clinic/jupyterhub.html#python-environments",
+    "href": "clinic/jupyterhub.html#python-environments",
+    "title": "JupyterHub, repos, environments",
+    "section": "Python environments",
+    "text": "TODO overview discussion\nWalk through environment.yml file from https://github.com/NASA-Openscapes/2021-Cloud-Clinic"
+  },
+  {
+    "objectID": "clinic/jupyterhub.html#jupyter-notebook",
+    "href": "clinic/jupyterhub.html#jupyter-notebook",
+    "title": "JupyterHub, repos, environments",
+    "section": "Jupyter notebook",
+    "text": "Talk through the example from https://github.com/NASA-Openscapes/2021-Cloud-Clinic\nImport the library you defined in the environment. (If you don’t have the library defined in the environment and try to import it, it will give you an error (unless it’s part of core Python))"
   }
 ]
