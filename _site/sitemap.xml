@@ -46,7 +46,7 @@
   </url>
   <url>
     <loc>https://nasa-openscapes.github.io/2021-Cloud-Hackathon/logistics/schedule.html</loc>
-    <lastmod>2021-10-18T20:34:09.346Z</lastmod>
+    <lastmod>2021-10-18T20:59:10.665Z</lastmod>
   </url>
   <url>
     <loc>https://nasa-openscapes.github.io/2021-Cloud-Hackathon/logistics/index.html</loc>
@@ -63,5 +63,21 @@
   <url>
     <loc>https://nasa-openscapes.github.io/2021-Cloud-Hackathon/tutorials/Data_Access__Direct_S3_Access_gdalvrt.html</loc>
     <lastmod>2021-10-18T20:34:09.107Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nasa-openscapes.github.io/2021-Cloud-Hackathon/clinic/python.html</loc>
+    <lastmod>2021-10-18T20:59:09.717Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nasa-openscapes.github.io/2021-Cloud-Hackathon/clinic/shell-for-github.html</loc>
+    <lastmod>2021-10-18T20:59:09.986Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nasa-openscapes.github.io/2021-Cloud-Hackathon/clinic/index.html</loc>
+    <lastmod>2021-10-18T20:59:10.208Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nasa-openscapes.github.io/2021-Cloud-Hackathon/clinic/jupyterhub.html</loc>
+    <lastmod>2021-10-18T20:59:10.429Z</lastmod>
   </url>
 </urlset>

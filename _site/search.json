@@ -187,5 +187,47 @@
     "title": "",
     "section": "References",
     "text": "https://rasterio.readthedocs.io/en/latest/\nhttps://corteva.github.io/rioxarray/stable/index.html\nhttps://tutorial.dask.org/index.html\nhttps://examples.dask.org/applications/satellite-imagery-geotiff.html"
+  },
+  {
+    "objectID": "clinic/python.html",
+    "href": "clinic/python.html",
+    "title": "Python",
+    "section": "",
+    "text": "text here"
+  },
+  {
+    "objectID": "clinic/shell-for-github.html",
+    "href": "clinic/shell-for-github.html",
+    "title": "Shell for GitHub",
+    "section": "",
+    "text": "text here"
+  },
+  {
+    "objectID": "clinic/index.html",
+    "href": "clinic/index.html",
+    "title": "Pre-Hackathon Clinic",
+    "section": "",
+    "text": "Before the Hackathon, we are hosting a 2-hour Clinic where you can build skills and practice the tooling and workflow that we will use during the Hackathon.\nThe Clinic will cover the following as a workflow:\n\nJupyter Hub with 2i2c\nJupyter Notebooks with Python\nGitHub from the web and shell: forking, cloning, pulling, committing, pushing"
+  },
+  {
+    "objectID": "clinic/jupyterhub.html",
+    "href": "clinic/jupyterhub.html",
+    "title": "JupyterHub",
+    "section": "",
+    "text": "text here"
+  },
+  {
+    "objectID": "logistics/schedule.html#pre-hackathon-clinic-november-9-optional",
+    "href": "logistics/schedule.html#pre-hackathon-clinic-november-9-optional",
+    "title": "Schedule",
+    "section": "Pre-Hackathon Clinic: November 9 (Optional)",
+    "text": "All times listed below are in PST (UTC-8) unless otherwise noted.\n\n\n\n\n\n\n\n\nTime\nEvent\nLeads/Instructors\n\n\n\n\n8-10am PST (UTC-8)\nWorkflow with Jupyter Hub, GitHub, Python, Shell\nMakhan Virdi, Luis Lopez"
+  },
+  {
+    "objectID": "logistics/schedule.html#cloud-hackathon-november-15-19",
+    "href": "logistics/schedule.html#cloud-hackathon-november-15-19",
+    "title": "Schedule",
+    "section": "Cloud Hackathon: November 15-19",
+    "text": "All times listed below are in PST (UTC-8) unless otherwise noted.\n\nDay 1 (November 15)\n\n\n\nTime\nEvent\nLeads/Instructors\n\n\n\n\nTODO\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDay 2 (November 16)\n\n\n\nTime\nEvent\nLeads/Instructors\n\n\n\n\nTODO\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDay 3 (November 17)\n\n\n\nTime\nEvent\nLeads/Instructors\n\n\n\n\nTODO\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDay 4 (November 18)\n\n\n\nTime\nEvent\nLeads/Instructors\n\n\n\n\nTODO\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDay 5 (November 19)\n\n\n\nTime\nEvent\nLeads/Instructors\n\n\n\n\nTODO"
   }
 ]
