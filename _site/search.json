@@ -25,7 +25,7 @@
     "href": "index.html#welcome",
     "title": "2021 Cloud Hackathon",
     "section": "Welcome",
-    "text": "Welcome to Cloud Hackathon: Transitioning Earthdata Workflows to the Cloud, co-hosted by the NASA EOSDIS Physical Oceanography Distributed Active Archive Center (PO.DAAC), National Snow and Ice Data Center DAAC (NSIDC DAAC), Land Processes Distributed Active Archive Center (LP.DAAC), with support provided by ASDC DAAC, GES DISC and NASA Openscapes Project.\nThe Cloud Hackathon will take place virtually from November 15-19, 2021. The event is free to attend, but an application is required.The application period (September 21 - October 12, 2021) is now closed. Those who applied will be informed of the outcome on or around October 20th, 2021."
+    "text": "Welcome to Cloud Hackathon: Transitioning Earthdata Workflows to the Cloud, co-hosted by the NASA EOSDIS Physical Oceanography Distributed Active Archive Center (PO.DAAC), National Snow and Ice Data Center DAAC (NSIDC DAAC), Land Processes Distributed Active Archive Center (LP.DAAC), with support provided by ASDC DAAC, GES DISC and NASA Openscapes.\nThe Cloud Hackathon will take place virtually from November 15-19, 2021. The event is free to attend, but an application is required. The application period (September 21 - October 12, 2021) is now closed. Those who applied will be informed of the outcome on or around October 20th, 2021."
   },
   {
     "objectID": "index.html#about",
@@ -151,7 +151,7 @@
     "href": "logistics/getting-help.html",
     "title": "Getting Help",
     "section": "",
-    "text": "text here\n\n\n\nwindow.document.addEventListener(\"DOMContentLoaded\", function (event) {\n  const disableStylesheet = (stylesheets) => {\n    for (let i=0; i < stylesheets.length; i++) {\n      const stylesheet = stylesheets[i];\n      stylesheet.rel = 'prefetch';\n    }\n  }\n  const enableStylesheet = (stylesheets) => {\n    for (let i=0; i < stylesheets.length; i++) {\n      const stylesheet = stylesheets[i];\n      stylesheet.rel = 'stylesheet';\n    }\n  }\n  const manageTransitions = (selector, allowTransitions) => {\n    const els = window.document.querySelectorAll(selector);\n    for (let i=0; i < els.length; i++) {\n      const el = els[i];\n      if (allowTransitions) {\n        el.classList.remove('notransition');\n      } else {\n        el.classList.add('notransition');\n      }\n    }\n  }\n  const toggleColorMode = (alternate) => {\n    // Switch the stylesheets\n    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');\n    manageTransitions('div.sidebar-toc .nav-link', false);\n    if (alternate) {\n      enableStylesheet(alternateStylesheets);\n    } else {\n      disableStylesheet(alternateStylesheets);\n    }\n    manageTransitions('.quarto-toc-sidebar .nav-link', true);\n    // Switch the toggles\n    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');\n    for (let i=0; i < toggles.length; i++) {\n      const toggle = toggles[i];\n      if (toggle) {\n        if (alternate) {\n          toggle.classList.add(\"alternate\");     \n        } else {\n          toggle.classList.remove(\"alternate\");\n        }\n      }\n    }\n  }\n  const isFileUrl = () => { \n    return window.location.protocol === 'file:';\n  }\n  const hasAlternateSentinel = () => {  \n    let styleSentinel = getColorSchemeSentinel();\n    if (styleSentinel !== null) {\n      return styleSentinel === \"alternate\";\n    } else {\n      return false;\n    }\n  }\n  const setStyleSentinel = (alternate) => {\n    const value = alternate ? \"alternate\" : \"default\";\n    if (!isFileUrl()) {\n      window.localStorage.setItem(\"quarto-color-scheme\", value);\n    } else {\n      localAlternateSentinel = value;\n    }\n  }\n  const getColorSchemeSentinel = () => {\n    if (!isFileUrl()) {\n      return window.localStorage.getItem(\"quarto-color-scheme\");\n    } else {\n      return localAlternateSentinel;\n    }\n  }\n  let localAlternateSentinel = null;\n  // Dark / light mode switch\n  window.quartoToggleColorScheme = () => {\n    // Read the current dark / light value \n    let toAlternate = !hasAlternateSentinel();\n    toggleColorMode(toAlternate);\n    setStyleSentinel(toAlternate);\n  };\n  // Ensure there is a toggle, if there isn't float one in the top right\n  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {\n    const a = window.document.createElement('a');\n    a.id = \"quarto-color-scheme-toggle\";\n    a.classList.add('top-right');\n    a.href = \"\";\n    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };\n    const i = window.document.createElement(\"i\");\n    i.classList.add('bi');\n    a.appendChild(i);\n    window.document.body.appendChild(a);\n  }\n  // Switch to dark mode if need be\n  if (hasAlternateSentinel()) {\n    toggleColorMode(true);\n  } \n  const icon = \"\";\n  const anchorJS = new window.AnchorJS();\n  anchorJS.options = {\n    placement: 'right',\n    icon: icon\n  };\n  anchorJS.add('.anchored');\n  const clipboard = new window.ClipboardJS('.code-copy-button', {\n    target: function(trigger) {\n      return trigger.previousElementSibling;\n    }\n  });\n  clipboard.on('success', function(e) {\n    // button target\n    const button = e.trigger;\n    // don't keep focus\n    button.blur();\n    // flash \"checked\"\n    button.classList.add('code-copy-button-checked');\n    setTimeout(function() {\n      button.classList.remove('code-copy-button-checked');\n    }, 1000);\n    // clear code selection\n    e.clearSelection();\n  });\n  function tippyHover(el, contentFn) {\n    window.tippy(el, {\n      allowHTML: true,\n      content: contentFn,\n      maxWidth: 500,\n      delay: 100,\n      interactive: true,\n      interactiveBorder: 10,\n      theme: 'quarto',\n      placement: 'bottom-start'\n    }); \n  }\n  const noterefs = window.document.querySelectorAll('a[role=\"doc-noteref\"]');\n  for (var i=0; i<noterefs.length; i++) {\n    const ref = noterefs[i];\n    tippyHover(ref, function() {\n      const id = new URL(ref.getAttribute('href')).hash.replace(/^#/, \"\");\n      const note = window.document.getElementById(id);\n      return note.innerHTML;\n    });\n  }\n  var bibliorefs = window.document.querySelectorAll('a[role=\"doc-biblioref\"]');\n  for (var i=0; i<bibliorefs.length; i++) {\n    const ref = bibliorefs[i];\n    const cites = ref.parentNode.getAttribute('data-cites').split(' ');\n    tippyHover(ref, function() {\n      var popup = window.document.createElement('div');\n      cites.forEach(function(cite) {\n        var citeDiv = window.document.createElement('div');\n        citeDiv.classList.add('hanging-indent');\n        citeDiv.classList.add('csl-entry');\n        var biblioDiv = window.document.getElementById('ref-' + cite);\n        if (biblioDiv) {\n          citeDiv.innerHTML = biblioDiv.innerHTML;\n        }\n        popup.appendChild(citeDiv);\n      });\n      return popup.innerHTML;\n    });\n  }\n});"
+    "text": "text here, including:\n\nSlack Channel\n(Zoom) Chat\nBreaks/Breakout Groups"
   },
   {
     "objectID": "tutorials/NASA_Earthdata_Authentication.html#summary",
@@ -229,5 +229,33 @@
     "title": "Schedule",
     "section": "Cloud Hackathon: November 15-19",
     "text": "All times listed below are in PST (UTC-8) unless otherwise noted.\n\nDay 1 (November 15)\n\n\n\nTime\nEvent\nLeads/Instructors\n\n\n\n\nTODO\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDay 2 (November 16)\n\n\n\nTime\nEvent\nLeads/Instructors\n\n\n\n\nTODO\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDay 3 (November 17)\n\n\n\nTime\nEvent\nLeads/Instructors\n\n\n\n\nTODO\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDay 4 (November 18)\n\n\n\nTime\nEvent\nLeads/Instructors\n\n\n\n\nTODO\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDay 5 (November 19)\n\n\n\nTime\nEvent\nLeads/Instructors\n\n\n\n\nTODO"
+  },
+  {
+    "objectID": "clinic/index.html#before-the-clinic",
+    "href": "clinic/index.html#before-the-clinic",
+    "title": "Pre-Hackathon Clinic",
+    "section": "Before the Clinic",
+    "text": "Please follow the set up prerequisites before the Clinic."
+  },
+  {
+    "objectID": "clinic/jupyterhub.html#overview",
+    "href": "clinic/jupyterhub.html#overview",
+    "title": "JupyterHub, repos, environments",
+    "section": "Overview",
+    "text": "Summary of what we’ll do"
+  },
+  {
+    "objectID": "clinic/jupyterhub.html#log-into-2i2c",
+    "href": "clinic/jupyterhub.html#log-into-2i2c",
+    "title": "JupyterHub, repos, environments",
+    "section": "Log into 2i2c",
+    "text": "Go to https://openscapes.2i2c.cloud/hub/. You will be asked to log in to"
+  },
+  {
+    "objectID": "logistics/prerequisites.html",
+    "href": "logistics/prerequisites.html",
+    "title": "Prerequisites & setup",
+    "section": "",
+    "text": "Before the Hackathon, please do the following (20 minutes). All software is free. If you are attending the Clinic, please do this in advance of the Clinic.\n\nCreate a GitHub account\n\nGitHub: https://github.com\nFollow optional advice on choosing your username\nSend us your username at least 24 hours before the event (TODO revisit process)\nRemember your username, email and password; you will need to be logged in them during the workshop!\n\nOthers? TODO revisit\nGet comfortable. Consider your computer set-up in advance, including an external monitor if possible. You will be following along in Jupyter Hub on your own computer while also watching an instructor live-code over Zoom (or equivalent), and will also want quick-access to Slack to ask for help and follow links."
   }
 ]

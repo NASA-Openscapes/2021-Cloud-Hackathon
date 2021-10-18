@@ -32,8 +32,7 @@ site:
       - section: clinic/index.md
         contents:
           - clinic/jupyterhub.md
-          - clinic/shell-for-github.md
-          - clinic/python.md
+          - clinic/notebooks.md
       - section: tutorials/index.md
         contents: 
           - tutorials/getting-started.md

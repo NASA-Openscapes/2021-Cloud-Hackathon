@@ -2,7 +2,7 @@
 title: "2021 Cloud Hackathon"
 subtitle: "Transitioning Earthdata Workflows to the Cloud"
  
-author: "This Hackathon is co-hosted by PODAAC, NSIDC DAAC and LPDAAC. Additional support is provided by ASDC, GESDISC and Openscapes"
+author: "This Hackathon is co-hosted by PODAAC, NSIDC DAAC, and LPDAAC. Additional support is provided by ASDC, GESDISC and Openscapes."
 ---
 
 ## Welcome
@@ -10,9 +10,9 @@ author: "This Hackathon is co-hosted by PODAAC, NSIDC DAAC and LPDAAC. Additiona
 ![](https://user-images.githubusercontent.com/2915555/133526401-b79abf6c-ab0d-438d-9927-da39b7c17b96.jpg)
 
 
-Welcome to **Cloud Hackathon: Transitioning Earthdata Workflows to the Cloud,** co-hosted by the NASA EOSDIS Physical Oceanography Distributed Active Archive Center ([PO.DAAC](https://podaac.jpl.nasa.gov/)), National Snow and Ice Data Center DAAC ([NSIDC DAAC](https://nsidc.org/daac)), Land Processes Distributed Active Archive Center ([LP.DAAC](https://lpdaac.usgs.gov/)), with support provided by [ASDC DAAC](https://asdc.larc.nasa.gov/), [GES DISC](https://disc.gsfc.nasa.gov/) and [NASA Openscapes](https://nasa-openscapes.github.io/) Project.
+Welcome to **Cloud Hackathon: Transitioning Earthdata Workflows to the Cloud,** co-hosted by the NASA EOSDIS Physical Oceanography Distributed Active Archive Center ([PO.DAAC](https://podaac.jpl.nasa.gov/)), National Snow and Ice Data Center DAAC ([NSIDC DAAC](https://nsidc.org/daac)), Land Processes Distributed Active Archive Center ([LP.DAAC](https://lpdaac.usgs.gov/)), with support provided by [ASDC DAAC](https://asdc.larc.nasa.gov/), [GES DISC](https://disc.gsfc.nasa.gov/) and [NASA Openscapes](https://nasa-openscapes.github.io/).
 
-The Cloud Hackathon will take place **virtually** from **November 15-19, 2021.** The event is free to attend, but an application is required.The application period (September 21 - October 12, 2021) is now closed. Those who applied will be informed of the outcome on or around October 20th, 2021. 
+The Cloud Hackathon will take place **virtually** from **November 15-19, 2021.** The event is free to attend, but an application is required. The application period (September 21 - October 12, 2021) is now closed. Those who applied will be informed of the outcome on or around October 20th, 2021. 
 
 
 
@@ -88,4 +88,4 @@ Cloud Hackathon: Transitioning Earthdata Workflows to the Cloud is co-hosted by 
 
 ## Code of Conduct 
 
-The 2021 Cloud Hackathon is a safe learning space and all participants are required to abide by our [Code of Conduct] (TODO Link).
+The 2021 Cloud Hackathon is a safe learning space and all participants are required to abide by our [Code of Conduct](https://openscapes.org/code-of-conduct).
