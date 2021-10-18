@@ -27,16 +27,18 @@ site:
       - section: logistics/index.md
         contents:
           - logistics/schedule.md
+          - logistics/prerequisites.md
           - logistics/getting-help.md
-      - section: preparation/index.md
+      - section: clinic/index.md
         contents:
-          - preparation/shell-for-github.md
-          - preparation/python.md
-          - preparation/jupyterhub.md
+          - clinic/jupyterhub.md
+          - clinic/notebooks.md
       - section: tutorials/index.md
         contents: 
           - tutorials/getting-started.md
           - tutorials/Data_Discovery__CMR-STAC_API.ipynb
+          - tutorials/Data_Access__Direct_S3_Access_gdalvrt.ipynb
+          - NASA_Earthdata_Authentication.ipynb
       - section: projects/index.md
         contents:
           - projects/hacking.md
