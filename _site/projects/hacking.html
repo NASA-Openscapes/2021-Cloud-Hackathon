@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang=""><head>
   <meta charset="utf-8">
-  <meta name="generator" content="quarto-0.2.183">
+  <meta name="generator" content="quarto-0.2.222">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>Hacking at the Cloud Hackathon</title>
   <style>
@@ -44,7 +44,7 @@
     "type": "textbox",
     "limit": 20
   }</script>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
 <div id="quarto-search-results"></div>
@@ -102,6 +102,9 @@
   <a href="../logistics/schedule.html" class="">Schedule</a>
 </li>
           <li class="sidebar-item">
+  <a href="../logistics/prerequisites.html" class="">Prerequisites &amp; setup</a>
+</li>
+          <li class="sidebar-item">
   <a href="../logistics/getting-help.html" class="">Getting Help</a>
 </li>
         </ul>
@@ -113,23 +116,20 @@
         <div class="me-auto">
           <div class="d-inline-flex w-100 sidebar-section-item">
             <div class="sidebar-section-link me-auto">
-            <a href="../preparation/index.html" class="">Preparation</a>
+            <a href="../clinic/index.html" class="">Pre-Hackathon Clinic</a>
             </div>
-            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#preparation-collapse" aria-expanded="true">
+            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#pre-hackathonclinic-collapse" aria-expanded="true">
               <div><i class="bi bi-chevron-right ms-2"></i></div>
             </a>
             </div>
         </div>
-      <div class="collapse  show" id="preparation-collapse">
+      <div class="collapse  show" id="pre-hackathonclinic-collapse">
         <ul class="list-unstyled sidebar-item-contents">
           <li class="sidebar-item">
-  <a href="../preparation/shell-for-github.html" class="">Shell for GitHub</a>
+  <a href="../clinic/jupyterhub.html" class="">JupyterHub, repos, environments</a>
 </li>
           <li class="sidebar-item">
-  <a href="../preparation/python.html" class="">Python</a>
-</li>
-          <li class="sidebar-item">
-  <a href="../preparation/jupyterhub.html" class="">JupyterHub</a>
+  <a href="../clinic/notebooks.html" class="">Notebooks, Python, GitHub</a>
 </li>
         </ul>
       </div>
@@ -154,6 +154,9 @@
 </li>
           <li class="sidebar-item">
   <a href="../tutorials/Data_Discovery__CMR-STAC_API.html" class="">Data Discovery: CMR-STAC API</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../tutorials/Data_Access__Direct_S3_Access_gdalvrt.html" class="">Direct S3 Data Access with GDAL Virtual Raster Format (VRT)</a>
 </li>
         </ul>
       </div>
@@ -335,7 +338,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      const id = new URL(ref.getAttribute('href')).hash.replace(/^#/, "");
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
     });

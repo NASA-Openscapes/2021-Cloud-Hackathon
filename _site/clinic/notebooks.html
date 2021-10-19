@@ -3,7 +3,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="quarto-0.2.222">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>Getting Started</title>
+  <title>Notebooks, Python, GitHub</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -23,8 +23,8 @@
   <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
   <script src="../site_libs/quarto-search/fuse.min.js"></script>
   <script src="../site_libs/quarto-search/quarto-search.js"></script>
-  <link href="../tutorials/Data_Discovery__CMR-STAC_API.html" rel="next">
-  <link href="../tutorials/index.html" rel="prev">
+  <link href="../tutorials/index.html" rel="next">
+  <link href="../clinic/jupyterhub.html" rel="prev">
   <script src="../site_libs/quarto-html/quarto.js"></script>
   <script src="../site_libs/quarto-html/popper.min.js"></script>
   <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -51,7 +51,7 @@
 <header id="quarto-header" class="headroom fixed-top">
 <nav class="quarto-secondary-nav py-2 d-lg-none d-md-block " data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <div class="container-fluid d-flex justify-content-between">
-    <h1 class="quarto-secondary-nav-title mb-0 fs-3 d-inline">Getting Started</h1>
+    <h1 class="quarto-secondary-nav-title mb-0 fs-3 d-inline">Notebooks, Python, GitHub</h1>
     <button type="button" class="quarto-btn-toggle btn d-lg-none py-0 px-1 d-inline-block border-0 ">
       <i class="bi bi-chevron-right"></i>
     </button>
@@ -129,7 +129,7 @@
   <a href="../clinic/jupyterhub.html" class="">JupyterHub, repos, environments</a>
 </li>
           <li class="sidebar-item">
-  <a href="../clinic/notebooks.html" class="">Notebooks, Python, GitHub</a>
+  <a href="../clinic/notebooks.html" class="active">Notebooks, Python, GitHub</a>
 </li>
         </ul>
       </div>
@@ -150,7 +150,7 @@
       <div class="collapse  show" id="tutorials-collapse">
         <ul class="list-unstyled sidebar-item-contents">
           <li class="sidebar-item">
-  <a href="../tutorials/getting-started.html" class="active">Getting Started</a>
+  <a href="../tutorials/getting-started.html" class="">Getting Started</a>
 </li>
           <li class="sidebar-item">
   <a href="../tutorials/Data_Discovery__CMR-STAC_API.html" class="">Data Discovery: CMR-STAC API</a>
@@ -193,22 +193,56 @@
   <div id="quarto-toc-sidebar" class=" pt-0 col col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-toc order-last"><nav id="TOC" role="doc-toc">
 <h2 id="toc-title">On this page</h2>
 <ul>
-<li><a href="#introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-<li><a href="#how-do-i-get-the-tutorial-repository-into-the-hub" class="nav-link" data-scroll-target="#how-do-i-get-the-tutorial-repository-into-the-hub">How do I get the tutorial repository into the Hub?</a></li>
+<li><a href="#intro-python" class="nav-link active" data-scroll-target="#intro-python">Intro Python</a></li>
+<li><a href="#run-notebook" class="nav-link" data-scroll-target="#run-notebook">Run notebook</a></li>
+<li><a href="#commit-changes" class="nav-link" data-scroll-target="#commit-changes">Commit changes</a></li>
+<li><a href="#push-changes" class="nav-link" data-scroll-target="#push-changes">Push changes</a></li>
+<li><a href="#commit-and-push-again" class="nav-link" data-scroll-target="#commit-and-push-again">Commit and push again</a></li>
+<li><a href="#update-your-fork" class="nav-link" data-scroll-target="#update-your-fork">Update your fork</a></li>
+<li><a href="#closing" class="nav-link" data-scroll-target="#closing">Closing</a></li>
 </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon/edit/main/tutorials/getting-started.md" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon/issues/new" class="toc-action">Report an issue</a></p></div></div></nav></div>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon/edit/main/clinic/notebooks.md" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon/issues/new" class="toc-action">Report an issue</a></p></div></div></nav></div>
   <div class="col mx-auto col-sm-12 col-md-9 col-lg-7 col-xl-7 px-lg-4 pe-xxl-4 ps-xxl-0">
 <main>
 <header id="title-block-header">
-<h1 class="title d-none d-lg-block display-7">Getting Started</h1>
+<h1 class="title d-none d-lg-block display-7">Notebooks, Python, GitHub</h1>
 </header>
 
-<section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>text here</p>
+<section id="intro-python" class="level2">
+<h2 class="anchored" data-anchor-id="intro-python">Intro Python</h2>
+<p>How to import libraries, talk through some code structure</p>
 </section>
-<section id="how-do-i-get-the-tutorial-repository-into-the-hub" class="level2">
-<h2 class="anchored" data-anchor-id="how-do-i-get-the-tutorial-repository-into-the-hub">How do I get the tutorial repository into the Hub?</h2>
+<section id="run-notebook" class="level2">
+<h2 class="anchored" data-anchor-id="run-notebook">Run notebook</h2>
+<p>see how it works, but that you might want to make a change</p>
+</section>
+<section id="commit-changes" class="level2">
+<h2 class="anchored" data-anchor-id="commit-changes">Commit changes</h2>
+<p>Make some edits – TODO</p>
+<p>Commit</p>
+</section>
+<section id="push-changes" class="level2">
+<h2 class="anchored" data-anchor-id="push-changes">Push changes</h2>
+<p>TODO</p>
+</section>
+<section id="commit-and-push-again" class="level2">
+<h2 class="anchored" data-anchor-id="commit-and-push-again">Commit and push again</h2>
+<p>some more python concepts?</p>
+<p>TODO</p>
+</section>
+<section id="update-your-fork" class="level2">
+<h2 class="anchored" data-anchor-id="update-your-fork">Update your fork</h2>
+<p><em>(During the break, Luis/someone added something to the notebook)</em></p>
+<p>And how to update your fork from main. 2 step process:</p>
+<ul>
+<li>From github.com, click these buttons</li>
+<li>From 2i2c, <code>git fetch</code> (I think?)</li>
+</ul>
+<p>Discuss merge conflicts and philosophy: best way to deal with merge conflicts is to avoid them; talk to your colleagues, commit often. Also can work with branches (out of the scope of this Clinic?)</p>
+</section>
+<section id="closing" class="level2">
+<h2 class="anchored" data-anchor-id="closing">Closing</h2>
+<p>Thanks for coming!</p>
 
 
 </section>
@@ -382,13 +416,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </main>
 <div class="page-navigation page-navigation-docked">
   <div class="nav-page nav-page-previous">
-      <a href="../tutorials/index.html">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Tutorials</span>
+      <a href="../clinic/jupyterhub.html">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">JupyterHub, repos, environments</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../tutorials/Data_Discovery__CMR-STAC_API.html">
-        <span class="nav-page-text">Data Discovery: CMR-STAC API</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../tutorials/index.html">
+        <span class="nav-page-text">Tutorials</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </div>

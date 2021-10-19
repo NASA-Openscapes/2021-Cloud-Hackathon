@@ -15,10 +15,10 @@ All Cloud Hackathon activities are **virtual**. We will engage primarily with th
 
 All times listed below are in PST [(UTC-8)](https://www.timeanddate.com/time/zones/pst) unless otherwise noted. 
 
-| Time | Event                          | Leads/Instructors |
-|------|--------------------------------|-------------------|
-| 8-10am PST [(UTC-8)](https://www.timeanddate.com/time/zones/pst) | Workflow with Jupyter Hub, GitHub, Python, Shell | Makhan Virdi, Luis Lopez |
 
+```{.include}
+_schedule-clinic.md
+```
 <br>
 
 ## Cloud Hackathon: November 15-19
