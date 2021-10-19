@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang=""><head>
   <meta charset="utf-8">
-  <meta name="generator" content="quarto-0.2.183">
+  <meta name="generator" content="quarto-0.2.222">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>Schedule</title>
   <style>
@@ -23,7 +23,7 @@
   <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
   <script src="../site_libs/quarto-search/fuse.min.js"></script>
   <script src="../site_libs/quarto-search/quarto-search.js"></script>
-  <link href="../logistics/getting-help.html" rel="next">
+  <link href="../logistics/prerequisites.html" rel="next">
   <link href="../logistics/index.html" rel="prev">
   <script src="../site_libs/quarto-html/quarto.js"></script>
   <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -44,7 +44,7 @@
     "type": "textbox",
     "limit": 20
   }</script>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
 <div id="quarto-search-results"></div>
@@ -102,6 +102,9 @@
   <a href="../logistics/schedule.html" class="active">Schedule</a>
 </li>
           <li class="sidebar-item">
+  <a href="../logistics/prerequisites.html" class="">Prerequisites &amp; setup</a>
+</li>
+          <li class="sidebar-item">
   <a href="../logistics/getting-help.html" class="">Getting Help</a>
 </li>
         </ul>
@@ -113,23 +116,20 @@
         <div class="me-auto">
           <div class="d-inline-flex w-100 sidebar-section-item">
             <div class="sidebar-section-link me-auto">
-            <a href="../preparation/index.html" class="">Preparation</a>
+            <a href="../clinic/index.html" class="">Pre-Hackathon Clinic</a>
             </div>
-            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#preparation-collapse" aria-expanded="true">
+            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#pre-hackathonclinic-collapse" aria-expanded="true">
               <div><i class="bi bi-chevron-right ms-2"></i></div>
             </a>
             </div>
         </div>
-      <div class="collapse  show" id="preparation-collapse">
+      <div class="collapse  show" id="pre-hackathonclinic-collapse">
         <ul class="list-unstyled sidebar-item-contents">
           <li class="sidebar-item">
-  <a href="../preparation/shell-for-github.html" class="">Shell for GitHub</a>
+  <a href="../clinic/jupyterhub.html" class="">JupyterHub, repos, environments</a>
 </li>
           <li class="sidebar-item">
-  <a href="../preparation/python.html" class="">Python</a>
-</li>
-          <li class="sidebar-item">
-  <a href="../preparation/jupyterhub.html" class="">JupyterHub</a>
+  <a href="../clinic/notebooks.html" class="">Notebooks, Python, GitHub</a>
 </li>
         </ul>
       </div>
@@ -154,6 +154,9 @@
 </li>
           <li class="sidebar-item">
   <a href="../tutorials/Data_Discovery__CMR-STAC_API.html" class="">Data Discovery: CMR-STAC API</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../tutorials/Data_Access__Direct_S3_Access_gdalvrt.html" class="">Direct S3 Data Access with GDAL Virtual Raster Format (VRT)</a>
 </li>
         </ul>
       </div>
@@ -190,8 +193,8 @@
   <div id="quarto-toc-sidebar" class=" pt-0 col col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-toc order-last"><nav id="TOC" role="doc-toc">
 <h2 id="toc-title">On this page</h2>
 <ul>
-<li><a href="#pre-event-optional-carpentries-clinic" class="nav-link active" data-scroll-target="#pre-event-optional-carpentries-clinic">Pre-event Optional Carpentries Clinic</a></li>
-<li><a href="#cloud-hackathon" class="nav-link" data-scroll-target="#cloud-hackathon">Cloud Hackathon</a>
+<li><a href="#pre-hackathon-clinic-november-9-optional" class="nav-link active" data-scroll-target="#pre-hackathon-clinic-november-9-optional">Pre-Hackathon Clinic: November 9 (Optional)</a></li>
+<li><a href="#cloud-hackathon-november-15-19" class="nav-link" data-scroll-target="#cloud-hackathon-november-15-19">Cloud Hackathon: November 15-19</a>
 <ul class="collapse">
 <li><a href="#day-1-november-15" class="nav-link" data-scroll-target="#day-1-november-15">Day 1 (November 15)</a></li>
 <li><a href="#day-2-november-16" class="nav-link" data-scroll-target="#day-2-november-16">Day 2 (November 16)</a></li>
@@ -207,32 +210,50 @@
 <h1 class="title d-none d-lg-block display-7">Schedule</h1>
 </header>
 
-<p>Our 2021 Cloud Hackathon will take place November 15-19. *Pre-hackathon OPTIONAL sessions* will be on XXX as a YY-hour session ([see below for details](#pre-hackweek-optional-check-ins)).</p>
-<p>All Cloud Hackathon activities are **virtual**. We will engage primarily with this group and schedule via Zoom and Slack (TODO check &amp; setup).</p>
-<p>**Zoom links** will be posted on the `#TODO XX` Slack channel.</p>
-<section id="pre-event-optional-carpentries-clinic" class="level2">
-<h2 class="anchored" data-anchor-id="pre-event-optional-carpentries-clinic">Pre-event Optional Carpentries Clinic</h2>
-<p>All times listed below are in <a href="https://www.timeanddate.com/time/zones/pdt">PDT (UTC-7)</a> unless otherwise noted. You can find your timezone offset at <a href="https://www.timeanddate.com" class="uri">https://www.timeanddate.com</a> or similar sites.</p>
+<p><strong>The 2021 Cloud Hackathon will take place November 15-19 from 9am-1pm PST <a href="https://www.timeanddate.com/time/zones/pst">(UTC-8)</a> each day</strong>.<br>
+An optional pre-hackathon clinic will be held on November 9 from 8am-10am PST and the recording will be made available to all hackathon participants to review on their own.</p>
+<p>All Cloud Hackathon activities are <strong>virtual</strong>. We will engage primarily with this group and schedule via Zoom and Slack (TODO check &amp; setup).</p>
+<p><strong>Zoom links</strong> will be posted on the <code>#TODO XX</code> Slack channel.</p>
+<p><br></p>
+<section id="pre-hackathon-clinic-november-9-optional" class="level2">
+<h2 class="anchored" data-anchor-id="pre-hackathon-clinic-november-9-optional">Pre-Hackathon Clinic: November 9 (Optional)</h2>
+<p>All times listed below are in PST <a href="https://www.timeanddate.com/time/zones/pst">(UTC-8)</a> unless otherwise noted.</p>
 <table class="table">
 <thead>
 <tr class="header">
-<th>Time</th>
+<th>Time, PST <a href="https://www.timeanddate.com/time/zones/pst">(UTC-8)</a></th>
 <th>Event</th>
 <th>Leads/Instructors</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>TODO</td>
-<td>Intro to GitHub, Python, Shell</td>
+<td>8:00-8:05</td>
+<td>Welcome</td>
+<td>TBD</td>
+</tr>
+<tr class="even">
+<td>8:05-9:00</td>
+<td>JupyterHub, repos, environments</td>
+<td>Luis Lopez</td>
+</tr>
+<tr class="odd">
+<td>9:00-9:05</td>
+<td>Break</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>9:05-10:00</td>
+<td>Notebooks, python, syncing</td>
 <td>Makhan Virdi</td>
 </tr>
 </tbody>
 </table>
+<p><br></p>
 </section>
-<section id="cloud-hackathon" class="level2">
-<h2 class="anchored" data-anchor-id="cloud-hackathon">Cloud Hackathon</h2>
-<p>All times listed below are in <a href="https://www.timeanddate.com/time/zones/pdt">PDT (UTC-7)</a> unless otherwise noted. You can find your timezone offset at <a href="https://www.timeanddate.com" class="uri">https://www.timeanddate.com</a> or similar sites.</p>
+<section id="cloud-hackathon-november-15-19" class="level2">
+<h2 class="anchored" data-anchor-id="cloud-hackathon-november-15-19">Cloud Hackathon: November 15-19</h2>
+<p>All times listed below are in PST <a href="https://www.timeanddate.com/time/zones/pst">(UTC-8)</a> unless otherwise noted.</p>
 <section id="day-1-november-15" class="level3">
 <h3 class="anchored" data-anchor-id="day-1-november-15">Day 1 (November 15)</h3>
 <table class="table">
@@ -570,7 +591,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      const id = new URL(ref.getAttribute('href')).hash.replace(/^#/, "");
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
     });
@@ -604,8 +627,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../logistics/getting-help.html">
-        <span class="nav-page-text">Getting Help</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../logistics/prerequisites.html">
+        <span class="nav-page-text">Prerequisites &amp; setup</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </div>

@@ -7,8 +7,7 @@
 
 Welcome to **Cloud Hackathon: Transitioning Earthdata Workflows to the Cloud,** co-hosted by the NASA EOSDIS Physical Oceanography Distributed Active Archive Center ([PO.DAAC](https://podaac.jpl.nasa.gov/)), National Snow and Ice Data Center DAAC ([NSIDC DAAC](https://nsidc.org/daac)), Land Processes Distributed Active Archive Center ([LP.DAAC](https://lpdaac.usgs.gov/)), with support provided by [ASDC DAAC](https://asdc.larc.nasa.gov/), [GES DISC](https://disc.gsfc.nasa.gov/) and [NASA Openscapes](https://nasa-openscapes.github.io/) Project.
 
-The Cloud Hackathon will take place **virtually** from **November 15-19, 2021.** The event is free to attend, but an [application](https://forms.gle/JJNKZ6pGKxWVFzLr6) is required. If you are interested in participating, the application period is open September 21 - October 12, 2021.
-
+The Cloud Hackathon will take place **virtually** from **November 15-19, 2021.** The event is free to attend, but an application is required.The application period (September 21 - October 12, 2021) is now closed. Those who applied will be informed of the outcome on or around October 20th, 2021. 
 
 
 ### About
@@ -41,9 +40,9 @@ If selected, participants will have the option to attend a Carpentries-style git
 
 #### Application Form
 
-In the [application form](https://forms.gle/JJNKZ6pGKxWVFzLr6), we encourage you to think about and provide a science use case that you would like to prototype in the cloud. At the beginning of the hackathon, participants will be able to pitch their use case to support the formation of “hack” projects - by which we mean collaboratively experiment working in with NASA Earthdata data and capabilities in the Cloud. During the hackathon, participants will get into teams of their choosing, around a common use case to “hack” in the cloud. The use cases provided in the application form will also help the organizers best prepare materials tailored to those use cases.
+In the application form, we encourage you to think about and provide a science use case that you would like to prototype in the cloud. At the beginning of the hackathon, participants will be able to pitch their use case to support the formation of “hack” projects - by which we mean collaboratively experiment working in with NASA Earthdata data and capabilities in the Cloud. During the hackathon, participants will get into teams of their choosing, around a common use case to “hack” in the cloud. The use cases provided in the application form will also help the organizers best prepare materials tailored to those use cases.
 
-**To apply, please fill out this [application form](https://forms.gle/JJNKZ6pGKxWVFzLr6).**
+**The application period has now closed. Thank you for your interest.**
 
 
 ### What to expect
@@ -80,8 +79,6 @@ In the two to three weeks leading up to the hackathon, participants are encourag
 
 
 This event is motivated by the dawn of the era of Big Data. NASA’s Earth Observing System Data and Information System (EOSDIS) is in the process of moving EOSDIS data to the cloud, driven by a rapid rate of data ingest into the EOSDIS archive. NASA remote sensing data from both upcoming (e.g. SWOT) and existing (e.g. Terra, Aqua, ICESat-2) missions will be available in the Earthdata Cloud platform in the coming years. The paradigm shift from on-premise (local) to cloud-based data distribution, and that from “download and analyze” to “analysis in place” present opportunities and challenges. Guiding users through this transition is of the utmost importance.
-
-**If interested in participating in this event, please submit an [Application](https://forms.gle/JJNKZ6pGKxWVFzLr6).**
 
 
 Cloud Hackathon: Transitioning Earthdata Workflows to the Cloud is co-hosted by NASA's PO.DAAC, NSIDC DAAC, LP.DAAC, with support from ASDC DAAC, GES DISC and the NASA Openscapes Project, and cloud computing infrastructure by 2i2c. <br>

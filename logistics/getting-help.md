@@ -2,4 +2,8 @@
 title: Getting Help
 ---
 
-text here
+text here, including: 
+
+- Slack Channel
+- (Zoom) Chat
+- Breaks/Breakout Groups

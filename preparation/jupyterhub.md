@@ -1,5 +1,0 @@
----
-title: JupyterHub
----
-
-text here

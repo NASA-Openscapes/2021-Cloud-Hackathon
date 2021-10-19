@@ -2,23 +2,28 @@
 title: Schedule
 ---
 
-Our 2021 Cloud Hackathon will take place November 15-19 from XX-XX [PST (UTC-8)](https://www.timeanddate.com/time/zones/pst). Pre-hackathon OPTIONAL sessions will be on XXX as a YY-hour session.
+**The 2021 Cloud Hackathon will take place November 15-19 from 9am-1pm PST [(UTC-8)](https://www.timeanddate.com/time/zones/pst) each day**.   
+An optional pre-hackathon clinic will be held on November 9 from 8am-10am PST  and the recording will be made available to all hackathon participants to review on their own.
 
 All Cloud Hackathon activities are **virtual**. We will engage primarily with this group and schedule via Zoom and Slack (TODO check & setup).
 
 **Zoom links** will be posted on the `#TODO XX` Slack channel.
 
-## Pre-event Optional Carpentries Clinic
+<br>
 
-All times listed below are in [PST (UTC-8)](https://www.timeanddate.com/time/zones/pst) unless otherwise noted. You can find your timezone offset at <https://www.timeanddate.com> or similar sites.
+## Pre-Hackathon Clinic:  November 9 (Optional)
 
-| Time | Event                          | Leads/Instructors |
-|------|--------------------------------|-------------------|
-| TODO | Intro to GitHub, Python, Shell | Makhan Virdi      |
+All times listed below are in PST [(UTC-8)](https://www.timeanddate.com/time/zones/pst) unless otherwise noted. 
 
-## Cloud Hackathon
 
-All times listed below are in [PST (UTC-8)](https://www.timeanddate.com/time/zones/pst) unless otherwise noted. You can find your timezone offset at <https://www.timeanddate.com> or similar sites.
+```{.include}
+_schedule-clinic.md
+```
+<br>
+
+## Cloud Hackathon: November 15-19
+
+All times listed below are in PST [(UTC-8)](https://www.timeanddate.com/time/zones/pst) unless otherwise noted. 
 
 ### Day 1 (November 15)
 

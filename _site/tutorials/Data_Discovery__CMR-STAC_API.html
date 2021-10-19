@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang=""><head>
   <meta charset="utf-8">
-  <meta name="generator" content="quarto-0.2.183">
+  <meta name="generator" content="quarto-0.2.222">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>data_discovery__cmr-stac_api</title>
   <style>
@@ -86,7 +86,7 @@
   <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
   <script src="../site_libs/quarto-search/fuse.min.js"></script>
   <script src="../site_libs/quarto-search/quarto-search.js"></script>
-  <link href="../projects/index.html" rel="next">
+  <link href="../tutorials/Data_Access__Direct_S3_Access_gdalvrt.html" rel="next">
   <link href="../tutorials/getting-started.html" rel="prev">
   <script src="../site_libs/quarto-html/quarto.js"></script>
   <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -110,7 +110,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
   <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
 <div id="quarto-search-results"></div>
@@ -168,6 +168,9 @@
   <a href="../logistics/schedule.html" class="">Schedule</a>
 </li>
           <li class="sidebar-item">
+  <a href="../logistics/prerequisites.html" class="">Prerequisites &amp; setup</a>
+</li>
+          <li class="sidebar-item">
   <a href="../logistics/getting-help.html" class="">Getting Help</a>
 </li>
         </ul>
@@ -179,23 +182,20 @@
         <div class="me-auto">
           <div class="d-inline-flex w-100 sidebar-section-item">
             <div class="sidebar-section-link me-auto">
-            <a href="../preparation/index.html" class="">Preparation</a>
+            <a href="../clinic/index.html" class="">Pre-Hackathon Clinic</a>
             </div>
-            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#preparation-collapse" aria-expanded="true">
+            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#pre-hackathonclinic-collapse" aria-expanded="true">
               <div><i class="bi bi-chevron-right ms-2"></i></div>
             </a>
             </div>
         </div>
-      <div class="collapse  show" id="preparation-collapse">
+      <div class="collapse  show" id="pre-hackathonclinic-collapse">
         <ul class="list-unstyled sidebar-item-contents">
           <li class="sidebar-item">
-  <a href="../preparation/shell-for-github.html" class="">Shell for GitHub</a>
+  <a href="../clinic/jupyterhub.html" class="">JupyterHub, repos, environments</a>
 </li>
           <li class="sidebar-item">
-  <a href="../preparation/python.html" class="">Python</a>
-</li>
-          <li class="sidebar-item">
-  <a href="../preparation/jupyterhub.html" class="">JupyterHub</a>
+  <a href="../clinic/notebooks.html" class="">Notebooks, Python, GitHub</a>
 </li>
         </ul>
       </div>
@@ -220,6 +220,9 @@
 </li>
           <li class="sidebar-item">
   <a href="../tutorials/Data_Discovery__CMR-STAC_API.html" class="active">Data Discovery: CMR-STAC API</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../tutorials/Data_Access__Direct_S3_Access_gdalvrt.html" class="">Direct S3 Data Access with GDAL Virtual Raster Format (VRT)</a>
 </li>
         </ul>
       </div>
@@ -312,7 +315,7 @@
 <h2 class="anchored" data-anchor-id="exercise">Exercise</h2>
 <section id="import-required-packages" class="level3">
 <h3 class="anchored" data-anchor-id="import-required-packages">Import Required Packages</h3>
-<div class="cell">
+<div class="cell" data-execution_count="1">
 <div class="sourceCode" id="cb1"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pystac_client <span class="im">import</span> Client       <span class="co"># https://pystac-client.readthedocs.io/en/latest/index.html  </span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> defaultdict    </span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
@@ -1925,7 +1928,7 @@ U9k9N2vl5+cH0en0TRiGWX18fC65vnh+LxqNBq2oqFhgMpmi7XY7arVaj+zdu/fxn/l/4bSZl5fH
 <section id="explored-available-providers" class="level3">
 <h3 class="anchored" data-anchor-id="explored-available-providers">Explored available providers</h3>
 <div class="sourceCode" id="cb2"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>provider_cat <span class="op">=</span> Client.<span class="bu">open</span>(<span class="st">'https://cmr.earthdata.nasa.gov/stac/'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell">
+<div class="cell" data-execution_count="3">
 <div class="sourceCode" id="cb3"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>providers <span class="op">=</span> [p <span class="cf">for</span> p <span class="kw">in</span> provider_cat.get_children()]</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> count, provider <span class="kw">in</span> <span class="bu">enumerate</span>(providers):</span>
@@ -1986,9 +1989,9 @@ U9k9N2vl5+cH0en0TRiGWX18fC65vnh+LxqNBq2oqFhgMpmi7XY7arVaj+zdu/fxn/l/4bSZl5fH
 <div class="sourceCode" id="cb5"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>catalog <span class="op">=</span> Client.<span class="bu">open</span>(<span class="st">'https://cmr.earthdata.nasa.gov/stac/LPCLOUD/'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <section id="print-catalog-as-a-python-dictionary" class="level4">
 <h4 class="anchored" data-anchor-id="print-catalog-as-a-python-dictionary">Print catalog as a Python dictionary</h4>
-<div class="cell">
+<div class="cell" data-execution_count="5">
 <div class="sourceCode" id="cb6"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>catalog.to_dict()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
+<div class="cell-output-display" data-execution_count="5">
 <pre><code>{'type': 'Catalog',
  'id': 'LPCLOUD',
  'stac_version': '1.0.0',
@@ -2059,7 +2062,7 @@ U9k9N2vl5+cH0en0TRiGWX18fC65vnh+LxqNBq2oqFhgMpmi7XY7arVaj+zdu/fxn/l/4bSZl5fH
 </section>
 <section id="print-the-stac-collection-ids-with-their-title" class="level4">
 <h4 class="anchored" data-anchor-id="print-the-stac-collection-ids-with-their-title">Print the STAC Collection <code>id</code>s with their <code>title</code></h4>
-<div class="cell">
+<div class="cell" data-execution_count="7">
 <div class="sourceCode" id="cb9"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> p <span class="kw">in</span> products: </span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>p<span class="sc">.</span><span class="bu">id</span><span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>p<span class="sc">.</span>title<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stdout">
@@ -2073,9 +2076,9 @@ HLSS30.v2.0: HLS Sentinel-2 Multi-spectral Instrument Surface Reflectance Daily 
 </section>
 <section id="print-out-one-of-the-stac-collection-records" class="level4">
 <h4 class="anchored" data-anchor-id="print-out-one-of-the-stac-collection-records">Print out one of the STAC Collection records</h4>
-<div class="cell">
+<div class="cell" data-execution_count="8">
 <div class="sourceCode" id="cb11"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>products[<span class="dv">1</span>].to_dict()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
+<div class="cell-output-display" data-execution_count="8">
 <pre><code>{'type': 'Collection',
  'id': 'HLSL30.v2.0',
  'stac_version': '1.0.0',
@@ -2121,10 +2124,10 @@ HLSS30.v2.0: HLS Sentinel-2 Multi-spectral Instrument Surface Reflectance Daily 
 <section id="set-up-query-parameters-to-submit-to-the-cmr-stac-api" class="level3">
 <h3 class="anchored" data-anchor-id="set-up-query-parameters-to-submit-to-the-cmr-stac-api">Set up query parameters to submit to the CMR-STAC API</h3>
 <p>We will define our area of interest using the geojson file from the previous exercise, while also specifying the data collections and time range of needed for our example.</p>
-<div class="cell">
+<div class="cell" data-execution_count="9">
 <div class="sourceCode" id="cb13"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>field <span class="op">=</span> geopandas.read_file(<span class="st">'./data/ne_w_agfields.geojson'</span>)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>field</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
+<div class="cell-output-display" data-execution_count="9">
 <div>
 
 <table class="dataframe table">
@@ -2144,21 +2147,21 @@ HLSS30.v2.0: HLS Sentinel-2 Multi-spectral Instrument Surface Reflectance Daily 
 </div>
 </div>
 </div>
-<div class="cell">
+<div class="cell" data-execution_count="10">
 <div class="sourceCode" id="cb14"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>fieldShape <span class="op">=</span> field[<span class="st">'geometry'</span>][<span class="dv">0</span>]</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>fieldShape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
+<div class="cell-output-display" data-execution_count="10">
 <p><img src="Data_Discovery__CMR-STAC_API_files/figure-html/cell-11-output-1.svg" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell">
+<div class="cell" data-execution_count="11">
 <div class="sourceCode" id="cb15"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>base <span class="op">=</span> gv.tile_sources.EsriImagery.opts(width<span class="op">=</span><span class="dv">650</span>, height<span class="op">=</span><span class="dv">500</span>)</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>farmField <span class="op">=</span> gv.Polygons(fieldShape).opts(line_color<span class="op">=</span><span class="st">'yellow'</span>, line_width<span class="op">=</span><span class="dv">10</span>, color<span class="op">=</span><span class="va">None</span>)</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>base <span class="op">*</span> farmField</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <pre><code>Unable to display output for mime type(s): </code></pre>
 </div>
-<div class="cell-output-display">
+<div class="cell-output-display" data-execution_count="11">
 <div id="1004">
 
 
@@ -2196,10 +2199,10 @@ HLSS30.v2.0: HLS Sentinel-2 Multi-spectral Instrument Surface Reflectance Daily 
 <p>We will now start to specify the search criteria we are interested in, i.e, the <strong>date range</strong>, the <strong>region of interest</strong> (roi), and the <strong>data collections</strong>, to pass to the STAC API</p>
 <section id="specify-the-region-of-interest" class="level4">
 <h4 class="anchored" data-anchor-id="specify-the-region-of-interest">Specify the region of interest</h4>
-<div class="cell">
+<div class="cell" data-execution_count="12">
 <div class="sourceCode" id="cb17"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>roi <span class="op">=</span> json.loads(field.to_json())[<span class="st">'features'</span>][<span class="dv">0</span>][<span class="st">'geometry'</span>]</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>roi</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
+<div class="cell-output-display" data-execution_count="12">
 <pre><code>{'type': 'Polygon',
  'coordinates': [[[-101.67271614074707, 41.04754380304359],
    [-101.65344715118408, 41.04754380304359],
@@ -2218,10 +2221,10 @@ HLSS30.v2.0: HLS Sentinel-2 Multi-spectral Instrument Surface Reflectance Daily 
 <section id="specify-the-stac-collections" class="level4">
 <h4 class="anchored" data-anchor-id="specify-the-stac-collections">Specify the STAC Collections</h4>
 <p><strong>Note,</strong> a STAC Collection is synonomous with what we usually consider a data product.</p>
-<div class="cell">
+<div class="cell" data-execution_count="14">
 <div class="sourceCode" id="cb20"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>collections <span class="op">=</span> [<span class="st">'HLSL30.v1.5'</span>, <span class="st">'HLSS30.v1.5'</span>]</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>collections</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
+<div class="cell-output-display" data-execution_count="14">
 <pre><code>['HLSL30.v1.5', 'HLSS30.v1.5']</code></pre>
 </div>
 </div>
@@ -2237,17 +2240,17 @@ HLSS30.v2.0: HLS Sentinel-2 Multi-spectral Instrument Surface Reflectance Daily 
 <span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <section id="print-out-how-many-stac-items-match-our-search-query" class="level4">
 <h4 class="anchored" data-anchor-id="print-out-how-many-stac-items-match-our-search-query">Print out how many STAC Items match our search query</h4>
-<div class="cell">
+<div class="cell" data-execution_count="16">
 <div class="sourceCode" id="cb23"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>search.matched()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
+<div class="cell-output-display" data-execution_count="16">
 <pre><code>77</code></pre>
 </div>
 </div>
 <p>We now have a search object containing the STAC records that matched our query. Now, let’s pull out all of the STAC Items (as a PySTAC ItemCollection object) and explore the contents (i.e., the STAC Items)</p>
 <div class="sourceCode" id="cb25"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>item_collection <span class="op">=</span> search.get_all_items()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell">
+<div class="cell" data-execution_count="18">
 <div class="sourceCode" id="cb26"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(item_collection)[<span class="dv">0</span>:<span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
+<div class="cell-output-display" data-execution_count="18">
 <pre><code>[&lt;Item id=HLS.L30.T14TKL.2021124T173013.v1.5&gt;,
  &lt;Item id=HLS.L30.T13TGF.2021124T173013.v1.5&gt;,
  &lt;Item id=HLS.S30.T14TKL.2021125T172901.v1.5&gt;,
@@ -2258,9 +2261,9 @@ HLSS30.v2.0: HLS Sentinel-2 Multi-spectral Instrument Surface Reflectance Daily 
 </section>
 <section id="grab-the-first-item-and-print-it-out-as-a-dictionary" class="level4">
 <h4 class="anchored" data-anchor-id="grab-the-first-item-and-print-it-out-as-a-dictionary">Grab the first Item and print it out as a dictionary</h4>
-<div class="cell">
+<div class="cell" data-execution_count="19">
 <div class="sourceCode" id="cb28"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>item_collection[<span class="dv">0</span>].to_dict()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
+<div class="cell-output-display" data-execution_count="19">
 <pre><code>{'type': 'Feature',
  'stac_version': '1.0.0',
  'id': 'HLS.L30.T14TKL.2021124T173013.v1.5',
@@ -2355,9 +2358,9 @@ HLSS30.v2.0: HLS Sentinel-2 Multi-spectral Instrument Surface Reflectance Daily 
 <span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a>                evi_band_links.append(i.assets[a].href)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb33"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co">#len(evi_band_links)/4    # Print the number of Items that match our cloud criteria </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The filtering done in the previous steps produces a list of links to STAC Assets. Let’s print out the first ten links.</p>
-<div class="cell">
+<div class="cell" data-execution_count="24">
 <div class="sourceCode" id="cb34"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>evi_band_links[:<span class="dv">10</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
+<div class="cell-output-display" data-execution_count="24">
 <pre><code>['https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T14TKL.2021133T172406.v1.5.B04.tif',
  'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T14TKL.2021133T172406.v1.5.B02.tif',
  'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T14TKL.2021133T172406.v1.5.Fmask.tif',
@@ -2382,15 +2385,15 @@ HLSS30.v2.0: HLS Sentinel-2 Multi-spectral Instrument Surface Reflectance Daily 
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>    tile_dicts[tile].append(l)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <section id="print-dictionary-keys-and-values-i.e.-the-data-links" class="level4">
 <h4 class="anchored" data-anchor-id="print-dictionary-keys-and-values-i.e.-the-data-links">Print dictionary keys and values, i.e.&nbsp;the data links</h4>
-<div class="cell">
+<div class="cell" data-execution_count="27">
 <div class="sourceCode" id="cb38"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>tile_dicts.keys()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
+<div class="cell-output-display" data-execution_count="27">
 <pre><code>dict_keys(['T14TKL', 'T13TGF'])</code></pre>
 </div>
 </div>
-<div class="cell">
+<div class="cell" data-execution_count="28">
 <div class="sourceCode" id="cb40"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>tile_dicts[<span class="st">'T13TGF'</span>][:<span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
+<div class="cell-output-display" data-execution_count="28">
 <pre><code>['https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T13TGF.2021133T172406.v1.5.Fmask.tif',
  'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T13TGF.2021133T172406.v1.5.B02.tif',
  'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T13TGF.2021133T172406.v1.5.B05.tif',
@@ -2404,9 +2407,9 @@ HLSS30.v2.0: HLS Sentinel-2 Multi-spectral Instrument Surface Reflectance Daily 
 </section>
 <section id="print-bandlayer-links-for-hls-tile-t13tgf" class="level4">
 <h4 class="anchored" data-anchor-id="print-bandlayer-links-for-hls-tile-t13tgf">Print band/layer links for HLS tile T13TGF</h4>
-<div class="cell">
+<div class="cell" data-execution_count="30">
 <div class="sourceCode" id="cb43"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>tile_links_T13TGF[:<span class="dv">10</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
+<div class="cell-output-display" data-execution_count="30">
 <pre><code>['https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T13TGF.2021133T172406.v1.5.Fmask.tif',
  'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T13TGF.2021133T172406.v1.5.B02.tif',
  'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T13TGF.2021133T172406.v1.5.B05.tif',
@@ -2426,15 +2429,15 @@ HLSS30.v2.0: HLS Sentinel-2 Multi-spectral Instrument Surface Reflectance Daily 
 <div class="sourceCode" id="cb46"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> b <span class="kw">in</span> tile_links_T13TGF:</span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>    band <span class="op">=</span> b.split(<span class="st">'.'</span>)[<span class="op">-</span><span class="dv">2</span>]</span>
 <span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>    bands_dicts[band].append(b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell">
+<div class="cell" data-execution_count="33">
 <div class="sourceCode" id="cb47"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>bands_dicts.keys()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
+<div class="cell-output-display" data-execution_count="33">
 <pre><code>dict_keys(['Fmask', 'B02', 'B05', 'B04', 'B8A'])</code></pre>
 </div>
 </div>
-<div class="cell">
+<div class="cell" data-execution_count="34">
 <div class="sourceCode" id="cb49"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>bands_dicts[<span class="st">'B04'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
+<div class="cell-output-display" data-execution_count="34">
 <pre><code>['https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T13TGF.2021133T172406.v1.5.B04.tif',
  'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T13TGF.2021133T173859.v1.5.B04.tif',
  'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T13TGF.2021140T173021.v1.5.B04.tif',
@@ -2633,7 +2636,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      const id = new URL(ref.getAttribute('href')).hash.replace(/^#/, "");
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
     });
@@ -2667,8 +2672,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../projects/index.html">
-        <span class="nav-page-text">Projects</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../tutorials/Data_Access__Direct_S3_Access_gdalvrt.html">
+        <span class="nav-page-text">Direct S3 Data Access with GDAL Virtual Raster Format (VRT)</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </div>

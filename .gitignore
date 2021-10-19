@@ -1,6 +1,7 @@
 *netrc
 *checkpoints
-tutorials/data/*Links.txt
+/tutorials/data/*Links.txt
+*.vrt
 .Rproj.user
 .Rhistory
 .RData
