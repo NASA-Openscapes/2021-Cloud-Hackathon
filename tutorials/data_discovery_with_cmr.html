@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang=""><head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>data_discovery_with_cmr</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+  <script src="../site_libs/quarto-nav/headroom.min.js"></script>
+  <meta name="quarto:offset" content="../">
+  <script src="../site_libs/quarto-search/autocomplete.min.js"></script>
+  <script src="../site_libs/quarto-search/fuse.min.js"></script>
+  <script src="../site_libs/quarto-search/quarto-search.js"></script>
+  <script src="../site_libs/quarto-html/quarto.js"></script>
+  <script src="../site_libs/quarto-html/popper.min.js"></script>
+  <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+  <script src="../site_libs/quarto-html/clipboard.min.js"></script>
+  <script src="../site_libs/quarto-html/anchor.min.js"></script>
+  <script src="../site_libs/quarto-html/quarto-html.js"></script>
+  <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+  <link class="quarto-color-scheme" href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
+  <link class="quarto-color-scheme quarto-color-alternate" rel="prefetch" href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css">
+  <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+  <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+  <link class="quarto-color-scheme" href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+  <link class="quarto-color-scheme quarto-color-alternate" rel="prefetch" href="../site_libs/bootstrap/bootstrap-dark.min.css">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<div id="quarto-search-results"></div>
+<header id="quarto-header" class="headroom fixed-top">
+<nav class="quarto-secondary-nav py-2 d-lg-none d-md-block " data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <div class="container-fluid d-flex justify-content-between">
+    <h1 class="quarto-secondary-nav-title mb-0 fs-3 d-inline">(Untitled)</h1>
+    <button type="button" class="quarto-btn-toggle btn d-lg-none py-0 px-1 d-inline-block border-0 ">
+      <i class="bi bi-chevron-right"></i>
+    </button>
+  </div>
+</nav>
+</header>
+ <!-- /navbar/sidebar -->
+<div class="container-fluid quarto-container d-flex flex-column page-layout-article">
+<div class="row flex-fill" id="quarto-content">
+  <div id="quarto-sidebar" class="col col-12 col-lg-3 d-lg-flex px-0 pt-0 sidebar collapse sidebar-navigation">
+    <nav class="me-lg-auto py-2 docked  overflow-scroll">
+  <div class="px-3 pt-lg-2 mt-1 text-left sidebar-header sidebar-header-stacked">
+    <img src="https://user-images.githubusercontent.com/2915555/133525653-2a2278b1-1015-4350-b2a5-160d125aaaf7.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">
+      2021 Cloud Hackathon
+      </a>
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon" title="" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle " onclick="window.quartoToggleColorScheme(); return false;"><i class="bi"></i></a>
+</div>
+    </div>
+  </div>
+    <div class="d-flex px-3 mt-2 flex-shrink-0 align-items-center">
+      <div class="sidebar-search">
+      <form class="d-flex mb-0">
+  <input id="quarto-search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+      </div>
+        <div class="sidebar-tools-collapse">
+    <a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon" title="" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle " onclick="window.quartoToggleColorScheme(); return false;"><i class="bi"></i></a>
+</div>
+    </div>
+  <div class="sidebar-menu-container"> 
+  <ul class="list-unstyled mt-3 px-3">
+      <li class="sidebar-item">
+  <a href="../index.html" class="">Welcome</a>
+</li>
+      <ul class="list-unstyled sidebar-section depth1">
+    <li class="">
+        <div class="me-auto ">
+          <div class="d-inline-flex w-100 sidebar-section-item">
+            <div class="sidebar-section-link me-auto ">
+            <a href="../logistics/index.html" class="">Logistics</a>
+            </div>
+            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#logistics-collapse" aria-expanded="true">
+              <div><i class="bi bi-chevron-right ms-2 "></i></div>
+            </a>
+            </div>
+        </div>
+      <div class="collapse  show" id="logistics-collapse">
+        <ul class="list-unstyled sidebar-item-contents">
+          <li class="sidebar-item">
+  <a href="../logistics/schedule.html" class="">Schedule</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../logistics/prerequisites.html" class="">Prerequisites &amp; setup</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../logistics/getting-help.html" class="">Getting Help</a>
+</li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+      <ul class="list-unstyled sidebar-section depth1">
+    <li class="">
+        <div class="me-auto ">
+          <div class="d-inline-flex w-100 sidebar-section-item">
+            <div class="sidebar-section-link me-auto ">
+            <a href="../clinic/index.html" class="">Pre-Hackathon Clinic</a>
+            </div>
+            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#pre-hackathonclinic-collapse" aria-expanded="true">
+              <div><i class="bi bi-chevron-right ms-2 "></i></div>
+            </a>
+            </div>
+        </div>
+      <div class="collapse  show" id="pre-hackathonclinic-collapse">
+        <ul class="list-unstyled sidebar-item-contents">
+          <li class="sidebar-item">
+  <a href="../clinic/jupyterhub.html" class="">JupyterHub, repos, environments</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../clinic/notebooks.html" class="">Notebooks, Python, GitHub</a>
+</li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+      <ul class="list-unstyled sidebar-section depth1">
+    <li class="">
+        <div class="me-auto ">
+          <div class="d-inline-flex w-100 sidebar-section-item">
+            <div class="sidebar-section-link me-auto ">
+            <a href="../tutorials/index.html" class="">Tutorials</a>
+            </div>
+            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#tutorials-collapse" aria-expanded="true">
+              <div><i class="bi bi-chevron-right ms-2 "></i></div>
+            </a>
+            </div>
+        </div>
+      <div class="collapse  show" id="tutorials-collapse">
+        <ul class="list-unstyled sidebar-item-contents">
+          <li class="sidebar-item">
+  <a href="../tutorials/getting-started.html" class="">Getting Started</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../tutorials/Data_Discovery__CMR-STAC_API.html" class="">Data Discovery: CMR-STAC API</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../tutorials/Data_Access__Direct_S3_Access_gdalvrt.html" class="">Direct S3 Data Access with GDAL Virtual Raster Format (VRT)</a>
+</li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+      <ul class="list-unstyled sidebar-section depth1">
+    <li class="">
+        <div class="me-auto ">
+          <div class="d-inline-flex w-100 sidebar-section-item">
+            <div class="sidebar-section-link me-auto ">
+            <a href="../projects/index.html" class="">Projects</a>
+            </div>
+            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#projects-collapse" aria-expanded="true">
+              <div><i class="bi bi-chevron-right ms-2 "></i></div>
+            </a>
+            </div>
+        </div>
+      <div class="collapse  show" id="projects-collapse">
+        <ul class="list-unstyled sidebar-item-contents">
+          <li class="sidebar-item">
+  <a href="../projects/hacking.html" class="">Hacking at the Cloud Hackathon</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../projects/hackathon-projects.html" class="">Hackathon Projects</a>
+</li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+  </ul>
+  </div>
+</nav>
+  </div>
+  <div id="quarto-toc-sidebar" class="col col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-toc order-last"><nav id="TOC" role="doc-toc">
+<h2 id="toc-title">On this page</h2>
+<ul>
+<li><a href="#data-discovery-with-cmr" class="nav-link active" data-scroll-target="#data-discovery-with-cmr">Data discovery with CMR</a>
+<ul class="collapse">
+<li><a href="#what-is-cmr" class="nav-link" data-scroll-target="#what-is-cmr">What is CMR</a></li>
+<li><a href="#what-is-the-cmr-api" class="nav-link" data-scroll-target="#what-is-the-cmr-api">What is the CMR API</a></li>
+<li><a href="#how-to-search-cmr-from-python" class="nav-link" data-scroll-target="#how-to-search-cmr-from-python">How to search CMR from Python</a></li>
+<li><a href="#granule-search" class="nav-link" data-scroll-target="#granule-search">Granule Search</a></li>
+</ul></li>
+</ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon/edit/main/tutorials/data_discovery_with_cmr.ipynb">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon/issues/new">Report an issue</a></p></div></div></nav></div>
+  <div class="col mx-auto col-sm-12 col-md-9 col-lg-7 px-lg-4">
+<main>
+
+<section id="data-discovery-with-cmr" class="level1">
+<h1>Data discovery with CMR</h1>
+<p>In this tutorial you will learn: - what CMR is;<br>
+- how to use the <code>requests</code> package to search data collections and granules;<br>
+- how to parse the results of these searches.</p>
+<p>We will focus on datasets in the cloud. Currently, DAACS with data in the cloud are ‘ASF’, ‘GES_DISC’, ‘GHRC_DAAC’, ‘LPCLOUD’, ‘ORNL_CLOUD’, ‘POCLOUD’}</p>
+<section id="what-is-cmr" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-cmr">What is CMR</h2>
+<p>CMR is the Common Metadata Repository. It catalogs all data for NASA’s Earth Observing System Data and Information System (EOSDIS). It is the backend of <a href="https://search.earthdata.nasa.gov/search">Earthdata Search</a>, the GUI search interface you are probably familiar with. More information about CMR can be found <a href="https://earthdata.nasa.gov/eosdis/science-system-description/eosdis-components/cmr">here</a>.</p>
+<p>Unfortunately, the GUI for Earthdata Search is not accessible from a cloud instance - at least not without some work. Earthdata Search is also not immediately reproducible. What I mean by that is if you create a search using the GUI you would have to note the search criteria (date range, search area, collection name, etc), take a screenshot, copy the search url, or save the list of data granules returned by the search, in order to recreate the search. This information would have to be re-entered each time you or someone else wanted to do the search. You could make typos or other mistakes. A cleaner, reproducible solution is to search CMR programmatically using the CMR API.</p>
+</section>
+<section id="what-is-the-cmr-api" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-the-cmr-api">What is the CMR API</h2>
+<p>API stands for Application Programming Interface. It allows applications (software, services, etc) to send information to each other. A helpful analogy is a waiter in a restaurant. The waiter takes your drink or food order that you select from the menu, often translated into short-hand, to the bar or kitchen, and then returns (hopefully) with what you ordered when it is ready.</p>
+<p>The CMR API accepts search terms such as collection name, keywords, datetime range, and location, queries the CMR database and returns the results.</p>
+</section>
+<section id="how-to-search-cmr-from-python" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-search-cmr-from-python">How to search CMR from Python</h2>
+<p>The first step is to import python packages. We will use:<br>
+- <code>requests</code> This package does most of the work for us accessing the CMR API using HTTP methods. - <code>pprint</code> to <em>pretty print</em> the results of the search.</p>
+<p>A more in depth tutorial on <code>requests</code> is <a href="https://realpython.com/python-requests/">here</a></p>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> getpass</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> requests.auth <span class="im">import</span> HTTPBasicAuth</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pprint <span class="im">import</span> pprint</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb2"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>username <span class="op">=</span> <span class="st">'apbarret'</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>password <span class="op">=</span> getpass.getpass()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdin">
+<pre><code> ·············</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb4"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>CMR_TOKEN_OPS <span class="op">=</span> <span class="st">"https://cmr.earthdata.nasa.gov/legacy-services/rest/tokens"</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>TOKEN_DATA <span class="op">=</span> (<span class="st">'&lt;token&gt;'</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>              <span class="st">'&lt;username&gt;</span><span class="sc">%s</span><span class="st">&lt;/username&gt;'</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>              <span class="st">'&lt;password&gt;</span><span class="sc">%s</span><span class="st">&lt;/password&gt;'</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>              <span class="st">'&lt;client_id&gt;CMR Client&lt;/client_id&gt;'</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>              <span class="st">'&lt;user_ip_address&gt;</span><span class="sc">%s</span><span class="st">&lt;/user_ip_address&gt;'</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>              <span class="st">'&lt;/token&gt;'</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>session <span class="op">=</span> requests.session()</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>my_ip <span class="op">=</span> session.get(<span class="st">'https://ipinfo.io/ip'</span>).text.strip()</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>auth <span class="op">=</span> HTTPBasicAuth(username, password)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>auth_resp <span class="op">=</span> session.post(CMR_TOKEN_OPS,</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>                         auth<span class="op">=</span>auth,</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>                         data<span class="op">=</span>TOKEN_DATA <span class="op">%</span> (<span class="bu">str</span>(username), <span class="bu">str</span>(password), my_ip),</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>                         headers<span class="op">=</span>{<span class="st">'Content-Type'</span>: <span class="st">'application/xml'</span>, <span class="st">'Accept'</span>: <span class="st">'application/json'</span>},</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>                         timeout<span class="op">=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb5"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>auth_token <span class="op">=</span> auth_resp.json()[<span class="st">'token'</span>][<span class="st">'id'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>To conduct a search using the CMR API, <code>requests</code> needs the url for the root CMR search endpoint.</p>
+<div class="cell">
+<div class="sourceCode" id="cb6"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>CMR_OPS <span class="op">=</span> <span class="st">'https://cmr.earthdata.nasa.gov/search'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>CMR allows search by <strong>collections</strong>, which are datasets, and <strong>granules</strong>, which are files that contain data. Many of the same search parameters can be used for colections and granules but the type of results returned differ. Search parameters can be found in the <a href="https://cmr.earthdata.nasa.gov/search/site/docs/search/api.html">API Documentation</a>.</p>
+<p>Whether we search <strong>collections</strong> or <strong>granules</strong> is distinguished by adding <code>"collections"</code> or <code>"granules"</code> to the url for the root CMR endpoint.</p>
+<p>We are going to search collections first, so we add collections to the url. I’m using a <code>python</code> format string here.</p>
+<div class="cell">
+<div class="sourceCode" id="cb7"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="ss">f'</span><span class="sc">{</span>CMR_OPS<span class="sc">}</span><span class="ss">/</span><span class="sc">{</span><span class="st">"collections"</span><span class="sc">}</span><span class="ss">'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>In this first example, I want to retrieve a list of collections that are hosted in the cloud. Each collection has a <code>cloud-hosted</code> parameter that is either True if that collection is in the cloud and False if it is not. I also want to get the content in <code>json</code> (pronounced “jason”) format, so I pass a dictionary to the header keyword argument to say that I want results returned as <code>json</code>.</p>
+<p>The <code>.get()</code> method is used to send this information to the CMR API. <code>get()</code> calls the HTTP method <strong>GET</strong>.</p>
+<div class="cell">
+<div class="sourceCode" id="cb8"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(url,</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>                        params<span class="op">=</span>{</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'cloud_hosted'</span>: <span class="st">'True'</span>,</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>                        },</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>                        headers<span class="op">=</span>{</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'Accept'</span>: <span class="st">'application/json'</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>                        }</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>                       )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>requests</code> returns a Response object.</p>
+<p>Often, we want to check that our request was successful. In a notebook or someother interactive environment, we can just type the name of the variable we have saved our <code>requests</code> Response to, in this case <code>response</code>.</p>
+<div class="cell">
+<div class="sourceCode" id="cb9"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>response</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p>&lt;Response [200]&gt;</p>
+</div>
+</div>
+<p>A cleaner and more understandable method is to check the <code>status_code</code> attribute. Both methods return a HTTP status code. You’ve probably seen a 404 error when you have tried to access a website that doesn’t exist.</p>
+<div class="cell">
+<div class="sourceCode" id="cb10"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>response.status_code</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p>200</p>
+</div>
+</div>
+<p>Try changing <code>CMR_OPS</code> to <code>https://cmr.earthdata.nasa.gov/searches</code> an run <code>requests.get</code> again. <strong>Don’t forget to rerun the cell that assigns <code>url</code></strong></p>
+<p>The response from <code>requests.get</code> returns the results of the search and metadata about those results in the <code>headers</code>.</p>
+<p>More information about the <code>Response</code> object can be found by typing <code>help(response)</code>.</p>
+<p><code>headers</code> contains useful information in a case-insensitive dictionary. This information is printed below.</p>
+<div class="cell">
+<div class="sourceCode" id="cb11"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k, v <span class="kw">in</span> response.headers.items():</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'</span><span class="sc">{</span>k<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>v<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>Content-Type: application/json;charset=utf-8
+Content-Length: 6246
+Connection: keep-alive
+Date: Tue, 19 Oct 2021 00:05:10 GMT
+X-Frame-Options: SAMEORIGIN
+Access-Control-Allow-Origin: *
+X-XSS-Protection: 1; mode=block
+CMR-Request-Id: a09a605b-c7b7-4348-9da3-7fe24f23f990
+Strict-Transport-Security: max-age=31536000
+CMR-Search-After: ["above: atmospheric gas concentrations from airborne flasks, arctic-cap, 2017","ORNL_CLOUD","ABoVE_Atmospheric_Flask_Data_1717","1",2143812247,1]
+CMR-Hits: 919
+Access-Control-Expose-Headers: CMR-Hits, CMR-Request-Id, X-Request-Id, CMR-Scroll-Id, CMR-Search-After, CMR-Timed-Out, CMR-Shapefile-Original-Point-Count, CMR-Shapefile-Simplified-Point-Count
+X-Content-Type-Options: nosniff
+CMR-Took: 23
+X-Request-Id: a09a605b-c7b7-4348-9da3-7fe24f23f990
+Vary: Accept-Encoding, User-Agent
+Content-Encoding: gzip
+Server: ServerTokens ProductOnly
+X-Cache: Miss from cloudfront
+Via: 1.1 802eebfb6e9ab6bda66a7156bc7add93.cloudfront.net (CloudFront)
+X-Amz-Cf-Pop: HIO50-C2
+X-Amz-Cf-Id: UTf8fGAnH4f672p_C5xgSkfiXmRm7Ju4O1fYc0QxwDGlBJkUe_gNkw==</code></pre>
+</div>
+</div>
+<p>We can see that the content returned is in <code>json</code> format in the UTF-8 character set. We can also see from <code>CMR-Hits</code> that 919 collections were found.</p>
+<p>Each item in the dictionary can be accessed in the normal way you access a <code>python</code> dictionary but because it is case-insensitive, both</p>
+<div class="cell">
+<div class="sourceCode" id="cb13"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>response.headers[<span class="st">'CMR-Hits'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p>‘919’</p>
+</div>
+</div>
+<p>and</p>
+<div class="cell">
+<div class="sourceCode" id="cb14"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>response.headers[<span class="st">'cmr-hits'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p>‘919’</p>
+</div>
+</div>
+<p>work.</p>
+<p>This is a large number of data sets. I’m going to restrict the search to cloud-hosted datasets from ASF (Alaska SAR Facility) because I’m interested in SAR images of sea ice. You can modify the code below to explore all of the cloud-hosted datasets.</p>
+<div class="cell">
+<div class="sourceCode" id="cb15"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>data_center <span class="op">=</span> <span class="st">'ASF'</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(url,</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>                        params<span class="op">=</span>{</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'cloud_hosted'</span>: <span class="st">'True'</span>,</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'data_center'</span>: data_center,</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>                        },</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>                        headers<span class="op">=</span>{</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'Accept'</span>: <span class="st">'application/json'</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>                        }</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>                       )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb16"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>response.headers[<span class="st">'cmr-hits'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p>‘49’</p>
+</div>
+</div>
+<p>Search results are contained in the content part of the Response object. However, <code>response.content</code> returns information in bytes.</p>
+<div class="cell">
+<div class="sourceCode" id="cb17"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>response.content</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p>b’{“feed”:{“updated”:“2021-10-19T00:09:01.052Z”,“id”:“https://cmr.earthdata.nasa.gov:443/search/collections.json?cloud_hosted=True&amp;data_center=ASF”,“title”:“ECHO dataset metadata”,“entry”:[{“boxes”:[“-90 -180 90 180”],“time_start”:“2014-04-03T00:00:00.000Z”,“version_id”:“1”,“updated”:“2021-07-15T19:16:39.000Z”,“dataset_id”:“SENTINEL-1A_SLC”,“has_spatial_subsetting”:false,“has_transforms”:false,“has_variables”:false,“data_center”:“ASF”,“short_name”:“SENTINEL-1A_SLC”,“organizations”:[“ASF”,“ESA/CS1CGS”],“title”:“SENTINEL-1A_SLC”,“coordinate_system”:“CARTESIAN”,“summary”:“Sentinel-1A slant-range product”,“service_features”:{“opendap”:{“has_formats”:false,“has_variables”:false,“has_transforms”:false,“has_spatial_subsetting”:false,“has_temporal_subsetting”:false},“esi”:{“has_formats”:false,“has_variables”:false,“has_transforms”:false,“has_spatial_subsetting”:false,“has_temporal_subsetting”:false},“harmony”:{“has_formats”:false,“has_variables”:false,“has_transforms”:false,“has_spatial_subsetting”:false,“has_temporal_subsetting”:false}},“orbit_parameters”:{},“id”:“C1214470488-ASF”,“has_formats”:false,“score”:0.5,“original_format”:“ECHO10”,“archive_center”:“ASF”,“has_temporal_subsetting”:false,“browse_flag”:false,“platforms”:[“Sentinel-1A”],“online_access_flag”:true,“links”:[{“rel”:“http://esipfed.org/ns/fedsearch/1.1/data#”,“hreflang”:“en-US”,“href”:“https://vertex.daac.asf.alaska.edu/”}]},{“boxes”:[“-90 -180 90 180”],“time_start”:“2016-04-25T00:00:00.000Z”,“version_id”:“1”,“updated”:“2021-07-15T19:17:22.000Z”,“dataset_id”:“SENTINEL-1B_SLC”,“has_spatial_subsetting”:false,“has_transforms”:false,“has_variables”:false,“data_center”:“ASF”,“short_name”:“SENTINEL-1B_SLC”,“organizations”:[“ASF”,“ESA/CS1CGS”],“title”:“SENTINEL-1B_SLC”,“coordinate_system”:“CARTESIAN”,“summary”:“Sentinel-1B slant-range product”,“service_features”:{“opendap”:{“has_formats”:false,“has_variables”:false,“has_transforms”:false,“has_spatial_subsetting”:false,“has_temporal_subsetting”:false},“esi”:{“has_formats”:false,“has_variables”:false,“has_transforms”:false,“has_spatial_subsetting”:false,“has_temporal_subsetting”:false},“harmony”:{“has_formats”:false,“has_variables”:false,“has_transforms”:false,“has_spatial_subsetting”:false,“has_temporal_subsetting”:false}},“orbit_parameters”:{},“id”:“C1327985661-ASF”,“has_formats”:false,“score”:0.5,“original_format”:“ECHO10”,“archive_center”:“ASF”,“has_temporal_subsetting”:false,“browse_flag”:false,“platforms”:[“Sentinel-1B”],“online_access_flag”:true,“links”:[{“rel”:“http://esipfed.org/ns/fedsearch/1.1/data#”,“hreflang”:“en-US”,“href”:“https://vertex.daac.asf.alaska.edu/”}]},{“boxes”:[“-90 -180 90 180”],“time_start”:“2014-04-03T00:00:00.000Z”,“version_id”:“1”,“updated”:“2021-07-15T19:15:56.000Z”,“dataset_id”:“SENTINEL-1A_DUAL_POL_GRD_HIGH_RES”,“has_spatial_subsetting”:false,“has_transforms”:false,“has_variables”:false,“data_center”:“ASF”,“short_name”:“SENTINEL-1A_DP_GRD_HIGH”,“organizations”:[“ASF”,“ESA/CS1CGS”],“title”:“SENTINEL-1A_DUAL_POL_GRD_HIGH_RES”,“coordinate_system”:“CARTESIAN”,“summary”:“Sentinel-1A Dual-pol ground projected high and full resolution images”,“service_features”:{“opendap”:{“has_formats”:false,“has_variables”:false,“has_transforms”:false,“has_spatial_subsetting”:false,“has_temporal_subsetting”:false},“esi”:{“has_formats”:false,“has_variables”:false,“has_transforms”:false,“has_spatial_subsetting”:false,“has_temporal_subsetting”:false},“harmony”:{“has_formats”:false,“has_variables”:false,“has_transforms”:false,“has_spatial_subsetting”:false,“has_temporal_subsetting”:false}},“orbit_parameters”:{},“id”:“C1214470533-ASF”,“has_formats”:false,“score”:0.5,“original_format”:“ECHO10”,“archive_center”:“ASF”,“has_temporal_subsetting”:false,“browse_flag”:false,“platforms”:[“Sentinel-1A”],“online_access_flag”:true,“links”:[{“rel”:“http://esipfed.org/ns/fedsearch/1.1/data#”,“hreflang”:“en-US”,“href”:“https://vertex.daac.asf.alaska.edu/”}]},{“boxes”:[“-90 -180 90 180”],“time_start”:“2016-04-25T00:00:00.000Z”,“version_id”:“1”,“updated”:“2021-07-15T19:16:47.000Z”,“dataset_id”:“SENTINEL-1B_DUAL_POL_GRD_HIGH_RES”,“has_spatial_subsetting”:false,“has_transforms”:false,“has_variables”:false,“data_center”:“ASF”,“short_name”:“SENTINEL-1B_DP_GRD_HIGH”,“organizations”:[“ASF”,“ESA/CS1CGS”],“title”:“SENTINEL-1B_DUAL_POL_GRD_HIGH_RES”,“coordinate_system”:“CARTESIAN”,“summary”:“Sentinel-1B Dual-pol ground projected high and full resolution images”,“service_features”:{“opendap”:{“has_formats”:false,“has_variables”:false,“has_transforms”:false,“has_spatial_subsetting”:false,“has_temporal_subsetting”:false},“esi”:{“has_formats”:false,“has_variables”:false,“has_transforms”:false,“has_spatial_subsetting”:false,“has_temporal_subsetting”:false},“harmony”:{“has_formats”:false,“has_variables”:false,“has_transforms”:false,“has_spatial_subsetting”:false,“has_temporal_subsetting”:false}},“orbit_parameters”:{},“id”:“C1327985645-ASF”,“has_formats”:false,“score”:0.5,“original_format”:“ECHO10”,“archive_center”:“ASF”,“has_temporal_subsetting”:false,“browse_flag”:false,“platforms”:[“Sentinel-1B”],“online_access_flag”:true,“links”:[{“rel”:“http://esipfed.org/ns/fedsearch/1.1/data#”,“hreflang”:“en-US”,“href”:“https://vertex.daac.asf.alaska.edu/”}]},{“boxes”:[“-90 -180 90 180”],“time_start”:“2016-04-25T00:00:00.000Z”,“version_id”:“1”,“updated”:“2021-07-15T19:16:49.000Z”,“dataset_id”:“SENTINEL-1B_DUAL_POL_GRD_MEDIUM_RES”,“has_spatial_subsetting”:false,“has_transforms”:false,“has_variables”:false,“data_center”:“ASF”,“short_name”:“SENTINEL-1B_DP_GRD_MEDIUM”,“organizations”:[“ASF”,“ESA/CS1CGS”],“title”:“SENTINEL-1B_DUAL_POL_GRD_MEDIUM_RES”,“coordinate_system”:“CARTESIAN”,“summary”:“Sentinel-1B Dual-pol ground projected medium resolution images”,“service_features”:{“opendap”:{“has_formats”:false,“has_variables”:false,“has_transforms”:false,“has_spatial_subsetting”:false,“has_temporal_subsetting”:false},“esi”:{“has_formats”:false,“has_variables”:false,“has_transforms”:false,“has_spatial_subsetting”:false,“has_temporal_subsetting”:false},“harmony”:{“has_formats”:false,“has_variables”:false,“has_transforms”:false,“has_spatial_subsetting”:false,“has_temporal_subsetting”:false}},“orbit_parameters”:{},“id”:“C1327985660-ASF”,“has_formats”:false,“score”:0.5,“original_format”:“ECHO10”,“archive_center”:“ASF”,“has_temporal_subsetting”:false,“browse_flag”:false,“platforms”:[“Sentinel-1B”],“online_access_flag”:true,“links”:[{“rel”:“http://esipfed.org/ns/fedsearch/1.1/data#”,“hreflang”:“en-US”,“href”:“https://vertex.daac.asf.alaska.edu/”}]},{“boxes”:[“-90 -180 90 180”],“time_start”:“2014-04-03T00:00:00.000Z”,“version_id”:“1”,“updated”:“2021-07-15T19:15:58.000Z”,“dataset_id”:“SENTINEL-1A_DUAL_POL_GRD_MEDIUM_RES”,“has_spatial_subsetting”:false,“has_transforms”:false,“has_variables”:false,“data_center”:“ASF”,“short_name”:“SENTINEL-1A_DP_GRD_MEDIUM”,“organizations”:[“ASF”,“ESA/CS1CGS”],“title”:“SENTINEL-1A_DUAL_POL_GRD_MEDIUM_RES”,“coordinate_system”:“CARTESIAN”,“summary”:“Sentinel-1A Dual-pol ground projected medium resolution images”,“service_features”:{“opendap”:{“has_formats”:false,“has_variables”:false,“has_transforms”:false,“has_spatial_subsetting”:false,“has_temporal_subsetting”:false},“esi”:{“has_formats”:false,“has_variables”:false,“has_transforms”:false,“has_spatial_subsetting”:false,“has_temporal_subsetting”:false},“harmony”:{“has_formats”:false,“has_variables”:false,“has_transforms”:false,“has_spatial_subsetting”:false,“has_temporal_subsetting”:false}},“orbit_parameters”:{},“id”:“C1214471521-ASF”,“has_formats”:false,“score”:0.5,“original_format”:“ECHO10”,“archive_center”:“ASF”,“has_temporal_subsetting”:false,“browse_flag”:false,“platforms”:[“Sentinel-1A”],“online_access_flag”:true,“links”:[{“rel”:“http://esipfed.org/ns/fedsearch/1.1/data#”,“hreflang”:“en-US”,“href”:“https://vertex.daac.asf.alaska.edu/”}]},{“boxes”:[“-90 -180 90 180”],“time_start”:“2014-04-03T00:00:00.000Z”,“version_id”:“1”,“updated”:“2021-07-15T19:16:20.000Z”,“dataset_id”:“SENTINEL-1A_RAW”,“has_spatial_subsetting”:false,“has_transforms”:false,“has_variables”:false,“data_center”:“ASF”,“short_name”:“SENTINEL-1A_RAW”,“organizations”:[“ASF”,“ESA/CS1CGS”],“title”:“SENTINEL-1A_RAW”,“coordinate_system”:“CARTESIAN”,“summary”:“Sentinel-1A level zero product”,“service_features”:{“opendap”:{“has_formats”:false,“has_variables”:false,“has_transforms”:false,“has_spatial_subsetting”:false,“has_temporal_subsetting”:false},“esi”:{“has_formats”:false,“has_variables”:false,“has_transforms”:false,“has_spatial_subsetting”:false,“has_temporal_subsetting”:false},“harmony”:{“has_formats”:false,“has_variables”:false,“has_transforms”:false,“has_spatial_subsetting”:false,“has_temporal_subsetting”:false}},“orbit_parameters”:{},“id”:“C1214470561-ASF”,“has_formats”:false,“score”:0.5,“original_format”:“ECHO10”,“archive_center”:“ASF”,“has_temporal_subsetting”:false,“browse_flag”:false,“platforms”:[“Sentinel-1A”],“online_access_flag”:true,“links”:[{“rel”:“http://esipfed.org/ns/fedsearch/1.1/data#”,“hreflang”:“en-US”,“href”:“https://vertex.daac.asf.alaska.edu/”}]},{“boxes”:[“-90 -180 90 180”],“time_start”:“2014-04-03T00:00:00.000Z”,“version_id”:“1”,“updated”:“2021-07-15T19:16:15.000Z”,“dataset_id”:“SENTINEL-1A_METADATA_SLC”,“has_spatial_subsetting”:false,“has_transforms”:false,“has_variables”:false,“data_center”:“ASF”,“short_name”:“SENTINEL-1A_META_SLC”,“organizations”:[“ASF”],“title”:“SENTINEL-1A_METADATA_SLC”,“coordinate_system”:“CARTESIAN”,“summary”:“Metadata for Sentinel-1A slant-range product”,“service_features”:{“opendap”:{“has_formats”:false,“has_variables”:false,“has_transforms”:false,“has_spatial_subsetting”:false,“has_temporal_subsetting”:false},“esi”:{“has_formats”:false,“has_variables”:false,“has_transforms”:false,“has_spatial_subsetting”:false,“has_temporal_subsetting”:false},“harmony”:{“has_formats”:false,“has_variables”:false,“has_transforms”:false,“has_spatial_subsetting”:false,“has_temporal_subsetting”:false}},“orbit_parameters”:{},“id”:“C1214470496-ASF”,“has_formats”:false,“score”:0.5,“original_format”:“ECHO10”,“archive_center”:“ASF”,“has_temporal_subsetting”:false,“browse_flag”:false,“platforms”:[“Sentinel-1A”],“online_access_flag”:true,“links”:[{“rel”:“http://esipfed.org/ns/fedsearch/1.1/data#”,“hreflang”:“en-US”,“href”:“https://vertex.daac.asf.alaska.edu/”}]},{“boxes”:[“-90 -180 90 180”],“time_start”:“2014-04-03T00:00:00.000Z”,“version_id”:“1”,“updated”:“2021-07-15T19:16:26.000Z”,“dataset_id”:“SENTINEL-1A_SINGLE_POL_GRD_HIGH_RES”,“has_spatial_subsetting”:false,“has_transforms”:false,“has_variables”:false,“data_center”:“ASF”,“short_name”:“SENTINEL-1A_SP_GRD_HIGH”,“organizations”:[“ASF”,“ESA/CS1CGS”],“title”:“SENTINEL-1A_SINGLE_POL_GRD_HIGH_RES”,“coordinate_system”:“CARTESIAN”,“summary”:“Sentinel-1A Single-pol ground projected high and full resolution images”,“service_features”:{“opendap”:{“has_formats”:false,“has_variables”:false,“has_transforms”:false,“has_spatial_subsetting”:false,“has_temporal_subsetting”:false},“esi”:{“has_formats”:false,“has_variables”:false,“has_transforms”:false,“has_spatial_subsetting”:false,“has_temporal_subsetting”:false},“harmony”:{“has_formats”:false,“has_variables”:false,“has_transforms”:false,“has_spatial_subsetting”:false,“has_temporal_subsetting”:false}},“orbit_parameters”:{},“id”:“C1214470682-ASF”,“has_formats”:false,“score”:0.5,“original_format”:“ECHO10”,“archive_center”:“ASF”,“has_temporal_subsetting”:false,“browse_flag”:false,“platforms”:[“Sentinel-1A”],“online_access_flag”:true,“links”:[{“rel”:“http://esipfed.org/ns/fedsearch/1.1/data#”,“hreflang”:“en-US”,“href”:“https://vertex.daac.asf.alaska.edu/”}]},{“boxes”:[“-90 -180 90 180”],“time_start”:“2016-04-25T00:00:00.000Z”,“version_id”:“1”,“updated”:“2021-07-15T19:17:02.000Z”,“dataset_id”:“SENTINEL-1B_METADATA_SLC”,“has_spatial_subsetting”:false,“has_transforms”:false,“has_variables”:false,“data_center”:“ASF”,“short_name”:“SENTINEL-1B_META_SLC”,“organizations”:[“ASF”],“title”:“SENTINEL-1B_METADATA_SLC”,“coordinate_system”:“CARTESIAN”,“summary”:“Metadata for Sentinel-1B slant-range product”,“service_features”:{“opendap”:{“has_formats”:false,“has_variables”:false,“has_transforms”:false,“has_spatial_subsetting”:false,“has_temporal_subsetting”:false},“esi”:{“has_formats”:false,“has_variables”:false,“has_transforms”:false,“has_spatial_subsetting”:false,“has_temporal_subsetting”:false},“harmony”:{“has_formats”:false,“has_variables”:false,“has_transforms”:false,“has_spatial_subsetting”:false,“has_temporal_subsetting”:false}},“orbit_parameters”:{},“id”:“C1327985617-ASF”,“has_formats”:false,“score”:0.5,“original_format”:“ECHO10”,“archive_center”:“ASF”,“has_temporal_subsetting”:false,“browse_flag”:false,“platforms”:[“Sentinel-1B”],“online_access_flag”:true,“links”:[{“rel”:“http://esipfed.org/ns/fedsearch/1.1/data#”,“hreflang”:“en-US”,“href”:“https://vertex.daac.asf.alaska.edu/”}]}]}}’</p>
+</div>
+</div>
+<p>It is more convenient to work with <code>json</code> formatted data. I’m using pretty print <code>pprint</code> to print the data in an easy to read way.</p>
+<p><strong>Step through <code>response.json()</code>, then to <code>response.json()['feed']['entry'][0]</code></strong></p>
+<div class="cell">
+<div class="sourceCode" id="cb18"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>pprint(response.json()[<span class="st">'feed'</span>][<span class="st">'entry'</span>][<span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>{'archive_center': 'ASF',
+ 'boxes': ['-90 -180 90 180'],
+ 'browse_flag': False,
+ 'coordinate_system': 'CARTESIAN',
+ 'data_center': 'ASF',
+ 'dataset_id': 'SENTINEL-1A_SLC',
+ 'has_formats': False,
+ 'has_spatial_subsetting': False,
+ 'has_temporal_subsetting': False,
+ 'has_transforms': False,
+ 'has_variables': False,
+ 'id': 'C1214470488-ASF',
+ 'links': [{'href': 'https://vertex.daac.asf.alaska.edu/',
+            'hreflang': 'en-US',
+            'rel': 'http://esipfed.org/ns/fedsearch/1.1/data#'}],
+ 'online_access_flag': True,
+ 'orbit_parameters': {},
+ 'organizations': ['ASF', 'ESA/CS1CGS'],
+ 'original_format': 'ECHO10',
+ 'platforms': ['Sentinel-1A'],
+ 'score': 0.5,
+ 'service_features': {'esi': {'has_formats': False,
+                              'has_spatial_subsetting': False,
+                              'has_temporal_subsetting': False,
+                              'has_transforms': False,
+                              'has_variables': False},
+                      'harmony': {'has_formats': False,
+                                  'has_spatial_subsetting': False,
+                                  'has_temporal_subsetting': False,
+                                  'has_transforms': False,
+                                  'has_variables': False},
+                      'opendap': {'has_formats': False,
+                                  'has_spatial_subsetting': False,
+                                  'has_temporal_subsetting': False,
+                                  'has_transforms': False,
+                                  'has_variables': False}},
+ 'short_name': 'SENTINEL-1A_SLC',
+ 'summary': 'Sentinel-1A slant-range product',
+ 'time_start': '2014-04-03T00:00:00.000Z',
+ 'title': 'SENTINEL-1A_SLC',
+ 'updated': '2021-07-15T19:16:39.000Z',
+ 'version_id': '1'}</code></pre>
+</div>
+</div>
+<p>The first response is not the result I am looking for. So I want to print the name of the dataset (<code>dataset_id</code>) and the concept id (<code>id</code>).</p>
+<div class="cell">
+<div class="sourceCode" id="cb20"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>collections <span class="op">=</span> response.json()[<span class="st">'feed'</span>][<span class="st">'entry'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb21"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> collection <span class="kw">in</span> collections:</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'</span><span class="sc">{</span>collection[<span class="st">"archive_center"</span>]<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>collection[<span class="st">"dataset_id"</span>]<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>collection[<span class="st">"id"</span>]<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>ASF SENTINEL-1A_SLC C1214470488-ASF
+ASF SENTINEL-1B_SLC C1327985661-ASF
+ASF SENTINEL-1A_DUAL_POL_GRD_HIGH_RES C1214470533-ASF
+ASF SENTINEL-1B_DUAL_POL_GRD_HIGH_RES C1327985645-ASF
+ASF SENTINEL-1B_DUAL_POL_GRD_MEDIUM_RES C1327985660-ASF
+ASF SENTINEL-1A_DUAL_POL_GRD_MEDIUM_RES C1214471521-ASF
+ASF SENTINEL-1A_RAW C1214470561-ASF
+ASF SENTINEL-1A_METADATA_SLC C1214470496-ASF
+ASF SENTINEL-1A_SINGLE_POL_GRD_HIGH_RES C1214470682-ASF
+ASF SENTINEL-1B_METADATA_SLC C1327985617-ASF</code></pre>
+</div>
+</div>
+<p>But there is a problem. We know from <code>CMR-Hits</code> that there are 49 datasets but only 10 are printed. This is because CMR restricts the number of results returned by a query. The default is 10 but it can be set to a maximum of 2000. Knowing that there were 49 ‘hits’, I’ll set <code>page_size</code> to 49.</p>
+<div class="cell">
+<div class="sourceCode" id="cb23"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(url,</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>                        params<span class="op">=</span>{</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'cloud_hosted'</span>: <span class="st">'True'</span>,</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'data_center'</span>: data_center,</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'page_size'</span>: <span class="dv">49</span>,</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>                        },</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>                        headers<span class="op">=</span>{</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'Accept'</span>: <span class="st">'application/json'</span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>                        }</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>                       )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb24"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>collections <span class="op">=</span> response.json()[<span class="st">'feed'</span>][<span class="st">'entry'</span>]</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> collection <span class="kw">in</span> collections:</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'</span><span class="sc">{</span>collection[<span class="st">"archive_center"</span>]<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>collection[<span class="st">"dataset_id"</span>]<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>collection[<span class="st">"id"</span>]<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>ASF SENTINEL-1A_SLC C1214470488-ASF
+ASF SENTINEL-1B_SLC C1327985661-ASF
+ASF SENTINEL-1A_DUAL_POL_GRD_HIGH_RES C1214470533-ASF
+ASF SENTINEL-1B_DUAL_POL_GRD_HIGH_RES C1327985645-ASF
+ASF SENTINEL-1B_DUAL_POL_GRD_MEDIUM_RES C1327985660-ASF
+ASF SENTINEL-1A_DUAL_POL_GRD_MEDIUM_RES C1214471521-ASF
+ASF SENTINEL-1A_RAW C1214470561-ASF
+ASF SENTINEL-1A_METADATA_SLC C1214470496-ASF
+ASF SENTINEL-1A_SINGLE_POL_GRD_HIGH_RES C1214470682-ASF
+ASF SENTINEL-1B_METADATA_SLC C1327985617-ASF
+ASF SENTINEL-1A_DUAL_POL_METADATA_GRD_HIGH_RES C1214470576-ASF
+ASF SENTINEL-1A_OCN C1214472977-ASF
+ASF SENTINEL-1B_RAW C1327985647-ASF
+ASF SENTINEL-1B_OCN C1327985579-ASF
+ASF SENTINEL-1A_METADATA_RAW C1214470532-ASF
+ASF ALOS_AVNIR_OBS_ORI C1808440897-ASF
+ASF SENTINEL-1B_DUAL_POL_METADATA_GRD_HIGH_RES C1327985741-ASF
+ASF SENTINEL-1A_SINGLE_POL_GRD_MEDIUM_RES C1214472994-ASF
+ASF SENTINEL-1B_METADATA_RAW C1327985650-ASF
+ASF SENTINEL-1B_SINGLE_POL_GRD_HIGH_RES C1327985571-ASF
+ASF SENTINEL-1A_METADATA_OCN C1266376001-ASF
+ASF SENTINEL-1B_SINGLE_POL_GRD_MEDIUM_RES C1327985740-ASF
+ASF SENTINEL-1A_DUAL_POL_METADATA_GRD_MEDIUM_RES C1214472336-ASF
+ASF SENTINEL-1A_SINGLE_POL_METADATA_GRD_HIGH_RES C1214470732-ASF
+ASF SENTINEL-1A_SINGLE_POL_METADATA_GRD_MEDIUM_RES C1214473170-ASF
+ASF SENTINEL-1B_DUAL_POL_METADATA_GRD_MEDIUM_RES C1327985578-ASF
+ASF SENTINEL-1B_METADATA_OCN C1327985646-ASF
+ASF SENTINEL-1B_SINGLE_POL_METADATA_GRD_HIGH_RES C1327985619-ASF
+ASF SENTINEL-1B_SINGLE_POL_METADATA_GRD_MEDIUM_RES C1327985739-ASF
+ASF STS-68_BROWSE_GRD C1661710593-ASF
+ASF STS-68_BROWSE_SLC C1661710596-ASF
+ASF STS-59_BROWSE_GRD C1661710578-ASF
+ASF STS-59_BROWSE_SLC C1661710581-ASF
+ASF SENTINEL-1A_DUAL_POL_GRD_FULL_RES C1214471197-ASF
+ASF SENTINEL-1A_DUAL_POL_METADATA_GRD_FULL_RES C1214471960-ASF
+ASF SENTINEL-1A_SINGLE_POL_GRD_FULL_RES C1214472978-ASF
+ASF SENTINEL-1A_SINGLE_POL_METADATA_GRD_FULL_RES C1214473165-ASF
+ASF SENTINEL-1B_DUAL_POL_GRD_FULL_RES C1327985697-ASF
+ASF SENTINEL-1B_DUAL_POL_METADATA_GRD_FULL_RES C1327985651-ASF
+ASF SENTINEL-1B_SINGLE_POL_GRD_FULL_RES C1327985644-ASF
+ASF SENTINEL-1B_SINGLE_POL_METADATA_GRD_FULL_RES C1327985674-ASF
+ASF STS-59_GRD C1661710583-ASF
+ASF STS-59_METADATA_GRD C1661710586-ASF
+ASF STS-59_METADATA_SLC C1661710588-ASF
+ASF STS-59_SLC C1661710590-ASF
+ASF STS-68_GRD C1661710597-ASF
+ASF STS-68_METADATA_GRD C1661710600-ASF
+ASF STS-68_METADATA_SLC C1661710603-ASF
+ASF STS-68_SLC C1661710604-ASF</code></pre>
+</div>
+</div>
+</section>
+<section id="granule-search" class="level2">
+<h2 class="anchored" data-anchor-id="granule-search">Granule Search</h2>
+<p>In NASA speak, Granules are files. In this example, we will search for recent Sentinel-1 Ground Range Detected (GRD) Medium Resolution Synthetic Aperture Radar images over the east coast of Greenland. The data in these files are most useful for sea ice mapping.</p>
+<p>I’ll use the data range 2021-10-17 00:00 to 2021-10-18 23:59:59.</p>
+<p>I’ll use a simple bounding box to search. - SW: 76.08166,-67.1746 - NW: 88.19689,21.04862</p>
+<p>From the collections search, I know the concept ids for Sentinel-1A and Sentinel-1B GRD medium resolution are - C1214472336-ASF - C1327985578-ASF</p>
+<p>We need to change the resource url to look for granules instead of collections</p>
+<div class="cell">
+<div class="sourceCode" id="cb26"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="ss">f'</span><span class="sc">{</span>CMR_OPS<span class="sc">}</span><span class="ss">/</span><span class="sc">{</span><span class="st">"granules"</span><span class="sc">}</span><span class="ss">'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We will search by <code>concept_id</code>, <code>temporal</code>, and <code>bounding_box</code>. Details about these search parameters can be found in the CMR API Documentation.</p>
+<p>The formatting of the values for each parameter is quite specific.<br>
+Temporal parameters are in ISO 8061 format <code>yyyy-MM-ddTHH:mm:ssZ</code>.<br>
+Bounding box coordinates are lower left longitude, lower left latitude, upper right longitude, upper right latitude.</p>
+<div class="cell">
+<div class="sourceCode" id="cb27"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(url, </span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>                        params<span class="op">=</span>{</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'concept_id'</span>: <span class="st">'C1214472336-ASF'</span>,</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'temporal'</span>: <span class="st">'2020-10-17T00:00:00Z,2020-10-18T23:59:59Z'</span>,</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'bounding_box'</span>: <span class="st">'76.08166,-67.1746,88.19689,21.04862'</span>,</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'page_size'</span>: <span class="dv">200</span>,</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'token'</span>: auth_token,</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>                            },</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>                        headers<span class="op">=</span>{</span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'Accept'</span>: <span class="st">'application/json'</span></span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>                            }</span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>                       )</span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response.status_code)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>200</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb29"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response.headers[<span class="st">'CMR-Hits'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>6</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb31"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>granules <span class="op">=</span> response.json()[<span class="st">'feed'</span>][<span class="st">'entry'</span>]</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="co">#for granule in granules:</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="co">#    print(f'{granule["archive_center"]} {granule["dataset_id"]} {granule["id"]}')</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb32"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>pprint(granules)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>[{'browse_flag': True,
+  'collection_concept_id': 'C1214472336-ASF',
+  'coordinate_system': 'GEODETIC',
+  'data_center': 'ASF',
+  'dataset_id': 'SENTINEL-1A_DUAL_POL_METADATA_GRD_MEDIUM_RES',
+  'day_night_flag': 'UNSPECIFIED',
+  'granule_size': '0.05633258819580078',
+  'id': 'G1954601581-ASF',
+  'links': [{'href': 'https://datapool.asf.alaska.edu/METADATA_GRD_MD/SA/S1A_EW_GRDM_1SDH_20201017T132009_20201017T132039_034836_040F98_404E.iso.xml',
+             'hreflang': 'en-US',
+             'rel': 'http://esipfed.org/ns/fedsearch/1.1/data#',
+             'title': 'This link provides direct download access to the '
+                      'granule.'},
+            {'href': 'www.asf.alaska.edu/sar-data-sets/sentinel-1',
+             'hreflang': 'en-US',
+             'rel': 'http://esipfed.org/ns/fedsearch/1.1/metadata#',
+             'title': 'ASF DAAC Sentinel-1 data set landing page (VIEW RELATED '
+                      'INFORMATION)'},
+            {'href': 'www.asf.alaska.edu/sar-information/sentinel-1-documents-tools',
+             'hreflang': 'en-US',
+             'rel': 'http://esipfed.org/ns/fedsearch/1.1/metadata#',
+             'title': 'ASF DAAC Sentinel-1 User Guide and Technical '
+                      'Documentation (VIEW RELATED INFORMATION)'},
+            {'href': 'https://datapool.asf.alaska.edu/BROWSE/SA/S1A_EW_GRDM_1SDH_20201017T132009_20201017T132039_034836_040F98_404E.jpg',
+             'hreflang': 'en-US',
+             'rel': 'http://esipfed.org/ns/fedsearch/1.1/browse#'},
+            {'href': 'https://vertex.daac.asf.alaska.edu/',
+             'hreflang': 'en-US',
+             'inherited': True,
+             'rel': 'http://esipfed.org/ns/fedsearch/1.1/data#'}],
+  'online_access_flag': True,
+  'orbit_calculated_spatial_domains': [{'orbit_number': '34836'}],
+  'original_format': 'ECHO10',
+  'polygons': [['-59.163563 87.942726 -60.893669 89.293564 -59.279579 '
+                '96.119583 -57.619923 94.49958 -59.163563 87.942726']],
+  'producer_granule_id': 'S1A_EW_GRDM_1SDH_20201017T132009_20201017T132039_034836_040F98_404E',
+  'time_end': '2020-10-17T13:20:39.000Z',
+  'time_start': '2020-10-17T13:20:09.000Z',
+  'title': 'S1A_EW_GRDM_1SDH_20201017T132009_20201017T132039_034836_040F98_404E-METADATA_GRD_MD',
+  'updated': '2020-10-19T17:13:39.000Z'},
+ {'browse_flag': False,
+  'collection_concept_id': 'C1214472336-ASF',
+  'coordinate_system': 'GEODETIC',
+  'data_center': 'ASF',
+  'dataset_id': 'SENTINEL-1A_DUAL_POL_METADATA_GRD_MEDIUM_RES',
+  'day_night_flag': 'UNSPECIFIED',
+  'granule_size': '0.05633354187011719',
+  'id': 'G1954616816-ASF',
+  'links': [{'href': 'https://datapool.asf.alaska.edu/METADATA_GRD_MD/SA/S1A_EW_GRDM_1SDH_20201017T145616_20201017T145720_034837_040FA0_0B4B.iso.xml',
+             'hreflang': 'en-US',
+             'rel': 'http://esipfed.org/ns/fedsearch/1.1/data#',
+             'title': 'This link provides direct download access to the '
+                      'granule.'},
+            {'href': 'www.asf.alaska.edu/sar-data-sets/sentinel-1',
+             'hreflang': 'en-US',
+             'rel': 'http://esipfed.org/ns/fedsearch/1.1/metadata#',
+             'title': 'ASF DAAC Sentinel-1 data set landing page (VIEW RELATED '
+                      'INFORMATION)'},
+            {'href': 'www.asf.alaska.edu/sar-information/sentinel-1-documents-tools',
+             'hreflang': 'en-US',
+             'rel': 'http://esipfed.org/ns/fedsearch/1.1/metadata#',
+             'title': 'ASF DAAC Sentinel-1 User Guide and Technical '
+                      'Documentation (VIEW RELATED INFORMATION)'},
+            {'href': 'https://vertex.daac.asf.alaska.edu/',
+             'hreflang': 'en-US',
+             'inherited': True,
+             'rel': 'http://esipfed.org/ns/fedsearch/1.1/data#'}],
+  'online_access_flag': True,
+  'orbit_calculated_spatial_domains': [{'orbit_number': '34837'}],
+  'original_format': 'ECHO10',
+  'polygons': [['-66.104271 69.819366 -69.571243 74.741966 -67.42112 83.209152 '
+                '-64.210938 77.59269 -66.104271 69.819366']],
+  'producer_granule_id': 'S1A_EW_GRDM_1SDH_20201017T145616_20201017T145720_034837_040FA0_0B4B',
+  'time_end': '2020-10-17T14:57:20.000Z',
+  'time_start': '2020-10-17T14:56:16.000Z',
+  'title': 'S1A_EW_GRDM_1SDH_20201017T145616_20201017T145720_034837_040FA0_0B4B-METADATA_GRD_MD',
+  'updated': '2020-10-19T18:35:34.000Z'},
+ {'browse_flag': True,
+  'collection_concept_id': 'C1214472336-ASF',
+  'coordinate_system': 'GEODETIC',
+  'data_center': 'ASF',
+  'dataset_id': 'SENTINEL-1A_DUAL_POL_METADATA_GRD_MEDIUM_RES',
+  'day_night_flag': 'UNSPECIFIED',
+  'granule_size': '0.05633354187011719',
+  'id': 'G1954616638-ASF',
+  'links': [{'href': 'https://datapool.asf.alaska.edu/METADATA_GRD_MD/SA/S1A_EW_GRDM_1SDH_20201017T145720_20201017T145820_034837_040FA0_72CE.iso.xml',
+             'hreflang': 'en-US',
+             'rel': 'http://esipfed.org/ns/fedsearch/1.1/data#',
+             'title': 'This link provides direct download access to the '
+                      'granule.'},
+            {'href': 'www.asf.alaska.edu/sar-data-sets/sentinel-1',
+             'hreflang': 'en-US',
+             'rel': 'http://esipfed.org/ns/fedsearch/1.1/metadata#',
+             'title': 'ASF DAAC Sentinel-1 data set landing page (VIEW RELATED '
+                      'INFORMATION)'},
+            {'href': 'www.asf.alaska.edu/sar-information/sentinel-1-documents-tools',
+             'hreflang': 'en-US',
+             'rel': 'http://esipfed.org/ns/fedsearch/1.1/metadata#',
+             'title': 'ASF DAAC Sentinel-1 User Guide and Technical '
+                      'Documentation (VIEW RELATED INFORMATION)'},
+            {'href': 'https://datapool.asf.alaska.edu/BROWSE/SA/S1A_EW_GRDM_1SDH_20201017T145720_20201017T145820_034837_040FA0_72CE.jpg',
+             'hreflang': 'en-US',
+             'rel': 'http://esipfed.org/ns/fedsearch/1.1/browse#'},
+            {'href': 'https://vertex.daac.asf.alaska.edu/',
+             'hreflang': 'en-US',
+             'inherited': True,
+             'rel': 'http://esipfed.org/ns/fedsearch/1.1/data#'}],
+  'online_access_flag': True,
+  'orbit_calculated_spatial_domains': [{'orbit_number': '34837'}],
+  'original_format': 'ECHO10',
+  'polygons': [['-62.765087 66.277176 -66.103951 69.81897 -64.211227 77.590164 '
+                '-61.060097 73.427185 -62.765087 66.277176']],
+  'producer_granule_id': 'S1A_EW_GRDM_1SDH_20201017T145720_20201017T145820_034837_040FA0_72CE',
+  'time_end': '2020-10-17T14:58:20.000Z',
+  'time_start': '2020-10-17T14:57:20.000Z',
+  'title': 'S1A_EW_GRDM_1SDH_20201017T145720_20201017T145820_034837_040FA0_72CE-METADATA_GRD_MD',
+  'updated': '2020-10-19T18:33:31.000Z'},
+ {'browse_flag': True,
+  'collection_concept_id': 'C1214472336-ASF',
+  'coordinate_system': 'GEODETIC',
+  'data_center': 'ASF',
+  'dataset_id': 'SENTINEL-1A_DUAL_POL_METADATA_GRD_MEDIUM_RES',
+  'day_night_flag': 'UNSPECIFIED',
+  'granule_size': '0.05633354187011719',
+  'id': 'G1954805829-ASF',
+  'links': [{'href': 'https://datapool.asf.alaska.edu/METADATA_GRD_MD/SA/S1A_EW_GRDM_1SDH_20201018T135856_20201018T140000_034851_041027_2659.iso.xml',
+             'hreflang': 'en-US',
+             'rel': 'http://esipfed.org/ns/fedsearch/1.1/data#',
+             'title': 'This link provides direct download access to the '
+                      'granule.'},
+            {'href': 'www.asf.alaska.edu/sar-data-sets/sentinel-1',
+             'hreflang': 'en-US',
+             'rel': 'http://esipfed.org/ns/fedsearch/1.1/metadata#',
+             'title': 'ASF DAAC Sentinel-1 data set landing page (VIEW RELATED '
+                      'INFORMATION)'},
+            {'href': 'www.asf.alaska.edu/sar-information/sentinel-1-documents-tools',
+             'hreflang': 'en-US',
+             'rel': 'http://esipfed.org/ns/fedsearch/1.1/metadata#',
+             'title': 'ASF DAAC Sentinel-1 User Guide and Technical '
+                      'Documentation (VIEW RELATED INFORMATION)'},
+            {'href': 'https://datapool.asf.alaska.edu/BROWSE/SA/S1A_EW_GRDM_1SDH_20201018T135856_20201018T140000_034851_041027_2659.jpg',
+             'hreflang': 'en-US',
+             'rel': 'http://esipfed.org/ns/fedsearch/1.1/browse#'},
+            {'href': 'https://vertex.daac.asf.alaska.edu/',
+             'hreflang': 'en-US',
+             'inherited': True,
+             'rel': 'http://esipfed.org/ns/fedsearch/1.1/data#'}],
+  'online_access_flag': True,
+  'orbit_calculated_spatial_domains': [{'orbit_number': '34851'}],
+  'original_format': 'ECHO10',
+  'polygons': [['-65.236397 83.18071 -68.712318 87.887711 -66.630493 96.161102 '
+                '-63.400326 90.779785 -65.236397 83.18071']],
+  'producer_granule_id': 'S1A_EW_GRDM_1SDH_20201018T135856_20201018T140000_034851_041027_2659',
+  'time_end': '2020-10-18T14:00:00.000Z',
+  'time_start': '2020-10-18T13:58:56.000Z',
+  'title': 'S1A_EW_GRDM_1SDH_20201018T135856_20201018T140000_034851_041027_2659-METADATA_GRD_MD',
+  'updated': '2020-10-20T07:16:54.000Z'},
+ {'browse_flag': True,
+  'collection_concept_id': 'C1214472336-ASF',
+  'coordinate_system': 'GEODETIC',
+  'data_center': 'ASF',
+  'dataset_id': 'SENTINEL-1A_DUAL_POL_METADATA_GRD_MEDIUM_RES',
+  'day_night_flag': 'UNSPECIFIED',
+  'granule_size': '0.05633354187011719',
+  'id': 'G1954799806-ASF',
+  'links': [{'href': 'https://datapool.asf.alaska.edu/METADATA_GRD_MD/SA/S1A_EW_GRDM_1SDH_20201018T140000_20201018T140100_034851_041027_2777.iso.xml',
+             'hreflang': 'en-US',
+             'rel': 'http://esipfed.org/ns/fedsearch/1.1/data#',
+             'title': 'This link provides direct download access to the '
+                      'granule.'},
+            {'href': 'www.asf.alaska.edu/sar-data-sets/sentinel-1',
+             'hreflang': 'en-US',
+             'rel': 'http://esipfed.org/ns/fedsearch/1.1/metadata#',
+             'title': 'ASF DAAC Sentinel-1 data set landing page (VIEW RELATED '
+                      'INFORMATION)'},
+            {'href': 'www.asf.alaska.edu/sar-information/sentinel-1-documents-tools',
+             'hreflang': 'en-US',
+             'rel': 'http://esipfed.org/ns/fedsearch/1.1/metadata#',
+             'title': 'ASF DAAC Sentinel-1 User Guide and Technical '
+                      'Documentation (VIEW RELATED INFORMATION)'},
+            {'href': 'https://datapool.asf.alaska.edu/BROWSE/SA/S1A_EW_GRDM_1SDH_20201018T140000_20201018T140100_034851_041027_2777.jpg',
+             'hreflang': 'en-US',
+             'rel': 'http://esipfed.org/ns/fedsearch/1.1/browse#'},
+            {'href': 'https://vertex.daac.asf.alaska.edu/',
+             'hreflang': 'en-US',
+             'inherited': True,
+             'rel': 'http://esipfed.org/ns/fedsearch/1.1/data#'}],
+  'online_access_flag': True,
+  'orbit_calculated_spatial_domains': [{'orbit_number': '34851'}],
+  'original_format': 'ECHO10',
+  'polygons': [['-61.876564 79.848251 -65.236069 83.180344 -63.400402 90.778 '
+                '-60.217258 86.840034 -61.876564 79.848251']],
+  'producer_granule_id': 'S1A_EW_GRDM_1SDH_20201018T140000_20201018T140100_034851_041027_2777',
+  'time_end': '2020-10-18T14:01:00.000Z',
+  'time_start': '2020-10-18T14:00:00.000Z',
+  'title': 'S1A_EW_GRDM_1SDH_20201018T140000_20201018T140100_034851_041027_2777-METADATA_GRD_MD',
+  'updated': '2020-10-20T06:51:16.000Z'},
+ {'browse_flag': False,
+  'collection_concept_id': 'C1214472336-ASF',
+  'coordinate_system': 'GEODETIC',
+  'data_center': 'ASF',
+  'dataset_id': 'SENTINEL-1A_DUAL_POL_METADATA_GRD_MEDIUM_RES',
+  'day_night_flag': 'UNSPECIFIED',
+  'granule_size': '0.05633258819580078',
+  'id': 'G1954798927-ASF',
+  'links': [{'href': 'https://datapool.asf.alaska.edu/METADATA_GRD_MD/SA/S1A_EW_GRDM_1SDH_20201018T140100_20201018T140148_034851_041027_C95D.iso.xml',
+             'hreflang': 'en-US',
+             'rel': 'http://esipfed.org/ns/fedsearch/1.1/data#',
+             'title': 'This link provides direct download access to the '
+                      'granule.'},
+            {'href': 'www.asf.alaska.edu/sar-data-sets/sentinel-1',
+             'hreflang': 'en-US',
+             'rel': 'http://esipfed.org/ns/fedsearch/1.1/metadata#',
+             'title': 'ASF DAAC Sentinel-1 data set landing page (VIEW RELATED '
+                      'INFORMATION)'},
+            {'href': 'www.asf.alaska.edu/sar-information/sentinel-1-documents-tools',
+             'hreflang': 'en-US',
+             'rel': 'http://esipfed.org/ns/fedsearch/1.1/metadata#',
+             'title': 'ASF DAAC Sentinel-1 User Guide and Technical '
+                      'Documentation (VIEW RELATED INFORMATION)'},
+            {'href': 'https://vertex.daac.asf.alaska.edu/',
+             'hreflang': 'en-US',
+             'inherited': True,
+             'rel': 'http://esipfed.org/ns/fedsearch/1.1/data#'}],
+  'online_access_flag': True,
+  'orbit_calculated_spatial_domains': [{'orbit_number': '34851'}],
+  'original_format': 'ECHO10',
+  'polygons': [['-59.113174 77.623962 -61.876228 79.847961 -60.217464 '
+                '86.837784 -57.570774 84.174744 -59.113174 77.623962']],
+  'producer_granule_id': 'S1A_EW_GRDM_1SDH_20201018T140100_20201018T140148_034851_041027_C95D',
+  'time_end': '2020-10-18T14:01:48.000Z',
+  'time_start': '2020-10-18T14:01:00.000Z',
+  'title': 'S1A_EW_GRDM_1SDH_20201018T140100_20201018T140148_034851_041027_C95D-METADATA_GRD_MD',
+  'updated': '2020-10-20T06:46:01.000Z'}]</code></pre>
+</div>
+</div>
+<!-- -->
+</section>
+</section>
+</main>
+<div class="page-navigation page-navigation-docked">
+  <div class="nav-page nav-page-previous">
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</div>
+  <div class="row nav-footer">
+    <div class="nav-footer-contents">PODAAC, NSIDC DAAC and LPDAAC (2021). 2021 Cloud Hackathon</div>
+  </div>
+</div> <!-- /main column -->
+</div> <!-- /row -->
+</div> <!-- /container fluid -->
+
+
+</body></html>

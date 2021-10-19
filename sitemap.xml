@@ -2,74 +2,78 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https:/nasa-openscapes.github.io/2021-Cloud-Hackathon/external/zarr-eosdis-store.html</loc>
-    <lastmod>2021-10-19T17:14:05.621Z</lastmod>
+    <lastmod>2021-10-19T22:15:40.001Z</lastmod>
   </url>
   <url>
     <loc>https:/nasa-openscapes.github.io/2021-Cloud-Hackathon/external/cof-zarr-reformat.html</loc>
-    <lastmod>2021-10-19T17:14:08.433Z</lastmod>
+    <lastmod>2021-10-19T22:15:40.565Z</lastmod>
   </url>
   <url>
     <loc>https:/nasa-openscapes.github.io/2021-Cloud-Hackathon/logistics/getting-help.html</loc>
-    <lastmod>2021-10-19T17:14:08.641Z</lastmod>
+    <lastmod>2021-10-19T22:15:40.733Z</lastmod>
   </url>
   <url>
     <loc>https:/nasa-openscapes.github.io/2021-Cloud-Hackathon/logistics/schedule.html</loc>
-    <lastmod>2021-10-19T17:14:08.881Z</lastmod>
+    <lastmod>2021-10-19T22:15:40.929Z</lastmod>
   </url>
   <url>
     <loc>https:/nasa-openscapes.github.io/2021-Cloud-Hackathon/logistics/prerequisites.html</loc>
-    <lastmod>2021-10-19T17:14:09.093Z</lastmod>
+    <lastmod>2021-10-19T22:15:41.097Z</lastmod>
   </url>
   <url>
     <loc>https:/nasa-openscapes.github.io/2021-Cloud-Hackathon/logistics/index.html</loc>
-    <lastmod>2021-10-19T17:14:09.297Z</lastmod>
+    <lastmod>2021-10-19T22:15:41.257Z</lastmod>
   </url>
   <url>
     <loc>https:/nasa-openscapes.github.io/2021-Cloud-Hackathon/tutorials/NASA_Earthdata_Authentication.html</loc>
-    <lastmod>2021-10-19T17:14:09.761Z</lastmod>
+    <lastmod>2021-10-19T22:15:41.637Z</lastmod>
   </url>
   <url>
     <loc>https:/nasa-openscapes.github.io/2021-Cloud-Hackathon/tutorials/Data_Access__Direct_S3_Access_gdalvrt.html</loc>
-    <lastmod>2021-10-19T17:14:11.621Z</lastmod>
+    <lastmod>2021-10-19T22:15:43.265Z</lastmod>
   </url>
   <url>
     <loc>https:/nasa-openscapes.github.io/2021-Cloud-Hackathon/tutorials/getting-started.html</loc>
-    <lastmod>2021-10-19T17:14:11.857Z</lastmod>
+    <lastmod>2021-10-19T22:15:43.433Z</lastmod>
   </url>
   <url>
     <loc>https:/nasa-openscapes.github.io/2021-Cloud-Hackathon/tutorials/Data_Discovery__CMR-STAC_API.html</loc>
-    <lastmod>2021-10-19T17:14:13.205Z</lastmod>
+    <lastmod>2021-10-19T22:15:44.577Z</lastmod>
+  </url>
+  <url>
+    <loc>https:/nasa-openscapes.github.io/2021-Cloud-Hackathon/tutorials/data_discovery_with_cmr.html</loc>
+    <lastmod>2021-10-19T22:15:45.369Z</lastmod>
   </url>
   <url>
     <loc>https:/nasa-openscapes.github.io/2021-Cloud-Hackathon/tutorials/index.html</loc>
-    <lastmod>2021-10-19T17:14:13.425Z</lastmod>
+    <lastmod>2021-10-19T22:15:45.541Z</lastmod>
   </url>
   <url>
     <loc>https:/nasa-openscapes.github.io/2021-Cloud-Hackathon/clinic/notebooks.html</loc>
-    <lastmod>2021-10-19T17:14:13.669Z</lastmod>
+    <lastmod>2021-10-19T22:15:45.709Z</lastmod>
   </url>
   <url>
     <loc>https:/nasa-openscapes.github.io/2021-Cloud-Hackathon/clinic/jupyterhub.html</loc>
-    <lastmod>2021-10-19T17:14:14.193Z</lastmod>
+    <lastmod>2021-10-19T22:15:45.897Z</lastmod>
   </url>
   <url>
     <loc>https:/nasa-openscapes.github.io/2021-Cloud-Hackathon/clinic/index.html</loc>
-    <lastmod>2021-10-19T17:14:14.429Z</lastmod>
+    <lastmod>2021-10-19T22:15:46.081Z</lastmod>
   </url>
   <url>
     <loc>https:/nasa-openscapes.github.io/2021-Cloud-Hackathon/index.html</loc>
-    <lastmod>2021-10-19T17:14:14.765Z</lastmod>
+    <lastmod>2021-10-19T22:15:46.341Z</lastmod>
   </url>
   <url>
     <loc>https:/nasa-openscapes.github.io/2021-Cloud-Hackathon/projects/hacking.html</loc>
-    <lastmod>2021-10-19T17:14:14.969Z</lastmod>
+    <lastmod>2021-10-19T22:15:46.513Z</lastmod>
   </url>
   <url>
     <loc>https:/nasa-openscapes.github.io/2021-Cloud-Hackathon/projects/index.html</loc>
-    <lastmod>2021-10-19T17:14:15.169Z</lastmod>
+    <lastmod>2021-10-19T22:15:46.673Z</lastmod>
   </url>
   <url>
     <loc>https:/nasa-openscapes.github.io/2021-Cloud-Hackathon/projects/hackathon-projects.html</loc>
-    <lastmod>2021-10-19T17:14:15.377Z</lastmod>
+    <lastmod>2021-10-19T22:15:46.829Z</lastmod>
   </url>
 </urlset>
