@@ -86,6 +86,8 @@
   <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
   <script src="../site_libs/quarto-search/fuse.min.js"></script>
   <script src="../site_libs/quarto-search/quarto-search.js"></script>
+  <link href="../tutorials/data_discovery_with_cmr.html" rel="next">
+  <link href="../tutorials/getting-started.html" rel="prev">
   <script src="../site_libs/quarto-html/quarto.js"></script>
   <script src="../site_libs/quarto-html/popper.min.js"></script>
   <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -214,6 +216,12 @@
   <a href="../tutorials/getting-started.html" class="">Getting Started</a>
 </li>
           <li class="sidebar-item">
+  <a href="../tutorials/NASA_Earthdata_Authentication.html" class="active">Authentication for NASA Earthdata</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../tutorials/data_discovery_with_cmr.html" class="">Data discovery with CMR</a>
+</li>
+          <li class="sidebar-item">
   <a href="../tutorials/Data_Discovery__CMR-STAC_API.html" class="">Data Discovery: CMR-STAC API</a>
 </li>
           <li class="sidebar-item">
@@ -309,7 +317,7 @@ password &lt;PASSWORD&gt;</code></pre>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Determine if netrc file exists, and if so, if it includes NASA Earthdata Login Credentials</span></span>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    netrcDir <span class="op">=</span> os.path.expanduser(<span class="ss">f"~/</span><span class="sc">{</span>netrc_name<span class="sc">}</span><span class="ss">"</span>)`</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    netrcDir <span class="op">=</span> os.path.expanduser(<span class="ss">f"~/</span><span class="sc">{</span>netrc_name<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    netrc(netrcDir).authenticators(urs)[<span class="dv">0</span>]</span>
 <span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Below, create a netrc file and prompt user for NASA Earthdata Login Username and Password</span></span>
@@ -554,8 +562,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </main>
 <div class="page-navigation page-navigation-docked">
   <div class="nav-page nav-page-previous">
+      <a href="../tutorials/getting-started.html">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Getting Started</span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../tutorials/data_discovery_with_cmr.html">
+        <span class="nav-page-text">Data discovery with CMR</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </div>
 </div> <!-- /main column -->
