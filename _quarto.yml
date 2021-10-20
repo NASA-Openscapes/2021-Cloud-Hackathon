@@ -36,9 +36,10 @@ site:
       - section: tutorials/index.md
         contents: 
           - tutorials/getting-started.md
+          - tutorials/NASA_Earthdata_Authentication.ipynb
+          - tutorials/data_discovery_with_cmr.ipynb
           - tutorials/Data_Discovery__CMR-STAC_API.ipynb
           - tutorials/Data_Access__Direct_S3_Access_gdalvrt.ipynb
-          - NASA_Earthdata_Authentication.ipynb
       - section: projects/index.md
         contents:
           - projects/hacking.md

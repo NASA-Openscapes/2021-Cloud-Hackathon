@@ -27,51 +27,30 @@ All times listed below are in PST [(UTC-8)](https://www.timeanddate.com/time/zon
 
 ### Day 1 (November 15)
 
-| Time | Event | Leads/Instructors |
-|------|-------|-------------------|
-| TODO |       |                   |
-|      |       |                   |
-|      |       |                   |
-|      |       |                   |
-|      |       |                   |
+```{.include}
+_schedule-day1.md
+```
 
 ### Day 2 (November 16)
 
-| Time | Event | Leads/Instructors |
-|------|-------|-------------------|
-| TODO |       |                   |
-|      |       |                   |
-|      |       |                   |
-|      |       |                   |
-|      |       |                   |
+```{.include}
+_schedule-day2.md
+```
 
 ### Day 3 (November 17)
 
-| Time | Event | Leads/Instructors |
-|------|-------|-------------------|
-| TODO |       |                   |
-|      |       |                   |
-|      |       |                   |
-|      |       |                   |
-|      |       |                   |
+```{.include}
+_schedule-day3.md
+```
 
 ### Day 4 (November 18)
 
-| Time | Event | Leads/Instructors |
-|------|-------|-------------------|
-| TODO |       |                   |
-|      |       |                   |
-|      |       |                   |
-|      |       |                   |
-|      |       |                   |
+```{.include}
+_schedule-day4.md
+```
 
 ### Day 5 (November 19)
 
-| Time | Event | Leads/Instructors |
-|------|-------|-------------------|
-| TODO |       |                   |
-|      |       |                   |
-|      |       |                   |
-|      |       |                   |
-|      |       |                   |
-
+```{.include}
+_schedule-day5.md
+```
