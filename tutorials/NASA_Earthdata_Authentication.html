@@ -280,7 +280,7 @@
 <h1>Authentication for NASA Earthdata</h1>
 <section id="summary" class="level2">
 <h2 class="anchored" data-anchor-id="summary">Summary</h2>
-<p>This notebook creates a hidden <code>.netrc</code> file (<code>_netrc</code> for Window OS) with Earthdata login credentials in your home directory. This file is need to access NASA Earthdata assets from a scripting environent like Python.</p>
+<p>This notebook creates a hidden <code>.netrc</code> file (<code>_netrc</code> for Window OS) with Earthdata login credentials in your home directory. This file is need to access NASA Earthdata assets from a scripting environment like Python.</p>
 <section id="earthdata-login" class="level3">
 <h3 class="anchored" data-anchor-id="earthdata-login">Earthdata Login</h3>
 <p>An Earthdata Login account is required to access data, as well as discover restricted data, from the NASA Earthdata system. Thus, to access NASA data, you need Earthdata Login. Please visit <a href="https://urs.earthdata.nasa.gov" class="uri">https://urs.earthdata.nasa.gov</a> to register and manage your Earthdata Login account. This account is free to create and only takes a moment to set up.</p>
@@ -336,9 +336,8 @@ password &lt;PASSWORD&gt;</code></pre>
 <span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    Popen(<span class="st">'echo login </span><span class="sc">{}</span><span class="st"> &gt;&gt; </span><span class="sc">{}{}</span><span class="st">'</span>.<span class="bu">format</span>(getpass(prompt<span class="op">=</span>prompts[<span class="dv">0</span>]), homeDir <span class="op">+</span> os.sep, netrc_name), shell<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    Popen(<span class="st">'echo password \</span><span class="sc">{}</span><span class="st"> &gt;&gt; </span><span class="sc">{}{}</span><span class="st">'</span>.<span class="bu">format</span>(getpass(prompt<span class="op">=</span>prompts[<span class="dv">1</span>]), homeDir <span class="op">+</span> os.sep, netrc_name), shell<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stdin">
-<pre><code>Enter NASA Earthdata Login Username 
-(or create an account at urs.earthdata.nasa.gov):  ·······
-Enter NASA Earthdata Login Password:  ···········</code></pre>
+<pre><code>Enter NASA Earthdata Login Username:  ·······
+Enter NASA Earthdata Login Password:  ··············</code></pre>
 </div>
 </div>
 <section id="see-if-the-file-was-created" class="level4">
@@ -350,43 +349,18 @@ Enter NASA Earthdata Login Password:  ···········</code></pre>
 <div class="cell">
 <div class="sourceCode" id="cb5"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>ls <span class="op">-</span>al</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stdout">
-<pre><code>total 6524
-drwxrws--x 18 root   40138    6144 Oct  7 19:48 .
-drwxr-xr-x  1 root   root       20 Jun 24 15:49 ..
-drwxr-sr-x  3 jovyan 40138    6144 Feb 22  2021 .aws
--rw-------  1 jovyan 40138   38519 Oct  6 23:26 .bash_history
-drwxr-sr-x  7 jovyan 40138    6144 Mar 31  2021 .cache
-drwxrwsr-x  2 jovyan 40138    6144 Jun  7 20:18 .conda
-drwxr-sr-x  5 jovyan 40138    6144 Dec 21  2020 .config
--rw-r--r--  1 jovyan 40138       0 Jan 21  2021 .dodsrc
--rw-r--r--  1 jovyan 40138      52 Apr 14 21:20 .gitconfig
--rw-r--r--  1 jovyan 40138      65 Aug  3 15:37 .gitignore
-drwxr-sr-x  3 jovyan 40138    6144 Feb 17  2021 .intake
-drwxr-sr-x  2 jovyan 40138    6144 Oct  7 18:34 .ipynb_checkpoints
-drwxr-sr-x  5 jovyan 40138    6144 Dec 21  2020 .ipython
-drwxr-sr-x  3 jovyan 40138    6144 Dec 21  2020 .jupyter
-drwxr-sr-x  2 jovyan 40138    6144 Feb  8  2021 .keras
-drwxr-sr-x  3 jovyan 40138    6144 Dec 21  2020 .local
--rw-r--r--  1 jovyan 40138      66 Oct  7 19:47 .netrc
--rw-r--r--  1 jovyan 40138   12288 Oct  7 19:47 .netrc.swp
--rw-r--r--  1 jovyan 40138   12288 Oct  7 19:23 .nfs2bc676b524ca6d3900000003
--rw-r--r--  1 jovyan 40138   12288 Oct  7 19:33 .nfs42638417e5e9eb7700000004
--rw-r--r--  1 jovyan 40138      54 Oct  7 19:19 .nfs4872e5596aa5419900000001
--rw-r--r--  1 jovyan 40138   12288 Oct  7 18:41 .nfsbded039ab2f12a9f00000002
-drwxr-sr-x  3 jovyan 40138    6144 Dec 21  2020 .npm
--rw-------  1 jovyan 40138       7 Jul 29 01:30 .python_history
-drwx--S---  2 jovyan 40138    6144 Jun 25 15:45 .ssh
--rw-------  1 jovyan 40138   11787 Oct  7 19:35 .viminfo
-drwxr-sr-x 11 jovyan 40138    6144 Oct  7 18:30 2021-Cloud-Hackathon
--rw-r--r--  1 jovyan 40138 6458487 Aug 31 20:56 HRRR-Explorer.ipynb
--rw-r--r--  1 jovyan 40138    6521 Oct  7 19:48 Untitled.ipynb
-drwxr-sr-x  5 jovyan 40138    6144 Aug  6 15:26 appeears-cloud-prototype
--rw-r--r--  1 jovyan 40138     240 Aug  4 19:41 conda_env.txt
--rw-r--r--  1 jovyan 40138    1541 Oct  7 17:43 cookies.txt
--rw-r--r--  1 jovyan 40138     110 May  3 19:09 linux_cmds.txt
-drwxr-sr-x  6 jovyan 40138    6144 Sep 30 15:32 lpdaac_cloud_data_access
-drwxr-sr-x  5 jovyan 40138    6144 Sep 23 19:34 nasa_direct_s3_data_access
--rw-r--r--  1 jovyan 40138     168 Jun 17 15:48 vim_guide.txt</code></pre>
+<pre><code>total 10696
+drwxr-xr-x  4 jovyan jovyan    6144 Oct 19 23:17 .
+drwxr-xr-x 10 jovyan jovyan    6144 Oct 19 22:30 ..
+drwxr-xr-x  2 jovyan jovyan    6144 Oct 19 22:30 data
+-rw-r--r--  1 jovyan jovyan 7331106 Oct 19 22:30 Data_Access__Direct_S3_Access_gdalvrt.ipynb
+-rw-r--r--  1 jovyan jovyan 3516777 Oct 19 22:30 Data_Discovery__CMR-STAC_API.ipynb
+-rw-r--r--  1 jovyan jovyan   57987 Oct 19 23:14 data_discovery_with_cmr.ipynb
+-rw-r--r--  1 jovyan jovyan     112 Oct 19 22:30 getting-started.md
+-rw-r--r--  1 jovyan jovyan      36 Oct 19 22:30 index.md
+drwxr-xr-x  2 jovyan jovyan    6144 Oct 19 22:58 .ipynb_checkpoints
+-rw-r--r--  1 jovyan jovyan    8471 Oct 19 23:17 NASA_Earthdata_Authentication.ipynb
+-rw-r--r--  1 jovyan jovyan      72 Oct 19 22:57 Untitled.ipynb</code></pre>
 </div>
 </div>
 <!-- -->
