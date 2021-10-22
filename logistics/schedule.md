@@ -31,7 +31,7 @@ All times listed below are in PST [(UTC-8)](https://www.timeanddate.com/time/zon
 _schedule-day1.md
 ```
 
-### Day 2 (November 16)
+### Day 2 (November 16) 
 
 ```{.include}
 _schedule-day2.md
