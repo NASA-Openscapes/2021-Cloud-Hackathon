@@ -7,7 +7,9 @@ An optional pre-hackathon clinic will be held on November 9 from 8am-10am PST  a
 
 All Cloud Hackathon activities are **virtual**. We will engage primarily with this group and schedule via Zoom and Slack (TODO check & setup).
 
-**Zoom links** will be posted on the `#TODO XX` Slack channel.
+**Zoom links** will be posted on the `#TODO XX` Slack channel! Stay tuned!
+
+
 
 <br>
 

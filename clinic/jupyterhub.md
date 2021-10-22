@@ -26,6 +26,7 @@ TODO Julie - images and narration:
 - remote and local
 - commits, push, pull
 - fork
+- [github credentials](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)
 
 ### Fork and Clone
 
@@ -39,7 +40,13 @@ Now an intro to 2i2c, a which is a Jupyter Hub.
 
 TODO: insert images
 
-Orient to 2i2c 
+Orient to 2i2c
+
+Hardware resources: computing and storage in the cloud.
+
+AWS: what APIs do I need to know? S3, EC2
+
+Security: use tokens, temporary credentials, env variables.
 
 ### Open the terminal
 
