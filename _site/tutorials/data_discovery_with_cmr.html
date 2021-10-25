@@ -87,7 +87,7 @@
   <script src="../site_libs/quarto-search/fuse.min.js"></script>
   <script src="../site_libs/quarto-search/quarto-search.js"></script>
   <link href="../tutorials/Data_Discovery__CMR-STAC_API.html" rel="next">
-  <link href="../tutorials/getting-started.html" rel="prev">
+  <link href="../tutorials/NASA_Earthdata_Authentication.html" rel="prev">
   <script src="../site_libs/quarto-html/quarto.js"></script>
   <script src="../site_libs/quarto-html/popper.min.js"></script>
   <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -216,6 +216,9 @@
   <a href="../tutorials/getting-started.html" class="">Getting Started</a>
 </li>
           <li class="sidebar-item">
+  <a href="../tutorials/NASA_Earthdata_Authentication.html" class="">Authentication for NASA Earthdata</a>
+</li>
+          <li class="sidebar-item">
   <a href="../tutorials/data_discovery_with_cmr.html" class="active">Data discovery with CMR</a>
 </li>
           <li class="sidebar-item">
@@ -276,7 +279,7 @@
 <p>In this tutorial you will learn: - what CMR is;<br>
 - how to use the <code>requests</code> package to search data collections and granules;<br>
 - how to parse the results of these searches.</p>
-<p>We will focus on datasets in the cloud. Currently, DAACS with data in the cloud are ‘ASF’, ‘GES_DISC’, ‘GHRC_DAAC’, ‘LPCLOUD’, ‘ORNL_CLOUD’, ‘POCLOUD’}</p>
+<p>We will focus on datasets in the cloud. Currently, DAACs with data in the cloud are ‘ASF’, ‘GES_DISC’, ‘GHRC_DAAC’, ‘LPCLOUD’, ‘ORNL_CLOUD’, ‘POCLOUD’</p>
 <section id="what-is-cmr" class="level2">
 <h2 class="anchored" data-anchor-id="what-is-cmr">What is CMR</h2>
 <p>CMR is the Common Metadata Repository. It catalogs all data for NASA’s Earth Observing System Data and Information System (EOSDIS). It is the backend of <a href="https://search.earthdata.nasa.gov/search">Earthdata Search</a>, the GUI search interface you are probably familiar with. More information about CMR can be found <a href="https://earthdata.nasa.gov/eosdis/science-system-description/eosdis-components/cmr">here</a>.</p>
@@ -297,11 +300,12 @@
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> requests.auth <span class="im">import</span> HTTPBasicAuth</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pprint <span class="im">import</span> pprint</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell" data-execution_count="2">
+<p>Then we need to authenticate with EarthData Login. Since we’ve already set this up in the previous lesson, here you need to enter your username before executing the cell.</p>
+<div class="cell" data-execution_count="9">
 <div class="sourceCode" id="cb2"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>username <span class="op">=</span> <span class="st">'apbarret'</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>password <span class="op">=</span> getpass.getpass()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stdin">
-<pre><code> ·············</code></pre>
+<pre><code> ·······</code></pre>
 </div>
 </div>
 <div class="sourceCode" id="cb4"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>CMR_TOKEN_OPS <span class="op">=</span> <span class="st">"https://cmr.earthdata.nasa.gov/legacy-services/rest/tokens"</span></span>
@@ -319,45 +323,50 @@
 <span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>                         data<span class="op">=</span>TOKEN_DATA <span class="op">%</span> (<span class="bu">str</span>(username), <span class="bu">str</span>(password), my_ip),</span>
 <span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>                         headers<span class="op">=</span>{<span class="st">'Content-Type'</span>: <span class="st">'application/xml'</span>, <span class="st">'Accept'</span>: <span class="st">'application/json'</span>},</span>
 <span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>                         timeout<span class="op">=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="14">
 <div class="sourceCode" id="cb5"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>auth_token <span class="op">=</span> auth_resp.json()[<span class="st">'token'</span>][<span class="st">'id'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>To conduct a search using the CMR API, <code>requests</code> needs the url for the root CMR search endpoint.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>CMR_OPS <span class="op">=</span> <span class="st">'https://cmr.earthdata.nasa.gov/search'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-error">
+<pre><code>KeyError: 'token'</code></pre>
+</div>
+</div>
+<p>To conduct a search using the CMR API, <code>requests</code> needs the url for the root CMR search endpoint. We’ll build this url as a python variable.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>CMR_OPS <span class="op">=</span> <span class="st">'https://cmr.earthdata.nasa.gov/search'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>CMR allows search by <strong>collections</strong>, which are datasets, and <strong>granules</strong>, which are files that contain data. Many of the same search parameters can be used for colections and granules but the type of results returned differ. Search parameters can be found in the <a href="https://cmr.earthdata.nasa.gov/search/site/docs/search/api.html">API Documentation</a>.</p>
 <p>Whether we search <strong>collections</strong> or <strong>granules</strong> is distinguished by adding <code>"collections"</code> or <code>"granules"</code> to the url for the root CMR endpoint.</p>
 <p>We are going to search collections first, so we add collections to the url. I’m using a <code>python</code> format string here.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="ss">f'</span><span class="sc">{</span>CMR_OPS<span class="sc">}</span><span class="ss">/</span><span class="sc">{</span><span class="st">"collections"</span><span class="sc">}</span><span class="ss">'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="ss">f'</span><span class="sc">{</span>CMR_OPS<span class="sc">}</span><span class="ss">/</span><span class="sc">{</span><span class="st">"collections"</span><span class="sc">}</span><span class="ss">'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>In this first example, I want to retrieve a list of collections that are hosted in the cloud. Each collection has a <code>cloud-hosted</code> parameter that is either True if that collection is in the cloud and False if it is not. I also want to get the content in <code>json</code> (pronounced “jason”) format, so I pass a dictionary to the header keyword argument to say that I want results returned as <code>json</code>.</p>
 <p>The <code>.get()</code> method is used to send this information to the CMR API. <code>get()</code> calls the HTTP method <strong>GET</strong>.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(url,</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>                        params<span class="op">=</span>{</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'cloud_hosted'</span>: <span class="st">'True'</span>,</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>                        },</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>                        headers<span class="op">=</span>{</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'Accept'</span>: <span class="st">'application/json'</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>                        }</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>                       )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><code>requests</code> returns a Response object.</p>
-<p>Often, we want to check that our request was successful. In a notebook or someother interactive environment, we can just type the name of the variable we have saved our <code>requests</code> Response to, in this case <code>response</code>.</p>
-<div class="cell" data-execution_count="21">
-<div class="sourceCode" id="cb9"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>response</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display" data-execution_count="21">
+<div class="sourceCode" id="cb9"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(url,</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>                        params<span class="op">=</span>{</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'cloud_hosted'</span>: <span class="st">'True'</span>,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>                        },</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>                        headers<span class="op">=</span>{</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'Accept'</span>: <span class="st">'application/json'</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>                        }</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>                       )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>requests</code> returns a <code>response</code> object.</p>
+<p>Often, we want to check that our request was successful. In a notebook or someother interactive environment, we can just type the name of the variable we have saved our <code>requests</code> response to, in this case the <code>response</code> variable.</p>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode" id="cb10"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>response</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display" data-execution_count="7">
 <pre><code>&lt;Response [200]&gt;</code></pre>
 </div>
 </div>
 <p>A cleaner and more understandable method is to check the <code>status_code</code> attribute. Both methods return a HTTP status code. You’ve probably seen a 404 error when you have tried to access a website that doesn’t exist.</p>
 <div class="cell" data-execution_count="22">
-<div class="sourceCode" id="cb11"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>response.status_code</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>response.status_code</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display" data-execution_count="22">
 <pre><code>200</code></pre>
 </div>
 </div>
-<p>Try changing <code>CMR_OPS</code> to <code>https://cmr.earthdata.nasa.gov/searches</code> an run <code>requests.get</code> again. <strong>Don’t forget to rerun the cell that assigns <code>url</code></strong></p>
+<p>Try changing <code>CMR_OPS</code> to <code>https://cmr.earthdata.nasa.gov/searches</code> and run <code>requests.get</code> again. <strong>Don’t forget to rerun the cell that assigns the <code>url</code> variable</strong></p>
 <p>The response from <code>requests.get</code> returns the results of the search and metadata about those results in the <code>headers</code>.</p>
-<p>More information about the <code>Response</code> object can be found by typing <code>help(response)</code>.</p>
-<p><code>headers</code> contains useful information in a case-insensitive dictionary. This information is printed below.</p>
+<p>More information about the <code>response</code> object can be found by typing <code>help(response)</code>.</p>
+<p><code>headers</code> contains useful information in a case-insensitive dictionary. This information is printed below. <em>TODO: maybe some context for where the 2 elements k, v, come from?</em></p>
 <div class="cell" data-execution_count="23">
-<div class="sourceCode" id="cb13"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k, v <span class="kw">in</span> response.headers.items():</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'</span><span class="sc">{</span>k<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>v<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k, v <span class="kw">in</span> response.headers.items():</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'</span><span class="sc">{</span>k<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>v<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stdout">
 <pre><code>Content-Type: application/json;charset=utf-8
 Content-Length: 6246
@@ -386,47 +395,47 @@ X-Amz-Cf-Id: UTf8fGAnH4f672p_C5xgSkfiXmRm7Ju4O1fYc0QxwDGlBJkUe_gNkw==</code></pr
 <p>We can see that the content returned is in <code>json</code> format in the UTF-8 character set. We can also see from <code>CMR-Hits</code> that 919 collections were found.</p>
 <p>Each item in the dictionary can be accessed in the normal way you access a <code>python</code> dictionary but because it is case-insensitive, both</p>
 <div class="cell" data-execution_count="24">
-<div class="sourceCode" id="cb15"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>response.headers[<span class="st">'CMR-Hits'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>response.headers[<span class="st">'CMR-Hits'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display" data-execution_count="24">
 <pre><code>'919'</code></pre>
 </div>
 </div>
 <p>and</p>
 <div class="cell" data-execution_count="25">
-<div class="sourceCode" id="cb17"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>response.headers[<span class="st">'cmr-hits'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>response.headers[<span class="st">'cmr-hits'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display" data-execution_count="25">
 <pre><code>'919'</code></pre>
 </div>
 </div>
 <p>work.</p>
 <p>This is a large number of data sets. I’m going to restrict the search to cloud-hosted datasets from ASF (Alaska SAR Facility) because I’m interested in SAR images of sea ice. You can modify the code below to explore all of the cloud-hosted datasets.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>data_center <span class="op">=</span> <span class="st">'ASF'</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(url,</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>                        params<span class="op">=</span>{</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'cloud_hosted'</span>: <span class="st">'True'</span>,</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'data_center'</span>: data_center,</span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>                        },</span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>                        headers<span class="op">=</span>{</span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'Accept'</span>: <span class="st">'application/json'</span></span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>                        }</span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>                       )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>data_center <span class="op">=</span> <span class="st">'ASF'</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(url,</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>                        params<span class="op">=</span>{</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'cloud_hosted'</span>: <span class="st">'True'</span>,</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'data_center'</span>: data_center,</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>                        },</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>                        headers<span class="op">=</span>{</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'Accept'</span>: <span class="st">'application/json'</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>                        }</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>                       )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell" data-execution_count="39">
-<div class="sourceCode" id="cb20"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>response.headers[<span class="st">'cmr-hits'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>response.headers[<span class="st">'cmr-hits'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display" data-execution_count="39">
 <pre><code>'49'</code></pre>
 </div>
 </div>
 <p>Search results are contained in the content part of the Response object. However, <code>response.content</code> returns information in bytes.</p>
 <div class="cell" data-execution_count="40">
-<div class="sourceCode" id="cb22"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>response.content</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>response.content</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display" data-execution_count="40">
 <pre><code>b'{"feed":{"updated":"2021-10-19T00:09:01.052Z","id":"https://cmr.earthdata.nasa.gov:443/search/collections.json?cloud_hosted=True&amp;data_center=ASF","title":"ECHO dataset metadata","entry":[{"boxes":["-90 -180 90 180"],"time_start":"2014-04-03T00:00:00.000Z","version_id":"1","updated":"2021-07-15T19:16:39.000Z","dataset_id":"SENTINEL-1A_SLC","has_spatial_subsetting":false,"has_transforms":false,"has_variables":false,"data_center":"ASF","short_name":"SENTINEL-1A_SLC","organizations":["ASF","ESA/CS1CGS"],"title":"SENTINEL-1A_SLC","coordinate_system":"CARTESIAN","summary":"Sentinel-1A slant-range product","service_features":{"opendap":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false},"esi":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false},"harmony":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false}},"orbit_parameters":{},"id":"C1214470488-ASF","has_formats":false,"score":0.5,"original_format":"ECHO10","archive_center":"ASF","has_temporal_subsetting":false,"browse_flag":false,"platforms":["Sentinel-1A"],"online_access_flag":true,"links":[{"rel":"http://esipfed.org/ns/fedsearch/1.1/data#","hreflang":"en-US","href":"https://vertex.daac.asf.alaska.edu/"}]},{"boxes":["-90 -180 90 180"],"time_start":"2016-04-25T00:00:00.000Z","version_id":"1","updated":"2021-07-15T19:17:22.000Z","dataset_id":"SENTINEL-1B_SLC","has_spatial_subsetting":false,"has_transforms":false,"has_variables":false,"data_center":"ASF","short_name":"SENTINEL-1B_SLC","organizations":["ASF","ESA/CS1CGS"],"title":"SENTINEL-1B_SLC","coordinate_system":"CARTESIAN","summary":"Sentinel-1B slant-range product","service_features":{"opendap":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false},"esi":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false},"harmony":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false}},"orbit_parameters":{},"id":"C1327985661-ASF","has_formats":false,"score":0.5,"original_format":"ECHO10","archive_center":"ASF","has_temporal_subsetting":false,"browse_flag":false,"platforms":["Sentinel-1B"],"online_access_flag":true,"links":[{"rel":"http://esipfed.org/ns/fedsearch/1.1/data#","hreflang":"en-US","href":"https://vertex.daac.asf.alaska.edu/"}]},{"boxes":["-90 -180 90 180"],"time_start":"2014-04-03T00:00:00.000Z","version_id":"1","updated":"2021-07-15T19:15:56.000Z","dataset_id":"SENTINEL-1A_DUAL_POL_GRD_HIGH_RES","has_spatial_subsetting":false,"has_transforms":false,"has_variables":false,"data_center":"ASF","short_name":"SENTINEL-1A_DP_GRD_HIGH","organizations":["ASF","ESA/CS1CGS"],"title":"SENTINEL-1A_DUAL_POL_GRD_HIGH_RES","coordinate_system":"CARTESIAN","summary":"Sentinel-1A Dual-pol ground projected high and full resolution images","service_features":{"opendap":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false},"esi":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false},"harmony":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false}},"orbit_parameters":{},"id":"C1214470533-ASF","has_formats":false,"score":0.5,"original_format":"ECHO10","archive_center":"ASF","has_temporal_subsetting":false,"browse_flag":false,"platforms":["Sentinel-1A"],"online_access_flag":true,"links":[{"rel":"http://esipfed.org/ns/fedsearch/1.1/data#","hreflang":"en-US","href":"https://vertex.daac.asf.alaska.edu/"}]},{"boxes":["-90 -180 90 180"],"time_start":"2016-04-25T00:00:00.000Z","version_id":"1","updated":"2021-07-15T19:16:47.000Z","dataset_id":"SENTINEL-1B_DUAL_POL_GRD_HIGH_RES","has_spatial_subsetting":false,"has_transforms":false,"has_variables":false,"data_center":"ASF","short_name":"SENTINEL-1B_DP_GRD_HIGH","organizations":["ASF","ESA/CS1CGS"],"title":"SENTINEL-1B_DUAL_POL_GRD_HIGH_RES","coordinate_system":"CARTESIAN","summary":"Sentinel-1B Dual-pol ground projected high and full resolution images","service_features":{"opendap":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false},"esi":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false},"harmony":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false}},"orbit_parameters":{},"id":"C1327985645-ASF","has_formats":false,"score":0.5,"original_format":"ECHO10","archive_center":"ASF","has_temporal_subsetting":false,"browse_flag":false,"platforms":["Sentinel-1B"],"online_access_flag":true,"links":[{"rel":"http://esipfed.org/ns/fedsearch/1.1/data#","hreflang":"en-US","href":"https://vertex.daac.asf.alaska.edu/"}]},{"boxes":["-90 -180 90 180"],"time_start":"2016-04-25T00:00:00.000Z","version_id":"1","updated":"2021-07-15T19:16:49.000Z","dataset_id":"SENTINEL-1B_DUAL_POL_GRD_MEDIUM_RES","has_spatial_subsetting":false,"has_transforms":false,"has_variables":false,"data_center":"ASF","short_name":"SENTINEL-1B_DP_GRD_MEDIUM","organizations":["ASF","ESA/CS1CGS"],"title":"SENTINEL-1B_DUAL_POL_GRD_MEDIUM_RES","coordinate_system":"CARTESIAN","summary":"Sentinel-1B Dual-pol ground projected medium resolution images","service_features":{"opendap":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false},"esi":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false},"harmony":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false}},"orbit_parameters":{},"id":"C1327985660-ASF","has_formats":false,"score":0.5,"original_format":"ECHO10","archive_center":"ASF","has_temporal_subsetting":false,"browse_flag":false,"platforms":["Sentinel-1B"],"online_access_flag":true,"links":[{"rel":"http://esipfed.org/ns/fedsearch/1.1/data#","hreflang":"en-US","href":"https://vertex.daac.asf.alaska.edu/"}]},{"boxes":["-90 -180 90 180"],"time_start":"2014-04-03T00:00:00.000Z","version_id":"1","updated":"2021-07-15T19:15:58.000Z","dataset_id":"SENTINEL-1A_DUAL_POL_GRD_MEDIUM_RES","has_spatial_subsetting":false,"has_transforms":false,"has_variables":false,"data_center":"ASF","short_name":"SENTINEL-1A_DP_GRD_MEDIUM","organizations":["ASF","ESA/CS1CGS"],"title":"SENTINEL-1A_DUAL_POL_GRD_MEDIUM_RES","coordinate_system":"CARTESIAN","summary":"Sentinel-1A Dual-pol ground projected medium resolution images","service_features":{"opendap":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false},"esi":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false},"harmony":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false}},"orbit_parameters":{},"id":"C1214471521-ASF","has_formats":false,"score":0.5,"original_format":"ECHO10","archive_center":"ASF","has_temporal_subsetting":false,"browse_flag":false,"platforms":["Sentinel-1A"],"online_access_flag":true,"links":[{"rel":"http://esipfed.org/ns/fedsearch/1.1/data#","hreflang":"en-US","href":"https://vertex.daac.asf.alaska.edu/"}]},{"boxes":["-90 -180 90 180"],"time_start":"2014-04-03T00:00:00.000Z","version_id":"1","updated":"2021-07-15T19:16:20.000Z","dataset_id":"SENTINEL-1A_RAW","has_spatial_subsetting":false,"has_transforms":false,"has_variables":false,"data_center":"ASF","short_name":"SENTINEL-1A_RAW","organizations":["ASF","ESA/CS1CGS"],"title":"SENTINEL-1A_RAW","coordinate_system":"CARTESIAN","summary":"Sentinel-1A level zero product","service_features":{"opendap":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false},"esi":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false},"harmony":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false}},"orbit_parameters":{},"id":"C1214470561-ASF","has_formats":false,"score":0.5,"original_format":"ECHO10","archive_center":"ASF","has_temporal_subsetting":false,"browse_flag":false,"platforms":["Sentinel-1A"],"online_access_flag":true,"links":[{"rel":"http://esipfed.org/ns/fedsearch/1.1/data#","hreflang":"en-US","href":"https://vertex.daac.asf.alaska.edu/"}]},{"boxes":["-90 -180 90 180"],"time_start":"2014-04-03T00:00:00.000Z","version_id":"1","updated":"2021-07-15T19:16:15.000Z","dataset_id":"SENTINEL-1A_METADATA_SLC","has_spatial_subsetting":false,"has_transforms":false,"has_variables":false,"data_center":"ASF","short_name":"SENTINEL-1A_META_SLC","organizations":["ASF"],"title":"SENTINEL-1A_METADATA_SLC","coordinate_system":"CARTESIAN","summary":"Metadata for Sentinel-1A slant-range product","service_features":{"opendap":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false},"esi":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false},"harmony":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false}},"orbit_parameters":{},"id":"C1214470496-ASF","has_formats":false,"score":0.5,"original_format":"ECHO10","archive_center":"ASF","has_temporal_subsetting":false,"browse_flag":false,"platforms":["Sentinel-1A"],"online_access_flag":true,"links":[{"rel":"http://esipfed.org/ns/fedsearch/1.1/data#","hreflang":"en-US","href":"https://vertex.daac.asf.alaska.edu/"}]},{"boxes":["-90 -180 90 180"],"time_start":"2014-04-03T00:00:00.000Z","version_id":"1","updated":"2021-07-15T19:16:26.000Z","dataset_id":"SENTINEL-1A_SINGLE_POL_GRD_HIGH_RES","has_spatial_subsetting":false,"has_transforms":false,"has_variables":false,"data_center":"ASF","short_name":"SENTINEL-1A_SP_GRD_HIGH","organizations":["ASF","ESA/CS1CGS"],"title":"SENTINEL-1A_SINGLE_POL_GRD_HIGH_RES","coordinate_system":"CARTESIAN","summary":"Sentinel-1A Single-pol ground projected high and full resolution images","service_features":{"opendap":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false},"esi":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false},"harmony":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false}},"orbit_parameters":{},"id":"C1214470682-ASF","has_formats":false,"score":0.5,"original_format":"ECHO10","archive_center":"ASF","has_temporal_subsetting":false,"browse_flag":false,"platforms":["Sentinel-1A"],"online_access_flag":true,"links":[{"rel":"http://esipfed.org/ns/fedsearch/1.1/data#","hreflang":"en-US","href":"https://vertex.daac.asf.alaska.edu/"}]},{"boxes":["-90 -180 90 180"],"time_start":"2016-04-25T00:00:00.000Z","version_id":"1","updated":"2021-07-15T19:17:02.000Z","dataset_id":"SENTINEL-1B_METADATA_SLC","has_spatial_subsetting":false,"has_transforms":false,"has_variables":false,"data_center":"ASF","short_name":"SENTINEL-1B_META_SLC","organizations":["ASF"],"title":"SENTINEL-1B_METADATA_SLC","coordinate_system":"CARTESIAN","summary":"Metadata for Sentinel-1B slant-range product","service_features":{"opendap":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false},"esi":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false},"harmony":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false}},"orbit_parameters":{},"id":"C1327985617-ASF","has_formats":false,"score":0.5,"original_format":"ECHO10","archive_center":"ASF","has_temporal_subsetting":false,"browse_flag":false,"platforms":["Sentinel-1B"],"online_access_flag":true,"links":[{"rel":"http://esipfed.org/ns/fedsearch/1.1/data#","hreflang":"en-US","href":"https://vertex.daac.asf.alaska.edu/"}]}]}}'</code></pre>
 </div>
 </div>
 <p>It is more convenient to work with <code>json</code> formatted data. I’m using pretty print <code>pprint</code> to print the data in an easy to read way.</p>
-<p><strong>Step through <code>response.json()</code>, then to <code>response.json()['feed']['entry'][0]</code></strong></p>
+<p><strong>Step through <code>response.json()</code>, then to <code>response.json()['feed']['entry'][0]</code></strong>. A reminder that python starts indexing at 0, not 1!</p>
 <div class="cell" data-execution_count="41">
-<div class="sourceCode" id="cb24"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>pprint(response.json()[<span class="st">'feed'</span>][<span class="st">'entry'</span>][<span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>pprint(response.json()[<span class="st">'feed'</span>][<span class="st">'entry'</span>][<span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stdout">
 <pre><code>{'archive_center': 'ASF',
  'boxes': ['-90 -180 90 180'],
@@ -472,11 +481,11 @@ X-Amz-Cf-Id: UTf8fGAnH4f672p_C5xgSkfiXmRm7Ju4O1fYc0QxwDGlBJkUe_gNkw==</code></pr
  'version_id': '1'}</code></pre>
 </div>
 </div>
-<p>The first response is not the result I am looking for. So I want to print the name of the dataset (<code>dataset_id</code>) and the concept id (<code>id</code>).</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>collections <span class="op">=</span> response.json()[<span class="st">'feed'</span>][<span class="st">'entry'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The first response is not the result I am looking for <em>TODO: because xyz…but it does show a few variables that we can use to further refine the search</em>. So I want to print the name of the dataset (<code>dataset_id</code>) and the concept id (<code>id</code>). We can build this variable and print statement like we did above with the <code>url</code> variable. <em>TODO: is it worth saying something about what “feed” and “entry” are?</em></p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>collections <span class="op">=</span> response.json()[<span class="st">'feed'</span>][<span class="st">'entry'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell" data-execution_count="43">
-<div class="sourceCode" id="cb27"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> collection <span class="kw">in</span> collections:</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'</span><span class="sc">{</span>collection[<span class="st">"archive_center"</span>]<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>collection[<span class="st">"dataset_id"</span>]<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>collection[<span class="st">"id"</span>]<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> collection <span class="kw">in</span> collections:</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'</span><span class="sc">{</span>collection[<span class="st">"archive_center"</span>]<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>collection[<span class="st">"dataset_id"</span>]<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>collection[<span class="st">"id"</span>]<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stdout">
 <pre><code>ASF SENTINEL-1A_SLC C1214470488-ASF
 ASF SENTINEL-1B_SLC C1327985661-ASF
@@ -490,21 +499,21 @@ ASF SENTINEL-1A_SINGLE_POL_GRD_HIGH_RES C1214470682-ASF
 ASF SENTINEL-1B_METADATA_SLC C1327985617-ASF</code></pre>
 </div>
 </div>
-<p>But there is a problem. We know from <code>CMR-Hits</code> that there are 49 datasets but only 10 are printed. This is because CMR restricts the number of results returned by a query. The default is 10 but it can be set to a maximum of 2000. Knowing that there were 49 ‘hits’, I’ll set <code>page_size</code> to 49.</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(url,</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>                        params<span class="op">=</span>{</span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'cloud_hosted'</span>: <span class="st">'True'</span>,</span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'data_center'</span>: data_center,</span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'page_size'</span>: <span class="dv">49</span>,</span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>                        },</span>
-<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>                        headers<span class="op">=</span>{</span>
-<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'Accept'</span>: <span class="st">'application/json'</span></span>
-<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>                        }</span>
-<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>                       )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>But there is a problem. We know from <code>CMR-Hits</code> that there are 49 datasets but only 10 are printed. This is because CMR restricts the number of results returned by a query. The default is 10 but it can be set to a maximum of 2000. Knowing that there were 49 ‘hits’, I’ll set <code>page_size</code> to 49. Then, we can re-run our for loop for the collections.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(url,</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>                        params<span class="op">=</span>{</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'cloud_hosted'</span>: <span class="st">'True'</span>,</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'data_center'</span>: data_center,</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'page_size'</span>: <span class="dv">49</span>,</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>                        },</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>                        headers<span class="op">=</span>{</span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'Accept'</span>: <span class="st">'application/json'</span></span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>                        }</span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>                       )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell" data-execution_count="45">
-<div class="sourceCode" id="cb30"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>collections <span class="op">=</span> response.json()[<span class="st">'feed'</span>][<span class="st">'entry'</span>]</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> collection <span class="kw">in</span> collections:</span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'</span><span class="sc">{</span>collection[<span class="st">"archive_center"</span>]<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>collection[<span class="st">"dataset_id"</span>]<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>collection[<span class="st">"id"</span>]<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>collections <span class="op">=</span> response.json()[<span class="st">'feed'</span>][<span class="st">'entry'</span>]</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> collection <span class="kw">in</span> collections:</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'</span><span class="sc">{</span>collection[<span class="st">"archive_center"</span>]<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>collection[<span class="st">"dataset_id"</span>]<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>collection[<span class="st">"id"</span>]<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stdout">
 <pre><code>ASF SENTINEL-1A_SLC C1214470488-ASF
 ASF SENTINEL-1B_SLC C1327985661-ASF
@@ -565,40 +574,40 @@ ASF STS-68_SLC C1661710604-ASF</code></pre>
 <p>I’ll use a simple bounding box to search. - SW: 76.08166,-67.1746 - NW: 88.19689,21.04862</p>
 <p>From the collections search, I know the concept ids for Sentinel-1A and Sentinel-1B GRD medium resolution are - C1214472336-ASF - C1327985578-ASF</p>
 <p>We need to change the resource url to look for granules instead of collections</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="ss">f'</span><span class="sc">{</span>CMR_OPS<span class="sc">}</span><span class="ss">/</span><span class="sc">{</span><span class="st">"granules"</span><span class="sc">}</span><span class="ss">'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="ss">f'</span><span class="sc">{</span>CMR_OPS<span class="sc">}</span><span class="ss">/</span><span class="sc">{</span><span class="st">"granules"</span><span class="sc">}</span><span class="ss">'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>We will search by <code>concept_id</code>, <code>temporal</code>, and <code>bounding_box</code>. Details about these search parameters can be found in the CMR API Documentation.</p>
 <p>The formatting of the values for each parameter is quite specific.<br>
 Temporal parameters are in ISO 8061 format <code>yyyy-MM-ddTHH:mm:ssZ</code>.<br>
 Bounding box coordinates are lower left longitude, lower left latitude, upper right longitude, upper right latitude.</p>
 <div class="cell" data-execution_count="47">
-<div class="sourceCode" id="cb33"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(url, </span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>                        params<span class="op">=</span>{</span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'concept_id'</span>: <span class="st">'C1214472336-ASF'</span>,</span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'temporal'</span>: <span class="st">'2020-10-17T00:00:00Z,2020-10-18T23:59:59Z'</span>,</span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'bounding_box'</span>: <span class="st">'76.08166,-67.1746,88.19689,21.04862'</span>,</span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'page_size'</span>: <span class="dv">200</span>,</span>
-<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'token'</span>: auth_token,</span>
-<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>                            },</span>
-<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>                        headers<span class="op">=</span>{</span>
-<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'Accept'</span>: <span class="st">'application/json'</span></span>
-<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>                            }</span>
-<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>                       )</span>
-<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response.status_code)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(url, </span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>                        params<span class="op">=</span>{</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'concept_id'</span>: <span class="st">'C1214472336-ASF'</span>,</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'temporal'</span>: <span class="st">'2020-10-17T00:00:00Z,2020-10-18T23:59:59Z'</span>,</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'bounding_box'</span>: <span class="st">'76.08166,-67.1746,88.19689,21.04862'</span>,</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'page_size'</span>: <span class="dv">200</span>,</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'token'</span>: auth_token,</span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>                            },</span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>                        headers<span class="op">=</span>{</span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'Accept'</span>: <span class="st">'application/json'</span></span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>                            }</span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>                       )</span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response.status_code)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stdout">
 <pre><code>200</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="48">
-<div class="sourceCode" id="cb35"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response.headers[<span class="st">'CMR-Hits'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response.headers[<span class="st">'CMR-Hits'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stdout">
 <pre><code>6</code></pre>
 </div>
 </div>
-<div class="sourceCode" id="cb37"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>granules <span class="op">=</span> response.json()[<span class="st">'feed'</span>][<span class="st">'entry'</span>]</span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="co">#for granule in granules:</span></span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="co">#    print(f'{granule["archive_center"]} {granule["dataset_id"]} {granule["id"]}')</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>granules <span class="op">=</span> response.json()[<span class="st">'feed'</span>][<span class="st">'entry'</span>]</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="co">#for granule in granules:</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="co">#    print(f'{granule["archive_center"]} {granule["dataset_id"]} {granule["id"]}')</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell" data-execution_count="50">
-<div class="sourceCode" id="cb38"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>pprint(granules)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>pprint(granules)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stdout">
 <pre><code>[{'browse_flag': True,
   'collection_concept_id': 'C1214472336-ASF',
@@ -1010,8 +1019,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </main>
 <div class="page-navigation page-navigation-docked">
   <div class="nav-page nav-page-previous">
-      <a href="../tutorials/getting-started.html">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Getting Started</span>
+      <a href="../tutorials/NASA_Earthdata_Authentication.html">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Authentication for NASA Earthdata</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
