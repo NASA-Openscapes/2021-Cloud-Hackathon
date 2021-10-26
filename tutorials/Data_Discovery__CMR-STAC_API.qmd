@@ -21,8 +21,8 @@ In this example we will access the NASA's Harmonized Landsat Sentinel-2 (HLS) ve
 - Connect to NASA CMR-STAC API using Python's `pystac-client`
 - Navigate CMR-STAC records
 - Use the CMR-STAC API to search for data
-- Perform post search filting of CMR-STAC API search result
-- Extract and save data access URLs for geospatial assets
+- Perform post search filtering of CMR-STAC API search result
+- Extract and save data access URLs for geospatial assets that we define with our geojson file using `geoviews`
 
 ### But first, what is STAC?  
 
@@ -90,14 +90,15 @@ catalog = Client.open(f'{STAC_URL}/LPCLOUD/')
 
 ## List STAC Collections
 
-Now we will get all of the `child` links that are within the STAC Catalog
+We'll create a `products` variable to view deeper in the STAC Catalog - subcategories are referred to as "children". 
 
 ```{python}
 products = [c for c in catalog.get_children()]
-#products
 ```
 
 ### Print one of the STAC Collection records
+
+To view the `products` variable we just created, let's look at one entry as a dictionary. 
 
 ```{python}
 products[1].to_dict()
@@ -105,7 +106,9 @@ products[1].to_dict()
 
 ### Print the STAC Collection `id`s with their `title`
 
-TODO: add background about id, title, describe,... pystac/pystac-client objects
+In the above output, `id` and `title` are two elements of interest that we can print for all `products` using a for loop. 
+
+TODO: pystac/pystac-client objects
 
 ```{python}
 for p in products: 
@@ -114,9 +117,11 @@ for p in products:
 
 ## Search for Granules/STAC Items - Set up query parameters to submit to the CMR-STAC API
 
-We will define our area of interest using the geojson file from the previous exercise, while also specifying the data collections and time range of needed for our example.
+We will define our region of interest (ROI) using the geojson file from the previous exercise, while also specifying the data collections and time range of needed for our example.
 
 ### Read in a geojson file
+
+Reading in a geojson file with geopandas will return the geometry of our polygon (our ROI).
 
 ```{python}
 field = geopandas.read_file('./data/ne_w_agfields.geojson')
@@ -125,10 +130,14 @@ field
 
 ### Visualize contents of geojson file
 
+We can use that geometry to visualize the polygon: here, a square. But wait for it –
+
 ```{python}
 fieldShape = field['geometry'][0]
 fieldShape
 ```
+
+We can plot the polygon using the `geoviews` package that we imported as `gv` with 'bokeh' and 'matplotlib' extensions. The following has reasonable width, height, color, and line widths to view our polygon when it is overlayed on a base tile map. 
 
 ```{python}
 base = gv.tile_sources.EsriImagery.opts(width=650, height=500)
@@ -136,9 +145,9 @@ farmField = gv.Polygons(fieldShape).opts(line_color='yellow', line_width=10, col
 base * farmField
 ```
 
-We will now start to specify the search criteria we are interested in, i.e, the **date range**, the **region of interest** (roi), and the **data collections**, to pass to the STAC API
+We will now start to specify the search criteria we are interested in, i.e, the **date range**, the **region of interest** (ROI), and the **data collections**, that we will pass to the STAC API.
 
-### Extract the coordinates for the region of interest
+### Extract the coordinates for the region of interest (ROI)
 
 ```{python}
 roi = json.loads(field.to_json())['features'][0]['geometry']
@@ -152,9 +161,11 @@ So, what just happen there? Let's take a quick detour to break it down.
 |field.to_json() | geojson representation as a string|  
 |json.loads()    | parse a json string into a Python Dictionary|
 |features         | Dictionary key that contrains the geometry object with coordinates (returned as a list)|
-|geometry        | Dictionary key that contains the coordinates for the roi|
+|geometry        | Dictionary key that contains the coordinates for the ROI|
 
 ### Specify date range
+
+Next up is to specify our date range using [ISO_8601 date formatting](https://en.wikipedia.org/wiki/ISO_8601). 
 
 ```{python}
 #date_range = "2021-05-01T00:00:00Z/2021-08-30T23:59:59Z"    # closed interval
@@ -164,14 +175,16 @@ date_range = "2021-05/2021-08"
 
 ### Specify the STAC Collections
 
-STAC Collection is synonomous with what we usually consider a data product. Desired STAC Collections are submitted to the search API as a list containing the collection `id`.
+STAC Collection is synonomous with what we usually consider a NASA data product. Desired STAC Collections are submitted to the search API as a list containing the collection `id`. We can use the `id`s that we printed from our `products` for loop above. Let's focus on S30 and L30 collections. 
 
 ```{python}
 collections = ['HLSL30.v1.5', 'HLSS30.v1.5']
 collections
 ```
 
-## Perform Search Against the CMR-STAC API
+## Search the CMR-STAC API with our search criteria
+
+Now we can put all our search criteria together using `catalog.search` from the `pystac_client` package.
 
 ```{python}
 search = catalog.search(
@@ -196,32 +209,42 @@ We now have a search object containing the STAC Items that matched our query. No
 item_collection = search.get_all_items()
 ```
 
+Let's list a few of these `item_collection`s:
+
 ```{python}
 list(item_collection)[0:5]
 ```
 
-### Grab the first Item and print it out as a dictionary
+### Print an item as a dictionary
+
+We can view a single item as a dictionary, as we did above with `products`.
 
 ```{python}
 item_collection[0].to_dict()
 ```
 
+TODO Aaron: identify a few things of note 
+
 ## Filtering STAC Items
 
-While the CMR-STAC API is a powerful search and discovery utility, it is still maturing and currently does not have the full gamut of filtering capabilities that the STAC API specification allows for. Hence, additional filtering is required if we want to filter by a property like cloud cover for example. Below we will loop through and filter the item_collection by a specified cloud cover as well as extract the band we need to do an Enhanced Vegetation Index (EVI) calculation later.
+While the CMR-STAC API is a powerful search and discovery utility, it is still maturing and currently does not have the full gamut of filtering capabilities that the STAC API specification allows for. Hence, additional filtering is required if we want to filter by a property, for example cloud cover. Below we will loop through and filter the item_collection by a specified cloud cover as well as extract the band we'd need to do an Enhanced Vegetation Index (EVI) calculation for a future analysis.
 
-Now we will set the max cloud cover allowable and extract the band links for those Items that match or are less than the max cloud cover.
+We'll make a `cloudcover` variable where we will set the maximum allowable cloud cover and extract the band links for those Items that match or are less than the max cloud cover.
 
 ```{python}
 cloudcover = 25
 ```
 
-We will also specify the STAC Assets (i.e., bands/layers) of interest for both the S30 and L30 collections
+We will also specify the STAC Assets (i.e., bands/layers) of interest for both the S30 and L30 collections (also in our `collections` variable above).
+
+*TODO Aaron*. We'll set these bands that are reasonable for EVI calculations: read more about B8A and friends here: TODO.
 
 ```{python}
 s30_bands = ['B8A', 'B04', 'B02', 'Fmask']    # S30 bands for EVI calculation and quality filtering -> NIR, RED, BLUE, Quality 
 l30_bands = ['B05', 'B04', 'B02', 'Fmask']    # L30 bands for EVI calculation and quality filtering -> NIR, RED, BLUE, Quality 
 ```
+
+And now to loop through and filter the `item_collection` by cloud cover and bands:
 
 ```{python}
 #| tags: []
@@ -247,13 +270,17 @@ The filtering done in the previous steps produces a list of links to STAC Assets
 evi_band_links[:10]
 ```
 
-**NOTICE** that in the list of links that we have multiple tiles, i.e. **T14TKL** & **T13TGF**, that intersect with our region of interest. These tiles represent neighboring UTM zones. We will split the list of links into seperate lists for each tile.
+**NOTICE** that in the list of links that we have multiple tiles, i.e. **T14TKL** & **T13TGF**, that intersect with our region of interest. TODO: We can notice this by HOW. 
+
+These two tiles represent neighboring Universal Transverse Mercator (UTM) zones. We will split the list of links into separate lists for each tile. 
 
 We now have a list of links to data assets that meet our search and filtering criteria. The commands that follow will split this list into logical groupings using python routines.
 
 ## Split Data Links List into Logical Groupings
 
-Split by Universal Transverse Mercator (UTM) tile specified in the file name (e.g., T14TKL & T13TGF)
+TODO Aaron: a bit more description about what all these steps do :)
+
+Split by UTM tile specified in the file name (e.g., T14TKL & T13TGF)
 
 ```{python}
 tile_dicts = defaultdict(list)    # https://stackoverflow.com/questions/26367812/appending-to-list-in-python-dictionary
@@ -275,7 +302,7 @@ tile_dicts.keys()
 tile_dicts['T13TGF'][:5]
 ```
 
-Now we will create a seperate list of data links for each tile
+Now we will create a separate list of data links for each tile
 
 ```{python}
 tile_links_T14TKL = tile_dicts['T14TKL']
@@ -310,7 +337,7 @@ bands_dicts['B04']
 
 ## Save links to a text file
 
-To finish off this exercise, we will save the idividual link lists as seperate text files with descriptive names.
+To complete this exercise, we will save the individual link lists as separate text files with descriptive names.
 
 ### Write links from CMR-STAC API to a file
 
