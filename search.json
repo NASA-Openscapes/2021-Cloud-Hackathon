@@ -90,64 +90,16 @@
     "text": ""
   },
   {
+    "href": "tutorials/Data_Discovery__CMR-STAC_API.html#timing",
+    "title": "",
+    "section": "Timing",
+    "text": "Exercise: 30 min"
+  },
+  {
     "href": "tutorials/Data_Discovery__CMR-STAC_API.html#summary",
     "title": "",
     "section": "Summary",
     "text": "In this example we will access the NASA’s Harmonized Landsat Sentinel-2 (HLS) version 2 assets, which are archived in cloud optimized geoTIFF (COG) format in the LP DAAC Cumulus cloud space. The COGs can be used like any other geoTIFF file, but have some added features that make them more efficient within the cloud data access paradigm. These features include: overviews and internal tiling. Below we will demonstrate how to leverage these features.\n\nObjective\n\nConnect to NASA CMR-STAC API using Python’s pystac-client\nNavigate CMR-STAC records\nUse the CMR-STAC API to search for data\nPerform post search filtering of CMR-STAC API search result\nExtract and save data access URLs for geospatial assets that we define with our geojson file using geoviews\n\n\n\nBut first, what is STAC?\nSpatioTemporal Asset Catalog (STAC) is a specification that provides a common language for interpreting geospatial information in order to standardize indexing and discovering data.\nThe STAC specification is made up of a collection of related, yet independent specifications that when used together provide search and discovery capabilities for remove assets.\n\nFour STAC Specifications\nSTAC Item (aka Granule)\nSTAC Catalog (aka DAAC Archive)\nSTAC Collection (aka Data Product)\nSTAC API\nIn the following sections, we will explore each of STAC element using NASA’s Common Metadata Repository (CMR) STAC application programming interface (API), or CMR-STAC API for short.\n\n\n\nCMR-STAC API\nThe CMR-STAC API is NASA’s implementation of the STAC API specification for all NASA data holdings within EOSDIS. The current implementation does not allow for querries accross the entire NASA catalog. Users must execute searches within provider catalogs (e.g., LPCLOUD) to find the STAC Items they are searching for. All the providers can be found at the CMR-STAC endpoint here: https://cmr.earthdata.nasa.gov/stac/.\nIn this exercise, we will query the LPCLOUD provider to identify STAC Items from the Harmonized Landsat Sentinel-2 (HLS) collection that fall within our region of interest (ROI) and within our specified time range.\nLet’s get started!"
-  },
-  {
-    "href": "tutorials/Data_Discovery__CMR-STAC_API.html#import-required-packages",
-    "title": "",
-    "section": "Import Required Packages",
-    "text": "from pystac_client import Client       # https://pystac-client.readthedocs.io/en/latest/index.html  \nfrom collections import defaultdict    \nimport json\nimport geopandas\nimport geoviews as gv\nfrom cartopy import crs\ngv.extension('bokeh', 'matplotlib')"
-  },
-  {
-    "href": "tutorials/Data_Discovery__CMR-STAC_API.html#explored-available-nasa-providers",
-    "title": "",
-    "section": "Explored available NASA Providers",
-    "text": "STAC_URL = 'https://cmr.earthdata.nasa.gov/stac'\n\n\nConnect to the CMR-STAC API\n\nprovider_cat = Client.open(STAC_URL)\n\n\nproviders = [p for p in provider_cat.get_children()]\n\nfor count, provider in enumerate(providers):\n    print(f'{count} - {provider.title}')"
-  },
-  {
-    "href": "tutorials/Data_Discovery__CMR-STAC_API.html#connect-to-the-lpcloud-providerstac-catalog",
-    "title": "",
-    "section": "Connect to the LPCLOUD Provider/STAC Catalog",
-    "text": "For this next step we need the provider title (e.g., LPCLOUD) from above. We will add the provider to the end of the CMR-STAC API URL (i.e., https://cmr.earthdata.nasa.gov/stac/) to connect to the LPCLOUD STAC Catalog.\n\ncatalog = Client.open(f'{STAC_URL}/LPCLOUD/')"
-  },
-  {
-    "href": "tutorials/Data_Discovery__CMR-STAC_API.html#list-stac-collections",
-    "title": "",
-    "section": "List STAC Collections",
-    "text": "We’ll create a products variable to view deeper in the STAC Catalog - subcategories are referred to as “children”.\n\nproducts = [c for c in catalog.get_children()]\n\n\nPrint one of the STAC Collection records\nTo view the products variable we just created, let’s look at one entry as a dictionary.\n\nproducts[1].to_dict()\n\n\n\nPrint the STAC Collection ids with their title\nIn the above output, id and title are two elements of interest that we can print for all products using a for loop.\nTODO: pystac/pystac-client objects\n\nfor p in products: \n    print(f\"{p.id}: {p.title}\")"
-  },
-  {
-    "href": "tutorials/Data_Discovery__CMR-STAC_API.html#search-for-granulesstac-items---set-up-query-parameters-to-submit-to-the-cmr-stac-api",
-    "title": "",
-    "section": "Search for Granules/STAC Items - Set up query parameters to submit to the CMR-STAC API",
-    "text": "We will define our region of interest (ROI) using the geojson file from the previous exercise, while also specifying the data collections and time range of needed for our example.\n\nRead in a geojson file\nReading in a geojson file with geopandas will return the geometry of our polygon (our ROI).\n\nfield = geopandas.read_file('./data/ne_w_agfields.geojson')\nfield\n\n\n\nVisualize contents of geojson file\nWe can use that geometry to visualize the polygon: here, a square. But wait for it –\n\nfieldShape = field['geometry'][0]\nfieldShape\n\nWe can plot the polygon using the geoviews package that we imported as gv with ‘bokeh’ and ‘matplotlib’ extensions. The following has reasonable width, height, color, and line widths to view our polygon when it is overlayed on a base tile map.\n\nbase = gv.tile_sources.EsriImagery.opts(width=650, height=500)\nfarmField = gv.Polygons(fieldShape).opts(line_color='yellow', line_width=10, color=None)\nbase * farmField\n\nWe will now start to specify the search criteria we are interested in, i.e, the date range, the region of interest (ROI), and the data collections, that we will pass to the STAC API.\n\n\nExtract the coordinates for the region of interest (ROI)\n\nroi = json.loads(field.to_json())['features'][0]['geometry']\nroi\n\nSo, what just happen there? Let’s take a quick detour to break it down.\n\n\n\n\n\n\n\nfield.to_json()\ngeojson representation as a string\n\n\njson.loads()\nparse a json string into a Python Dictionary\n\n\nfeatures\nDictionary key that contrains the geometry object with coordinates (returned as a list)\n\n\ngeometry\nDictionary key that contains the coordinates for the ROI\n\n\n\n\n\nSpecify date range\nNext up is to specify our date range using ISO_8601 date formatting.\n\n#date_range = \"2021-05-01T00:00:00Z/2021-08-30T23:59:59Z\"    # closed interval\n#date_range = \"2021-05-01T00:00:00Z/..\"                      # open interval - does not currently work with the CMR-STAC API\ndate_range = \"2021-05/2021-08\"\n\n\n\nSpecify the STAC Collections\nSTAC Collection is synonomous with what we usually consider a NASA data product. Desired STAC Collections are submitted to the search API as a list containing the collection id. We can use the ids that we printed from our products for loop above. Let’s focus on S30 and L30 collections.\n\ncollections = ['HLSL30.v1.5', 'HLSS30.v1.5']\ncollections"
-  },
-  {
-    "href": "tutorials/Data_Discovery__CMR-STAC_API.html#search-the-cmr-stac-api-with-our-search-criteria",
-    "title": "",
-    "section": "Search the CMR-STAC API with our search criteria",
-    "text": "Now we can put all our search criteria together using catalog.search from the pystac_client package.\n\nsearch = catalog.search(\n    collections=collections,\n    intersects=roi,\n    datetime=date_range,\n    limit=100\n)\n\n\nPrint out how many STAC Items match our search query\n\nsearch.matched()\n\nWe now have a search object containing the STAC Items that matched our query. Now, let’s pull out all of the STAC Items (as a PySTAC ItemCollection object) and explore the contents (i.e., the STAC Items)\n\nitem_collection = search.get_all_items()\n\nLet’s list a few of these item_collections:\n\nlist(item_collection)[0:5]\n\n\n\nPrint an item as a dictionary\nWe can view a single item as a dictionary, as we did above with products.\n\nitem_collection[0].to_dict()\n\nTODO Aaron: identify a few things of note"
-  },
-  {
-    "href": "tutorials/Data_Discovery__CMR-STAC_API.html#filtering-stac-items",
-    "title": "",
-    "section": "Filtering STAC Items",
-    "text": "While the CMR-STAC API is a powerful search and discovery utility, it is still maturing and currently does not have the full gamut of filtering capabilities that the STAC API specification allows for. Hence, additional filtering is required if we want to filter by a property, for example cloud cover. Below we will loop through and filter the item_collection by a specified cloud cover as well as extract the band we’d need to do an Enhanced Vegetation Index (EVI) calculation for a future analysis.\nWe’ll make a cloudcover variable where we will set the maximum allowable cloud cover and extract the band links for those Items that match or are less than the max cloud cover.\n\ncloudcover = 25\n\nWe will also specify the STAC Assets (i.e., bands/layers) of interest for both the S30 and L30 collections (also in our collections variable above).\nTODO Aaron. We’ll set these bands that are reasonable for EVI calculations: read more about B8A and friends here: TODO.\n\ns30_bands = ['B8A', 'B04', 'B02', 'Fmask']    # S30 bands for EVI calculation and quality filtering -> NIR, RED, BLUE, Quality \nl30_bands = ['B05', 'B04', 'B02', 'Fmask']    # L30 bands for EVI calculation and quality filtering -> NIR, RED, BLUE, Quality \n\nAnd now to loop through and filter the item_collection by cloud cover and bands:\n\nevi_band_links = []\n\nfor i in item_collection:\n    if i.properties['eo:cloud_cover'] <= cloudcover:\n        if i.collection_id == 'HLSS30.v1.5':\n            #print(i.properties['eo:cloud_cover'])\n            evi_bands = s30_bands\n        elif i.collection_id == 'HLSL30.v1.5':\n            #print(i.properties['eo:cloud_cover'])\n            evi_bands = l30_bands\n\n        for a in i.assets:\n            if any(b==a for b in evi_bands):\n                evi_band_links.append(i.assets[a].href)\n\nThe filtering done in the previous steps produces a list of links to STAC Assets. Let’s print out the first ten links.\n\nevi_band_links[:10]\n\nNOTICE that in the list of links that we have multiple tiles, i.e. T14TKL & T13TGF, that intersect with our region of interest. TODO: We can notice this by HOW.\nThese two tiles represent neighboring Universal Transverse Mercator (UTM) zones. We will split the list of links into separate lists for each tile.\nWe now have a list of links to data assets that meet our search and filtering criteria. The commands that follow will split this list into logical groupings using python routines."
-  },
-  {
-    "href": "tutorials/Data_Discovery__CMR-STAC_API.html#split-data-links-list-into-logical-groupings",
-    "title": "",
-    "section": "Split Data Links List into Logical Groupings",
-    "text": "TODO Aaron: a bit more description about what all these steps do :)\nSplit by UTM tile specified in the file name (e.g., T14TKL & T13TGF)\n\ntile_dicts = defaultdict(list)    # https://stackoverflow.com/questions/26367812/appending-to-list-in-python-dictionary\n\n\nfor l in evi_band_links:\n    tile = l.split('.')[-6]\n    tile_dicts[tile].append(l)\n\n\nPrint dictionary keys and values, i.e. the data links\n\ntile_dicts.keys()\n\n\ntile_dicts['T13TGF'][:5]\n\nNow we will create a separate list of data links for each tile\n\ntile_links_T14TKL = tile_dicts['T14TKL']\ntile_links_T13TGF = tile_dicts['T13TGF']\n\n\n\nPrint band/layer links for HLS tile T13TGF\n\n# tile_links_T13TGF[:10]\n\n\n\nSplit the links by band\n\nbands_dicts = defaultdict(list)\n\n\nfor b in tile_links_T13TGF:\n    band = b.split('.')[-2]\n    bands_dicts[band].append(b)\n\n\nbands_dicts.keys()\n\n\nbands_dicts['B04']"
-  },
-  {
-    "href": "tutorials/Data_Discovery__CMR-STAC_API.html#save-links-to-a-text-file",
-    "title": "",
-    "section": "Save links to a text file",
-    "text": "To complete this exercise, we will save the individual link lists as separate text files with descriptive names.\n\nWrite links from CMR-STAC API to a file\n\nfor k, v in bands_dicts.items():\n    name = (f'HTTPS_T12TGF_{k}_Links.txt')\n    with open(f'./data/{name}', 'w') as f:\n        for l in v:\n            f.write(f\"{l}\" + '\\n')\n\n\n\nWrite links to file for S3 access\n\nfor k, v in bands_dicts.items():\n    name = (f'S3_T12TGF_{k}_Links.txt')\n    with open(f'./data/{name}', 'w') as f:\n        for l in v:\n            s3l = l.replace('https://data.lpdaac.earthdatacloud.nasa.gov/', 's3://')\n            f.write(f\"{s3l}\" + '\\n')"
   },
   {
     "href": "tutorials/Data_Discovery__CMR-STAC_API.html#resources",
