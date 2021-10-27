@@ -40,6 +40,7 @@ site:
           - tutorials/data_discovery_with_cmr.ipynb
           - tutorials/Data_Discovery__CMR-STAC_API.ipynb
           - tutorials/Data_Access__Direct_S3_Access_gdalvrt.ipynb
+          - tutorials/Introduction_to_xarray.ipynb
       - section: projects/index.md
         contents:
           - projects/hacking.md
