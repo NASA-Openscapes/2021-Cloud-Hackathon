@@ -335,10 +335,6 @@ password &lt;PASSWORD&gt;</code></pre>
 <span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    Popen(<span class="st">'echo machine </span><span class="sc">{1}</span><span class="st"> &gt;&gt; </span><span class="sc">{0}{2}</span><span class="st">'</span>.<span class="bu">format</span>(homeDir <span class="op">+</span> os.sep, urs, netrc_name), shell<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    Popen(<span class="st">'echo login </span><span class="sc">{}</span><span class="st"> &gt;&gt; </span><span class="sc">{}{}</span><span class="st">'</span>.<span class="bu">format</span>(getpass(prompt<span class="op">=</span>prompts[<span class="dv">0</span>]), homeDir <span class="op">+</span> os.sep, netrc_name), shell<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    Popen(<span class="st">'echo password \</span><span class="sc">{}</span><span class="st"> &gt;&gt; </span><span class="sc">{}{}</span><span class="st">'</span>.<span class="bu">format</span>(getpass(prompt<span class="op">=</span>prompts[<span class="dv">1</span>]), homeDir <span class="op">+</span> os.sep, netrc_name), shell<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdin">
-<pre><code>Enter NASA Earthdata Login Username:  ·······
-Enter NASA Earthdata Login Password:  ··············</code></pre>
-</div>
 </div>
 <section id="see-if-the-file-was-created" class="level4">
 <h4 class="anchored" data-anchor-id="see-if-the-file-was-created">See if the file was created</h4>
@@ -347,21 +343,7 @@ Enter NASA Earthdata Login Password:  ··············</code></pre>
 <p><strong>!!! Beware,</strong> your password will be visible if the <code>.netrc</code> file is opened in the text editor.</p>
 </blockquote>
 <div class="cell">
-<div class="sourceCode" id="cb5"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>ls <span class="op">-</span>al</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
-<pre><code>total 10696
-drwxr-xr-x  4 jovyan jovyan    6144 Oct 19 23:17 .
-drwxr-xr-x 10 jovyan jovyan    6144 Oct 19 22:30 ..
-drwxr-xr-x  2 jovyan jovyan    6144 Oct 19 22:30 data
--rw-r--r--  1 jovyan jovyan 7331106 Oct 19 22:30 Data_Access__Direct_S3_Access_gdalvrt.ipynb
--rw-r--r--  1 jovyan jovyan 3516777 Oct 19 22:30 Data_Discovery__CMR-STAC_API.ipynb
--rw-r--r--  1 jovyan jovyan   57987 Oct 19 23:14 data_discovery_with_cmr.ipynb
--rw-r--r--  1 jovyan jovyan     112 Oct 19 22:30 getting-started.md
--rw-r--r--  1 jovyan jovyan      36 Oct 19 22:30 index.md
-drwxr-xr-x  2 jovyan jovyan    6144 Oct 19 22:58 .ipynb_checkpoints
--rw-r--r--  1 jovyan jovyan    8471 Oct 19 23:17 NASA_Earthdata_Authentication.ipynb
--rw-r--r--  1 jovyan jovyan      72 Oct 19 22:57 Untitled.ipynb</code></pre>
-</div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>ls <span class="op">-</span>al <span class="op">~/</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <!-- -->
 </section>
