@@ -42,11 +42,18 @@
     "text": "Before the Hackathon, please do the following (20 minutes). All software is free. If you are attending the Clinic, please do this in advance of the Clinic.\n\nGitHub username\n\nCreate a GitHub account (if you don’t already have one) at https://github.com. Follow optional advice on choosing your username\nPlease provide your GitHub username here; this will allow us to add you to the cloud hackathon workspace.\nRemember your username and password; you will need to be logged in during the workshop!\n\nEarthdata Login account\n\nCreate an Earthdata Login account (if you don’t already have one) at https://urs.earthdata.nasa.gov\nRemember your username and password; you will need to be logged in during the workshop!\n\nCheck back soon for additional items\nGet comfortable\n\nConsider your computer set-up in advance, including an external monitor if possible. You will be following along in Jupyter Hub on your own computer while also watching an instructor live-code over Zoom (or equivalent), and will also want quick-access to Slack to ask for help and follow links."
   },
   {
-    "objectID": "logistics/index.html",
-    "href": "logistics/index.html",
+    "objectID": "logistics/index.html#for-hackathon-participants",
+    "href": "logistics/index.html#for-hackathon-participants",
     "title": "Logistics",
-    "section": "",
+    "section": "For hackathon participants",
     "text": "text here"
+  },
+  {
+    "objectID": "logistics/index.html#for-hackathon-helpers",
+    "href": "logistics/index.html#for-hackathon-helpers",
+    "title": "Logistics",
+    "section": "For hackathon helpers",
+    "text": "other text here!"
   },
   {
     "objectID": "logistics/another-thing.html",
