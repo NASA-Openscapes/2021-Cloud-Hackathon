@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang=""><head>
   <meta charset="utf-8">
-  <meta name="generator" content="pandoc">
+  <meta name="generator" content="quarto-0.2.232">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>data_discovery__cmr-stac_api</title>
   <style>
@@ -81,8 +81,9 @@
   <![endif]-->
   <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
   <script src="../site_libs/quarto-nav/headroom.min.js"></script>
+  <script src="../site_libs/clipboard/clipboard.min.js"></script>
   <meta name="quarto:offset" content="../">
-  <script src="../site_libs/quarto-search/autocomplete.min.js"></script>
+  <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
   <script src="../site_libs/quarto-search/fuse.min.js"></script>
   <script src="../site_libs/quarto-search/quarto-search.js"></script>
   <link href="../tutorials/Data_Access__Direct_S3_Access_gdalvrt.html" rel="next">
@@ -90,9 +91,7 @@
   <script src="../site_libs/quarto-html/quarto.js"></script>
   <script src="../site_libs/quarto-html/popper.min.js"></script>
   <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-  <script src="../site_libs/quarto-html/clipboard.min.js"></script>
   <script src="../site_libs/quarto-html/anchor.min.js"></script>
-  <script src="../site_libs/quarto-html/quarto-html.js"></script>
   <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
   <link class="quarto-color-scheme" href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
   <link class="quarto-color-scheme quarto-color-alternate" rel="prefetch" href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css">
@@ -100,6 +99,14 @@
   <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
   <link class="quarto-color-scheme" href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
   <link class="quarto-color-scheme quarto-color-alternate" rel="prefetch" href="../site_libs/bootstrap/bootstrap-dark.min.css">
+  <script id="quarto-search-options" type="application/json">{
+    "location": "sidebar",
+    "copy-button": false,
+    "collapse-after": 2,
+    "panel-placement": "start",
+    "type": "textbox",
+    "limit": 20
+  }</script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
   <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
@@ -121,44 +128,37 @@
 <div class="container-fluid quarto-container d-flex flex-column page-layout-article">
 <div class="row flex-fill" id="quarto-content">
   <div id="quarto-sidebar" class="col col-12 col-lg-3 d-lg-flex px-0 pt-0 sidebar collapse sidebar-navigation">
-    <nav class="me-lg-auto py-2 docked  overflow-scroll">
-  <div class="px-3 pt-lg-2 mt-1 text-left sidebar-header sidebar-header-stacked">
+    <nav class="me-lg-auto docked overflow-auto">
+  <div class="px-3 pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
     <img src="https://user-images.githubusercontent.com/2915555/133525653-2a2278b1-1015-4350-b2a5-160d125aaaf7.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../">
-      2021 Cloud Hackathon
-      </a>
+      <a href="../">2021 Cloud Hackathon</a> 
         <div class="sidebar-tools-main">
     <a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon" title="" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
-  <a href="" class="quarto-color-scheme-toggle " onclick="window.quartoToggleColorScheme(); return false;"><i class="bi"></i></a>
+  <a href="" class="quarto-color-scheme-toggle sidebar-tool" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
     </div>
   </div>
-    <div class="d-flex px-3 mt-2 flex-shrink-0 align-items-center">
+    <div class="px-3 mt-2 flex-shrink-0 align-items-center">
       <div class="sidebar-search">
-      <form class="d-flex mb-0">
-  <input id="quarto-search" class="form-control" type="search" placeholder="Search" aria-label="Search">
-</form>
-      </div>
-        <div class="sidebar-tools-collapse">
-    <a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon" title="" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
-  <a href="" class="quarto-color-scheme-toggle " onclick="window.quartoToggleColorScheme(); return false;"><i class="bi"></i></a>
+      <div id="quarto-search" class="mb-0 " title="Search">
 </div>
+      </div>
     </div>
   <div class="sidebar-menu-container"> 
-  <ul class="list-unstyled mt-3 px-3">
+  <ul class="list-unstyled mt-1 px-3">
       <li class="sidebar-item">
   <a href="../index.html" class="">Welcome</a>
 </li>
       <ul class="list-unstyled sidebar-section depth1">
     <li class="">
-        <div class="me-auto ">
+        <div class="me-auto">
           <div class="d-inline-flex w-100 sidebar-section-item">
-            <div class="sidebar-section-link me-auto ">
+            <div class="sidebar-section-link me-auto">
             <a href="../logistics/index.html" class="">Logistics</a>
             </div>
             <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#logistics-collapse" aria-expanded="true">
-              <div><i class="bi bi-chevron-right ms-2 "></i></div>
+              <div><i class="bi bi-chevron-right ms-2"></i></div>
             </a>
             </div>
         </div>
@@ -179,13 +179,13 @@
   </ul>
       <ul class="list-unstyled sidebar-section depth1">
     <li class="">
-        <div class="me-auto ">
+        <div class="me-auto">
           <div class="d-inline-flex w-100 sidebar-section-item">
-            <div class="sidebar-section-link me-auto ">
+            <div class="sidebar-section-link me-auto">
             <a href="../clinic/index.html" class="">Pre-Hackathon Clinic</a>
             </div>
             <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#pre-hackathonclinic-collapse" aria-expanded="true">
-              <div><i class="bi bi-chevron-right ms-2 "></i></div>
+              <div><i class="bi bi-chevron-right ms-2"></i></div>
             </a>
             </div>
         </div>
@@ -203,13 +203,13 @@
   </ul>
       <ul class="list-unstyled sidebar-section depth1">
     <li class="">
-        <div class="me-auto ">
+        <div class="me-auto">
           <div class="d-inline-flex w-100 sidebar-section-item">
-            <div class="sidebar-section-link me-auto ">
+            <div class="sidebar-section-link me-auto">
             <a href="../tutorials/index.html" class="">Tutorials</a>
             </div>
             <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#tutorials-collapse" aria-expanded="true">
-              <div><i class="bi bi-chevron-right ms-2 "></i></div>
+              <div><i class="bi bi-chevron-right ms-2"></i></div>
             </a>
             </div>
         </div>
@@ -231,7 +231,7 @@
   <a href="../tutorials/Data_Access__Direct_S3_Access_gdalvrt.html" class="">Direct S3 Data Access with GDAL Virtual Raster Format (VRT)</a>
 </li>
           <li class="sidebar-item">
-  <a href="../tutorials/Introduction_to_xarray.html" class="">An Introductionto `xarray`</a>
+  <a href="../tutorials/Introduction_to_xarray.html" class="">An Introductionto <code>xarray</code></a>
 </li>
         </ul>
       </div>
@@ -239,13 +239,13 @@
   </ul>
       <ul class="list-unstyled sidebar-section depth1">
     <li class="">
-        <div class="me-auto ">
+        <div class="me-auto">
           <div class="d-inline-flex w-100 sidebar-section-item">
-            <div class="sidebar-section-link me-auto ">
+            <div class="sidebar-section-link me-auto">
             <a href="../projects/index.html" class="">Projects</a>
             </div>
             <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#projects-collapse" aria-expanded="true">
-              <div><i class="bi bi-chevron-right ms-2 "></i></div>
+              <div><i class="bi bi-chevron-right ms-2"></i></div>
             </a>
             </div>
         </div>
@@ -265,7 +265,7 @@
   </div>
 </nav>
   </div>
-  <div id="quarto-toc-sidebar" class="col col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-toc order-last"><nav id="TOC" role="doc-toc">
+  <div id="quarto-toc-sidebar" class=" pt-0 col col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-toc order-last"><nav id="TOC" role="doc-toc">
 <h2 id="toc-title">On this page</h2>
 <ul>
 <li><a href="#data-discovery-cmr-stac-api" class="nav-link active" data-scroll-target="#data-discovery-cmr-stac-api">Data Discovery: CMR-STAC API</a>
@@ -316,8 +316,8 @@
 <li><a href="#resources" class="nav-link" data-scroll-target="#resources">Resources</a></li>
 </ul></li>
 </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon/edit/main/tutorials/Data_Discovery__CMR-STAC_API.ipynb">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon/issues/new">Report an issue</a></p></div></div></nav></div>
-  <div class="col mx-auto col-sm-12 col-md-9 col-lg-7 px-lg-4">
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon/edit/main/tutorials/Data_Discovery__CMR-STAC_API.ipynb" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon/issues/new" class="toc-action">Report an issue</a></p></div></div></nav></div>
+  <div class="col mx-auto col-sm-12 col-md-9 col-lg-7 col-xl-7 px-lg-4 pe-xxl-4 ps-xxl-0">
 <main>
 
 <section id="data-discovery-cmr-stac-api" class="level1">
@@ -364,7 +364,7 @@
 </section>
 <section id="import-required-packages" class="level2">
 <h2 class="anchored" data-anchor-id="import-required-packages">Import Required Packages</h2>
-<div class="cell">
+<div class="cell" data-execution_count="1">
 <div class="sourceCode" id="cb1"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pystac_client <span class="im">import</span> Client       <span class="co"># https://pystac-client.readthedocs.io/en/latest/index.html  </span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> defaultdict    </span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
@@ -1970,16 +1970,12 @@ U9k9N2vl5+cH0en0TRiGWX18fC65vnh+LxqNBq2oqFhgMpmi7XY7arVaj+zdu/fxn/l/4bSZl5fH
 </section>
 <section id="explored-available-nasa-providers" class="level2">
 <h2 class="anchored" data-anchor-id="explored-available-nasa-providers">Explored available NASA Providers</h2>
-<div class="cell">
 <div class="sourceCode" id="cb2"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>STAC_URL <span class="op">=</span> <span class="st">'https://cmr.earthdata.nasa.gov/stac'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 <section id="connect-to-the-cmr-stac-api" class="level3">
 <h3 class="anchored" data-anchor-id="connect-to-the-cmr-stac-api">Connect to the CMR-STAC API</h3>
-<div class="cell">
 <div class="sourceCode" id="cb3"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>provider_cat <span class="op">=</span> Client.<span class="bu">open</span>(STAC_URL)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 <p>We’ll create a <code>providers</code> variable so we can take a deeper look into available data providers - subcategories are referred to as “children”. We can then print them as a for loop.</p>
-<div class="cell">
+<div class="cell" data-execution_count="4">
 <div class="sourceCode" id="cb4"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>providers <span class="op">=</span> [p <span class="cf">for</span> p <span class="kw">in</span> provider_cat.get_children()]</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> count, provider <span class="kw">in</span> <span class="bu">enumerate</span>(providers):</span>
@@ -2038,23 +2034,56 @@ U9k9N2vl5+cH0en0TRiGWX18fC65vnh+LxqNBq2oqFhgMpmi7XY7arVaj+zdu/fxn/l/4bSZl5fH
 <section id="connect-to-the-lpcloud-providerstac-catalog" class="level2">
 <h2 class="anchored" data-anchor-id="connect-to-the-lpcloud-providerstac-catalog">Connect to the <code>LPCLOUD</code> Provider/STAC Catalog</h2>
 <p>For this next step we need the <code>provider title</code> (e.g., LPCLOUD) from above. We will add the provider to the end of the CMR-STAC API URL (i.e., <code>https://cmr.earthdata.nasa.gov/stac/</code>) to connect to the LPCLOUD STAC Catalog.</p>
-<div class="cell">
 <div class="sourceCode" id="cb6"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>catalog <span class="op">=</span> Client.<span class="bu">open</span>(<span class="ss">f'</span><span class="sc">{</span>STAC_URL<span class="sc">}</span><span class="ss">/LPCLOUD/'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 </section>
 <section id="list-stac-collections" class="level2">
 <h2 class="anchored" data-anchor-id="list-stac-collections">List STAC Collections</h2>
 <p>We’ll create a <code>products</code> variable to view deeper in the STAC Catalog.</p>
-<div class="cell">
 <div class="sourceCode" id="cb7"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>products <span class="op">=</span> [c <span class="cf">for</span> c <span class="kw">in</span> catalog.get_children()]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 <section id="print-one-of-the-stac-collection-records" class="level3">
 <h3 class="anchored" data-anchor-id="print-one-of-the-stac-collection-records">Print one of the STAC Collection records</h3>
 <p>To view the <code>products</code> variable we just created, let’s look at one entry as a dictionary.</p>
-<div class="cell">
+<div class="cell" data-execution_count="8">
 <div class="sourceCode" id="cb8"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>products[<span class="dv">1</span>].to_dict()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p>{‘type’: ‘Collection’, ‘id’: ‘HLSL30.v2.0’, ‘stac_version’: ‘1.0.0’, ‘description’: ‘The Harmonized Landsat and Sentinel-2 (HLS) project provides consistent surface reflectance (SR) and top of atmosphere (TOA) brightness data from the Operational Land Imager (OLI) aboard the joint NASA/USGS Landsat 8 satellite and the Multi-Spectral Instrument (MSI) aboard Europe’s Copernicus Sentinel-2A and Sentinel-2B satellites. The combined measurement enables global observations of the land every 2–3 days at 30-meter (m) spatial resolution. The HLS project uses a set of algorithms to obtain seamless products from OLI and MSI that include atmospheric correction, cloud and cloud-shadow masking, spatial co-registration and common gridding, illumination and view angle normalization, and spectral bandpass adjustment.HLSL30 product provides 30-m Nadir Bidirectional Reflectance Distribution Function (BRDF)-Adjusted Reflectance (NBAR) and is derived from Landsat 8 OLI data products. The HLSS30 and HLSL30 products are gridded to the same resolution and Military Grid Reference System (<a href="https://hls.gsfc.nasa.gov/products-description/tiling-system/">MGRS</a>) tiling system, and thus are “stackable” for time series analysis.HLSL30 product is provided in Cloud Optimized GeoTIFF (COG) format, and each band is distributed as a separate file. There are 11 bands included in the HLSL30 product along with one quality assessment (QA) band and four angle bands. See the User Guide for a more detailed description of the individual bands provided in the HLSL30 product.’, ‘links’: [{‘rel’: &lt;RelType.ROOT: ‘root’&gt;, ‘href’: ‘https://cmr.earthdata.nasa.gov/stac/’, ‘type’: &lt;MediaType.JSON: ‘application/json’&gt;}, {‘rel’: ‘items’, ‘href’: ‘https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/HLSL30.v2.0/items’, ‘type’: ‘application/json’, ‘title’: ‘Granules in this collection’}, {‘rel’: ‘about’, ‘href’: ‘https://cmr.earthdata.nasa.gov/search/concepts/C2021957657-LPCLOUD.html’, ‘type’: ‘text/html’, ‘title’: ‘HTML metadata for collection’}, {‘rel’: ‘via’, ‘href’: ‘https://cmr.earthdata.nasa.gov/search/concepts/C2021957657-LPCLOUD.json’, ‘type’: ‘application/json’, ‘title’: ‘CMR JSON metadata for collection’}, {‘rel’: ‘child’, ‘href’: ‘https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/HLSL30.v2.0/2020’, ‘type’: ‘application/json’, ‘title’: ‘2020 catalog’}, {‘rel’: ‘child’, ‘href’: ‘https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/HLSL30.v2.0/2021’, ‘type’: ‘application/json’, ‘title’: ‘2021 catalog’}, {‘rel’: &lt;RelType.SELF: ‘self’&gt;, ‘href’: ‘https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/HLSL30.v2.0’, ‘type’: &lt;MediaType.JSON: ‘application/json’&gt;}, {‘rel’: &lt;RelType.PARENT: ‘parent’&gt;, ‘href’: ‘https://cmr.earthdata.nasa.gov/stac/LPCLOUD/’, ‘type’: &lt;MediaType.JSON: ‘application/json’&gt;}], ‘stac_extensions’: [], ‘title’: ‘HLS Landsat Operational Land Imager Surface Reflectance and TOA Brightness Daily Global 30m v2.0’, ‘extent’: {‘spatial’: {‘bbox’: [[-180, -90, 180, 90]]}, ‘temporal’: {‘interval’: [[‘2013-05-01T00:00:00Z’, None]]}}, ‘license’: ‘not-provided’}</p>
+<div class="cell-output-display" data-execution_count="8">
+<pre><code>{'type': 'Collection',
+ 'id': 'HLSL30.v2.0',
+ 'stac_version': '1.0.0',
+ 'description': 'The Harmonized Landsat and Sentinel-2 (HLS) project provides consistent surface reflectance (SR) and top of atmosphere (TOA) brightness data from the Operational Land Imager (OLI) aboard the joint NASA/USGS Landsat 8 satellite and the Multi-Spectral Instrument (MSI) aboard Europe’s Copernicus Sentinel-2A and Sentinel-2B satellites. The combined measurement enables global observations of the land every 2–3 days at 30-meter (m) spatial resolution. The HLS project uses a set of algorithms to obtain seamless products from OLI and MSI that include atmospheric correction, cloud and cloud-shadow masking, spatial co-registration and common gridding, illumination and view angle normalization, and spectral bandpass adjustment.\r\n\r\nThe HLSL30 product provides 30-m Nadir Bidirectional Reflectance Distribution Function (BRDF)-Adjusted Reflectance (NBAR) and is derived from Landsat 8 OLI data products. The HLSS30 and HLSL30 products are gridded to the same resolution and Military Grid Reference System ([MGRS](https://hls.gsfc.nasa.gov/products-description/tiling-system/)) tiling system, and thus are “stackable” for time series analysis.\r\n\r\nThe HLSL30 product is provided in Cloud Optimized GeoTIFF (COG) format, and each band is distributed as a separate file. There are 11 bands included in the HLSL30 product along with one quality assessment (QA) band and four angle bands. See the User Guide for a more detailed description of the individual bands provided in the HLSL30 product.',
+ 'links': [{'rel': &lt;RelType.ROOT: 'root'&gt;,
+   'href': 'https://cmr.earthdata.nasa.gov/stac/',
+   'type': &lt;MediaType.JSON: 'application/json'&gt;},
+  {'rel': 'items',
+   'href': 'https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/HLSL30.v2.0/items',
+   'type': 'application/json',
+   'title': 'Granules in this collection'},
+  {'rel': 'about',
+   'href': 'https://cmr.earthdata.nasa.gov/search/concepts/C2021957657-LPCLOUD.html',
+   'type': 'text/html',
+   'title': 'HTML metadata for collection'},
+  {'rel': 'via',
+   'href': 'https://cmr.earthdata.nasa.gov/search/concepts/C2021957657-LPCLOUD.json',
+   'type': 'application/json',
+   'title': 'CMR JSON metadata for collection'},
+  {'rel': 'child',
+   'href': 'https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/HLSL30.v2.0/2020',
+   'type': 'application/json',
+   'title': '2020 catalog'},
+  {'rel': 'child',
+   'href': 'https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/HLSL30.v2.0/2021',
+   'type': 'application/json',
+   'title': '2021 catalog'},
+  {'rel': &lt;RelType.SELF: 'self'&gt;,
+   'href': 'https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/HLSL30.v2.0',
+   'type': &lt;MediaType.JSON: 'application/json'&gt;},
+  {'rel': &lt;RelType.PARENT: 'parent'&gt;,
+   'href': 'https://cmr.earthdata.nasa.gov/stac/LPCLOUD/',
+   'type': &lt;MediaType.JSON: 'application/json'&gt;}],
+ 'stac_extensions': [],
+ 'title': 'HLS Landsat Operational Land Imager Surface Reflectance and TOA Brightness Daily Global 30m v2.0',
+ 'extent': {'spatial': {'bbox': [[-180, -90, 180, 90]]},
+  'temporal': {'interval': [['2013-05-01T00:00:00Z', None]]}},
+ 'license': 'not-provided'}</code></pre>
 </div>
 </div>
 </section>
@@ -2062,9 +2091,9 @@ U9k9N2vl5+cH0en0TRiGWX18fC65vnh+LxqNBq2oqFhgMpmi7XY7arVaj+zdu/fxn/l/4bSZl5fH
 <h3 class="anchored" data-anchor-id="print-the-stac-collection-ids-with-their-title">Print the STAC Collection <code>id</code>s with their <code>title</code></h3>
 <p>In the above output, <code>id</code> and <code>title</code> are two elements of interest that we can print for all <code>products</code> using a for loop.</p>
 <p>TODO: pystac/pystac-client objects</p>
-<div class="cell">
-<div class="sourceCode" id="cb9"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> p <span class="kw">in</span> products: </span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>p<span class="sc">.</span><span class="bu">id</span><span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>p<span class="sc">.</span>title<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode" id="cb10"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> p <span class="kw">in</span> products: </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>p<span class="sc">.</span><span class="bu">id</span><span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>p<span class="sc">.</span>title<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stdout">
 <pre><code>ASTGTM.v003: ASTER Global Digital Elevation Model V003
 HLSL30.v2.0: HLS Landsat Operational Land Imager Surface Reflectance and TOA Brightness Daily Global 30m v2.0
@@ -2081,10 +2110,10 @@ HLSS30.v2.0: HLS Sentinel-2 Multi-spectral Instrument Surface Reflectance Daily 
 <section id="read-in-a-geojson-file" class="level3">
 <h3 class="anchored" data-anchor-id="read-in-a-geojson-file">Read in a geojson file</h3>
 <p>Reading in a geojson file with geopandas will return the geometry of our polygon (our ROI).</p>
-<div class="cell">
-<div class="sourceCode" id="cb11"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>field <span class="op">=</span> geopandas.read_file(<span class="st">'./data/ne_w_agfields.geojson'</span>)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>field</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
+<div class="cell" data-execution_count="10">
+<div class="sourceCode" id="cb12"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>field <span class="op">=</span> geopandas.read_file(<span class="st">'./data/ne_w_agfields.geojson'</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>field</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display" data-execution_count="10">
 <div>
 
 <table class="dataframe table">
@@ -2108,22 +2137,22 @@ HLSS30.v2.0: HLS Sentinel-2 Multi-spectral Instrument Surface Reflectance Daily 
 <section id="visualize-contents-of-geojson-file" class="level3">
 <h3 class="anchored" data-anchor-id="visualize-contents-of-geojson-file">Visualize contents of geojson file</h3>
 <p>We can use that geometry to visualize the polygon: here, a square. But wait for it –</p>
-<div class="cell">
-<div class="sourceCode" id="cb12"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>fieldShape <span class="op">=</span> field[<span class="st">'geometry'</span>][<span class="dv">0</span>]</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>fieldShape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
+<div class="cell" data-execution_count="10">
+<div class="sourceCode" id="cb13"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>fieldShape <span class="op">=</span> field[<span class="st">'geometry'</span>][<span class="dv">0</span>]</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>fieldShape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display" data-execution_count="10">
 <p><img src="Data_Discovery__CMR-STAC_API_files/figure-html/cell-11-output-1.svg" class="img-fluid"></p>
 </div>
 </div>
 <p>We can plot the polygon using the <code>geoviews</code> package that we imported as <code>gv</code> with ‘bokeh’ and ‘matplotlib’ extensions. The following has reasonable width, height, color, and line widths to view our polygon when it is overlayed on a base tile map.</p>
-<div class="cell">
-<div class="sourceCode" id="cb13"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>base <span class="op">=</span> gv.tile_sources.EsriImagery.opts(width<span class="op">=</span><span class="dv">650</span>, height<span class="op">=</span><span class="dv">500</span>)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>farmField <span class="op">=</span> gv.Polygons(fieldShape).opts(line_color<span class="op">=</span><span class="st">'yellow'</span>, line_width<span class="op">=</span><span class="dv">10</span>, color<span class="op">=</span><span class="va">None</span>)</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>base <span class="op">*</span> farmField</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode" id="cb14"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>base <span class="op">=</span> gv.tile_sources.EsriImagery.opts(width<span class="op">=</span><span class="dv">650</span>, height<span class="op">=</span><span class="dv">500</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>farmField <span class="op">=</span> gv.Polygons(fieldShape).opts(line_color<span class="op">=</span><span class="st">'yellow'</span>, line_width<span class="op">=</span><span class="dv">10</span>, color<span class="op">=</span><span class="va">None</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>base <span class="op">*</span> farmField</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <pre><code>Unable to display output for mime type(s): </code></pre>
 </div>
-<div class="cell-output-display">
+<div class="cell-output-display" data-execution_count="11">
 <div id="1004">
 
 
@@ -2162,11 +2191,16 @@ HLSS30.v2.0: HLS Sentinel-2 Multi-spectral Instrument Surface Reflectance Daily 
 </section>
 <section id="extract-the-coordinates-for-the-region-of-interest-roi" class="level3">
 <h3 class="anchored" data-anchor-id="extract-the-coordinates-for-the-region-of-interest-roi">Extract the coordinates for the region of interest (ROI)</h3>
-<div class="cell">
-<div class="sourceCode" id="cb15"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>roi <span class="op">=</span> json.loads(field.to_json())[<span class="st">'features'</span>][<span class="dv">0</span>][<span class="st">'geometry'</span>]</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>roi</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p>{‘type’: ‘Polygon’, ‘coordinates’: [[[-101.67271614074707, 41.04754380304359], [-101.65344715118408, 41.04754380304359], [-101.65344715118408, 41.06213891056728], [-101.67271614074707, 41.06213891056728], [-101.67271614074707, 41.04754380304359]]]}</p>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode" id="cb16"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>roi <span class="op">=</span> json.loads(field.to_json())[<span class="st">'features'</span>][<span class="dv">0</span>][<span class="st">'geometry'</span>]</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>roi</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display" data-execution_count="12">
+<pre><code>{'type': 'Polygon',
+ 'coordinates': [[[-101.67271614074707, 41.04754380304359],
+   [-101.65344715118408, 41.04754380304359],
+   [-101.65344715118408, 41.06213891056728],
+   [-101.67271614074707, 41.06213891056728],
+   [-101.67271614074707, 41.04754380304359]]]}</code></pre>
 </div>
 </div>
 <p>So, what just happen there? Let’s take a quick detour to break it down.</p>
@@ -2198,20 +2232,18 @@ HLSS30.v2.0: HLS Sentinel-2 Multi-spectral Instrument Surface Reflectance Daily 
 <section id="specify-date-range" class="level3">
 <h3 class="anchored" data-anchor-id="specify-date-range">Specify date range</h3>
 <p>Next up is to specify our date range using <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO_8601 date formatting</a>.</p>
-<div class="cell">
-<div class="sourceCode" id="cb16"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#date_range = "2021-05-01T00:00:00Z/2021-08-30T23:59:59Z"    # closed interval</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co">#date_range = "2021-05-01T00:00:00Z/.."                      # open interval - does not currently work with the CMR-STAC API</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>date_range <span class="op">=</span> <span class="st">"2021-05/2021-08"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#date_range = "2021-05-01T00:00:00Z/2021-08-30T23:59:59Z"    # closed interval</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co">#date_range = "2021-05-01T00:00:00Z/.."                      # open interval - does not currently work with the CMR-STAC API</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>date_range <span class="op">=</span> <span class="st">"2021-05/2021-08"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="specify-the-stac-collections" class="level3">
 <h3 class="anchored" data-anchor-id="specify-the-stac-collections">Specify the STAC Collections</h3>
 <p>STAC Collection is synonomous with what we usually consider a NASA data product. Desired STAC Collections are submitted to the search API as a list containing the collection <code>id</code>. We can use the <code>id</code>s that we printed from our <code>products</code> for loop above. Let’s focus on S30 and L30 collections.</p>
-<div class="cell">
-<div class="sourceCode" id="cb17"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>collections <span class="op">=</span> [<span class="st">'HLSL30.v1.5'</span>, <span class="st">'HLSS30.v1.5'</span>]</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>collections</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p>[‘HLSL30.v1.5’, ‘HLSS30.v1.5’]</p>
+<div class="cell" data-execution_count="14">
+<div class="sourceCode" id="cb19"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>collections <span class="op">=</span> [<span class="st">'HLSL30.v1.5'</span>, <span class="st">'HLSS30.v1.5'</span>]</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>collections</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display" data-execution_count="14">
+<pre><code>['HLSL30.v1.5', 'HLSS30.v1.5']</code></pre>
 </div>
 </div>
 </section>
@@ -2219,41 +2251,106 @@ HLSS30.v2.0: HLS Sentinel-2 Multi-spectral Instrument Surface Reflectance Daily 
 <section id="search-the-cmr-stac-api-with-our-search-criteria" class="level2">
 <h2 class="anchored" data-anchor-id="search-the-cmr-stac-api-with-our-search-criteria">Search the CMR-STAC API with our search criteria</h2>
 <p>Now we can put all our search criteria together using <code>catalog.search</code> from the <code>pystac_client</code> package.</p>
-<div class="cell">
-<div class="sourceCode" id="cb18"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>search <span class="op">=</span> catalog.search(</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    collections<span class="op">=</span>collections,</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    intersects<span class="op">=</span>roi,</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    datetime<span class="op">=</span>date_range,</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    limit<span class="op">=</span><span class="dv">100</span></span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>search <span class="op">=</span> catalog.search(</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    collections<span class="op">=</span>collections,</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    intersects<span class="op">=</span>roi,</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    datetime<span class="op">=</span>date_range,</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>    limit<span class="op">=</span><span class="dv">100</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <section id="print-out-how-many-stac-items-match-our-search-query" class="level3">
 <h3 class="anchored" data-anchor-id="print-out-how-many-stac-items-match-our-search-query">Print out how many STAC Items match our search query</h3>
-<div class="cell">
-<div class="sourceCode" id="cb19"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>search.matched()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p>77</p>
+<div class="cell" data-execution_count="16">
+<div class="sourceCode" id="cb22"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>search.matched()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display" data-execution_count="16">
+<pre><code>77</code></pre>
 </div>
 </div>
 <p>We now have a search object containing the STAC Items that matched our query. Now, let’s pull out all of the STAC Items (as a PySTAC ItemCollection object) and explore the contents (i.e., the STAC Items)</p>
-<div class="cell">
-<div class="sourceCode" id="cb20"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>item_collection <span class="op">=</span> search.get_all_items()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>item_collection <span class="op">=</span> search.get_all_items()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Let’s list a few of these <code>item_collection</code>s:</p>
-<div class="cell">
-<div class="sourceCode" id="cb21"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(item_collection)[<span class="dv">0</span>:<span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p>[<item id="HLS.L30.T14TKL.2021124T173013.v1.5">, <item id="HLS.L30.T13TGF.2021124T173013.v1.5">, <item id="HLS.S30.T14TKL.2021125T172901.v1.5">, <item id="HLS.S30.T13TGF.2021125T172901.v1.5">, <item id="HLS.S30.T14TKL.2021128T173901.v1.5">]</item></item></item></item></item></p>
+<div class="cell" data-execution_count="18">
+<div class="sourceCode" id="cb25"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(item_collection)[<span class="dv">0</span>:<span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display" data-execution_count="18">
+<pre><code>[&lt;Item id=HLS.L30.T14TKL.2021124T173013.v1.5&gt;,
+ &lt;Item id=HLS.L30.T13TGF.2021124T173013.v1.5&gt;,
+ &lt;Item id=HLS.S30.T14TKL.2021125T172901.v1.5&gt;,
+ &lt;Item id=HLS.S30.T13TGF.2021125T172901.v1.5&gt;,
+ &lt;Item id=HLS.S30.T14TKL.2021128T173901.v1.5&gt;]</code></pre>
 </div>
 </div>
 </section>
 <section id="print-an-item-as-a-dictionary" class="level3">
 <h3 class="anchored" data-anchor-id="print-an-item-as-a-dictionary">Print an item as a dictionary</h3>
 <p>We can view a single item as a dictionary, as we did above with <code>products</code>.</p>
-<div class="cell">
-<div class="sourceCode" id="cb22"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>item_collection[<span class="dv">0</span>].to_dict()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p>{‘type’: ‘Feature’, ‘stac_version’: ‘1.0.0’, ‘id’: ‘HLS.L30.T14TKL.2021124T173013.v1.5’, ‘properties’: {‘datetime’: ‘2021-05-04T17:30:13.428000Z’, ‘start_datetime’: ‘2021-05-04T17:30:13.428Z’, ‘end_datetime’: ‘2021-05-04T17:30:37.319Z’, ‘eo:cloud_cover’: 35}, ‘geometry’: {‘type’: ‘Polygon’, ‘coordinates’: [[[-102.5408226, 40.5084628], [-101.5339397, 40.5349543], [-101.2721766, 41.3037739], [-101.2800519, 41.5292355], [-102.5941245, 41.4956464], [-102.5408226, 40.5084628]]]}, ‘links’: [{‘rel’: ‘self’, ‘href’: ‘https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/HLSL30.v1.5/items/HLS.L30.T14TKL.2021124T173013.v1.5’}, {‘rel’: ‘parent’, ‘href’: ‘https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/HLSL30.v1.5’}, {‘rel’: ‘collection’, ‘href’: ‘https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/HLSL30.v1.5’}, {‘rel’: &lt;RelType.ROOT: ‘root’&gt;, ‘href’: ‘https://cmr.earthdata.nasa.gov/stac/LPCLOUD/’, ‘type’: &lt;MediaType.JSON: ‘application/json’&gt;}, {‘rel’: ‘provider’, ‘href’: ‘https://cmr.earthdata.nasa.gov/stac/LPCLOUD’}, {‘rel’: ‘via’, ‘href’: ‘https://cmr.earthdata.nasa.gov/search/concepts/G2047834723-LPCLOUD.json’}, {‘rel’: ‘via’, ‘href’: ‘https://cmr.earthdata.nasa.gov/search/concepts/G2047834723-LPCLOUD.umm_json’}], ‘assets’: {‘Fmask’: {‘href’: ‘https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T14TKL.2021124T173013.v1.5.Fmask.tif’, ‘title’: ‘Download HLS.L30.T14TKL.2021124T173013.v1.5.Fmask.tif’}, ‘B10’: {‘href’: ‘https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T14TKL.2021124T173013.v1.5.B10.tif’, ‘title’: ‘Download HLS.L30.T14TKL.2021124T173013.v1.5.B10.tif’}, ‘B03’: {‘href’: ‘https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T14TKL.2021124T173013.v1.5.B03.tif’, ‘title’: ‘Download HLS.L30.T14TKL.2021124T173013.v1.5.B03.tif’}, ‘B01’: {‘href’: ‘https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T14TKL.2021124T173013.v1.5.B01.tif’, ‘title’: ‘Download HLS.L30.T14TKL.2021124T173013.v1.5.B01.tif’}, ‘B09’: {‘href’: ‘https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T14TKL.2021124T173013.v1.5.B09.tif’, ‘title’: ‘Download HLS.L30.T14TKL.2021124T173013.v1.5.B09.tif’}, ‘SZA’: {‘href’: ‘https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T14TKL.2021124T173013.v1.5.SZA.tif’, ‘title’: ‘Download HLS.L30.T14TKL.2021124T173013.v1.5.SZA.tif’}, ‘B07’: {‘href’: ‘https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T14TKL.2021124T173013.v1.5.B07.tif’, ‘title’: ‘Download HLS.L30.T14TKL.2021124T173013.v1.5.B07.tif’}, ‘B04’: {‘href’: ‘https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T14TKL.2021124T173013.v1.5.B04.tif’, ‘title’: ‘Download HLS.L30.T14TKL.2021124T173013.v1.5.B04.tif’}, ‘VZA’: {‘href’: ‘https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T14TKL.2021124T173013.v1.5.VZA.tif’, ‘title’: ‘Download HLS.L30.T14TKL.2021124T173013.v1.5.VZA.tif’}, ‘B02’: {‘href’: ‘https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T14TKL.2021124T173013.v1.5.B02.tif’, ‘title’: ‘Download HLS.L30.T14TKL.2021124T173013.v1.5.B02.tif’}, ‘VAA’: {‘href’: ‘https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T14TKL.2021124T173013.v1.5.VAA.tif’, ‘title’: ‘Download HLS.L30.T14TKL.2021124T173013.v1.5.VAA.tif’}, ‘SAA’: {‘href’: ‘https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T14TKL.2021124T173013.v1.5.SAA.tif’, ‘title’: ‘Download HLS.L30.T14TKL.2021124T173013.v1.5.SAA.tif’}, ‘B06’: {‘href’: ‘https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T14TKL.2021124T173013.v1.5.B06.tif’, ‘title’: ‘Download HLS.L30.T14TKL.2021124T173013.v1.5.B06.tif’}, ‘B11’: {‘href’: ‘https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T14TKL.2021124T173013.v1.5.B11.tif’, ‘title’: ‘Download HLS.L30.T14TKL.2021124T173013.v1.5.B11.tif’}, ‘B05’: {‘href’: ‘https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T14TKL.2021124T173013.v1.5.B05.tif’, ‘title’: ‘Download HLS.L30.T14TKL.2021124T173013.v1.5.B05.tif’}, ‘browse’: {‘href’: ‘https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-public/HLSL30.015/HLS.L30.T14TKL.2021124T173013.v1.5.jpg’, ‘type’: ‘image/jpeg’, ‘title’: ‘Download HLS.L30.T14TKL.2021124T173013.v1.5.jpg’}, ‘metadata’: {‘href’: ‘https://cmr.earthdata.nasa.gov/search/concepts/G2047834723-LPCLOUD.xml’, ‘type’: ‘application/xml’}}, ‘bbox’: [-102.594124, 40.508463, -101.272177, 41.529236], ‘stac_extensions’: [‘https://stac-extensions.github.io/eo/v1.0.0/schema.json’], ‘collection’: ‘HLSL30.v1.5’}</p>
+<div class="cell" data-execution_count="19">
+<div class="sourceCode" id="cb27"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>item_collection[<span class="dv">0</span>].to_dict()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display" data-execution_count="19">
+<pre><code>{'type': 'Feature',
+ 'stac_version': '1.0.0',
+ 'id': 'HLS.L30.T14TKL.2021124T173013.v1.5',
+ 'properties': {'datetime': '2021-05-04T17:30:13.428000Z',
+  'start_datetime': '2021-05-04T17:30:13.428Z',
+  'end_datetime': '2021-05-04T17:30:37.319Z',
+  'eo:cloud_cover': 35},
+ 'geometry': {'type': 'Polygon',
+  'coordinates': [[[-102.5408226, 40.5084628],
+    [-101.5339397, 40.5349543],
+    [-101.2721766, 41.3037739],
+    [-101.2800519, 41.5292355],
+    [-102.5941245, 41.4956464],
+    [-102.5408226, 40.5084628]]]},
+ 'links': [{'rel': 'self',
+   'href': 'https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/HLSL30.v1.5/items/HLS.L30.T14TKL.2021124T173013.v1.5'},
+  {'rel': 'parent',
+   'href': 'https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/HLSL30.v1.5'},
+  {'rel': 'collection',
+   'href': 'https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/HLSL30.v1.5'},
+  {'rel': &lt;RelType.ROOT: 'root'&gt;,
+   'href': 'https://cmr.earthdata.nasa.gov/stac/LPCLOUD/',
+   'type': &lt;MediaType.JSON: 'application/json'&gt;},
+  {'rel': 'provider', 'href': 'https://cmr.earthdata.nasa.gov/stac/LPCLOUD'},
+  {'rel': 'via',
+   'href': 'https://cmr.earthdata.nasa.gov/search/concepts/G2047834723-LPCLOUD.json'},
+  {'rel': 'via',
+   'href': 'https://cmr.earthdata.nasa.gov/search/concepts/G2047834723-LPCLOUD.umm_json'}],
+ 'assets': {'Fmask': {'href': 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T14TKL.2021124T173013.v1.5.Fmask.tif',
+   'title': 'Download HLS.L30.T14TKL.2021124T173013.v1.5.Fmask.tif'},
+  'B10': {'href': 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T14TKL.2021124T173013.v1.5.B10.tif',
+   'title': 'Download HLS.L30.T14TKL.2021124T173013.v1.5.B10.tif'},
+  'B03': {'href': 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T14TKL.2021124T173013.v1.5.B03.tif',
+   'title': 'Download HLS.L30.T14TKL.2021124T173013.v1.5.B03.tif'},
+  'B01': {'href': 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T14TKL.2021124T173013.v1.5.B01.tif',
+   'title': 'Download HLS.L30.T14TKL.2021124T173013.v1.5.B01.tif'},
+  'B09': {'href': 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T14TKL.2021124T173013.v1.5.B09.tif',
+   'title': 'Download HLS.L30.T14TKL.2021124T173013.v1.5.B09.tif'},
+  'SZA': {'href': 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T14TKL.2021124T173013.v1.5.SZA.tif',
+   'title': 'Download HLS.L30.T14TKL.2021124T173013.v1.5.SZA.tif'},
+  'B07': {'href': 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T14TKL.2021124T173013.v1.5.B07.tif',
+   'title': 'Download HLS.L30.T14TKL.2021124T173013.v1.5.B07.tif'},
+  'B04': {'href': 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T14TKL.2021124T173013.v1.5.B04.tif',
+   'title': 'Download HLS.L30.T14TKL.2021124T173013.v1.5.B04.tif'},
+  'VZA': {'href': 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T14TKL.2021124T173013.v1.5.VZA.tif',
+   'title': 'Download HLS.L30.T14TKL.2021124T173013.v1.5.VZA.tif'},
+  'B02': {'href': 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T14TKL.2021124T173013.v1.5.B02.tif',
+   'title': 'Download HLS.L30.T14TKL.2021124T173013.v1.5.B02.tif'},
+  'VAA': {'href': 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T14TKL.2021124T173013.v1.5.VAA.tif',
+   'title': 'Download HLS.L30.T14TKL.2021124T173013.v1.5.VAA.tif'},
+  'SAA': {'href': 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T14TKL.2021124T173013.v1.5.SAA.tif',
+   'title': 'Download HLS.L30.T14TKL.2021124T173013.v1.5.SAA.tif'},
+  'B06': {'href': 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T14TKL.2021124T173013.v1.5.B06.tif',
+   'title': 'Download HLS.L30.T14TKL.2021124T173013.v1.5.B06.tif'},
+  'B11': {'href': 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T14TKL.2021124T173013.v1.5.B11.tif',
+   'title': 'Download HLS.L30.T14TKL.2021124T173013.v1.5.B11.tif'},
+  'B05': {'href': 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T14TKL.2021124T173013.v1.5.B05.tif',
+   'title': 'Download HLS.L30.T14TKL.2021124T173013.v1.5.B05.tif'},
+  'browse': {'href': 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-public/HLSL30.015/HLS.L30.T14TKL.2021124T173013.v1.5.jpg',
+   'type': 'image/jpeg',
+   'title': 'Download HLS.L30.T14TKL.2021124T173013.v1.5.jpg'},
+  'metadata': {'href': 'https://cmr.earthdata.nasa.gov/search/concepts/G2047834723-LPCLOUD.xml',
+   'type': 'application/xml'}},
+ 'bbox': [-102.594124, 40.508463, -101.272177, 41.529236],
+ 'stac_extensions': ['https://stac-extensions.github.io/eo/v1.0.0/schema.json'],
+ 'collection': 'HLSL30.v1.5'}</code></pre>
 </div>
 </div>
 <p>TODO Aaron: identify a few things of note</p>
@@ -2263,37 +2360,40 @@ HLSS30.v2.0: HLS Sentinel-2 Multi-spectral Instrument Surface Reflectance Daily 
 <h2 class="anchored" data-anchor-id="filtering-stac-items">Filtering STAC Items</h2>
 <p>While the CMR-STAC API is a powerful search and discovery utility, it is still maturing and currently does not have the full gamut of filtering capabilities that the STAC API specification allows for. Hence, additional filtering is required if we want to filter by a property, for example cloud cover. Below we will loop through and filter the item_collection by a specified cloud cover as well as extract the band we’d need to do an Enhanced Vegetation Index (EVI) calculation for a future analysis.</p>
 <p>We’ll make a <code>cloudcover</code> variable where we will set the maximum allowable cloud cover and extract the band links for those Items that match or are less than the max cloud cover.</p>
-<div class="cell">
-<div class="sourceCode" id="cb23"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>cloudcover <span class="op">=</span> <span class="dv">25</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>cloudcover <span class="op">=</span> <span class="dv">25</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>We will also specify the STAC Assets (i.e., bands/layers) of interest for both the S30 and L30 collections (also in our <code>collections</code> variable above).</p>
 <p><em>TODO Aaron</em>. We’ll set these bands that are reasonable for EVI calculations: read more about B8A and friends here: TODO.</p>
-<div class="cell">
-<div class="sourceCode" id="cb24"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>s30_bands <span class="op">=</span> [<span class="st">'B8A'</span>, <span class="st">'B04'</span>, <span class="st">'B02'</span>, <span class="st">'Fmask'</span>]    <span class="co"># S30 bands for EVI calculation and quality filtering -&gt; NIR, RED, BLUE, Quality </span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>l30_bands <span class="op">=</span> [<span class="st">'B05'</span>, <span class="st">'B04'</span>, <span class="st">'B02'</span>, <span class="st">'Fmask'</span>]    <span class="co"># L30 bands for EVI calculation and quality filtering -&gt; NIR, RED, BLUE, Quality </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>s30_bands <span class="op">=</span> [<span class="st">'B8A'</span>, <span class="st">'B04'</span>, <span class="st">'B02'</span>, <span class="st">'Fmask'</span>]    <span class="co"># S30 bands for EVI calculation and quality filtering -&gt; NIR, RED, BLUE, Quality </span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>l30_bands <span class="op">=</span> [<span class="st">'B05'</span>, <span class="st">'B04'</span>, <span class="st">'B02'</span>, <span class="st">'Fmask'</span>]    <span class="co"># L30 bands for EVI calculation and quality filtering -&gt; NIR, RED, BLUE, Quality </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>And now to loop through and filter the <code>item_collection</code> by cloud cover and bands:</p>
-<div class="cell">
-<div class="sourceCode" id="cb25"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>evi_band_links <span class="op">=</span> []</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> item_collection:</span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> i.properties[<span class="st">'eo:cloud_cover'</span>] <span class="op">&lt;=</span> cloudcover:</span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> i.collection_id <span class="op">==</span> <span class="st">'HLSS30.v1.5'</span>:</span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>            <span class="co">#print(i.properties['eo:cloud_cover'])</span></span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>            evi_bands <span class="op">=</span> s30_bands</span>
-<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> i.collection_id <span class="op">==</span> <span class="st">'HLSL30.v1.5'</span>:</span>
-<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>            <span class="co">#print(i.properties['eo:cloud_cover'])</span></span>
-<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>            evi_bands <span class="op">=</span> l30_bands</span>
-<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> a <span class="kw">in</span> i.assets:</span>
-<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="bu">any</span>(b<span class="op">==</span>a <span class="cf">for</span> b <span class="kw">in</span> evi_bands):</span>
-<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>                evi_band_links.append(i.assets[a].href)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>evi_band_links <span class="op">=</span> []</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> item_collection:</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> i.properties[<span class="st">'eo:cloud_cover'</span>] <span class="op">&lt;=</span> cloudcover:</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> i.collection_id <span class="op">==</span> <span class="st">'HLSS30.v1.5'</span>:</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>            <span class="co">#print(i.properties['eo:cloud_cover'])</span></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>            evi_bands <span class="op">=</span> s30_bands</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> i.collection_id <span class="op">==</span> <span class="st">'HLSL30.v1.5'</span>:</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>            <span class="co">#print(i.properties['eo:cloud_cover'])</span></span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>            evi_bands <span class="op">=</span> l30_bands</span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> a <span class="kw">in</span> i.assets:</span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="bu">any</span>(b<span class="op">==</span>a <span class="cf">for</span> b <span class="kw">in</span> evi_bands):</span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>                evi_band_links.append(i.assets[a].href)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The filtering done in the previous steps produces a list of links to STAC Assets. Let’s print out the first ten links.</p>
-<div class="cell">
-<div class="sourceCode" id="cb26"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>evi_band_links[:<span class="dv">10</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p>[‘https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T14TKL.2021133T172406.v1.5.B04.tif’, ‘https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T14TKL.2021133T172406.v1.5.B02.tif’, ‘https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T14TKL.2021133T172406.v1.5.Fmask.tif’, ‘https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T14TKL.2021133T172406.v1.5.B05.tif’, ‘https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T13TGF.2021133T172406.v1.5.Fmask.tif’, ‘https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T13TGF.2021133T172406.v1.5.B02.tif’, ‘https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T13TGF.2021133T172406.v1.5.B05.tif’, ‘https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T13TGF.2021133T172406.v1.5.B04.tif’, ‘https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T14TKL.2021133T173859.v1.5.Fmask.tif’, ‘https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T14TKL.2021133T173859.v1.5.B04.tif’]</p>
+<div class="cell" data-execution_count="23">
+<div class="sourceCode" id="cb32"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>evi_band_links[:<span class="dv">10</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display" data-execution_count="23">
+<pre><code>['https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T14TKL.2021133T172406.v1.5.B04.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T14TKL.2021133T172406.v1.5.B02.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T14TKL.2021133T172406.v1.5.Fmask.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T14TKL.2021133T172406.v1.5.B05.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T13TGF.2021133T172406.v1.5.Fmask.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T13TGF.2021133T172406.v1.5.B02.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T13TGF.2021133T172406.v1.5.B05.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T13TGF.2021133T172406.v1.5.B04.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T14TKL.2021133T173859.v1.5.Fmask.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T14TKL.2021133T173859.v1.5.B04.tif']</code></pre>
 </div>
 </div>
 <p><strong>NOTICE</strong> that in the list of links that we have multiple tiles, i.e.&nbsp;<strong>T14TKL</strong> &amp; <strong>T13TGF</strong>, that intersect with our region of interest. TODO: We can notice this by HOW.</p>
@@ -2304,60 +2404,70 @@ HLSS30.v2.0: HLS Sentinel-2 Multi-spectral Instrument Surface Reflectance Daily 
 <h2 class="anchored" data-anchor-id="split-data-links-list-into-logical-groupings">Split Data Links List into Logical Groupings</h2>
 <p>TODO Aaron: a bit more description about what all these steps do :)</p>
 <p>Split by UTM tile specified in the file name (e.g., T14TKL &amp; T13TGF)</p>
-<div class="cell">
-<div class="sourceCode" id="cb27"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>tile_dicts <span class="op">=</span> defaultdict(<span class="bu">list</span>)    <span class="co"># https://stackoverflow.com/questions/26367812/appending-to-list-in-python-dictionary</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode" id="cb28"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> l <span class="kw">in</span> evi_band_links:</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>    tile <span class="op">=</span> l.split(<span class="st">'.'</span>)[<span class="op">-</span><span class="dv">6</span>]</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>    tile_dicts[tile].append(l)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>tile_dicts <span class="op">=</span> defaultdict(<span class="bu">list</span>)    <span class="co"># https://stackoverflow.com/questions/26367812/appending-to-list-in-python-dictionary</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> l <span class="kw">in</span> evi_band_links:</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>    tile <span class="op">=</span> l.split(<span class="st">'.'</span>)[<span class="op">-</span><span class="dv">6</span>]</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>    tile_dicts[tile].append(l)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <section id="print-dictionary-keys-and-values-i.e.-the-data-links" class="level3">
 <h3 class="anchored" data-anchor-id="print-dictionary-keys-and-values-i.e.-the-data-links">Print dictionary keys and values, i.e.&nbsp;the data links</h3>
-<div class="cell">
-<div class="sourceCode" id="cb29"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>tile_dicts.keys()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p>dict_keys([‘T14TKL’, ‘T13TGF’])</p>
+<div class="cell" data-execution_count="26">
+<div class="sourceCode" id="cb36"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>tile_dicts.keys()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display" data-execution_count="26">
+<pre><code>dict_keys(['T14TKL', 'T13TGF'])</code></pre>
 </div>
 </div>
-<div class="cell">
-<div class="sourceCode" id="cb30"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>tile_dicts[<span class="st">'T13TGF'</span>][:<span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p>[‘https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T13TGF.2021133T172406.v1.5.Fmask.tif’, ‘https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T13TGF.2021133T172406.v1.5.B02.tif’, ‘https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T13TGF.2021133T172406.v1.5.B05.tif’, ‘https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T13TGF.2021133T172406.v1.5.B04.tif’, ‘https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T13TGF.2021133T173859.v1.5.B02.tif’]</p>
+<div class="cell" data-execution_count="27">
+<div class="sourceCode" id="cb38"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>tile_dicts[<span class="st">'T13TGF'</span>][:<span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display" data-execution_count="27">
+<pre><code>['https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T13TGF.2021133T172406.v1.5.Fmask.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T13TGF.2021133T172406.v1.5.B02.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T13TGF.2021133T172406.v1.5.B05.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T13TGF.2021133T172406.v1.5.B04.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T13TGF.2021133T173859.v1.5.B02.tif']</code></pre>
 </div>
 </div>
 <p>Now we will create a separate list of data links for each tile</p>
-<div class="cell">
-<div class="sourceCode" id="cb31"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>tile_links_T14TKL <span class="op">=</span> tile_dicts[<span class="st">'T14TKL'</span>]</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>tile_links_T13TGF <span class="op">=</span> tile_dicts[<span class="st">'T13TGF'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>tile_links_T14TKL <span class="op">=</span> tile_dicts[<span class="st">'T14TKL'</span>]</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>tile_links_T13TGF <span class="op">=</span> tile_dicts[<span class="st">'T13TGF'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="print-bandlayer-links-for-hls-tile-t13tgf" class="level3">
 <h3 class="anchored" data-anchor-id="print-bandlayer-links-for-hls-tile-t13tgf">Print band/layer links for HLS tile T13TGF</h3>
-<div class="cell">
-<div class="sourceCode" id="cb32"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tile_links_T13TGF[:10]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tile_links_T13TGF[:10]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="split-the-links-by-band" class="level3">
 <h3 class="anchored" data-anchor-id="split-the-links-by-band">Split the links by band</h3>
-<div class="cell">
-<div class="sourceCode" id="cb33"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>bands_dicts <span class="op">=</span> defaultdict(<span class="bu">list</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode" id="cb34"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> b <span class="kw">in</span> tile_links_T13TGF:</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>    band <span class="op">=</span> b.split(<span class="st">'.'</span>)[<span class="op">-</span><span class="dv">2</span>]</span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>    bands_dicts[band].append(b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode" id="cb35"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>bands_dicts.keys()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p>dict_keys([‘Fmask’, ‘B02’, ‘B05’, ‘B04’, ‘B8A’])</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>bands_dicts <span class="op">=</span> defaultdict(<span class="bu">list</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> b <span class="kw">in</span> tile_links_T13TGF:</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>    band <span class="op">=</span> b.split(<span class="st">'.'</span>)[<span class="op">-</span><span class="dv">2</span>]</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>    bands_dicts[band].append(b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="31">
+<div class="sourceCode" id="cb44"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>bands_dicts.keys()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display" data-execution_count="31">
+<pre><code>dict_keys(['Fmask', 'B02', 'B05', 'B04', 'B8A'])</code></pre>
 </div>
 </div>
-<div class="cell">
-<div class="sourceCode" id="cb36"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>bands_dicts[<span class="st">'B04'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p>[‘https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T13TGF.2021133T172406.v1.5.B04.tif’, ‘https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T13TGF.2021133T173859.v1.5.B04.tif’, ‘https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T13TGF.2021140T173021.v1.5.B04.tif’, ‘https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T13TGF.2021140T172859.v1.5.B04.tif’, ‘https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T13TGF.2021145T172901.v1.5.B04.tif’, ‘https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T13TGF.2021156T173029.v1.5.B04.tif’, ‘https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T13TGF.2021163T173909.v1.5.B04.tif’, ‘https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T13TGF.2021165T172422.v1.5.B04.tif’, ‘https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T13TGF.2021165T172901.v1.5.B04.tif’, ‘https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T13TGF.2021185T172901.v1.5.B04.tif’, ‘https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T13TGF.2021188T173037.v1.5.B04.tif’, ‘https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T13TGF.2021190T172859.v1.5.B04.tif’, ‘https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T13TGF.2021198T173911.v1.5.B04.tif’, ‘https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T13TGF.2021200T172859.v1.5.B04.tif’, ‘https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T13TGF.2021203T173909.v1.5.B04.tif’, ‘https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T13TGF.2021204T173042.v1.5.B04.tif’, ‘https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T13TGF.2021215T172901.v1.5.B04.tif’, ‘https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T13TGF.2021220T173049.v1.5.B04.tif’, ‘https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T13TGF.2021229T172441.v1.5.B04.tif’]</p>
+<div class="cell" data-execution_count="32">
+<div class="sourceCode" id="cb46"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>bands_dicts[<span class="st">'B04'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display" data-execution_count="32">
+<pre><code>['https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T13TGF.2021133T172406.v1.5.B04.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T13TGF.2021133T173859.v1.5.B04.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T13TGF.2021140T173021.v1.5.B04.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T13TGF.2021140T172859.v1.5.B04.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T13TGF.2021145T172901.v1.5.B04.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T13TGF.2021156T173029.v1.5.B04.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T13TGF.2021163T173909.v1.5.B04.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T13TGF.2021165T172422.v1.5.B04.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T13TGF.2021165T172901.v1.5.B04.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T13TGF.2021185T172901.v1.5.B04.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T13TGF.2021188T173037.v1.5.B04.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T13TGF.2021190T172859.v1.5.B04.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T13TGF.2021198T173911.v1.5.B04.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T13TGF.2021200T172859.v1.5.B04.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T13TGF.2021203T173909.v1.5.B04.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T13TGF.2021204T173042.v1.5.B04.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T13TGF.2021215T172901.v1.5.B04.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T13TGF.2021220T173049.v1.5.B04.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T13TGF.2021229T172441.v1.5.B04.tif']</code></pre>
 </div>
 </div>
 </section>
@@ -2367,24 +2477,20 @@ HLSS30.v2.0: HLS Sentinel-2 Multi-spectral Instrument Surface Reflectance Daily 
 <p>To complete this exercise, we will save the individual link lists as separate text files with descriptive names.</p>
 <section id="write-links-from-cmr-stac-api-to-a-file" class="level3">
 <h3 class="anchored" data-anchor-id="write-links-from-cmr-stac-api-to-a-file">Write links from CMR-STAC API to a file</h3>
-<div class="cell">
-<div class="sourceCode" id="cb37"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k, v <span class="kw">in</span> bands_dicts.items():</span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>    name <span class="op">=</span> (<span class="ss">f'HTTPS_T12TGF_</span><span class="sc">{</span>k<span class="sc">}</span><span class="ss">_Links.txt'</span>)</span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(<span class="ss">f'./data/</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">'</span>, <span class="st">'w'</span>) <span class="im">as</span> f:</span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> l <span class="kw">in</span> v:</span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>            f.write(<span class="ss">f"</span><span class="sc">{</span>l<span class="sc">}</span><span class="ss">"</span> <span class="op">+</span> <span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k, v <span class="kw">in</span> bands_dicts.items():</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>    name <span class="op">=</span> (<span class="ss">f'HTTPS_T12TGF_</span><span class="sc">{</span>k<span class="sc">}</span><span class="ss">_Links.txt'</span>)</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(<span class="ss">f'./data/</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">'</span>, <span class="st">'w'</span>) <span class="im">as</span> f:</span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> l <span class="kw">in</span> v:</span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>            f.write(<span class="ss">f"</span><span class="sc">{</span>l<span class="sc">}</span><span class="ss">"</span> <span class="op">+</span> <span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="write-links-to-file-for-s3-access" class="level3">
 <h3 class="anchored" data-anchor-id="write-links-to-file-for-s3-access">Write links to file for S3 access</h3>
-<div class="cell">
-<div class="sourceCode" id="cb38"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k, v <span class="kw">in</span> bands_dicts.items():</span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>    name <span class="op">=</span> (<span class="ss">f'S3_T12TGF_</span><span class="sc">{</span>k<span class="sc">}</span><span class="ss">_Links.txt'</span>)</span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(<span class="ss">f'./data/</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">'</span>, <span class="st">'w'</span>) <span class="im">as</span> f:</span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> l <span class="kw">in</span> v:</span>
-<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>            s3l <span class="op">=</span> l.replace(<span class="st">'https://data.lpdaac.earthdatacloud.nasa.gov/'</span>, <span class="st">'s3://'</span>)</span>
-<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>            f.write(<span class="ss">f"</span><span class="sc">{</span>s3l<span class="sc">}</span><span class="ss">"</span> <span class="op">+</span> <span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k, v <span class="kw">in</span> bands_dicts.items():</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>    name <span class="op">=</span> (<span class="ss">f'S3_T12TGF_</span><span class="sc">{</span>k<span class="sc">}</span><span class="ss">_Links.txt'</span>)</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(<span class="ss">f'./data/</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">'</span>, <span class="st">'w'</span>) <span class="im">as</span> f:</span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> l <span class="kw">in</span> v:</span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>            s3l <span class="op">=</span> l.replace(<span class="st">'https://data.lpdaac.earthdatacloud.nasa.gov/'</span>, <span class="st">'s3://'</span>)</span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>            f.write(<span class="ss">f"</span><span class="sc">{</span>s3l<span class="sc">}</span><span class="ss">"</span> <span class="op">+</span> <span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="resources" class="level2">
@@ -2396,9 +2502,178 @@ HLSS30.v2.0: HLS Sentinel-2 Multi-spectral Instrument Surface Reflectance Daily 
 <li>https://pystac-client.readthedocs.io/en/latest/index.html</li>
 <li>https://pystac.readthedocs.io/en/1.0/</li>
 </ul>
-<!-- -->
+
+
 </section>
 </section>
+<script type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('div.sidebar-toc .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+    } else {
+      disableStylesheet(alternateStylesheets);
+    }
+    manageTransitions('.quarto-toc-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      return window.localStorage.getItem("quarto-color-scheme");
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = null;
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.id = "quarto-color-scheme-toggle";
+    a.classList.add('top-right');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } 
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    setTimeout(function() {
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    window.tippy(el, {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    }); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
 </main>
 <div class="page-navigation page-navigation-docked">
   <div class="nav-page nav-page-previous">
@@ -2412,11 +2687,13 @@ HLSS30.v2.0: HLS Sentinel-2 Multi-spectral Instrument Surface Reflectance Daily 
       </a>
   </div>
 </div>
-  <div class="row nav-footer">
-    <div class="nav-footer-contents">PODAAC, NSIDC DAAC and LPDAAC (2021). 2021 Cloud Hackathon</div>
-  </div>
 </div> <!-- /main column -->
 </div> <!-- /row -->
+<div class="row">
+  <div class="nav-footer">
+      <div class="nav-footer-center me-auto ms-auto">PODAAC, NSIDC DAAC and LPDAAC (2021). 2021 Cloud Hackathon</div>
+  </div>
+</div>
 </div> <!-- /container fluid -->
 
 
