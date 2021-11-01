@@ -1,6 +1,7 @@
 [
     {
         "title": "Zarr Example",
+        "type": "notebok",
         "preamble": "This notebook is from NASA's Zarr **EOSDIS** store notebook",
         "source": "https://github.com/nasa/zarr-eosdis-store",
         "url": "https://raw.githubusercontent.com/nasa/zarr-eosdis-store/main/presentation/example.ipynb",
@@ -9,10 +10,43 @@
     },
     {
         "title": "COF Zarr Access via Reformat",
+        "type": "notebok",
         "preamble": "This notebook is from NASA's PO.DAAC, Access ECCO data via Harmony and the Zarr reformatter service example",
         "source": "https://github.com/podaac/ECCO",
         "url": "https://raw.githubusercontent.com/podaac/ECCO/main/Data_Access/cloud_harmony_zarr_reformat.ipynb",
         "target": "cof-zarr-reformat.ipynb",
         "process": true
+    },
+    {
+        "title": "Conda",
+        "type": "markdown",
+        "preamble": "Instructions to install Conda",
+        "source": "https://github.com/uwhackweek/jupyterbook-template",
+        "url": "https://raw.githubusercontent.com/uwhackweek/jupyterbook-template/main/book/preliminary/conda.md",
+        "target": "conda.md",
+        "process": false
+    },
+    {
+        "title": "EDL",
+        "type": "markdown",
+        "preamble": "How to log into Earthdata login (EDL)",
+        "source": "https://github.com/uwhackweek/jupyterbook-template",
+        "url": "https://github.com/uwhackweek/jupyterbook-template/blob/main/book/preliminary/earthdata.md",
+        "target": "edl.md",
+        "process": false
+    },
+    {
+        "title": "git",
+        "type": "markdown",
+        "preamble": "Git ",
+        "source": "https://github.com/uwhackweek/jupyterbook-template",
+        "url": "https://raw.githubusercontent.com/uwhackweek/jupyterbook-template/main/book/preliminary/git.md",
+        "target": "git.md",
+        "variables": [
+            { "hackweek": "2021 Cloud Hackathon" },
+            { "jupyterhub_url": "https://openscapes.2i2c.cloud/hub"}
+        ],
+        "process": true
     }
+
 ]

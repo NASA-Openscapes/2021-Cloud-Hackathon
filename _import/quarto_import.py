@@ -40,13 +40,26 @@ def create_preamble_cell(document):
                                    f"> The original source for this document is {source_link}"])
     return cell_content
 
+def replace_variables(document, variables):
+    with open(f'{IMPORTED_PATH}/{document}', "rt") as f:
+        data = f.read()
+    for v in variables:
+        for k, v in v.items():
+            data = data.replace(f"{{{{{k}}}}}", v)
+            data = data.replace(f"{{{{ {k} }}}}", v)
+    with open(f'{IMPORTED_PATH}/{document}.tmp', 'wt') as f:
+        f.write(data)
+    os.rename(f"{IMPORTED_PATH}/{document}.tmp", f"{IMPORTED_PATH}/{document}")
+
 def process_document(document):
     local_target = document['target']
     url = document['url']
     import_remote(url, local_target)
-    if document['process'] is True:
+    if document['process'] is True and document["type"] == "notebook":
         preamble_cell =  create_preamble_cell(document)
         inject_content(preamble_cell, local_target)
+    if document['process'] is True and document["type"] == "markdown":
+        replace_variables(local_target, document["variables"])
     print(f'Processed: {local_target}')
 
 def main(assets):

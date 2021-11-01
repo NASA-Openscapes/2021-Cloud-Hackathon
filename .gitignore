@@ -8,3 +8,15 @@
 .Ruserdata
 
 /.quarto/
+
+.python-version
+
+_site/
+
+__pycache__
+.pytest_cache
+.imported/
+
+*_cache/
+.ipynb_checkpoints/
+.venv/
