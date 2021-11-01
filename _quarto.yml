@@ -35,7 +35,7 @@ site:
           - clinic/notebooks.md
       - section: tutorials/index.md
         contents: 
-          - tutorials/getting-started.md
+          - tutorials/getting-set-up.md
           - tutorials/NASA_Earthdata_Authentication.ipynb
           - tutorials/data_discovery_with_cmr.ipynb
           - tutorials/Data_Discovery__CMR-STAC_API.ipynb
