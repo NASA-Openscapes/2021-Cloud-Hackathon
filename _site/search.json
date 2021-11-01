@@ -494,35 +494,35 @@
     "href": "logistics/schedule.html#pre-hackathon-clinic-november-9",
     "title": "Schedule",
     "section": "Pre-Hackathon Clinic: November 9",
-    "text": "This Clinic is optional and we will share a recording that participants can review ahead of time.\nyes\n\n\n\nTime, PST (UTC-8)\nEvent\nLeads/Instructors\n\n\n\n\n8:00-8:05\nWelcome\nTBD\n\n\n8:05-9:00\nJupyterHub, repos, environments\nLuis Lopez, NSIDC\n\n\n9:00-9:05\nBreak\n\n\n\n9:05-10:00\nNotebooks, python, syncing\nMakhan Virdi, ASDC"
+    "text": "This Clinic is optional and we will share a recording that participants can review ahead of time.\n\n\n\nTime, PST (UTC-8)\nEvent\nLeads/Instructors\n\n\n\n\n8:00 am\nWelcome\nTBD\n\n\n8:05 am\nJupyterHub, repos, environments\nLuis Lopez, NSIDC\n\n\n9:00 am\nBreak\n\n\n\n9:05 am\nNotebooks, python, syncing\nMakhan Virdi, ASDC\n\n\n10:00 am\nClosing"
   },
   {
     "objectID": "logistics/schedule.html#hackathon-day-1-november-15",
     "href": "logistics/schedule.html#hackathon-day-1-november-15",
     "title": "Schedule",
     "section": "Hackathon Day 1: November 15",
-    "text": "Time, PST (UTC-8)\nEvent\nLeads/Instructors\n\n\n\n\n9:00 am\nWelcome\nErin Robinson, Openscapes\n\n\n9:25 am\nCloud Paradigm Overview\nCatalina Oaida, PO.DAAC\n\n\n9:45 am\nTutorial: Getting set up and connected\nLuis Lopez, NSIDC\n\n\n10:45 am\nBreak\n\n\n\n11:00 am\nTutorial: Data discovery with CMR\nAndy Barrett, NSIDC\n\n\n11:30 am\nTutorial: Data discovery with CMR-STAC API\nAaron Friesz, LP DAAC\n\n\n12:00 pm\nBreak\n\n\n\n12:15 pm\nPitchfest\nCatalina Oaida, PO.DAAC\n\n\n12:55 pm\nClosing"
+    "text": "Time, PST (UTC-8)\nEvent\nLeads/Instructors\n\n\n\n\n9:00 am\nWelcome\nErin Robinson, Openscapes\n\n\n9:25 am\nCloud Paradigm Overview\nCatalina Oaida, PO.DAAC\n\n\n9:45 am\nTutorial 0: Getting set up and connected\nLuis Lopez, NSIDC\n\n\n10:45 am\nQ&A and Break\n\n\n\n11:00 am\nTutorial 1: Data discovery with CMR\nAndy Barrett, NSIDC\n\n\n11:30 am\nTutorial 2: Data discovery with CMR-STAC API\nAaron Friesz, LP DAAC\n\n\n12:00 pm\nQ&A and Break\n\n\n\n12:15 pm\nPitchfest\nCatalina Oaida, PO.DAAC\n\n\n12:55 pm\nClosing"
   },
   {
     "objectID": "logistics/schedule.html#hackathon-day-2-november-16",
     "href": "logistics/schedule.html#hackathon-day-2-november-16",
     "title": "Schedule",
     "section": "Hackathon Day 2: November 16",
-    "text": "Time, PST (UTC-8)\nEvent\nLeads/Instructors\n\n\n\n\n8:00 am\nOptional Catch-up/help\n\n\n\n9:00 am\nWelcome\nCatalina Oaida, PO.DAAC\n\n\n9:20 am\nDemo: the power of Earthdata Cloud\nMarisol Garcia Reyes, Farallon Institute\n\n\n9:35 am\nTutorial: Xarray\nAndy Barrett, NSIDC\n\n\n10:35 am\nBreak\n\n\n\n10:50 am\nTutorial: Authentication for NASA Earthdata\nAaron Friesz, LP DAAC\n\n\n11:05 am\nTutorial: Direct S3 Access\nAaron Friesz, LP DAAC\n\n\n11:35 am\nTeam Hack Time\nAll\n\n\n12:55 pm\nClosing"
+    "text": "Time, PST (UTC-8)\nEvent\nLeads/Instructors\n\n\n\n\n8:00 am\nOptional Catch-up/help\n\n\n\n9:00 am\nWelcome\nCatalina Oaida, PO.DAAC\n\n\n9:15 am\nDemo: the power of Earthdata Cloud and Q&A\nMarisol Garcia Reyes, Farallon Institute\n\n\n9:35 am\nTutorial 3: Xarray\nAndy Barrett, NSIDC\n\n\n10:30 am\nQ&A and Break\n\n\n\n10:50 am\nTutorial 4: Authentication for NASA Earthdata\nAaron Friesz, LP DAAC\n\n\n11:05 am\nTutorial 5: Direct S3 Access\nAaron Friesz, LP DAAC\n\n\n11:35 am\nTeam Hack Time\nAll\n\n\n12:55 pm\nClosing"
   },
   {
     "objectID": "logistics/schedule.html#hackathon-day-3-november-17",
     "href": "logistics/schedule.html#hackathon-day-3-november-17",
     "title": "Schedule",
     "section": "Hackathon Day 3: November 17",
-    "text": "Time, PST (UTC-8)\nEvent\nLeads/Instructors\n\n\n\n\n8:00 am\nOptional Catch-up/help\n\n\n\n9:00 am\nWelcome\nCatalina Oaida, PO.DAAC\n\n\n9:20 am\nTutorial: Working with Altimetry along-track big data in the cloud\nJack McNelis, PO.DAAC\n\n\n9:50 am\nBreak\n\n\n\n10:05 am\nTutorial: EDC and on-prem DAAC hybrid use case\nAmy Steiker, NSIDC\n\n\n10:45 am\nBreak\n\n\n\n11:00 am\nTeam Hack Time\nAll\n\n\n12:55 pm\nClosing"
+    "text": "Time, PST (UTC-8)\nEvent\nLeads/Instructors\n\n\n\n\n8:00 am\nOptional Catch-up/help\n\n\n\n9:00 am\nWelcome\nCatalina Oaida, PO.DAAC\n\n\n9:15 am\nTutorial 6: TBD\nJack McNelis, PO.DAAC\n\n\n9:45 am\nQ&A and Break\n\n\n\n10:00 am\nTutorial 7: EDC and on-prem DAAC hybrid use case\nAmy Steiker, NSIDC\n\n\n10:40 am\nQ&A and Break\n\n\n\n11:00 am\nTeam Hack Time\nAll\n\n\n12:55 pm\nClosing"
   },
   {
     "objectID": "logistics/schedule.html#hackathon-day-4-november-18",
     "href": "logistics/schedule.html#hackathon-day-4-november-18",
     "title": "Schedule",
     "section": "Hackathon Day 4: November 18",
-    "text": "Time, PST (UTC-8)\nEvent\nLeads/Instructors\n\n\n\n\n8:00 am\nOptional Catch-up/help\n\n\n\n9:00 am\nWelcome\nCatalina Oaida, PO.DAAC\n\n\n9:20 am\nTutorial: Subset L2 data with Harmony L2SS-py\nAmy Steiker, NSIDC\n\n\n10:05 am\nBreak\n\n\n\n10:20 am\nTutorial: Access COF data vis Zarr EOSDIS Store\nPatrick Quinn, Element84\n\n\n11:05 am\nBreak\n\n\n\n11:20 am\nTeam Hack Time\nAll\n\n\n12:55 pm\nClosing"
+    "text": "Time, PST (UTC-8)\nEvent\nLeads/Instructors\n\n\n\n\n8:00 am\nOptional Catch-up/help\n\n\n\n9:00 am\nWelcome\nCatalina Oaida, PO.DAAC\n\n\n9:15 am\nTutorial 8: Subset L2 data with Harmony L2SS-py\nAmy Steiker, NSIDC\n\n\n10:00 am\nQ&A and Break\n\n\n\n10:15 am\nTutorial 9: Access COF data vis Zarr EOSDIS Store\nPatrick Quinn, Element84\n\n\n11:00 am\nQ&A and Break\n\n\n\n11:20 am\nTeam Hack Time\nAll\n\n\n12:55 pm\nClosing"
   },
   {
     "objectID": "logistics/schedule.html#hackathon-day-5-november-19",
