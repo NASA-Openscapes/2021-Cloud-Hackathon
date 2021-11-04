@@ -42,6 +42,7 @@ site:
           - tutorials/NASA_Earthdata_Authentication.ipynb ## tutorial 4
           - tutorials/Data_Access__Direct_S3_Access.ipynb ## tutorial 5
           - tutorials/Data_Access__Direct_S3_Access__PODAAC_ECCO_SSH.ipynb
+          - tutorials/Data_Access__Harmonize-cloud-non-cloud.ipynb ## tutorial 7
           - tutorials/Data_Access__Harmony_Subsetting.ipynb ## tutorial 8
       - section: projects/index.md
         contents:
