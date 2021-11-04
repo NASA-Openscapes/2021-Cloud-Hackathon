@@ -35,19 +35,23 @@ site:
           - clinic/notebooks.md
       - section: tutorials/index.md
         contents: 
-          - tutorials/getting-set-up.md
-          - tutorials/NASA_Earthdata_Authentication.ipynb
-          - tutorials/Data_discovery_with_cmr.ipynb
-          - tutorials/Data_Discovery__CMR-STAC_API.ipynb
-          - tutorials/Data_Access__Direct_S3_Access.ipynb
-          - tutorials/Data_Access__Direct_S3_Access_gdalvrt.ipynb
-          - tutorials/Introduction_to_xarray.ipynb
-          - tutorials/Data_Access__Harmony_Subsetting.ipynb 
+          - tutorials/getting-set-up.md  ## tutorial 0
+          - tutorials/Data_discovery_with_cmr.ipynb ## tutorial 1
+          - tutorials/Data_Discovery__CMR-STAC_API.ipynb ## tutorial 2
+          - tutorials/Introduction_to_xarray.ipynb ## tutorial 3
+          - tutorials/NASA_Earthdata_Authentication.ipynb ## tutorial 4
+          - tutorials/Data_Access__Direct_S3_Access.ipynb ## tutorial 5
+          - tutorials/Data_Access__Direct_S3_Access__PODAAC_ECCO_SSH.ipynb
+          - tutorials/Data_Access__Harmony_Subsetting.ipynb ## tutorial 8
       - section: projects/index.md
         contents:
           - projects/hacking.md
           - projects/hackathon-projects.md
-
+      - section: "Additional Resources"
+        contents:
+          - tutorials/Additional_Resources__Direct_S3_Access__gdalvrt.ipynb
+          - tutorials/Additional_Resources__Direct_S3_Access__rioxarray_clipping.ipynb
+          
   footer: "PODAAC, NSIDC DAAC and LPDAAC (2021). 2021 Cloud Hackathon"
 
 filters:
