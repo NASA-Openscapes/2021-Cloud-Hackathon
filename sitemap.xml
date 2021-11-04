@@ -2,98 +2,102 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://nasa-openscapes.github.io/2021-Cloud-Hackathon/clinic/index.html</loc>
-    <lastmod>2021-11-03T21:44:58.740Z</lastmod>
+    <lastmod>2021-11-04T15:00:36.890Z</lastmod>
   </url>
   <url>
     <loc>https://nasa-openscapes.github.io/2021-Cloud-Hackathon/clinic/jupyterhub.html</loc>
-    <lastmod>2021-11-03T21:44:59.684Z</lastmod>
+    <lastmod>2021-11-04T15:00:39.870Z</lastmod>
   </url>
   <url>
     <loc>https://nasa-openscapes.github.io/2021-Cloud-Hackathon/clinic/notebooks.html</loc>
-    <lastmod>2021-11-03T21:44:59.924Z</lastmod>
+    <lastmod>2021-11-04T15:00:40.122Z</lastmod>
   </url>
   <url>
     <loc>https://nasa-openscapes.github.io/2021-Cloud-Hackathon/logistics/another-thing.html</loc>
-    <lastmod>2021-11-03T21:45:00.144Z</lastmod>
+    <lastmod>2021-11-04T15:00:40.354Z</lastmod>
   </url>
   <url>
     <loc>https://nasa-openscapes.github.io/2021-Cloud-Hackathon/logistics/index.html</loc>
-    <lastmod>2021-11-03T21:45:00.388Z</lastmod>
+    <lastmod>2021-11-04T15:00:40.578Z</lastmod>
   </url>
   <url>
     <loc>https://nasa-openscapes.github.io/2021-Cloud-Hackathon/logistics/prerequisites.html</loc>
-    <lastmod>2021-11-03T21:45:00.632Z</lastmod>
+    <lastmod>2021-11-04T15:00:40.814Z</lastmod>
   </url>
   <url>
     <loc>https://nasa-openscapes.github.io/2021-Cloud-Hackathon/logistics/schedule.html</loc>
-    <lastmod>2021-11-03T21:45:00.956Z</lastmod>
+    <lastmod>2021-11-04T15:00:41.114Z</lastmod>
   </url>
   <url>
     <loc>https://nasa-openscapes.github.io/2021-Cloud-Hackathon/logistics/getting-help.html</loc>
-    <lastmod>2021-11-03T21:45:01.180Z</lastmod>
+    <lastmod>2021-11-04T15:00:41.326Z</lastmod>
   </url>
   <url>
     <loc>https://nasa-openscapes.github.io/2021-Cloud-Hackathon/index.html</loc>
-    <lastmod>2021-11-03T21:45:01.552Z</lastmod>
+    <lastmod>2021-11-04T15:00:41.686Z</lastmod>
   </url>
   <url>
     <loc>https://nasa-openscapes.github.io/2021-Cloud-Hackathon/tutorials/Additional_Resources__Direct_S3_Access__gdalvrt.html</loc>
-    <lastmod>2021-11-03T21:45:04.352Z</lastmod>
+    <lastmod>2021-11-04T15:00:44.450Z</lastmod>
   </url>
   <url>
     <loc>https://nasa-openscapes.github.io/2021-Cloud-Hackathon/tutorials/index.html</loc>
-    <lastmod>2021-11-03T21:45:04.584Z</lastmod>
+    <lastmod>2021-11-04T15:00:44.678Z</lastmod>
   </url>
   <url>
     <loc>https://nasa-openscapes.github.io/2021-Cloud-Hackathon/tutorials/Data_discovery_with_cmr.html</loc>
-    <lastmod>2021-11-03T21:45:05.044Z</lastmod>
+    <lastmod>2021-11-04T15:00:45.122Z</lastmod>
   </url>
   <url>
     <loc>https://nasa-openscapes.github.io/2021-Cloud-Hackathon/tutorials/Data_Access__Direct_S3_Access__PODAAC_ECCO_SSH.html</loc>
-    <lastmod>2021-11-03T21:45:06.016Z</lastmod>
+    <lastmod>2021-11-04T15:00:46.066Z</lastmod>
   </url>
   <url>
     <loc>https://nasa-openscapes.github.io/2021-Cloud-Hackathon/tutorials/NASA_Earthdata_Authentication.html</loc>
-    <lastmod>2021-11-03T21:45:06.416Z</lastmod>
+    <lastmod>2021-11-04T15:00:46.470Z</lastmod>
   </url>
   <url>
     <loc>https://nasa-openscapes.github.io/2021-Cloud-Hackathon/tutorials/Data_Discovery__CMR-STAC_API.html</loc>
-    <lastmod>2021-11-03T21:45:07.968Z</lastmod>
+    <lastmod>2021-11-04T15:00:48.006Z</lastmod>
   </url>
   <url>
     <loc>https://nasa-openscapes.github.io/2021-Cloud-Hackathon/tutorials/Additional_Resources__Direct_S3_Access__rioxarray_clipping.html</loc>
-    <lastmod>2021-11-03T21:45:10.808Z</lastmod>
+    <lastmod>2021-11-04T15:00:50.818Z</lastmod>
   </url>
   <url>
     <loc>https://nasa-openscapes.github.io/2021-Cloud-Hackathon/tutorials/Introduction_to_xarray.html</loc>
-    <lastmod>2021-11-03T21:45:11.568Z</lastmod>
+    <lastmod>2021-11-04T15:00:51.602Z</lastmod>
   </url>
   <url>
     <loc>https://nasa-openscapes.github.io/2021-Cloud-Hackathon/tutorials/getting-set-up.html</loc>
-    <lastmod>2021-11-03T21:45:11.800Z</lastmod>
+    <lastmod>2021-11-04T15:00:51.834Z</lastmod>
   </url>
   <url>
     <loc>https://nasa-openscapes.github.io/2021-Cloud-Hackathon/tutorials/Data_Access__Direct_S3_Access.html</loc>
-    <lastmod>2021-11-03T21:45:14.500Z</lastmod>
+    <lastmod>2021-11-04T15:00:54.510Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nasa-openscapes.github.io/2021-Cloud-Hackathon/tutorials/Data_Access__Harmony_Subsetting.html</loc>
+    <lastmod>2021-11-04T15:00:54.978Z</lastmod>
   </url>
   <url>
     <loc>https://nasa-openscapes.github.io/2021-Cloud-Hackathon/projects/hackathon-projects.html</loc>
-    <lastmod>2021-11-03T21:45:14.724Z</lastmod>
+    <lastmod>2021-11-04T15:00:55.182Z</lastmod>
   </url>
   <url>
     <loc>https://nasa-openscapes.github.io/2021-Cloud-Hackathon/projects/index.html</loc>
-    <lastmod>2021-11-03T21:45:14.928Z</lastmod>
+    <lastmod>2021-11-04T15:00:55.398Z</lastmod>
   </url>
   <url>
     <loc>https://nasa-openscapes.github.io/2021-Cloud-Hackathon/projects/hacking.html</loc>
-    <lastmod>2021-11-03T21:45:15.140Z</lastmod>
+    <lastmod>2021-11-04T15:00:55.602Z</lastmod>
   </url>
   <url>
     <loc>https://nasa-openscapes.github.io/2021-Cloud-Hackathon/external/zarr-eosdis-store.html</loc>
-    <lastmod>2021-11-03T21:45:15.400Z</lastmod>
+    <lastmod>2021-11-04T15:00:55.886Z</lastmod>
   </url>
   <url>
     <loc>https://nasa-openscapes.github.io/2021-Cloud-Hackathon/external/cof-zarr-reformat.html</loc>
-    <lastmod>2021-11-03T21:45:15.764Z</lastmod>
+    <lastmod>2021-11-04T15:00:56.298Z</lastmod>
   </url>
 </urlset>
