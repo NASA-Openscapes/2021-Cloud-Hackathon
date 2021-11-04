@@ -42,6 +42,7 @@ site:
           - tutorials/Data_Access__Direct_S3_Access.ipynb
           - tutorials/Data_Access__Direct_S3_Access_gdalvrt.ipynb
           - tutorials/Introduction_to_xarray.ipynb
+          - tutorials/Data_Access__Harmony_Subsetting.ipynb 
       - section: projects/index.md
         contents:
           - projects/hacking.md
