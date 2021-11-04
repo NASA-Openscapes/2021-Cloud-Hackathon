@@ -165,7 +165,7 @@
     "href": "logistics/schedule.html#hackathon-day-2-november-16",
     "title": "Schedule",
     "section": "Hackathon Day 2: November 16",
-    "text": "Time, PST (UTC-8)\nEvent\nLeads/Instructors\n\n\n\n\n8:00 am\nOptional Catch-up/help\n\n\n\n9:00 am\nWelcome\nCatalina Oaida, PO.DAAC\n\n\n9:15 am\nDemo: the power of Earthdata Cloud and Q&A\nMarisol Garcia Reyes, Farallon Institute\n\n\n9:35 am\nTutorial 3: Xarray\nAndy Barrett, NSIDC\n\n\n10:30 am\nQ&A and Break\n\n\n\n10:50 am\nTutorial 4: Authentication for NASA Earthdata\nAaron Friesz, LP DAAC\n\n\n11:05 am\nTutorial 5: Direct S3 Access\nAaron Friesz, LP DAAC\n\n\n11:35 am\nTeam Hack Time\nAll\n\n\n12:55 pm\nClosing"
+    "text": "Time, PST (UTC-8)\nEvent\nLeads/Instructors\n\n\n\n\n8:00 am\nOptional Catch-up/help\n\n\n\n9:00 am\nWelcome\nCatalina Oaida, PO.DAAC\n\n\n9:15 am\nDemo: the power of Earthdata Cloud and Q&A\nMarisol Garcia Reyes, Farallon Institute\n\n\n9:35 am\nTutorial 3: Introduction to Xarray\nAndy Barrett, NSIDC\n\n\n10:30 am\nQ&A and Break\n\n\n\n10:50 am\nTutorial 4: Authentication for NASA Earthdata\nAaron Friesz, LP DAAC\n\n\n11:05 am\nTutorial 5: Direct S3 Access\nAaron Friesz, LP DAAC\n\n\n11:35 am\nTeam Hack Time\nAll\n\n\n12:55 pm\nClosing"
   },
   {
     "objectID": "logistics/schedule.html#hackathon-day-3-november-17",
@@ -179,7 +179,7 @@
     "href": "logistics/schedule.html#hackathon-day-4-november-18",
     "title": "Schedule",
     "section": "Hackathon Day 4: November 18",
-    "text": "Time, PST (UTC-8)\nEvent\nLeads/Instructors\n\n\n\n\n8:00 am\nOptional Catch-up/help\n\n\n\n9:00 am\nWelcome\nCatalina Oaida, PO.DAAC\n\n\n9:15 am\nTutorial 8: Subset L2 data with Harmony L2SS-py\nAmy Steiker, NSIDC\n\n\n10:00 am\nQ&A and Break\n\n\n\n10:15 am\nTutorial 9: Access COF data vis Zarr EOSDIS Store\nPatrick Quinn, Element84\n\n\n11:00 am\nQ&A and Break\n\n\n\n11:20 am\nTeam Hack Time\nAll\n\n\n12:55 pm\nClosing"
+    "text": "Time, PST (UTC-8)\nEvent\nLeads/Instructors\n\n\n\n\n8:00 am\nOptional Catch-up/help\n\n\n\n9:00 am\nWelcome\nCatalina Oaida, PO.DAAC\n\n\n9:15 am\nTutorial 8: Data Subsetting and Transformation Services in the Cloud\nAmy Steiker, NSIDC\n\n\n10:00 am\nQ&A and Break\n\n\n\n10:15 am\nTutorial 9: Access COF data vis Zarr EOSDIS Store\nPatrick Quinn, Element84\n\n\n11:00 am\nQ&A and Break\n\n\n\n11:20 am\nTeam Hack Time\nAll\n\n\n12:55 pm\nClosing"
   },
   {
     "objectID": "logistics/schedule.html#hackathon-day-5-november-19",
