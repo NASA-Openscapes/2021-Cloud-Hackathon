@@ -83,9 +83,18 @@ In the two to three weeks leading up to the hackathon, participants are encourag
 
 This event is motivated by the dawn of the era of Big Data. NASA’s Earth Observing System Data and Information System (EOSDIS) is in the process of moving EOSDIS data to the cloud, driven by a rapid rate of data ingest into the EOSDIS archive. NASA remote sensing data from both upcoming (e.g. SWOT) and existing (e.g. Terra, Aqua, ICESat-2) missions will be available in the Earthdata Cloud platform in the coming years. The paradigm shift from on-premise (local) to cloud-based data distribution, and that from “download and analyze” to “analysis in place” present opportunities and challenges. Guiding users through this transition is of the utmost importance.
 
-Cloud Hackathon: Transitioning Earthdata Workflows to the Cloud is co-hosted by NASA's PO.DAAC, NSIDC DAAC, LP.DAAC, with support from ASDC DAAC, GES DISC and the NASA Openscapes Project, and cloud computing infrastructure by 2i2c. <br>
-![Screen Shot 2021-09-15 at 5 22 15 PM](https://user-images.githubusercontent.com/2915555/133525653-2a2278b1-1015-4350-b2a5-160d125aaaf7.png) <br>
-
 ## Code of Conduct 
 
 The 2021 Cloud Hackathon is a safe learning space and all participants are required to abide by our [Code of Conduct](https://openscapes.org/code-of-conduct).
+
+## Acknowledgements
+
+Cloud Hackathon: Transitioning Earthdata Workflows to the Cloud is co-hosted by NASA's PO.DAAC, NSIDC DAAC, LP.DAAC, with support from ASDC DAAC, GES DISC and the NASA Openscapes Project, and cloud computing infrastructure by 2i2c. <br>
+![Screen Shot 2021-09-15 at 5 22 15 PM](https://user-images.githubusercontent.com/2915555/133525653-2a2278b1-1015-4350-b2a5-160d125aaaf7.png) <br>
+
+Other resources that have helped inform our hackathon: 
+
+eScience Institute, University of Washington: 
+- https://uwhackweek.github.io/hackweeks-as-a-service/intro.html
+- https://snowex-hackweek.github.io/website/intro.html
+- https://icesat-2hackweek.github.io/learning-resources/
