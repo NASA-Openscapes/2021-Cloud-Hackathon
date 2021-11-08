@@ -1,80 +1,117 @@
 ---
-title: JupyterHub, repos, environments
+title: NASA Openscapes Cloud Environment
 ---
+
+![](./img/openscapes-2i2c-logo.png)
 
 ## Welcome!
 
-Thanks for being here. 
+Thanks for being here
 
-Who instructors & helpers are, how to ask for help. 
+Who instructors & helpers are, how to ask for help
 
 Code of Conduct reminder
 
 Summary of what we'll do
 
-## Log into 2i2c
+ * What's a cloud environment and why we are using it.
+ * Learn about the Jupyter ecosystem and our cloud infrastructure.
+ * Start/Stop our Openscapes server and get familiar with Jupyterlab and installed programs
+ * How to update our environments
+ * NASA Earthdata Login and security in the cloud.
 
-Go to <https://openscapes.2i2c.cloud/hub/>. You will be asked to log in with your GitHub Account. 
 
-This will take several minutes. While we wait, we'll get set up with GitHub and a brief overview. 
+## Why are we using a cloud environment?
 
-## GitHub overview
+"Anyone working with large-scale Earth System data today faces the same general problems:
 
-TODO Julie - images and narration: 
+ * The data we want to work with are huge (typical analyses involve several TB at least)
+ * The data we need are produced and distributed by many different organizations (NASA, NOAA, ESGF, Copernicus, etc.)
+ * We want to apply a wide range of different analysis methodologies to the data, from simple statistics to signal processing to machine learning.
 
-- main unit: a repo
-- remote and local
-- commits, push, pull
-- fork
-- [github credentials](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)
+The community is waking up to the idea that we can’t simply expect scientists to download all this data to their personal computers for processing."
 
-### Fork and Clone
+*Ryan Abernathey, Pangeo Project.*
 
-Go to <https://github.com/NASA-Openscapes/2021-Cloud-Clinic>
-
-Click Fork. This will make a copy of this repo in your GitHub account.
-
-## Jupyter Hub Overview
-
-Now an intro to 2i2c, a which is a Jupyter Hub. 
-
-TODO: insert images
-
-Orient to 2i2c
-
-Hardware resources: computing and storage in the cloud.
-
-AWS: what APIs do I need to know? S3, EC2
-
-Security: use tokens, temporary credentials, env variables.
-
-### Open the terminal
-
-The command line, also called the Shell or Terminal, is available in 2i2c. 
-
-Open a terminal in 2i2c: File > New... > Terminal. Note that you can toggle between "Simple" display mode in the bottom left. 
-
-## Clone repo to 2i2c
-
-We will clone our repo into 2i2c so that we can run it in the Cloud. We do this from the Terminal.
-
-Make sure you clone from your forked repo. For example, my url has my username "betolink", not "NASA-Openscapes".
-
-`git clone https://github.com/betolink/2021-Cloud-Clinic`
-
-## Python environments
-
-TODO overview discussion
-
-Walk through `environment.yml` file from <https://github.com/NASA-Openscapes/2021-Cloud-Clinic>
-
-## Jupyter notebook
-
-Talk through the example from <https://github.com/NASA-Openscapes/2021-Cloud-Clinic>
-
-Import the library you defined in the environment. (If you don’t have the library defined in the environment and try to import it, it will give you an error (unless it’s part of core Python))
+![Download-based workflow. From Abernathey, Ryan (2020): Data Access Modes in Science](https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/22017009/preview.jpg)
 
 
 
 
+## Openscapes Hub and Cloud Infrastructure
 
+*There is no cloud, it's someone else's computer*
+
+Go to <https://openscapes.2i2c.cloud/hub/>. You will be asked to log in with your GitHub Account
+
+![Openscapes JupyterHub Login](./img/openscapes-hub.png)
+
+Once we are logged with our Github account we need to select our server type. 
+There are different hardware configurations for each profile, for the duration of the Hackweek we'll use small instances, the option at the top.
+
+![Machine Profiles](./img/servers.png)
+
+After we select our server type and click on start, Jupyterhub will allocate our instance using Amazon Web Services (AWS). This may take several minutes. While we wait, we'll get set up with GitHub and a brief overview. 
+
+![Jupyterhub Spawning](./img/spawning.png)
+
+
+## Jupyter Ecosystem
+
+![](https://foundations.projectpythia.org/_images/remote-execution-model.gif)
+
+Source: Project Pythia
+
+## Python/Conda environments
+
+```yaml
+name: nsidc
+channels:
+  - conda-forge
+dependencies:
+  - ipykernel
+  - awscli~=1.21.4
+  - requests
+  - pip
+```
+
+### How do I get my code in and out of the Openscapes hub?
+
+When you start your own server you will have access to your own virtual drive space. No other users will be able to see or access your data files. You can easily upload files to your virtual drive space and save files from the hub back to another location, such as GitHub or your own local laptop drive.
+
+Here we'll show you how to pull (copy) some files from GitHub into your virtual drive space using git. This will be a common task during the hackweek: at the start of each tutorial we'll ask you to "fork" (create your own copy of in your GitHub account) and "clone" (make a copy of in a computing environment, such as your local computer or Openscapes instance) the GitHub repository corresponding to the specific tutorial being taught into your Openscapes drive space.
+
+
+![terminal-button](https://github.com/uwhackweek/jupyterbook-template/raw/main/book/img/terminal-button.png)
+
+This will open a new terminal tab in your JupyterLab interface:
+
+![terminal-tab](https://github.com/uwhackweek/jupyterbook-template/raw/main/book/img/terminal.png)
+
+Now you can issue any Linux commands to manage your local file system.
+
+You may also upload files from your local system using the upload button (up-pointing arrow) on the top left of the JupyterHub navigation panel. Similarly, you may download files to your local system by right-clicking the file and selecting download (down-pointing arrow).
+
+Simple, example GitHub/git/local-workspace workflows for getting a tutorial started in your Openscapes instance and working on a group project are provided. The [getting started on a tutorial](https://icesat-2hackweek.github.io/learning-resources/tutorials/getting_started) workflow briefly reviews much of the information in this preliminary exercise along with steps for making and saving notes or other changes as you work through the tutorial and keeping it updated with the original, master copy. The [basic git workflow for a project](https://icesat-2hackweek.github.io/learning-resources/projects/example_workflow) serves as a reminder of the git workflow for working on a group project while minimizing code conflicts that could result from multiple people making changes to the same files simultaneously.
+<br>
+
+## How do I end my Openscapes session? Will I lose all of my work?
+
+When you are finished working for the day it is important to explicitly log out of your Openscapes session. The reason for this is it will save us a bit of money! When you keep a session active it uses up AWS resources and keeps a series of virtual machines deployed.
+
+Stopping the server happens automatically when you log out, so navigate to "File -> Log Out" and just click "Log Out"!
+
+![hub-control-panel-button](https://github.com/uwhackweek/jupyterbook-template/raw/main/book/img/hub-logout-button.png)
+
+!!! warning "logging out"
+    Logging out will **NOT** cause any of your work to be lost or deleted. It simply shuts down some resources. It would be equivalent to turning off your desktop computer at the end of the day.
+
+
+References:
+
+ * [Project Pythia](https://foundations.projectpythia.org)
+ * [Why Jupyter is data scientists’ computational notebook of choice](https://www.nature.com/articles/d41586-018-07196-1)
+ * [Closed Platforms vs. Open Architectures for Cloud-Native Earth System Analytics](https://medium.com/pangeo/closed-platforms-vs-open-architectures-for-cloud-native-earth-system-analytics-1ad88708ebb6)
+ * [Introduction to Geospatial Concepts](https://datacarpentry.org/organization-geospatial/)
+ * [2i2c user storage](https://infrastructure.2i2c.org/en/latest/topic/storage-layer.html)
+ * [SnowEX Hackweek](https://snowex-hackweek.github.io/website/intro.html)

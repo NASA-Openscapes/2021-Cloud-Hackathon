@@ -31,7 +31,10 @@ site:
           - logistics/getting-help.md
       - section: clinic/index.md
         contents:
+          - clinic/git.md
+          - clinic/github.md
           - clinic/jupyterhub.md
+          - clinic/earthdata.md
           - clinic/notebooks.md
       - section: tutorials/index.md
         contents: 
