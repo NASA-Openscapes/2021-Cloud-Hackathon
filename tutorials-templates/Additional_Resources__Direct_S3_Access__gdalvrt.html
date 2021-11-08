@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang=""><head>
+  <meta charset="utf-8">
+  <meta name="generator" content="quarto-0.2.232">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>additional_resources__direct_s3_access__gdalvrt</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+  <script src="../site_libs/quarto-nav/headroom.min.js"></script>
+  <script src="../site_libs/clipboard/clipboard.min.js"></script>
+  <meta name="quarto:offset" content="../">
+  <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+  <script src="../site_libs/quarto-search/fuse.min.js"></script>
+  <script src="../site_libs/quarto-search/quarto-search.js"></script>
+  <script src="../site_libs/quarto-html/quarto.js"></script>
+  <script src="../site_libs/quarto-html/popper.min.js"></script>
+  <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+  <script src="../site_libs/quarto-html/anchor.min.js"></script>
+  <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+  <link class="quarto-color-scheme" href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
+  <link class="quarto-color-scheme quarto-color-alternate" rel="prefetch" href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css">
+  <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+  <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+  <link class="quarto-color-scheme" href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+  <link class="quarto-color-scheme quarto-color-alternate" rel="prefetch" href="../site_libs/bootstrap/bootstrap-dark.min.css">
+  <script id="quarto-search-options" type="application/json">{
+    "location": "sidebar",
+    "copy-button": false,
+    "collapse-after": 2,
+    "panel-placement": "start",
+    "type": "textbox",
+    "limit": 20
+  }</script>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<div id="quarto-search-results"></div>
+<header id="quarto-header" class="headroom fixed-top">
+<nav class="quarto-secondary-nav py-2 d-lg-none d-md-block " data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <div class="container-fluid d-flex justify-content-between">
+    <h1 class="quarto-secondary-nav-title mb-0 fs-3 d-inline">(Untitled)</h1>
+    <button type="button" class="quarto-btn-toggle btn d-lg-none py-0 px-1 d-inline-block border-0 ">
+      <i class="bi bi-chevron-right"></i>
+    </button>
+  </div>
+</nav>
+</header>
+ <!-- /navbar/sidebar -->
+<div class="container-fluid quarto-container d-flex flex-column page-layout-article">
+<div class="row flex-fill" id="quarto-content">
+  <div id="quarto-sidebar" class="col col-12 col-lg-3 d-lg-flex px-0 pt-0 sidebar collapse sidebar-navigation">
+    <nav class="me-lg-auto docked overflow-auto">
+  <div class="px-3 pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+    <img src="https://user-images.githubusercontent.com/2915555/133525653-2a2278b1-1015-4350-b2a5-160d125aaaf7.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">2021 Cloud Hackathon</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon" title="" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle sidebar-tool" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+  </div>
+    <div class="px-3 mt-2 flex-shrink-0 align-items-center">
+      <div class="sidebar-search">
+      <div id="quarto-search" class="mb-0 " title="Search">
+</div>
+      </div>
+    </div>
+  <div class="sidebar-menu-container"> 
+  <ul class="list-unstyled mt-1 px-3">
+      <li class="sidebar-item">
+  <a href="../index.html" class="">Welcome</a>
+</li>
+      <ul class="list-unstyled sidebar-section depth1">
+    <li class="">
+        <div class="me-auto">
+          <div class="d-inline-flex w-100 sidebar-section-item">
+            <div class="sidebar-section-link me-auto">
+            <a href="../logistics/index.html" class="">Logistics</a>
+            </div>
+            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#logistics-collapse" aria-expanded="true">
+              <div><i class="bi bi-chevron-right ms-2"></i></div>
+            </a>
+            </div>
+        </div>
+      <div class="collapse  show" id="logistics-collapse">
+        <ul class="list-unstyled sidebar-item-contents">
+          <li class="sidebar-item">
+  <a href="../logistics/schedule.html" class="">Schedule</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../logistics/prerequisites.html" class="">Prerequisites, setup, &amp; getting help</a>
+</li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+      <ul class="list-unstyled sidebar-section depth1">
+    <li class="">
+        <div class="me-auto">
+          <div class="d-inline-flex w-100 sidebar-section-item">
+            <div class="sidebar-section-link me-auto">
+            <a href="../clinic/index.html" class="">Pre-Hackathon Clinic</a>
+            </div>
+            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#pre-hackathonclinic-collapse" aria-expanded="true">
+              <div><i class="bi bi-chevron-right ms-2"></i></div>
+            </a>
+            </div>
+        </div>
+      <div class="collapse  show" id="pre-hackathonclinic-collapse">
+        <ul class="list-unstyled sidebar-item-contents">
+          <li class="sidebar-item">
+  <a href="../clinic/jupyterhub.html" class="">JupyterHub, repos, environments</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../clinic/notebooks.html" class="">Notebooks, Python, GitHub</a>
+</li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+      <ul class="list-unstyled sidebar-section depth1">
+    <li class="">
+        <div class="me-auto">
+          <div class="d-inline-flex w-100 sidebar-section-item">
+            <div class="sidebar-section-link me-auto">
+            <a href="../tutorials/index.html" class="">Tutorials</a>
+            </div>
+            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#tutorials-collapse" aria-expanded="true">
+              <div><i class="bi bi-chevron-right ms-2"></i></div>
+            </a>
+            </div>
+        </div>
+      <div class="collapse  show" id="tutorials-collapse">
+        <ul class="list-unstyled sidebar-item-contents">
+          <li class="sidebar-item">
+  <a href="../tutorials/getting-set-up.html" class="">Getting set up and connected</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../tutorials/Data_discovery_with_cmr.html" class="">Data discovery with CMR</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../tutorials/Data_Discovery__CMR-STAC_API.html" class="">Data Discovery: CMR-STAC API</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../tutorials/Introduction_to_xarray.html" class="">An Introductionto <code>xarray</code></a>
+</li>
+          <li class="sidebar-item">
+  <a href="../tutorials/NASA_Earthdata_Authentication.html" class="">Authentication for NASA Earthdata</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../tutorials/Data_Access__Direct_S3_Access.html" class="">Direct S3 Data Access</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../tutorials/Data_Access__Direct_S3_Access__PODAAC_ECCO_SSH.html" class="">Direct S3 Data Access - Rough PODAAC ECCO SSH Example</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../tutorials/Data_Access__Harmonize-cloud-non-cloud.html" class="">Harmonizing data located within and outside of the NASA Earthdata Cloud</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../tutorials/Data_Access__Harmony_Subsetting.html" class="">Data Subsetting and Transformation Services in the Cloud</a>
+</li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+      <ul class="list-unstyled sidebar-section depth1">
+    <li class="">
+        <div class="me-auto">
+          <div class="d-inline-flex w-100 sidebar-section-item">
+            <div class="sidebar-section-link me-auto">
+            <a href="../projects/index.html" class="">Projects</a>
+            </div>
+            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#projects-collapse" aria-expanded="true">
+              <div><i class="bi bi-chevron-right ms-2"></i></div>
+            </a>
+            </div>
+        </div>
+      <div class="collapse  show" id="projects-collapse">
+        <ul class="list-unstyled sidebar-item-contents">
+          <li class="sidebar-item">
+  <a href="../projects/hacking.html" class="">Hacking at the Cloud Hackathon</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../projects/hackathon-projects.html" class="">Hackathon Projects</a>
+</li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+      <ul class="list-unstyled sidebar-section depth1">
+    <li class="">
+        <div class="me-auto">
+            <a class="sidebar-section-item d-inline-flex text-start w-100 " data-bs-toggle="collapse" data-bs-target="#additionalresources-collapse" aria-expanded="true">
+              <div class="me-auto sidebar-section-item">Additional Resources</div>
+            <div><i class="bi bi-chevron-right ms-2"></i></div>
+            </a>
+        </div>
+      <div class="collapse  show" id="additionalresources-collapse">
+        <ul class="list-unstyled sidebar-item-contents">
+          <li class="sidebar-item">
+  <a href="../tutorials/Additional_Resources__Direct_S3_Access__gdalvrt.html" class="">Direct S3 Data Access with GDAL Virtual Raster Format (VRT)</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../tutorials/Additional_Resources__Direct_S3_Access__rioxarray_clipping.html" class="">Direct S3 Data Access</a>
+</li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+  </ul>
+  </div>
+</nav>
+  </div>
+  <div id="quarto-toc-sidebar" class=" pt-0 col col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-toc order-last"><nav id="TOC" role="doc-toc">
+<h2 id="toc-title">On this page</h2>
+<ul>
+<li><a href="#direct-s3-data-access-with-gdal-virtual-raster-format-vrt" class="nav-link active" data-scroll-target="#direct-s3-data-access-with-gdal-virtual-raster-format-vrt">Direct S3 Data Access with GDAL Virtual Raster Format (VRT)</a>
+<ul class="collapse">
+<li><a href="#summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+<li><a href="#exercise" class="nav-link" data-scroll-target="#exercise">Exercise</a>
+<ul class="collapse">
+<li><a href="#import-required-packages" class="nav-link" data-scroll-target="#import-required-packages">Import Required Packages</a></li>
+<li><a href="#get-temporary-credentials-and-configure-local-environment" class="nav-link" data-scroll-target="#get-temporary-credentials-and-configure-local-environment">Get Temporary Credentials and Configure Local Environment</a></li>
+<li><a href="#read-in-and-process-stac-asset-links" class="nav-link" data-scroll-target="#read-in-and-process-stac-asset-links">Read In and Process STAC Asset Links</a></li>
+<li><a href="#read-in-geojson-for-subsetting" class="nav-link" data-scroll-target="#read-in-geojson-for-subsetting">Read in geoJSON for subsetting</a></li>
+<li><a href="#direct-s3-data-access" class="nav-link" data-scroll-target="#direct-s3-data-access">Direct S3 Data Access</a></li>
+<li><a href="#reading-in-an-hls-time-series" class="nav-link" data-scroll-target="#reading-in-an-hls-time-series">Reading in an HLS time series</a></li>
+<li><a href="#read-in-the-nir-and-fmask-vrt-files" class="nav-link" data-scroll-target="#read-in-the-nir-and-fmask-vrt-files">Read in the NIR and Fmask VRT files</a></li>
+<li><a href="#create-an-xarray-dataset" class="nav-link" data-scroll-target="#create-an-xarray-dataset">Create an <code>xarray dataset</code></a></li>
+<li><a href="#apply-quality-filter" class="nav-link" data-scroll-target="#apply-quality-filter">Apply quality filter</a></li>
+</ul></li>
+<li><a href="#references" class="nav-link" data-scroll-target="#references">References</a></li>
+</ul></li>
+</ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon/edit/main/tutorials-templates/Additional_Resources__Direct_S3_Access__gdalvrt.ipynb" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon/issues/new" class="toc-action">Report an issue</a></p></div></div></nav></div>
+  <div class="col mx-auto col-sm-12 col-md-9 col-lg-7 col-xl-7 px-lg-4 pe-xxl-4 ps-xxl-0">
+<main>
+
+<section id="direct-s3-data-access-with-gdal-virtual-raster-format-vrt" class="level1">
+<h1>Direct S3 Data Access with GDAL Virtual Raster Format (VRT)</h1>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>Hello World</p>
+<hr>
+</section>
+<section id="exercise" class="level2">
+<h2 class="anchored" data-anchor-id="exercise">Exercise</h2>
+<section id="import-required-packages" class="level3">
+<h3 class="anchored" data-anchor-id="import-required-packages">Import Required Packages</h3>
+</section>
+<section id="get-temporary-credentials-and-configure-local-environment" class="level3">
+<h3 class="anchored" data-anchor-id="get-temporary-credentials-and-configure-local-environment">Get Temporary Credentials and Configure Local Environment</h3>
+<p>To perform direct S3 data access one needs to acquire temporary S3 credentials. The credentials give users direct access to S3 buckets in NASA Earthdata Cloud. <strong>AWS credentials should not be shared</strong>, so take precautions when using them in notebooks our scripts. <strong>Note,</strong> these temporary credentials are valid for only <strong>1 hour</strong>. For more information regarding the temporary credentials visit <a href="https://data.lpdaac.earthdatacloud.nasa.gov/s3credentialsREADME" class="uri">https://data.lpdaac.earthdatacloud.nasa.gov/s3credentialsREADME</a>.</p>
+<section id="insert-the-credentials-into-our-boto3-session-and-configure-out-rasterio-environment-for-data-access" class="level4">
+<h4 class="anchored" data-anchor-id="insert-the-credentials-into-our-boto3-session-and-configure-out-rasterio-environment-for-data-access">Insert the credentials into our <code>boto3</code> session and configure out <code>rasterio</code> environment for data access</h4>
+<p>Create a boto3 Session object using your temporary credentials. This Session can then be used to pass those credentials and get S3 objects from applicable buckets.</p>
+<p>For this exercise, we are going to open up a context manager for the notebook using the <code>rasterio.env</code> module to store the required GDAL and AWS configurations we need to access the data in Earthdata Cloud. While the context manager is open (<code>rio_env.__enter__()</code>) we will be able to run the open or get data commands that would typically be executed within a <code>with</code> statement, thus allowing us to more freely interact with the data. We’ll close the context (<code>rio_env.__exit__()</code>) at the end of the notebook.</p>
+<p>GDAL environment variables must be configured to access Earthdata Cloud data assets. Geospatial data access Python packages like <code>rasterio</code> and <code>rioxarray</code> depend on GDAL, leveraging GDAL’s “Virtual File Systems” to read remote files. GDAL has a lot of environment variables that control it’s behavior. Changing these settings can mean the difference being able to access a file or not. They can also have an impact on the performance.</p>
+</section>
+</section>
+<section id="read-in-and-process-stac-asset-links" class="level3">
+<h3 class="anchored" data-anchor-id="read-in-and-process-stac-asset-links">Read In and Process STAC Asset Links</h3>
+<p>In the previous section, we used the NASA CMR-STAC API to discover HLS assets the intersect with our search criteria, i.e., ROI, Date range, and collections. The search results were filtered and saved as text files by individual bands for each tile. We will read in the text files for tile <strong>T13TGF</strong> for the <strong>RED</strong> (L30: B04 &amp; S30: B04), <strong>NIR</strong> (L30: B05 &amp; S30: B8A), and <strong>Fmask</strong> bands.</p>
+<section id="list-text-files-with-hls-links" class="level4">
+<h4 class="anchored" data-anchor-id="list-text-files-with-hls-links">List text files with HLS links</h4>
+</section>
+<section id="read-in-our-asset-links-for-bo4-red" class="level4">
+<h4 class="anchored" data-anchor-id="read-in-our-asset-links-for-bo4-red">Read in our asset links for <strong>BO4</strong> (RED)</h4>
+</section>
+<section id="read-in-and-combine-our-asset-links-for-bo5-landsat-nir-and-b8a-sentinel-2-nir" class="level4">
+<h4 class="anchored" data-anchor-id="read-in-and-combine-our-asset-links-for-bo5-landsat-nir-and-b8a-sentinel-2-nir">Read in and combine our asset links for <strong>BO5</strong> (Landsat NIR) and <strong>B8A</strong> (Sentinel-2 NIR)</h4>
+<p>The near-infrared (NIR) band for Landsat is <strong>B05</strong> while the NIR band for Sentinel-2 is <strong>B8A</strong>. In the next step we will read in and combine the lists into a single NIR list.</p>
+</section>
+<section id="read-in-our-asset-links-for-fmask" class="level4">
+<h4 class="anchored" data-anchor-id="read-in-our-asset-links-for-fmask">Read in our asset links for <strong>Fmask</strong></h4>
+<p>In this example we will use the <code>gdalbuildvrt.exe</code> utility to create a time series virtual raster format (VRT) file. The utility, however, expects the links to be formated with the GDAL virtual file system (VSI) path, rather than the actual asset links. We will therefore use the VSI path to access our assets. The examples below show the VSI path substitution for S3 (<code>vsis3</code>) links.</p>
+<pre class="text"><code>/vsis3/lp-prod-protected/HLSS30.015/HLS.S30.T13TGF.2020191T172901.v1.5.B04.tif</code></pre>
+<p>See the <a href="https://gdal.org/user/virtual_file_systems.html">GDAL Virtual File Systems</a> for more information regarding GDAL VSI.</p>
+</section>
+<section id="write-out-a-new-text-file-containing-the-vsis3-path" class="level4">
+<h4 class="anchored" data-anchor-id="write-out-a-new-text-file-containing-the-vsis3-path">Write out a new text file containing the <code>vsis3</code> path</h4>
+</section>
+</section>
+<section id="read-in-geojson-for-subsetting" class="level3">
+<h3 class="anchored" data-anchor-id="read-in-geojson-for-subsetting">Read in geoJSON for subsetting</h3>
+<p>We will use the input geoJSON file to <code>clip</code> the source data to our desired region of interest.</p>
+<p>To <code>clip</code> the source data to our input feature boundary, we need to transform the feature boundary from its original WGS84 coordinate reference system to the projected reference system of the source HLS file (i.e., UTM Zone 13).</p>
+<section id="transform-geojson-feature-from-wgs84-to-utm" class="level4">
+<h4 class="anchored" data-anchor-id="transform-geojson-feature-from-wgs84-to-utm">Transform geoJSON feature from WGS84 to UTM</h4>
+</section>
+</section>
+<section id="direct-s3-data-access" class="level3">
+<h3 class="anchored" data-anchor-id="direct-s3-data-access">Direct S3 Data Access</h3>
+<section id="start-up-a-dask-client" class="level4">
+<h4 class="anchored" data-anchor-id="start-up-a-dask-client">Start up a dask client</h4>
+<p>There are multiple way to read COG data in as a time series. The <code>subprocess</code> package is used in this example to run GDAL’s build virtual raster file (<code>gdalbuildvrt</code>) executable outside our python session. First we’ll need to construct a string object with the command and it’s parameter parameters (including our temporary credentials). Then, we run the command using the <code>subprocess.call()</code> function.</p>
+</section>
+<section id="build-gdal-vrt-files" class="level4">
+<h4 class="anchored" data-anchor-id="build-gdal-vrt-files">Build GDAL VRT Files</h4>
+<section id="construct-the-gdal-vrt-call" class="level5">
+<h5 class="anchored" data-anchor-id="construct-the-gdal-vrt-call">Construct the GDAL VRT call</h5>
+<p>We now have a fully configured <code>gdalbuildvrt</code> string that we can pass to Python’s <code>subprocess</code> module to run the <code>gdalbuildvrt</code> executable outside our Python environment.</p>
+</section>
+</section>
+<section id="execute-gdalbuildvrt-to-construct-a-vrt-on-disk-from-the-s3-links" class="level4">
+<h4 class="anchored" data-anchor-id="execute-gdalbuildvrt-to-construct-a-vrt-on-disk-from-the-s3-links">Execute <code>gdalbuildvrt</code> to construct a VRT on disk from the <code>S3</code> links</h4>
+<p><code>0</code> means success! We’ll have some troubleshooting to do you get any other value. In this tutorial, the path for the output VRT file or the input file list are the first things to check.</p>
+<p>While we’re here, we’ll build the VRT files for the NIR layers and the Fmask layers.</p>
+</section>
+</section>
+<section id="reading-in-an-hls-time-series" class="level3">
+<h3 class="anchored" data-anchor-id="reading-in-an-hls-time-series">Reading in an HLS time series</h3>
+<p>We can now read the VRT files into our Python session. A drawback of reading VRTs into Python is that the <code>time</code> coordinate variable needs to be contructed. Below we not only read in the VRT file using <code>rioxarray</code>, but we also repurpose the <code>band</code> variable, which is generated automatically, to hold out time information.</p>
+<section id="read-the-red-vrt-in-as-xarray-with-dask-backing" class="level4">
+<h4 class="anchored" data-anchor-id="read-the-red-vrt-in-as-xarray-with-dask-backing">Read the RED VRT in as xarray with Dask backing</h4>
+<p>Above we use the parameter <code>chunk</code> in the <code>rioxarray.open_rasterio()</code> function to enable the Dask backing. What this allows is <em>lazy reading</em> of the data, which means the data is not actually read in into memory at this point. What we have is an object with some metadata and pointer to the source data. The data will be streamed to us when we call for it, but not stored in memory until with call the Dask <code>compute()</code> or <code>persist()</code> methods.</p>
+</section>
+<section id="print-out-the-time-coordinate" class="level4">
+<h4 class="anchored" data-anchor-id="print-out-the-time-coordinate">Print out the <code>time</code> coordinate</h4>
+</section>
+<section id="clip-out-the-roi-and-persist-the-result-in-memory" class="level4">
+<h4 class="anchored" data-anchor-id="clip-out-the-roi-and-persist-the-result-in-memory">Clip out the ROI and persist the result in memory</h4>
+<p>Up until now, we haven’t read any of the HLS data into memory. Now we will use the <code>persist()</code> method to load the data into memory.</p>
+<p>Above, we persisted the clipped results to memory using the <code>persist()</code> method. This doesn’t necessarily need to be done, but it will substantially improve the performance of the visualization of the time series below.</p>
+</section>
+<section id="plot-red_clip-with-hvplot" class="level4">
+<h4 class="anchored" data-anchor-id="plot-red_clip-with-hvplot">Plot <code>red_clip</code> with <code>hvplot</code></h4>
+</section>
+</section>
+<section id="read-in-the-nir-and-fmask-vrt-files" class="level3">
+<h3 class="anchored" data-anchor-id="read-in-the-nir-and-fmask-vrt-files">Read in the NIR and Fmask VRT files</h3>
+</section>
+<section id="create-an-xarray-dataset" class="level3">
+<h3 class="anchored" data-anchor-id="create-an-xarray-dataset">Create an <code>xarray dataset</code></h3>
+<p>We will now combine the <strong>RED</strong>, <strong>NIR</strong>, and <strong>Fmask</strong> arrays into a dataset and create/add a new NDVI variable.</p>
+<p>Above, we created a new NDVI variable. Now, we will clip and plot our results.</p>
+<section id="plot-ndvi" class="level4">
+<h4 class="anchored" data-anchor-id="plot-ndvi">Plot NDVI</h4>
+<p>You may have notices that some images for some of the time step are ‘blurrier’ than other. This is because they are contaminated in some way, be it clouds, cloud shadows, snow, ice.</p>
+</section>
+</section>
+<section id="apply-quality-filter" class="level3">
+<h3 class="anchored" data-anchor-id="apply-quality-filter">Apply quality filter</h3>
+<p>We want to keep NDVI data values where Fmask equals 0 (no clouds, no cloud shadow, no snow/ice, no water.</p>
+<section id="aggregate-by-month" class="level4">
+<h4 class="anchored" data-anchor-id="aggregate-by-month">Aggregate by month</h4>
+<p>Finally, we will use xarray’s <code>groupby</code> operation to aggregate by month.</p>
+</section>
+</section>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li>https://rasterio.readthedocs.io/en/latest/</li>
+<li>https://corteva.github.io/rioxarray/stable/index.html</li>
+<li>https://tutorial.dask.org/index.html</li>
+<li>https://examples.dask.org/applications/satellite-imagery-geotiff.html</li>
+</ul>
+<hr>
+
+
+</section>
+</section>
+<script type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('div.sidebar-toc .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+    } else {
+      disableStylesheet(alternateStylesheets);
+    }
+    manageTransitions('.quarto-toc-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      return window.localStorage.getItem("quarto-color-scheme");
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = null;
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.id = "quarto-color-scheme-toggle";
+    a.classList.add('top-right');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } 
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    setTimeout(function() {
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    window.tippy(el, {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    }); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</main>
+<div class="page-navigation page-navigation-docked">
+  <div class="nav-page nav-page-previous">
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</div>
+</div> <!-- /main column -->
+</div> <!-- /row -->
+<div class="row">
+  <div class="nav-footer">
+      <div class="nav-footer-center me-auto ms-auto">PODAAC, NSIDC DAAC and LPDAAC (2021). 2021 Cloud Hackathon</div>
+  </div>
+</div>
+</div> <!-- /container fluid -->
+
+
+</body></html>
