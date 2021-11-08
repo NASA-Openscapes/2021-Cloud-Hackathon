@@ -21,7 +21,7 @@ for (f in ipynb_files) {  ## f = ipynb_files[1]
   ## convert to .qmd in template directory
   system(sprintf("quarto convert tutorials/%s.ipynb --output tutorials-templates/%s.qmd", f2, f2))
   
-  ## remove code from code chunks, overwrite the .qmd
+  ## remove code from code chunks (ipynb requires something in the code chunk, so here it's #)), overwrite the .qmd
   read_file(sprintf("tutorials-templates/%s.qmd", f2)) %>%
     str_replace_all("```\\{python(.*)\\}[\\S\\s]*?```","```\\{python\\1\\}\n#\n\n```") %>%
     write_file(sprintf("tutorials-templates/%s.qmd", f2))
