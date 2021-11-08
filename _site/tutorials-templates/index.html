@@ -3,7 +3,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="quarto-0.2.243">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>JupyterHub, repos, environments</title>
+  <title>Tutorial Templates</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -23,8 +23,8 @@
   <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
   <script src="../site_libs/quarto-search/fuse.min.js"></script>
   <script src="../site_libs/quarto-search/quarto-search.js"></script>
-  <link href="../clinic/notebooks.html" rel="next">
-  <link href="../clinic/index.html" rel="prev">
+  <link href="../projects/index.html" rel="next">
+  <link href="../tutorials/Data_Access__Harmony_Subsetting.html" rel="prev">
   <script src="../site_libs/quarto-html/quarto.js"></script>
   <script src="../site_libs/quarto-html/popper.min.js"></script>
   <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -51,7 +51,7 @@
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">JupyterHub, repos, environments</h1>
+      <h1 class="quarto-secondary-nav-title">Tutorial Templates</h1>
       <button type="button" class="quarto-btn-toggle btn">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -121,7 +121,7 @@
       <div class="collapse  show" id="pre-hackathonclinic-collapse">
         <ul class="list-unstyled sidebar-item-contents">
           <li class="sidebar-item">
-  <a href="../clinic/jupyterhub.html" class="active">JupyterHub, repos, environments</a>
+  <a href="../clinic/jupyterhub.html" class="">JupyterHub, repos, environments</a>
 </li>
           <li class="sidebar-item">
   <a href="../clinic/notebooks.html" class="">Notebooks, Python, GitHub</a>
@@ -176,7 +176,7 @@
     </li>
   </ul>
       <li class="sidebar-item">
-  <a href="../tutorials-templates/index.html" class="">Tutorial Templates</a>
+  <a href="../tutorials-templates/index.html" class="active">Tutorial Templates</a>
 </li>
       <ul class="list-unstyled sidebar-section depth1">
     <li class="">
@@ -226,110 +226,16 @@
   </div>
 </nav>
 <!-- toc -->
-    <nav id="TOC" role="doc-toc" class="sidebar sidebar-toc">
-<h2 id="toc-title">On this page</h2>
-<ul>
-<li><a href="#welcome" class="nav-link active" data-scroll-target="#welcome">Welcome!</a></li>
-<li><a href="#log-into-2i2c" class="nav-link" data-scroll-target="#log-into-2i2c">Log into 2i2c</a></li>
-<li><a href="#github-overview" class="nav-link" data-scroll-target="#github-overview">GitHub overview</a>
-<ul class="collapse">
-<li><a href="#fork-and-clone" class="nav-link" data-scroll-target="#fork-and-clone">Fork and Clone</a></li>
-</ul></li>
-<li><a href="#jupyter-hub-overview" class="nav-link" data-scroll-target="#jupyter-hub-overview">Jupyter Hub Overview</a>
-<ul class="collapse">
-<li><a href="#open-the-terminal" class="nav-link" data-scroll-target="#open-the-terminal">Open the terminal</a></li>
-</ul></li>
-<li><a href="#clone-repo-to-2i2c" class="nav-link" data-scroll-target="#clone-repo-to-2i2c">Clone repo to 2i2c</a></li>
-<li><a href="#python-environments" class="nav-link" data-scroll-target="#python-environments">Python environments</a></li>
-<li><a href="#jupyter-notebook" class="nav-link" data-scroll-target="#jupyter-notebook">Jupyter notebook</a></li>
-</ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon/edit/main/clinic/jupyterhub.md" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+    <div id="quarto-toc-sidebar" class="sidebar sidebar-toc"></div>
 <!-- main -->
 <main class="content">
 <header id="title-block-header">
-<h1 class="title d-none d-lg-block display-7">JupyterHub, repos, environments</h1>
+<h1 class="title d-none d-lg-block display-7">Tutorial Templates</h1>
 </header>
-
-<section id="welcome" class="level2">
-<h2 class="anchored" data-anchor-id="welcome">Welcome!</h2>
-<p>Thanks for being here.</p>
-<p>Who instructors &amp; helpers are, how to ask for help.</p>
-<p>Code of Conduct reminder</p>
-<p>Live transcripts are available</p>
-<p>We are recording this session.</p>
-<div class="callout-tip callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target="#callout-1" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Text to paste into Zoom Chat
-</div>
-<button type="button" class="callout-btn-toggle btn d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></button>
-</div>
-<div id="callout-1" class="callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Welcome to the Cloud Hackathon Clinic!</p>
-<p>Please go to https://openscapes.2i2c.cloud/hub/ - log in with your GitHub Account, and select “Small”</p>
-<p>Clinic materials that we’ll cover today are here: https://nasa-openscapes.github.io/2021-Cloud-Hackathon/clinic/</p>
-</div>
-</div>
-</div>
-<p>Summary of what we’ll do</p>
-</section>
-<section id="log-into-2i2c" class="level2">
-<h2 class="anchored" data-anchor-id="log-into-2i2c">Log into 2i2c</h2>
-<p>Go to <a href="https://openscapes.2i2c.cloud/hub/" class="uri">https://openscapes.2i2c.cloud/hub/</a>. You will be asked to log in with your GitHub Account.</p>
-<p>This will take several minutes. While we wait, we’ll get set up with GitHub and a brief overview.</p>
-</section>
-<section id="github-overview" class="level2">
-<h2 class="anchored" data-anchor-id="github-overview">GitHub overview</h2>
-<p>TODO Julie - images and narration:</p>
-<ul>
-<li>main unit: a repo</li>
-<li>remote and local</li>
-<li>commits, push, pull</li>
-<li>fork</li>
-<li><a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token">github credentials</a></li>
-</ul>
-<section id="fork-and-clone" class="level3">
-<h3 class="anchored" data-anchor-id="fork-and-clone">Fork and Clone</h3>
-<p>Go to <a href="https://github.com/NASA-Openscapes/2021-Cloud-Clinic" class="uri">https://github.com/NASA-Openscapes/2021-Cloud-Clinic</a></p>
-<p>Click Fork. This will make a copy of this repo in your GitHub account.</p>
-</section>
-</section>
-<section id="jupyter-hub-overview" class="level2">
-<h2 class="anchored" data-anchor-id="jupyter-hub-overview">Jupyter Hub Overview</h2>
-<p>Now an intro to 2i2c, a which is a Jupyter Hub.</p>
-<p>TODO: insert images</p>
-<p>Orient to 2i2c</p>
-<p>Hardware resources: computing and storage in the cloud.</p>
-<p>AWS: what APIs do I need to know? S3, EC2</p>
-<p>Security: use tokens, temporary credentials, env variables.</p>
-<section id="open-the-terminal" class="level3">
-<h3 class="anchored" data-anchor-id="open-the-terminal">Open the terminal</h3>
-<p>The command line, also called the Shell or Terminal, is available in 2i2c.</p>
-<p>Open a terminal in 2i2c: File &gt; New… &gt; Terminal. Note that you can toggle between “Simple” display mode in the bottom left.</p>
-</section>
-</section>
-<section id="clone-repo-to-2i2c" class="level2">
-<h2 class="anchored" data-anchor-id="clone-repo-to-2i2c">Clone repo to 2i2c</h2>
-<p>We will clone our repo into 2i2c so that we can run it in the Cloud. We do this from the Terminal.</p>
-<p>Make sure you clone from your forked repo. For example, my url has my username “betolink”, not “NASA-Openscapes”.</p>
-<p><code>git clone https://github.com/betolink/2021-Cloud-Clinic</code></p>
-</section>
-<section id="python-environments" class="level2">
-<h2 class="anchored" data-anchor-id="python-environments">Python environments</h2>
-<p>TODO overview discussion</p>
-<p>Walk through <code>environment.yml</code> file from <a href="https://github.com/NASA-Openscapes/2021-Cloud-Clinic" class="uri">https://github.com/NASA-Openscapes/2021-Cloud-Clinic</a></p>
-</section>
-<section id="jupyter-notebook" class="level2">
-<h2 class="anchored" data-anchor-id="jupyter-notebook">Jupyter notebook</h2>
-<p>Talk through the example from <a href="https://github.com/NASA-Openscapes/2021-Cloud-Clinic" class="uri">https://github.com/NASA-Openscapes/2021-Cloud-Clinic</a></p>
-<p>Import the library you defined in the environment. (If you don’t have the library defined in the environment and try to import it, it will give you an error (unless it’s part of core Python))</p>
+<p>Templates of all tutorials — <code>.ipynb</code> notebooks with code removed — are available at: <a href="https://github.com/NASA-Openscapes/2021-Cloud-Hackathon/tree/main/tutorials-templates" class="uri">https://github.com/NASA-Openscapes/2021-Cloud-Hackathon/tree/main/tutorials-templates</a>.</p>
+<p>Please open these tutorial templates to follow along and live-code with the tutorial lead.</p>
 
 
-</section>
 <script type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const disableStylesheet = (stylesheets) => {
@@ -505,13 +411,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </main> <!-- /main -->
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../clinic/index.html">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Pre-Hackathon Clinic</span>
+      <a href="../tutorials/Data_Access__Harmony_Subsetting.html">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Data Subsetting and Transformation Services in the Cloud</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../clinic/notebooks.html">
-        <span class="nav-page-text">Notebooks, Python, GitHub</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../projects/index.html">
+        <span class="nav-page-text">Projects</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

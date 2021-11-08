@@ -438,7 +438,7 @@
     "href": "clinic/jupyterhub.html#welcome",
     "title": "JupyterHub, repos, environments",
     "section": "Welcome!",
-    "text": "Thanks for being here.\nWho instructors & helpers are, how to ask for help.\nCode of Conduct reminder\nSummary of what we’ll do"
+    "text": "Thanks for being here.\nWho instructors & helpers are, how to ask for help.\nCode of Conduct reminder\nLive transcripts are available\nWe are recording this session.\n\n\n\n\n\n\nText to paste into Zoom Chat\n\n\n\n\n\nWelcome to the Cloud Hackathon Clinic!\nPlease go to https://openscapes.2i2c.cloud/hub/ - log in with your GitHub Account, and select “Small”\nClinic materials that we’ll cover today are here: https://nasa-openscapes.github.io/2021-Cloud-Hackathon/clinic/\n\n\n\nSummary of what we’ll do"
   },
   {
     "objectID": "clinic/jupyterhub.html#log-into-2i2c",
@@ -1146,5 +1146,12 @@
     "title": "",
     "section": "Conclusion",
     "text": ""
+  },
+  {
+    "objectID": "tutorials-templates/index.html",
+    "href": "tutorials-templates/index.html",
+    "title": "Tutorial Templates",
+    "section": "",
+    "text": "Templates of all tutorials — .ipynb notebooks with code removed — are available at: https://github.com/NASA-Openscapes/2021-Cloud-Hackathon/tree/main/tutorials-templates.\nPlease open these tutorial templates to follow along and live-code with the tutorial lead."
   }
 ]
