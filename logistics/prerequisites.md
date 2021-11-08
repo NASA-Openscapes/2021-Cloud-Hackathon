@@ -23,7 +23,8 @@ If you are attending the Clinic, please do this in advance of the Clinic.
 
 ## Daily setup
 
-1. **JupyterHub**: Log into 2i2c: <https://openscapes.2i2c.cloud/hub/>. This takes a few minutes so please start this as soon we reconvene each day
+1. **Zoom**: Call into Zoom using the link provided in the Slack `2021-nasacloudhack-general` Channel. 
+1. **JupyterHub**: Log into 2i2c at <https://openscapes.2i2c.cloud/hub/>. This takes a few minutes so please start this as soon we reconvene each day
 
 
 ## Getting help
@@ -45,7 +46,7 @@ To create a screenshot:
 - [On your Mac - Screenshot](https://support.apple.com/en-us/HT201361)
 - [On your PC - Snipping Tool](https://support.microsoft.com/en-us/windows/use-snipping-tool-to-capture-screenshots-00246869-1843-655f-f220-97299b865f6b)
 
-### Breakout Rooms
+### Zoom Breakout Rooms
 
 If you'd like to talk to someone and live-screenshare about your issue, please write in Zoom Chat that you need help and we will move you into a breakout room with a helper.
 
