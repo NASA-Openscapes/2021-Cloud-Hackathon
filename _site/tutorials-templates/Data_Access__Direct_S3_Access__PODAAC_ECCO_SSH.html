@@ -3,7 +3,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="quarto-0.2.243">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>Logistics</title>
+  <title>data_access__direct_s3_access__podaac_ecco_ssh</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -23,8 +23,8 @@
   <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
   <script src="../site_libs/quarto-search/fuse.min.js"></script>
   <script src="../site_libs/quarto-search/quarto-search.js"></script>
-  <link href="../logistics/schedule.html" rel="next">
-  <link href="../index.html" rel="prev">
+  <link href="../tutorials-templates/Data_Access__Direct_S3_Access.html" rel="next">
+  <link href="../tutorials-templates/Additional_Resources__Direct_S3_Access__rioxarray_clipping.html" rel="prev">
   <script src="../site_libs/quarto-html/quarto.js"></script>
   <script src="../site_libs/quarto-html/popper.min.js"></script>
   <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -51,7 +51,7 @@
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Logistics</h1>
+      <h1 class="quarto-secondary-nav-title">(Untitled)</h1>
       <button type="button" class="quarto-btn-toggle btn">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -87,7 +87,7 @@
         <div class="me-auto">
           <div class="d-inline-flex w-100 sidebar-section-item">
             <div class="sidebar-section-link me-auto">
-            <a href="../logistics/index.html" class="active">Logistics</a>
+            <a href="../logistics/index.html" class="">Logistics</a>
             </div>
             <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#logistics-collapse" aria-expanded="true">
               <div><i class="bi bi-chevron-right ms-2"></i></div>
@@ -192,7 +192,7 @@
   <a href="../tutorials-templates/Additional_Resources__Direct_S3_Access__rioxarray_clipping.html" class="">Direct S3 Data Access</a>
 </li>
           <li class="sidebar-item">
-  <a href="../tutorials-templates/Data_Access__Direct_S3_Access__PODAAC_ECCO_SSH.html" class="">Direct S3 Data Access - Rough PODAAC ECCO SSH Example</a>
+  <a href="../tutorials-templates/Data_Access__Direct_S3_Access__PODAAC_ECCO_SSH.html" class="active">Direct S3 Data Access - Rough PODAAC ECCO SSH Example</a>
 </li>
           <li class="sidebar-item">
   <a href="../tutorials-templates/Data_Access__Direct_S3_Access.html" class="">Direct S3 Data Access</a>
@@ -273,36 +273,16 @@
     <nav id="TOC" role="doc-toc" class="sidebar sidebar-toc">
 <h2 id="toc-title">On this page</h2>
 <ul>
-<li><a href="#for-hackathon-participants" class="nav-link active" data-scroll-target="#for-hackathon-participants">For hackathon participants</a></li>
-<li><a href="#for-hackathon-helpers" class="nav-link" data-scroll-target="#for-hackathon-helpers">For hackathon helpers</a>
-<ul class="collapse">
-<li><a href="#slack" class="nav-link" data-scroll-target="#slack">Slack</a></li>
-<li><a href="#breakout-rooms" class="nav-link" data-scroll-target="#breakout-rooms">Breakout rooms</a></li>
-</ul></li>
+<li><a href="#direct-s3-data-access---rough-podaac-ecco-ssh-example" class="nav-link active" data-scroll-target="#direct-s3-data-access---rough-podaac-ecco-ssh-example">Direct S3 Data Access - Rough PODAAC ECCO SSH Example</a></li>
 </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon/edit/main/logistics/index.md" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon/edit/main/tutorials-templates/Data_Access__Direct_S3_Access__PODAAC_ECCO_SSH.ipynb" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
 <!-- main -->
 <main class="content">
-<header id="title-block-header">
-<h1 class="title d-none d-lg-block display-7">Logistics</h1>
-</header>
 
-<section id="for-hackathon-participants" class="level2">
-<h2 class="anchored" data-anchor-id="for-hackathon-participants">For hackathon participants</h2>
-<p>Before the hackathon, please complete the <a href="https://nasa-openscapes.github.io/2021-Cloud-Hackathon/logistics/prerequisites.html#prerequisites">prerequisites</a> and be prepared for the <a href="https://nasa-openscapes.github.io/2021-Cloud-Hackathon/logistics/prerequisites.html#daily-setup">daily setup</a> and be familiar with the ways of <a href="https://nasa-openscapes.github.io/2021-Cloud-Hackathon/logistics/prerequisites.html#getting-help">getting help</a>.</p>
-</section>
-<section id="for-hackathon-helpers" class="level2">
-<h2 class="anchored" data-anchor-id="for-hackathon-helpers">For hackathon helpers</h2>
-<section id="slack" class="level3">
-<h3 class="anchored" data-anchor-id="slack">Slack</h3>
-<p>When you see a question you will reply to, please add the “eyes” emoji below so other helpers know that you are looking into it. Then please reply in-thread in Slack to help.</p>
-</section>
-<section id="breakout-rooms" class="level3">
-<h3 class="anchored" data-anchor-id="breakout-rooms">Breakout rooms</h3>
-<p>The tech host will monitor Zoom Chat, moving participants into breakout rooms with Helpers as needed.</p>
+<section id="direct-s3-data-access---rough-podaac-ecco-ssh-example" class="level1">
+<h1>Direct S3 Data Access - Rough PODAAC ECCO SSH Example</h1>
 
 
-</section>
 </section>
 <script type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -479,13 +459,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </main> <!-- /main -->
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../index.html">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Welcome</span>
+      <a href="../tutorials-templates/Additional_Resources__Direct_S3_Access__rioxarray_clipping.html">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Direct S3 Data Access</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../logistics/schedule.html">
-        <span class="nav-page-text">Schedule</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../tutorials-templates/Data_Access__Direct_S3_Access.html">
+        <span class="nav-page-text">Direct S3 Data Access</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

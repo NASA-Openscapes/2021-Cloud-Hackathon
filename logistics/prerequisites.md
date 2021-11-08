@@ -48,5 +48,11 @@ To create a screenshot:
 
 ### Zoom Breakout Rooms
 
+#### During Tutorials Session
+
 If you'd like to talk to someone and live-screenshare about your issue, please write in Zoom Chat that you need help and we will move you into a breakout room with a helper.
+
+#### During Team Hacktime
+
+During the team project time, you will be placed in a Zoom breakout room with your respective teammates to collaborate more easily. If you have questions as you work, post your question(s) in the Slack `2021-nasacloudhack-help` Channel and a helper will respond in that thread. If needed, a helper can also join your team's Zoom breakour room for easy screensharing, troubleshooting or to further discuss a question. 
 
