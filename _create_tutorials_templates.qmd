@@ -9,6 +9,7 @@ Running is code will take all the `.ipynb` notebooks in a folder and copy them t
 ## libraries
 library(tidyverse) ## install.packages(tidyverse)
 library(here) ## install.packages(here)
+## quarto: install from https://quarto.org
 
 ## list all tutorials
 ipynb_files <- list.files(here("tutorials"), pattern = ".ipynb")
