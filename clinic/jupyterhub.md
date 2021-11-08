@@ -6,11 +6,20 @@ title: JupyterHub, repos, environments
 
 Thanks for being here. 
 
-Who instructors & helpers are, how to ask for help. 
+- Who instructors & helpers are, how to ask for help. 
+- Code of Conduct reminder: Be respectful and value each other’s ideas, styles and viewpoints.
+- If you have issues, please direct them to: Julie - lowndes @ nceas.ucsb.edu. 
+- Live transcripts are available.
+- We are recording this session. 
 
-Code of Conduct reminder
+::: {.callout-tip collapse="true"}
+## Text to paste into Zoom Chat
+Welcome to the Cloud Hackathon Clinic! 
 
-Summary of what we'll do
+Please go to https://openscapes.2i2c.cloud/hub/ - log in with your GitHub Account, and select "Small"
+
+Clinic materials that we'll cover today are here: https://nasa-openscapes.github.io/2021-Cloud-Hackathon/clinic/
+:::
 
 ## Log into 2i2c
 
