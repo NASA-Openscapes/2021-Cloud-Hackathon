@@ -1,0 +1,55 @@
+---
+jupyter: python3
+---
+
+# Authentication for NASA Earthdata 
+
+## Summary
+This notebook creates a hidden `.netrc` file (`_netrc` for Window OS) with Earthdata login credentials in your home directory. This file is need to access NASA Earthdata assets from a scripting environment like Python.
+
+### Earthdata Login
+
+An Earthdata Login account is required to access data, as well as discover restricted data, from the NASA Earthdata system. Thus, to access NASA data, you need Earthdata Login. Please visit <https://urs.earthdata.nasa.gov> to register and manage your Earthdata Login account. This account is free to create and only takes a moment to set up.
+
+### Authentication via netrc File
+
+You will need a netrc file containing your NASA Earthdata Login credentials in order to execute the notebooks. A netrc file can be created manually within text editor and saved to your home directory. An example of the required content is below.
+
+```text
+machine urs.earthdata.nasa.gov
+login <USERNAME>
+password <PASSWORD>
+```
+
+`<USERNAME>` and `<PASSWORD>` would be replaced by your actual Earthdata Login username and password respectively.
+
+## Import Required Packages
+
+```{python}
+#
+
+```
+
+The code below will:
+
+1. check what operating system (OS) is being used to determine which netrc file to check for/create (.netrc or _netrc)
+2. check if you have an netrc file, and if so, varify if those credentials are for the Earthdata endpoint
+3. create a netrc file if a netrc file is not present.
+
+```{python}
+#
+
+```
+
+#### See if the file was created
+
+If the file was created, we'll see a `.netrc` file (`_netrc` for Window OS) in the list printed below. To view the contents from a Jupyter environment, click **File** on the top toolbar, select **Open from Path...**, type **.netrc**, and click **Open**. The `.netrc` file will open within the text editor. 
+
+> **!!! Beware,** your password will be visible if the `.netrc` file is opened in the text editor.
+
+```{python}
+#
+
+```
+
+
