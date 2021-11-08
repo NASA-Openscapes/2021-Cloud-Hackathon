@@ -3,7 +3,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="quarto-0.2.232">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>JupyterHub, repos, environments</title>
+  <title>NASA Openscapes Cloud Environment</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -11,6 +11,69 @@
     div.column{display: inline-block; vertical-align: top; width: 50%;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
 
   <!--[if lt IE 9]>
@@ -23,8 +86,8 @@
   <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
   <script src="../site_libs/quarto-search/fuse.min.js"></script>
   <script src="../site_libs/quarto-search/quarto-search.js"></script>
-  <link href="../clinic/notebooks.html" rel="next">
-  <link href="../clinic/index.html" rel="prev">
+  <link href="../clinic/earthdata.html" rel="next">
+  <link href="../clinic/github.html" rel="prev">
   <script src="../site_libs/quarto-html/quarto.js"></script>
   <script src="../site_libs/quarto-html/popper.min.js"></script>
   <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -51,7 +114,7 @@
 <header id="quarto-header" class="headroom fixed-top">
 <nav class="quarto-secondary-nav py-2 d-lg-none d-md-block " data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <div class="container-fluid d-flex justify-content-between">
-    <h1 class="quarto-secondary-nav-title mb-0 fs-3 d-inline">JupyterHub, repos, environments</h1>
+    <h1 class="quarto-secondary-nav-title mb-0 fs-3 d-inline">NASA Openscapes Cloud Environment</h1>
     <button type="button" class="quarto-btn-toggle btn d-lg-none py-0 px-1 d-inline-block border-0 ">
       <i class="bi bi-chevron-right"></i>
     </button>
@@ -123,7 +186,13 @@
       <div class="collapse  show" id="pre-hackathonclinic-collapse">
         <ul class="list-unstyled sidebar-item-contents">
           <li class="sidebar-item">
-  <a href="../clinic/jupyterhub.html" class="active">JupyterHub, repos, environments</a>
+  <a href="../clinic/github.html" class="">GitHub</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../clinic/jupyterhub.html" class="active">NASA Openscapes Cloud Environment</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../clinic/earthdata.html" class="">Earthdata Login</a>
 </li>
           <li class="sidebar-item">
   <a href="../clinic/notebooks.html" class="">Notebooks, Python, GitHub</a>
@@ -232,29 +301,26 @@
 <h2 id="toc-title">On this page</h2>
 <ul>
 <li><a href="#welcome" class="nav-link active" data-scroll-target="#welcome">Welcome!</a></li>
-<li><a href="#log-into-2i2c" class="nav-link" data-scroll-target="#log-into-2i2c">Log into 2i2c</a></li>
-<li><a href="#github-overview" class="nav-link" data-scroll-target="#github-overview">GitHub overview</a>
+<li><a href="#why-are-we-using-a-cloud-environment" class="nav-link" data-scroll-target="#why-are-we-using-a-cloud-environment">Why are we using a cloud environment?</a></li>
+<li><a href="#openscapes-hub-and-cloud-infrastructure" class="nav-link" data-scroll-target="#openscapes-hub-and-cloud-infrastructure">Openscapes Hub and Cloud Infrastructure</a></li>
+<li><a href="#jupyter-ecosystem" class="nav-link" data-scroll-target="#jupyter-ecosystem">Jupyter Ecosystem</a></li>
+<li><a href="#pythonconda-environments" class="nav-link" data-scroll-target="#pythonconda-environments">Python/Conda environments</a>
 <ul class="collapse">
-<li><a href="#fork-and-clone" class="nav-link" data-scroll-target="#fork-and-clone">Fork and Clone</a></li>
+<li><a href="#how-do-i-get-my-code-in-and-out-of-the-openscapes-hub" class="nav-link" data-scroll-target="#how-do-i-get-my-code-in-and-out-of-the-openscapes-hub">How do I get my code in and out of the Openscapes hub?</a></li>
 </ul></li>
-<li><a href="#jupyter-hub-overview" class="nav-link" data-scroll-target="#jupyter-hub-overview">Jupyter Hub Overview</a>
-<ul class="collapse">
-<li><a href="#open-the-terminal" class="nav-link" data-scroll-target="#open-the-terminal">Open the terminal</a></li>
-</ul></li>
-<li><a href="#clone-repo-to-2i2c" class="nav-link" data-scroll-target="#clone-repo-to-2i2c">Clone repo to 2i2c</a></li>
-<li><a href="#python-environments" class="nav-link" data-scroll-target="#python-environments">Python environments</a></li>
-<li><a href="#jupyter-notebook" class="nav-link" data-scroll-target="#jupyter-notebook">Jupyter notebook</a></li>
+<li><a href="#how-do-i-end-my-openscapes-session-will-i-lose-all-of-my-work" class="nav-link" data-scroll-target="#how-do-i-end-my-openscapes-session-will-i-lose-all-of-my-work">How do I end my Openscapes session? Will I lose all of my work?</a></li>
 </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon/edit/main/clinic/jupyterhub.md" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon/issues/new" class="toc-action">Report an issue</a></p></div></div></nav></div>
   <div class="col mx-auto col-sm-12 col-md-9 col-lg-7 col-xl-7 px-lg-4 pe-xxl-4 ps-xxl-0">
 <main>
 <header id="title-block-header">
-<h1 class="title d-none d-lg-block display-7">JupyterHub, repos, environments</h1>
+<h1 class="title d-none d-lg-block display-7">NASA Openscapes Cloud Environment</h1>
 </header>
 
+<p><img src="./img/openscapes-2i2c-logo.png" class="img-fluid"></p>
 <section id="welcome" class="level2">
 <h2 class="anchored" data-anchor-id="welcome">Welcome!</h2>
-<p>Thanks for being here.</p>
+<p>Thanks for being here</p>
 <ul>
 <li>Who instructors &amp; helpers are, how to ask for help.</li>
 <li>Code of Conduct reminder: Be respectful and value each other’s ideas, styles and viewpoints.</li>
@@ -280,57 +346,113 @@ Text to paste into Zoom Chat
 </div>
 </div>
 </div>
-</section>
-<section id="log-into-2i2c" class="level2">
-<h2 class="anchored" data-anchor-id="log-into-2i2c">Log into 2i2c</h2>
-<p>Go to <a href="https://openscapes.2i2c.cloud/hub/" class="uri">https://openscapes.2i2c.cloud/hub/</a>. You will be asked to log in with your GitHub Account.</p>
-<p>This will take several minutes. While we wait, we’ll get set up with GitHub and a brief overview.</p>
-</section>
-<section id="github-overview" class="level2">
-<h2 class="anchored" data-anchor-id="github-overview">GitHub overview</h2>
-<p>TODO Julie - images and narration:</p>
 <ul>
-<li>main unit: a repo</li>
-<li>remote and local</li>
-<li>commits, push, pull</li>
-<li>fork</li>
-<li><a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token">github credentials</a></li>
+<li>What’s a cloud environment and why we are using it.</li>
+<li>Learn about the Jupyter ecosystem and our cloud infrastructure.</li>
+<li>Start/Stop our Openscapes server and get familiar with Jupyterlab and installed programs</li>
+<li>How to update our environments</li>
+<li>NASA Earthdata Login and security in the cloud.</li>
 </ul>
-<section id="fork-and-clone" class="level3">
-<h3 class="anchored" data-anchor-id="fork-and-clone">Fork and Clone</h3>
-<p>Go to <a href="https://github.com/NASA-Openscapes/2021-Cloud-Clinic" class="uri">https://github.com/NASA-Openscapes/2021-Cloud-Clinic</a></p>
-<p>Click Fork. This will make a copy of this repo in your GitHub account.</p>
+</section>
+<section id="why-are-we-using-a-cloud-environment" class="level2">
+<h2 class="anchored" data-anchor-id="why-are-we-using-a-cloud-environment">Why are we using a cloud environment?</h2>
+<p>“Anyone working with large-scale Earth System data today faces the same general problems:</p>
+<ul>
+<li>The data we want to work with are huge (typical analyses involve several TB at least)</li>
+<li>The data we need are produced and distributed by many different organizations (NASA, NOAA, ESGF, Copernicus, etc.)</li>
+<li>We want to apply a wide range of different analysis methodologies to the data, from simple statistics to signal processing to machine learning.</li>
+</ul>
+<p>The community is waking up to the idea that we can’t simply expect scientists to download all this data to their personal computers for processing.”</p>
+<p><em>Ryan Abernathey, Pangeo Project.</em></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/22017009/preview.jpg" class="img-fluid figure-img"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Download-based workflow. From Abernathey, Ryan (2020): Data Access Modes in Science</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="openscapes-hub-and-cloud-infrastructure" class="level2">
+<h2 class="anchored" data-anchor-id="openscapes-hub-and-cloud-infrastructure">Openscapes Hub and Cloud Infrastructure</h2>
+<p><em>There is no cloud, it’s someone else’s computer</em></p>
+<p>Go to <a href="https://openscapes.2i2c.cloud/hub/" class="uri">https://openscapes.2i2c.cloud/hub/</a>. You will be asked to log in with your GitHub Account</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./img/openscapes-hub.png" class="img-fluid figure-img"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Openscapes JupyterHub Login</figcaption><p></p>
+</figure>
+</div>
+<p>Once we are logged with our Github account we need to select our server type. There are different hardware configurations for each profile, for the duration of the Hackweek we’ll use small instances, the option at the top.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./img/servers.png" class="img-fluid figure-img"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Machine Profiles</figcaption><p></p>
+</figure>
+</div>
+<p>After we select our server type and click on start, Jupyterhub will allocate our instance using Amazon Web Services (AWS). This may take several minutes. While we wait, we’ll get set up with GitHub and a brief overview.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./img/spawning.png" class="img-fluid figure-img"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Jupyterhub Spawning</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="jupyter-ecosystem" class="level2">
+<h2 class="anchored" data-anchor-id="jupyter-ecosystem">Jupyter Ecosystem</h2>
+<p><img src="https://foundations.projectpythia.org/_images/remote-execution-model.gif" class="img-fluid"></p>
+<p>Source: Project Pythia</p>
+</section>
+<section id="pythonconda-environments" class="level2">
+<h2 class="anchored" data-anchor-id="pythonconda-environments">Python/Conda environments</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">name</span><span class="kw">:</span><span class="at"> nsidc</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">channels</span><span class="kw">:</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> conda-forge</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dependencies</span><span class="kw">:</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> ipykernel</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> awscli~=1.21.4</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> requests</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> pip</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="how-do-i-get-my-code-in-and-out-of-the-openscapes-hub" class="level3">
+<h3 class="anchored" data-anchor-id="how-do-i-get-my-code-in-and-out-of-the-openscapes-hub">How do I get my code in and out of the Openscapes hub?</h3>
+<p>When you start your own server you will have access to your own virtual drive space. No other users will be able to see or access your data files. You can easily upload files to your virtual drive space and save files from the hub back to another location, such as GitHub or your own local laptop drive.</p>
+<p>Here we’ll show you how to pull (copy) some files from GitHub into your virtual drive space using git. This will be a common task during the hackweek: at the start of each tutorial we’ll ask you to “fork” (create your own copy of in your GitHub account) and “clone” (make a copy of in a computing environment, such as your local computer or Openscapes instance) the GitHub repository corresponding to the specific tutorial being taught into your Openscapes drive space.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://github.com/uwhackweek/jupyterbook-template/raw/main/book/img/terminal-button.png" class="img-fluid figure-img"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">terminal-button</figcaption><p></p>
+</figure>
+</div>
+<p>This will open a new terminal tab in your JupyterLab interface:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://github.com/uwhackweek/jupyterbook-template/raw/main/book/img/terminal.png" class="img-fluid figure-img"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">terminal-tab</figcaption><p></p>
+</figure>
+</div>
+<p>Now you can issue any Linux commands to manage your local file system.</p>
+<p>You may also upload files from your local system using the upload button (up-pointing arrow) on the top left of the JupyterHub navigation panel. Similarly, you may download files to your local system by right-clicking the file and selecting download (down-pointing arrow).</p>
+<p>Simple, example GitHub/git/local-workspace workflows for getting a tutorial started in your Openscapes instance and working on a group project are provided. The <a href="https://icesat-2hackweek.github.io/learning-resources/tutorials/getting_started">getting started on a tutorial</a> workflow briefly reviews much of the information in this preliminary exercise along with steps for making and saving notes or other changes as you work through the tutorial and keeping it updated with the original, master copy. The <a href="https://icesat-2hackweek.github.io/learning-resources/projects/example_workflow">basic git workflow for a project</a> serves as a reminder of the git workflow for working on a group project while minimizing code conflicts that could result from multiple people making changes to the same files simultaneously. <br></p>
 </section>
 </section>
-<section id="jupyter-hub-overview" class="level2">
-<h2 class="anchored" data-anchor-id="jupyter-hub-overview">Jupyter Hub Overview</h2>
-<p>Now an intro to 2i2c, a which is a Jupyter Hub.</p>
-<p>TODO: insert images</p>
-<p>Orient to 2i2c</p>
-<p>Hardware resources: computing and storage in the cloud.</p>
-<p>AWS: what APIs do I need to know? S3, EC2</p>
-<p>Security: use tokens, temporary credentials, env variables.</p>
-<section id="open-the-terminal" class="level3">
-<h3 class="anchored" data-anchor-id="open-the-terminal">Open the terminal</h3>
-<p>The command line, also called the Shell or Terminal, is available in 2i2c.</p>
-<p>Open a terminal in 2i2c: File &gt; New… &gt; Terminal. Note that you can toggle between “Simple” display mode in the bottom left.</p>
-</section>
-</section>
-<section id="clone-repo-to-2i2c" class="level2">
-<h2 class="anchored" data-anchor-id="clone-repo-to-2i2c">Clone repo to 2i2c</h2>
-<p>We will clone our repo into 2i2c so that we can run it in the Cloud. We do this from the Terminal.</p>
-<p>Make sure you clone from your forked repo. For example, my url has my username “betolink”, not “NASA-Openscapes”.</p>
-<p><code>git clone https://github.com/betolink/2021-Cloud-Clinic</code></p>
-</section>
-<section id="python-environments" class="level2">
-<h2 class="anchored" data-anchor-id="python-environments">Python environments</h2>
-<p>TODO overview discussion</p>
-<p>Walk through <code>environment.yml</code> file from <a href="https://github.com/NASA-Openscapes/2021-Cloud-Clinic" class="uri">https://github.com/NASA-Openscapes/2021-Cloud-Clinic</a></p>
-</section>
-<section id="jupyter-notebook" class="level2">
-<h2 class="anchored" data-anchor-id="jupyter-notebook">Jupyter notebook</h2>
-<p>Talk through the example from <a href="https://github.com/NASA-Openscapes/2021-Cloud-Clinic" class="uri">https://github.com/NASA-Openscapes/2021-Cloud-Clinic</a></p>
-<p>Import the library you defined in the environment. (If you don’t have the library defined in the environment and try to import it, it will give you an error (unless it’s part of core Python))</p>
+<section id="how-do-i-end-my-openscapes-session-will-i-lose-all-of-my-work" class="level2">
+<h2 class="anchored" data-anchor-id="how-do-i-end-my-openscapes-session-will-i-lose-all-of-my-work">How do I end my Openscapes session? Will I lose all of my work?</h2>
+<p>When you are finished working for the day it is important to explicitly log out of your Openscapes session. The reason for this is it will save us a bit of money! When you keep a session active it uses up AWS resources and keeps a series of virtual machines deployed.</p>
+<p>Stopping the server happens automatically when you log out, so navigate to “File -&gt; Log Out” and just click “Log Out”!</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://github.com/uwhackweek/jupyterbook-template/raw/main/book/img/hub-logout-button.png" class="img-fluid figure-img"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">hub-control-panel-button</figcaption><p></p>
+</figure>
+</div>
+<p>!!! warning “logging out” Logging out will <strong>NOT</strong> cause any of your work to be lost or deleted. It simply shuts down some resources. It would be equivalent to turning off your desktop computer at the end of the day.</p>
+<p>References:</p>
+<ul>
+<li><a href="https://foundations.projectpythia.org">Project Pythia</a></li>
+<li><a href="https://www.nature.com/articles/d41586-018-07196-1">Why Jupyter is data scientists’ computational notebook of choice</a></li>
+<li><a href="https://medium.com/pangeo/closed-platforms-vs-open-architectures-for-cloud-native-earth-system-analytics-1ad88708ebb6">Closed Platforms vs.&nbsp;Open Architectures for Cloud-Native Earth System Analytics</a></li>
+<li><a href="https://datacarpentry.org/organization-geospatial/">Introduction to Geospatial Concepts</a></li>
+<li><a href="https://infrastructure.2i2c.org/en/latest/topic/storage-layer.html">2i2c user storage</a></li>
+<li><a href="https://snowex-hackweek.github.io/website/intro.html">SnowEX Hackweek</a></li>
+</ul>
 
 
 </section>
@@ -505,13 +627,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </main>
 <div class="page-navigation page-navigation-docked">
   <div class="nav-page nav-page-previous">
-      <a href="../clinic/index.html">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Pre-Hackathon Clinic</span>
+      <a href="../clinic/github.html">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">GitHub</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../clinic/notebooks.html">
-        <span class="nav-page-text">Notebooks, Python, GitHub</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../clinic/earthdata.html">
+        <span class="nav-page-text">Earthdata Login</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </div>

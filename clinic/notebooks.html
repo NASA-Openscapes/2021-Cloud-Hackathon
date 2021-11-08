@@ -11,6 +11,69 @@
     div.column{display: inline-block; vertical-align: top; width: 50%;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
 
   <!--[if lt IE 9]>
@@ -24,7 +87,7 @@
   <script src="../site_libs/quarto-search/fuse.min.js"></script>
   <script src="../site_libs/quarto-search/quarto-search.js"></script>
   <link href="../tutorials/index.html" rel="next">
-  <link href="../clinic/jupyterhub.html" rel="prev">
+  <link href="../clinic/earthdata.html" rel="prev">
   <script src="../site_libs/quarto-html/quarto.js"></script>
   <script src="../site_libs/quarto-html/popper.min.js"></script>
   <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -123,7 +186,13 @@
       <div class="collapse  show" id="pre-hackathonclinic-collapse">
         <ul class="list-unstyled sidebar-item-contents">
           <li class="sidebar-item">
-  <a href="../clinic/jupyterhub.html" class="">JupyterHub, repos, environments</a>
+  <a href="../clinic/github.html" class="">GitHub</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../clinic/jupyterhub.html" class="">NASA Openscapes Cloud Environment</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../clinic/earthdata.html" class="">Earthdata Login</a>
 </li>
           <li class="sidebar-item">
   <a href="../clinic/notebooks.html" class="active">Notebooks, Python, GitHub</a>
@@ -231,13 +300,11 @@
   <div id="quarto-toc-sidebar" class=" pt-0 col col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-toc order-last"><nav id="TOC" role="doc-toc">
 <h2 id="toc-title">On this page</h2>
 <ul>
-<li><a href="#intro-python" class="nav-link active" data-scroll-target="#intro-python">Intro Python</a></li>
-<li><a href="#run-notebook" class="nav-link" data-scroll-target="#run-notebook">Run notebook</a></li>
-<li><a href="#commit-changes" class="nav-link" data-scroll-target="#commit-changes">Commit changes</a></li>
-<li><a href="#push-changes" class="nav-link" data-scroll-target="#push-changes">Push changes</a></li>
-<li><a href="#commit-and-push-again" class="nav-link" data-scroll-target="#commit-and-push-again">Commit and push again</a></li>
-<li><a href="#update-your-fork" class="nav-link" data-scroll-target="#update-your-fork">Update your fork</a></li>
-<li><a href="#closing" class="nav-link" data-scroll-target="#closing">Closing</a></li>
+<li><a href="#summary" class="nav-link active" data-scroll-target="#summary">Summary</a></li>
+<li><a href="#introduction-command-line-terminalshell" class="nav-link" data-scroll-target="#introduction-command-line-terminalshell">Introduction :: Command Line (Terminal/Shell)</a></li>
+<li><a href="#introduction-version-control-git-and-github" class="nav-link" data-scroll-target="#introduction-version-control-git-and-github">Introduction :: Version Control (Git and Github)</a></li>
+<li><a href="#introduction-programming-in-python" class="nav-link" data-scroll-target="#introduction-programming-in-python">Introduction :: Programming in Python</a></li>
+<li><a href="#introduction-geospatial-fundamentals-optional" class="nav-link" data-scroll-target="#introduction-geospatial-fundamentals-optional">Introduction :: Geospatial Fundamentals (Optional)</a></li>
 </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon/edit/main/clinic/notebooks.md" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon/issues/new" class="toc-action">Report an issue</a></p></div></div></nav></div>
   <div class="col mx-auto col-sm-12 col-md-9 col-lg-7 col-xl-7 px-lg-4 pe-xxl-4 ps-xxl-0">
@@ -246,41 +313,126 @@
 <h1 class="title d-none d-lg-block display-7">Notebooks, Python, GitHub</h1>
 </header>
 
-<section id="intro-python" class="level2">
-<h2 class="anchored" data-anchor-id="intro-python">Intro Python</h2>
-<p>How to import libraries, talk through some code structure</p>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>In this session, we will provide a brief introduction to:</p>
+<ol type="1">
+<li>Using command line (<strong>terminal</strong>/shell)</li>
+<li>Code management (using <strong>git</strong>)</li>
+<li>Fundamentals of programming in <strong>Python</strong></li>
+</ol>
+<p>You will need a working knowledge of git and terminal for this hackathon. We will provide an overview of these topics and also share resources for self-paced learning.</p>
 </section>
-<section id="run-notebook" class="level2">
-<h2 class="anchored" data-anchor-id="run-notebook">Run notebook</h2>
-<p>see how it works, but that you might want to make a change</p>
+<section id="introduction-command-line-terminalshell" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-command-line-terminalshell">Introduction :: Command Line (Terminal/Shell)</h2>
+<section id="shell-basics" class="level4">
+<h4 class="anchored" data-anchor-id="shell-basics">Shell Basics</h4>
+<ol type="1">
+<li>What is Terminal or Shell?</li>
+<li>Navigating Files and Directories</li>
+<li>Working with Files and Directories</li>
+</ol>
 </section>
-<section id="commit-changes" class="level2">
-<h2 class="anchored" data-anchor-id="commit-changes">Commit changes</h2>
-<p>Make some edits – TODO</p>
-<p>Commit</p>
+<section id="shell-more-details" class="level4">
+<h4 class="anchored" data-anchor-id="shell-more-details">Shell: More Details</h4>
+<p>For a more detailed self-paced lesson on shell, visit <a href="http://swcarpentry.github.io/shell-novice/">Shell Lesson from Software Carpentry</a></p>
 </section>
-<section id="push-changes" class="level2">
-<h2 class="anchored" data-anchor-id="push-changes">Push changes</h2>
-<p>TODO</p>
 </section>
-<section id="commit-and-push-again" class="level2">
-<h2 class="anchored" data-anchor-id="commit-and-push-again">Commit and push again</h2>
-<p>some more python concepts?</p>
-<p>TODO</p>
+<section id="introduction-version-control-git-and-github" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-version-control-git-and-github">Introduction :: Version Control (Git and Github)</h2>
+<section id="what-is-version-control" class="level4">
+<h4 class="anchored" data-anchor-id="what-is-version-control">What is Version Control?</h4>
 </section>
-<section id="update-your-fork" class="level2">
-<h2 class="anchored" data-anchor-id="update-your-fork">Update your fork</h2>
-<p><em>(During the break, Luis/someone added something to the notebook)</em></p>
-<p>And how to update your fork from main. 2 step process:</p>
+<section id="configure-git" class="level4">
+<h4 class="anchored" data-anchor-id="configure-git">Configure git</h4>
+<p>Configure git with your name and email address</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.name <span class="st">"Makhan Virdi"</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.email <span class="st">"Makhan.Virdi@gmail.com"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="store-credentials" class="level4">
+<h4 class="anchored" data-anchor-id="store-credentials">Store credentials</h4>
+<ol type="1">
+<li><p>Go to your github account and create a new “personal access token”: <a href="https://github.com/settings/tokens/new" class="uri">https://github.com/settings/tokens/new</a></p>
+<div id="fig-anonymous-1223930" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><a href="https://github.com/settings/tokens/new"><img src="img/github-token.png" class="img-fluid figure-img"></a></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Generate Personal Access Token on github.com</figcaption><p></p>
+</figure>
+</div></li>
+<li><p>Configure Git to store your credentials to avoid having to enter the credentials every time.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> credential.helper store</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">-l</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Use a git command that requires you to enter credentials (e.g.&nbsp;pull, push)</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Provide your github “username” and “Github Token” when asked. Now your password is stored in “~/.git-credentials” and you will not be prompted again unless the Github token expires. You can check the presence of this file using Terminal</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-la</span> ~</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The output looks like this:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxr-xr-x</span> 13 jovyan jovyan 6144 Oct 22 17:35 .</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxr-xr-x</span>  1 root   root   4096 Oct  4 16:21 ..</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-------</span>  1 jovyan jovyan 1754 Oct 29 18:30 .bash_history</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxr-xr-x</span>  4 jovyan jovyan 6144 Oct 29 16:38 .config</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-------</span>  1 jovyan jovyan   66 Oct 22 17:35 .git-credentials</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-r--r--</span>  1 jovyan jovyan   84 Oct 22 17:14 .gitconfig</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxr-xr-x</span> 10 jovyan jovyan 6144 Oct 21 16:19 2021-Cloud-Hackathon</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You can also verify your git configuration</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">notebook</span><span class="kw">)</span> <span class="ex">jovyan@jupyter-virdi:~$</span> git config <span class="at">-l</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The output looks like this:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">user.email</span>        = Makhan.Virdi@gmail.com</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">user.name</span>         = Makhan Virdi</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="ex">credential.helper</span> = store</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ol>
+</section>
+<section id="clone-a-repository" class="level4">
+<h4 class="anchored" data-anchor-id="clone-a-repository">Clone a Repository</h4>
+<p>To clone a repository from github, copy the link for the repository and use <code>git clone</code> to create a copy of the repository:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/NASA-Openscapes/check_github_setup</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="tracking-changes" class="level4">
+<h4 class="anchored" data-anchor-id="tracking-changes">Tracking Changes</h4>
 <ul>
-<li>From github.com, click these buttons</li>
-<li>From 2i2c, <code>git fetch</code> (I think?)</li>
+<li>status</li>
+<li>add</li>
+<li>commit</li>
+<li>log</li>
+<li>diff</li>
 </ul>
+</section>
+<section id="using-remotes-in-github" class="level4">
+<h4 class="anchored" data-anchor-id="using-remotes-in-github">Using Remotes in GitHub</h4>
+<ul>
+<li>remote</li>
+<li>pull</li>
+<li>push</li>
+</ul>
+</section>
+<section id="git-more-details" class="level4">
+<h4 class="anchored" data-anchor-id="git-more-details">Git: More Details</h4>
+<p><strong>Lesson</strong>: For a more detailed self-paced lesson on git, visit <a href="http://swcarpentry.github.io/git-novice/">Git Lesson from Software Carpentry</a></p>
+<p><strong>Cheatsheet</strong>: <a href="https://training.github.com/downloads/github-git-cheat-sheet.pdf">Frequently used git commands</a></p>
+</section>
+<section id="other-topics" class="level4">
+<h4 class="anchored" data-anchor-id="other-topics">Other Topics</h4>
 <p>Discuss merge conflicts and philosophy: best way to deal with merge conflicts is to avoid them; talk to your colleagues, commit often. Also can work with branches (out of the scope of this Clinic?)</p>
 </section>
-<section id="closing" class="level2">
-<h2 class="anchored" data-anchor-id="closing">Closing</h2>
-<p>Thanks for coming!</p>
+</section>
+<section id="introduction-programming-in-python" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-programming-in-python">Introduction :: Programming in Python</h2>
+<p>Switch to Jupyter Notebook for an introduction to programming in Python</p>
+<ul>
+<li>Variables (and mathematical operations)</li>
+<li>Conditionals (if, else, elif)</li>
+<li>Flow Control using loops (for, while)</li>
+<li>Data Structures (list, tuple, dict)</li>
+<li>Functions</li>
+<li>Using modules (libraries, packages)
+<ul>
+<li>pandas</li>
+</ul></li>
+</ul>
+</section>
+<section id="introduction-geospatial-fundamentals-optional" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-geospatial-fundamentals-optional">Introduction :: Geospatial Fundamentals (Optional)</h2>
+<p>Visit the detailed self-paced lesson on <a href="https://carpentries-incubator.github.io/geospatial-python/">Fundamentals of Geospatial Raster and Vector Data with Python</a> on Data Carpentry website</p>
 
 
 </section>
@@ -455,8 +607,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </main>
 <div class="page-navigation page-navigation-docked">
   <div class="nav-page nav-page-previous">
-      <a href="../clinic/jupyterhub.html">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">JupyterHub, repos, environments</span>
+      <a href="../clinic/earthdata.html">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Earthdata Login</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

@@ -1,5 +1,26 @@
 [
   {
+    "objectID": "clinic/github.html#what-is-github",
+    "href": "clinic/github.html#what-is-github",
+    "title": "",
+    "section": "What is GitHub?",
+    "text": "GitHub is a hosting service for Git repositories, enabling us to share code across teams in a web environment."
+  },
+  {
+    "objectID": "clinic/github.html#why-do-i-need-a-github-account",
+    "href": "clinic/github.html#why-do-i-need-a-github-account",
+    "title": "",
+    "section": "Why do I need a GitHub account?",
+    "text": "There are three reasons you are required to have a GitHub account for the hackweek:\n\nYour GitHub accounts will give you access to the hackweek cloud computing resources\nAll hackweek tutorials will be shared on GitHub\nAll project teams will use GitHub to collaborate and work together on their code"
+  },
+  {
+    "objectID": "clinic/github.html#creating-a-github-account",
+    "href": "clinic/github.html#creating-a-github-account",
+    "title": "",
+    "section": "Creating a GitHub account",
+    "text": "Go to GitHub.\n\n\n\ngithub-signup\n\n\nNext, enter your email address and click on the green ‘Sing up for GitHub’ button. You will need to answer a few required questions in the following dialogs. Be sure to save your password somewhere safe because you will need it later! The steps for doing this are also well documented on this GitHub help page.\n\n\n\nrepos-tab\n\n\nEach repository is a container for a specific subset of material for this event. For example, there is a repository for the public-facing website you used to register for this event {{website_url}}. We’ll also create new repositories for each project."
+  },
+  {
     "objectID": "clinic/index.html#agenda",
     "href": "clinic/index.html#agenda",
     "title": "Pre-Hackathon Clinic",
@@ -23,100 +44,107 @@
   {
     "objectID": "clinic/jupyterhub.html#welcome",
     "href": "clinic/jupyterhub.html#welcome",
-    "title": "JupyterHub, repos, environments",
+    "title": "NASA Openscapes Cloud Environment",
     "section": "Welcome!",
-    "text": "Thanks for being here.\n\nWho instructors & helpers are, how to ask for help.\nCode of Conduct reminder: Be respectful and value each other’s ideas, styles and viewpoints.\nIf you have issues, please direct them to: Julie - lowndes @ nceas.ucsb.edu.\nLive transcripts are available.\nWe are recording this session.\n\n\n\n\n\n\n\nText to paste into Zoom Chat\n\n\n\n\n\nWelcome to the Cloud Hackathon Clinic!\nPlease go to https://openscapes.2i2c.cloud/hub/ - log in with your GitHub Account, and select “Small”\nClinic materials that we’ll cover today are here: https://nasa-openscapes.github.io/2021-Cloud-Hackathon/clinic/"
+    "text": "Thanks for being here\n\nWho instructors & helpers are, how to ask for help.\nCode of Conduct reminder: Be respectful and value each other’s ideas, styles and viewpoints.\nIf you have issues, please direct them to: Julie - lowndes @ nceas.ucsb.edu.\nLive transcripts are available.\nWe are recording this session.\n\n\n\n\n\n\n\nText to paste into Zoom Chat\n\n\n\n\n\nWelcome to the Cloud Hackathon Clinic!\nPlease go to https://openscapes.2i2c.cloud/hub/ - log in with your GitHub Account, and select “Small”\nClinic materials that we’ll cover today are here: https://nasa-openscapes.github.io/2021-Cloud-Hackathon/clinic/\n\n\n\n\nWhat’s a cloud environment and why we are using it.\nLearn about the Jupyter ecosystem and our cloud infrastructure.\nStart/Stop our Openscapes server and get familiar with Jupyterlab and installed programs\nHow to update our environments\nNASA Earthdata Login and security in the cloud."
   },
   {
-    "objectID": "clinic/jupyterhub.html#log-into-2i2c",
-    "href": "clinic/jupyterhub.html#log-into-2i2c",
-    "title": "JupyterHub, repos, environments",
-    "section": "Log into 2i2c",
-    "text": "Go to https://openscapes.2i2c.cloud/hub/. You will be asked to log in with your GitHub Account.\nThis will take several minutes. While we wait, we’ll get set up with GitHub and a brief overview."
+    "objectID": "clinic/jupyterhub.html#why-are-we-using-a-cloud-environment",
+    "href": "clinic/jupyterhub.html#why-are-we-using-a-cloud-environment",
+    "title": "NASA Openscapes Cloud Environment",
+    "section": "Why are we using a cloud environment?",
+    "text": "“Anyone working with large-scale Earth System data today faces the same general problems:\n\nThe data we want to work with are huge (typical analyses involve several TB at least)\nThe data we need are produced and distributed by many different organizations (NASA, NOAA, ESGF, Copernicus, etc.)\nWe want to apply a wide range of different analysis methodologies to the data, from simple statistics to signal processing to machine learning.\n\nThe community is waking up to the idea that we can’t simply expect scientists to download all this data to their personal computers for processing.”\nRyan Abernathey, Pangeo Project.\n\n\n\nDownload-based workflow. From Abernathey, Ryan (2020): Data Access Modes in Science"
   },
   {
-    "objectID": "clinic/jupyterhub.html#github-overview",
-    "href": "clinic/jupyterhub.html#github-overview",
-    "title": "JupyterHub, repos, environments",
-    "section": "GitHub overview",
-    "text": "TODO Julie - images and narration:\n\nmain unit: a repo\nremote and local\ncommits, push, pull\nfork\ngithub credentials\n\n\nFork and Clone\nGo to https://github.com/NASA-Openscapes/2021-Cloud-Clinic\nClick Fork. This will make a copy of this repo in your GitHub account."
+    "objectID": "clinic/jupyterhub.html#openscapes-hub-and-cloud-infrastructure",
+    "href": "clinic/jupyterhub.html#openscapes-hub-and-cloud-infrastructure",
+    "title": "NASA Openscapes Cloud Environment",
+    "section": "Openscapes Hub and Cloud Infrastructure",
+    "text": "There is no cloud, it’s someone else’s computer\nGo to https://openscapes.2i2c.cloud/hub/. You will be asked to log in with your GitHub Account\n\n\n\nOpenscapes JupyterHub Login\n\n\nOnce we are logged with our Github account we need to select our server type. There are different hardware configurations for each profile, for the duration of the Hackweek we’ll use small instances, the option at the top.\n\n\n\nMachine Profiles\n\n\nAfter we select our server type and click on start, Jupyterhub will allocate our instance using Amazon Web Services (AWS). This may take several minutes. While we wait, we’ll get set up with GitHub and a brief overview.\n\n\n\nJupyterhub Spawning"
   },
   {
-    "objectID": "clinic/jupyterhub.html#jupyter-hub-overview",
-    "href": "clinic/jupyterhub.html#jupyter-hub-overview",
-    "title": "JupyterHub, repos, environments",
-    "section": "Jupyter Hub Overview",
-    "text": "Now an intro to 2i2c, a which is a Jupyter Hub.\nTODO: insert images\nOrient to 2i2c\nHardware resources: computing and storage in the cloud.\nAWS: what APIs do I need to know? S3, EC2\nSecurity: use tokens, temporary credentials, env variables.\n\nOpen the terminal\nThe command line, also called the Shell or Terminal, is available in 2i2c.\nOpen a terminal in 2i2c: File > New… > Terminal. Note that you can toggle between “Simple” display mode in the bottom left."
+    "objectID": "clinic/jupyterhub.html#jupyter-ecosystem",
+    "href": "clinic/jupyterhub.html#jupyter-ecosystem",
+    "title": "NASA Openscapes Cloud Environment",
+    "section": "Jupyter Ecosystem",
+    "text": "Source: Project Pythia"
   },
   {
-    "objectID": "clinic/jupyterhub.html#clone-repo-to-2i2c",
-    "href": "clinic/jupyterhub.html#clone-repo-to-2i2c",
-    "title": "JupyterHub, repos, environments",
-    "section": "Clone repo to 2i2c",
-    "text": "We will clone our repo into 2i2c so that we can run it in the Cloud. We do this from the Terminal.\nMake sure you clone from your forked repo. For example, my url has my username “betolink”, not “NASA-Openscapes”.\ngit clone https://github.com/betolink/2021-Cloud-Clinic"
+    "objectID": "clinic/jupyterhub.html#pythonconda-environments",
+    "href": "clinic/jupyterhub.html#pythonconda-environments",
+    "title": "NASA Openscapes Cloud Environment",
+    "section": "Python/Conda environments",
+    "text": "name: nsidc\nchannels:\n  - conda-forge\ndependencies:\n  - ipykernel\n  - awscli~=1.21.4\n  - requests\n  - pip\n\nHow do I get my code in and out of the Openscapes hub?\nWhen you start your own server you will have access to your own virtual drive space. No other users will be able to see or access your data files. You can easily upload files to your virtual drive space and save files from the hub back to another location, such as GitHub or your own local laptop drive.\nHere we’ll show you how to pull (copy) some files from GitHub into your virtual drive space using git. This will be a common task during the hackweek: at the start of each tutorial we’ll ask you to “fork” (create your own copy of in your GitHub account) and “clone” (make a copy of in a computing environment, such as your local computer or Openscapes instance) the GitHub repository corresponding to the specific tutorial being taught into your Openscapes drive space.\n\n\n\nterminal-button\n\n\nThis will open a new terminal tab in your JupyterLab interface:\n\n\n\nterminal-tab\n\n\nNow you can issue any Linux commands to manage your local file system.\nYou may also upload files from your local system using the upload button (up-pointing arrow) on the top left of the JupyterHub navigation panel. Similarly, you may download files to your local system by right-clicking the file and selecting download (down-pointing arrow).\nSimple, example GitHub/git/local-workspace workflows for getting a tutorial started in your Openscapes instance and working on a group project are provided. The getting started on a tutorial workflow briefly reviews much of the information in this preliminary exercise along with steps for making and saving notes or other changes as you work through the tutorial and keeping it updated with the original, master copy. The basic git workflow for a project serves as a reminder of the git workflow for working on a group project while minimizing code conflicts that could result from multiple people making changes to the same files simultaneously."
   },
   {
-    "objectID": "clinic/jupyterhub.html#python-environments",
-    "href": "clinic/jupyterhub.html#python-environments",
-    "title": "JupyterHub, repos, environments",
-    "section": "Python environments",
-    "text": "TODO overview discussion\nWalk through environment.yml file from https://github.com/NASA-Openscapes/2021-Cloud-Clinic"
+    "objectID": "clinic/jupyterhub.html#how-do-i-end-my-openscapes-session-will-i-lose-all-of-my-work",
+    "href": "clinic/jupyterhub.html#how-do-i-end-my-openscapes-session-will-i-lose-all-of-my-work",
+    "title": "NASA Openscapes Cloud Environment",
+    "section": "How do I end my Openscapes session? Will I lose all of my work?",
+    "text": "When you are finished working for the day it is important to explicitly log out of your Openscapes session. The reason for this is it will save us a bit of money! When you keep a session active it uses up AWS resources and keeps a series of virtual machines deployed.\nStopping the server happens automatically when you log out, so navigate to “File -> Log Out” and just click “Log Out”!\n\n\n\nhub-control-panel-button\n\n\n!!! warning “logging out” Logging out will NOT cause any of your work to be lost or deleted. It simply shuts down some resources. It would be equivalent to turning off your desktop computer at the end of the day.\nReferences:\n\nProject Pythia\nWhy Jupyter is data scientists’ computational notebook of choice\nClosed Platforms vs. Open Architectures for Cloud-Native Earth System Analytics\nIntroduction to Geospatial Concepts\n2i2c user storage\nSnowEX Hackweek"
   },
   {
-    "objectID": "clinic/jupyterhub.html#jupyter-notebook",
-    "href": "clinic/jupyterhub.html#jupyter-notebook",
-    "title": "JupyterHub, repos, environments",
-    "section": "Jupyter notebook",
-    "text": "Talk through the example from https://github.com/NASA-Openscapes/2021-Cloud-Clinic\nImport the library you defined in the environment. (If you don’t have the library defined in the environment and try to import it, it will give you an error (unless it’s part of core Python))"
-  },
-  {
-    "objectID": "clinic/notebooks.html#intro-python",
-    "href": "clinic/notebooks.html#intro-python",
+    "objectID": "clinic/notebooks.html#summary",
+    "href": "clinic/notebooks.html#summary",
     "title": "Notebooks, Python, GitHub",
-    "section": "Intro Python",
-    "text": "How to import libraries, talk through some code structure"
+    "section": "Summary",
+    "text": "In this session, we will provide a brief introduction to:\n\nUsing command line (terminal/shell)\nCode management (using git)\nFundamentals of programming in Python\n\nYou will need a working knowledge of git and terminal for this hackathon. We will provide an overview of these topics and also share resources for self-paced learning."
   },
   {
-    "objectID": "clinic/notebooks.html#run-notebook",
-    "href": "clinic/notebooks.html#run-notebook",
+    "objectID": "clinic/notebooks.html#introduction-command-line-terminalshell",
+    "href": "clinic/notebooks.html#introduction-command-line-terminalshell",
     "title": "Notebooks, Python, GitHub",
-    "section": "Run notebook",
-    "text": "see how it works, but that you might want to make a change"
+    "section": "Introduction :: Command Line (Terminal/Shell)",
+    "text": "Shell Basics\n\nWhat is Terminal or Shell?\nNavigating Files and Directories\nWorking with Files and Directories\n\n\n\nShell: More Details\nFor a more detailed self-paced lesson on shell, visit Shell Lesson from Software Carpentry"
   },
   {
-    "objectID": "clinic/notebooks.html#commit-changes",
-    "href": "clinic/notebooks.html#commit-changes",
+    "objectID": "clinic/notebooks.html#introduction-version-control-git-and-github",
+    "href": "clinic/notebooks.html#introduction-version-control-git-and-github",
     "title": "Notebooks, Python, GitHub",
-    "section": "Commit changes",
-    "text": "Make some edits – TODO\nCommit"
+    "section": "Introduction :: Version Control (Git and Github)",
+    "text": "What is Version Control?\n\n\nConfigure git\nConfigure git with your name and email address\ngit config --global user.name \"Makhan Virdi\"\ngit config --global user.email \"Makhan.Virdi@gmail.com\"\n\n\nStore credentials\n\nGo to your github account and create a new “personal access token”: https://github.com/settings/tokens/new\n\n\n\nGenerate Personal Access Token on github.com\n\n\nConfigure Git to store your credentials to avoid having to enter the credentials every time.\ngit config --global credential.helper store\ngit config -l\nUse a git command that requires you to enter credentials (e.g. pull, push)\ngit pull\nProvide your github “username” and “Github Token” when asked. Now your password is stored in “~/.git-credentials” and you will not be prompted again unless the Github token expires. You can check the presence of this file using Terminal\nls -la ~\nThe output looks like this:\ndrwxr-xr-x 13 jovyan jovyan 6144 Oct 22 17:35 .\ndrwxr-xr-x  1 root   root   4096 Oct  4 16:21 ..\n-rw-------  1 jovyan jovyan 1754 Oct 29 18:30 .bash_history\ndrwxr-xr-x  4 jovyan jovyan 6144 Oct 29 16:38 .config\n-rw-------  1 jovyan jovyan   66 Oct 22 17:35 .git-credentials\n-rw-r--r--  1 jovyan jovyan   84 Oct 22 17:14 .gitconfig\ndrwxr-xr-x 10 jovyan jovyan 6144 Oct 21 16:19 2021-Cloud-Hackathon\nYou can also verify your git configuration\n(notebook) jovyan@jupyter-virdi:~$ git config -l\nThe output looks like this:\nuser.email        = Makhan.Virdi@gmail.com\nuser.name         = Makhan Virdi\ncredential.helper = store\n\n\n\nClone a Repository\nTo clone a repository from github, copy the link for the repository and use git clone to create a copy of the repository:\ngit clone https://github.com/NASA-Openscapes/check_github_setup\n\n\nTracking Changes\n\nstatus\nadd\ncommit\nlog\ndiff\n\n\n\nUsing Remotes in GitHub\n\nremote\npull\npush\n\n\n\nGit: More Details\nLesson: For a more detailed self-paced lesson on git, visit Git Lesson from Software Carpentry\nCheatsheet: Frequently used git commands\n\n\nOther Topics\nDiscuss merge conflicts and philosophy: best way to deal with merge conflicts is to avoid them; talk to your colleagues, commit often. Also can work with branches (out of the scope of this Clinic?)"
   },
   {
-    "objectID": "clinic/notebooks.html#push-changes",
-    "href": "clinic/notebooks.html#push-changes",
+    "objectID": "clinic/notebooks.html#introduction-programming-in-python",
+    "href": "clinic/notebooks.html#introduction-programming-in-python",
     "title": "Notebooks, Python, GitHub",
-    "section": "Push changes",
-    "text": "TODO"
+    "section": "Introduction :: Programming in Python",
+    "text": "Switch to Jupyter Notebook for an introduction to programming in Python\n\nVariables (and mathematical operations)\nConditionals (if, else, elif)\nFlow Control using loops (for, while)\nData Structures (list, tuple, dict)\nFunctions\nUsing modules (libraries, packages)\n\npandas"
   },
   {
-    "objectID": "clinic/notebooks.html#commit-and-push-again",
-    "href": "clinic/notebooks.html#commit-and-push-again",
+    "objectID": "clinic/notebooks.html#introduction-geospatial-fundamentals-optional",
+    "href": "clinic/notebooks.html#introduction-geospatial-fundamentals-optional",
     "title": "Notebooks, Python, GitHub",
-    "section": "Commit and push again",
-    "text": "some more python concepts?\nTODO"
+    "section": "Introduction :: Geospatial Fundamentals (Optional)",
+    "text": "Visit the detailed self-paced lesson on Fundamentals of Geospatial Raster and Vector Data with Python on Data Carpentry website"
   },
   {
-    "objectID": "clinic/notebooks.html#update-your-fork",
-    "href": "clinic/notebooks.html#update-your-fork",
-    "title": "Notebooks, Python, GitHub",
-    "section": "Update your fork",
-    "text": "(During the break, Luis/someone added something to the notebook)\nAnd how to update your fork from main. 2 step process:\n\nFrom github.com, click these buttons\nFrom 2i2c, git fetch (I think?)\n\nDiscuss merge conflicts and philosophy: best way to deal with merge conflicts is to avoid them; talk to your colleagues, commit often. Also can work with branches (out of the scope of this Clinic?)"
+    "objectID": "clinic/earthdata.html#overview",
+    "href": "clinic/earthdata.html#overview",
+    "title": "",
+    "section": "Overview",
+    "text": "NASA data are stored at one of several Distributed Active Archive Centers (DAACs). If you’re interested in available data for a given area and time of interest, the Earthdata Search portal provides a convenient web interface."
   },
   {
-    "objectID": "clinic/notebooks.html#closing",
-    "href": "clinic/notebooks.html#closing",
-    "title": "Notebooks, Python, GitHub",
-    "section": "Closing",
-    "text": "Thanks for coming!"
+    "objectID": "clinic/earthdata.html#why-do-i-need-an-earthdata-login",
+    "href": "clinic/earthdata.html#why-do-i-need-an-earthdata-login",
+    "title": "",
+    "section": "Why do I need an Earthdata login?",
+    "text": "Each participant will need a login. We will be teaching you ways to programmatically access NASA data from within your Python scripts. You will need to enter your Earthdata username and password in order for this to work."
+  },
+  {
+    "objectID": "clinic/earthdata.html#getting-an-earthdata-login",
+    "href": "clinic/earthdata.html#getting-an-earthdata-login",
+    "title": "",
+    "section": "Getting an Earthdata login",
+    "text": "If you do not already have an Earthdata login, then navigate to the Earthdata Login page, a username and password, and then record this somewhere for use during the tutorials:\n\n\n\nearthdata-login"
+  },
+  {
+    "objectID": "clinic/earthdata.html#configure-programmatic-access-to-nasa-servers",
+    "href": "clinic/earthdata.html#configure-programmatic-access-to-nasa-servers",
+    "title": "",
+    "section": "Configure programmatic access to NASA servers",
+    "text": "If you use web interfaces to retrieve nasa data such as Earthdata Search you are prompted to login. We will be using software to retrieve data from NASA Servers during the hackweek, so you must store your credentials on the JupyterHub as explained in this documentation. Run the following commands on the JupyterHub in a terminal replacing your Earthdata login username and password:\necho \"machine urs.earthdata.nasa.gov login EARTHDATA_LOGIN password EARTHDATA_PASSWORD\" > ~/.netrc\nchmod 0600 .netrc"
   },
   {
     "objectID": "logistics/another-thing.html",
