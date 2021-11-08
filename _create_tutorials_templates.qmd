@@ -1,8 +1,8 @@
+---
+title: Create Tutorial Templates ()
+---
 
-## list all tutorials
-
-## for each tutorial, convert to .qmd, remove code, save as .ipynb, delete .qmd
-Thank you Jacqueline Nolis for the code examples: <https://twitter.com/skyetetra/status/1454472378243698694>
+Running is code will take all the `.ipynb` notebooks in a folder and copy them to a template folder after removing all code from within the code chunks. It works for specific folders now, and is written in R and bash, but can be generalized further. Thank you Jacqueline Nolis for the code examples: <https://twitter.com/skyetetra/status/1454472378243698694>
 
 
 ```{r}
@@ -21,9 +21,9 @@ for (f in ipynb_files) {  ## f = ipynb_files[1]
   ## convert to .qmd in template directory
   system(sprintf("quarto convert tutorials/%s.ipynb --output tutorials-templates/%s.qmd", f2, f2))
   
-  ## remove code from code chunks, overwrite the .qmd
+  ## remove code from code chunks (ipynb requires something in the code chunk, so here it's #)), overwrite the .qmd
   read_file(sprintf("tutorials-templates/%s.qmd", f2)) %>%
-    str_replace_all("```\\{python(.*)\\}[\\S\\s]*?```","```\\{python\\1\\}\n\n\n```") %>%
+    str_replace_all("```\\{python(.*)\\}[\\S\\s]*?```","```\\{python\\1\\}\n#\n\n```") %>%
     write_file(sprintf("tutorials-templates/%s.qmd", f2))
   
   ## convert template to .ipynb
@@ -33,7 +33,6 @@ for (f in ipynb_files) {  ## f = ipynb_files[1]
   file.remove(sprintf("tutorials-templates/%s.qmd", f2))
   
 }
-
 
 
 ```
