@@ -4,7 +4,7 @@
     "href": "clinic/index.html#agenda",
     "title": "Pre-Hackathon Clinic",
     "section": "Agenda",
-    "text": "The Clinic will occur in 2 halves, with a 5 minute break in-between:\n\n\n\nTime, PST (UTC-8)\nEvent\nLeads/Instructors\n\n\n\n\n8:00 am\nWelcome\nTBD\n\n\n8:05 am\nJupyterHub, repos, environments\nLuis Lopez, NSIDC\n\n\n9:00 am\nBreak\n\n\n\n9:05 am\nNotebooks, python, syncing\nMakhan Virdi, ASDC\n\n\n10:00 am\nClosing"
+    "text": "The Clinic will occur in 2 halves, with a 5 minute break in-between:\n\n\n\nTime, PST (UTC-8)\nEvent\nLeads/Instructors\n\n\n\n\n8:00 am\nWelcome\nJulie Lowndes, Openscapes\n\n\n8:05 am\nJupyterHub, repos, environments\nLuis Lopez, NSIDC\n\n\n9:00 am\nBreak\n\n\n\n9:05 am\nNotebooks, python, syncing\nMakhan Virdi, ASDC\n\n\n10:00 am\nClosing"
   },
   {
     "objectID": "clinic/index.html#before-the-clinic",
@@ -25,7 +25,7 @@
     "href": "clinic/jupyterhub.html#welcome",
     "title": "JupyterHub, repos, environments",
     "section": "Welcome!",
-    "text": "Thanks for being here.\nWho instructors & helpers are, how to ask for help.\nCode of Conduct reminder\nSummary of what we’ll do"
+    "text": "Thanks for being here.\n\nWho instructors & helpers are, how to ask for help.\nCode of Conduct reminder: Be respectful and value each other’s ideas, styles and viewpoints.\nIf you have issues, please direct them to: Julie - lowndes @ nceas.ucsb.edu.\nLive transcripts are available.\nWe are recording this session.\n\n\n\n\n\n\n\nText to paste into Zoom Chat\n\n\n\n\n\nWelcome to the Cloud Hackathon Clinic!\nPlease go to https://openscapes.2i2c.cloud/hub/ - log in with your GitHub Account, and select “Small”\nClinic materials that we’ll cover today are here: https://nasa-openscapes.github.io/2021-Cloud-Hackathon/clinic/"
   },
   {
     "objectID": "clinic/jupyterhub.html#log-into-2i2c",
@@ -165,7 +165,7 @@
     "href": "logistics/schedule.html#pre-hackathon-clinic-november-9",
     "title": "Schedule",
     "section": "Pre-Hackathon Clinic: November 9",
-    "text": "This Clinic is optional and we will share a recording that participants can review ahead of time.\n\n\n\nTime, PST (UTC-8)\nEvent\nLeads/Instructors\n\n\n\n\n8:00 am\nWelcome\nTBD\n\n\n8:05 am\nJupyterHub, repos, environments\nLuis Lopez, NSIDC\n\n\n9:00 am\nBreak\n\n\n\n9:05 am\nNotebooks, python, syncing\nMakhan Virdi, ASDC\n\n\n10:00 am\nClosing"
+    "text": "This Clinic is optional and we will share a recording that participants can review ahead of time.\n\n\n\nTime, PST (UTC-8)\nEvent\nLeads/Instructors\n\n\n\n\n8:00 am\nWelcome\nJulie Lowndes, Openscapes\n\n\n8:05 am\nJupyterHub, repos, environments\nLuis Lopez, NSIDC\n\n\n9:00 am\nBreak\n\n\n\n9:05 am\nNotebooks, python, syncing\nMakhan Virdi, ASDC\n\n\n10:00 am\nClosing"
   },
   {
     "objectID": "logistics/schedule.html#hackathon-day-1-november-15",
