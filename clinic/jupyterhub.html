@@ -305,6 +305,8 @@
 <li><a href="#how-do-i-get-my-code-in-and-out-of-the-openscapes-hub" class="nav-link" data-scroll-target="#how-do-i-get-my-code-in-and-out-of-the-openscapes-hub">How do I get my code in and out of the Openscapes hub?</a></li>
 </ul></li>
 <li><a href="#how-do-i-end-my-openscapes-session-will-i-lose-all-of-my-work" class="nav-link" data-scroll-target="#how-do-i-end-my-openscapes-session-will-i-lose-all-of-my-work">How do I end my Openscapes session? Will I lose all of my work?</a></li>
+<li><a href="#references" class="nav-link" data-scroll-target="#references">References</a></li>
+<li><a href="#faq" class="nav-link" data-scroll-target="#faq">FAQ</a></li>
 </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon/edit/main/clinic/jupyterhub.md" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon/issues/new" class="toc-action">Report an issue</a></p></div></div></nav></div>
   <div class="col mx-auto col-sm-12 col-md-9 col-lg-7 col-xl-7 px-lg-4 pe-xxl-4 ps-xxl-0">
@@ -415,7 +417,9 @@
 </figure>
 </div>
 <p>!!! warning “logging out” Logging out will <strong>NOT</strong> cause any of your work to be lost or deleted. It simply shuts down some resources. It would be equivalent to turning off your desktop computer at the end of the day.</p>
-<p>References:</p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
 <ul>
 <li><a href="https://foundations.projectpythia.org">Project Pythia</a></li>
 <li><a href="https://www.nature.com/articles/d41586-018-07196-1">Why Jupyter is data scientists’ computational notebook of choice</a></li>
@@ -424,6 +428,17 @@
 <li><a href="https://infrastructure.2i2c.org/en/latest/topic/storage-layer.html">2i2c user storage</a></li>
 <li><a href="https://snowex-hackweek.github.io/website/intro.html">SnowEX Hackweek</a></li>
 </ul>
+</section>
+<section id="faq" class="level2">
+<h2 class="anchored" data-anchor-id="faq">FAQ</h2>
+<p><strong>I have an empty ‘share’ folder</strong>. That’s expected. There shouldn’t be anything in the ‘share’ folder</p>
+<p><strong>After the 3 months are up, what do we do with our work on the server?</strong> You’ll have them since you can back everything up with GitHub. We can follow up with more details of what happens on the 2i2c side</p>
+<p><strong>Can we use Matlab with JupyterHub?</strong> You can also use <a href="https://datascience-enthusiast.com/Miscellaneous/Jupyter_R_Python_Julia_Octave.html">Octave kernel</a> as a Matlab replacement. It is open source and free</p>
+<p><strong>What’s the difference between lpdaac and nsidc kernels?</strong> These are environments that are set up for different tutorials</p>
+<p><strong>Why do we have the same home directory as /home/jovyan?</strong> /home/jovyan is the default home directory for ‘jupyter’ based images/dockers. It is the historic home directory for Jupyter deployments.</p>
+<p><strong>/home/jovyan is the default home directory for ‘jupyter’ based images/dockers</strong></p>
+<p><strong>Can other users see the .git-credentials file in my /home/jovyan folder?</strong> No, other users can not see your creds</p>
+<p><strong>How to exit 2i2c’s terminal text editor?</strong> <code>esc</code> to get to the command, and then <code>:w</code> to save, <code>:q</code> to quit.</p>
 
 
 </section>
