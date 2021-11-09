@@ -50,7 +50,6 @@ site:
       - section: tutorials-templates/index.md
       - section: projects/index.md
         contents:
-          - projects/hacking.md
           - projects/hackathon-projects.md
       - section: "Additional Resources"
         contents:
