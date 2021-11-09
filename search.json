@@ -79,35 +79,35 @@
   {
     "objectID": "clinic/notebooks.html#summary",
     "href": "clinic/notebooks.html#summary",
-    "title": "Notebooks, Python, GitHub",
+    "title": "Notebooks, Python, Git",
     "section": "Summary",
     "text": "In this session, we will provide a brief introduction to:\n\nCommand line (terminal/shell)\nVersion Control (code management using git)\nProgramming in Python (using Jupyter Notebook)\nGeospatial Fundamentals (optional, self-study)\n\nYou will need a working knowledge of git and terminal for this hackathon. We will provide an overview of these topics and also share resources for self-paced learning."
   },
   {
     "objectID": "clinic/notebooks.html#introduction-command-line-terminalshell",
     "href": "clinic/notebooks.html#introduction-command-line-terminalshell",
-    "title": "Notebooks, Python, GitHub",
+    "title": "Notebooks, Python, Git",
     "section": "Introduction :: Command Line (Terminal/Shell)",
     "text": "Shell Basics\n\nWhat is Terminal or Shell?\nNavigating Files and Directories\nWorking with Files and Directories\n\n\n\nShell: More Details\nDetailed self-paced lesson on shell: Shell Lesson from Software Carpentry"
   },
   {
     "objectID": "clinic/notebooks.html#introduction-version-control-git-and-github",
     "href": "clinic/notebooks.html#introduction-version-control-git-and-github",
-    "title": "Notebooks, Python, GitHub",
+    "title": "Notebooks, Python, Git",
     "section": "Introduction :: Version Control (Git and Github)",
     "text": "What is Version Control?\n\n\nConfigure git\nConfigure git with your name and email address\ngit config --global user.name \"Makhan Virdi\"\ngit config --global user.email \"Makhan.Virdi@gmail.com\"\n\n\nStore credentials\n\nGo to your github account and create a new “personal access token”: https://github.com/settings/tokens/new\n\n\n\nGenerate Personal Access Token on github.com\n\n\nConfigure Git to store your credentials to avoid having to enter the credentials every time.\ngit config --global credential.helper store\ngit config -l\nUse a git command that requires you to enter credentials (e.g. pull, push)\ngit pull\nProvide your github “username” and “Github Token” when asked. Now your password is stored in “~/.git-credentials” and you will not be prompted again unless the Github token expires. You can check the presence of this file using Terminal\nls -la ~\nThe output looks like this:\ndrwxr-xr-x 13 jovyan jovyan 6144 Oct 22 17:35 .\ndrwxr-xr-x  1 root   root   4096 Oct  4 16:21 ..\n-rw-------  1 jovyan jovyan 1754 Oct 29 18:30 .bash_history\ndrwxr-xr-x  4 jovyan jovyan 6144 Oct 29 16:38 .config\n-rw-------  1 jovyan jovyan   66 Oct 22 17:35 .git-credentials\n-rw-r--r--  1 jovyan jovyan   84 Oct 22 17:14 .gitconfig\ndrwxr-xr-x 10 jovyan jovyan 6144 Oct 21 16:19 2021-Cloud-Hackathon\nYou can also verify your git configuration\n(notebook) jovyan@jupyter-virdi:~$ git config -l\nThe output looks like this:\nuser.email        = Makhan.Virdi@gmail.com\nuser.name         = Makhan Virdi\ncredential.helper = store\n\n\n\nClone a Repository\nTo clone a repository from github, copy the link for the repository and use git clone to create a copy of the repository:\ngit clone https://github.com/NASA-Openscapes/check_github_setup\n\n\nTracking Changes\n\nstatus\nadd\ncommit\nlog\ndiff\n\n\n\nUsing Remotes in GitHub\n\nremote\npull\npush\n\n\n\nGit Commands: Summary\n\nCommonly used git commands (modified from source)\n\n\n\n\n\n\nGit Command\nSummary\n\n\n\n\ngit status\nShows the current state of the repository: the current working branch, files in the staging area, etc.\n\n\ngit add\nAdds a new, previously untracked file to version control and marks already tracked files to be committed with the next commit\n\n\ngit commit\nSaves the current state of the repository and creates an entry in the log\n\n\ngit log\nShows the history for the repository\n\n\ngit diff\nShows content differences between commits, branches, individual files and more\n\n\ngit clone\nCopies a repository to your local environment, including all the history\n\n\ngit pull\nGets the latest changes of a previously cloned repository\n\n\ngit push\nPushes your local changes to the remote repository, sharing them with others\n\n\n\n\n\nGit: More Details\nLesson: For a more detailed self-paced lesson on git, visit Git Lesson from Software Carpentry\nCheatsheet: Frequently used git commands\nDangit, Git!?!: If you are stuck after a git mishap, there are ready-made solutions to common problems at Dangit, Git!?!"
   },
   {
     "objectID": "clinic/notebooks.html#introduction-programming-in-python",
     "href": "clinic/notebooks.html#introduction-programming-in-python",
-    "title": "Notebooks, Python, GitHub",
+    "title": "Notebooks, Python, Git",
     "section": "Introduction :: Programming in Python",
     "text": "Switch to Jupyter Notebook for an introduction to programming in Python\n\nVariables (and mathematical operations)\nData Structures (list, tuple, dict)\nFlow Control using loops (for, while)\nConditionals (if, else, elif)\nFunctions\nErrors and Exceptions (understanding and handling errors)\nUsing modules (libraries, packages)\n\npandas: high-performance, easy-to-use data structures and data analysis tools\nrioxarray: based on the rasterio package for working with rasters and xarray\n\n\n\nPython Learning Resources\nSelf-paced lesson on Programming with Python from Software Carpentry"
   },
   {
     "objectID": "clinic/notebooks.html#introduction-geospatial-fundamentals-optional",
     "href": "clinic/notebooks.html#introduction-geospatial-fundamentals-optional",
-    "title": "Notebooks, Python, GitHub",
+    "title": "Notebooks, Python, Git",
     "section": "Introduction :: Geospatial Fundamentals (Optional)",
     "text": "Detailed self-paced lesson on Fundamentals of Geospatial Raster and Vector Data with Python from Data Carpentry"
   },
