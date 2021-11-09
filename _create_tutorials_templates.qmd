@@ -24,7 +24,7 @@ for (f in ipynb_files) {  ## f = ipynb_files[1]
   
   ## remove code from code chunks (ipynb requires something in the code chunk, so here it's #)), overwrite the .qmd
   read_file(sprintf("tutorials-templates/%s.qmd", f2)) %>%
-    str_replace_all("```\\{python(.*)\\}[\\S\\s]*?```","```\\{python\\1\\}\n#\n\n```") %>%
+    str_replace_all("```\\{python(.*)\\}[\\S\\s]*?```","```\\{python\\1\\}\n \n\n```") %>%
     write_file(sprintf("tutorials-templates/%s.qmd", f2))
   
   ## convert template to .ipynb
@@ -35,6 +35,7 @@ for (f in ipynb_files) {  ## f = ipynb_files[1]
   
 }
 
-
 ```
 
+
+Note: without the added `#` in the code chunks, they disappeared entirely in the .ipynb files, [like this example](https://github.com/NASA-Openscapes/2021-Cloud-Hackathon/blob/4c6c8aa2deb484bdf11d91c6f0379b8b230ac382/tutorials-templates/Additional_Resources__Direct_S3_Access__gdalvrt.ipynb). 
