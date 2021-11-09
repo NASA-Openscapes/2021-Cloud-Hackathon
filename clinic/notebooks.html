@@ -338,17 +338,81 @@
 </section>
 <section id="introduction-version-control-git-and-github" class="level2">
 <h2 class="anchored" data-anchor-id="introduction-version-control-git-and-github">Introduction :: Version Control (Git and Github)</h2>
-<section id="what-is-version-control" class="level4">
-<h4 class="anchored" data-anchor-id="what-is-version-control">What is Version Control?</h4>
+<section id="what-is-version-control-git-github-and-how-to-set-it-up" class="level4">
+<h4 class="anchored" data-anchor-id="what-is-version-control-git-github-and-how-to-set-it-up">What is version control, git, github, and how to set it up?</h4>
+<p>Version control is managing and tracking changes to your documents (program source code, images, websites, data files, etc.). <code>git</code> is a popular tool used for version control of software code. <a href="https://github.com/">github.com</a> is popular platform that provides remote server hosting for git repositories. A repository is a collection of various files that you are tracking for changes and versions (think of it as a directory with files that are being tracked for changes, using <code>git</code> for taking snapshots of versions as you are developing).</p>
+<p>This section is a step-by-step guide to set up <code>git</code> on your <a href="openscapes.2i2c.cloud">2i2c instance</a> and configure <code>git</code> to use your <a href="https://github.com/">github.com</a> account for managing your repositories hosted on <a href="https://github.com/">github.com</a>.</p>
 </section>
-<section id="configure-git" class="level4">
-<h4 class="anchored" data-anchor-id="configure-git">Configure git</h4>
-<p>Configure git with your name and email address</p>
+<section id="step-1-create-a-github-account" class="level4">
+<h4 class="anchored" data-anchor-id="step-1-create-a-github-account">Step 1: Create a github account</h4>
+<p>To complete the setup, you will need an account on <a href="https://github.com/">github.com</a>. If you don’t have an account, please visit <a href="https://github.com/">github.com</a>, create an account (free) and come back to this guide for setting up git.</p>
+</section>
+<section id="step-2-fork-a-repository" class="level4">
+<h4 class="anchored" data-anchor-id="step-2-fork-a-repository">Step 2: Fork a repository</h4>
+<p>A <strong>fork</strong> is a copy of a repository from another github account (for example <strong>Openscapes</strong> account) to your github account (for example, my account <strong>virdi</strong>). To help you finish this setup correctly, we have created a demo repository on Openscapes github account named <strong>check_github_setup</strong>. You can <strong>fork</strong> this repository into your github account following these steps:</p>
+<ol type="1">
+<li><p>Log in to your <a href="https://github.com/">github.com</a> account</p></li>
+<li><p>Go to the demo repository at <a href="https://github.com/NASA-Openscapes/check_github_setup">Openscapes github</a></p>
+<div class="quarto-figure quarto-figure-center" width="520">
+<figure class="figure">
+<p><img src="img/github-fork-1.png" class="img-fluid figure-img" width="520"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Demo repository on Openscapes github</figcaption><p></p>
+</figure>
+</div></li>
+<li><p>Click on the fork icon in the top right corner, as shown in the image below and click your user name if prompted to do so</p>
+<p><img src="img/github-fork-2.png" class="img-fluid" width="520"></p></li>
+</ol>
+</section>
+<section id="step-3-clone-the-repository-that-you-just-forked" class="level4">
+<h4 class="anchored" data-anchor-id="step-3-clone-the-repository-that-you-just-forked">Step 3: Clone the repository that you just forked</h4>
+<p>Now you have a fork of the demo repository in your github account</p>
+<ol type="1">
+<li><p>Copy link for the demo repository from your github account and <code>clone</code> it in your 2i2c instance. Click the green “Code” button and copy the link as shown.</p>
+<p><img src="img/github-clone.png" class="img-fluid"></p></li>
+<li><p>Start your <a href="openscapes.2i2c.cloud">2i2c instance</a> and open a terminal</p>
+<p><code>File &gt;&gt; New &gt;&gt; Terminal</code></p></li>
+<li><p>Make sure you are in your <strong>home directory</strong> by using<code>pwd</code> command and verifying the output as below</p>
+<p><code>/home/jovyan</code></p>
+<p><img src="img/terminal-pwd.png" class="img-fluid" width="520"></p></li>
+<li><p>Configure git with your name and email address</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.name <span class="st">"Makhan Virdi"</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.email <span class="st">"Makhan.Virdi@gmail.com"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.email <span class="st">"Makhan.Virdi@gmail.com"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Configure <code>git</code> to store your github credentials to avoid having to enter your github username and token (in the next steps, we will describe how to use github token instead of a password)</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> credential.helper store</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Clone the repository using <code>git clone</code> command in the terminal</p>
+<p>To clone a repository from github, copy the link for the repository (previous step) and use <code>git clone</code>:</p>
+<p><code>git clone https://github.com/NASA-Openscapes/check_github_setup</code></p>
+<p><img src="img/terminal-clone.png" class="img-fluid" width="520"></p>
+<p>Use <code>ls</code> to verify the existence of the repository that you just cloned</p>
+<p><img src="img/terminal-clone-confirm-ls.png" class="img-fluid" width="520"></p></li>
+<li><p>Change directory to the cloned repository using <code>cd check_github_setup</code> and checking the current directory using <code>pwd</code> command (present working directory)</p>
+<p><img src="img/terminal-cd-repo.png" class="img-fluid" width="520"></p></li>
+<li><p>Check status of your git repository to confirm git set up using <code>git status</code></p>
+<p><img src="img/terminal-git-status.png" class="img-fluid"></p>
+<p>You are all set with git on your 2i2c instance!</p>
+<p>In the next step, we will create a new file in this repository, track changes to this file, and link it with your github.com account.</p></li>
+</ol>
 </section>
-<section id="store-credentials" class="level4">
-<h4 class="anchored" data-anchor-id="store-credentials">Store credentials</h4>
+<section id="step-4.-creating-new-file-and-tracking-changes" class="level4">
+<h4 class="anchored" data-anchor-id="step-4.-creating-new-file-and-tracking-changes">Step 4. Creating new file and tracking changes</h4>
+<ol type="1">
+<li><p>In the left panel on your 2i2c, click on the “directory” icon and then double click on “check_github_setup” directory.</p>
+<p><img src="img/notebook-cd.png" class="img-fluid"></p>
+<p><img src="img/notebook-cd-result.png" class="img-fluid"></p></li>
+<li><p>Once you are in <strong>check_github_setup</strong> directory, create a new file using the text editor in your 2i2c instance (<code>File &gt;&gt; New &gt;&gt; File</code>).</p>
+<p><img src="img/%20notebook-new-file.png" class="img-fluid"></p>
+<p>Name the file last_name.txt. For example, <strong>virdi.txt</strong> for me (use your last name). Add some content to this file (for example, I added this to my <strong>virdi.txt</strong> file: <code>my last name is virdi</code>).</p>
+<p><img src="img/notebook-rename-file.png" class="img-fluid"></p></li>
+<li><p>Now you should have a new file (your_last_name.txt) in the git repository directory <strong>check_github_setup</strong></p></li>
+<li><p>Check if <code>git</code> can see that you have added a new file using <code>git status</code></p>
+<p><img src="img/git-status.png" class="img-fluid"></p></li>
+<li><p>Git wants you to add that file so it can be tracked for changes, using <code>git add</code> The, you can commit this change using <code>git commit</code> as shown here</p>
+<p><img src="img/git-add-commit.png" class="img-fluid"></p></li>
+<li><p>As seen in the above picture, <code>git</code> is suggesting you to push the change that you just committed to the remote server at github.com (so that your collaborators can also see what changes you made). <strong>Before we push to github.com</strong>, let’s configure <code>git</code> further and store our github.com credentials to avoid entering the credentials every time we invoke <code>git push</code>. For doing so, we need to create a <strong>token</strong> on github.com to be used in place of your github.com password.</p></li>
+</ol>
+</section>
+<section id="step-5.-create-access-token-on-github.com" class="level4">
+<h4 class="anchored" data-anchor-id="step-5.-create-access-token-on-github.com">Step 5. Create access token on github.com</h4>
 <ol type="1">
 <li><p>Go to your github account and create a new “personal access token”: <a href="https://github.com/settings/tokens/new" class="uri">https://github.com/settings/tokens/new</a></p>
 <div id="fig-anonymous-1223930" class="quarto-figure quarto-figure-center anchored">
@@ -357,12 +421,13 @@
 <p></p><figcaption aria-hidden="true" class="figure-caption">Generate Personal Access Token on github.com</figcaption><p></p>
 </figure>
 </div></li>
-<li><p>Configure Git to store your credentials to avoid having to enter the credentials every time.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> credential.helper store</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">-l</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>Use a git command that requires you to enter credentials (e.g.&nbsp;pull, push)</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>Provide your github “username” and “Github Token” when asked. Now your password is stored in “~/.git-credentials” and you will not be prompted again unless the Github token expires. You can check the presence of this file using Terminal</p>
+<li><p>Enter a description in “Note” field as seen above, select “repo” checkbox, and scroll to the bottom and click the green button “Generate Token”. Once generated, copy the token (or save it in a text file for reference).</p>
+<p><strong>IMPORTANT:</strong> You will see this token only once, so be sure to copy this. If you do not copy your token at this stage, you will need to generate a new token.</p>
+<p><img src="img/github-token-generated.png" class="img-fluid"></p></li>
+<li><p>Use a git command that requires you to enter credentials (e.g.&nbsp;<code>git push</code>). When prompted in the terminal, provide your github “username” (for me, that is <code>virdi</code>) and “github Token” that was copied in the last step. ra</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Note:</strong> When you paste your token in the terminal window, windows users will press Ctrl+V and mac os users will press Cmd+V</p></li>
+<li><p>Now your password is stored in “<code>~/.git-credentials</code>” and you will not be prompted again unless the Github token expires. You can check the presence of this git-credentials file using Terminal. Here <code>~</code> character represents your home directory (<code>/home/jovyan/</code>).</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-la</span> ~</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The output looks like this:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxr-xr-x</span> 13 jovyan jovyan 6144 Oct 22 17:35 .</span>
@@ -374,37 +439,14 @@
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxr-xr-x</span> 10 jovyan jovyan 6144 Oct 21 16:19 2021-Cloud-Hackathon</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>You can also verify your git configuration</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">notebook</span><span class="kw">)</span> <span class="ex">jovyan@jupyter-virdi:~$</span> git config <span class="at">-l</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>The output looks like this:</p>
+<p>The output should have <code>credential.helper = store</code>:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">user.email</span>        = Makhan.Virdi@gmail.com</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">user.name</span>         = Makhan Virdi</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="ex">credential.helper</span> = store</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ol>
 </section>
-<section id="clone-a-repository" class="level4">
-<h4 class="anchored" data-anchor-id="clone-a-repository">Clone a Repository</h4>
-<p>To clone a repository from github, copy the link for the repository and use <code>git clone</code> to create a copy of the repository:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/NASA-Openscapes/check_github_setup</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="tracking-changes" class="level4">
-<h4 class="anchored" data-anchor-id="tracking-changes">Tracking Changes</h4>
-<ul>
-<li>status</li>
-<li>add</li>
-<li>commit</li>
-<li>log</li>
-<li>diff</li>
-</ul>
-</section>
-<section id="using-remotes-in-github" class="level4">
-<h4 class="anchored" data-anchor-id="using-remotes-in-github">Using Remotes in GitHub</h4>
-<ul>
-<li>remote</li>
-<li>pull</li>
-<li>push</li>
-</ul>
-</section>
-<section id="git-commands-summary" class="level4">
-<h4 class="anchored" data-anchor-id="git-commands-summary">Git Commands: Summary</h4>
+<section id="summary-git-commands" class="level4">
+<h4 class="anchored" data-anchor-id="summary-git-commands">Summary: Git Commands</h4>
 <table class="table">
 <caption>Commonly used git commands (modified from <a href="https://uwhackweek.github.io/jupyterbook-template/tutorials/jupyter.html">source</a>)</caption>
 <colgroup>
@@ -414,7 +456,7 @@
 <thead>
 <tr class="header">
 <th>Git Command</th>
-<th>Summary</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
