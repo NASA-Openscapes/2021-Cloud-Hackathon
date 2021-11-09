@@ -15,8 +15,10 @@ Thanks for being here
 - We are recording this session.
 
 ::: {.callout-tip collapse="true"}
+
 ## Text to paste into Zoom Chat
-Welcome to the Cloud Hackathon Clinic! 
+
+Welcome to the Cloud Hackathon Clinic!
 
 Please go to https://openscapes.2i2c.cloud/hub/ - log in with your GitHub Account, and select "Small"
 
@@ -28,6 +30,8 @@ Clinic materials that we'll cover today are here: https://nasa-openscapes.github
  * Start/Stop our Openscapes server and get familiar with Jupyterlab and installed programs
  * How to update our environments
  * NASA Earthdata Login and security in the cloud.
+
+> **Note**: Some sections of this document have been taken from previous hackweeks organized by the University of Washington eScience Institute.
 
 
 ## Why are we using a cloud environment?
@@ -46,7 +50,6 @@ The community is waking up to the idea that we can’t simply expect scientists 
 
 
 
-
 ## Openscapes Hub and Cloud Infrastructure
 
 *There is no cloud, it's someone else's computer*
@@ -60,7 +63,7 @@ There are different hardware configurations for each profile, for the duration o
 
 ![Machine Profiles](./img/servers.png)
 
-After we select our server type and click on start, Jupyterhub will allocate our instance using Amazon Web Services (AWS). This may take several minutes. While we wait, we'll get set up with GitHub and a brief overview. 
+After we select our server type and click on start, Jupyterhub will allocate our instance using Amazon Web Services (AWS). This may take several minutes. While we wait, we'll get set up with GitHub and a brief overview.
 
 ![Jupyterhub Spawning](./img/spawning.png)
 
