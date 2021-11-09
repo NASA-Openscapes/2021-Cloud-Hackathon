@@ -31,11 +31,10 @@ site:
           - logistics/getting-help.md
       - section: clinic/index.md
         contents:
-          - clinic/git.md
-          - clinic/github.md
           - clinic/jupyterhub.md
-          - clinic/earthdata.md
           - clinic/notebooks.md
+          - clinic/github.md
+          - clinic/earthdata.md
       - section: tutorials/index.md
         contents: 
           - tutorials/getting-set-up.md  ## tutorial 0
