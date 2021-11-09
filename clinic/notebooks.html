@@ -314,9 +314,10 @@
 <h2 class="anchored" data-anchor-id="summary">Summary</h2>
 <p>In this session, we will provide a brief introduction to:</p>
 <ol type="1">
-<li>Using command line (<strong>terminal</strong>/shell)</li>
-<li>Code management (using <strong>git</strong>)</li>
-<li>Fundamentals of programming in <strong>Python</strong></li>
+<li>Command line (<strong>terminal</strong>/shell)</li>
+<li>Version Control (code management using <strong>git</strong>)</li>
+<li>Programming in <strong>Python</strong> (using Jupyter Notebook)</li>
+<li>Geospatial Fundamentals (optional, self-study)</li>
 </ol>
 <p>You will need a working knowledge of git and terminal for this hackathon. We will provide an overview of these topics and also share resources for self-paced learning.</p>
 </section>
@@ -325,14 +326,14 @@
 <section id="shell-basics" class="level4">
 <h4 class="anchored" data-anchor-id="shell-basics">Shell Basics</h4>
 <ol type="1">
-<li>What is Terminal or Shell?</li>
-<li>Navigating Files and Directories</li>
-<li>Working with Files and Directories</li>
+<li><a href="https://swcarpentry.github.io/shell-novice/01-intro/index.html">What is Terminal or Shell?</a></li>
+<li><a href="https://swcarpentry.github.io/shell-novice/02-filedir/index.html">Navigating Files and Directories</a></li>
+<li><a href="https://swcarpentry.github.io/shell-novice/03-create/index.html">Working with Files and Directories</a></li>
 </ol>
 </section>
 <section id="shell-more-details" class="level4">
 <h4 class="anchored" data-anchor-id="shell-more-details">Shell: More Details</h4>
-<p>For a more detailed self-paced lesson on shell, visit <a href="http://swcarpentry.github.io/shell-novice/">Shell Lesson from Software Carpentry</a></p>
+<p>Detailed self-paced lesson on shell: <a href="http://swcarpentry.github.io/shell-novice/">Shell Lesson from Software Carpentry</a></p>
 </section>
 </section>
 <section id="introduction-version-control-git-and-github" class="level2">
@@ -402,14 +403,61 @@
 <li>push</li>
 </ul>
 </section>
+<section id="git-commands-summary" class="level4">
+<h4 class="anchored" data-anchor-id="git-commands-summary">Git Commands: Summary</h4>
+<table class="table">
+<caption>Commonly used git commands (modified from <a href="https://uwhackweek.github.io/jupyterbook-template/tutorials/jupyter.html">source</a>)</caption>
+<colgroup>
+<col style="width: 9%">
+<col style="width: 90%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Git Command</th>
+<th>Summary</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>git status</code></td>
+<td>Shows the current state of the repository: the current working branch, files in the staging area, <em>etc.</em></td>
+</tr>
+<tr class="even">
+<td><code>git add</code></td>
+<td>Adds a new, previously untracked file to version control and marks already tracked files to be committed with the next <code>commit</code></td>
+</tr>
+<tr class="odd">
+<td><code>git commit</code></td>
+<td>Saves the current state of the repository and creates an entry in the log</td>
+</tr>
+<tr class="even">
+<td><code>git log</code></td>
+<td>Shows the history for the repository</td>
+</tr>
+<tr class="odd">
+<td><code>git diff</code></td>
+<td>Shows content differences between commits, branches, individual files and more</td>
+</tr>
+<tr class="even">
+<td><code>git clone</code></td>
+<td>Copies a repository to your local environment, including all the history</td>
+</tr>
+<tr class="odd">
+<td><code>git pull</code></td>
+<td>Gets the latest changes of a previously cloned repository</td>
+</tr>
+<tr class="even">
+<td><code>git push</code></td>
+<td>Pushes your local changes to the remote repository, sharing them with others</td>
+</tr>
+</tbody>
+</table>
+</section>
 <section id="git-more-details" class="level4">
 <h4 class="anchored" data-anchor-id="git-more-details">Git: More Details</h4>
 <p><strong>Lesson</strong>: For a more detailed self-paced lesson on git, visit <a href="http://swcarpentry.github.io/git-novice/">Git Lesson from Software Carpentry</a></p>
 <p><strong>Cheatsheet</strong>: <a href="https://training.github.com/downloads/github-git-cheat-sheet.pdf">Frequently used git commands</a></p>
-</section>
-<section id="other-topics" class="level4">
-<h4 class="anchored" data-anchor-id="other-topics">Other Topics</h4>
-<p>Discuss merge conflicts and philosophy: best way to deal with merge conflicts is to avoid them; talk to your colleagues, commit often. Also can work with branches (out of the scope of this Clinic?)</p>
+<p><strong>Dangit, Git!?!</strong>: If you are stuck after a git mishap, there are ready-made solutions to common problems at <a href="https://dangitgit.com/en">Dangit, Git!?!</a></p>
 </section>
 </section>
 <section id="introduction-programming-in-python" class="level2">
@@ -417,19 +465,25 @@
 <p>Switch to Jupyter Notebook for an introduction to programming in Python</p>
 <ul>
 <li>Variables (and mathematical operations)</li>
-<li>Conditionals (if, else, elif)</li>
-<li>Flow Control using loops (for, while)</li>
-<li>Data Structures (list, tuple, dict)</li>
-<li>Functions</li>
+<li><a href="https://swcarpentry.github.io/python-novice-inflammation/04-lists/index.html">Data Structures</a> (list, tuple, dict)</li>
+<li><a href="https://swcarpentry.github.io/python-novice-inflammation/05-loop/index.html">Flow Control</a> using loops (for, while)</li>
+<li><a href="https://swcarpentry.github.io/python-novice-inflammation/07-cond/index.html">Conditionals</a> (if, else, elif)</li>
+<li><a href="https://swcarpentry.github.io/python-novice-inflammation/08-func/index.html">Functions</a></li>
+<li><a href="https://swcarpentry.github.io/python-novice-inflammation/09-errors/index.html">Errors and Exceptions</a> (understanding and handling errors)</li>
 <li>Using modules (libraries, packages)
 <ul>
-<li>pandas</li>
+<li><a href="https://pandas.pydata.org/docs/">pandas</a>: high-performance, easy-to-use data structures and data analysis tools</li>
+<li><a href="https://corteva.github.io/rioxarray/stable/">rioxarray</a>: based on the rasterio package for working with rasters and <a href="http://xarray.pydata.org/en/stable/"><code>xarray</code></a></li>
 </ul></li>
 </ul>
+<section id="python-learning-resources" class="level4">
+<h4 class="anchored" data-anchor-id="python-learning-resources">Python Learning Resources</h4>
+<p>Self-paced lesson on <a href="https://swcarpentry.github.io/python-novice-inflammation/">Programming with Python</a> from Software Carpentry</p>
+</section>
 </section>
 <section id="introduction-geospatial-fundamentals-optional" class="level2">
 <h2 class="anchored" data-anchor-id="introduction-geospatial-fundamentals-optional">Introduction :: Geospatial Fundamentals (Optional)</h2>
-<p>Visit the detailed self-paced lesson on <a href="https://carpentries-incubator.github.io/geospatial-python/">Fundamentals of Geospatial Raster and Vector Data with Python</a> on Data Carpentry website</p>
+<p>Detailed self-paced lesson on <a href="https://carpentries-incubator.github.io/geospatial-python/">Fundamentals of Geospatial Raster and Vector Data with Python</a> from Data Carpentry</p>
 
 
 </section>
