@@ -101,7 +101,7 @@ Stopping the server happens automatically when you log out, so navigate to "File
     Logging out will **NOT** cause any of your work to be lost or deleted. It simply shuts down some resources. It would be equivalent to turning off your desktop computer at the end of the day.
 
 
-References:
+## References
 
  * [Project Pythia](https://foundations.projectpythia.org)
  * [Why Jupyter is data scientists’ computational notebook of choice](https://www.nature.com/articles/d41586-018-07196-1)
@@ -109,3 +109,21 @@ References:
  * [Introduction to Geospatial Concepts](https://datacarpentry.org/organization-geospatial/)
  * [2i2c user storage](https://infrastructure.2i2c.org/en/latest/topic/storage-layer.html)
  * [SnowEX Hackweek](https://snowex-hackweek.github.io/website/intro.html)
+
+## FAQ
+
+**I have an empty ‘share’ folder**. That's expected. There shouldn't be anything in the 'share' folder
+
+**After the 3 months are up, what do we do with our work on the server?** You’ll have them since you can back everything up with GitHub. We can follow up with more details of what happens on the 2i2c side
+
+**Can we use Matlab with JupyterHub?** You can also use [Octave kernel](https://datascience-enthusiast.com/Miscellaneous/Jupyter_R_Python_Julia_Octave.html) as a Matlab replacement. It is open source and free
+
+**What's the difference between lpdaac and nsidc kernels?** These are environments that are set up for different tutorials
+
+**Why do we have the same home directory as /home/jovyan?** /home/jovyan is the default home directory for 'jupyter' based images/dockers. It is the historic home directory for Jupyter deployments. 
+
+**/home/jovyan is the default home directory for 'jupyter' based images/dockers**
+
+**Can other users see the .git-credentials file in my /home/jovyan folder?** No, other users can not see your creds
+
+**How to exit 2i2c's terminal text editor?** `esc` to get to the command, and then `:w` to save, `:q` to quit. 
