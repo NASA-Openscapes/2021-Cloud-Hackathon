@@ -1,5 +1,5 @@
 ---
-title: Notebooks, Python, GitHub
+title: Notebooks, Python, Git
 ---
 
 ## Summary
