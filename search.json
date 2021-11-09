@@ -21,6 +21,13 @@
     "text": "Go to GitHub.\n\n\n\ngithub-signup\n\n\nNext, enter your email address and click on the green ‘Sing up for GitHub’ button. You will need to answer a few required questions in the following dialogs. Be sure to save your password somewhere safe because you will need it later! The steps for doing this are also well documented on this GitHub help page.\n\n\n\nrepos-tab\n\n\nEach repository is a container for a specific subset of material for this event. For example, there is a repository for the public-facing website you used to register for this event {{website_url}}. We’ll also create new repositories for each project."
   },
   {
+    "objectID": "clinic/index.html#welcome",
+    "href": "clinic/index.html#welcome",
+    "title": "Pre-Hackathon Clinic",
+    "section": "Welcome!",
+    "text": "Thanks for being here\n\nWho instructors & helpers are, how to ask for help.\nCode of Conduct reminder: Be respectful and value each other’s ideas, styles and viewpoints.\nIf you have issues, please direct them to: Julie - lowndes @ nceas.ucsb.edu.\nLive transcripts are available.\nWe are recording this session.\n\n\n\n\n\n\n\nText to paste into Zoom Chat\n\n\n\n\n\nWelcome to the Cloud Hackathon Clinic!\nPlease go to https://openscapes.2i2c.cloud/hub/ - log in with your GitHub Account, and select “Small”\nClinic materials that we’ll cover today are here: https://nasa-openscapes.github.io/2021-Cloud-Hackathon/clinic/"
+  },
+  {
     "objectID": "clinic/index.html#agenda",
     "href": "clinic/index.html#agenda",
     "title": "Pre-Hackathon Clinic",
