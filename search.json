@@ -35,13 +35,6 @@
     "text": "Please follow the set up prerequisites before the Clinic."
   },
   {
-    "objectID": "clinic/index.html#further-resources",
-    "href": "clinic/index.html#further-resources",
-    "title": "Pre-Hackathon Clinic",
-    "section": "Further resources",
-    "text": "The Clinic will introduce concepts that you can learn self-paced in more detail in the following materials:\n\nCarpentries intro Git\netc"
-  },
-  {
     "objectID": "clinic/jupyterhub.html#welcome",
     "href": "clinic/jupyterhub.html#welcome",
     "title": "NASA Openscapes Cloud Environment",
