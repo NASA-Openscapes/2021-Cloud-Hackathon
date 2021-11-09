@@ -23,6 +23,8 @@ Please go to https://openscapes.2i2c.cloud/hub/ - log in with your GitHub Accoun
 Clinic materials that we'll cover today are here: https://nasa-openscapes.github.io/2021-Cloud-Hackathon/clinic/
 :::
 
+Summary of what we'll cover: 
+
  * What's a cloud environment and why we are using it.
  * Learn about the Jupyter ecosystem and our cloud infrastructure.
  * Start/Stop our Openscapes server and get familiar with Jupyterlab and installed programs
