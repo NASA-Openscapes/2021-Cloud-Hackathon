@@ -35,13 +35,6 @@
     "text": "Please follow the set up prerequisites before the Clinic."
   },
   {
-    "objectID": "clinic/jupyterhub.html#welcome",
-    "href": "clinic/jupyterhub.html#welcome",
-    "title": "NASA Openscapes Cloud Environment",
-    "section": "Welcome!",
-    "text": "Thanks for being here\n\nWho instructors & helpers are, how to ask for help.\nCode of Conduct reminder: Be respectful and value each other’s ideas, styles and viewpoints.\nIf you have issues, please direct them to: Julie - lowndes @ nceas.ucsb.edu.\nLive transcripts are available.\nWe are recording this session.\n\n\n\n\n\n\n\nText to paste into Zoom Chat\n\n\n\n\n\nWelcome to the Cloud Hackathon Clinic!\nPlease go to https://openscapes.2i2c.cloud/hub/ - log in with your GitHub Account, and select “Small”\nClinic materials that we’ll cover today are here: https://nasa-openscapes.github.io/2021-Cloud-Hackathon/clinic/\n\n\n\nSummary of what we’ll cover:\n\nWhat’s a cloud environment and why we are using it.\nLearn about the Jupyter ecosystem and our cloud infrastructure.\nStart/Stop our Openscapes server and get familiar with Jupyterlab and installed programs\nHow to update our environments\nNASA Earthdata Login and security in the cloud.\n\n\nNote: Some sections of this document have been taken from previous hackweeks organized by the University of Washington eScience Institute."
-  },
-  {
     "objectID": "clinic/jupyterhub.html#why-are-we-using-a-cloud-environment",
     "href": "clinic/jupyterhub.html#why-are-we-using-a-cloud-environment",
     "title": "NASA Openscapes Cloud Environment",
