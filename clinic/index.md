@@ -22,11 +22,3 @@ The Clinic will occur in 2 halves, with a 5 minute break in-between:
 ## Before the Clinic
 
 Please follow the set up [prerequisites](https://nasa-openscapes.github.io/2021-Cloud-Hackathon/logistics/prerequisites.html) before the Clinic. 
-
-## Further resources
-
-The Clinic will introduce concepts that you can learn self-paced in more detail in the following materials: 
-
-- Carpentries intro Git
-- etc
-
