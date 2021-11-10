@@ -72,9 +72,9 @@ Now you have a fork of the demo repository in your github account that we can `c
     git config --global user.email "Makhan.Virdi@gmail.com"
     ```
 
-    **Note:** This name and email could be different from your github.com credentials. Remember `git` is a program that keeps track of your changes locally (on 2i2c JupyterHub or your won computer) and github.com is a platform to host your repositories. However, since your changes are tracked by `git`, the email/name used in git configuration will show up next to your contributions on gihub.com when you `push` your repository to github.com (`git push` is discussed in a later step).
+    **Note:** This name and email could be different from your github.com credentials. Remember `git` is a program that keeps track of your changes locally (on 2i2c JupyterHub or your own computer) and github.com is a platform to host your repositories. However, since your changes are tracked by `git`, the email/name used in git configuration will show up next to your contributions on github.com when you `push` your repository to github.com (`git push` is discussed in a later step).
 
-4.  Configure `git` to store your github credentials to avoid having to enter your github username and token (in [Step 5](#step-5.-create-access-token-on-github.com), we will describe how to use github token instead of a password)
+4.  Configure `git` to store your github credentials to avoid having to enter your github username and token each time you push changes to your repository(in [Step 5](#step-5.-create-access-token-on-github.com), we will describe how to use github token instead of a password)
 
     ``` bash
     git config --global credential.helper store
@@ -88,7 +88,9 @@ Now you have a fork of the demo repository in your github account that we can `c
 
     To clone a repository from github, copy the link for the repository (previous step) and use `git clone`:
 
-    `git clone https://github.com/YOUR-GITHUB-USERNAME/check_github_setup`
+    ```bash
+    git clone https://github.com/YOUR-GITHUB-USERNAME/check_github_setup
+    ```
 
     **Note:** Replace `YOUR-GITHUB-USERNAME` here with your github.com username. For example, it is `virdi` for my github.com account as seen in this image.
 
@@ -143,7 +145,7 @@ Now you have a fork of the demo repository in your github account that we can `c
 
     ![](img/git-add-commit.png)
 
-6.  As seen in the image above, `git` is suggesting you to push the change that you just committed to the remote server at github.com (so that your collaborators can also see what changes you made).
+6.  As seen in the image above, `git` is suggesting to push the change that you just committed to the remote server at github.com (so that your collaborators can also see what changes you made).
 
     **Note: DO NOT** execute `push` yet. Before we push to github.com, let's configure `git` further and store our github.com credentials to avoid entering the credentials every time we invoke `git push`. For doing so, we need to create a **token** on github.com to be used in place of your github.com password.
 
