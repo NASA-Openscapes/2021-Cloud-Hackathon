@@ -72,9 +72,9 @@ Now you have a fork of the demo repository in your github account that we can `c
     git config --global user.email "Makhan.Virdi@gmail.com"
     ```
 
-    **Note:** This name and email could be different from your github.com credentials. Remember `git` is a program that keeps track of your changes locally (on 2i2c JupyterHub or your won computer) and github.com is a platform to host your repositories. However, since your changes are tracked by `git`, the email/name used in git configuration will show up next to your contributions on gihub.com when you `push` your repository to github.com (`git push` is discussed in a later step).
+    **Note:** This name and email could be different from your github.com credentials. Remember `git` is a program that keeps track of your changes locally (on 2i2c JupyterHub or your own computer) and github.com is a platform to host your repositories. However, since your changes are tracked by `git`, the email/name used in git configuration will show up next to your contributions on github.com when you `push` your repository to github.com (`git push` is discussed in a later step).
 
-4.  Configure `git` to store your github credentials to avoid having to enter your github username and token (in [Step 5](#step-5.-create-access-token-on-github.com), we will describe how to use github token instead of a password)
+4.  Configure `git` to store your github credentials to avoid having to enter your github username and token each time you push changes to your repository(in [Step 5](#step-5.-create-access-token-on-github.com), we will describe how to use github token instead of a password)
 
     ``` bash
     git config --global credential.helper store
@@ -88,7 +88,9 @@ Now you have a fork of the demo repository in your github account that we can `c
 
     To clone a repository from github, copy the link for the repository (previous step) and use `git clone`:
 
-    `git clone https://github.com/YOUR-GITHUB-USERNAME/check_github_setup`
+    ```bash
+    git clone https://github.com/YOUR-GITHUB-USERNAME/check_github_setup
+    ```
 
     **Note:** Replace `YOUR-GITHUB-USERNAME` here with your github.com username. For example, it is `virdi` for my github.com account as seen in this image.
 
@@ -98,7 +100,7 @@ Now you have a fork of the demo repository in your github account that we can `c
 
     ![](img/terminal-clone-confirm-ls.png){width="520"}
 
-7.  Change directory to the cloned repository using `cd check_github_setup` and checking the current directory using `pwd` command (present working directory)
+7.  Change directory to the cloned repository using `cd check_github_setup` and check the current directory using `pwd` command (present working directory)
 
     ![](img/terminal-cd-repo.png){width="520"}
 
@@ -106,7 +108,7 @@ Now you have a fork of the demo repository in your github account that we can `c
 
     ![](img/terminal-git-status.png)
 
-    You are all set with using git on your 2i2c JupyterHub!
+    You are all set with using git on your 2i2c JupyterHub! But the collaborative power of git through github needs some additional setup.
 
     In the next step, we will create a new file in this repository, track changes to this file, and link it with your github.com account.
 
@@ -118,15 +120,15 @@ Now you have a fork of the demo repository in your github account that we can `c
 
     ![](img/notebook-cd-result.png)
 
-2.  Once you are in **check_github_setup** directory, create a new file using the text editor in your 2i2c JupyterHub (`File >> New >> File`).
+2.  Once you are in the **check_github_setup** directory, create a new file using the text editor in your 2i2c JupyterHub (`File >> New >> Text File`).
 
     ![](img/%20notebook-new-file.png)
 
-    Name the file last_name.txt. For example, **virdi.txt** for me (use your last name). Add some content to this file (for example, I added this to my **virdi.txt** file: `my last name is virdi`).
+    Name the file lastname.txt. For example, **virdi.txt** for me (use your last name). Add some content to this file (for example, I added this to my **virdi.txt** file: `my last name is virdi`).
 
     ![](img/notebook-rename-file.png)
 
-3.  Now you should have a new file (your_last_name.txt) in the git repository directory **check_github_setup**
+3.  Now you should have a new file (lastname.txt) in the git repository directory **check_github_setup**
 
 4.  Check if `git` can see that you have added a new file using `git status`. Git reports that you have a new file that is not tracked by git yet, and suggests adding that file to the git tracking system.
 
@@ -143,7 +145,7 @@ Now you have a fork of the demo repository in your github account that we can `c
 
     ![](img/git-add-commit.png)
 
-6.  As seen in the image above, `git` is suggesting you to push the change that you just committed to the remote server at github.com (so that your collaborators can also see what changes you made).
+6.  As seen in the image above, `git` is suggesting to push the change that you just committed to the remote server at github.com (so that your collaborators can also see what changes you made).
 
     **Note: DO NOT** execute `push` yet. Before we push to github.com, let's configure `git` further and store our github.com credentials to avoid entering the credentials every time we invoke `git push`. For doing so, we need to create a **token** on github.com to be used in place of your github.com password.
 
@@ -159,7 +161,7 @@ Now you have a fork of the demo repository in your github account that we can `c
 
     ![](img/github-token-generated.png)
 
-3.  To push (transfer) your changes to github, use `git push` in terminal. It requires you to enter your github credentials. When prompted in the terminal, provide your github "username" (for me, that is `virdi`) and "github Token" that was copied in the last step.
+3.  To push (transfer) your changes to github, use `git push` in terminal. It requires you to enter your github credentials. You will be prompted to enter your github username and "password". **When prompted for your "password", DO NOT use your github password, use the github token** that was copied in the previous step. 
 
     ``` bash
     git push
@@ -167,9 +169,9 @@ Now you have a fork of the demo repository in your github account that we can `c
 
     ![](img/terminal-github-credentials.png)
 
-    **Note:** You will be prompted to enter your github username and "password". When prompted for your "password", DO NOT use your github password, use the **github Token** that was copied in the previous step. When you paste your token in the terminal window, windows users will press Ctrl+V and mac os users will press Cmd+V. If it does not work, try generating another token and use the copy icon next to the token to copy the token. The, paste using your computer's keyboard shortcut for paste.
+    **Note:** When you paste your token in the terminal window, windows users will press Ctrl+V and mac os users will press Cmd+V. If it does not work, try generating another token and use the copy icon next to the token to copy the token. Then, paste using your computer's keyboard shortcut for paste.
 
-4.  Now your password is stored in "`~/.git-credentials`" and you will not be prompted again unless the Github token expires. You can check the presence of this git-credentials file using Terminal. Here `~` character represents your home directory (`/home/jovyan/`).
+4.  Now your password is stored in `~/.git-credentials` and you will not be prompted again unless the Github token expires. You can check the presence of this git-credentials file using Terminal. Here the `~` character represents your home directory (`/home/jovyan/`).
 
     ``` bash
     ls -la ~
@@ -200,6 +202,8 @@ Now you have a fork of the demo repository in your github account that we can `c
     user.name         = Makhan Virdi
     credential.helper = store
     ```
+
+Now we are all set to collaborate with github on the JupyterHub during the Cloud Hackathon!
 
 ### Summary: Git Commands
 
