@@ -46,6 +46,7 @@ site:
           - tutorials/Data_Access__Direct_S3_Access__PODAAC_ECCO_SSH.ipynb
           - tutorials/Data_Access__Harmonize-cloud-non-cloud.ipynb ## tutorial 7
           - tutorials/Data_Access__Harmony_Subsetting.ipynb ## tutorial 8
+          - tutorials/Zarr_Access.ipynb ## tutorial 9
       - section: tutorials-templates/index.md
       - section: projects/index.md
         contents:
