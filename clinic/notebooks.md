@@ -159,11 +159,13 @@ Now you have a fork of the demo repository in your github account that we can `c
 
     ![](img/github-token-generated.png)
 
-3.  Use a git command that requires you to enter credentials (e.g. `git push`). When prompted in the terminal, provide your github "username" (for me, that is `virdi`) and "github Token" that was copied in the last step. ra
+3.  To push (transfer) your changes to github, use `git push` in terminal. It requires you to enter your github credentials. When prompted in the terminal, provide your github "username" (for me, that is `virdi`) and "github Token" that was copied in the last step.
 
     ``` bash
     git push
     ```
+
+    ![](img/terminal-github-credentials.png)
 
     **Note:** You will be prompted to enter your github username and "password". When prompted for your "password", DO NOT use your github password, use the **github Token** that was copied in the previous step. When you paste your token in the terminal window, windows users will press Ctrl+V and mac os users will press Cmd+V. If it does not work, try generating another token and use the copy icon next to the token to copy the token. The, paste using your computer's keyboard shortcut for paste.
 
