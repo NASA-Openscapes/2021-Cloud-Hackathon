@@ -404,11 +404,11 @@
 <p><img src="img/terminal-clone.png" class="img-fluid" width="520"></p>
 <p>Use <code>ls</code> (list files) to verify the existence of the repository that you just cloned</p>
 <p><img src="img/terminal-clone-confirm-ls.png" class="img-fluid" width="520"></p></li>
-<li><p>Change directory to the cloned repository using <code>cd check_github_setup</code> and checking the current directory using <code>pwd</code> command (present working directory)</p>
+<li><p>Change directory to the cloned repository using <code>cd check_github_setup</code> and check the current directory using <code>pwd</code> command (present working directory)</p>
 <p><img src="img/terminal-cd-repo.png" class="img-fluid" width="520"></p></li>
 <li><p>Check status of your git repository to confirm git set up using <code>git status</code></p>
 <p><img src="img/terminal-git-status.png" class="img-fluid"></p>
-<p>You are all set with using git on your 2i2c JupyterHub!</p>
+<p>You are all set with using git on your 2i2c JupyterHub! But the collaborative power of git through github needs some additional setup.</p>
 <p>In the next step, we will create a new file in this repository, track changes to this file, and link it with your github.com account.</p></li>
 </ol>
 </section>
@@ -418,11 +418,11 @@
 <li><p>In the left panel on your 2i2c JupyterHub, click on the “directory” icon and then double click on “check_github_setup” directory.</p>
 <p><img src="img/notebook-cd.png" class="img-fluid"></p>
 <p><img src="img/notebook-cd-result.png" class="img-fluid"></p></li>
-<li><p>Once you are in <strong>check_github_setup</strong> directory, create a new file using the text editor in your 2i2c JupyterHub (<code>File &gt;&gt; New &gt;&gt; File</code>).</p>
+<li><p>Once you are in the <strong>check_github_setup</strong> directory, create a new file using the text editor in your 2i2c JupyterHub (<code>File &gt;&gt; New &gt;&gt; Text File</code>).</p>
 <p><img src="img/%20notebook-new-file.png" class="img-fluid"></p>
-<p>Name the file last_name.txt. For example, <strong>virdi.txt</strong> for me (use your last name). Add some content to this file (for example, I added this to my <strong>virdi.txt</strong> file: <code>my last name is virdi</code>).</p>
+<p>Name the file lastname.txt. For example, <strong>virdi.txt</strong> for me (use your last name). Add some content to this file (for example, I added this to my <strong>virdi.txt</strong> file: <code>my last name is virdi</code>).</p>
 <p><img src="img/notebook-rename-file.png" class="img-fluid"></p></li>
-<li><p>Now you should have a new file (your_last_name.txt) in the git repository directory <strong>check_github_setup</strong></p></li>
+<li><p>Now you should have a new file (lastname.txt) in the git repository directory <strong>check_github_setup</strong></p></li>
 <li><p>Check if <code>git</code> can see that you have added a new file using <code>git status</code>. Git reports that you have a new file that is not tracked by git yet, and suggests adding that file to the git tracking system.</p>
 <p><img src="img/git-status.png" class="img-fluid"></p></li>
 <li><p>As seen in this image, <code>git</code> suggests adding that file so it can be tracked for changes. You can add file to <code>git</code> for tracking changes using <code>git add</code>. Then, you can commit changes to this file’s content using <code>git commit</code> as shown in the image.</p>
@@ -448,11 +448,11 @@
 <li><p>Enter a description in “Note” field as seen above, select “repo” checkbox, and scroll to the bottom and click the green button “Generate Token”. Once generated, copy the token (or save it in a text file for reference).</p>
 <p><strong>IMPORTANT:</strong> You will see this token only once, so be sure to copy this. If you do not copy your token at this stage, you will need to generate a new token.</p>
 <p><img src="img/github-token-generated.png" class="img-fluid"></p></li>
-<li><p>To push (transfer) your changes to github, use <code>git push</code> in terminal. It requires you to enter your github credentials. When prompted in the terminal, provide your github “username” (for me, that is <code>virdi</code>) and “github Token” that was copied in the last step.</p>
+<li><p>To push (transfer) your changes to github, use <code>git push</code> in terminal. It requires you to enter your github credentials. You will be prompted to enter your github username and “password”. <strong>When prompted for your “password”, DO NOT use your github password, use the github token</strong> that was copied in the previous step.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><img src="img/terminal-github-credentials.png" class="img-fluid"></p>
-<p><strong>Note:</strong> You will be prompted to enter your github username and “password”. When prompted for your “password”, DO NOT use your github password, use the <strong>github Token</strong> that was copied in the previous step. When you paste your token in the terminal window, windows users will press Ctrl+V and mac os users will press Cmd+V. If it does not work, try generating another token and use the copy icon next to the token to copy the token. The, paste using your computer’s keyboard shortcut for paste.</p></li>
-<li><p>Now your password is stored in “<code>~/.git-credentials</code>” and you will not be prompted again unless the Github token expires. You can check the presence of this git-credentials file using Terminal. Here <code>~</code> character represents your home directory (<code>/home/jovyan/</code>).</p>
+<p><strong>Note:</strong> When you paste your token in the terminal window, windows users will press Ctrl+V and mac os users will press Cmd+V. If it does not work, try generating another token and use the copy icon next to the token to copy the token. Then, paste using your computer’s keyboard shortcut for paste.</p></li>
+<li><p>Now your password is stored in <code>~/.git-credentials</code> and you will not be prompted again unless the Github token expires. You can check the presence of this git-credentials file using Terminal. Here the <code>~</code> character represents your home directory (<code>/home/jovyan/</code>).</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-la</span> ~</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The output looks like this:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxr-xr-x</span> 13 jovyan jovyan 6144 Oct 22 17:35 .</span>
@@ -469,6 +469,7 @@
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">user.name</span>         = Makhan Virdi</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="ex">credential.helper</span> = store</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ol>
+<p>Now we are all set to collaborate with github on the JupyterHub during the Cloud Hackathon!</p>
 </section>
 <section id="summary-git-commands" class="level3">
 <h3 class="anchored" data-anchor-id="summary-git-commands">Summary: Git Commands</h3>
