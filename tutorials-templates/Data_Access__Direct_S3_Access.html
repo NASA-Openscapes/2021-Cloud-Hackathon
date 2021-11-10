@@ -300,6 +300,7 @@
 <ul>
 <li><a href="#direct-s3-data-access" class="nav-link active" data-scroll-target="#direct-s3-data-access">Direct S3 Data Access</a>
 <ul class="collapse">
+<li><a href="#timing" class="nav-link" data-scroll-target="#timing">Timing</a></li>
 <li><a href="#summary" class="nav-link" data-scroll-target="#summary">Summary</a>
 <ul class="collapse">
 <li><a href="#direct-s3-access" class="nav-link" data-scroll-target="#direct-s3-access">Direct S3 Access</a></li>
@@ -329,6 +330,13 @@
 
 <section id="direct-s3-data-access" class="level1">
 <h1>Direct S3 Data Access</h1>
+<section id="timing" class="level2">
+<h2 class="anchored" data-anchor-id="timing">Timing</h2>
+<ul>
+<li>Exercise: 20 minutes</li>
+</ul>
+<hr>
+</section>
 <section id="summary" class="level2">
 <h2 class="anchored" data-anchor-id="summary">Summary</h2>
 <p>In the previous exercises we searched for and discovered cloud data assets that met certain search criteria (i.e., intersects with our region of interest and for a specified date range). The end goal was to find and save web links to the data assets we want to use in our workflow. The links we found allow us to download data via HTTPS (Hypertext Transfer Protocol Secure). However, NASA allows for direct in-region S3 bucket access for the same assets. In addition to saving the HTTPS links, we also created and saved the S3 links for those same cloud assets and we will use them here. In this exercise we will demonstrate how to perform direction in-region S3 bucket access for Harmonized Landsat Sentinel-2 (HLS) cloud data assets.</p>
@@ -385,6 +393,7 @@
 </li>
 <li>how to plot results</li>
 </ul>
+<p>This exercise can be found in the <a href="https://nasa-openscapes.github.io/2021-Cloud-Hackathon/tutorials/Data_Access__Direct_S3_Access.html">2021 Cloud Hackathon Book</a></p>
 <hr>
 </section>
 <section id="import-required-packages" class="level2">
@@ -461,8 +470,8 @@
 <ul>
 <li><a href="https://stackoverflow.com/questions/46899337/convert-raster-time-series-of-multiple-geotiff-images-to-netcdf">Build time series from multiple GeoTIFF files</a></li>
 <li><a href="https://holoviews.org/user_guide/Colormaps.html">Hvplot/Holoview Colormap</a></li>
-<li>https://git.earthdata.nasa.gov/projects/LPDUR/repos/lpdaac_cloud_data_access/browse</li>
-<li>https://git.earthdata.nasa.gov/projects/LPDUR/repos/hls-tutorial/browse</li>
+<li><a href="https://git.earthdata.nasa.gov/projects/LPDUR/repos/lpdaac_cloud_data_access/browse" class="uri">https://git.earthdata.nasa.gov/projects/LPDUR/repos/lpdaac_cloud_data_access/browse</a></li>
+<li><a href="https://git.earthdata.nasa.gov/projects/LPDUR/repos/hls-tutorial/browse" class="uri">https://git.earthdata.nasa.gov/projects/LPDUR/repos/hls-tutorial/browse</a></li>
 </ul>
 <hr>
 

@@ -3,7 +3,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="quarto-0.2.232">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>Introduction to xarray</title>
+  <title>zarr_access</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -112,7 +112,7 @@
 <header id="quarto-header" class="headroom fixed-top">
 <nav class="quarto-secondary-nav py-2 d-lg-none d-md-block " data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <div class="container-fluid d-flex justify-content-between">
-    <h1 class="quarto-secondary-nav-title mb-0 fs-3 d-inline">Introduction to <code>xarray</code></h1>
+    <h1 class="quarto-secondary-nav-title mb-0 fs-3 d-inline">(Untitled)</h1>
     <button type="button" class="quarto-btn-toggle btn d-lg-none py-0 px-1 d-inline-block border-0 ">
       <i class="bi bi-chevron-right"></i>
     </button>
@@ -298,109 +298,126 @@
   <div id="quarto-toc-sidebar" class=" pt-0 col col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-toc order-last"><nav id="TOC" role="doc-toc">
 <h2 id="toc-title">On this page</h2>
 <ul>
-<li><a href="#why-do-we-need-xarray" class="nav-link active" data-scroll-target="#why-do-we-need-xarray">Why do we need <code>xarray</code>?</a></li>
-<li><a href="#what-is-xarray" class="nav-link" data-scroll-target="#what-is-xarray">What is <code>xarray</code></a></li>
-<li><a href="#what-you-will-learn-from-this-tutorial" class="nav-link" data-scroll-target="#what-you-will-learn-from-this-tutorial">What you will learn from this tutorial</a></li>
-<li><a href="#subsetting-and-indexing" class="nav-link" data-scroll-target="#subsetting-and-indexing">Subsetting and Indexing</a></li>
-<li><a href="#analysis" class="nav-link" data-scroll-target="#analysis">Analysis</a></li>
-<li><a href="#plot-results" class="nav-link" data-scroll-target="#plot-results">Plot results</a></li>
+<li><a href="#access-parts-of-netcdf4-files-using-the-zarr-eosdis-store-library" class="nav-link active" data-scroll-target="#access-parts-of-netcdf4-files-using-the-zarr-eosdis-store-library">Access parts of NetCDF4 files using the zarr-eosdis-store library</a>
+<ul class="collapse">
+<li><a href="#summary" class="nav-link" data-scroll-target="#summary">Summary</a>
+<ul class="collapse">
+<li><a href="#objectives" class="nav-link" data-scroll-target="#objectives">Objectives</a></li>
+</ul></li>
+<li><a href="#exercise" class="nav-link" data-scroll-target="#exercise">Exercise</a>
+<ul class="collapse">
+<li><a href="#set-up" class="nav-link" data-scroll-target="#set-up">Set up</a></li>
+<li><a href="#find-urls-for-the-dataset-and-aoi" class="nav-link" data-scroll-target="#find-urls-for-the-dataset-and-aoi">Find URLs for the dataset and AOI</a></li>
+<li><a href="#open-and-view-our-aoi-without-downloading-a-whole-file" class="nav-link" data-scroll-target="#open-and-view-our-aoi-without-downloading-a-whole-file">Open and view our AOI without downloading a whole file</a></li>
+<li><a href="#aggregate-and-analyze-30-files" class="nav-link" data-scroll-target="#aggregate-and-analyze-30-files">Aggregate and analyze 30 files</a></li>
+<li><a href="#supplemental-whats-happening-here" class="nav-link" data-scroll-target="#supplemental-whats-happening-here">Supplemental: What’s happening here?</a></li>
+</ul></li>
+</ul></li>
 </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon/edit/main/tutorials-templates/Introduction_to_xarray.ipynb" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon/issues/new" class="toc-action">Report an issue</a></p></div></div></nav></div>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon/edit/main/tutorials-templates/Zarr_Access.ipynb" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon/issues/new" class="toc-action">Report an issue</a></p></div></div></nav></div>
   <div class="col mx-auto col-sm-12 col-md-9 col-lg-7 col-xl-7 px-lg-4 pe-xxl-4 ps-xxl-0">
 <main>
-<header id="title-block-header">
-<h1 class="title d-none d-lg-block display-7">Introduction to <code>xarray</code></h1>
-</header>
 
-<section id="why-do-we-need-xarray" class="level2">
-<h2 class="anchored" data-anchor-id="why-do-we-need-xarray">Why do we need <code>xarray</code>?</h2>
-<p>As Geoscientists, we often work with time series of data with two or more dimensions: a time series of calibrated, orthorectified satellite images; two-dimensional grids of surface air temperature from an atmospheric reanalysis; or three-dimensional (level, x, y) cubes of ocean salinity from an ocean model. These data are often provided in GeoTIFF, NetCDF or HDF format with rich and useful metadata that we want to retain, or even use in our analysis. Common analyses include calculating means, standard deviations and anomalies over time or one or more spatial dimensions (e.g.&nbsp;zonal means). Model output often includes multiple variables that you want to apply similar analyses to.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="data/dataset-diagram.png" class="img-fluid figure-img"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption">A schematic of multi-dimensional data</figcaption><p></p>
-</figure>
-</div>
-<p>The schematic above shows a typical data structure for multi-dimensional data. There are two data cubes, one for temperature and one for precipitation. Common coordinate variables, in this case latitude, longitude and time are associated with each variable. Each variable, including coordinate variables, will have a set of attributes: name, units, missing value, etc. The file containing the data may also have attributes: source of the data, model name coordinate reference system if the data are projected. Writing code using low-level packages such as <code>netcdf4</code> and <code>numpy</code> to read the data, then perform analysis, and write the results to file is time consuming and prone to errors.</p>
-</section>
-<section id="what-is-xarray" class="level2">
-<h2 class="anchored" data-anchor-id="what-is-xarray">What is <code>xarray</code></h2>
-<p><code>xarray</code> is an open-source project and <code>python</code> package to work with labelled multi-dimensional arrays. It is leverages <code>numpy</code>, <code>pandas</code>, <code>matplotlib</code> and <code>dask</code> to build <code>Dataset</code> and <code>DataArray</code> objects with built-in methods to subset, analyze, interpolate, and plot multi-dimensional data. It makes working with multi-dimensional data cubes efficient and fun. <strong>It will change your life for the better. You’ll be more attractive, more interesting, and better equiped to take on lifes challenges.</strong></p>
-</section>
-<section id="what-you-will-learn-from-this-tutorial" class="level2">
-<h2 class="anchored" data-anchor-id="what-you-will-learn-from-this-tutorial">What you will learn from this tutorial</h2>
-<p>In this tutorial you will learn how to:</p>
+<section id="access-parts-of-netcdf4-files-using-the-zarr-eosdis-store-library" class="level1">
+<h1>Access parts of NetCDF4 files using the zarr-eosdis-store library</h1>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>Zarr is an open source library for storing N-dimensional array data. It supports multidimensional arrays with attributes and dimensions similar to NetCDF4, and it can be read by XArray. Zarr is often used for data held in cloud object storage (like Amazon S3), because it is better optimized for these situations than NetCDF4.</p>
+<p>The <a href="https://github.com/nasa/zarr-eosdis-store">zarr-eosdis-store library</a> allows NASA EOSDIS NetCDF4 files to be read more efficiently by transferring only file metadata and data needed for computation in a small number of requests, rather than moving the whole file or making many small requests. It works by making the files directly readable by the <a href="https://zarr.readthedocs.io">Zarr Python library</a> and XArray across a network. To use it, files must have a corresponding metadata file ending in <code>.dmrpp</code>, which increasingly true for cloud-accessible EOSDIS data. https://github.com/nasa/zarr-eosdis-store</p>
+<p>The zarr-eosdis-store library provides several benefits over downloading EOSDIS data files and accessing them using XArray, NetCDF4, or HDF5 Python libraries:</p>
 <ul>
-<li>load a netcdf file into <code>xarray</code></li>
-<li>interrogate the <code>Dataset</code> and understand the difference between <code>DataArray</code> and <code>Dataset</code></li>
-<li>subset a <code>Dataset</code></li>
-<li>calculate annual and monthly mean fields</li>
-<li>calculate a time series of zonal means</li>
-<li>plot these results</li>
+<li>It only downloads the chunks of data you actually read, so if you don’t read all variables or the full spatiotemporal extent of a file, you usually won’t spend time downloading those portions of the file</li>
+<li>It parallelizes and optimizes downloads for the portions of files you do read, so download speeds can be faster in general</li>
+<li>It automatically interoperates with Earthdata Login if you have a .netrc file set up</li>
+<li>It is aware of some EOSDIS cloud implementation quirks and provides caching that can save time for repeated requests to individual files</li>
 </ul>
-<p>As always, we’ll start by importing <code>xarray</code>. We’ll follow convention by giving the module the shortname <code>xr</code></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>I’m going to use one of <code>xarray</code>’s tutorial datasets. In this case, air temperature from the NCEP reanalysis. I’ll assign the result of the <code>open_dataset</code> to <code>ds</code>. <em>I may change this to access a dataset directly</em></p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>As we are in an interactive environment, we can just type <code>ds</code> to see what we have.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>First thing to notice is that <code>ds</code> is an <code>xarray.Dataset</code> object. It has dimensions, <code>lat</code>, <code>lon</code>, and <code>time</code>. It also has coordinate variables with the same names as these dimensions. These coordinate variables are 1-dimensional. This is a NetCDF convention. The <code>Dataset</code> contains one data variable, <code>air</code>. This has dimensions <code>(time, lat, lon)</code>.</p>
-<p>Clicking on the document icon reveals attributes for each variable. Clicking on the disk icon reveals a representation of the data.</p>
-<p>Each of the data and coordinate variables can be accessed and examined using the variable name as a key.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>These are <code>xarray.DataArray</code> objects. This is the basic building block for <code>xarray</code>.</p>
-<p>Variables can also be accessed as attributes of <code>ds</code>.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>A major difference between accessing a variable as an attribute versus using a key is that the attribute is read-only but the key method can be used to update the variable. For example, if I want to convert the units of <code>air</code> from Kelvin to degrees Celsius.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>This approach can also be used to add new variables</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>It is helpful to update attributes such as units, this saves time, confusion and mistakes, especially when you save the dataset.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb10"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>It can also be faster than using XArray pointing NetCDF4 files with s3:// URLs, depending on the file’s internal structure, and is often more convenient.</p>
+<p>Consider using this library when: 1. The portion of the data file you need to use is much smaller than the full file, e.g.&nbsp;in cases of spatial subsets or reading a single variable from a file containing several 1. s3:// URLs are not readily available 1. Code need to run outside of the AWS cloud or us-west-2 region or in a hybrid cloud / non-cloud manner 1. s3:// access using XArray seems slower than you would expect (possibly due to unoptimized internal file structure) 1. No readily-available, public, cloud-optimized version of the data exists already. The example we show <em>is</em> also available as an AWS Public Dataset: https://registry.opendata.aws/mur/ 1. Adding “.dmrpp” to the end of a data URL returns a file</p>
+<section id="objectives" class="level3">
+<h3 class="anchored" data-anchor-id="objectives">Objectives</h3>
+<ol type="1">
+<li>Build on prior knowledge from CMR and Earthdata Login tutorials</li>
+<li>Work through an example of using the EOSDIS Zarr Store to access data using XArray</li>
+<li>Learn about the Zarr format and library for accessing data in the cloud ___</li>
+</ol>
 </section>
-<section id="subsetting-and-indexing" class="level2">
-<h2 class="anchored" data-anchor-id="subsetting-and-indexing">Subsetting and Indexing</h2>
-<p>Subsetting and indexing methods depend on whether you are working with a <code>Dataset</code> or <code>DataArray</code>. A <code>DataArray</code> can be accessed using positional indexing just like a <code>numpy</code> array. To access the temperature field for the first time step, you do the following.</p>
+</section>
+<section id="exercise" class="level2">
+<h2 class="anchored" data-anchor-id="exercise">Exercise</h2>
+<p>In this exercise, we will be using the eosdis-zarr-store library to aggregate and analyze a month of sea surface temperature for the Great Lakes region</p>
+<section id="set-up" class="level3">
+<h3 class="anchored" data-anchor-id="set-up">Set up</h3>
+<section id="import-required-packages" class="level4">
+<h4 class="anchored" data-anchor-id="import-required-packages">Import Required Packages</h4>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Also set the width / height for plots we show</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="set-dataset-time-and-region-of-interest" class="level4">
+<h4 class="anchored" data-anchor-id="set-dataset-time-and-region-of-interest">Set Dataset, Time, and Region of Interest</h4>
+<p>Look in PO.DAAC’s cloud archive for Group for High Resolution Sea Surface Temperature (GHRSST) Level 4 Multiscale Ultrahigh Resolution (MUR) data</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Looking for data from the month of September over the Great Lakes</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="find-urls-for-the-dataset-and-aoi" class="level3">
+<h3 class="anchored" data-anchor-id="find-urls-for-the-dataset-and-aoi">Find URLs for the dataset and AOI</h3>
+<p>Set up a CMR granules search for our area of interest, as we saw in prior tutorials</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Search for granules in our area of interest, expecting one granule per day of September</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="open-and-view-our-aoi-without-downloading-a-whole-file" class="level3">
+<h3 class="anchored" data-anchor-id="open-and-view-our-aoi-without-downloading-a-whole-file">Open and view our AOI without downloading a whole file</h3>
+<section id="check-to-see-if-we-can-use-an-efficient-partial-access-technique" class="level4">
+<h4 class="anchored" data-anchor-id="check-to-see-if-we-can-use-an-efficient-partial-access-technique">Check to see if we can use an efficient partial-access technique</h4>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Open our first URL using the Zarr library</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Note this returns a <code>DataArray</code> with coordinates but not attributes.</p>
-<p>However, the real power is being able to access variables using coordinate variables. I can get the same subset using the following. (It’s also more explicit about what is being selected and robust in case I modify the <code>DataArray</code> and expect the same output.)</p>
+<p>That’s it! No downloads, temporary credentials, or S3 filesystems. Hereafter, we interact with the <code>ds</code> variable as with any XArray dataset. We need not worry about the EosdisStore anymore.</p>
+<p>View the file’s variable structure</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb13"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>I can also do slices. I’ll extract temperatures for the state of Colorado. The bounding box for the state is [-109 E, -102 E, 37 N, 41 N].</p>
-<p>In the code below, pay attention to both the order of the coordinates and the range of values. The first value of the <code>lat</code> coordinate variable is 41 N, the second value is 37 N. Unfortunately, <code>xarray</code> expects slices of coordinates to be in the same order as the coordinates. Note <code>lon</code> is 0 to 360 not -180 to 180, and I let python calculate it for me within the slice.</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>What if we want temperature for a point, for example Denver, CO (39.72510678889283 N, -104.98785545855408 E). <code>xarray</code> can handle this! If we just want data from the nearest grid point, we can use <code>sel</code> and specify the method as “nearest”.</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="aggregate-and-analyze-30-files" class="level3">
+<h3 class="anchored" data-anchor-id="aggregate-and-analyze-30-files">Aggregate and analyze 30 files</h3>
+<p>Set up a function to open all of our URLs as XArrays in parallel</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>If we want to interpolate, we can use <code>interp()</code>. In this case I use <code>linear</code> or bilinear interpolation.</p>
-<p><code>interp()</code> <em>can also be used to resample data to a new grid and even reproject data</em></p>
+<p>Combine the individual file-based datasets into a single xarray dataset with a time axis</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><code>sel()</code> and <code>interp()</code> can also be used on <code>Dataset</code> objects.</p>
+<p>Look at the Analysed SST variable metadata</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Create a dataset / variable that is only our area of interest and view its metadata</p>
 <div class="sourceCode" id="cb19"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="analysis" class="level2">
-<h2 class="anchored" data-anchor-id="analysis">Analysis</h2>
-<p>As a simple example, let’s try to calculate a mean field for the whole time range.</p>
+<p>XArray reads data lazily, i.e.&nbsp;only when our code actually needs it. Up to this point, we haven’t read any data values, only metadata. The next line will force XArray to read the portions of the source files containing our area of interest. Behind the scenes, the eosdis-zarr-store library is ensuring data is fetched as efficiently as possible.</p>
+<p>Note: This line isn’t strictly necessary, since XArray will automatically read the data we need the first time our code tries to use it, but calling this will make sure that we can read the data multiple times later on without re-fetching anything from the source files.</p>
+<p>This line will take several seconds to complete, but since it is retrieving only about 50 MB of data from 22 GB of source files, several seconds constitutes a significant time, bandwidth, and disk space savings.</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>We can also calculate a zonal mean (averaging over longitude)</p>
+<p>Now we can start looking at aggregations across the time dimension. In this case, plot the standard deviation of the temperature at each point to get a visual sense of how much temperatures fluctuate over the course of the month.</p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Other aggregation methods include <code>min()</code>, <code>max()</code>, <code>std()</code>, along with others.</p>
+<section id="interactive-animation-of-a-month-of-data" class="level4">
+<h4 class="anchored" data-anchor-id="interactive-animation-of-a-month-of-data">Interactive animation of a month of data</h4>
+<p>This section isn’t as important to fully understand. It shows us a way to get an interactive animation to see what we have retrieved so far</p>
+<p>Define an animation function to plot the <code>i</code>th time step. We need to make sure each plot is using the same color scale, set by <code>vmin</code> and <code>vmax</code> so the animation is consistent</p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>The data we have are in 6h timesteps. This can be resampled to daily or monthly. If you are familiar with <code>pandas</code>, <code>xarray</code> uses the same methods.</p>
+<p>Render each time slice once and show it as an HTML animation with interactive controls</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb24"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>This is a really short time series but as an example, let’s calculate a monthly climatology (at least for 2 months). For this we can use <code>groupby()</code></p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="plot-results" class="level2">
-<h2 class="anchored" data-anchor-id="plot-results">Plot results</h2>
-<p>Finally, let’s plot the results! This will plot the lat/lon axes of the original <code>ds</code> DataArray.</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="supplemental-whats-happening-here" class="level3">
+<h3 class="anchored" data-anchor-id="supplemental-whats-happening-here">Supplemental: What’s happening here?</h3>
+<p>For EOSDIS data in the cloud, we have begun producing a metadata sidecar file in a format called DMR++ that extracts all of the information about arrays, variables, and dimensions from data files, as well as the byte offsets in the NetCDF4 file where data can be found. This information is sufficient to let the Zarr library read data from our NetCDF4 files, but it’s in the wrong format. zarr-eosdis-store knows how to fetch the sidecar file and transform it into something the Zarr library understands. Passing it when reading Zarr using XArray or the Zarr library lets these libraries interact with EOSDIS data exactly as if they were Zarr stores in a way that’s more optimal for reading data in the cloud. Beyond this, the zarr-eosdis-store library makes some optimizations in the way it reads data to help make up for situations where the NetCDF4 file is not internally arranged well for cloud-based access patterns.</p>
 
 
+</section>
+</section>
 </section>
 <script type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {

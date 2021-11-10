@@ -298,7 +298,7 @@
   <div id="quarto-toc-sidebar" class=" pt-0 col col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-toc order-last"><nav id="TOC" role="doc-toc">
 <h2 id="toc-title">On this page</h2>
 <ul>
-<li><a href="#data-discovery-cmr-stac-api" class="nav-link active" data-scroll-target="#data-discovery-cmr-stac-api">Data Discovery: CMR-STAC API</a>
+<li><a href="#data-discovery-with-cmr-stac-api" class="nav-link active" data-scroll-target="#data-discovery-with-cmr-stac-api">Data Discovery with CMR-STAC API</a>
 <ul class="collapse">
 <li><a href="#timing" class="nav-link" data-scroll-target="#timing">Timing</a></li>
 <li><a href="#summary" class="nav-link" data-scroll-target="#summary">Summary</a>
@@ -322,20 +322,18 @@
 <ul class="collapse">
 <li><a href="#read-in-a-geojson-file" class="nav-link" data-scroll-target="#read-in-a-geojson-file">Read in a geojson file</a></li>
 <li><a href="#visualize-contents-of-geojson-file" class="nav-link" data-scroll-target="#visualize-contents-of-geojson-file">Visualize contents of geojson file</a></li>
-<li><a href="#extract-the-coordinates-for-the-region-of-interest-roi" class="nav-link" data-scroll-target="#extract-the-coordinates-for-the-region-of-interest-roi">Extract the coordinates for the region of interest (ROI)</a></li>
+<li><a href="#extract-the-coordinates-for-the-roi" class="nav-link" data-scroll-target="#extract-the-coordinates-for-the-roi">Extract the coordinates for the ROI</a></li>
 <li><a href="#specify-date-range" class="nav-link" data-scroll-target="#specify-date-range">Specify date range</a></li>
 <li><a href="#specify-the-stac-collections" class="nav-link" data-scroll-target="#specify-the-stac-collections">Specify the STAC Collections</a></li>
 </ul></li>
 <li><a href="#search-the-cmr-stac-api-with-our-search-criteria" class="nav-link" data-scroll-target="#search-the-cmr-stac-api-with-our-search-criteria">Search the CMR-STAC API with our search criteria</a>
 <ul class="collapse">
 <li><a href="#print-out-how-many-stac-items-match-our-search-query" class="nav-link" data-scroll-target="#print-out-how-many-stac-items-match-our-search-query">Print out how many STAC Items match our search query</a></li>
-<li><a href="#print-an-item-as-a-dictionary" class="nav-link" data-scroll-target="#print-an-item-as-a-dictionary">Print an item as a dictionary</a></li>
 </ul></li>
 <li><a href="#filtering-stac-items" class="nav-link" data-scroll-target="#filtering-stac-items">Filtering STAC Items</a></li>
 <li><a href="#split-data-links-list-into-logical-groupings" class="nav-link" data-scroll-target="#split-data-links-list-into-logical-groupings">Split Data Links List into Logical Groupings</a>
 <ul class="collapse">
-<li><a href="#print-dictionary-keys-and-values-i.e.-the-data-links" class="nav-link" data-scroll-target="#print-dictionary-keys-and-values-i.e.-the-data-links">Print dictionary keys and values, i.e.&nbsp;the data links</a></li>
-<li><a href="#print-bandlayer-links-for-hls-tile-t13tgf" class="nav-link" data-scroll-target="#print-bandlayer-links-for-hls-tile-t13tgf">Print band/layer links for HLS tile T13TGF</a></li>
+<li><a href="#split-by-utm-tile-specified-in-the-file-name-e.g.-t14tkl-t13tgf" class="nav-link" data-scroll-target="#split-by-utm-tile-specified-in-the-file-name-e.g.-t14tkl-t13tgf">Split by UTM tile specified in the file name (e.g., T14TKL &amp; T13TGF)</a></li>
 <li><a href="#split-the-links-by-band" class="nav-link" data-scroll-target="#split-the-links-by-band">Split the links by band</a></li>
 </ul></li>
 <li><a href="#save-links-to-a-text-file" class="nav-link" data-scroll-target="#save-links-to-a-text-file">Save links to a text file</a>
@@ -343,14 +341,15 @@
 <li><a href="#write-links-from-cmr-stac-api-to-a-file" class="nav-link" data-scroll-target="#write-links-from-cmr-stac-api-to-a-file">Write links from CMR-STAC API to a file</a></li>
 <li><a href="#write-links-to-file-for-s3-access" class="nav-link" data-scroll-target="#write-links-to-file-for-s3-access">Write links to file for S3 access</a></li>
 </ul></li>
+<li><a href="#resources" class="nav-link" data-scroll-target="#resources">Resources</a></li>
 </ul></li>
 </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon/edit/main/tutorials-templates/Data_Discovery__CMR-STAC_API.ipynb" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon/issues/new" class="toc-action">Report an issue</a></p></div></div></nav></div>
   <div class="col mx-auto col-sm-12 col-md-9 col-lg-7 col-xl-7 px-lg-4 pe-xxl-4 ps-xxl-0">
 <main>
 
-<section id="data-discovery-cmr-stac-api" class="level1">
-<h1>Data Discovery: CMR-STAC API</h1>
+<section id="data-discovery-with-cmr-stac-api" class="level1">
+<h1>Data Discovery with CMR-STAC API</h1>
 <section id="timing" class="level2">
 <h2 class="anchored" data-anchor-id="timing">Timing</h2>
 <ul>
@@ -392,6 +391,7 @@
 </li>
 <li>how to extract and save data access URLs for geospatial assets</li>
 </ul>
+<p>This exercise can be found in the <a href="https://nasa-openscapes.github.io/2021-Cloud-Hackathon/tutorials/Data_Discovery__CMR-STAC_API.html">2021 Cloud Hackathon Book</a></p>
 <hr>
 </section>
 <section id="import-required-packages" class="level2">
@@ -412,6 +412,7 @@
 <h2 class="anchored" data-anchor-id="connect-to-the-lpcloud-providerstac-catalog">Connect to the <code>LPCLOUD</code> Provider/STAC Catalog</h2>
 <p>For this next step we need the <code>provider title</code> (e.g., LPCLOUD) from above. We will add the provider to the end of the CMR-STAC API URL (i.e., <code>https://cmr.earthdata.nasa.gov/stac/</code>) to connect to the LPCLOUD STAC Catalog.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Since we are using a dedicated client (i.e., <code>pystac-client.Client</code>) to connect to our STAC Provider Catalog, we will have access to some useful internal methods and functions we can use to get information from these objects.</p>
 </section>
 <section id="list-stac-collections" class="level2">
 <h2 class="anchored" data-anchor-id="list-stac-collections">List STAC Collections</h2>
@@ -425,13 +426,12 @@
 <section id="print-the-stac-collection-ids-with-their-title" class="level3">
 <h3 class="anchored" data-anchor-id="print-the-stac-collection-ids-with-their-title">Print the STAC Collection <code>id</code>s with their <code>title</code></h3>
 <p>In the above output, <code>id</code> and <code>title</code> are two elements of interest that we can print for all <code>products</code> using a for loop.</p>
-<p>TODO: pystac/pystac-client objects</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="search-for-granulesstac-items---set-up-query-parameters-to-submit-to-the-cmr-stac-api" class="level2">
 <h2 class="anchored" data-anchor-id="search-for-granulesstac-items---set-up-query-parameters-to-submit-to-the-cmr-stac-api">Search for Granules/STAC Items - Set up query parameters to submit to the CMR-STAC API</h2>
-<p>We will define our region of interest (ROI) using the geojson file from the previous exercise, while also specifying the data collections and time range of needed for our example.</p>
+<p>We will define our ROI using the geojson file from the previous exercise, while also specifying the data collections and time range of needed for our example.</p>
 <section id="read-in-a-geojson-file" class="level3">
 <h3 class="anchored" data-anchor-id="read-in-a-geojson-file">Read in a geojson file</h3>
 <p>Reading in a geojson file with geopandas will return the geometry of our polygon (our ROI).</p>
@@ -443,36 +443,13 @@
 <div class="sourceCode" id="cb10"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>We can plot the polygon using the <code>geoviews</code> package that we imported as <code>gv</code> with ‘bokeh’ and ‘matplotlib’ extensions. The following has reasonable width, height, color, and line widths to view our polygon when it is overlayed on a base tile map.</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>We will now start to specify the search criteria we are interested in, i.e, the <strong>date range</strong>, the <strong>region of interest</strong> (ROI), and the <strong>data collections</strong>, that we will pass to the STAC API.</p>
+<p>We will now start to specify the search criteria we are interested in, i.e, the <strong>date range</strong>, the <strong>ROI</strong>, and the <strong>data collections</strong>, that we will pass to the STAC API.</p>
 </section>
-<section id="extract-the-coordinates-for-the-region-of-interest-roi" class="level3">
-<h3 class="anchored" data-anchor-id="extract-the-coordinates-for-the-region-of-interest-roi">Extract the coordinates for the region of interest (ROI)</h3>
+<section id="extract-the-coordinates-for-the-roi" class="level3">
+<h3 class="anchored" data-anchor-id="extract-the-coordinates-for-the-roi">Extract the coordinates for the ROI</h3>
 <div class="sourceCode" id="cb12"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>So, what just happen there? Let’s take a quick detour to break it down.</p>
-<table class="table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<tbody>
-<tr class="odd">
-<td>field.to_json()</td>
-<td>geojson representation as a string</td>
-</tr>
-<tr class="even">
-<td>json.loads()</td>
-<td>parse a json string into a Python Dictionary</td>
-</tr>
-<tr class="odd">
-<td>features</td>
-<td>Dictionary key that contrains the geometry object with coordinates (returned as a list)</td>
-</tr>
-<tr class="even">
-<td>geometry</td>
-<td>Dictionary key that contains the coordinates for the ROI</td>
-</tr>
-</tbody>
-</table>
+<p><img src="data/Read_GeoJSON_Explained.png" width="750"></p>
 </section>
 <section id="specify-date-range" class="level3">
 <h3 class="anchored" data-anchor-id="specify-date-range">Specify date range</h3>
@@ -494,14 +471,10 @@
 <div class="sourceCode" id="cb16"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>We now have a search object containing the STAC Items that matched our query. Now, let’s pull out all of the STAC Items (as a PySTAC ItemCollection object) and explore the contents (i.e., the STAC Items)</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Let’s list a few of these <code>item_collection</code>s:</p>
+<p>Let’s list some of the <code>Items</code> from our <code>pystac item_collection</code>:</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="print-an-item-as-a-dictionary" class="level3">
-<h3 class="anchored" data-anchor-id="print-an-item-as-a-dictionary">Print an item as a dictionary</h3>
-<p>We can view a single item as a dictionary, as we did above with <code>products</code>.</p>
+<p>We can view a single <code>Item</code> as a dictionary, as we did above with STAC <code>Collections</code>/<code>products</code>.</p>
 <div class="sourceCode" id="cb19"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>TODO Aaron: identify a few things of note</p>
 </section>
 </section>
 <section id="filtering-stac-items" class="level2">
@@ -510,32 +483,35 @@
 <p>We’ll make a <code>cloudcover</code> variable where we will set the maximum allowable cloud cover and extract the band links for those Items that match or are less than the max cloud cover.</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>We will also specify the STAC Assets (i.e., bands/layers) of interest for both the S30 and L30 collections (also in our <code>collections</code> variable above).</p>
-<p><em>TODO Aaron</em>. We’ll set these bands that are reasonable for EVI calculations: read more about B8A and friends here: TODO.</p>
+<p>In this hypothetical workflow, we’ll extract the bands needed to calculate an enhanced vegetation index (EVI). Thus, the band needed include red, near infrared (NIR), and blue. We’ll also extract a quality band (i.e., Fmask) that we’d eventually use to perform per-pixel quality filtering.</p>
+<p>Notice that the band ids are in some case not one-to-one between the S30 and the L30 product. This is evident in the NIR band for each product where S30’s NIR band id is <strong>B8A</strong> and L30’s is <strong>B05</strong>. Note, the S30 product has an additional NIR band with a band id of <strong>B08</strong>, but the spectral ranges between <strong>B8A</strong> and <strong>B05</strong> are more closely aligned. Visit the <a href="https://lpdaac.usgs.gov/data/get-started-data/collection-overview/missions/harmonized-landsat-sentinel-2-hls-overview/#hls-spectral-bands">HLS Overview</a> page to learn more about HLS spectral bands.</p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>And now to loop through and filter the <code>item_collection</code> by cloud cover and bands:</p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The filtering done in the previous steps produces a list of links to STAC Assets. Let’s print out the first ten links.</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><strong>NOTICE</strong> that in the list of links that we have multiple tiles, i.e.&nbsp;<strong>T14TKL</strong> &amp; <strong>T13TGF</strong>, that intersect with our region of interest. TODO: We can notice this by HOW.</p>
-<p>These two tiles represent neighboring Universal Transverse Mercator (UTM) zones. We will split the list of links into separate lists for each tile.</p>
-<p>We now have a list of links to data assets that meet our search and filtering criteria. The commands that follow will split this list into logical groupings using python routines.</p>
+<p><strong>NOTE</strong> that HLS data is mapped to the Universal Transverse Mercator (UTM) projection and is tiled using the Sentinel-2 Military Grid Reference System (MGRS) UTM grid. Notice that in the list of links we have multiple tiles, i.e.&nbsp;<strong>T14TKL</strong> &amp; <strong>T13TGF</strong>, that intersect with our region of interest. In this case, these two tiles represent neighboring UTM zones. The tiles can be discern from the file name, which is the last element in a link (far right) following the last forward slash (/) - e.g., <strong>HLS.L30.T14TKL.2021133T172406.v1.5.B04.tif</strong>. The figure below explains where to find the tile/UTM zone from the file name.</p>
+<p><img src="data/HLS_Filename_Explained.png" width="750"></p>
+<p>We will now split the list of links into separate logical sub-lists.</p>
 </section>
 <section id="split-data-links-list-into-logical-groupings" class="level2">
 <h2 class="anchored" data-anchor-id="split-data-links-list-into-logical-groupings">Split Data Links List into Logical Groupings</h2>
-<p>TODO Aaron: a bit more description about what all these steps do :)</p>
-<p>Split by UTM tile specified in the file name (e.g., T14TKL &amp; T13TGF)</p>
+<p>We have a list of links to data assets that meet our search and filtering criteria. Below we’ll split our list from above into lists first by tile/UTM zone and then further by individual bands bands. The commands that follow will do the splitting with python routines.</p>
+<section id="split-by-utm-tile-specified-in-the-file-name-e.g.-t14tkl-t13tgf" class="level3">
+<h3 class="anchored" data-anchor-id="split-by-utm-tile-specified-in-the-file-name-e.g.-t14tkl-t13tgf">Split by UTM tile specified in the file name (e.g., T14TKL &amp; T13TGF)</h3>
 <div class="sourceCode" id="cb24"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb25"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<section id="print-dictionary-keys-and-values-i.e.-the-data-links" class="level3">
-<h3 class="anchored" data-anchor-id="print-dictionary-keys-and-values-i.e.-the-data-links">Print dictionary keys and values, i.e.&nbsp;the data links</h3>
+<section id="print-dictionary-keys-and-values-i.e.-the-data-links" class="level4">
+<h4 class="anchored" data-anchor-id="print-dictionary-keys-and-values-i.e.-the-data-links">Print dictionary keys and values, i.e.&nbsp;the data links</h4>
 <div class="sourceCode" id="cb26"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb27"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Now we will create a separate list of data links for each tile</p>
 <div class="sourceCode" id="cb28"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="print-bandlayer-links-for-hls-tile-t13tgf" class="level3">
-<h3 class="anchored" data-anchor-id="print-bandlayer-links-for-hls-tile-t13tgf">Print band/layer links for HLS tile T13TGF</h3>
+<section id="print-bandlayer-links-for-hls-tile-t13tgf" class="level4">
+<h4 class="anchored" data-anchor-id="print-bandlayer-links-for-hls-tile-t13tgf">Print band/layer links for HLS tile T13TGF</h4>
 <div class="sourceCode" id="cb29"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
 </section>
 <section id="split-the-links-by-band" class="level3">
 <h3 class="anchored" data-anchor-id="split-the-links-by-band">Split the links by band</h3>
@@ -555,9 +531,22 @@
 <section id="write-links-to-file-for-s3-access" class="level3">
 <h3 class="anchored" data-anchor-id="write-links-to-file-for-s3-access">Write links to file for S3 access</h3>
 <div class="sourceCode" id="cb35"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-
+<hr>
 </section>
+</section>
+<section id="resources" class="level2">
+<h2 class="anchored" data-anchor-id="resources">Resources</h2>
+<ul>
+<li><a href="https://stacspec.org/">STAC Specification Webpage</a></li>
+<li><a href="https://stacspec.org/STAC-api.html">STAC API Documentation</a></li>
+<li><a href="https://github.com/nasa/cmr-stac">CMR-STAC API Github</a></li>
+<li><a href="https://stackoverflow.com/questions/26367812/appending-to-list-in-python-dictionary" class="uri">https://stackoverflow.com/questions/26367812/appending-to-list-in-python-dictionary</a></li>
+<li><a href="https://geopandas.org/en/stable/docs/user_guide.html">Geopandas</a></li>
+<li><a href="https://lpdaac.usgs.gov/data/get-started-data/collection-overview/missions/harmonized-landsat-sentinel-2-hls-overview/">HLS Overview</a></li>
+</ul>
+<hr>
+
+
 </section>
 </section>
 <script type="application/javascript">
