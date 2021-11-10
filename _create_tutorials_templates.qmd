@@ -2,7 +2,10 @@
 title: Create Tutorial Templates ()
 ---
 
-Running is code will take all the `.ipynb` notebooks in a folder and copy them to a template folder after removing all code from within the code chunks. It works for specific folders now, and is written in R and bash, but can be generalized further. It converts the `.ipynb` notebooks to `.qmd` files temporarily to do this, and `.ipynb` files require something in the code chunks, which for now is `#`. Thank you Jacqueline Nolis for the regular expression code: <https://twitter.com/skyetetra/status/1454472378243698694>
+Running is code will take all the `.ipynb` notebooks in a folder and copy them to a template folder after removing all code from within the code chunks. 
+It works for specific folders now, and is written in R and bash, but can be generalized further. 
+It converts the `.ipynb` notebooks to `.qmd` files temporarily to do this, and `.ipynb` files require something in the code chunks, which for now is `#`. 
+Thank you Jacqueline Nolis for the regular expression code: <https://twitter.com/skyetetra/status/1454472378243698694>
 
 
 ```{r}
