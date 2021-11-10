@@ -1,5 +1,5 @@
 ---
-title: Create Tutorial Templates ()
+title: Create Tutorial Templates
 ---
 
 Running is code will take all the `.ipynb` notebooks in a folder and copy them to a template folder after removing all code from within the code chunks. 
