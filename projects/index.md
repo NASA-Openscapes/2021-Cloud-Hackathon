@@ -36,14 +36,8 @@ Throughout the hackathon we will have optional morning office hours 8-9am PT for
 
 On the final day of the Cloud Hackathon, each team will present their work in a series of lightning talks.
 
-
 ## What can I do to prepare in advance?
 
 * If you have a project idea already brewing, we encourage you to share that with participants on our Slack channel `2021-nasacloudhack-projects`.
 * Feel free to explore various projects and initiate conversations. The goal is to gather as much information as you can to inform your decision about which team to join during the Cloud Hackathon
-
-
-## Suggested GitHub Workflow
-
-Coming soon!
 
