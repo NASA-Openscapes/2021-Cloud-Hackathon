@@ -3,7 +3,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="quarto-0.2.232">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>Introduction to xarray</title>
+  <title>introduction_to_xarray</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -112,7 +112,7 @@
 <header id="quarto-header" class="headroom fixed-top">
 <nav class="quarto-secondary-nav py-2 d-lg-none d-md-block " data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <div class="container-fluid d-flex justify-content-between">
-    <h1 class="quarto-secondary-nav-title mb-0 fs-3 d-inline">Introduction to <code>xarray</code></h1>
+    <h1 class="quarto-secondary-nav-title mb-0 fs-3 d-inline">(Untitled)</h1>
     <button type="button" class="quarto-btn-toggle btn d-lg-none py-0 px-1 d-inline-block border-0 ">
       <i class="bi bi-chevron-right"></i>
     </button>
@@ -298,20 +298,22 @@
   <div id="quarto-toc-sidebar" class=" pt-0 col col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-toc order-last"><nav id="TOC" role="doc-toc">
 <h2 id="toc-title">On this page</h2>
 <ul>
-<li><a href="#why-do-we-need-xarray" class="nav-link active" data-scroll-target="#why-do-we-need-xarray">Why do we need <code>xarray</code>?</a></li>
+<li><a href="#introduction-to-xarray" class="nav-link active" data-scroll-target="#introduction-to-xarray">Introduction to <code>xarray</code></a>
+<ul class="collapse">
+<li><a href="#why-do-we-need-xarray" class="nav-link" data-scroll-target="#why-do-we-need-xarray">Why do we need <code>xarray</code>?</a></li>
 <li><a href="#what-is-xarray" class="nav-link" data-scroll-target="#what-is-xarray">What is <code>xarray</code></a></li>
 <li><a href="#what-you-will-learn-from-this-tutorial" class="nav-link" data-scroll-target="#what-you-will-learn-from-this-tutorial">What you will learn from this tutorial</a></li>
 <li><a href="#subsetting-and-indexing" class="nav-link" data-scroll-target="#subsetting-and-indexing">Subsetting and Indexing</a></li>
 <li><a href="#analysis" class="nav-link" data-scroll-target="#analysis">Analysis</a></li>
 <li><a href="#plot-results" class="nav-link" data-scroll-target="#plot-results">Plot results</a></li>
+</ul></li>
 </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon/edit/main/tutorials-templates/Introduction_to_xarray.ipynb" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon/issues/new" class="toc-action">Report an issue</a></p></div></div></nav></div>
   <div class="col mx-auto col-sm-12 col-md-9 col-lg-7 col-xl-7 px-lg-4 pe-xxl-4 ps-xxl-0">
 <main>
-<header id="title-block-header">
-<h1 class="title d-none d-lg-block display-7">Introduction to <code>xarray</code></h1>
-</header>
 
+<section id="introduction-to-xarray" class="level1">
+<h1>Introduction to <code>xarray</code></h1>
 <section id="why-do-we-need-xarray" class="level2">
 <h2 class="anchored" data-anchor-id="why-do-we-need-xarray">Why do we need <code>xarray</code>?</h2>
 <p>As Geoscientists, we often work with time series of data with two or more dimensions: a time series of calibrated, orthorectified satellite images; two-dimensional grids of surface air temperature from an atmospheric reanalysis; or three-dimensional (level, x, y) cubes of ocean salinity from an ocean model. These data are often provided in GeoTIFF, NetCDF or HDF format with rich and useful metadata that we want to retain, or even use in our analysis. Common analyses include calculating means, standard deviations and anomalies over time or one or more spatial dimensions (e.g.&nbsp;zonal means). Model output often includes multiple variables that you want to apply similar analyses to.</p>
@@ -401,6 +403,7 @@
 <div class="sourceCode" id="cb26"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
+</section>
 </section>
 <script type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
