@@ -15,51 +15,51 @@ You will need a working knowledge of git and terminal for this hackathon. We wil
 
 ## Introduction :: Command Line (Terminal/Shell)
 
-#### Shell Basics
+### Shell Basics
 
 1.  [What is Terminal or Shell?](https://swcarpentry.github.io/shell-novice/01-intro/index.html)
 2.  [Navigating Files and Directories](https://swcarpentry.github.io/shell-novice/02-filedir/index.html)
 3.  [Working with Files and Directories](https://swcarpentry.github.io/shell-novice/03-create/index.html)
 
-#### Shell: More Details
+### Shell: More Details
 
 Detailed self-paced lesson on shell: [Shell Lesson from Software Carpentry](http://swcarpentry.github.io/shell-novice/)
 
 ## Introduction :: Version Control (Git and Github)
 
-#### What is version control, git, github, and how to set it up?
+### What is version control, git, github, and how to set it up?
 
 Version control is managing and tracking changes to your documents (program source code, images, websites, data files, etc.). `git` is a popular tool used for version control of software code. [github.com](https://github.com/) is popular platform that provides remote server hosting for git repositories. A repository is a collection of various files that you are tracking for changes and versions (think of it as a directory with files that are being tracked for changes, using `git` for taking snapshots of versions as you are developing).
 
-This section is a step-by-step guide to set up `git` on your [2i2c instance](openscapes.2i2c.cloud) and configure `git` to use your [github.com](https://github.com/) account for managing your repositories hosted on [github.com](https://github.com/).
+This section is a step-by-step guide to set up `git` on your [2i2c instance](openscapes.2i2c.cloud) and configure `git` to use your [github.com](https://github.com/) account for managing your repositories hosted on [github.com](https://github.com/). There are 5 main steps with substeps, includes instruction for addressing github's new approach for [token authentication](https://github.blog/changelog/2021-08-12-git-password-authentication-is-shutting-down/).
 
-#### Step 1: Create a github account
+### Step 1: Create a github account
 
 To complete the setup, you will need an account on [github.com](https://github.com/). If you don't have an account, please visit [github.com](https://github.com/), create an account (free) and come back to this guide for setting up git.
 
-#### Step 2: Fork a repository
+### Step 2: Fork a repository
 
-A **fork** is a copy of a repository from another github account (for example **Openscapes** account) to your github account (for example, my account **virdi**). To help you finish this setup correctly, we have created a demo repository on Openscapes github account named **check_github_setup**. You can **fork** this repository into your github account following these steps:
+A **fork** is a copy of a repository from another github account (for example **NASA-Openscapes** account) to your github account (for example, my account **virdi**) that then you have permission to edit. To help you finish this setup correctly, we have created a demo repository on Openscapes github account named **check_github_setup**. You can **fork** this repository into your github account following these steps:
 
 1.  Log in to your [github.com](https://github.com/) account
 
-2.  Go to the demo repository at [Openscapes github](https://github.com/NASA-Openscapes/check_github_setup)
+2.  Go to the demo repository at [NASA-Openscapes github](https://github.com/NASA-Openscapes/check_github_setup)
 
-    ![Demo repository on Openscapes github](img/github-fork-1.png){width="520"}
+    ![Demo repository on NASA-Openscapes github](img/github-fork-1.png){width="520"}
 
 3.  Click on the fork icon in the top right corner, as shown in the image below and click your user name if prompted to do so
 
     ![](img/github-fork-2.png){width="520"}
 
-#### Step 3: Clone the repository that you just forked
+### Step 3: Clone the repository that you just forked
 
-Now you have a fork of the demo repository in your github account
+Now you have a fork of the demo repository in your github account that we can `clone` it in your 2i2c instance. In the code below, commands beginning with `git` is a git command for version control and synching; commands that don't start with `git` are bash/linux/command line commands.
 
-1.  Copy link for the demo repository from your github account and `clone` it in your 2i2c instance. Click the green "Code" button and copy the link as shown.
+1.  Copy link for the demo repository from your github account. Click the green "Code" button and copy the link as shown.
 
     ![](img/github-clone.png)
 
-2.  Start your [2i2c instance](openscapes.2i2c.cloud) and open a terminal
+2.  Start your [2i2c instance](https://openscapes.2i2c.cloud) and open a terminal
 
     `File >> New >> Terminal`
 
@@ -76,7 +76,7 @@ Now you have a fork of the demo repository in your github account
     git config --global user.email "Makhan.Virdi@gmail.com"
     ```
 
-5.  Configure `git` to store your github credentials to avoid having to enter your github username and token (in the next steps, we will describe how to use github token instead of a password)
+5.  Configure `git` to store your github credentials to avoid having to enter your github username and token (in [Step 5](#step-5.-create-access-token-on-github.com), we will describe how to use github token instead of a password)
 
     ``` bash
     git config --global credential.helper store
@@ -86,11 +86,11 @@ Now you have a fork of the demo repository in your github account
 
     To clone a repository from github, copy the link for the repository (previous step) and use `git clone`:
 
-    `git clone https://github.com/NASA-Openscapes/check_github_setup`
+    `git clone https://github.com/YOUR-GITHUB-USERNAME/check_github_setup`
 
     ![](img/terminal-clone.png){width="520"}
 
-    Use `ls` to verify the existence of the repository that you just cloned
+    Use `ls` (list files) to verify the existence of the repository that you just cloned
 
     ![](img/terminal-clone-confirm-ls.png){width="520"}
 
@@ -106,7 +106,7 @@ Now you have a fork of the demo repository in your github account
 
     In the next step, we will create a new file in this repository, track changes to this file, and link it with your github.com account.
 
-#### Step 4. Creating new file and tracking changes
+### Step 4. Creating new file and tracking changes
 
 1.  In the left panel on your 2i2c, click on the "directory" icon and then double click on "check_github_setup" directory.
 
@@ -134,7 +134,7 @@ Now you have a fork of the demo repository in your github account
 
 6.  As seen in the above picture, `git` is suggesting you to push the change that you just committed to the remote server at github.com (so that your collaborators can also see what changes you made). **Before we push to github.com**, let's configure `git` further and store our github.com credentials to avoid entering the credentials every time we invoke `git push`. For doing so, we need to create a **token** on github.com to be used in place of your github.com password.
 
-#### Step 5. Create access token on github.com
+### Step 5. Create access token on github.com
 
 1.  Go to your github account and create a new "personal access token": <https://github.com/settings/tokens/new>
 
@@ -186,7 +186,7 @@ Now you have a fork of the demo repository in your github account
     credential.helper = store
     ```
 
-#### Summary: Git Commands
+### Summary: Git Commands
 
 | Git Command  | Description                                                                                                                     |
 |--------------|---------------------------------------------------------------------------------------------------------------------------------|
@@ -201,7 +201,7 @@ Now you have a fork of the demo repository in your github account
 
 : Commonly used git commands (modified from [source](https://uwhackweek.github.io/jupyterbook-template/tutorials/jupyter.html))
 
-#### Git: More Details
+### Git: More Details
 
 **Lesson**: For a more detailed self-paced lesson on git, visit [Git Lesson from Software Carpentry](http://swcarpentry.github.io/git-novice/)
 
@@ -223,7 +223,7 @@ Switch to Jupyter Notebook for an introduction to programming in Python
     -   [pandas](https://pandas.pydata.org/docs/): high-performance, easy-to-use data structures and data analysis tools
     -   [rioxarray](https://corteva.github.io/rioxarray/stable/): based on the rasterio package for working with rasters and [`xarray`](http://xarray.pydata.org/en/stable/)
 
-#### Python Learning Resources
+### Python Learning Resources
 
 Self-paced lesson on [Programming with Python](https://swcarpentry.github.io/python-novice-inflammation/) from Software Carpentry
 

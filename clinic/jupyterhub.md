@@ -112,6 +112,8 @@ Stopping the server happens automatically when you log out, so navigate to "File
 
 ## FAQ
 
+*from participants during our first Clinic*
+
 **I have an empty ‘share’ folder**. That's expected. There shouldn't be anything in the 'share' folder
 
 **After the 3 months are up, what do we do with our work on the server?** You’ll have them since you can back everything up with GitHub. We can follow up with more details of what happens on the 2i2c side
