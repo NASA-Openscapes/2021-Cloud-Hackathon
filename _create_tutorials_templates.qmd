@@ -13,7 +13,7 @@ Thank you Jacqueline Nolis for the regular expression code: <https://twitter.com
 library(tidyverse) ## install.packages(tidyverse)
 library(here) ## install.packages(here)
 library(glue) ## install.packages(glue)
-## quarto: install from https://quarto.org
+## quarto: install the command line interface (CLI) from https://quarto.org
 
 ## list all tutorials
 ipynb_files <- list.files(here("tutorials"), pattern = ".ipynb")
