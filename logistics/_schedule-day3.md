@@ -2,7 +2,7 @@
 |------|-------|-------------------|
 | 8:00 am | Optional Catch-up/help |  |
 | 9:00 am | Welcome | Catalina Oaida, PO.DAAC |
-| 9:15 am | Tutorial 6: TBD | Jack McNelis, PO.DAAC |
+| 9:15 am | Tutorial 6: Sentinel-6 MF L2 Altimetry Data Access (OPeNDAP) & Gridding | Jack McNelis, PO.DAAC |
 | 9:45 am | Q&A and Break |
 | 10:00 am | Tutorial 7: EDC and on-prem DAAC hybrid use case | Amy Steiker, NSIDC |
 | 10:40 am | Q&A and Break | |
