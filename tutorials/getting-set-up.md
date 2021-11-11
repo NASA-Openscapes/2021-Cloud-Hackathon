@@ -26,6 +26,10 @@ git clone https://github.com/YOUR-USERNAME/2021-Cloud-Hackathon
 
 *don't do all the credentials/token — they don't need push access to follow along with the tutorials. We can help them via Slack/breakouts when/if they need to push with tokens*
 
+### Update your forked repo from main
+
+When I've already forked the repo and there's updates to main, how do I get them?
+
 ## Practice creating a jupyter notebook?
 
 ## Open a tutorial template notebook
