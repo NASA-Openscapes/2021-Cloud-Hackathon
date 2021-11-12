@@ -147,6 +147,9 @@
       <li class="sidebar-item">
   <a href="../index.html" class="">Welcome</a>
 </li>
+      <li class="sidebar-item">
+  <a href="../cloud-paradigm.html" class="">Cloud Paradigm</a>
+</li>
       <ul class="list-unstyled sidebar-section depth1">
     <li class="">
         <div class="me-auto">
@@ -165,7 +168,7 @@
   <a href="../logistics/schedule.html" class="">Schedule</a>
 </li>
           <li class="sidebar-item">
-  <a href="../logistics/prerequisites.html" class="">Prerequisites, setup, &amp; getting help</a>
+  <a href="../logistics/prerequisites.html" class="">Prerequisites &amp; help</a>
 </li>
           <li class="sidebar-item">
   <a href="../logistics/github-workflows.html" class="active">GitHub Workflows</a>
@@ -230,14 +233,14 @@
         <div class="me-auto">
           <div class="d-inline-flex w-100 sidebar-section-item">
             <div class="sidebar-section-link me-auto">
-            <a href="../projects/index.html" class="">Projects</a>
+            <a href="../projects/index.html" class="">Projects Overview</a>
             </div>
-            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#projects-collapse" aria-expanded="true">
+            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#projectsoverview-collapse" aria-expanded="true">
               <div><i class="bi bi-chevron-right ms-2"></i></div>
             </a>
             </div>
         </div>
-      <div class="collapse  show" id="projects-collapse">
+      <div class="collapse  show" id="projectsoverview-collapse">
         <ul class="list-unstyled sidebar-item-contents">
           <li class="sidebar-item">
   <a href="../projects/hackathon-projects.html" class="">Hackathon Projects</a>
@@ -311,11 +314,7 @@
 <li><a href="#fork-the-hackathon-repo" class="nav-link" data-scroll-target="#fork-the-hackathon-repo">Fork the hackathon repo</a></li>
 <li><a href="#clone-your-forked-repo-into-jupyterhub" class="nav-link" data-scroll-target="#clone-your-forked-repo-into-jupyterhub">Clone your forked repo into JupyterHub</a></li>
 </ul></li>
-<li><a href="#daily-setup" class="nav-link" data-scroll-target="#daily-setup">Daily Setup</a>
-<ul class="collapse">
-<li><a href="#git-fetch-update-your-forked-repo-from-main" class="nav-link" data-scroll-target="#git-fetch-update-your-forked-repo-from-main"><code>git fetch</code>: Update your forked repo from main</a></li>
-<li><a href="#git-pull" class="nav-link" data-scroll-target="#git-pull"><code>git pull</code></a></li>
-</ul></li>
+<li><a href="#daily-setup" class="nav-link" data-scroll-target="#daily-setup">Daily Setup</a></li>
 <li><a href="#git-update-revert-etc" class="nav-link" data-scroll-target="#git-update-revert-etc">Git: update, revert, etc</a>
 <ul class="collapse">
 <li><a href="#delete-your-local-changes" class="nav-link" data-scroll-target="#delete-your-local-changes">Delete your local changes</a></li>
@@ -354,14 +353,18 @@
 </section>
 <section id="daily-setup" class="level2">
 <h2 class="anchored" data-anchor-id="daily-setup">Daily Setup</h2>
-<section id="git-fetch-update-your-forked-repo-from-main" class="level3">
-<h3 class="anchored" data-anchor-id="git-fetch-update-your-forked-repo-from-main"><code>git fetch</code>: Update your forked repo from main</h3>
-<p>When I’ve already forked the repo and there’s updates to main, how do I get them?</p>
-<p>TODO: screenshots</p>
-</section>
-<section id="git-pull" class="level3">
-<h3 class="anchored" data-anchor-id="git-pull"><code>git pull</code></h3>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="github-get-the-latest" class="level4">
+<h4 class="anchored" data-anchor-id="github-get-the-latest">GitHub: Get the latest</h4>
+<p>This has 2 steps:</p>
+<ol type="1">
+<li>From github.com: Update your forked repo from main by clicking “fetch and merge””</li>
+</ol>
+<p><img src="images/github-fetch-and-merge.png" class="img-fluid"></p>
+<ol start="2" type="1">
+<li>From the terminal in Jupyterhub: <code>git pull</code></li>
+</ol>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> 2021-Cloud-Hackathon</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="git-update-revert-etc" class="level2">
@@ -597,7 +600,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <div class="page-navigation page-navigation-docked">
   <div class="nav-page nav-page-previous">
       <a href="../logistics/prerequisites.html">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Prerequisites, setup, &amp; getting help</span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Prerequisites &amp; help</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

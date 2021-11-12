@@ -172,7 +172,7 @@
     "href": "logistics/github-workflows.html#daily-setup",
     "title": "GitHub Workflows",
     "section": "Daily Setup",
-    "text": "git fetch: Update your forked repo from main\nWhen I’ve already forked the repo and there’s updates to main, how do I get them?\nTODO: screenshots\n\n\ngit pull\ngit pull"
+    "text": "GitHub: Get the latest\nThis has 2 steps:\n\nFrom github.com: Update your forked repo from main by clicking “fetch and merge””\n\n\n\nFrom the terminal in Jupyterhub: git pull\n\ncd 2021-Cloud-Hackathon\ngit pull"
   },
   {
     "objectID": "logistics/github-workflows.html#git-update-revert-etc",
@@ -205,21 +205,14 @@
   {
     "objectID": "logistics/prerequisites.html#prerequisites",
     "href": "logistics/prerequisites.html#prerequisites",
-    "title": "Prerequisites, setup, & getting help",
+    "title": "Prerequisites & help",
     "section": "Prerequisites",
-    "text": "Before the Hackathon, please do the following (20 minutes). All software is free. If you are attending the Clinic, please do this in advance of the Clinic.\n\nGitHub username\n\nCreate a GitHub account (if you don’t already have one) at https://github.com. Follow optional advice on choosing your username\nPlease provide your GitHub username here; this will allow us to add you to the cloud hackathon workspace.\nRemember your username and password; you will need to be logged in during the workshop!\n\nEarthdata Login account\n\nCreate an Earthdata Login account (if you don’t already have one) at https://urs.earthdata.nasa.gov\nRemember your username and password; you will need to be logged in during the workshop!\n\nSlack\n\nJoin our Slack workspace (invite sent via email). In the 2021-nasacloudhack-projects channel, suggest a hackathon project idea/use case, and mention if you are looking for teammates to join. Read through other entries and comment on those of interest to you. On Day one of the hackathon we will hold a project pitchfest and finalize teams for the week.\nLearn more about how we’ll use Slack during the workshop\n\nCheck back soon for additional items\nGet comfortable\n\nConsider your computer set-up in advance, including an external monitor if possible. You will be following along in Jupyter Hub on your own computer while also watching an instructor live-code over Zoom (or equivalent), and will also want quick-access to Slack to ask for help and follow links."
-  },
-  {
-    "objectID": "logistics/prerequisites.html#daily-setup",
-    "href": "logistics/prerequisites.html#daily-setup",
-    "title": "Prerequisites, setup, & getting help",
-    "section": "Daily setup",
-    "text": "Zoom: Call into Zoom using the link provided in the Slack 2021-nasacloudhack-general Channel.\nJupyterHub: Log into 2i2c at https://openscapes.2i2c.cloud/hub/. This takes a few minutes so please start this as soon we reconvene each day"
+    "text": "Before the Hackathon, please do the following (20 minutes). All software is free. If you are attending the Clinic, please do this in advance of the Clinic.\n\nGitHub username\n\nCreate a GitHub account (if you don’t already have one) at https://github.com. Follow optional advice on choosing your username\nPlease provide your GitHub username here; this will allow us to add you to the cloud hackathon workspace.\nRemember your username and password; you will need to be logged in during the workshop!\n\nEarthdata Login account\n\nCreate an Earthdata Login account (if you don’t already have one) at https://urs.earthdata.nasa.gov\nRemember your username and password; you will need to be logged in during the workshop!\n\nSlack\n\nJoin our Slack workspace (invite sent via email). In the 2021-nasacloudhack-projects channel, suggest a hackathon project idea/use case, and mention if you are looking for teammates to join. Read through other entries and comment on those of interest to you. On Day one of the hackathon we will hold a project pitchfest and finalize teams for the week.\nLearn more about how we’ll use Slack during the workshop\n\nZoom\n\nBe prepared to call into Zoom using the link provided in the Slack 2021-nasacloudhack-general Channel.\n\nGet comfortable\n\nConsider your computer set-up in advance, including an external monitor if possible. You will be following along in Jupyter Hub on your own computer while also watching an instructor live-code over Zoom (or equivalent), and will also want quick-access to Slack to ask for help and follow links."
   },
   {
     "objectID": "logistics/prerequisites.html#getting-help",
     "href": "logistics/prerequisites.html#getting-help",
-    "title": "Prerequisites, setup, & getting help",
+    "title": "Prerequisites & help",
     "section": "Getting help",
     "text": "We will use Slack rather than Zoom Chat as our main channel for help, since the conversations are preserved beyond a single call and since it’s easier to reply and have threaded conversations and post screenshots.\n\nSlack\nYou will be invited to the Openscapes Slack organization, where there is a growing community of Openscapes Champions. (New to Slack? See this Quick Start Guide). We have three private Slack channels for the Hackathon:\n2021-nasacloudhack-general: General channel is for announcements and general questions and communications.\n2021-nasacloudhack-projects: Projects channel is for for participants to pitch project ideas and discuss projects with the whole hackathon group. As teams form you can have direct messages with your team (and we can create new channels as needed).\n2021-nasacloudhack-help: Help channel is the place to get troubleshooting help: please paste error messages and post screenshots and we will help you by replying to your post.\nTo create a screenshot:\n\nOn your Mac - Screenshot\nOn your PC - Snipping Tool\n\n\n\nZoom Breakout Rooms\n\nDuring Tutorials Session\nIf you’d like to talk to someone and live-screenshare about your issue, please write in Zoom Chat that you need help and we will move you into a breakout room with a helper.\n\n\nDuring Team Hacktime\nDuring the team project time, you will be placed in a Zoom breakout room with your respective teammates to collaborate more easily. If you have questions as you work, post your question(s) in the Slack 2021-nasacloudhack-help Channel and a helper will respond in that thread. If needed, a helper can also join your team’s Zoom breakour room for easy screensharing, troubleshooting or to further discuss a question."
   },
@@ -235,42 +228,35 @@
     "href": "logistics/schedule.html#hackathon-day-1-november-15",
     "title": "Schedule",
     "section": "Hackathon Day 1: November 15",
-    "text": "Time, PST (UTC-8)\nEvent\nLeads/Instructors\n\n\n\n\n9:00 am\nWelcome\nErin Robinson, Openscapes\n\n\n9:25 am\nCloud Paradigm Overview\nCatalina Oaida, PO.DAAC\n\n\n9:45 am\nTutorial 0: Getting set up and connected\nLuis Lopez, NSIDC\n\n\n10:45 am\nQ&A and Break\n\n\n\n11:00 am\nTutorial 1: Data discovery with CMR\nAndy Barrett, NSIDC\n\n\n11:30 am\nTutorial 2: Data discovery with CMR-STAC API\nAaron Friesz, LP DAAC\n\n\n12:00 pm\nQ&A and Break\n\n\n\n12:15 pm\nPitchfest\nCatalina Oaida, PO.DAAC\n\n\n12:55 pm\nClosing\n\n\n\n\n\nWelcome Day 1\nErin\n((slack roll call - to get into slack)\nWelcome “you are all welcome here” + Code of conduct (5 min),\nWhy are we here (Justin)(5 min); , goals & Introduce the Trainers; Overview of Agenda for the week (5min); Quick logistics (5) Icebreaker (5) quick small group breakouts - what do you hope to learn? Research area? Pets! Where are you joining from? Dream destination/vacation? AI and the future? )"
+    "text": "Time, PST (UTC-8)\nEvent\nLeads/Instructors\n\n\n\n\n9:00 am\nWelcome\nErin Robinson, Openscapes\n\n\n9:25 am\nCloud Paradigm Overview\nCatalina Oaida, PO.DAAC\n\n\n9:45 am\nTutorial 0: Getting set up and connected\nLuis Lopez, NSIDC\n\n\n10:45 am\nQ&A and Break\n\n\n\n11:00 am\nTutorial 1: Data discovery with CMR\nAndy Barrett, NSIDC\n\n\n11:30 am\nTutorial 2: Data discovery with CMR-STAC API\nAaron Friesz, LP DAAC\n\n\n12:00 pm\nQ&A and Break\n\n\n\n12:15 pm\nPitchfest\nCatalina Oaida, PO.DAAC\n\n\n12:55 pm\nClosing\n\n\n\n\n\nWelcome Day 1"
   },
   {
     "objectID": "logistics/schedule.html#hackathon-day-2-november-16",
     "href": "logistics/schedule.html#hackathon-day-2-november-16",
     "title": "Schedule",
     "section": "Hackathon Day 2: November 16",
-    "text": "Time, PST (UTC-8)\nEvent\nLeads/Instructors\n\n\n\n\n8:00 am\nOptional Catch-up/help\n\n\n\n9:00 am\nWelcome\nCatalina Oaida, PO.DAAC\n\n\n9:15 am\nDemo: the power of Earthdata Cloud and Q&A\nMarisol Garcia Reyes, Farallon Institute\n\n\n9:35 am\nTutorial 3: Introduction to Xarray\nAndy Barrett, NSIDC\n\n\n10:30 am\nQ&A and Break\n\n\n\n10:50 am\nTutorial 4: Authentication for NASA Earthdata\nAaron Friesz, LP DAAC\n\n\n11:05 am\nTutorial 5: Direct S3 Access\nAaron Friesz, LP DAAC\n\n\n11:35 am\nTeam Hack Time\nAll\n\n\n12:55 pm\nClosing\n\n\n\n\n\nWelcome Day 2\nSlides"
-  },
-  {
-    "objectID": "logistics/schedule.html#day-1",
-    "href": "logistics/schedule.html#day-1",
-    "title": "Schedule",
-    "section": "Day 1",
-    "text": "IN each daily welcome\ngit merge git pull"
+    "text": "Time, PST (UTC-8)\nEvent\nLeads/Instructors\n\n\n\n\n8:00 am\nOptional Catch-up/help\n\n\n\n9:00 am\nWelcome\nCatalina Oaida, PO.DAAC\n\n\n9:15 am\nDemo: the power of Earthdata Cloud and Q&A\nMarisol Garcia Reyes, Farallon Institute\n\n\n9:35 am\nTutorial 3: Introduction to Xarray\nAndy Barrett, NSIDC\n\n\n10:30 am\nQ&A and Break\n\n\n\n10:50 am\nTutorial 4: Authentication for NASA Earthdata\nAaron Friesz, LP DAAC\n\n\n11:05 am\nTutorial 5: Direct S3 Access\nAaron Friesz, LP DAAC\n\n\n11:35 am\nTeam Hack Time\nAll\n\n\n12:55 pm\nClosing\n\n\n\n\n\nWelcome Day 2\nAny additional text we want.\n\nJupyterHub: Log in.\n\nLog into 2i2c at https://openscapes.2i2c.cloud/hub/. This takes a few minutes so please start this as soon we reconvene each day\n\nGitHub: Get the latest.\n\nYou’ll need to git fetch, merge, and pull: follow the github workflows daily setup."
   },
   {
     "objectID": "logistics/schedule.html#hackathon-day-3-november-17",
     "href": "logistics/schedule.html#hackathon-day-3-november-17",
     "title": "Schedule",
     "section": "Hackathon Day 3: November 17",
-    "text": "Time, PST (UTC-8)\nEvent\nLeads/Instructors\n\n\n\n\n8:00 am\nOptional Catch-up/help\n\n\n\n9:00 am\nWelcome\nCatalina Oaida, PO.DAAC\n\n\n9:15 am\nTutorial 6: Sentinel-6 MF L2 Altimetry Data Access (OPeNDAP) & Gridding\nJack McNelis, PO.DAAC\n\n\n9:45 am\nQ&A and Break\n\n\n\n10:00 am\nTutorial 7: Data Subsetting and Transformation Services in the Cloud\nAmy Steiker, NSIDC\n\n\n10:40 am\nQ&A and Break\n\n\n\n11:00 am\nTeam Hack Time\nAll\n\n\n12:55 pm\nClosing\n\n\n\n\n\nWelcome Day 3\nSlides"
+    "text": "Time, PST (UTC-8)\nEvent\nLeads/Instructors\n\n\n\n\n8:00 am\nOptional Catch-up/help\n\n\n\n9:00 am\nWelcome\nCatalina Oaida, PO.DAAC\n\n\n9:15 am\nTutorial 6: Sentinel-6 MF L2 Altimetry Data Access (OPeNDAP) & Gridding\nJack McNelis, PO.DAAC\n\n\n9:45 am\nQ&A and Break\n\n\n\n10:00 am\nTutorial 7: Data Subsetting and Transformation Services in the Cloud\nAmy Steiker, NSIDC\n\n\n10:40 am\nQ&A and Break\n\n\n\n11:00 am\nTeam Hack Time\nAll\n\n\n12:55 pm\nClosing\n\n\n\n\n\nWelcome Day 3\n\nJupyterHub: Log in.\n\nLog into 2i2c at https://openscapes.2i2c.cloud/hub/. This takes a few minutes so please start this as soon we reconvene each day\n\nGitHub: Get the latest.\n\nYou’ll need to git fetch, merge, and pull: follow the github workflows daily setup."
   },
   {
     "objectID": "logistics/schedule.html#hackathon-day-4-november-18",
     "href": "logistics/schedule.html#hackathon-day-4-november-18",
     "title": "Schedule",
     "section": "Hackathon Day 4: November 18",
-    "text": "Time, PST (UTC-8)\nEvent\nLeads/Instructors\n\n\n\n\n8:00 am\nOptional Catch-up/help\n\n\n\n9:00 am\nWelcome\nCatalina Oaida, PO.DAAC\n\n\n9:15 am\nTutorial 8: EDC and on-prem DAAC hybrid use case\nAmy Steiker, NSIDC\n\n\n10:00 am\nQ&A and Break\n\n\n\n10:15 am\nTutorial 9: Access COF data vis Zarr EOSDIS Store\nPatrick Quinn, Element84\n\n\n11:00 am\nQ&A and Break\n\n\n\n11:20 am\nTeam Hack Time\nAll\n\n\n12:55 pm\nClosing\n\n\n\n\n\nWelcome Day 4\nSlides"
+    "text": "Time, PST (UTC-8)\nEvent\nLeads/Instructors\n\n\n\n\n8:00 am\nOptional Catch-up/help\n\n\n\n9:00 am\nWelcome\nCatalina Oaida, PO.DAAC\n\n\n9:15 am\nTutorial 8: EDC and on-prem DAAC hybrid use case\nAmy Steiker, NSIDC\n\n\n10:00 am\nQ&A and Break\n\n\n\n10:15 am\nTutorial 9: Access COF data vis Zarr EOSDIS Store\nPatrick Quinn, Element84\n\n\n11:00 am\nQ&A and Break\n\n\n\n11:20 am\nTeam Hack Time\nAll\n\n\n12:55 pm\nClosing\n\n\n\n\n\nWelcome Day 4\n\nJupyterHub: Log in.\n\nLog into 2i2c at https://openscapes.2i2c.cloud/hub/. This takes a few minutes so please start this as soon we reconvene each day\n\nGitHub: Get the latest.\n\nYou’ll need to git fetch, merge, and pull: follow the github workflows daily setup."
   },
   {
     "objectID": "logistics/schedule.html#hackathon-day-5-november-19",
     "href": "logistics/schedule.html#hackathon-day-5-november-19",
     "title": "Schedule",
     "section": "Hackathon Day 5: November 19",
-    "text": "Time, PST (UTC-8)\nEvent\nLeads/Instructors\n\n\n\n\n8:00 am\nOptional Catch-up/help\n\n\n\n9:00 am\nWelcome\nCatalina Oaida, PO.DAAC\n\n\n9:05 am\nTeam Hack Time\nAll\n\n\n10:00 am\nTeam Report-outs Part 1\nTeams 1-6\n\n\n11:00 am\nBreak\n\n\n\n11:15 am\nTeam Report-outs Part 2\nTeams 7-12\n\n\n12:15 pm\nSurvey\n\n\n\n12:30 pm\nWhat’s next\nJulie Lowndes, Openscapes\n\n\n12:55 pm\nClosing\n\n\n\n\n\nWelcome Day 5\nSlides"
+    "text": "Time, PST (UTC-8)\nEvent\nLeads/Instructors\n\n\n\n\n8:00 am\nOptional Catch-up/help\n\n\n\n9:00 am\nWelcome\nCatalina Oaida, PO.DAAC\n\n\n9:05 am\nTeam Hack Time\nAll\n\n\n10:00 am\nTeam Report-outs Part 1\nTeams 1-6\n\n\n11:00 am\nBreak\n\n\n\n11:15 am\nTeam Report-outs Part 2\nTeams 7-12\n\n\n12:15 pm\nSurvey\n\n\n\n12:30 pm\nWhat’s next\nJulie Lowndes, Openscapes\n\n\n12:55 pm\nClosing\n\n\n\n\n\nWelcome Day 5\n\nJupyterHub: Log in.\n\nLog into 2i2c at https://openscapes.2i2c.cloud/hub/. This takes a few minutes so please start this as soon we reconvene each day\n\nGitHub: Get the latest.\n\nYou’ll need to git fetch, merge, and pull: follow the github workflows daily setup."
   },
   {
     "objectID": "index.html#welcome",
@@ -1358,44 +1344,51 @@
     "text": "[TODO] Describe Harmony-Py in more detail (connection between the library and the API).\nNext steps adopted from the intro tutorial notebook in the Harmony-Py library: https://github.com/nasa/harmony-py/blob/main/examples/intro_tutorial.ipynb\n\nCreate Harmony Client object\nFirst, we need to create a Harmony Client, which is what we will interact with to submit and inspect a data request to Harmony, as well as to retrieve results.\nWhen creating the Client, we need to provide Earthdata Login credentials, which are required to access data from NASA EOSDIS. This basic line below assumes that we have a .netrc available.\n#\n\n\nCreate Harmony Request\nThe following are common request parameters:\n\ncollection: Required parameter. This is the NASA EOSDIS collection, or data product. There are two options for inputting a collection of interest:\n\nProvide a concept ID, which is an ID provided in the Common Metadata Repository (CMR) metadata\nData product short name (e.g. SENTINEL-1_INTERFEROGRAMS).\n\nspatial: Bounding box spatial constraints on the data. The Harmony Bbox class accepts spatial coordinates as decimal degrees in w, s, e, n order, where longitude = -180, 180 and latitude = -90, 90.\ntemporal: Date/time constraints on the data. The example below demonstrates temporal start and end ranges using the python datetime library.\n\nOther advanced parameters that may be of interest. Note that many reformatting or advanced projection options may not be available for your requested dataset. See the documentation for details on how to construct these parameters.\n[TODO] Describe area/time use case with this dataset - maybe demonstrating Earthdata Search for browsing??\n#\n\n\nCheck Request validity\nBefore submitting a Harmony Request, we can test your request to see if it’s valid and how to fix it if not. In particular, request.is_valid will check to ensure that the spatial BBox bounds and temporal ranges are entered correctly.\n#\n\n\nSubmit request\nNow that the request is created, we can now submit it to Harmony using the Harmony Client object. A job id is returned, which is a unique identifier that represents the submitted request.\n#\n\n\nCheck request status\nWe can check on the progress of a processing job with status(). This method blocks while communicating with the server but returns quickly.\n#\nDepending on the size of the request, it may be helpful to wait until the request has completed processing before the remainder of the code is executed. The wait_for_processing() method will block subsequent lines of code while optionally showing a progress bar.\n#\n\n\nView Harmony job response and output URLs\nOnce the data request has finished processing, we can view details on the job that was submitted to Harmony, including the API call to Harmony, and informational messages on the request if available.\nresult_json() calls wait_for_processing() and returns the complete job in JSON format once processing is complete.\n#\n\n\nDirect cloud access\nNote that the remainder of this tutorial will only succeed when running this notebook within the AWS us-west-2 region.\nHarmony data outputs can be accessed within the cloud using the s3 URLs and AWS credentials provided in the Harmony job response.\n\nRetrieve list of output URLs.\nThe result_urls() method calls wait_for_processing() and returns a list of the processed data URLs once processing is complete. You may optionally show the progress bar as shown below.\n#\nWe can see that the first file returned does not include the _subsetted suffix, which indicates that a blank file was returned, as no data values were located within our subsetted region. We’ll select the second URL in the list to bring into xarray below.\n#\n\n\nAWS credential retrieval\nUsing aws_credentials you can retrieve the credentials needed to access the Harmony s3 staging bucket and its contents.\n#\n\n\n\nOpen staged files with s3fs and xarray\nWe use the AWS s3fs package to create a file system that can then be read by xarray:\n#\n\n\n**Note, Ideally, we’d show how to bring in all files into a single xarray ds but I’m getting an error:\n#\nNow that we have our s3 file system set, including our declared credentials, we’ll use that to open the url, and read in the file through xarray:\n#\n\n\nPlot the data\n#\n\n\nExtra code attempting to read in directly from s3 into xarray:\n#"
   },
   {
+    "objectID": "cloud-paradigm.html",
+    "href": "cloud-paradigm.html",
+    "title": "Cloud Paradigm",
+    "section": "",
+    "text": "Slides that introduce NASA Earthdata Cloud & the Cloud Paradigm."
+  },
+  {
     "objectID": "projects/hackathon-projects.html",
     "href": "projects/hackathon-projects.html",
     "title": "Hackathon Projects",
     "section": "",
-    "text": "text here"
+    "text": "We’ll add information about hackathon projects as they develop!"
   },
   {
     "objectID": "projects/index.html#purpose-of-the-projects",
     "href": "projects/index.html#purpose-of-the-projects",
-    "title": "Projects",
+    "title": "Projects Overview",
     "section": "Purpose of the projects:",
     "text": "During the Cloud Hackathon we will be facilitating team hacking sessions in the second half of each day. The purpose of these sessions is for you to gain hands-on experience in working together on a well-defined problem, in a collaborative space where you can talk things through and get help."
   },
   {
     "objectID": "projects/index.html#what-is-hacking",
     "href": "projects/index.html#what-is-hacking",
-    "title": "Projects",
+    "title": "Projects Overview",
     "section": "What is hacking?",
     "text": "Hacking is a session of focused, highly collaborative work time – often involving coding – in which the group creates conditions for rapid absorption of new ideas and methods. The word “hack” or “hackathon” has many different interpretations, both positive and negative. Here our intention is to foster the idea of hacking as a fun, interactive and welcoming environment to explore and experiment with computer code."
   },
   {
     "objectID": "projects/index.html#how-will-the-projects-be-conducted",
     "href": "projects/index.html#how-will-the-projects-be-conducted",
-    "title": "Projects",
+    "title": "Projects Overview",
     "section": "How will the projects be conducted?",
     "text": "Participants are invited to start conversations about projects in the Slack channel 2021-nasacloudhack-projects one week before the Cloud Hackathon begins.\n\nIf you have a project idea brewing, please pitch it in this channel (even if you have signed up for the cloud hackathon as a team; tag your proposed teammates if you already have that worked out).\nStart a thread with “Project idea:” and then provide a few sentences. Include whether you are looking for teammates to join this project. Others who are interested can respond in a thread.\nWe welcome a broad range of project topics. People often use project time to dig deeper into concepts introduced in tutorials, to explore problems within their own research, or to advance community data sharing and software building efforts.\nThe Cloud Hackathon team is here to help you get clear on project ideas and decide on what is possible within 5 days. Feel free to reach out to any of us between now and the Cloud Hackathon in the 2021-nasacloudhack-help channel, or @ us – we all have “helper” appended to the front of our names. !\n\nAt the end of Day 1 of the Cloud Hackathon we will have a Pitchfest where proposer(s) can pitch their idea, and mention whether they are still looking for teammates or if they have already formed a team using the Slack _#2021-nasacloudhack-projects _channel. At this time we will finalize the project teams for the week.\nTeam hacktime will begin on Day 2.\nEach team is encouraged to identify a project lead, likely the person who pitched the idea, who has knowledge of the datasets and the specific problem to be explored. But roles can be assigned as the group decides to best fit skills and needs.\nThroughout the hackathon we will have optional morning office hours 8-9am PT for additional support or team check-in time.\nOn the final day of the Cloud Hackathon, each team will present their work in a series of lightning talks."
   },
   {
     "objectID": "projects/index.html#what-can-i-do-to-prepare-in-advance",
     "href": "projects/index.html#what-can-i-do-to-prepare-in-advance",
-    "title": "Projects",
+    "title": "Projects Overview",
     "section": "What can I do to prepare in advance?",
     "text": "If you have a project idea already brewing, we encourage you to share that with participants on our Slack channel 2021-nasacloudhack-projects.\nFeel free to explore various projects and initiate conversations. The goal is to gather as much information as you can to inform your decision about which team to join during the Cloud Hackathon"
   },
   {
     "objectID": "projects/index.html#how-to-start-hacking",
     "href": "projects/index.html#how-to-start-hacking",
-    "title": "Projects",
+    "title": "Projects Overview",
     "section": "How to start hacking",
     "text": "Suggestions for how to set up your GitHub workflow is in the GitHub Workflows section.\nThis is a great slide deck for collaborating on project teamwork collaborating from SnowEx Hackweek."
   },
