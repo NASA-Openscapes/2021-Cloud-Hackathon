@@ -47,11 +47,7 @@ site:
         contents:
           - projects/workflow.md
           - projects/hackathon-projects.md
-      - section: "Additional Resources"
-        contents:
-          - tutorials/Additional_Resources__Data_Access__Direct_S3_Access__PODAAC_ECCO_SSH.ipynb
-          - tutorials/Additional_Resources__Direct_S3_Access__gdalvrt.ipynb
-          - tutorials/Additional_Resources__Direct_S3_Access__rioxarray_clipping.ipynb
+      - section: further-resources.md
       - section: clinic/index.md
         contents:
           - clinic/jupyterhub.md
