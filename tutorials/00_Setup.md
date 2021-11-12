@@ -2,35 +2,23 @@
 title: 00. Setup for tutorials
 ---
 
+::: {.callout-tip collapse="true"}
+## Text to paste into Zoom Chat
+
+Please go to https://openscapes.2i2c.cloud/hub/ - log in with your GitHub Account, and select "Small"
+:::
+
 ## This is how my desktop is setup
 
 This will get you set up and answer the question "How do I get the tutorial repository into the Hub?""
 
-## Introduction
+## Cloud/JupyterHub overview
 
-(reuse/point to Clinic)...
+A brief overview about the [NASA Openscapes Cloud Environment](https://nasa-openscapes.github.io/2021-Cloud-Hackathon/clinic/jupyterhub.html) (following lessons from the Clinic).
 
-## Launch JupyterHub
+## GitHub setup for tutorials
 
-(reuse/point to Clinic)...
-
-## Fork the hackathon repo
-
-So you can edit your own copy and live-code with us
-
-## Clone your forked repo into JupyterHub
-
-Open your terminal
-
-```{.bash}
-git clone https://github.com/YOUR-USERNAME/2021-Cloud-Hackathon
-```
-
-*don't do all the credentials/token — they don't need push access to follow along with the tutorials. We can help them via Slack/breakouts when/if they need to push with tokens*
-
-### Update your forked repo from main
-
-When I've already forked the repo and there's updates to main, how do I get them?
+See [GitHub First-Time Setup](https://nasa-openscapes.github.io/2021-Cloud-Hackathon/logistics/github-workflows.html#first-time-setup) page
 
 ## Practice creating a jupyter notebook?
 

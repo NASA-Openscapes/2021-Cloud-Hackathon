@@ -6,7 +6,7 @@ title: Logistics
 
 Before the hackathon, please complete the [prerequisites](https://nasa-openscapes.github.io/2021-Cloud-Hackathon/logistics/prerequisites.html#prerequisites) and be prepared for the [daily setup](https://nasa-openscapes.github.io/2021-Cloud-Hackathon/logistics/prerequisites.html#daily-setup) and be familiar with the ways of [getting help](https://nasa-openscapes.github.io/2021-Cloud-Hackathon/logistics/prerequisites.html#getting-help).
 
-## For hackathon helpers
+## For hackathon helpers - a mentor's guide 
 
 ### 2i2c JupyterHub
 
