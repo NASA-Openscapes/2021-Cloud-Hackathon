@@ -3,7 +3,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="quarto-0.2.232">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>Collaborative workflow</title>
+  <title>GitHub Workflows</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -86,8 +86,8 @@
   <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
   <script src="../site_libs/quarto-search/fuse.min.js"></script>
   <script src="../site_libs/quarto-search/quarto-search.js"></script>
-  <link href="../projects/hackathon-projects.html" rel="next">
-  <link href="../projects/index.html" rel="prev">
+  <link href="../tutorials/index.html" rel="next">
+  <link href="../logistics/prerequisites.html" rel="prev">
   <script src="../site_libs/quarto-html/quarto.js"></script>
   <script src="../site_libs/quarto-html/popper.min.js"></script>
   <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -114,7 +114,7 @@
 <header id="quarto-header" class="headroom fixed-top">
 <nav class="quarto-secondary-nav py-2 d-lg-none d-md-block " data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <div class="container-fluid d-flex justify-content-between">
-    <h1 class="quarto-secondary-nav-title mb-0 fs-3 d-inline">Collaborative workflow</h1>
+    <h1 class="quarto-secondary-nav-title mb-0 fs-3 d-inline">GitHub Workflows</h1>
     <button type="button" class="quarto-btn-toggle btn d-lg-none py-0 px-1 d-inline-block border-0 ">
       <i class="bi bi-chevron-right"></i>
     </button>
@@ -167,35 +167,8 @@
           <li class="sidebar-item">
   <a href="../logistics/prerequisites.html" class="">Prerequisites, setup, &amp; getting help</a>
 </li>
-        </ul>
-      </div>
-    </li>
-  </ul>
-      <ul class="list-unstyled sidebar-section depth1">
-    <li class="">
-        <div class="me-auto">
-          <div class="d-inline-flex w-100 sidebar-section-item">
-            <div class="sidebar-section-link me-auto">
-            <a href="../clinic/index.html" class="">Pre-Hackathon Clinic</a>
-            </div>
-            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#pre-hackathonclinic-collapse" aria-expanded="true">
-              <div><i class="bi bi-chevron-right ms-2"></i></div>
-            </a>
-            </div>
-        </div>
-      <div class="collapse  show" id="pre-hackathonclinic-collapse">
-        <ul class="list-unstyled sidebar-item-contents">
           <li class="sidebar-item">
-  <a href="../clinic/jupyterhub.html" class="">NASA Openscapes Cloud Environment</a>
-</li>
-          <li class="sidebar-item">
-  <a href="../clinic/notebooks.html" class="">Notebooks, Python, Git</a>
-</li>
-          <li class="sidebar-item">
-  <a href="../clinic/github.html" class="">GitHub</a>
-</li>
-          <li class="sidebar-item">
-  <a href="../clinic/earthdata.html" class="">Earthdata Login</a>
+  <a href="../logistics/github-workflows.html" class="active">GitHub Workflows</a>
 </li>
         </ul>
       </div>
@@ -267,9 +240,6 @@
       <div class="collapse  show" id="projects-collapse">
         <ul class="list-unstyled sidebar-item-contents">
           <li class="sidebar-item">
-  <a href="../projects/workflow.html" class="active">Collaborative workflow</a>
-</li>
-          <li class="sidebar-item">
   <a href="../projects/hackathon-projects.html" class="">Hackathon Projects</a>
 </li>
         </ul>
@@ -299,6 +269,36 @@
       </div>
     </li>
   </ul>
+      <ul class="list-unstyled sidebar-section depth1">
+    <li class="">
+        <div class="me-auto">
+          <div class="d-inline-flex w-100 sidebar-section-item">
+            <div class="sidebar-section-link me-auto">
+            <a href="../clinic/index.html" class="">Pre-Hackathon Clinic</a>
+            </div>
+            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#pre-hackathonclinic-collapse" aria-expanded="true">
+              <div><i class="bi bi-chevron-right ms-2"></i></div>
+            </a>
+            </div>
+        </div>
+      <div class="collapse  show" id="pre-hackathonclinic-collapse">
+        <ul class="list-unstyled sidebar-item-contents">
+          <li class="sidebar-item">
+  <a href="../clinic/jupyterhub.html" class="">NASA Openscapes Cloud Environment</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../clinic/notebooks.html" class="">Notebooks, Python, Git</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../clinic/github.html" class="">GitHub</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../clinic/earthdata.html" class="">Earthdata Login</a>
+</li>
+        </ul>
+      </div>
+    </li>
+  </ul>
   </ul>
   </div>
 </nav>
@@ -306,71 +306,124 @@
   <div id="quarto-toc-sidebar" class=" pt-0 col col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-toc order-last"><nav id="TOC" role="doc-toc">
 <h2 id="toc-title">On this page</h2>
 <ul>
-<li><a href="#create-a-repository-on-github.com" class="nav-link active" data-scroll-target="#create-a-repository-on-github.com">Create a repository on GitHub.com</a></li>
+<li><a href="#first-time-setup" class="nav-link active" data-scroll-target="#first-time-setup">First-Time Setup</a>
+<ul class="collapse">
+<li><a href="#fork-the-hackathon-repo" class="nav-link" data-scroll-target="#fork-the-hackathon-repo">Fork the hackathon repo</a></li>
+<li><a href="#clone-your-forked-repo-into-jupyterhub" class="nav-link" data-scroll-target="#clone-your-forked-repo-into-jupyterhub">Clone your forked repo into JupyterHub</a></li>
+</ul></li>
+<li><a href="#daily-setup" class="nav-link" data-scroll-target="#daily-setup">Daily Setup</a>
+<ul class="collapse">
+<li><a href="#git-fetch-update-your-forked-repo-from-main" class="nav-link" data-scroll-target="#git-fetch-update-your-forked-repo-from-main"><code>git fetch</code>: Update your forked repo from main</a></li>
+<li><a href="#git-pull" class="nav-link" data-scroll-target="#git-pull"><code>git pull</code></a></li>
+</ul></li>
+<li><a href="#git-update-revert-etc" class="nav-link" data-scroll-target="#git-update-revert-etc">Git: update, revert, etc</a>
+<ul class="collapse">
+<li><a href="#delete-your-local-changes" class="nav-link" data-scroll-target="#delete-your-local-changes">Delete your local changes</a></li>
+<li><a href="#update-local-branch-with-remote-main-branch" class="nav-link" data-scroll-target="#update-local-branch-with-remote-main-branch">Update local branch with remote main branch</a></li>
+<li><a href="#update-from-main" class="nav-link" data-scroll-target="#update-from-main">Update from main</a></li>
+</ul></li>
+<li><a href="#project-hacktime-setup" class="nav-link" data-scroll-target="#project-hacktime-setup">Project Hacktime Setup</a>
+<ul class="collapse">
+<li><a href="#create-a-repository-on-github.com" class="nav-link" data-scroll-target="#create-a-repository-on-github.com">Create a repository on GitHub.com</a></li>
 <li><a href="#discuss-edit-access-vs-branches" class="nav-link" data-scroll-target="#discuss-edit-access-vs-branches">Discuss edit access vs branches</a></li>
 <li><a href="#clone-repo-into-2i2c" class="nav-link" data-scroll-target="#clone-repo-into-2i2c">Clone repo into 2i2c</a></li>
 <li><a href="#check-in-as-you-push-changes" class="nav-link" data-scroll-target="#check-in-as-you-push-changes">Check in as you push changes</a></li>
 <li><a href="#uploading-files-from-your-local-computer-to-2i2c" class="nav-link" data-scroll-target="#uploading-files-from-your-local-computer-to-2i2c">Uploading files from your local computer to 2i2c</a></li>
-<li><a href="#git---delete-your-local-changes" class="nav-link" data-scroll-target="#git---delete-your-local-changes">Git - Delete your local changes</a></li>
-<li><a href="#git---update-local-branch-with-remote-main-branch" class="nav-link" data-scroll-target="#git---update-local-branch-with-remote-main-branch">Git - Update local branch with remote main branch</a></li>
+</ul></li>
 </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon/edit/main/projects/workflow.md" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon/issues/new" class="toc-action">Report an issue</a></p></div></div></nav></div>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon/edit/main/logistics/github-workflows.md" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon/issues/new" class="toc-action">Report an issue</a></p></div></div></nav></div>
   <div class="col mx-auto col-sm-12 col-md-9 col-lg-7 col-xl-7 px-lg-4 pe-xxl-4 ps-xxl-0">
 <main>
 <header id="title-block-header">
-<h1 class="title d-none d-lg-block display-7">Collaborative workflow</h1>
+<h1 class="title d-none d-lg-block display-7">GitHub Workflows</h1>
 </header>
 
+<p>We will be live-coding during the tutorials and collaborating during the project hack-time, using GitHub in both cases. Here is how to setup and work work for each.</p>
+<section id="first-time-setup" class="level2">
+<h2 class="anchored" data-anchor-id="first-time-setup">First-Time Setup</h2>
+<section id="fork-the-hackathon-repo" class="level3">
+<h3 class="anchored" data-anchor-id="fork-the-hackathon-repo">Fork the hackathon repo</h3>
+<p>So you can edit your own copy and live-code with us</p>
+</section>
+<section id="clone-your-forked-repo-into-jupyterhub" class="level3">
+<h3 class="anchored" data-anchor-id="clone-your-forked-repo-into-jupyterhub">Clone your forked repo into JupyterHub</h3>
+<p>Open your terminal</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/YOUR-USERNAME/2021-Cloud-Hackathon</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><em>don’t do all the credentials/token — they don’t need push access to follow along with the tutorials. We can help them via Slack/breakouts when/if they need to push with tokens</em></p>
+</section>
+</section>
+<section id="daily-setup" class="level2">
+<h2 class="anchored" data-anchor-id="daily-setup">Daily Setup</h2>
+<section id="git-fetch-update-your-forked-repo-from-main" class="level3">
+<h3 class="anchored" data-anchor-id="git-fetch-update-your-forked-repo-from-main"><code>git fetch</code>: Update your forked repo from main</h3>
+<p>When I’ve already forked the repo and there’s updates to main, how do I get them?</p>
+<p>TODO: screenshots</p>
+</section>
+<section id="git-pull" class="level3">
+<h3 class="anchored" data-anchor-id="git-pull"><code>git pull</code></h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="git-update-revert-etc" class="level2">
+<h2 class="anchored" data-anchor-id="git-update-revert-etc">Git: update, revert, etc</h2>
+<p>These are some useful commands to revert/delete your local changes and update your fork with the most recent information from the main branch.</p>
+<section id="delete-your-local-changes" class="level3">
+<h3 class="anchored" data-anchor-id="delete-your-local-changes">Delete your local changes</h3>
+<p>There are several ways to delete your local changes if you were playing around and want to reset. Here are a few:</p>
+<p><strong>Undo changes you’ve maybe saved or committed, but not pushed</strong>. This is less time and internet intensive (no new clone/download).</p>
+<p>If you’ve got changes saved, but not yet staged, committed, or pushed, you’ll delete unstaged changes in the working directory with clean:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> YOUR-REPO</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clean <span class="at">-df</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">--</span> .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Burn it all down</strong> - delete the whole repo that you have locally, and then reclone.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> YOUR-REPO</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-rf</span> YOUR-REPO</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Here is a whole blog on how to go back in time (walk back changes), with conceptual diagrams, command line code, and screenshots from RStudio. <a href="https://ohi-science.org/news/github-going-back-in-time" class="uri">https://ohi-science.org/news/github-going-back-in-time</a></p>
+</section>
+<section id="update-local-branch-with-remote-main-branch" class="level3">
+<h3 class="anchored" data-anchor-id="update-local-branch-with-remote-main-branch">Update local branch with remote main branch</h3>
+<p>If while you’re working you would like to update your local <code>your-branch</code> with the most recent updates on the <code>main</code> branch on GitHub.com, there are several ways to do this. Here’s one.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout your-branch</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> fetch</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge origin/main</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="update-from-main" class="level3">
+<h3 class="anchored" data-anchor-id="update-from-main">Update from main</h3>
+</section>
+</section>
+<section id="project-hacktime-setup" class="level2">
+<h2 class="anchored" data-anchor-id="project-hacktime-setup">Project Hacktime Setup</h2>
 <p>Here are some suggestions for collaborating with your project groups (and beyond!) using GitHub.</p>
 <p>This means a combination of creating a place to collaborate (a github repository) and a shared workflow to contribute.</p>
-<section id="create-a-repository-on-github.com" class="level2">
-<h2 class="anchored" data-anchor-id="create-a-repository-on-github.com">Create a repository on GitHub.com</h2>
+<section id="create-a-repository-on-github.com" class="level3">
+<h3 class="anchored" data-anchor-id="create-a-repository-on-github.com">Create a repository on GitHub.com</h3>
 <p>Just one person does this.</p>
 <p>You can do this in one of your user/organization accounts, or ask someone from the Cloud Hackathon Team to create one for you in the NASA-Openscapes organization.</p>
 <p>Here are instructions for <a href="https://rstudio-conf-2020.github.io/r-for-excel/github.html#create-a-repository-on-github.com">creating a repo on GitHub.com</a> — remember to make it public so that other hackathon folks can see and help!</p>
 </section>
-<section id="discuss-edit-access-vs-branches" class="level2">
-<h2 class="anchored" data-anchor-id="discuss-edit-access-vs-branches">Discuss edit access vs branches</h2>
+<section id="discuss-edit-access-vs-branches" class="level3">
+<h3 class="anchored" data-anchor-id="discuss-edit-access-vs-branches">Discuss edit access vs branches</h3>
 <p>The person who created the repo will manage the permission.</p>
 <p>The simplest way to collaborate on GitHub is if everyone has permission to edit the repository directly through the main branch. Talk to your team — folks that have experience using branches can do so but others can push changes directly to the main branch.</p>
 <p>Here are instructions for <a href="https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/managing-repository-settings/managing-teams-and-people-with-access-to-your-repository#inviting-a-team-or-person">updating github repo permissions</a>.</p>
 </section>
-<section id="clone-repo-into-2i2c" class="level2">
-<h2 class="anchored" data-anchor-id="clone-repo-into-2i2c">Clone repo into 2i2c</h2>
+<section id="clone-repo-into-2i2c" class="level3">
+<h3 class="anchored" data-anchor-id="clone-repo-into-2i2c">Clone repo into 2i2c</h3>
 <p>Everybody does this.</p>
 <p>To to the JupyterHub, go to your Terminal, then:</p>
 <p><code>git clone https://github.com/USERNAME/REPOSITORY-NAME</code>.</p>
 </section>
-<section id="check-in-as-you-push-changes" class="level2">
-<h2 class="anchored" data-anchor-id="check-in-as-you-push-changes">Check in as you push changes</h2>
+<section id="check-in-as-you-push-changes" class="level3">
+<h3 class="anchored" data-anchor-id="check-in-as-you-push-changes">Check in as you push changes</h3>
 <p>Whether you’re using branches or not, check in with each other as you push updates to avoid merge conflicts and have the latest progress.</p>
 <p>Here are instructions for a <a href="https://nasa-openscapes.github.io/earthdata-cloud-cookbook/contributing/workflow.html#github-workflow">workflow with branches</a> (optional).</p>
 </section>
-<section id="uploading-files-from-your-local-computer-to-2i2c" class="level2">
-<h2 class="anchored" data-anchor-id="uploading-files-from-your-local-computer-to-2i2c">Uploading files from your local computer to 2i2c</h2>
-<p><em>?</em></p>
-</section>
-<section id="git---delete-your-local-changes" class="level2">
-<h2 class="anchored" data-anchor-id="git---delete-your-local-changes">Git - Delete your local changes</h2>
-<p>There are several ways to delete your local changes if you were playing around and want to reset. Here are a few:</p>
-<p><strong>Undo changes you’ve maybe saved or committed, but not pushed</strong>. This is less time and internet intensive (no new clone/download).</p>
-<p>If you’ve got changes saved, but not yet staged, committed, or pushed, you’ll delete unstaged changes in the working directory with clean:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> YOUR-REPO</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clean <span class="at">-df</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">--</span> .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><strong>Burn it all down</strong> - delete the whole repo that you have locally, and then reclone.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> YOUR-REPO</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-rf</span> YOUR-REPO</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Here is a whole blog on how to go back in time (walk back changes), with conceptual diagrams, command line code, and screenshots from RStudio. <a href="https://ohi-science.org/news/github-going-back-in-time" class="uri">https://ohi-science.org/news/github-going-back-in-time</a></p>
-</section>
-<section id="git---update-local-branch-with-remote-main-branch" class="level2">
-<h2 class="anchored" data-anchor-id="git---update-local-branch-with-remote-main-branch">Git - Update local branch with remote main branch</h2>
-<p>If while you’re working you would like to update your local <code>your-branch</code> with the most recent updates on the <code>main</code> branch on GitHub.com, there are several ways to do this. Here’s one.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout your-branch</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> fetch</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge origin/main</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="uploading-files-from-your-local-computer-to-2i2c" class="level3">
+<h3 class="anchored" data-anchor-id="uploading-files-from-your-local-computer-to-2i2c">Uploading files from your local computer to 2i2c</h3>
+<p>Do this using the “upload” button on 2i2c, next to the big blue + button.</p>
 
 
+</section>
 </section>
 <script type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -543,13 +596,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </main>
 <div class="page-navigation page-navigation-docked">
   <div class="nav-page nav-page-previous">
-      <a href="../projects/index.html">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Projects</span>
+      <a href="../logistics/prerequisites.html">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Prerequisites, setup, &amp; getting help</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../projects/hackathon-projects.html">
-        <span class="nav-page-text">Hackathon Projects</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../tutorials/index.html">
+        <span class="nav-page-text">Tutorials</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </div>

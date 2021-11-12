@@ -161,6 +161,34 @@
     "text": "write what you want"
   },
   {
+    "objectID": "logistics/github-workflows.html#first-time-setup",
+    "href": "logistics/github-workflows.html#first-time-setup",
+    "title": "GitHub Workflows",
+    "section": "First-Time Setup",
+    "text": "Fork the hackathon repo\nSo you can edit your own copy and live-code with us\n\n\nClone your forked repo into JupyterHub\nOpen your terminal\ngit clone https://github.com/YOUR-USERNAME/2021-Cloud-Hackathon\ndon’t do all the credentials/token — they don’t need push access to follow along with the tutorials. We can help them via Slack/breakouts when/if they need to push with tokens"
+  },
+  {
+    "objectID": "logistics/github-workflows.html#daily-setup",
+    "href": "logistics/github-workflows.html#daily-setup",
+    "title": "GitHub Workflows",
+    "section": "Daily Setup",
+    "text": "git fetch: Update your forked repo from main\nWhen I’ve already forked the repo and there’s updates to main, how do I get them?\nTODO: screenshots\n\n\ngit pull\ngit pull"
+  },
+  {
+    "objectID": "logistics/github-workflows.html#git-update-revert-etc",
+    "href": "logistics/github-workflows.html#git-update-revert-etc",
+    "title": "GitHub Workflows",
+    "section": "Git: update, revert, etc",
+    "text": "These are some useful commands to revert/delete your local changes and update your fork with the most recent information from the main branch.\n\nDelete your local changes\nThere are several ways to delete your local changes if you were playing around and want to reset. Here are a few:\nUndo changes you’ve maybe saved or committed, but not pushed. This is less time and internet intensive (no new clone/download).\nIf you’ve got changes saved, but not yet staged, committed, or pushed, you’ll delete unstaged changes in the working directory with clean:\ncd YOUR-REPO\ngit clean -df\ngit checkout -- .\nBurn it all down - delete the whole repo that you have locally, and then reclone.\ncd YOUR-REPO\nrm -rf YOUR-REPO\nHere is a whole blog on how to go back in time (walk back changes), with conceptual diagrams, command line code, and screenshots from RStudio. https://ohi-science.org/news/github-going-back-in-time\n\n\nUpdate local branch with remote main branch\nIf while you’re working you would like to update your local your-branch with the most recent updates on the main branch on GitHub.com, there are several ways to do this. Here’s one.\ngit checkout your-branch\ngit fetch\ngit merge origin/main\n\n\nUpdate from main"
+  },
+  {
+    "objectID": "logistics/github-workflows.html#project-hacktime-setup",
+    "href": "logistics/github-workflows.html#project-hacktime-setup",
+    "title": "GitHub Workflows",
+    "section": "Project Hacktime Setup",
+    "text": "Here are some suggestions for collaborating with your project groups (and beyond!) using GitHub.\nThis means a combination of creating a place to collaborate (a github repository) and a shared workflow to contribute.\n\nCreate a repository on GitHub.com\nJust one person does this.\nYou can do this in one of your user/organization accounts, or ask someone from the Cloud Hackathon Team to create one for you in the NASA-Openscapes organization.\nHere are instructions for creating a repo on GitHub.com — remember to make it public so that other hackathon folks can see and help!\n\n\nDiscuss edit access vs branches\nThe person who created the repo will manage the permission.\nThe simplest way to collaborate on GitHub is if everyone has permission to edit the repository directly through the main branch. Talk to your team — folks that have experience using branches can do so but others can push changes directly to the main branch.\nHere are instructions for updating github repo permissions.\n\n\nClone repo into 2i2c\nEverybody does this.\nTo to the JupyterHub, go to your Terminal, then:\ngit clone https://github.com/USERNAME/REPOSITORY-NAME.\n\n\nCheck in as you push changes\nWhether you’re using branches or not, check in with each other as you push updates to avoid merge conflicts and have the latest progress.\nHere are instructions for a workflow with branches (optional).\n\n\nUploading files from your local computer to 2i2c\nDo this using the “upload” button on 2i2c, next to the big blue + button."
+  },
+  {
     "objectID": "logistics/index.html#for-hackathon-participants",
     "href": "logistics/index.html#for-hackathon-participants",
     "title": "Logistics",
@@ -168,10 +196,10 @@
     "text": "Before the hackathon, please complete the prerequisites and be prepared for the daily setup and be familiar with the ways of getting help."
   },
   {
-    "objectID": "logistics/index.html#for-hackathon-helpers",
-    "href": "logistics/index.html#for-hackathon-helpers",
+    "objectID": "logistics/index.html#for-hackathon-helpers---a-mentors-guide",
+    "href": "logistics/index.html#for-hackathon-helpers---a-mentors-guide",
     "title": "Logistics",
-    "section": "For hackathon helpers",
+    "section": "For hackathon helpers - a mentor’s guide",
     "text": "2i2c JupyterHub\nLog-in before we start\n\n\nSlack\nWhen you see a question you will reply to, please add the “eyes” emoji below so other helpers know that you are looking into it. Then please reply in-thread in Slack to help.\n\n\nBreakout rooms\nThe tech host will monitor Zoom Chat, moving participants into breakout rooms with Helpers as needed."
   },
   {
@@ -434,32 +462,18 @@
     "text": "This will get you set up and answer the question “How do I get the tutorial repository into the Hub?””"
   },
   {
-    "objectID": "tutorials/00_Setup.html#introduction",
-    "href": "tutorials/00_Setup.html#introduction",
+    "objectID": "tutorials/00_Setup.html#cloudjupyterhub-overview",
+    "href": "tutorials/00_Setup.html#cloudjupyterhub-overview",
     "title": "00. Setup for tutorials",
-    "section": "Introduction",
-    "text": "(reuse/point to Clinic)…"
+    "section": "Cloud/JupyterHub overview",
+    "text": "A brief overview about the NASA Openscapes Cloud Environment (following lessons from the Clinic)."
   },
   {
-    "objectID": "tutorials/00_Setup.html#launch-jupyterhub",
-    "href": "tutorials/00_Setup.html#launch-jupyterhub",
+    "objectID": "tutorials/00_Setup.html#github-setup-for-tutorials",
+    "href": "tutorials/00_Setup.html#github-setup-for-tutorials",
     "title": "00. Setup for tutorials",
-    "section": "Launch JupyterHub",
-    "text": "(reuse/point to Clinic)…"
-  },
-  {
-    "objectID": "tutorials/00_Setup.html#fork-the-hackathon-repo",
-    "href": "tutorials/00_Setup.html#fork-the-hackathon-repo",
-    "title": "00. Setup for tutorials",
-    "section": "Fork the hackathon repo",
-    "text": "So you can edit your own copy and live-code with us"
-  },
-  {
-    "objectID": "tutorials/00_Setup.html#clone-your-forked-repo-into-jupyterhub",
-    "href": "tutorials/00_Setup.html#clone-your-forked-repo-into-jupyterhub",
-    "title": "00. Setup for tutorials",
-    "section": "Clone your forked repo into JupyterHub",
-    "text": "Open your terminal\ngit clone https://github.com/YOUR-USERNAME/2021-Cloud-Hackathon\ndon’t do all the credentials/token — they don’t need push access to follow along with the tutorials. We can help them via Slack/breakouts when/if they need to push with tokens\n\nUpdate your forked repo from main\nWhen I’ve already forked the repo and there’s updates to main, how do I get them?"
+    "section": "GitHub setup for tutorials",
+    "text": "See GitHub First-Time Setup page"
   },
   {
     "objectID": "tutorials/00_Setup.html#practice-creating-a-jupyter-notebook",
@@ -1379,53 +1393,11 @@
     "text": "If you have a project idea already brewing, we encourage you to share that with participants on our Slack channel 2021-nasacloudhack-projects.\nFeel free to explore various projects and initiate conversations. The goal is to gather as much information as you can to inform your decision about which team to join during the Cloud Hackathon"
   },
   {
-    "objectID": "projects/workflow.html#create-a-repository-on-github.com",
-    "href": "projects/workflow.html#create-a-repository-on-github.com",
-    "title": "Collaborative workflow",
-    "section": "Create a repository on GitHub.com",
-    "text": "Just one person does this.\nYou can do this in one of your user/organization accounts, or ask someone from the Cloud Hackathon Team to create one for you in the NASA-Openscapes organization.\nHere are instructions for creating a repo on GitHub.com — remember to make it public so that other hackathon folks can see and help!"
-  },
-  {
-    "objectID": "projects/workflow.html#discuss-edit-access-vs-branches",
-    "href": "projects/workflow.html#discuss-edit-access-vs-branches",
-    "title": "Collaborative workflow",
-    "section": "Discuss edit access vs branches",
-    "text": "The person who created the repo will manage the permission.\nThe simplest way to collaborate on GitHub is if everyone has permission to edit the repository directly through the main branch. Talk to your team — folks that have experience using branches can do so but others can push changes directly to the main branch.\nHere are instructions for updating github repo permissions."
-  },
-  {
-    "objectID": "projects/workflow.html#clone-repo-into-2i2c",
-    "href": "projects/workflow.html#clone-repo-into-2i2c",
-    "title": "Collaborative workflow",
-    "section": "Clone repo into 2i2c",
-    "text": "Everybody does this.\nTo to the JupyterHub, go to your Terminal, then:\ngit clone https://github.com/USERNAME/REPOSITORY-NAME."
-  },
-  {
-    "objectID": "projects/workflow.html#check-in-as-you-push-changes",
-    "href": "projects/workflow.html#check-in-as-you-push-changes",
-    "title": "Collaborative workflow",
-    "section": "Check in as you push changes",
-    "text": "Whether you’re using branches or not, check in with each other as you push updates to avoid merge conflicts and have the latest progress.\nHere are instructions for a workflow with branches (optional)."
-  },
-  {
-    "objectID": "projects/workflow.html#uploading-files-from-your-local-computer-to-2i2c",
-    "href": "projects/workflow.html#uploading-files-from-your-local-computer-to-2i2c",
-    "title": "Collaborative workflow",
-    "section": "Uploading files from your local computer to 2i2c",
-    "text": "?"
-  },
-  {
-    "objectID": "projects/workflow.html#git---delete-your-local-changes",
-    "href": "projects/workflow.html#git---delete-your-local-changes",
-    "title": "Collaborative workflow",
-    "section": "Git - Delete your local changes",
-    "text": "There are several ways to delete your local changes if you were playing around and want to reset. Here are a few:\nUndo changes you’ve maybe saved or committed, but not pushed. This is less time and internet intensive (no new clone/download).\nIf you’ve got changes saved, but not yet staged, committed, or pushed, you’ll delete unstaged changes in the working directory with clean:\ncd YOUR-REPO\ngit clean -df\ngit checkout -- .\nBurn it all down - delete the whole repo that you have locally, and then reclone.\ncd YOUR-REPO\nrm -rf YOUR-REPO\nHere is a whole blog on how to go back in time (walk back changes), with conceptual diagrams, command line code, and screenshots from RStudio. https://ohi-science.org/news/github-going-back-in-time"
-  },
-  {
-    "objectID": "projects/workflow.html#git---update-local-branch-with-remote-main-branch",
-    "href": "projects/workflow.html#git---update-local-branch-with-remote-main-branch",
-    "title": "Collaborative workflow",
-    "section": "Git - Update local branch with remote main branch",
-    "text": "If while you’re working you would like to update your local your-branch with the most recent updates on the main branch on GitHub.com, there are several ways to do this. Here’s one.\ngit checkout your-branch\ngit fetch\ngit merge origin/main"
+    "objectID": "projects/index.html#how-to-start-hacking",
+    "href": "projects/index.html#how-to-start-hacking",
+    "title": "Projects",
+    "section": "How to start hacking",
+    "text": "Suggestions for how to set up your GitHub workflow is in the GitHub Workflows section.\nThis is a great slide deck for collaborating on project teamwork collaborating from SnowEx Hackweek."
   },
   {
     "objectID": "external/zarr-eosdis-store.html",
