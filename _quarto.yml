@@ -24,6 +24,7 @@ site:
     contents:
       - text: "Welcome"
         href: index.md
+      - cloud-paradigm.md
       - section: logistics/index.md
         contents:
           - logistics/schedule.md
