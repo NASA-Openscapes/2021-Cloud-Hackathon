@@ -26,7 +26,7 @@ _schedule-day1.md
 ```
 
 ### Welcome Day 1
-
+ 
 ```{.include}
 _welcome-day1.md 
 ```
