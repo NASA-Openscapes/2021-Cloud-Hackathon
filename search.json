@@ -242,7 +242,7 @@
     "href": "logistics/schedule.html#hackathon-day-3-november-17",
     "title": "Schedule",
     "section": "Hackathon Day 3: November 17",
-    "text": "Time, PST (UTC-8)\nEvent\nLeads/Instructors\n\n\n\n\n8:00 am\nOptional Catch-up/help\n\n\n\n9:00 am\nWelcome\nJulie Lowndes, Openscapes\n\n\n9:15 am\nTutorial 6: Sentinel-6 MF L2 Altimetry Data Access (OPeNDAP) & Gridding\nJack McNelis, PO.DAAC\n\n\n9:45 am\nQ&A and Break\n\n\n\n10:00 am\nTutorial 7: Data Subsetting and Transformation Services in the Cloud\nAmy Steiker, NSIDC\n\n\n10:40 am\nQ&A and Break\n\n\n\n11:00 am\nTeam Hack Time\nAll\n\n\n12:55 pm\nClosing\n\n\n\n\n\nWelcome Day 3\n\nJupyterHub: Log in.\n\nLog into 2i2c at https://openscapes.2i2c.cloud/hub/. This takes a few minutes so please start this as soon we reconvene each day\n\nGitHub: Get the latest.\n\nYou’ll need to git fetch, merge, and pull: follow the github workflows daily setup."
+    "text": "Time, PST (UTC-8)\nEvent\nLeads/Instructors\n\n\n\n\n8:00 am\nOptional Catch-up/help\n\n\n\n9:00 am\nWelcome\nCatalina Oaida, PO.DAAC\n\n\n9:15 am\nTutorial 6: Sentinel-6 MF L2 Altimetry Data Access (OPeNDAP) & Gridding\nJack McNelis, PO.DAAC\n\n\n9:45 am\nQ&A and Break\n\n\n\n10:00 am\nTutorial 7: Data Subsetting and Transformation Services in the Cloud\nAmy Steiker, NSIDC\n\n\n10:40 am\nQ&A and Break\n\n\n\n11:00 am\nTeam Hack Time\nAll\n\n\n12:55 pm\nClosing\n\n\n\n\n\nWelcome Day 3\n\nJupyterHub: Log in.\n\nLog into 2i2c at https://openscapes.2i2c.cloud/hub/. This takes a few minutes so please start this as soon we reconvene each day\n\nGitHub: Get the latest.\n\nYou’ll need to git fetch, merge, and pull: follow the github workflows daily setup."
   },
   {
     "objectID": "logistics/schedule.html#hackathon-day-4-november-18",
