@@ -1,7 +1,7 @@
 | Time, PST [(UTC-8)](https://www.timeanddate.com/time/zones/pst) | Event | Leads/Instructors |
 |------|-------|-------------------|
 | 8:00 am | Optional Catch-up/help |  |
-| 9:00 am | Welcome | Erin Robinson, Openscapes |
+| 9:00 am | Welcome | Julie Lowndes, Openscapes |
 | 9:15 am | Demo: the power of Earthdata Cloud and Q&A| Marisol Garcia Reyes, Farallon Institute |
 | 9:35 am | Tutorial 3: Introduction to Xarray | Andy Barrett, NSIDC |
 | 10:30 am | Q&A and Break  |  |
