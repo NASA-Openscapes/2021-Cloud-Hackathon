@@ -28,7 +28,7 @@ _schedule-day1.md
 ### Welcome Day 1
  
 ```{.include}
-_welcome-day1.md 
+_welcome-day1.md
 ```
 
 ## Hackathon Day 2: November 16

@@ -32,6 +32,8 @@ This has 2 steps:
 
 2. From the terminal in Jupyterhub: `git pull`
 
+<https://openscapes.2i2c.cloud/hub/>
+
 ```{.bash}
 cd 2021-Cloud-Hackathon
 git pull
