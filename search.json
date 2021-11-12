@@ -1,5 +1,19 @@
 [
   {
+    "objectID": "further-resources.html#a-growing-list-of-resources",
+    "href": "further-resources.html#a-growing-list-of-resources",
+    "title": "Further Resources",
+    "section": "A growing list of resources!",
+    "text": "NASA Earthdata: How to Cloud\nUSGS Eyes on Earth Podcast: Satellites and Cloud Computing - with Aaron Friesz (LP DAAC!)"
+  },
+  {
+    "objectID": "further-resources.html#additional-tutorials",
+    "href": "further-resources.html#additional-tutorials",
+    "title": "Further Resources",
+    "section": "Additional tutorials",
+    "text": "Data_Access__Direct_S3_Access__PODAAC_ECCO_SSH\nDirect_S3_Access__gdalvrt\nDirect_S3_Access__rioxarray_clipping"
+  },
+  {
     "objectID": "clinic/github.html#what-is-github",
     "href": "clinic/github.html#what-is-github",
     "title": "",
