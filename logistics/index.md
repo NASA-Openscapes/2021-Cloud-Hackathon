@@ -17,12 +17,12 @@ Before the hackathon, please complete the [prerequisites](https://nasa-openscape
 Update your Slack name temporarily to include “helper”, e.g. Catalina Oaida (Helper)
 
 * **Mentors’/Helper channel** - **_#nasa-daac-mentors1_** 
-    * Our back channel too coordinate amongst ourselves
+    * Our back channel to coordinate amongst ourselves
 * **General channel** - **_#2021-nasacloudhack-general_**
     * Announcements, general questions and communications
 * **Pitchfest channel -** **_#2021-nasacloudhack-projects_**
     * Participants discuss project ideas
-    * Use slack DM for team/project work
+    * Use slack direct message (DM) for team/project work
 * **Help channel** - **_#2021-nasacloudhack-help_**
     * Troubleshooting, share screenshots, etc
     * When you see a question you will reply to, please add the “eyes” emoji below so other helpers know that you are looking into it. Then please reply in-thread in Slack to help. Can tag additional helpers if you need further support.
@@ -40,7 +40,7 @@ Hackathon repo: **<https://github.com/NASA-Openscapes/2021-Cloud-Hackathon>**; a
 * What happens to my work on 2i2c after the 3 months?
     * Code: push to your own Github repo
     * Data and analysis outputs - working on S3 solution
-* From Clinic chapter: “This section is a step-by-step guide to set up git on your [2i2c instance](https://nasa-openscapes.github.io/2021-Cloud-Hackathon/clinic/openscapes.2i2c.cloud) and configure git to use your [github.com](https://github.com/) account for managing your repositories hosted on [github.com](https://github.com/).”
+* From Clinic chapter: “This section is a step-by-step guide to set up git on your [2i2c instance](https://nasa-openscapes.github.io/2021-Cloud-Hackathon/clinic/openscapes.2i2c.cloud) and configure git to use your [github.com](https://github.com/) account for managing your repositories hosted on [github.com](https://github.com/).” We are also looking into using Git Extension. 
 
 
 ### Zoom teleconference
@@ -76,7 +76,7 @@ Hackathon repo: **<https://github.com/NASA-Openscapes/2021-Cloud-Hackathon>**; a
 ### Helper support during Team Hack Time
 
 * **Zoom host** - Place participants in breakout rooms based on their team 
-    * Can collaborate in zoom breakout rooms and in their slack team DM 
+    * Can collaborate in zoom breakout rooms and in their slack team DM (direct messaging) 
 * **Participants** should post any team project questions in the _help_ slack channel; screenshot are helpful
     * Participants can create a DM thread with their teammates for team work discussions
 * **Mentors** monitor the _help_ slack channel for questions
