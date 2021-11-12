@@ -214,37 +214,31 @@
       <div class="collapse  show" id="tutorials-collapse">
         <ul class="list-unstyled sidebar-item-contents">
           <li class="sidebar-item">
-  <a href="../tutorials/getting-set-up.html" class="">Getting set up and connected</a>
+  <a href="../tutorials/00_Setup.html" class="">Getting set up and connected</a>
 </li>
           <li class="sidebar-item">
-  <a href="../tutorials/Data_discovery_with_cmr.html" class="">Data discovery with CMR</a>
+  <a href="../tutorials/01_Data_Discovery_CMR.html" class="">Data discovery with CMR</a>
 </li>
           <li class="sidebar-item">
-  <a href="../tutorials/Data_Discovery__CMR-STAC_API.html" class="">Data Discovery with CMR-STAC API</a>
+  <a href="../tutorials/02_Data_Discovery_CMR-STAC_API.html" class="">Data Discovery with CMR-STAC API</a>
 </li>
           <li class="sidebar-item">
-  <a href="../tutorials/Introduction_to_xarray.html" class="">Introduction to <code>xarray</code></a>
+  <a href="../tutorials/03_Xarray.html" class="">Introduction to <code>xarray</code></a>
 </li>
           <li class="sidebar-item">
-  <a href="../tutorials/NASA_Earthdata_Authentication.html" class="">Authentication for NASA Earthdata</a>
+  <a href="../tutorials/04_NASA_Earthdata_Authentication.html" class="">Authentication for NASA Earthdata</a>
 </li>
           <li class="sidebar-item">
-  <a href="../tutorials/Data_Access__Direct_S3_Access.html" class="">Direct S3 Data Access</a>
+  <a href="../tutorials/05_Data_Access_Direct_S3.html" class="">Direct S3 Data Access</a>
 </li>
           <li class="sidebar-item">
-  <a href="../tutorials/S6_OPeNDAP_Access_Gridding.html" class="">Sentinel-6 MF L2 Altimetry Data Access (OPeNDAP) &amp; Gridding</a>
+  <a href="../tutorials/07_Data_Access_Harmony_Subsetting.html" class="">Data Subsetting and Transformation Services in the Cloud</a>
 </li>
           <li class="sidebar-item">
-  <a href="../tutorials/Data_Access__Direct_S3_Access__PODAAC_ECCO_SSH.html" class="">Direct S3 Data Access - Rough PODAAC ECCO SSH Example</a>
+  <a href="../tutorials/08_Data_Access_Harmonize-cloud-non-cloud.html" class="">Harmonizing data located within and outside of the NASA Earthdata Cloud</a>
 </li>
           <li class="sidebar-item">
-  <a href="../tutorials/Data_Access__Harmonize-cloud-non-cloud.html" class="">Harmonizing data located within and outside of the NASA Earthdata Cloud</a>
-</li>
-          <li class="sidebar-item">
-  <a href="../tutorials/Data_Access__Harmony_Subsetting.html" class="">Data Subsetting and Transformation Services in the Cloud</a>
-</li>
-          <li class="sidebar-item">
-  <a href="../tutorials/Zarr_Access.html" class="">Access parts of NetCDF4 files using the zarr-eosdis-store library</a>
+  <a href="../tutorials/09_Zarr_Access.html" class="">Access parts of NetCDF4 files using the zarr-eosdis-store library</a>
 </li>
         </ul>
       </div>
@@ -287,6 +281,9 @@
         </div>
       <div class="collapse  show" id="additionalresources-collapse">
         <ul class="list-unstyled sidebar-item-contents">
+          <li class="sidebar-item">
+  <a href="../tutorials/Additional_Resources__Data_Access__Direct_S3_Access__PODAAC_ECCO_SSH.html" class="">Direct S3 Data Access - Rough PODAAC ECCO SSH Example</a>
+</li>
           <li class="sidebar-item">
   <a href="../tutorials/Additional_Resources__Direct_S3_Access__gdalvrt.html" class="">Direct S3 Data Access with GDAL Virtual Raster Format (VRT)</a>
 </li>
@@ -390,7 +387,7 @@
 </section>
 <section id="configure-local-environment-and-get-temporary-credentials" class="level2">
 <h2 class="anchored" data-anchor-id="configure-local-environment-and-get-temporary-credentials">Configure Local Environment and Get Temporary Credentials</h2>
-<p>To perform direct S3 data access one needs to acquire temporary S3 credentials. The credentials give users direct access to S3 buckets in NASA Earthdata Cloud. <strong>AWS credentials should not be shared</strong>, so take precautions when using them in notebooks our scripts. <strong>Note,</strong> these temporary credentials are valid for only <strong>1 hour</strong>. For more information regarding the temporary credentials visit <a href="https://data.lpdaac.earthdatacloud.nasa.gov/s3credentialsREADME" class="uri">https://data.lpdaac.earthdatacloud.nasa.gov/s3credentialsREADME</a>. A <code>netrc</code> file is required to aquire these credentials. Use the <a href="../tutorials-templates/NASA_Earthdata_Authentication.html">NASA Earthdata Authentication</a> to create a <code>netrc</code> file in your home directory.</p>
+<p>To perform direct S3 data access one needs to acquire temporary S3 credentials. The credentials give users direct access to S3 buckets in NASA Earthdata Cloud. <strong>AWS credentials should not be shared</strong>, so take precautions when using them in notebooks our scripts. <strong>Note,</strong> these temporary credentials are valid for only <strong>1 hour</strong>. For more information regarding the temporary credentials visit <a href="https://data.lpdaac.earthdatacloud.nasa.gov/s3credentialsREADME" class="uri">https://data.lpdaac.earthdatacloud.nasa.gov/s3credentialsREADME</a>. A <code>netrc</code> file is required to aquire these credentials. Use the <a href="NASA_Earthdata_Authentication.ipynb">NASA Earthdata Authentication</a> to create a <code>netrc</code> file in your home directory.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb3"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb4"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -405,7 +402,7 @@
 </section>
 <section id="read-in-s3-links" class="level2">
 <h2 class="anchored" data-anchor-id="read-in-s3-links">Read in S3 Links</h2>
-<p>In the <a href="../tutorials-templates/Data_Discovery__CMR-STAC_API.html">CMR-STAC API</a> tutorial we saved off multiple text file containing links, both HTTPS and S3 links, to Harmonized Landsat Sentinel-2 (HLS) cloud data assets. We will now read in one of those file and show how to access those data assets.</p>
+<p>In the <a href="Data_Discovery__CMR-STAC_API.ipynb">CMR-STAC API</a> tutorial we saved off multiple text file containing links, both HTTPS and S3 links, to Harmonized Landsat Sentinel-2 (HLS) cloud data assets. We will now read in one of those file and show how to access those data assets.</p>
 <section id="list-the-available-files-in-the-data-directory" class="level3">
 <h3 class="anchored" data-anchor-id="list-the-available-files-in-the-data-directory">List the available files in the data directory</h3>
 <div class="sourceCode" id="cb7"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
