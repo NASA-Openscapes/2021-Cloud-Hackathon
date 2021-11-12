@@ -1,5 +1,5 @@
 ---
-title: Prerequisites, setup, & getting help
+title: Prerequisites & help
 ---
 
 ## Prerequisites
@@ -17,15 +17,10 @@ If you are attending the Clinic, please do this in advance of the Clinic.
 1. **Slack**
     - Join our Slack workspace (invite sent via email). In the `2021-nasacloudhack-projects` channel, suggest a hackathon project idea/use case, and mention if you are looking for teammates to join. Read through other entries and comment on those of interest to you. On Day one of the hackathon we will hold a project pitchfest and finalize teams for the week. 
     - Learn more about [how we'll use Slack during the workshop](#slack)
-1. **Check back soon for additional items**
+1. **Zoom**
+    -  Be prepared to call into Zoom using the link provided in the Slack `2021-nasacloudhack-general` Channel. 
 1. **Get comfortable** 
     - Consider your computer set-up in advance, including an external monitor if possible. You will be following along in Jupyter Hub on your own computer while also watching an instructor live-code over Zoom (or equivalent), and will also want quick-access to Slack to ask for help and follow links.
-
-## Daily setup
-
-1. **Zoom**: Call into Zoom using the link provided in the Slack `2021-nasacloudhack-general` Channel. 
-1. **JupyterHub**: Log into 2i2c at <https://openscapes.2i2c.cloud/hub/>. This takes a few minutes so please start this as soon we reconvene each day
-
 
 ## Getting help
 

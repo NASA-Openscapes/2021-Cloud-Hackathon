@@ -19,7 +19,6 @@ This Clinic is optional and we will share a recording that participants can revi
 _schedule-clinic.md
 ```
 
-
 ## Hackathon Day 1: November 15
 
 ```{.include}
@@ -29,7 +28,7 @@ _schedule-day1.md
 ### Welcome Day 1
 
 ```{.include}
-_welcome-day1.md
+_welcome-day1.md 
 ```
 
 ## Hackathon Day 2: November 16
@@ -39,6 +38,8 @@ _schedule-day2.md
 ```
 
 ### Welcome Day 2
+
+Any additional text we want.
 
 ```{.include}
 _welcome-day2-on.md

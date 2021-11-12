@@ -22,15 +22,18 @@ git clone https://github.com/YOUR-USERNAME/2021-Cloud-Hackathon
 
 ## Daily Setup
 
-### `git fetch`: Update your forked repo from main
+#### GitHub: Get the latest 
 
-When I've already forked the repo and there's updates to main, how do I get them?
+This has 2 steps: 
 
-TODO: screenshots
+1. From github.com: Update your forked repo from main by clicking "fetch and merge""
 
-### `git pull`
+![](images/github-fetch-and-merge.png)
+
+2. From the terminal in Jupyterhub: `git pull`
 
 ```{.bash}
+cd 2021-Cloud-Hackathon
 git pull
 ```
 

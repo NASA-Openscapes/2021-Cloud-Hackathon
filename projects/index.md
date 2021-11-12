@@ -1,5 +1,5 @@
 ---
-title: Projects
+title: Projects Overview
 ---
 
 *The following was borrowed and adapted from the excellent [SnowEx Hackathon 2021](https://snowex-hackweek.github.io/website/projects/index.html)*
