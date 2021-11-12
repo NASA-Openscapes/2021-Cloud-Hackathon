@@ -1,5 +1,5 @@
 ---
-title: Getting set up and connected
+title: 00. Setup for tutorials
 ---
 
 ## This is how my desktop is setup
