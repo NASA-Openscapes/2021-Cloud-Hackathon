@@ -8,4 +8,4 @@
 | 11:15 am | Team Report-outs Part 2 | Teams 7-12 |
 | 12:15 pm | Survey | |
 | 12:30 pm | What's next | Julie Lowndes, Openscapes |
-| 12:55 pm | Closing | |
+| 12:55 pm | Closing | Catalina Oaida, PO.DAAC |
