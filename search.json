@@ -429,56 +429,56 @@
   {
     "objectID": "tutorials/00_Setup.html#this-is-how-my-desktop-is-setup",
     "href": "tutorials/00_Setup.html#this-is-how-my-desktop-is-setup",
-    "title": "Getting set up and connected",
+    "title": "00. Setup for tutorials",
     "section": "This is how my desktop is setup",
     "text": "This will get you set up and answer the question “How do I get the tutorial repository into the Hub?””"
   },
   {
     "objectID": "tutorials/00_Setup.html#introduction",
     "href": "tutorials/00_Setup.html#introduction",
-    "title": "Getting set up and connected",
+    "title": "00. Setup for tutorials",
     "section": "Introduction",
     "text": "(reuse/point to Clinic)…"
   },
   {
     "objectID": "tutorials/00_Setup.html#launch-jupyterhub",
     "href": "tutorials/00_Setup.html#launch-jupyterhub",
-    "title": "Getting set up and connected",
+    "title": "00. Setup for tutorials",
     "section": "Launch JupyterHub",
     "text": "(reuse/point to Clinic)…"
   },
   {
     "objectID": "tutorials/00_Setup.html#fork-the-hackathon-repo",
     "href": "tutorials/00_Setup.html#fork-the-hackathon-repo",
-    "title": "Getting set up and connected",
+    "title": "00. Setup for tutorials",
     "section": "Fork the hackathon repo",
     "text": "So you can edit your own copy and live-code with us"
   },
   {
     "objectID": "tutorials/00_Setup.html#clone-your-forked-repo-into-jupyterhub",
     "href": "tutorials/00_Setup.html#clone-your-forked-repo-into-jupyterhub",
-    "title": "Getting set up and connected",
+    "title": "00. Setup for tutorials",
     "section": "Clone your forked repo into JupyterHub",
     "text": "Open your terminal\ngit clone https://github.com/YOUR-USERNAME/2021-Cloud-Hackathon\ndon’t do all the credentials/token — they don’t need push access to follow along with the tutorials. We can help them via Slack/breakouts when/if they need to push with tokens\n\nUpdate your forked repo from main\nWhen I’ve already forked the repo and there’s updates to main, how do I get them?"
   },
   {
     "objectID": "tutorials/00_Setup.html#practice-creating-a-jupyter-notebook",
     "href": "tutorials/00_Setup.html#practice-creating-a-jupyter-notebook",
-    "title": "Getting set up and connected",
+    "title": "00. Setup for tutorials",
     "section": "Practice creating a jupyter notebook?",
     "text": ""
   },
   {
     "objectID": "tutorials/00_Setup.html#open-a-tutorial-template-notebook",
     "href": "tutorials/00_Setup.html#open-a-tutorial-template-notebook",
-    "title": "Getting set up and connected",
+    "title": "00. Setup for tutorials",
     "section": "Open a tutorial template notebook",
     "text": "Navigate to tutorials-template folder. Our first tutorial is Data_discovery_with_cmr.ipynb"
   },
   {
     "objectID": "tutorials/00_Setup.html#how-to-i-end-my-session",
     "href": "tutorials/00_Setup.html#how-to-i-end-my-session",
-    "title": "Getting set up and connected",
+    "title": "00. Setup for tutorials",
     "section": "How to I end my session?",
     "text": ""
   },
