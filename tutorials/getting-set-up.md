@@ -2,6 +2,8 @@
 title: Getting set up and connected
 ---
 
+## This is how my desktop is setup
+
 This will get you set up and answer the question "How do I get the tutorial repository into the Hub?""
 
 ## Introduction
