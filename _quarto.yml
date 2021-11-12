@@ -28,13 +28,7 @@ site:
         contents:
           - logistics/schedule.md
           - logistics/prerequisites.md
-          - logistics/getting-help.md
-      - section: clinic/index.md
-        contents:
-          - clinic/jupyterhub.md
-          - clinic/notebooks.md
-          - clinic/github.md
-          - clinic/earthdata.md
+          - logistics/github-workflows.md
       - section: tutorials/index.md
         contents: 
           - tutorials/00_Setup.md  ## tutorial 0
@@ -57,7 +51,13 @@ site:
           - tutorials/Additional_Resources__Data_Access__Direct_S3_Access__PODAAC_ECCO_SSH.ipynb
           - tutorials/Additional_Resources__Direct_S3_Access__gdalvrt.ipynb
           - tutorials/Additional_Resources__Direct_S3_Access__rioxarray_clipping.ipynb
-          
+      - section: clinic/index.md
+        contents:
+          - clinic/jupyterhub.md
+          - clinic/notebooks.md
+          - clinic/github.md
+          - clinic/earthdata.md
+ 
   footer: "PODAAC, NSIDC DAAC and LPDAAC (2021). 2021 Cloud Hackathon"
 
 filters:
