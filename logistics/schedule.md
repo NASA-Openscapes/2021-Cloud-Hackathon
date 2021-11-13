@@ -19,11 +19,16 @@ This Clinic is optional and we will share a recording that participants can revi
 _schedule-clinic.md
 ```
 
-
 ## Hackathon Day 1: November 15
 
 ```{.include}
 _schedule-day1.md
+```
+
+### Welcome Day 1
+ 
+```{.include}
+_welcome-day1.md
 ```
 
 ## Hackathon Day 2: November 16
@@ -32,10 +37,24 @@ _schedule-day1.md
 _schedule-day2.md
 ```
 
+### Welcome Day 2
+
+Any additional text we want.
+
+```{.include}
+_welcome-day2-on.md
+```
+
 ## Hackathon Day 3: November 17
 
 ```{.include}
 _schedule-day3.md
+```
+
+### Welcome Day 3
+
+```{.include}
+_welcome-day2-on.md
 ```
 
 ## Hackathon Day 4: November 18
@@ -44,8 +63,20 @@ _schedule-day3.md
 _schedule-day4.md
 ```
 
+### Welcome Day 4
+
+```{.include}
+_welcome-day2-on.md
+```
+
 ## Hackathon Day 5: November 19
 
 ```{.include}
 _schedule-day5.md
+```
+
+### Welcome Day 5
+
+```{.include}
+_welcome-day2-on.md
 ```
