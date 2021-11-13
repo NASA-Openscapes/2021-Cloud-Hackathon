@@ -8,6 +8,12 @@ We will be live-coding during the tutorials and collaborating during the project
 
 ### Fork the hackathon repo
 
+Go to [https://github.com/nasa-openscapes/2021-Cloud-Hackathon](https://github.com/nasa-openscapes/2021-Cloud-Hackathon) and fork the repository.
+
+> Note: The term fork means that you are going to copy the project into your own user space in Github
+
+![Fork a copy](../clinic/img/fork-tutorials.png)
+
 So you can edit your own copy and live-code with us
 
 ### Clone your forked repo into JupyterHub

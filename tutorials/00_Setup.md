@@ -10,7 +10,7 @@ Please go to https://openscapes.2i2c.cloud/hub/ - log in with your GitHub Accoun
 
 ## This is how my desktop is setup
 
-This will get you set up and answer the question "How do I get the tutorial repository into the Hub?""
+
 
 ## Cloud/JupyterHub overview
 
@@ -18,9 +18,13 @@ A brief overview about the [NASA Openscapes Cloud Environment](https://nasa-open
 
 ## GitHub setup for tutorials
 
-See [GitHub First-Time Setup](https://nasa-openscapes.github.io/2021-Cloud-Hackathon/logistics/github-workflows.html#first-time-setup) page
+This will get you set up and answer the question "How do I get the tutorial repository into the Hub?""
 
-## Practice creating a jupyter notebook?
+* [Git setup](../clinic/notebooks.html)
+* [Git flow](../logistics/github-workflows.html)
+
+
+## JupyterHub environment
 
 ## Open a tutorial template notebook
 

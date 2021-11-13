@@ -31,6 +31,10 @@ Detailed self-paced lesson on shell: [Shell Lesson from Software Carpentry](http
 
 Version control is managing and tracking changes to your documents (program source code, images, websites, data files, etc.). `git` is a popular tool used for version control of software code. [github.com](https://github.com/) is popular platform that provides remote server hosting for git repositories. A repository is a collection of various files that you are tracking for changes and versions (think of it as a directory with files that are being tracked for changes, using `git` for taking snapshots of versions as you are developing).
 
+
+
+
+
 This section is a step-by-step guide to set up `git` on your [2i2c JupyterHub instance](openscapes.2i2c.cloud) (referred to as `2i2c JupyterHub` in these instruction). We will also configure `git` to use your [github.com](https://github.com/) account for managing your repositories hosted on [github.com](https://github.com/). There are 5 main steps with substeps, includes instruction for addressing github's new approach for [token authentication](https://github.blog/changelog/2021-08-12-git-password-authentication-is-shutting-down/).
 
 ### Step 1: Create a github account
@@ -227,6 +231,16 @@ Now we are all set to collaborate with github on the JupyterHub during the Cloud
 **Cheatsheet**: [Frequently used git commands](https://training.github.com/downloads/github-git-cheat-sheet.pdf)
 
 **Dangit, Git!?!**: If you are stuck after a git mishap, there are ready-made solutions to common problems at [Dangit, Git!?!](https://dangitgit.com/en)
+
+
+### Cloning our repository using the [**git Jupyter lab extension**](https://github.com/jupyterlab/jupyterlab-git).
+
+If we're already familiar with git commands and feel more confortable using a GUI our Jupyterhub deployment comes with a git extension. This plugin allows us to operate with git using a simple user interface.
+
+For example we can clone our repository using the extension.
+
+![git extension](img/gitextension.png)
+
 
 ## Introduction :: Programming in Python
 
