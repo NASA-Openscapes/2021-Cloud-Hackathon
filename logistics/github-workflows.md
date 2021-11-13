@@ -119,5 +119,5 @@ Here are instructions for a [workflow with branches](https://nasa-openscapes.git
 
 ### Uploading files from your local computer to 2i2c
 
-Do this using the "upload" button on 2i2c, next to the big blue + button.
+Do this using the "Upload Files" button in JupyterHub in 2i2c, the UP arrow two over from the big blue + button.
 
