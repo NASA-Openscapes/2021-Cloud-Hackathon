@@ -28,7 +28,7 @@ Navigate to `tutorials-template` folder. Our first tutorial is `Data_discovery_w
 
 
 ## How to I end my session?
-*(Also see [How do I end my Openscapes session? Will I lose all of my work?](https://nasa-openscapes.github.io/2021-Cloud-Hackathon/clinic/jupyterhub.html#how-do-i-end-my-openscapes-session-will-i-lose-all-of-my-work)
+*(Also see [How do I end my Openscapes session? Will I lose all of my work?](https://nasa-openscapes.github.io/2021-Cloud-Hackathon/clinic/jupyterhub.html#how-do-i-end-my-openscapes-session-will-i-lose-all-of-my-work))*
 
 When you are finished working for the day it is important to explicitly log out of your Openscapes session. The reason for this is it will save us a bit of money! When you keep a session active it uses up AWS resources and keeps a series of virtual machines deployed.
 
