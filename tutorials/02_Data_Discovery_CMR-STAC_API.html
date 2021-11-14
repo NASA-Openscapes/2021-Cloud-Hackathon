@@ -210,16 +210,16 @@
   <a href="../tutorials/01_Data_Discovery_CMR.html" class="">01. Data discovery with CMR</a>
 </li>
           <li class="sidebar-item">
-  <a href="../tutorials/02_Data_Discovery_CMR-STAC_API.html" class="active">02. Data Discovery with CMR-STAC API</a>
+  <a href="../tutorials/02_Data_Discovery_CMR-STAC_API.html" class="active">Data Discovery with CMR-STAC API</a>
 </li>
           <li class="sidebar-item">
   <a href="../tutorials/03_Xarray.html" class="">03. Introduction to <code>xarray</code></a>
 </li>
           <li class="sidebar-item">
-  <a href="../tutorials/04_NASA_Earthdata_Authentication.html" class="">04. Authentication for NASA Earthdata</a>
+  <a href="../tutorials/04_NASA_Earthdata_Authentication.html" class="">Authentication for NASA Earthdata</a>
 </li>
           <li class="sidebar-item">
-  <a href="../tutorials/05_Data_Access_Direct_S3.html" class="">05. Direct S3 Data Access</a>
+  <a href="../tutorials/05_Data_Access_Direct_S3.html" class="">Direct S3 Data Access with rioxarray</a>
 </li>
           <li class="sidebar-item">
   <a href="../tutorials/06_S6_OPeNDAP_Access_Gridding.html" class="">06. Sentinel-6 MF L2 Altimetry Data Access (OPeNDAP) &amp; Gridding</a>
@@ -327,7 +327,7 @@
   <div id="quarto-toc-sidebar" class=" pt-0 col col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-toc order-last"><nav id="TOC" role="doc-toc">
 <h2 id="toc-title">On this page</h2>
 <ul>
-<li><a href="#data-discovery-with-cmr-stac-api" class="nav-link active" data-scroll-target="#data-discovery-with-cmr-stac-api">02. Data Discovery with CMR-STAC API</a>
+<li><a href="#data-discovery-with-cmr-stac-api" class="nav-link active" data-scroll-target="#data-discovery-with-cmr-stac-api">Data Discovery with CMR-STAC API</a>
 <ul class="collapse">
 <li><a href="#timing" class="nav-link" data-scroll-target="#timing">Timing</a></li>
 <li><a href="#summary" class="nav-link" data-scroll-target="#summary">Summary</a>
@@ -378,7 +378,7 @@
 <main>
 
 <section id="data-discovery-with-cmr-stac-api" class="level1">
-<h1>02. Data Discovery with CMR-STAC API</h1>
+<h1>Data Discovery with CMR-STAC API</h1>
 <section id="timing" class="level2">
 <h2 class="anchored" data-anchor-id="timing">Timing</h2>
 <ul>
@@ -391,12 +391,12 @@
 <section id="but-first-what-is-stac" class="level3">
 <h3 class="anchored" data-anchor-id="but-first-what-is-stac">But first, what is STAC?</h3>
 <p><a href="https://stacspec.org/">SpatioTemporal Asset Catalog (STAC)</a> is a specification that provides a common language for interpreting geospatial information in order to standardize indexing and discovering data.</p>
-<p>The <a href="https://stacspec.org/core.html">STAC specification</a> is made up of a collection of related, yet independent specifications that when used together provide search and discovery capabilities for remove assets.</p>
+<p>The <a href="https://stacspec.org/core.html">STAC specification</a> is made up of a collection of related, yet independent specifications that when used together provide search and discovery capabilities for remote assets.</p>
 <section id="four-stac-specifications" class="level4">
 <h4 class="anchored" data-anchor-id="four-stac-specifications">Four STAC Specifications</h4>
-<p><a href="https://github.com/radiantearth/stac-spec/blob/master/item-spec/item-spec.md">STAC Item</a> (aka Granule)<br>
-<a href="https://github.com/radiantearth/stac-spec/blob/master/catalog-spec/catalog-spec.md">STAC Catalog</a> (aka DAAC Archive)<br>
+<p><a href="https://github.com/radiantearth/stac-spec/blob/master/catalog-spec/catalog-spec.md">STAC Catalog</a> (aka DAAC Archive)<br>
 <a href="https://github.com/radiantearth/stac-spec/blob/master/collection-spec/collection-spec.md">STAC Collection</a> (aka Data Product)<br>
+<a href="https://github.com/radiantearth/stac-spec/blob/master/item-spec/item-spec.md">STAC Item</a> (aka Granule)<br>
 <a href="https://github.com/radiantearth/stac-api-spec">STAC API</a></p>
 <p>In the following sections, we will explore each of STAC element using NASA’s Common Metadata Repository (CMR) STAC application programming interface (API), or <a href="https://github.com/nasa/cmr-stac">CMR-STAC API</a> for short.</p>
 </section>
@@ -426,7 +426,7 @@
 <section id="import-required-packages" class="level2">
 <h2 class="anchored" data-anchor-id="import-required-packages">Import Required Packages</h2>
 <div class="cell" data-execution_count="1">
-<div class="sourceCode" id="cb1"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pystac_client <span class="im">import</span> Client       <span class="co"># https://pystac-client.readthedocs.io/en/latest/index.html  </span></span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pystac_client <span class="im">import</span> Client  </span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> defaultdict    </span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geopandas</span>
@@ -2516,7 +2516,7 @@ U9k9N2vl5+cH0en0TRiGWX18fC65vnh+LxqNBq2oqFhgMpmi7XY7arVaj+zdu/fxn/l/4bSZl5fH
 <h2 class="anchored" data-anchor-id="connect-to-the-lpcloud-providerstac-catalog">Connect to the <code>LPCLOUD</code> Provider/STAC Catalog</h2>
 <p>For this next step we need the <code>provider title</code> (e.g., LPCLOUD) from above. We will add the provider to the end of the CMR-STAC API URL (i.e., <code>https://cmr.earthdata.nasa.gov/stac/</code>) to connect to the LPCLOUD STAC Catalog.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>catalog <span class="op">=</span> Client.<span class="bu">open</span>(<span class="ss">f'</span><span class="sc">{</span>STAC_URL<span class="sc">}</span><span class="ss">/LPCLOUD/'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Since we are using a dedicated client (i.e., <code>pystac-client.Client</code>) to connect to our STAC Provider Catalog, we will have access to some useful internal methods and functions we can use to get information from these objects.</p>
+<p>Since we are using a dedicated client (i.e., <code>pystac-client.Client</code>) to connect to our STAC Provider Catalog, we will have access to some useful internal methods and functions (e.g., <code>get_children()</code> or <code>get_all_items()</code>) we can use to get information from these objects.</p>
 </section>
 <section id="list-stac-collections" class="level2">
 <h2 class="anchored" data-anchor-id="list-stac-collections">List STAC Collections</h2>
@@ -2587,7 +2587,7 @@ HLSS30.v2.0: HLS Sentinel-2 Multi-spectral Instrument Surface Reflectance Daily 
 </section>
 <section id="search-for-granulesstac-items---set-up-query-parameters-to-submit-to-the-cmr-stac-api" class="level2">
 <h2 class="anchored" data-anchor-id="search-for-granulesstac-items---set-up-query-parameters-to-submit-to-the-cmr-stac-api">Search for Granules/STAC Items - Set up query parameters to submit to the CMR-STAC API</h2>
-<p>We will define our ROI using the geojson file from the previous exercise, while also specifying the data collections and time range of needed for our example.</p>
+<p>We will define our ROI using a geojson file containing a small polygon feature in western Nebraska, USA. The geojson file is found in the <strong>~/data</strong> directory. We’ll also specify the data collections and a time range for our example.</p>
 <section id="read-in-a-geojson-file" class="level3">
 <h3 class="anchored" data-anchor-id="read-in-a-geojson-file">Read in a geojson file</h3>
 <p>Reading in a geojson file with geopandas will return the geometry of our polygon (our ROI).</p>
@@ -2640,12 +2640,12 @@ HLSS30.v2.0: HLS Sentinel-2 Multi-spectral Instrument Surface Reflectance Daily 
 
 
 
-  <div class="bk-root" id="bfa0c80f-587d-41ec-a8f9-410751ad59ef" data-root-id="1004"></div>
+  <div class="bk-root" id="a4cd8b54-8b67-4fdc-ac70-14867b1f40f9" data-root-id="1004"></div>
 </div>
 <script type="application/javascript">(function(root) {
   function embed_document(root) {
-    var docs_json = {"b3e264d6-de82-47c6-b3a9-88ead724b46c":{"defs":[{"extends":null,"module":null,"name":"ReactiveHTML1","overrides":[],"properties":[]},{"extends":null,"module":null,"name":"FlexBox1","overrides":[],"properties":[{"default":"flex-start","kind":null,"name":"align_content"},{"default":"flex-start","kind":null,"name":"align_items"},{"default":"row","kind":null,"name":"flex_direction"},{"default":"wrap","kind":null,"name":"flex_wrap"},{"default":"flex-start","kind":null,"name":"justify_content"}]},{"extends":null,"module":null,"name":"TemplateActions1","overrides":[],"properties":[{"default":0,"kind":null,"name":"open_modal"},{"default":0,"kind":null,"name":"close_modal"}]},{"extends":null,"module":null,"name":"MaterialTemplateActions1","overrides":[],"properties":[{"default":0,"kind":null,"name":"open_modal"},{"default":0,"kind":null,"name":"close_modal"}]}],"roots":{"references":[{"attributes":{"coordinates":null,"data_source":{"id":"1074"},"glyph":{"id":"1077"},"group":null,"hover_glyph":null,"muted_glyph":{"id":"1079"},"nonselection_glyph":{"id":"1078"},"selection_glyph":{"id":"1082"},"view":{"id":"1081"}},"id":"1080","type":"GlyphRenderer"},{"attributes":{"zoom_on_axis":false},"id":"1014","type":"WheelZoomTool"},{"attributes":{},"id":"1027","type":"LinearScale"},{"attributes":{"below":[{"id":"1029"}],"center":[{"id":"1032"},{"id":"1036"}],"height":500,"left":[{"id":"1033"}],"margin":[5,5,5,5],"min_border_bottom":10,"min_border_left":10,"min_border_right":10,"min_border_top":10,"renderers":[{"id":"1070"},{"id":"1080"}],"sizing_mode":"fixed","title":{"id":"1021"},"toolbar":{"id":"1041"},"width":650,"x_range":{"id":"1012"},"x_scale":{"id":"1025"},"y_range":{"id":"1013"},"y_scale":{"id":"1027"}},"id":"1020","subtype":"Figure","type":"Plot"},{"attributes":{"tools":[{"id":"1014"},{"id":"1015"},{"id":"1038"},{"id":"1039"}]},"id":"1041","type":"Toolbar"},{"attributes":{"match_aspect":true,"overlay":{"id":"1040"}},"id":"1015","type":"BoxZoomTool"},{"attributes":{"coordinates":null,"group":null,"text_color":"black","text_font_size":"12pt"},"id":"1021","type":"Title"},{"attributes":{},"id":"1062","type":"AllLabels"},{"attributes":{"axis_label":"Longitude","coordinates":null,"formatter":{"id":"1050"},"group":null,"major_label_policy":{"id":"1055"},"ticker":{"id":"1049"}},"id":"1029","type":"LinearAxis"},{"attributes":{"dimension":"lon"},"id":"1049","type":"MercatorTicker"},{"attributes":{"margin":[5,5,5,5],"name":"HSpacer05731","sizing_mode":"stretch_width"},"id":"1005","type":"Spacer"},{"attributes":{},"id":"1086","type":"UnionRenderers"},{"attributes":{},"id":"1055","type":"AllLabels"},{"attributes":{"axis":{"id":"1033"},"coordinates":null,"dimension":1,"grid_line_color":null,"group":null,"ticker":null},"id":"1036","type":"Grid"},{"attributes":{"children":[{"id":"1005"},{"id":"1020"},{"id":"1137"}],"margin":[0,0,0,0],"name":"Row05727","tags":["embedded"]},"id":"1004","type":"Row"},{"attributes":{"axis":{"id":"1029"},"coordinates":null,"grid_line_color":null,"group":null,"ticker":null},"id":"1032","type":"Grid"},{"attributes":{"axis_label":"Latitude","coordinates":null,"formatter":{"id":"1052"},"group":null,"major_label_policy":{"id":"1062"},"ticker":{"id":"1051"}},"id":"1033","type":"LinearAxis"},{"attributes":{},"id":"1039","type":"ResetTool"},{"attributes":{"end":5021726.743647505,"min_interval":5,"reset_end":5021726.743647505,"reset_start":5019141.615460167,"start":5019141.615460167,"tags":[[["Latitude","Latitude",null]]]},"id":"1013","type":"Range1d"},{"attributes":{"fill_alpha":{"value":0.2},"fill_color":{"value":null},"hatch_alpha":{"value":0.2},"hatch_color":{"value":null},"line_alpha":{"value":0.2},"line_color":{"value":"yellow"},"line_width":{"value":10},"xs":{"field":"xs"},"ys":{"field":"ys"}},"id":"1079","type":"MultiPolygons"},{"attributes":{"end":-11315845.10161127,"min_interval":5,"reset_end":-11315845.10161127,"reset_start":-11318319.860996585,"start":-11318319.860996585,"tags":[[["Longitude","Longitude",null]]]},"id":"1012","type":"Range1d"},{"attributes":{"margin":[5,5,5,5],"name":"HSpacer05732","sizing_mode":"stretch_width"},"id":"1137","type":"Spacer"},{"attributes":{"dimension":"lat"},"id":"1051","type":"MercatorTicker"},{"attributes":{"fill_color":{"value":null},"hatch_color":{"value":null},"line_color":{"value":"yellow"},"line_width":{"value":10},"xs":{"field":"xs"},"ys":{"field":"ys"}},"id":"1077","type":"MultiPolygons"},{"attributes":{"bottom_units":"screen","coordinates":null,"fill_alpha":0.5,"fill_color":"lightgrey","group":null,"left_units":"screen","level":"overlay","line_alpha":1.0,"line_color":"black","line_dash":[4,4],"line_width":2,"right_units":"screen","syncable":false,"top_units":"screen"},"id":"1040","type":"BoxAnnotation"},{"attributes":{},"id":"1038","type":"PanTool"},{"attributes":{"attribution":"&copy; <a href=\"http://downloads.esri.com/ArcGISOnline/docs/tou_summary.pdf\">Esri</a>, Earthstar Geographics","url":"https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{Z}/{Y}/{X}.jpg"},"id":"1067","type":"WMTSTileSource"},{"attributes":{"fill_alpha":{"value":0.1},"fill_color":{"value":null},"hatch_alpha":{"value":0.1},"hatch_color":{"value":null},"line_alpha":{"value":0.1},"line_color":{"value":"yellow"},"line_width":{"value":10},"xs":{"field":"xs"},"ys":{"field":"ys"}},"id":"1078","type":"MultiPolygons"},{"attributes":{"dimension":"lon"},"id":"1050","type":"MercatorTickFormatter"},{"attributes":{"dimension":"lat"},"id":"1052","type":"MercatorTickFormatter"},{"attributes":{},"id":"1025","type":"LinearScale"},{"attributes":{"data":{"xs":[[[{"__ndarray__":"+Z6gX3GWZcEEEC0/ZZVlwQQQLT9llWXB+Z6gX3GWZcH5nqBfcZZlwQ==","dtype":"float64","order":"little","shape":[5]}]]],"ys":[[[{"__ndarray__":"wABLObclU0HAAEs5tyVTQVwnsd3RJ1NBXCex3dEnU0HAAEs5tyVTQQ==","dtype":"float64","order":"little","shape":[5]}]]]},"selected":{"id":"1075"},"selection_policy":{"id":"1086"}},"id":"1074","type":"ColumnDataSource"},{"attributes":{"coordinates":null,"group":null,"level":"underlay","tile_source":{"id":"1067"}},"id":"1070","type":"TileRenderer"},{"attributes":{},"id":"1075","type":"Selection"},{"attributes":{"fill_alpha":{"value":1.0},"hatch_alpha":{"value":1.0},"hatch_scale":{"value":12.0},"hatch_weight":{"value":1.0},"line_alpha":{"value":1.0},"line_cap":{"value":"butt"},"line_color":{"value":"yellow"},"line_dash":{"value":[]},"line_dash_offset":{"value":0},"line_join":{"value":"bevel"},"line_width":{"value":10},"xs":{"field":"xs"},"ys":{"field":"ys"}},"id":"1082","type":"MultiPolygons"},{"attributes":{"source":{"id":"1074"}},"id":"1081","type":"CDSView"}],"root_ids":["1004"]},"title":"Bokeh Application","version":"2.4.1"}};
-    var render_items = [{"docid":"b3e264d6-de82-47c6-b3a9-88ead724b46c","root_ids":["1004"],"roots":{"1004":"bfa0c80f-587d-41ec-a8f9-410751ad59ef"}}];
+    var docs_json = {"b6b47ff1-45ac-4dfc-981f-b1b89b4d97cf":{"defs":[{"extends":null,"module":null,"name":"ReactiveHTML1","overrides":[],"properties":[]},{"extends":null,"module":null,"name":"FlexBox1","overrides":[],"properties":[{"default":"flex-start","kind":null,"name":"align_content"},{"default":"flex-start","kind":null,"name":"align_items"},{"default":"row","kind":null,"name":"flex_direction"},{"default":"wrap","kind":null,"name":"flex_wrap"},{"default":"flex-start","kind":null,"name":"justify_content"}]},{"extends":null,"module":null,"name":"TemplateActions1","overrides":[],"properties":[{"default":0,"kind":null,"name":"open_modal"},{"default":0,"kind":null,"name":"close_modal"}]},{"extends":null,"module":null,"name":"MaterialTemplateActions1","overrides":[],"properties":[{"default":0,"kind":null,"name":"open_modal"},{"default":0,"kind":null,"name":"close_modal"}]}],"roots":{"references":[{"attributes":{"tools":[{"id":"1014"},{"id":"1015"},{"id":"1038"},{"id":"1039"}]},"id":"1041","type":"Toolbar"},{"attributes":{"fill_color":{"value":null},"hatch_color":{"value":null},"line_color":{"value":"yellow"},"line_width":{"value":10},"xs":{"field":"xs"},"ys":{"field":"ys"}},"id":"1077","type":"MultiPolygons"},{"attributes":{"fill_alpha":{"value":0.2},"fill_color":{"value":null},"hatch_alpha":{"value":0.2},"hatch_color":{"value":null},"line_alpha":{"value":0.2},"line_color":{"value":"yellow"},"line_width":{"value":10},"xs":{"field":"xs"},"ys":{"field":"ys"}},"id":"1079","type":"MultiPolygons"},{"attributes":{"fill_alpha":{"value":1.0},"hatch_alpha":{"value":1.0},"hatch_scale":{"value":12.0},"hatch_weight":{"value":1.0},"line_alpha":{"value":1.0},"line_cap":{"value":"butt"},"line_color":{"value":"yellow"},"line_dash":{"value":[]},"line_dash_offset":{"value":0},"line_join":{"value":"bevel"},"line_width":{"value":10},"xs":{"field":"xs"},"ys":{"field":"ys"}},"id":"1082","type":"MultiPolygons"},{"attributes":{"children":[{"id":"1005"},{"id":"1020"},{"id":"1137"}],"margin":[0,0,0,0],"name":"Row05727","tags":["embedded"]},"id":"1004","type":"Row"},{"attributes":{"source":{"id":"1074"}},"id":"1081","type":"CDSView"},{"attributes":{"zoom_on_axis":false},"id":"1014","type":"WheelZoomTool"},{"attributes":{},"id":"1062","type":"AllLabels"},{"attributes":{"coordinates":null,"group":null,"level":"underlay","tile_source":{"id":"1067"}},"id":"1070","type":"TileRenderer"},{"attributes":{"end":-11315845.10161127,"min_interval":5,"reset_end":-11315845.10161127,"reset_start":-11318319.860996585,"start":-11318319.860996585,"tags":[[["Longitude","Longitude",null]]]},"id":"1012","type":"Range1d"},{"attributes":{"match_aspect":true,"overlay":{"id":"1040"}},"id":"1015","type":"BoxZoomTool"},{"attributes":{"dimension":"lat"},"id":"1052","type":"MercatorTickFormatter"},{"attributes":{},"id":"1025","type":"LinearScale"},{"attributes":{"coordinates":null,"data_source":{"id":"1074"},"glyph":{"id":"1077"},"group":null,"hover_glyph":null,"muted_glyph":{"id":"1079"},"nonselection_glyph":{"id":"1078"},"selection_glyph":{"id":"1082"},"view":{"id":"1081"}},"id":"1080","type":"GlyphRenderer"},{"attributes":{"data":{"xs":[[[{"__ndarray__":"+Z6gX3GWZcEEEC0/ZZVlwQQQLT9llWXB+Z6gX3GWZcH5nqBfcZZlwQ==","dtype":"float64","order":"little","shape":[5]}]]],"ys":[[[{"__ndarray__":"wABLObclU0HAAEs5tyVTQVwnsd3RJ1NBXCex3dEnU0HAAEs5tyVTQQ==","dtype":"float64","order":"little","shape":[5]}]]]},"selected":{"id":"1075"},"selection_policy":{"id":"1086"}},"id":"1074","type":"ColumnDataSource"},{"attributes":{},"id":"1075","type":"Selection"},{"attributes":{},"id":"1055","type":"AllLabels"},{"attributes":{"dimension":"lon"},"id":"1050","type":"MercatorTickFormatter"},{"attributes":{},"id":"1086","type":"UnionRenderers"},{"attributes":{"fill_alpha":{"value":0.1},"fill_color":{"value":null},"hatch_alpha":{"value":0.1},"hatch_color":{"value":null},"line_alpha":{"value":0.1},"line_color":{"value":"yellow"},"line_width":{"value":10},"xs":{"field":"xs"},"ys":{"field":"ys"}},"id":"1078","type":"MultiPolygons"},{"attributes":{"dimension":"lat"},"id":"1051","type":"MercatorTicker"},{"attributes":{"attribution":"&copy; <a href=\"http://downloads.esri.com/ArcGISOnline/docs/tou_summary.pdf\">Esri</a>, Earthstar Geographics","url":"https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{Z}/{Y}/{X}.jpg"},"id":"1067","type":"WMTSTileSource"},{"attributes":{"margin":[5,5,5,5],"name":"HSpacer05731","sizing_mode":"stretch_width"},"id":"1005","type":"Spacer"},{"attributes":{},"id":"1039","type":"ResetTool"},{"attributes":{"axis_label":"Latitude","coordinates":null,"formatter":{"id":"1052"},"group":null,"major_label_policy":{"id":"1062"},"ticker":{"id":"1051"}},"id":"1033","type":"LinearAxis"},{"attributes":{"below":[{"id":"1029"}],"center":[{"id":"1032"},{"id":"1036"}],"height":500,"left":[{"id":"1033"}],"margin":[5,5,5,5],"min_border_bottom":10,"min_border_left":10,"min_border_right":10,"min_border_top":10,"renderers":[{"id":"1070"},{"id":"1080"}],"sizing_mode":"fixed","title":{"id":"1021"},"toolbar":{"id":"1041"},"width":650,"x_range":{"id":"1012"},"x_scale":{"id":"1025"},"y_range":{"id":"1013"},"y_scale":{"id":"1027"}},"id":"1020","subtype":"Figure","type":"Plot"},{"attributes":{"axis":{"id":"1029"},"coordinates":null,"grid_line_color":null,"group":null,"ticker":null},"id":"1032","type":"Grid"},{"attributes":{"axis":{"id":"1033"},"coordinates":null,"dimension":1,"grid_line_color":null,"group":null,"ticker":null},"id":"1036","type":"Grid"},{"attributes":{"margin":[5,5,5,5],"name":"HSpacer05732","sizing_mode":"stretch_width"},"id":"1137","type":"Spacer"},{"attributes":{"coordinates":null,"group":null,"text_color":"black","text_font_size":"12pt"},"id":"1021","type":"Title"},{"attributes":{},"id":"1027","type":"LinearScale"},{"attributes":{"dimension":"lon"},"id":"1049","type":"MercatorTicker"},{"attributes":{"end":5021726.743647505,"min_interval":5,"reset_end":5021726.743647505,"reset_start":5019141.615460167,"start":5019141.615460167,"tags":[[["Latitude","Latitude",null]]]},"id":"1013","type":"Range1d"},{"attributes":{"axis_label":"Longitude","coordinates":null,"formatter":{"id":"1050"},"group":null,"major_label_policy":{"id":"1055"},"ticker":{"id":"1049"}},"id":"1029","type":"LinearAxis"},{"attributes":{"bottom_units":"screen","coordinates":null,"fill_alpha":0.5,"fill_color":"lightgrey","group":null,"left_units":"screen","level":"overlay","line_alpha":1.0,"line_color":"black","line_dash":[4,4],"line_width":2,"right_units":"screen","syncable":false,"top_units":"screen"},"id":"1040","type":"BoxAnnotation"},{"attributes":{},"id":"1038","type":"PanTool"}],"root_ids":["1004"]},"title":"Bokeh Application","version":"2.4.1"}};
+    var render_items = [{"docid":"b6b47ff1-45ac-4dfc-981f-b1b89b4d97cf","root_ids":["1004"],"roots":{"1004":"a4cd8b54-8b67-4fdc-ac70-14867b1f40f9"}}];
     root.Bokeh.embed.embed_items_notebook(docs_json, render_items);
   }
   if (root.Bokeh !== undefined && root.Bokeh.Panel !== undefined) {
@@ -2698,10 +2698,10 @@ HLSS30.v2.0: HLS Sentinel-2 Multi-spectral Instrument Surface Reflectance Daily 
 <h3 class="anchored" data-anchor-id="specify-the-stac-collections">Specify the STAC Collections</h3>
 <p>STAC Collection is synonomous with what we usually consider a NASA data product. Desired STAC Collections are submitted to the search API as a list containing the collection <code>id</code>. We can use the <code>id</code>s that we printed from our <code>products</code> for loop above. Let’s focus on S30 and L30 collections.</p>
 <div class="cell" data-execution_count="14">
-<div class="sourceCode" id="cb19"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>collections <span class="op">=</span> [<span class="st">'HLSL30.v1.5'</span>, <span class="st">'HLSS30.v1.5'</span>]</span>
+<div class="sourceCode" id="cb19"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>collections <span class="op">=</span> [<span class="st">'HLSL30.v2.0'</span>, <span class="st">'HLSS30.v2.0'</span>]</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>collections</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display" data-execution_count="14">
-<pre><code>['HLSL30.v1.5', 'HLSS30.v1.5']</code></pre>
+<pre><code>['HLSL30.v2.0', 'HLSS30.v2.0']</code></pre>
 </div>
 </div>
 </section>
@@ -2720,7 +2720,7 @@ HLSS30.v2.0: HLS Sentinel-2 Multi-spectral Instrument Surface Reflectance Daily 
 <div class="cell" data-execution_count="16">
 <div class="sourceCode" id="cb22"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>search.matched()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display" data-execution_count="16">
-<pre><code>77</code></pre>
+<pre><code>113</code></pre>
 </div>
 </div>
 <p>We now have a search object containing the STAC Items that matched our query. Now, let’s pull out all of the STAC Items (as a PySTAC ItemCollection object) and explore the contents (i.e., the STAC Items)</p>
@@ -2729,11 +2729,11 @@ HLSS30.v2.0: HLS Sentinel-2 Multi-spectral Instrument Surface Reflectance Daily 
 <div class="cell" data-execution_count="18">
 <div class="sourceCode" id="cb25"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(item_collection)[<span class="dv">0</span>:<span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display" data-execution_count="18">
-<pre><code>[&lt;Item id=HLS.L30.T14TKL.2021124T173013.v1.5&gt;,
- &lt;Item id=HLS.L30.T13TGF.2021124T173013.v1.5&gt;,
- &lt;Item id=HLS.S30.T14TKL.2021125T172901.v1.5&gt;,
- &lt;Item id=HLS.S30.T13TGF.2021125T172901.v1.5&gt;,
- &lt;Item id=HLS.S30.T14TKL.2021128T173901.v1.5&gt;]</code></pre>
+<pre><code>[&lt;Item id=HLS.L30.T13TGF.2021124T173013.v2.0&gt;,
+ &lt;Item id=HLS.L30.T14TKL.2021124T173013.v2.0&gt;,
+ &lt;Item id=HLS.S30.T14TKL.2021125T172901.v2.0&gt;,
+ &lt;Item id=HLS.S30.T13TGF.2021125T172901.v2.0&gt;,
+ &lt;Item id=HLS.S30.T14TKL.2021128T173901.v2.0&gt;]</code></pre>
 </div>
 </div>
 <p>We can view a single <code>Item</code> as a dictionary, as we did above with STAC <code>Collections</code>/<code>products</code>.</p>
@@ -2742,70 +2742,70 @@ HLSS30.v2.0: HLS Sentinel-2 Multi-spectral Instrument Surface Reflectance Daily 
 <div class="cell-output-display" data-execution_count="19">
 <pre><code>{'type': 'Feature',
  'stac_version': '1.0.0',
- 'id': 'HLS.L30.T14TKL.2021124T173013.v1.5',
+ 'id': 'HLS.L30.T13TGF.2021124T173013.v2.0',
  'properties': {'datetime': '2021-05-04T17:30:13.428000Z',
   'start_datetime': '2021-05-04T17:30:13.428Z',
   'end_datetime': '2021-05-04T17:30:37.319Z',
-  'eo:cloud_cover': 35},
+  'eo:cloud_cover': 36},
  'geometry': {'type': 'Polygon',
-  'coordinates': [[[-102.5408226, 40.5084628],
-    [-101.5339397, 40.5349543],
-    [-101.2721766, 41.3037739],
-    [-101.2800519, 41.5292355],
-    [-102.5941245, 41.4956464],
-    [-102.5408226, 40.5084628]]]},
+  'coordinates': [[[-101.5423534, 40.5109845],
+    [-101.3056118, 41.2066375],
+    [-101.2894253, 41.4919436],
+    [-102.6032964, 41.5268623],
+    [-102.638891, 40.5386175],
+    [-101.5423534, 40.5109845]]]},
  'links': [{'rel': 'self',
-   'href': 'https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/HLSL30.v1.5/items/HLS.L30.T14TKL.2021124T173013.v1.5'},
+   'href': 'https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/HLSL30.v2.0/items/HLS.L30.T13TGF.2021124T173013.v2.0'},
   {'rel': 'parent',
-   'href': 'https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/HLSL30.v1.5'},
+   'href': 'https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/HLSL30.v2.0'},
   {'rel': 'collection',
-   'href': 'https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/HLSL30.v1.5'},
+   'href': 'https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/HLSL30.v2.0'},
   {'rel': &lt;RelType.ROOT: 'root'&gt;,
    'href': 'https://cmr.earthdata.nasa.gov/stac/LPCLOUD/',
    'type': &lt;MediaType.JSON: 'application/json'&gt;},
   {'rel': 'provider', 'href': 'https://cmr.earthdata.nasa.gov/stac/LPCLOUD'},
   {'rel': 'via',
-   'href': 'https://cmr.earthdata.nasa.gov/search/concepts/G2047834723-LPCLOUD.json'},
+   'href': 'https://cmr.earthdata.nasa.gov/search/concepts/G2144020713-LPCLOUD.json'},
   {'rel': 'via',
-   'href': 'https://cmr.earthdata.nasa.gov/search/concepts/G2047834723-LPCLOUD.umm_json'}],
- 'assets': {'Fmask': {'href': 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T14TKL.2021124T173013.v1.5.Fmask.tif',
-   'title': 'Download HLS.L30.T14TKL.2021124T173013.v1.5.Fmask.tif'},
-  'B10': {'href': 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T14TKL.2021124T173013.v1.5.B10.tif',
-   'title': 'Download HLS.L30.T14TKL.2021124T173013.v1.5.B10.tif'},
-  'B03': {'href': 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T14TKL.2021124T173013.v1.5.B03.tif',
-   'title': 'Download HLS.L30.T14TKL.2021124T173013.v1.5.B03.tif'},
-  'B01': {'href': 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T14TKL.2021124T173013.v1.5.B01.tif',
-   'title': 'Download HLS.L30.T14TKL.2021124T173013.v1.5.B01.tif'},
-  'B09': {'href': 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T14TKL.2021124T173013.v1.5.B09.tif',
-   'title': 'Download HLS.L30.T14TKL.2021124T173013.v1.5.B09.tif'},
-  'SZA': {'href': 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T14TKL.2021124T173013.v1.5.SZA.tif',
-   'title': 'Download HLS.L30.T14TKL.2021124T173013.v1.5.SZA.tif'},
-  'B07': {'href': 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T14TKL.2021124T173013.v1.5.B07.tif',
-   'title': 'Download HLS.L30.T14TKL.2021124T173013.v1.5.B07.tif'},
-  'B04': {'href': 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T14TKL.2021124T173013.v1.5.B04.tif',
-   'title': 'Download HLS.L30.T14TKL.2021124T173013.v1.5.B04.tif'},
-  'VZA': {'href': 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T14TKL.2021124T173013.v1.5.VZA.tif',
-   'title': 'Download HLS.L30.T14TKL.2021124T173013.v1.5.VZA.tif'},
-  'B02': {'href': 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T14TKL.2021124T173013.v1.5.B02.tif',
-   'title': 'Download HLS.L30.T14TKL.2021124T173013.v1.5.B02.tif'},
-  'VAA': {'href': 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T14TKL.2021124T173013.v1.5.VAA.tif',
-   'title': 'Download HLS.L30.T14TKL.2021124T173013.v1.5.VAA.tif'},
-  'SAA': {'href': 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T14TKL.2021124T173013.v1.5.SAA.tif',
-   'title': 'Download HLS.L30.T14TKL.2021124T173013.v1.5.SAA.tif'},
-  'B06': {'href': 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T14TKL.2021124T173013.v1.5.B06.tif',
-   'title': 'Download HLS.L30.T14TKL.2021124T173013.v1.5.B06.tif'},
-  'B11': {'href': 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T14TKL.2021124T173013.v1.5.B11.tif',
-   'title': 'Download HLS.L30.T14TKL.2021124T173013.v1.5.B11.tif'},
-  'B05': {'href': 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T14TKL.2021124T173013.v1.5.B05.tif',
-   'title': 'Download HLS.L30.T14TKL.2021124T173013.v1.5.B05.tif'},
-  'browse': {'href': 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-public/HLSL30.015/HLS.L30.T14TKL.2021124T173013.v1.5.jpg',
+   'href': 'https://cmr.earthdata.nasa.gov/search/concepts/G2144020713-LPCLOUD.umm_json'}],
+ 'assets': {'B11': {'href': 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.020/HLS.L30.T13TGF.2021124T173013.v2.0/HLS.L30.T13TGF.2021124T173013.v2.0.B11.tif',
+   'title': 'Download HLS.L30.T13TGF.2021124T173013.v2.0.B11.tif'},
+  'B07': {'href': 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.020/HLS.L30.T13TGF.2021124T173013.v2.0/HLS.L30.T13TGF.2021124T173013.v2.0.B07.tif',
+   'title': 'Download HLS.L30.T13TGF.2021124T173013.v2.0.B07.tif'},
+  'SAA': {'href': 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.020/HLS.L30.T13TGF.2021124T173013.v2.0/HLS.L30.T13TGF.2021124T173013.v2.0.SAA.tif',
+   'title': 'Download HLS.L30.T13TGF.2021124T173013.v2.0.SAA.tif'},
+  'B06': {'href': 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.020/HLS.L30.T13TGF.2021124T173013.v2.0/HLS.L30.T13TGF.2021124T173013.v2.0.B06.tif',
+   'title': 'Download HLS.L30.T13TGF.2021124T173013.v2.0.B06.tif'},
+  'B09': {'href': 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.020/HLS.L30.T13TGF.2021124T173013.v2.0/HLS.L30.T13TGF.2021124T173013.v2.0.B09.tif',
+   'title': 'Download HLS.L30.T13TGF.2021124T173013.v2.0.B09.tif'},
+  'B10': {'href': 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.020/HLS.L30.T13TGF.2021124T173013.v2.0/HLS.L30.T13TGF.2021124T173013.v2.0.B10.tif',
+   'title': 'Download HLS.L30.T13TGF.2021124T173013.v2.0.B10.tif'},
+  'VZA': {'href': 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.020/HLS.L30.T13TGF.2021124T173013.v2.0/HLS.L30.T13TGF.2021124T173013.v2.0.VZA.tif',
+   'title': 'Download HLS.L30.T13TGF.2021124T173013.v2.0.VZA.tif'},
+  'SZA': {'href': 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.020/HLS.L30.T13TGF.2021124T173013.v2.0/HLS.L30.T13TGF.2021124T173013.v2.0.SZA.tif',
+   'title': 'Download HLS.L30.T13TGF.2021124T173013.v2.0.SZA.tif'},
+  'B01': {'href': 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.020/HLS.L30.T13TGF.2021124T173013.v2.0/HLS.L30.T13TGF.2021124T173013.v2.0.B01.tif',
+   'title': 'Download HLS.L30.T13TGF.2021124T173013.v2.0.B01.tif'},
+  'VAA': {'href': 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.020/HLS.L30.T13TGF.2021124T173013.v2.0/HLS.L30.T13TGF.2021124T173013.v2.0.VAA.tif',
+   'title': 'Download HLS.L30.T13TGF.2021124T173013.v2.0.VAA.tif'},
+  'B05': {'href': 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.020/HLS.L30.T13TGF.2021124T173013.v2.0/HLS.L30.T13TGF.2021124T173013.v2.0.B05.tif',
+   'title': 'Download HLS.L30.T13TGF.2021124T173013.v2.0.B05.tif'},
+  'B02': {'href': 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.020/HLS.L30.T13TGF.2021124T173013.v2.0/HLS.L30.T13TGF.2021124T173013.v2.0.B02.tif',
+   'title': 'Download HLS.L30.T13TGF.2021124T173013.v2.0.B02.tif'},
+  'Fmask': {'href': 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.020/HLS.L30.T13TGF.2021124T173013.v2.0/HLS.L30.T13TGF.2021124T173013.v2.0.Fmask.tif',
+   'title': 'Download HLS.L30.T13TGF.2021124T173013.v2.0.Fmask.tif'},
+  'B03': {'href': 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.020/HLS.L30.T13TGF.2021124T173013.v2.0/HLS.L30.T13TGF.2021124T173013.v2.0.B03.tif',
+   'title': 'Download HLS.L30.T13TGF.2021124T173013.v2.0.B03.tif'},
+  'B04': {'href': 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.020/HLS.L30.T13TGF.2021124T173013.v2.0/HLS.L30.T13TGF.2021124T173013.v2.0.B04.tif',
+   'title': 'Download HLS.L30.T13TGF.2021124T173013.v2.0.B04.tif'},
+  'browse': {'href': 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-public/HLSL30.020/HLS.L30.T13TGF.2021124T173013.v2.0/HLS.L30.T13TGF.2021124T173013.v2.0.jpg',
    'type': 'image/jpeg',
-   'title': 'Download HLS.L30.T14TKL.2021124T173013.v1.5.jpg'},
-  'metadata': {'href': 'https://cmr.earthdata.nasa.gov/search/concepts/G2047834723-LPCLOUD.xml',
+   'title': 'Download HLS.L30.T13TGF.2021124T173013.v2.0.jpg'},
+  'metadata': {'href': 'https://cmr.earthdata.nasa.gov/search/concepts/G2144020713-LPCLOUD.xml',
    'type': 'application/xml'}},
- 'bbox': [-102.594124, 40.508463, -101.272177, 41.529236],
+ 'bbox': [-102.638891, 40.510984, -101.289425, 41.526862],
  'stac_extensions': ['https://stac-extensions.github.io/eo/v1.0.0/schema.json'],
- 'collection': 'HLSL30.v1.5'}</code></pre>
+ 'collection': 'HLSL30.v2.0'}</code></pre>
 </div>
 </div>
 </section>
@@ -2825,10 +2825,10 @@ HLSS30.v2.0: HLS Sentinel-2 Multi-spectral Instrument Surface Reflectance Daily 
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> item_collection:</span>
 <span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> i.properties[<span class="st">'eo:cloud_cover'</span>] <span class="op">&lt;=</span> cloudcover:</span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> i.collection_id <span class="op">==</span> <span class="st">'HLSS30.v1.5'</span>:</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> i.collection_id <span class="op">==</span> <span class="st">'HLSS30.v2.0'</span>:</span>
 <span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>            <span class="co">#print(i.properties['eo:cloud_cover'])</span></span>
 <span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>            evi_bands <span class="op">=</span> s30_bands</span>
-<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> i.collection_id <span class="op">==</span> <span class="st">'HLSL30.v1.5'</span>:</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> i.collection_id <span class="op">==</span> <span class="st">'HLSL30.v2.0'</span>:</span>
 <span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>            <span class="co">#print(i.properties['eo:cloud_cover'])</span></span>
 <span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>            evi_bands <span class="op">=</span> l30_bands</span>
 <span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a></span>
@@ -2839,16 +2839,16 @@ HLSS30.v2.0: HLS Sentinel-2 Multi-spectral Instrument Surface Reflectance Daily 
 <div class="cell" data-execution_count="23">
 <div class="sourceCode" id="cb32"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>evi_band_links[:<span class="dv">10</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display" data-execution_count="23">
-<pre><code>['https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T14TKL.2021133T172406.v1.5.B04.tif',
- 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T14TKL.2021133T172406.v1.5.B02.tif',
- 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T14TKL.2021133T172406.v1.5.Fmask.tif',
- 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T14TKL.2021133T172406.v1.5.B05.tif',
- 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T13TGF.2021133T172406.v1.5.Fmask.tif',
- 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T13TGF.2021133T172406.v1.5.B02.tif',
- 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T13TGF.2021133T172406.v1.5.B05.tif',
- 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T13TGF.2021133T172406.v1.5.B04.tif',
- 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T14TKL.2021133T173859.v1.5.Fmask.tif',
- 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T14TKL.2021133T173859.v1.5.B04.tif']</code></pre>
+<pre><code>['https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.020/HLS.L30.T13TGF.2021133T172406.v2.0/HLS.L30.T13TGF.2021133T172406.v2.0.B04.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.020/HLS.L30.T13TGF.2021133T172406.v2.0/HLS.L30.T13TGF.2021133T172406.v2.0.B05.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.020/HLS.L30.T13TGF.2021133T172406.v2.0/HLS.L30.T13TGF.2021133T172406.v2.0.Fmask.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.020/HLS.L30.T13TGF.2021133T172406.v2.0/HLS.L30.T13TGF.2021133T172406.v2.0.B02.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.020/HLS.L30.T14TKL.2021133T172406.v2.0/HLS.L30.T14TKL.2021133T172406.v2.0.B02.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.020/HLS.L30.T14TKL.2021133T172406.v2.0/HLS.L30.T14TKL.2021133T172406.v2.0.B04.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.020/HLS.L30.T14TKL.2021133T172406.v2.0/HLS.L30.T14TKL.2021133T172406.v2.0.B05.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.020/HLS.L30.T14TKL.2021133T172406.v2.0/HLS.L30.T14TKL.2021133T172406.v2.0.Fmask.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.020/HLS.S30.T14TKL.2021133T173859.v2.0/HLS.S30.T14TKL.2021133T173859.v2.0.B04.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.020/HLS.S30.T14TKL.2021133T173859.v2.0/HLS.S30.T14TKL.2021133T173859.v2.0.B8A.tif']</code></pre>
 </div>
 </div>
 <p><strong>NOTE</strong> that HLS data is mapped to the Universal Transverse Mercator (UTM) projection and is tiled using the Sentinel-2 Military Grid Reference System (MGRS) UTM grid. Notice that in the list of links we have multiple tiles, i.e.&nbsp;<strong>T14TKL</strong> &amp; <strong>T13TGF</strong>, that intersect with our region of interest. In this case, these two tiles represent neighboring UTM zones. The tiles can be discern from the file name, which is the last element in a link (far right) following the last forward slash (/) - e.g., <strong>HLS.L30.T14TKL.2021133T172406.v1.5.B04.tif</strong>. The figure below explains where to find the tile/UTM zone from the file name.</p>
@@ -2869,17 +2869,17 @@ HLSS30.v2.0: HLS Sentinel-2 Multi-spectral Instrument Surface Reflectance Daily 
 <div class="cell" data-execution_count="26">
 <div class="sourceCode" id="cb36"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>tile_dicts.keys()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display" data-execution_count="26">
-<pre><code>dict_keys(['T14TKL', 'T13TGF'])</code></pre>
+<pre><code>dict_keys(['T13TGF', 'T14TKL'])</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="27">
 <div class="sourceCode" id="cb38"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>tile_dicts[<span class="st">'T13TGF'</span>][:<span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display" data-execution_count="27">
-<pre><code>['https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T13TGF.2021133T172406.v1.5.Fmask.tif',
- 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T13TGF.2021133T172406.v1.5.B02.tif',
- 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T13TGF.2021133T172406.v1.5.B05.tif',
- 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T13TGF.2021133T172406.v1.5.B04.tif',
- 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T13TGF.2021133T173859.v1.5.B02.tif']</code></pre>
+<pre><code>['https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.020/HLS.L30.T13TGF.2021133T172406.v2.0/HLS.L30.T13TGF.2021133T172406.v2.0.B04.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.020/HLS.L30.T13TGF.2021133T172406.v2.0/HLS.L30.T13TGF.2021133T172406.v2.0.B05.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.020/HLS.L30.T13TGF.2021133T172406.v2.0/HLS.L30.T13TGF.2021133T172406.v2.0.Fmask.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.020/HLS.L30.T13TGF.2021133T172406.v2.0/HLS.L30.T13TGF.2021133T172406.v2.0.B02.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.020/HLS.S30.T13TGF.2021133T173859.v2.0/HLS.S30.T13TGF.2021133T173859.v2.0.B8A.tif']</code></pre>
 </div>
 </div>
 <p>Now we will create a separate list of data links for each tile</p>
@@ -2900,31 +2900,44 @@ HLSS30.v2.0: HLS Sentinel-2 Multi-spectral Instrument Surface Reflectance Daily 
 <div class="cell" data-execution_count="32">
 <div class="sourceCode" id="cb44"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>bands_dicts.keys()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display" data-execution_count="32">
-<pre><code>dict_keys(['Fmask', 'B02', 'B05', 'B04', 'B8A'])</code></pre>
+<pre><code>dict_keys(['B04', 'B05', 'Fmask', 'B02', 'B8A'])</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="33">
 <div class="sourceCode" id="cb46"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>bands_dicts[<span class="st">'B04'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display" data-execution_count="33">
-<pre><code>['https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T13TGF.2021133T172406.v1.5.B04.tif',
- 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T13TGF.2021133T173859.v1.5.B04.tif',
- 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T13TGF.2021140T173021.v1.5.B04.tif',
- 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T13TGF.2021140T172859.v1.5.B04.tif',
- 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T13TGF.2021145T172901.v1.5.B04.tif',
- 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T13TGF.2021156T173029.v1.5.B04.tif',
- 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T13TGF.2021163T173909.v1.5.B04.tif',
- 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T13TGF.2021165T172422.v1.5.B04.tif',
- 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T13TGF.2021165T172901.v1.5.B04.tif',
- 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T13TGF.2021185T172901.v1.5.B04.tif',
- 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T13TGF.2021188T173037.v1.5.B04.tif',
- 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T13TGF.2021190T172859.v1.5.B04.tif',
- 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T13TGF.2021198T173911.v1.5.B04.tif',
- 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T13TGF.2021200T172859.v1.5.B04.tif',
- 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T13TGF.2021203T173909.v1.5.B04.tif',
- 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T13TGF.2021204T173042.v1.5.B04.tif',
- 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T13TGF.2021215T172901.v1.5.B04.tif',
- 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T13TGF.2021220T173049.v1.5.B04.tif',
- 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.015/HLS.L30.T13TGF.2021229T172441.v1.5.B04.tif']</code></pre>
+<pre><code>['https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.020/HLS.L30.T13TGF.2021133T172406.v2.0/HLS.L30.T13TGF.2021133T172406.v2.0.B04.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.020/HLS.S30.T13TGF.2021133T173859.v2.0/HLS.S30.T13TGF.2021133T173859.v2.0.B04.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.020/HLS.L30.T13TGF.2021140T173021.v2.0/HLS.L30.T13TGF.2021140T173021.v2.0.B04.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.020/HLS.S30.T13TGF.2021140T172859.v2.0/HLS.S30.T13TGF.2021140T172859.v2.0.B04.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.020/HLS.S30.T13TGF.2021145T172901.v2.0/HLS.S30.T13TGF.2021145T172901.v2.0.B04.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.020/HLS.S30.T13TGF.2021155T172901.v2.0/HLS.S30.T13TGF.2021155T172901.v2.0.B04.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.020/HLS.L30.T13TGF.2021156T173029.v2.0/HLS.L30.T13TGF.2021156T173029.v2.0.B04.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.020/HLS.S30.T13TGF.2021158T173901.v2.0/HLS.S30.T13TGF.2021158T173901.v2.0.B04.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.020/HLS.S30.T13TGF.2021163T173909.v2.0/HLS.S30.T13TGF.2021163T173909.v2.0.B04.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.020/HLS.L30.T13TGF.2021165T172422.v2.0/HLS.L30.T13TGF.2021165T172422.v2.0.B04.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.020/HLS.S30.T13TGF.2021165T172901.v2.0/HLS.S30.T13TGF.2021165T172901.v2.0.B04.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.020/HLS.S30.T13TGF.2021173T173909.v2.0/HLS.S30.T13TGF.2021173T173909.v2.0.B04.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.020/HLS.S30.T13TGF.2021185T172901.v2.0/HLS.S30.T13TGF.2021185T172901.v2.0.B04.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.020/HLS.L30.T13TGF.2021188T173037.v2.0/HLS.L30.T13TGF.2021188T173037.v2.0.B04.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.020/HLS.S30.T13TGF.2021190T172859.v2.0/HLS.S30.T13TGF.2021190T172859.v2.0.B04.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.020/HLS.S30.T13TGF.2021193T173909.v2.0/HLS.S30.T13TGF.2021193T173909.v2.0.B04.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.020/HLS.S30.T13TGF.2021198T173911.v2.0/HLS.S30.T13TGF.2021198T173911.v2.0.B04.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.020/HLS.S30.T13TGF.2021200T172859.v2.0/HLS.S30.T13TGF.2021200T172859.v2.0.B04.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.020/HLS.S30.T13TGF.2021203T173909.v2.0/HLS.S30.T13TGF.2021203T173909.v2.0.B04.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.020/HLS.L30.T13TGF.2021204T173042.v2.0/HLS.L30.T13TGF.2021204T173042.v2.0.B04.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.020/HLS.S30.T13TGF.2021208T173911.v2.0/HLS.S30.T13TGF.2021208T173911.v2.0.B04.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.020/HLS.S30.T13TGF.2021210T172859.v2.0/HLS.S30.T13TGF.2021210T172859.v2.0.B04.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.020/HLS.S30.T13TGF.2021215T172901.v2.0/HLS.S30.T13TGF.2021215T172901.v2.0.B04.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.020/HLS.S30.T13TGF.2021218T173911.v2.0/HLS.S30.T13TGF.2021218T173911.v2.0.B04.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.020/HLS.L30.T13TGF.2021220T173049.v2.0/HLS.L30.T13TGF.2021220T173049.v2.0.B04.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.020/HLS.S30.T13TGF.2021220T172859.v2.0/HLS.S30.T13TGF.2021220T172859.v2.0.B04.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.020/HLS.S30.T13TGF.2021223T173909.v2.0/HLS.S30.T13TGF.2021223T173909.v2.0.B04.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.020/HLS.S30.T13TGF.2021228T173911.v2.0/HLS.S30.T13TGF.2021228T173911.v2.0.B04.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.020/HLS.L30.T13TGF.2021229T172441.v2.0/HLS.L30.T13TGF.2021229T172441.v2.0.B04.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.020/HLS.S30.T13TGF.2021230T172859.v2.0/HLS.S30.T13TGF.2021230T172859.v2.0.B04.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.020/HLS.S30.T13TGF.2021235T172901.v2.0/HLS.S30.T13TGF.2021235T172901.v2.0.B04.tif',
+ 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.020/HLS.S30.T13TGF.2021243T173859.v2.0/HLS.S30.T13TGF.2021243T173859.v2.0.B04.tif']</code></pre>
 </div>
 </div>
 </section>
@@ -2957,11 +2970,11 @@ HLSS30.v2.0: HLS Sentinel-2 Multi-spectral Instrument Surface Reflectance Daily 
 <li><a href="https://stacspec.org/">STAC Specification Webpage</a></li>
 <li><a href="https://stacspec.org/STAC-api.html">STAC API Documentation</a></li>
 <li><a href="https://github.com/nasa/cmr-stac">CMR-STAC API Github</a></li>
+<li><a href="https://pystac-client.readthedocs.io/en/latest/index.html">PySTAC Client Documentation</a></li>
 <li><a href="https://stackoverflow.com/questions/26367812/appending-to-list-in-python-dictionary" class="uri">https://stackoverflow.com/questions/26367812/appending-to-list-in-python-dictionary</a></li>
 <li><a href="https://geopandas.org/en/stable/docs/user_guide.html">Geopandas</a></li>
 <li><a href="https://lpdaac.usgs.gov/data/get-started-data/collection-overview/missions/harmonized-landsat-sentinel-2-hls-overview/">HLS Overview</a></li>
 </ul>
-<hr>
 
 
 </section>

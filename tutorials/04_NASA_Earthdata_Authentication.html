@@ -207,16 +207,16 @@
   <a href="../tutorials/01_Data_Discovery_CMR.html" class="">01. Data discovery with CMR</a>
 </li>
           <li class="sidebar-item">
-  <a href="../tutorials/02_Data_Discovery_CMR-STAC_API.html" class="">02. Data Discovery with CMR-STAC API</a>
+  <a href="../tutorials/02_Data_Discovery_CMR-STAC_API.html" class="">Data Discovery with CMR-STAC API</a>
 </li>
           <li class="sidebar-item">
   <a href="../tutorials/03_Xarray.html" class="">03. Introduction to <code>xarray</code></a>
 </li>
           <li class="sidebar-item">
-  <a href="../tutorials/04_NASA_Earthdata_Authentication.html" class="active">04. Authentication for NASA Earthdata</a>
+  <a href="../tutorials/04_NASA_Earthdata_Authentication.html" class="active">Authentication for NASA Earthdata</a>
 </li>
           <li class="sidebar-item">
-  <a href="../tutorials/05_Data_Access_Direct_S3.html" class="">05. Direct S3 Data Access</a>
+  <a href="../tutorials/05_Data_Access_Direct_S3.html" class="">Direct S3 Data Access with rioxarray</a>
 </li>
           <li class="sidebar-item">
   <a href="../tutorials/06_S6_OPeNDAP_Access_Gridding.html" class="">06. Sentinel-6 MF L2 Altimetry Data Access (OPeNDAP) &amp; Gridding</a>
@@ -324,7 +324,7 @@
   <div id="quarto-toc-sidebar" class=" pt-0 col col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-toc order-last"><nav id="TOC" role="doc-toc">
 <h2 id="toc-title">On this page</h2>
 <ul>
-<li><a href="#authentication-for-nasa-earthdata" class="nav-link active" data-scroll-target="#authentication-for-nasa-earthdata">04. Authentication for NASA Earthdata</a>
+<li><a href="#authentication-for-nasa-earthdata" class="nav-link active" data-scroll-target="#authentication-for-nasa-earthdata">Authentication for NASA Earthdata</a>
 <ul class="collapse">
 <li><a href="#summary" class="nav-link" data-scroll-target="#summary">Summary</a>
 <ul class="collapse">
@@ -339,10 +339,10 @@
 <main>
 
 <section id="authentication-for-nasa-earthdata" class="level1">
-<h1>04. Authentication for NASA Earthdata</h1>
+<h1>Authentication for NASA Earthdata</h1>
 <section id="summary" class="level2">
 <h2 class="anchored" data-anchor-id="summary">Summary</h2>
-<p>This notebook creates a hidden <code>.netrc</code> file (<code>_netrc</code> for Window OS) with Earthdata login credentials in your home directory. This file is need to access NASA Earthdata assets from a scripting environment like Python.</p>
+<p>This notebook creates a hidden <code>.netrc</code> file (<code>_netrc</code> for Window OS) with Earthdata login credentials in your home directory. This file is needed to access NASA Earthdata assets from a scripting environment like Python.</p>
 <section id="earthdata-login" class="level3">
 <h3 class="anchored" data-anchor-id="earthdata-login">Earthdata Login</h3>
 <p>An Earthdata Login account is required to access data, as well as discover restricted data, from the NASA Earthdata system. Thus, to access NASA data, you need Earthdata Login. Please visit <a href="https://urs.earthdata.nasa.gov" class="uri">https://urs.earthdata.nasa.gov</a> to register and manage your Earthdata Login account. This account is free to create and only takes a moment to set up.</p>
@@ -369,7 +369,6 @@ password &lt;PASSWORD&gt;</code></pre>
 <li>check if you have an netrc file, and if so, varify if those credentials are for the Earthdata endpoint</li>
 <li>create a netrc file if a netrc file is not present.</li>
 </ol>
-<div class="cell">
 <div class="sourceCode" id="cb3"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>urs <span class="op">=</span> <span class="st">'urs.earthdata.nasa.gov'</span>    <span class="co"># Earthdata URL endpoint for authentication</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>prompts <span class="op">=</span> [<span class="st">'Enter NASA Earthdata Login Username: '</span>,</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>           <span class="st">'Enter NASA Earthdata Login Password: '</span>]</span>
@@ -397,44 +396,13 @@ password &lt;PASSWORD&gt;</code></pre>
 <span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    Popen(<span class="st">'echo machine </span><span class="sc">{1}</span><span class="st"> &gt;&gt; </span><span class="sc">{0}{2}</span><span class="st">'</span>.<span class="bu">format</span>(homeDir <span class="op">+</span> os.sep, urs, netrc_name), shell<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>    Popen(<span class="st">'echo login </span><span class="sc">{}</span><span class="st"> &gt;&gt; </span><span class="sc">{}{}</span><span class="st">'</span>.<span class="bu">format</span>(getpass(prompt<span class="op">=</span>prompts[<span class="dv">0</span>]), homeDir <span class="op">+</span> os.sep, netrc_name), shell<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>    Popen(<span class="st">'echo password \</span><span class="sc">{}</span><span class="st"> &gt;&gt; </span><span class="sc">{}{}</span><span class="st">'</span>.<span class="bu">format</span>(getpass(prompt<span class="op">=</span>prompts[<span class="dv">1</span>]), homeDir <span class="op">+</span> os.sep, netrc_name), shell<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdin">
-<pre><code>Enter NASA Earthdata Login Username:  ·······</code></pre>
-</div>
-</div>
 <section id="see-if-the-file-was-created" class="level4">
 <h4 class="anchored" data-anchor-id="see-if-the-file-was-created">See if the file was created</h4>
 <p>If the file was created, we’ll see a <code>.netrc</code> file (<code>_netrc</code> for Window OS) in the list printed below. To view the contents from a Jupyter environment, click <strong>File</strong> on the top toolbar, select <strong>Open from Path…</strong>, type <strong>.netrc</strong>, and click <strong>Open</strong>. The <code>.netrc</code> file will open within the text editor.</p>
 <blockquote class="blockquote">
 <p><strong>!!! Beware,</strong> your password will be visible if the <code>.netrc</code> file is opened in the text editor.</p>
 </blockquote>
-<div class="cell" data-execution_count="9">
-<div class="sourceCode" id="cb5"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>ls <span class="op">-</span>al <span class="op">~/</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
-<pre><code>total 928
-drwxr-xr-x 14 jovyan jovyan   6144 Nov  4 19:11 .
-drwxr-xr-x  1 root   root     4096 Oct  4 16:21 ..
--rw-------  1 jovyan jovyan   7738 Nov  4 17:43 .bash_history
-drwxr-xr-x  8 jovyan jovyan   6144 Nov  2 17:49 .cache
-drwxrwsr-x  2 jovyan jovyan   6144 Jun 11 16:31 .conda
-drwxr-xr-x  4 jovyan jovyan   6144 Nov  2 17:37 .config
-drwxr-xr-x  2 jovyan jovyan   6144 Jun 11 16:31 .empty
--rw-r--r--  1 jovyan jovyan     52 Oct 19 20:19 .gitconfig
-drwxr-xr-x  2 jovyan jovyan   6144 Nov  3 12:58 .ipynb_checkpoints
-drwxr-xr-x  5 jovyan jovyan   6144 May 13 19:04 .ipython
-drwxr-xr-x  3 jovyan jovyan   6144 Jun 11 13:09 .jupyter
--rw-r--r--  1 jovyan jovyan    183 Oct 28 21:32 .jupyter-server-log.txt
-drwxr-xr-x  3 jovyan jovyan   6144 May 13 19:04 .local
--rw-------  1 jovyan jovyan     67 Nov  4 19:11 .netrc
-drwxr-xr-x 10 jovyan jovyan   6144 Nov  4 17:29 2021-Cloud-Hackathon
--rw-r--r--  1 jovyan jovyan    119 Nov  3 18:07 additional_packages.txt
--rw-r--r--  1 jovyan jovyan    131 Nov  4 15:55 cookies.txt
-drwxr-xr-x  5 jovyan jovyan   6144 Nov  4 15:03 corn
--rw-r--r--  1 jovyan jovyan  11709 Nov  4 14:48 environment.yml
--rw-r--r--  1 jovyan jovyan 847997 Nov  3 13:35 s6a_atrack_altimetry_demo.ipynb
-drwxr-xr-x  2 root   root     6144 May 11 19:41 shared
-drwxr-xr-x  2 root   root     6144 May 11 19:41 shared-readwrite</code></pre>
-</div>
-</div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>ls <span class="op">-</span>al <span class="op">~/</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>
@@ -617,7 +585,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
   <div class="nav-page nav-page-next">
       <a href="../tutorials/05_Data_Access_Direct_S3.html">
-        <span class="nav-page-text">05. Direct S3 Data Access</span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text">Direct S3 Data Access with rioxarray</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </div>
