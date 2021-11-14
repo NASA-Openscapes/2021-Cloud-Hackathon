@@ -2,44 +2,52 @@
 title: 00. Setup for tutorials
 ---
 
-We start off by getting setup and connected for the tutorials. Please login to the JupyterHub, which will take a few minutes to load. 
+This tutorial will help you set up your JupyterHub (or Hub) with material for other tutorials (Hackathon Repository) and link your github account.
 
-Please go to <https://openscapes.2i2c.cloud/hub/>. Log in with your GitHub Account, and select "Small".
+## Step 1. Login to the Hub (takes a few minutes to load)
 
-You can also click this badge to launch the Hub: 
+Please go to <https://openscapes.2i2c.cloud/hub/>. Alternatively, you can also click this badge to launch the Hub:
 
-[![](https://img.shields.io/static/v1.svg?logo=Jupyter&label=Openscapes&message=AWS+us-west-2&color=orange)](https://openscapes.2i2c.cloud)
+![](https://img.shields.io/static/v1.svg?logo=Jupyter&label=Openscapes&message=AWS+us-west-2&color=orange){fig-align="center"}
+
+Log in with your GitHub Account, and select "Small".
+
+![](img/JupyterHub-2i2c.png){width="500"}
+
+![](img/JupyterHub-Login.png){width="500"}
+
+> Note: It takes a few minutes for the Hub to load. Please be patient!
 
 While the Hub loads, we'll:
 
-- discuss cloud environments
-- see how my Desktop is setup
-- Fork the Hackathon repository at github.com
-- discuss python and conda environments
+-   discuss cloud environments
+-   see how my Desktop is setup
+-   Fork the Hackathon repository at github.com
+-   discuss python and conda environments
 
-Then, when the hub is loaded we'll get oriented and clone the forked repo into our cloud environment.
+Then, when the Hub is loaded, we'll get oriented and clone the forked repository into our cloud environment.
 
-## Cloud environment
+## Discussion: Cloud environment
 
 A brief overview about the [NASA Openscapes Cloud Environment](https://nasa-openscapes.github.io/2021-Cloud-Hackathon/clinic/jupyterhub.html) (following lessons from the Clinic).
 
 #### Cloud infrastructure
 
-* Cloud: AWS [`us-west-2`](https://goo.gl/maps/BYqGYxahpwJgzKwR8)
-  * Data: AWS S3 (cloud) and [NASA DAAC](https://earthdata.nasa.gov/eosdis/daacs) data centers (on-prem).
-  * Cloud compute environment: [2i2c Jupyterhub deployment](https://docs.2i2c.org/en/latest/)
-      * IDE: [**JupyterLab**](https://jupyterlab.readthedocs.io/en/stable/getting_started/overview.html)
+-   Cloud: AWS [`us-west-2`](https://goo.gl/maps/BYqGYxahpwJgzKwR8)
+    -   Data: AWS S3 (cloud) and [NASA DAAC](https://earthdata.nasa.gov/eosdis/daacs) data centers (on-prem).
+    -   Cloud compute environment: [2i2c Jupyterhub deployment](https://docs.2i2c.org/en/latest/)
+        -   IDE: [**JupyterLab**](https://jupyterlab.readthedocs.io/en/stable/getting_started/overview.html)
 
-## This is how my desktop is setup
+## Discussion: My desktop setup
 
-I'll screenshare to show and/or talk through how I have oriented the following software we're using: 
+I'll screenshare to show and/or talk through how I have oriented the following software we're using:
 
-- [2i2c Jupyterhub](https://openscapes.2i2c.cloud/hub/) (our main workspace)
-- [Cloud Hackathon Book](https://nasa-openscapes.github.io/2021-Cloud-Hackathon/tutorials/) (my teaching notes, your reference material)
-- Zoom Chat
-- Slack
+-   [2i2c Jupyterhub](https://openscapes.2i2c.cloud/hub/) (our main workspace)
+-   [Cloud Hackathon Book](https://nasa-openscapes.github.io/2021-Cloud-Hackathon/tutorials/) (my teaching notes, your reference material)
+-   Zoom Chat
+-   Slack
 
-## Fork the Hackathon GitHub repository
+## Step 2. Fork the Hackathon GitHub repository
 
 "How do I get the tutorial repository into the Hub?". There are 2 steps. The first is from GitHub.com to fork the tutorial repository so that there is a connected copy in your user account that you can edit and push changes that won't affect the nasa-openscapes copy.
 
@@ -47,21 +55,20 @@ Go to <https://github.com/nasa-openscapes/2021-Cloud-Hackathon> and fork the rep
 
 ![](../clinic/img/fork-tutorials.png)
 
-## Python and Conda environments
+## Discussion: Python and Conda environments
 
 [**Why Python?**](https://foundations.projectpythia.org/foundations/why-python.html)
 
-![Python Data Stack. Source: Jake VanderPlas, “The State of the Stack,” SciPy Keynote (SciPy 2015).](https://pangeo-data.github.io/img/scientific-python-28-638.jpg)
+![Python Data Stack. Source: Jake VanderPlas, "The State of the Stack," SciPy Keynote (SciPy 2015).](https://pangeo-data.github.io/img/scientific-python-28-638.jpg)
 
 **Default Python Environment:**
 
-We've set up the Python environment with conda. 
+We've set up the Python environment with conda.
 
 ::: {.callout-note collapse="true"}
-
 ### Conda environment
 
-```yaml
+``` yaml
 name: openscapes
 channels:
   - conda-forge
@@ -106,76 +113,83 @@ dependencies:
 ```
 :::
 
-
 ### Bash terminal and installed software
+
 Libraries that are available from the terminal
 
-* gdal 3.3 commands ( gdalinfo, gdaltransform...)
-* hdf5 commands ( h5dump, h5ls..)
-* netcdf4 commands (ncdump, ncinfo ...)
-* jq (parsing json files or streams from curl)
-* curl (fetch resources from the web)
-* awscli (AWS API client, to interact with AWS cloud services)
-* vim (editor)
-* tree ( directory tree)
-* more ...
+-   gdal 3.3 commands ( gdalinfo, gdaltransform...)
+-   hdf5 commands ( h5dump, h5ls..)
+-   netcdf4 commands (ncdump, ncinfo ...)
+-   jq (parsing json files or streams from curl)
+-   curl (fetch resources from the web)
+-   awscli (AWS API client, to interact with AWS cloud services)
+-   vim (editor)
+-   tree ( directory tree)
+-   more ...
 
 ### Updating the environment
 
-Scientific Python is a vast space and we only included libraries that are needed in our tutorials.
-Our default environment can be updated to include any Python library that's available on pip or conda.
+Scientific Python is a vast space and we only included libraries that are needed in our tutorials. Our default environment can be updated to include any Python library that's available on pip or conda.
 
 The project used to create our default environment is called **corn** (as it can include many Python kernels).
 
-If we want to update a library or install a whole new environment we need to open an issue on this repository. We can help your teams do this during project hacktime. 
+If we want to update a library or install a whole new environment we need to open an issue on this repository. We can help your teams do this during project hacktime.
 
 ### [corn 🌽](https://github.com/NASA-Openscapes/corn)
 
-## JupyterHub orientation
+## Step 3. JupyterHub orientation
 
-Now that the JupyterHubs have loaded, let's get oriented.
+Now that the Hub is loaded, let's get oriented.
+
+[![](img/JupyterHub-View.png){width="500"}](img/JupyterHub-View.png)
 
 ### First impressions
 
 Reiterate a few things we just talked about (TODO - what's useful here Luis?)
 
-- "home directory"
-- big blue button
-- environments we just talked about (?)
+-   "home directory"
+-   big blue button
+-   environments we just talked about (?)
+-   terminal basics (?)
 
-### Terminal
+## Step 4. Clone the Hackathon GitHub repository
 
-Open terminal: Big blue "+" button > Terminal
+Now we'll clone the GitHub repository, using the git extension for Hub. Go to your github account,
 
-You'll start off in your home directory, `/home/jovyan`. To confirm this is your present working directory (pwd), type: 
+repository that you just created by forking from the Openscapes repository.
 
-```.{bash}
-pwd
-```
+![](img/Github-forked-repo.png){width="2224"}
 
+Now, go to your Hub and click on the git extension in the left panel and then click the blue button "Clone a Repository".
 
-## Clone the Hackathon GitHub repository
+![](img/JupyterHub-GitExtension.png)
 
-Now we'll clone the GitHub repository, using the terminal. 
+Then, paste the repository link to the forked repository that you copied from your github account into the "Clone a repo" pop up window. Then click the blue "CLONE" button. It will take a few minutes to clone the repository into your Hub.
 
-```{.bash}
-git clone https://github.com/YOUR-USERNAME/2021-Cloud-Hackathon
-```
+Your link should look like `https://github.com/YOUR-USERNAME/2021-Cloud-Hackathon`. For example, the link is https://github.com/**virdi**/2021-Cloud-Hackathon. Note that it include your github username in the repo link.
 
-These two github steps are also posted in [github workflows: first-time setup](https://nasa-openscapes.github.io/2021-Cloud-Hackathon/logistics/github-workflows.html).
+![](img/JupyterHub-Clone-Extension.png)
+
+Alternatively, you can use the terminal (command line) as per [github workflows: first-time setup](https://nasa-openscapes.github.io/2021-Cloud-Hackathon/logistics/github-workflows.html).
+
+Once the repository is cloned, you will see a new directory in the "File Browser" panel on the left named "2021-Cloud-Hackathon". In this directory, you have all hackathon material including the tutorials and this book to follow along during other Tutorials. You are all set.
+
+![](img/JupyterHub-Cloned-Repo-FileBrowser.png)
+
+> REMEMBER: This is your copy (or fork) of the hackathon materials and jupyter notebooks. So feel free to make any changes to the content of this repository.
 
 ## Jupyter notebooks
 
-Let's get oriented to Jupyter notebooks, which we'll use in all the tutorials. 
+Let's get oriented to Jupyter notebooks, which we'll use in all the tutorials.
 
-Big blue button > Notebook > ...
+Big blue button \> Notebook \> ...
 
+## How do I end my session?
 
-## How to I end my session?
 *(Also see [How do I end my Openscapes session? Will I lose all of my work?](https://nasa-openscapes.github.io/2021-Cloud-Hackathon/clinic/jupyterhub.html#how-do-i-end-my-openscapes-session))*
 
 When you are finished working for the day it is important to explicitly log out of your Openscapes session. The reason for this is it will save us a bit of money! When you keep a session active it uses up AWS resources and keeps a series of virtual machines deployed.
 
-Stopping the server happens automatically when you log out, so navigate to “File -> Log Out” and just click “Log Out”!
+Stopping the server happens automatically when you log out, so navigate to "File -> Log Out" and just click "Log Out"!
 
-!!! NOTE “logging out” - Logging out will **NOT** cause any of your work to be lost or deleted. It simply shuts down some resources. It would be equivalent to turning off your desktop computer at the end of the day.
+!!! NOTE "logging out" - Logging out will **NOT** cause any of your work to be lost or deleted. It simply shuts down some resources. It would be equivalent to turning off your desktop computer at the end of the day.
