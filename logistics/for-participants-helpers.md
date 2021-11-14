@@ -1,5 +1,5 @@
 ---
-title: Logistics
+title: For participants & helpers
 ---
 
 ## For Hackathon Participants

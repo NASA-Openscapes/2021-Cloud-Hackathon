@@ -22,15 +22,17 @@ site:
       - icon: github
         href: https://github.com/nasa-openscapes/2021-Cloud-Hackathon
     contents:
-      - text: "Welcome"
-        href: index.md
-      - cloud-paradigm.md
-      - section: logistics/index.md
+      - section: "Welcome"
         contents:
+         - index.md
+         - cloud-paradigm.md
+      - section: "Logistics"
+        contents:
+          - logistics/for-participants-helpers.md
           - logistics/schedule.md
           - logistics/prerequisites.md
           - logistics/github-workflows.md
-      - section: tutorials/index.md
+      - section: "Tutorials"
         contents: 
           - tutorials/00_Setup.md  ## tutorial 0
           - tutorials/01_Data_Discovery_CMR.ipynb ## tutorial 1
@@ -42,14 +44,20 @@ site:
           - tutorials/07_Data_Access_Harmony_Subsetting.ipynb ## tutorial 7
           - tutorials/08_Data_Access_Harmonize-cloud-non-cloud.ipynb ## tutorial 8
           - tutorials/09_Zarr_Access.ipynb ## tutorial 9
-      - section: tutorials-templates/index.md
-      - section: projects/index.md
+      - section: "Tutorial Templates"
+        contents: 
+          - tutorials-templates/index.md 
+      - section: "Projects"
         contents:
+          - projects/projects-overview.md
           - projects/workflow.md
           - projects/hackathon-projects.md
-      - section: further-resources.md
-      - section: clinic/index.md
+      - section: "Further Resources"
         contents:
+          - further-resources.md
+      - section: "Pre-Hackathon-Clinic"
+        contents:
+          - clinic/index.md
           - clinic/jupyterhub.md
           - clinic/notebooks.md
           - clinic/github.md

@@ -1,5 +1,5 @@
 ---
-title: Further Resources
+title: Additional resources
 ---
 
 ## A growing list of resources!
