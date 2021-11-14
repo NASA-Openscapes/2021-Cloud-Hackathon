@@ -123,7 +123,7 @@ Stopping the server happens automatically when you log out, so navigate to "File
 
 **Why do we have the same home directory as /home/jovyan?** /home/jovyan is the default home directory for 'jupyter' based images/dockers. It is the historic home directory for Jupyter deployments. 
 
-**/home/jovyan is the default home directory for 'jupyter' based images/dockers**
+**/home/jovyan is the default home directory for *jupyter*-based deployments**
 
 **Can other users see the .git-credentials file in my /home/jovyan folder?** No, other users can not see your creds
 
