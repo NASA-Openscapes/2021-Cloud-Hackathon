@@ -16,7 +16,7 @@ site:
     style: "docked"
     background: light
     search: true
-    collapse-level: 2
+    collapse-level: 1
     align: left
     tools:
       - icon: github
