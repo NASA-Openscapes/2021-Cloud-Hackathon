@@ -11,6 +11,69 @@
     div.column{display: inline-block; vertical-align: top; width: 50%;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
 
   <!--[if lt IE 9]>
@@ -226,11 +289,22 @@
   <div id="quarto-toc-sidebar" class=" pt-0 col col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-toc order-last"><nav id="TOC" role="doc-toc">
 <h2 id="toc-title">On this page</h2>
 <ul>
-<li><a href="#this-is-how-my-desktop-is-setup" class="nav-link active" data-scroll-target="#this-is-how-my-desktop-is-setup">This is how my desktop is setup</a></li>
-<li><a href="#cloudjupyterhub-overview" class="nav-link" data-scroll-target="#cloudjupyterhub-overview">Cloud/JupyterHub overview</a></li>
-<li><a href="#github-setup-for-tutorials" class="nav-link" data-scroll-target="#github-setup-for-tutorials">GitHub setup for tutorials</a></li>
-<li><a href="#practice-creating-a-jupyter-notebook" class="nav-link" data-scroll-target="#practice-creating-a-jupyter-notebook">Practice creating a jupyter notebook?</a></li>
-<li><a href="#open-a-tutorial-template-notebook" class="nav-link" data-scroll-target="#open-a-tutorial-template-notebook">Open a tutorial template notebook</a></li>
+<li><a href="#cloud-environment" class="nav-link active" data-scroll-target="#cloud-environment">Cloud environment</a></li>
+<li><a href="#this-is-how-my-desktop-is-setup" class="nav-link" data-scroll-target="#this-is-how-my-desktop-is-setup">This is how my desktop is setup</a></li>
+<li><a href="#fork-the-hackathon-github-repository" class="nav-link" data-scroll-target="#fork-the-hackathon-github-repository">Fork the Hackathon GitHub repository</a></li>
+<li><a href="#python-and-conda-environments" class="nav-link" data-scroll-target="#python-and-conda-environments">Python and Conda environments</a>
+<ul class="collapse">
+<li><a href="#bash-terminal-and-installed-software" class="nav-link" data-scroll-target="#bash-terminal-and-installed-software">Bash terminal and installed software</a></li>
+<li><a href="#updating-the-environment" class="nav-link" data-scroll-target="#updating-the-environment">Updating the environment</a></li>
+<li><a href="#corn" class="nav-link" data-scroll-target="#corn"><span>corn 🌽</span></a></li>
+</ul></li>
+<li><a href="#jupyterhub-orientation" class="nav-link" data-scroll-target="#jupyterhub-orientation">JupyterHub orientation</a>
+<ul class="collapse">
+<li><a href="#first-impressions" class="nav-link" data-scroll-target="#first-impressions">First impressions</a></li>
+<li><a href="#terminal" class="nav-link" data-scroll-target="#terminal">Terminal</a></li>
+</ul></li>
+<li><a href="#clone-the-hackathon-github-repository" class="nav-link" data-scroll-target="#clone-the-hackathon-github-repository">Clone the Hackathon GitHub repository</a></li>
+<li><a href="#jupyter-notebooks" class="nav-link" data-scroll-target="#jupyter-notebooks">Jupyter notebooks</a></li>
 <li><a href="#how-to-i-end-my-session" class="nav-link" data-scroll-target="#how-to-i-end-my-session">How to I end my session?</a></li>
 </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon/edit/main/tutorials/00_Setup.md" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon/issues/new" class="toc-action">Report an issue</a></p></div></div></nav></div>
@@ -240,44 +314,180 @@
 <h1 class="title d-none d-lg-block display-7">00. Setup for tutorials</h1>
 </header>
 
-<div class="callout-tip callout callout-style-default callout-captioned">
+<p>We start off by getting setup and connected for the tutorials. Please login to the JupyterHub, which will take a few minutes to load.</p>
+<p>Please go to <a href="https://openscapes.2i2c.cloud/hub/" class="uri">https://openscapes.2i2c.cloud/hub/</a>. Log in with your GitHub Account, and select “Small”.</p>
+<p>You can also click this badge to launch the Hub:</p>
+<div id="fig-anonymous-1223930" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><a href="https://openscapes.2i2c.cloud"><img src="https://img.shields.io/static/v1.svg?logo=Jupyter&amp;label=Openscapes&amp;message=AWS+us-west-2&amp;color=orange" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p>While the Hub loads, we’ll:</p>
+<ul>
+<li>discuss cloud environments</li>
+<li>see how my Desktop is setup</li>
+<li>Fork the Hackathon repository at github.com</li>
+<li>discuss python and conda environments</li>
+</ul>
+<p>Then, when the hub is loaded we’ll get oriented and clone the forked repo into our cloud environment.</p>
+<section id="cloud-environment" class="level2">
+<h2 class="anchored" data-anchor-id="cloud-environment">Cloud environment</h2>
+<p>A brief overview about the <a href="https://nasa-openscapes.github.io/2021-Cloud-Hackathon/clinic/jupyterhub.html">NASA Openscapes Cloud Environment</a> (following lessons from the Clinic).</p>
+<section id="cloud-infrastructure" class="level4">
+<h4 class="anchored" data-anchor-id="cloud-infrastructure">Cloud infrastructure</h4>
+<ul>
+<li>Cloud: AWS <a href="https://goo.gl/maps/BYqGYxahpwJgzKwR8"><code>us-west-2</code></a>
+<ul>
+<li>Data: AWS S3 (cloud) and <a href="https://earthdata.nasa.gov/eosdis/daacs">NASA DAAC</a> data centers (on-prem).</li>
+<li>Cloud compute environment: <a href="https://docs.2i2c.org/en/latest/">2i2c Jupyterhub deployment</a>
+<ul>
+<li>IDE: <a href="https://jupyterlab.readthedocs.io/en/stable/getting_started/overview.html"><strong>JupyterLab</strong></a></li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="this-is-how-my-desktop-is-setup" class="level2">
+<h2 class="anchored" data-anchor-id="this-is-how-my-desktop-is-setup">This is how my desktop is setup</h2>
+<p>I’ll screenshare to show and/or talk through how I have oriented the following software we’re using:</p>
+<ul>
+<li><a href="https://openscapes.2i2c.cloud/hub/">2i2c Jupyterhub</a> (our main workspace)</li>
+<li><a href="https://nasa-openscapes.github.io/2021-Cloud-Hackathon/tutorials/">Cloud Hackathon Book</a> (my teaching notes, your reference material)</li>
+<li>Zoom Chat</li>
+<li>Slack</li>
+</ul>
+</section>
+<section id="fork-the-hackathon-github-repository" class="level2">
+<h2 class="anchored" data-anchor-id="fork-the-hackathon-github-repository">Fork the Hackathon GitHub repository</h2>
+<p>“How do I get the tutorial repository into the Hub?”. There are 2 steps. The first is from GitHub.com to fork the tutorial repository so that there is a connected copy in your user account that you can edit and push changes that won’t affect the nasa-openscapes copy.</p>
+<p>Go to <a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon" class="uri">https://github.com/nasa-openscapes/2021-Cloud-Hackathon</a> and fork the repository.</p>
+<p><img src="../clinic/img/fork-tutorials.png" class="img-fluid"></p>
+</section>
+<section id="python-and-conda-environments" class="level2">
+<h2 class="anchored" data-anchor-id="python-and-conda-environments">Python and Conda environments</h2>
+<p><a href="https://foundations.projectpythia.org/foundations/why-python.html"><strong>Why Python?</strong></a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://pangeo-data.github.io/img/scientific-python-28-638.jpg" class="img-fluid figure-img"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Python Data Stack. Source: Jake VanderPlas, “The State of the Stack,” SciPy Keynote (SciPy 2015).</figcaption><p></p>
+</figure>
+</div>
+<p><strong>Default Python Environment:</strong></p>
+<p>We’ve set up the Python environment with conda.</p>
+<div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target="#callout-1" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-Text to paste into Zoom Chat
+Conda environment
 </div>
 <button type="button" class="callout-btn-toggle btn d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></button>
 </div>
 <div id="callout-1" class="callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Please go to https://openscapes.2i2c.cloud/hub/ - log in with your GitHub Account, and select “Small”</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">name</span><span class="kw">:</span><span class="at"> openscapes</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">channels</span><span class="kw">:</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> conda-forge</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dependencies</span><span class="kw">:</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> python=3.9</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> pangeo-notebook</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> awscli~=1.20</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> boto3~=1.19</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> gdal~=3.3</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> rioxarray~=0.8</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> xarray~=0.19</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> h5netcdf~=0.11</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> netcdf4~=1.5</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> h5py~=2.10</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> geoviews~=1.9</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> matplotlib-base~=3.4</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> hvplot~=0.7</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> pyproj~=3.2</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> bqplot~=0.12</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> geopandas~=0.10</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> zarr~=2.10</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> cartopy~=0.20</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> shapely==1.7.1</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> pyresample~=1.22</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> joblib~=1.1</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> pystac-client~=0.3</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> s3fs~=2021.7</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> ipyleaflet~=0.14</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> sidecar~=0.5</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> jupyterlab-geojson~=3.1</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> jupyterlab-git</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> jupyter-resource-usage</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> ipympl~=0.6</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> conda-lock~=0.12</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> pooch~=1.5</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> pip</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">pip</span><span class="kw">:</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> tqdm</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> harmony-py</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> earthdata</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> zarr-eosdis-store</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
-<section id="this-is-how-my-desktop-is-setup" class="level2">
-<h2 class="anchored" data-anchor-id="this-is-how-my-desktop-is-setup">This is how my desktop is setup</h2>
-<p>This will get you set up and answer the question “How do I get the tutorial repository into the Hub?””</p>
+<section id="bash-terminal-and-installed-software" class="level3">
+<h3 class="anchored" data-anchor-id="bash-terminal-and-installed-software">Bash terminal and installed software</h3>
+<p>Libraries that are available from the terminal</p>
+<ul>
+<li>gdal 3.3 commands ( gdalinfo, gdaltransform…)</li>
+<li>hdf5 commands ( h5dump, h5ls..)</li>
+<li>netcdf4 commands (ncdump, ncinfo …)</li>
+<li>jq (parsing json files or streams from curl)</li>
+<li>curl (fetch resources from the web)</li>
+<li>awscli (AWS API client, to interact with AWS cloud services)</li>
+<li>vim (editor)</li>
+<li>tree ( directory tree)</li>
+<li>more …</li>
+</ul>
 </section>
-<section id="cloudjupyterhub-overview" class="level2">
-<h2 class="anchored" data-anchor-id="cloudjupyterhub-overview">Cloud/JupyterHub overview</h2>
-<p>A brief overview about the <a href="https://nasa-openscapes.github.io/2021-Cloud-Hackathon/clinic/jupyterhub.html">NASA Openscapes Cloud Environment</a> (following lessons from the Clinic).</p>
+<section id="updating-the-environment" class="level3">
+<h3 class="anchored" data-anchor-id="updating-the-environment">Updating the environment</h3>
+<p>Scientific Python is a vast space and we only included libraries that are needed in our tutorials. Our default environment can be updated to include any Python library that’s available on pip or conda.</p>
+<p>The project used to create our default environment is called <strong>corn</strong> (as it can include many Python kernels).</p>
+<p>If we want to update a library or install a whole new environment we need to open an issue on this repository. We can help your teams do this during project hacktime.</p>
 </section>
-<section id="github-setup-for-tutorials" class="level2">
-<h2 class="anchored" data-anchor-id="github-setup-for-tutorials">GitHub setup for tutorials</h2>
-<p>See <a href="https://nasa-openscapes.github.io/2021-Cloud-Hackathon/logistics/github-workflows.html#first-time-setup">GitHub First-Time Setup</a> page</p>
+<section id="corn" class="level3">
+<h3 class="anchored" data-anchor-id="corn"><a href="https://github.com/NASA-Openscapes/corn">corn 🌽</a></h3>
 </section>
-<section id="practice-creating-a-jupyter-notebook" class="level2">
-<h2 class="anchored" data-anchor-id="practice-creating-a-jupyter-notebook">Practice creating a jupyter notebook?</h2>
 </section>
-<section id="open-a-tutorial-template-notebook" class="level2">
-<h2 class="anchored" data-anchor-id="open-a-tutorial-template-notebook">Open a tutorial template notebook</h2>
-<p>Navigate to <code>tutorials-template</code> folder. Our first tutorial is <code>Data_discovery_with_cmr.ipynb</code></p>
+<section id="jupyterhub-orientation" class="level2">
+<h2 class="anchored" data-anchor-id="jupyterhub-orientation">JupyterHub orientation</h2>
+<p>Now that the JupyterHubs have loaded, let’s get oriented.</p>
+<section id="first-impressions" class="level3">
+<h3 class="anchored" data-anchor-id="first-impressions">First impressions</h3>
+<p>Reiterate a few things we just talked about (TODO - what’s useful here Luis?)</p>
+<ul>
+<li>“home directory”</li>
+<li>big blue button</li>
+<li>environments we just talked about (?)</li>
+</ul>
+</section>
+<section id="terminal" class="level3">
+<h3 class="anchored" data-anchor-id="terminal">Terminal</h3>
+<p>Open terminal: Big blue “+” button &gt; Terminal</p>
+<p>You’ll start off in your home directory, <code>/home/jovyan</code>. To confirm this is your present working directory (pwd), type:</p>
+<pre class=".{bash}"><code>pwd</code></pre>
+</section>
+</section>
+<section id="clone-the-hackathon-github-repository" class="level2">
+<h2 class="anchored" data-anchor-id="clone-the-hackathon-github-repository">Clone the Hackathon GitHub repository</h2>
+<p>Now we’ll clone the GitHub repository, using the terminal.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/YOUR-USERNAME/2021-Cloud-Hackathon</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>These two github steps are also posted in <a href="https://nasa-openscapes.github.io/2021-Cloud-Hackathon/logistics/github-workflows.html">github workflows: first-time setup</a>.</p>
+</section>
+<section id="jupyter-notebooks" class="level2">
+<h2 class="anchored" data-anchor-id="jupyter-notebooks">Jupyter notebooks</h2>
+<p>Let’s get oriented to Jupyter notebooks, which we’ll use in all the tutorials.</p>
+<p>Big blue button &gt; Notebook &gt; …</p>
 </section>
 <section id="how-to-i-end-my-session" class="level2">
 <h2 class="anchored" data-anchor-id="how-to-i-end-my-session">How to I end my session?</h2>
-<p><em>(Also see <a href="https://nasa-openscapes.github.io/2021-Cloud-Hackathon/clinic/jupyterhub.html#how-do-i-end-my-openscapes-session-will-i-lose-all-of-my-work">How do I end my Openscapes session? Will I lose all of my work?</a>)</em></p>
+<p><em>(Also see <a href="https://nasa-openscapes.github.io/2021-Cloud-Hackathon/clinic/jupyterhub.html#how-do-i-end-my-openscapes-session">How do I end my Openscapes session? Will I lose all of my work?</a>)</em></p>
 <p>When you are finished working for the day it is important to explicitly log out of your Openscapes session. The reason for this is it will save us a bit of money! When you keep a session active it uses up AWS resources and keeps a series of virtual machines deployed.</p>
 <p>Stopping the server happens automatically when you log out, so navigate to “File -&gt; Log Out” and just click “Log Out”!</p>
 <p>!!! NOTE “logging out” - Logging out will <strong>NOT</strong> cause any of your work to be lost or deleted. It simply shuts down some resources. It would be equivalent to turning off your desktop computer at the end of the day.</p>
