@@ -1,5 +1,5 @@
 ---
-title: Projects
+title: Projects Overview
 ---
 
 *The following was borrowed and adapted from the excellent [SnowEx Hackathon 2021](https://snowex-hackweek.github.io/website/projects/index.html)*
@@ -41,3 +41,8 @@ On the final day of the Cloud Hackathon, each team will present their work in a 
 * If you have a project idea already brewing, we encourage you to share that with participants on our Slack channel `2021-nasacloudhack-projects`.
 * Feel free to explore various projects and initiate conversations. The goal is to gather as much information as you can to inform your decision about which team to join during the Cloud Hackathon
 
+## How to start hacking
+
+Suggestions for how to set up your GitHub workflow is in the [GitHub Workflows](https://nasa-openscapes.github.io/2021-Cloud-Hackathon/logistics/prerequisites.html) section. 
+
+This is a [great slide deck](https://docs.google.com/presentation/d/1qJDpFdS42kF5pcrbmxm1xFWzNoNamVrnMFelwAOh73Q/edit#slide=id.p) for collaborating on project teamwork collaborating from [SnowEx Hackweek](https://snowex-hackweek.github.io/website/index.html).

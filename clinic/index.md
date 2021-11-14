@@ -1,5 +1,5 @@
 ---
-title: Pre-Hackathon Clinic
+title: Overview and Agenda
 ---
 
 Before the Hackathon, we are hosting a 2-hour Clinic where you can build skills and practice the tooling and workflow that we will use during the Hackathon. 

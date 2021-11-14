@@ -12,8 +12,9 @@ author: "This Hackathon is co-hosted by PODAAC, NSIDC DAAC, and LPDAAC. Addition
 
 Welcome to **Cloud Hackathon: Transitioning Earthdata Workflows to the Cloud,** co-hosted by the NASA EOSDIS Physical Oceanography Distributed Active Archive Center ([PO.DAAC](https://podaac.jpl.nasa.gov/)), National Snow and Ice Data Center DAAC ([NSIDC DAAC](https://nsidc.org/daac)), Land Processes Distributed Active Archive Center ([LP.DAAC](https://lpdaac.usgs.gov/)), with support provided by [ASDC DAAC](https://asdc.larc.nasa.gov/), [GES DISC](https://disc.gsfc.nasa.gov/), [IMPACT](https://impact.earthdata.nasa.gov/), and [NASA Openscapes](https://nasa-openscapes.github.io/).
 
-The Cloud Hackathon will take place **virtually** from **November 15-19, 2021.** The event is free to attend, but an application is required. The application period (September 21 - October 12, 2021) is now closed. Those who applied will be informed of the outcome on or around October 20th, 2021. 
+The Cloud Hackathon will take place **virtually** from **November 15-19, 2021.** The event is free to attend, but an application is required. The application period (September 21 - October 12, 2021) is now closed. Those who applied will be informed of the outcome on or around October 20th, 2021.
 
+[![](https://img.shields.io/static/v1.svg?logo=Jupyter&label=Openscapes&message=AWS+us-west-2&color=orange)](https://openscapes.2i2c.cloud)
 
 
 ## About
@@ -92,9 +93,11 @@ The 2021 Cloud Hackathon is a safe learning space and all participants are requi
 Cloud Hackathon: Transitioning Earthdata Workflows to the Cloud is co-hosted by NASA's PO.DAAC, NSIDC DAAC, LP.DAAC, with support from ASDC DAAC, GES DISC and the NASA Openscapes Project, and cloud computing infrastructure by 2i2c. <br>
 ![Screen Shot 2021-09-15 at 5 22 15 PM](https://user-images.githubusercontent.com/2915555/133525653-2a2278b1-1015-4350-b2a5-160d125aaaf7.png) <br>
 
-Other resources that have helped inform our hackathon: 
+We thank all of the additional NASA staff that have have joined as helpers.  
 
-eScience Institute, University of Washington: 
-- https://uwhackweek.github.io/hackweeks-as-a-service/intro.html
-- https://snowex-hackweek.github.io/website/intro.html
-- https://icesat-2hackweek.github.io/learning-resources/
+Thank you to the open science community that has created software, teaching resources, and workflows that we have been able to build heavily from! These include: 
+
+- eScience Institute, University of Washington: 
+  - https://uwhackweek.github.io/hackweeks-as-a-service/intro.html
+  - https://snowex-hackweek.github.io/website/intro.html
+  - https://icesat-2hackweek.github.io/learning-resources/
