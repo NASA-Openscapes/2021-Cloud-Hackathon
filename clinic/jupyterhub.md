@@ -89,17 +89,17 @@ You may also upload files from your local system using the upload button (up-poi
 Simple, example GitHub/git/local-workspace workflows for getting a tutorial started in your Openscapes instance and working on a group project are provided. The [getting started on a tutorial](https://icesat-2hackweek.github.io/learning-resources/tutorials/getting_started) workflow briefly reviews much of the information in this preliminary exercise along with steps for making and saving notes or other changes as you work through the tutorial and keeping it updated with the original, master copy. The [basic git workflow for a project](https://icesat-2hackweek.github.io/learning-resources/projects/example_workflow) serves as a reminder of the git workflow for working on a group project while minimizing code conflicts that could result from multiple people making changes to the same files simultaneously.
 <br>
 
-## How do I end my Openscapes session? Will I lose all of my work?
+## How do I end my Openscapes session? 
 
-When you are finished working for the day it is important to explicitly log out of your Openscapes session. The reason for this is it will save us a bit of money! When you keep a session active it uses up AWS resources and keeps a series of virtual machines deployed.
+When you are finished working for the day it is important to explicitly log out of your Openscapes session. The reason for this is it will save money and is a good habit to be in. When you keep a session active it uses up AWS resources and keeps a series of virtual machines deployed.
 
-Stopping the server happens automatically when you log out, so navigate to "File -> Log Out" and just click "Log Out"!
+Stopping the server happens automatically when you log out, so navigate to "File -> Log Out" and click "Log Out"!
 
 ![hub-control-panel-button](https://github.com/uwhackweek/jupyterbook-template/raw/main/book/img/hub-logout-button.png)
 
-!!! warning "logging out"
-    Logging out will **NOT** cause any of your work to be lost or deleted. It simply shuts down some resources. It would be equivalent to turning off your desktop computer at the end of the day.
+### Will I lose all of my work?
 
+Logging out will **NOT** cause any of your work to be lost or deleted. It simply shuts down some resources. It would be equivalent to turning off your desktop computer at the end of the day.
 
 ## References
 
