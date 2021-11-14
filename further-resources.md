@@ -13,6 +13,7 @@ title: Further Resources
 
 ## Additional tutorials
 
-- [Data_Access__Direct_S3_Access__PODAAC_ECCO_SSH](https://nasa-openscapes.github.io/2021-Cloud-Hackathon/tutorials/Additional_Resources__Data_Access__Direct_S3_Access__PODAAC_ECCO_SSH.ipynb)
-- [Direct_S3_Access__gdalvrt](https://nasa-openscapes.github.io/2021-Cloud-Hackathon/tutorials//Additional_Resources__Direct_S3_Access__gdalvrt.ipynb)
-- [Direct_S3_Access__rioxarray_clipping](https://nasa-openscapes.github.io/2021-Cloud-Hackathon/tutorials/Additional_Resources__Direct_S3_Access__rioxarray_clipping.ipynb)
+- [Data_Access__Direct_S3_Access__PODAAC_ECCO_SSH](https://github.com/NASA-Openscapes/2021-Cloud-Hackathon/blob/main/tutorials/Additional_Resources__Data_Access__Direct_S3_Access__PODAAC_ECCO_SSH.ipynb) using CMR-STAC API to retrieve S3 links
+- [Direct access to ECCO data in S3 (from us-west-2)](https://github.com/podaac/ECCO/blob/main/Data_Access/cloud_direct_access_s3.ipynb) example, with netCDF data
+- [Direct_S3_Access__gdalvrt](https://github.com/NASA-Openscapes/2021-Cloud-Hackathon/blob/main/tutorials/Additional_Resources__Direct_S3_Access__gdalvrt.ipynb)
+- [Direct_S3_Access__rioxarray_clipping](https://github.com/NASA-Openscapes/2021-Cloud-Hackathon/blob/main/tutorials/Additional_Resources__Direct_S3_Access__rioxarray_clipping.ipynb)
