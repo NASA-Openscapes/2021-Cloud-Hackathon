@@ -8,4 +8,4 @@
 | 10:50 am | Tutorial 4: Authentication for NASA Earthdata | Aaron Friesz, LP DAAC |
 | 11:05 am | Tutorial 5: Direct S3 Access | Aaron Friesz, LP DAAC |
 | 11:35 am | Team Hack Time | All |
-| 12:55 pm | Closing |                    |
+| 12:55 pm | Closing | Julie Lowndes, Openscapes |

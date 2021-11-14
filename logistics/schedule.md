@@ -10,15 +10,6 @@ All Cloud Hackathon activities are **virtual**. We will engage primarily with th
 
 **Zoom links** will be posted on the `2021-nasacloudhack-general` Slack channel
  
-## Pre-Hackathon Clinic: November 9
-
-This Clinic is optional and we will share a recording that participants can review ahead of time. 
-
-
-```{.include}
-_schedule-clinic.md
-```
-
 ## Hackathon Day 1: November 15
 
 ```{.include}
@@ -110,3 +101,13 @@ _welcome-day2-on.md
 ### Closing Day 5
 
 Thank you! More details upcoming
+
+## Pre-Hackathon Clinic: November 9
+
+This Clinic is optional and we will share a recording that participants can review ahead of time. 
+
+
+```{.include}
+_schedule-clinic.md
+```
+

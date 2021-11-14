@@ -7,4 +7,4 @@
 | 10:00 am | Tutorial 7: Data Subsetting and Transformation Services in the Cloud | Amy Steiker, NSIDC |
 | 10:40 am | Q&A and Break | |
 | 11:00 am | Team Hack Time | All |
-| 12:55 pm | Closing | |
+| 12:55 pm | Closing | Catalina Oaida, PO.DAAC |
