@@ -2,19 +2,19 @@
 title: GitHub Workflows
 ---
 
-We will be live-coding during the tutorials and collaborating during the project hack-time, using GitHub in both cases. Here is how to setup and work work for each. 
+We will be live-coding during the tutorials and collaborating during the project hack-time, using GitHub in both cases. Here is how to setup and work for each. 
+
+Note: we'll be using Git together with GitHub and will talk about them interchangeably. 
 
 ## First-Time Setup
 
 ### Fork the hackathon repo
 
-Go to [https://github.com/nasa-openscapes/2021-Cloud-Hackathon](https://github.com/nasa-openscapes/2021-Cloud-Hackathon) and fork the repository.
+Go to [https://github.com/nasa-openscapes/2021-Cloud-Hackathon](https://github.com/nasa-openscapes/2021-Cloud-Hackathon) and fork the repository. This will enable you to you can edit your own copy and live-code with us
 
 > Note: The term fork means that you are going to copy the project into your own user space in Github
 
 ![Fork a copy](../clinic/img/fork-tutorials.png)
-
-So you can edit your own copy and live-code with us
 
 ### Clone your forked repo into JupyterHub
 

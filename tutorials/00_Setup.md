@@ -2,23 +2,24 @@
 title: 00. Setup for tutorials
 ---
 
-::: {.callout-tip collapse="true"}
-## Text to paste into Zoom Chat
+We start off by getting setup and connected for the tutorials. Please login to the JupyterHub, which will take a few minutes to load. 
 
-Please go to https://openscapes.2i2c.cloud/hub/ - log in with your GitHub Account, and select "Small"
-:::
+Please go to <https://openscapes.2i2c.cloud/hub/>. Log in with your GitHub Account, and select "Small".
 
+You can also click this badge to launch the Hub: 
 
-## GitHub setup for tutorials
+[![](https://img.shields.io/static/v1.svg?logo=Jupyter&label=Openscapes&message=AWS+us-west-2&color=orange)](https://openscapes.2i2c.cloud)
 
-This will get you set up and answer the question "How do I get the tutorial repository into the Hub?""
+While the Hub loads, we'll:
 
-* [Git setup](../clinic/notebooks.html): The first time we access our cloud environment we'll be asked to login with out Github account, this section will guide us to setup a Github account and setup our credentials in the Openscapes hub.
+- discuss cloud environments
+- see how my Desktop is setup
+- Fork the Hackathon repository at github.com
+- discuss python and conda environments
 
-* [Git flow](../logistics/github-workflows.html): When we work in a collaborative environment we usually run into conflicts while updating the same resources, this section will guid us on the basic git operations we'll use during the hack week.
+Then, when the hub is loaded we'll get oriented and clone the forked repo into our cloud environment.
 
-
-## Cloud Environment
+## Cloud environment
 
 A brief overview about the [NASA Openscapes Cloud Environment](https://nasa-openscapes.github.io/2021-Cloud-Hackathon/clinic/jupyterhub.html) (following lessons from the Clinic).
 
@@ -31,16 +32,30 @@ A brief overview about the [NASA Openscapes Cloud Environment](https://nasa-open
 
 ## This is how my desktop is setup
 
-[![Openscapes Hub](https://img.shields.io/static/v1.svg?logo=Jupyter&label=Openscapes&message=AWS+us-west-2&color=orange)](https://openscapes.2i2c.cloud)
+I'll screenshare to show and/or talk through how I have oriented the following software we're using: 
 
+- [2i2c Jupyterhub](https://openscapes.2i2c.cloud/hub/) (our main workspace)
+- [Cloud Hackathon Book](https://nasa-openscapes.github.io/2021-Cloud-Hackathon/tutorials/) (my teaching notes, your reference material)
+- Zoom Chat
+- Slack
 
-#### Python and Conda environments
+## Fork the Hackathon GitHub repository
+
+"How do I get the tutorial repository into the Hub?". There are 2 steps. The first is from GitHub.com to fork the tutorial repository so that there is a connected copy in your user account that you can edit and push changes that won't affect the nasa-openscapes copy.
+
+Go to <https://github.com/nasa-openscapes/2021-Cloud-Hackathon> and fork the repository.
+
+![](../clinic/img/fork-tutorials.png)
+
+## Python and Conda environments
 
 [**Why Python?**](https://foundations.projectpythia.org/foundations/why-python.html)
 
-![Caption: The Python Data Stack. Source: Jake VanderPlas, “The State of the Stack,” SciPy Keynote (SciPy 2015).](https://pangeo-data.github.io/img/scientific-python-28-638.jpg)
+![Python Data Stack. Source: Jake VanderPlas, “The State of the Stack,” SciPy Keynote (SciPy 2015).](https://pangeo-data.github.io/img/scientific-python-28-638.jpg)
 
-Default Python Environment:
+**Default Python Environment:**
+
+We've set up the Python environment with conda. 
 
 ::: {.callout-note collapse="true"}
 
@@ -110,19 +125,54 @@ Libraries that are available from the terminal
 Scientific Python is a vast space and we only included libraries that are needed in our tutorials.
 Our default environment can be updated to include any Python library that's available on pip or conda.
 
-The project used to create our default environment is called **corn** (as it can include many Python kernels)
+The project used to create our default environment is called **corn** (as it can include many Python kernels).
 
-If we want to update a library or install a whole new environment we need to open an issue on this repository
+If we want to update a library or install a whole new environment we need to open an issue on this repository. We can help your teams do this during project hacktime. 
 
 ### [corn 🌽](https://github.com/NASA-Openscapes/corn)
 
-## Open a tutorial template notebook
+## JupyterHub orientation
 
-Navigate to `tutorials-template` folder. Our first tutorial is `Data_discovery_with_cmr.ipynb`
+Now that the JupyterHubs have loaded, let's get oriented.
+
+### First impressions
+
+Reiterate a few things we just talked about (TODO - what's useful here Luis?)
+
+- "home directory"
+- big blue button
+- environments we just talked about (?)
+
+### Terminal
+
+Open terminal: Big blue "+" button > Terminal
+
+You'll start off in your home directory, `/home/jovyan`. To confirm this is your present working directory (pwd), type: 
+
+```.{bash}
+pwd
+```
+
+
+## Clone the Hackathon GitHub repository
+
+Now we'll clone the GitHub repository, using the terminal. 
+
+```{.bash}
+git clone https://github.com/YOUR-USERNAME/2021-Cloud-Hackathon
+```
+
+These two github steps are also posted in [github workflows: first-time setup](https://nasa-openscapes.github.io/2021-Cloud-Hackathon/logistics/github-workflows.html).
+
+## Jupyter notebooks
+
+Let's get oriented to Jupyter notebooks, which we'll use in all the tutorials. 
+
+Big blue button > Notebook > ...
 
 
 ## How to I end my session?
-*(Also see [How do I end my Openscapes session? Will I lose all of my work?](https://nasa-openscapes.github.io/2021-Cloud-Hackathon/clinic/jupyterhub.html#how-do-i-end-my-openscapes-session-will-i-lose-all-of-my-work))*
+*(Also see [How do I end my Openscapes session? Will I lose all of my work?](https://nasa-openscapes.github.io/2021-Cloud-Hackathon/clinic/jupyterhub.html#how-do-i-end-my-openscapes-session))*
 
 When you are finished working for the day it is important to explicitly log out of your Openscapes session. The reason for this is it will save us a bit of money! When you keep a session active it uses up AWS resources and keeps a series of virtual machines deployed.
 
