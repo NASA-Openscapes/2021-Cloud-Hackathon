@@ -114,17 +114,16 @@ Logging out will **NOT** cause any of your work to be lost or deleted. It simply
 
 *from participants during our first Clinic*
 
-**I have an empty ‘share’ folder**. That's expected. There shouldn't be anything in the 'share' folder
+**I have an empty ‘`shared`’ folder**. That's expected. There shouldn't be anything in the ‘`shared/`’  folder
 
 **After the 3 months are up, what do we do with our work on the server?** You’ll have them since you can back everything up with GitHub. We can follow up with more details of what happens on the 2i2c side
 
-**Can we use Matlab with JupyterHub?** You can also use [Octave kernel](https://datascience-enthusiast.com/Miscellaneous/Jupyter_R_Python_Julia_Octave.html) as a Matlab replacement. It is open source and free
+**Can we use Matlab with JupyterHub?** You can also use [Octave kernel](https://datascience-enthusiast.com/Miscellaneous/Jupyter_R_Python_Julia_Octave.html) as a Matlab replacement. It is open source and free. If you want to integrate Matlab, there is a project to do so [jupyter-matlab-proxy](https://github.com/mathworks/jupyter-matlab-proxy)
 
-**What's the difference between lpdaac and nsidc kernels?** These are environments that are set up for different tutorials
 
 **Why do we have the same home directory as /home/jovyan?** /home/jovyan is the default home directory for 'jupyter' based images/dockers. It is the historic home directory for Jupyter deployments. 
 
-**/home/jovyan is the default home directory for 'jupyter' based images/dockers**
+**/home/jovyan is the default home directory for *jupyter*-based deployments**
 
 **Can other users see the .git-credentials file in my /home/jovyan folder?** No, other users can not see your creds
 
