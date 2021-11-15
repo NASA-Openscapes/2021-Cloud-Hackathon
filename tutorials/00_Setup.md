@@ -16,7 +16,11 @@ Log in with your GitHub Account, and select "Small".
 
 ![](img/JupyterHub-Login.png){width="500"}
 
-> Note: It takes a few minutes for the Hub to load. Please be patient!
+![](img/JupyterHub-SelectSmall.png){width="500"}
+
+![](img/JupyterHub-Loading.png){width="500"}
+
+> **Note:** It takes a few minutes for the Hub to load. Please be patient!
 
 While the Hub loads, we'll:
 
@@ -176,7 +180,7 @@ Once the repository is cloned, you will see a new directory in the "File Browser
 
 ![](img/JupyterHub-Cloned-Repo-FileBrowser.png)
 
-> REMEMBER: This is your copy (or fork) of the hackathon materials and jupyter notebooks. So feel free to make any changes to the content of this repository.
+> **REMEMBER:** This is your copy (or fork) of the hackathon materials and jupyter notebooks. So feel free to make any changes to the content of this repository.
 
 ## Jupyter notebooks
 
