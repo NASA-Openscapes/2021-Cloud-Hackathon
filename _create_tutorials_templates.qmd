@@ -29,9 +29,6 @@ for (f in ipynb_files) {  ## f = ipynb_files[3]
   ## remove code from code chunks (leaving only #), redo image filepaths, overwrite the .qmd
   read_file(glue("tutorials-templates/{f}.qmd")) %>%
     str_replace_all("```\\{python(.*)\\}[\\S\\s]*?```","```\\{python\\1\\}\n#\n\n```") %>%
-    # TODO: revisit changing the image filepaths with the new assets/images
-    # str_replace_all("data/(.*).png", "../tutorials/data/\\1.png" ) %>%
-    # str_replace_all("img/(.*).png", "../tutorials/img/\\1.png" ) %>%
     write_file(glue("tutorials-templates/{f}.qmd"))
   
   ## convert template to .ipynb
