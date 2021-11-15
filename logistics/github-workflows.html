@@ -86,7 +86,7 @@
   <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
   <script src="../site_libs/quarto-search/fuse.min.js"></script>
   <script src="../site_libs/quarto-search/quarto-search.js"></script>
-  <link href="../tutorials/00_Setup.html" rel="next">
+  <link href="../tutorials/index.html" rel="next">
   <link href="../logistics/prerequisites.html" rel="prev">
   <script src="../site_libs/quarto-html/quarto.js"></script>
   <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -175,7 +175,7 @@
       <div class="collapse  show" id="logistics-collapse">
         <ul class="list-unstyled sidebar-item-contents">
           <li class="sidebar-item">
-  <a href="../logistics/for-participants-helpers.html" class="">For participants &amp; helpers</a>
+  <a href="../logistics/index.html" class="">Logistics overview</a>
 </li>
           <li class="sidebar-item">
   <a href="../logistics/schedule.html" class="">Schedule</a>
@@ -200,6 +200,9 @@
         </div>
       <div class="collapse  " id="tutorials-collapse">
         <ul class="list-unstyled sidebar-item-contents">
+          <li class="sidebar-item">
+  <a href="../tutorials/index.html" class="">Tutorials Overview</a>
+</li>
           <li class="sidebar-item">
   <a href="../tutorials/00_Setup.html" class="">00. Setup for tutorials</a>
 </li>
@@ -262,7 +265,7 @@
       <div class="collapse  " id="projects-collapse">
         <ul class="list-unstyled sidebar-item-contents">
           <li class="sidebar-item">
-  <a href="../projects/projects-overview.html" class="">Projects Overview</a>
+  <a href="../projects/index.html" class="">Projects Overview</a>
 </li>
           <li class="sidebar-item">
   <a href="../projects/hackathon-projects.html" class="">Hackathon Projects</a>
@@ -378,6 +381,7 @@
 </section>
 <section id="daily-setup" class="level2">
 <h2 class="anchored" data-anchor-id="daily-setup">Daily Setup</h2>
+<p>If you have any conflicts with the following steps, you will likely need to commit your work, or clear your work if you don’t want to keep anything you’ve done. See below for <a href="#git-update-revert-etc">Git update, revert, etc</a></p>
 <section id="github-get-the-latest" class="level4">
 <h4 class="anchored" data-anchor-id="github-get-the-latest">GitHub: Get the latest</h4>
 <p>This has 2 steps:</p>
@@ -388,9 +392,10 @@
 <ol start="2" type="1">
 <li>From the terminal in Jupyterhub: <code>git pull</code></li>
 </ol>
-<p><a href="https://openscapes.2i2c.cloud/hub/" class="uri">https://openscapes.2i2c.cloud/hub/</a></p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> 2021-Cloud-Hackathon</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Go to <a href="https://openscapes.2i2c.cloud/hub/" class="uri">https://openscapes.2i2c.cloud/hub/</a></p>
+<p>Go to your terminal and make sure you are in the <code>2021-Cloud-Hackathon</code> directory (double check with <code>pwd</code> and move with <code>cd</code>)</p>
+<p>Then git pull the repository:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="git-update-revert-etc" class="level2">
@@ -401,12 +406,12 @@
 <p>There are several ways to delete your local changes if you were playing around and want to reset. Here are a few:</p>
 <p><strong>Undo changes you’ve maybe saved or committed, but not pushed</strong>. This is less time and internet intensive (no new clone/download).</p>
 <p>If you’ve got changes saved, but not yet staged, committed, or pushed, you’ll delete unstaged changes in the working directory with clean:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> YOUR-REPO</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clean <span class="at">-df</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">--</span> .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You’ll need to make sure you’re in the github repository (use <code>pwd</code> to check your present working directory and <code>cd</code> to change directory)</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clean <span class="at">-df</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">--</span> .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Burn it all down</strong> - delete the whole repo that you have locally, and then reclone.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> YOUR-REPO</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-rf</span> YOUR-REPO</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You’ll need to make sure you’re in the github repository (use <code>pwd</code> to check your present working directory and <code>cd</code> to change directory)</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-rf</span> YOUR-REPO</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Here is a whole blog on how to go back in time (walk back changes), with conceptual diagrams, command line code, and screenshots from RStudio. <a href="https://ohi-science.org/news/github-going-back-in-time" class="uri">https://ohi-science.org/news/github-going-back-in-time</a></p>
 </section>
 <section id="update-local-branch-with-remote-main-branch" class="level3">
@@ -630,8 +635,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../tutorials/00_Setup.html">
-        <span class="nav-page-text">00. Setup for tutorials</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../tutorials/index.html">
+        <span class="nav-page-text">Tutorials Overview</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </div>
