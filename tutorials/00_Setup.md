@@ -182,8 +182,6 @@ Once the repository is cloned, you will see a new directory in the "File Browser
 
 Let's get oriented to Jupyter notebooks, which we'll use in all the tutorials.
 
-Big blue button \> Notebook \> ...
-
 ## How do I end my session?
 
 *(Also see [How do I end my Openscapes session? Will I lose all of my work?](https://nasa-openscapes.github.io/2021-Cloud-Hackathon/clinic/jupyterhub.html#how-do-i-end-my-openscapes-session))*
