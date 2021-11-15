@@ -347,7 +347,7 @@
 <li><a href="#step-5.2.-create-a-new-file" class="nav-link" data-scroll-target="#step-5.2.-create-a-new-file">Step 5.2. Create a new file</a></li>
 <li><a href="#step-5.3.-track-the-changes-to-the-new-file-git-add" class="nav-link" data-scroll-target="#step-5.3.-track-the-changes-to-the-new-file-git-add">Step 5.3. Track the changes to the new file (<code>git add</code>)</a></li>
 <li><a href="#step-5.4.-commit-the-changes-to-the-new-file-git-commit" class="nav-link" data-scroll-target="#step-5.4.-commit-the-changes-to-the-new-file-git-commit">Step 5.4. Commit the changes to the new file (<code>git commit</code>)</a></li>
-<li><a href="#step-5.5.-transmit-committed-changes-to-your-github-git-push" class="nav-link" data-scroll-target="#step-5.5.-transmit-committed-changes-to-your-github-git-push">Step 5.5. Transmit committed changes to your github (<code>git push</code>)</a></li>
+<li><a href="#step-5.5.-transmit-committed-changes-to-your-github-git-push-step-5.5.-transmit-committed-changes-to-your-github-git-push" class="nav-link" data-scroll-target="#step-5.5.-transmit-committed-changes-to-your-github-git-push-step-5.5.-transmit-committed-changes-to-your-github-git-push">Step 5.5. Transmit committed changes to your github (<code>git push</code>) {#step-5.5.-transmit-committed-changes-to-your-github-(git-push}</a></li>
 </ul></li>
 </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon/edit/main/tutorials/00_Setup.md" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon/issues/new" class="toc-action">Report an issue</a></p></div></div></nav></div>
@@ -558,6 +558,8 @@ Conda environment
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.email <span class="st">"Makhan.Virdi@gmail.com"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Open a new terminal: <code>File &gt;&gt; New &gt;&gt; Terminal</code></p>
 <p><img src="img/JupyterHub-Tracking-GitConfig.png" class="img-fluid"></p>
+<p>Configure <code>git</code> to store your github credentials to avoid having to enter your github username and token each time you push changes to your repository(in <a href="#step-5.5.-transmit-committed-changes-to-your-github-(git-push),%20we%20will%20describe%20how%20to%20use%20github%20token%20instead%20of%20a%20password">Step 5.5</a></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> credential.helper store</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="step-5.2.-create-a-new-file" class="level3">
 <h3 class="anchored" data-anchor-id="step-5.2.-create-a-new-file">Step 5.2. Create a new file</h3>
@@ -578,8 +580,8 @@ Conda environment
 </blockquote>
 <p><img src="img/JupyterHub-Tracking-GitCommit.png" class="img-fluid"></p>
 </section>
-<section id="step-5.5.-transmit-committed-changes-to-your-github-git-push" class="level3">
-<h3 class="anchored" data-anchor-id="step-5.5.-transmit-committed-changes-to-your-github-git-push">Step 5.5. Transmit committed changes to your github (<code>git push</code>)</h3>
+<section id="step-5.5.-transmit-committed-changes-to-your-github-git-push-step-5.5.-transmit-committed-changes-to-your-github-git-push" class="level3">
+<h3 class="anchored" data-anchor-id="step-5.5.-transmit-committed-changes-to-your-github-git-push-step-5.5.-transmit-committed-changes-to-your-github-git-push">Step 5.5. Transmit committed changes to your github (<code>git push</code>) {#step-5.5.-transmit-committed-changes-to-your-github-(git-push}</h3>
 <p>At this stage, you have committed the changes to your git repository on your Hub. However, these changes are still on your Hub and needs to be transmitted to your repository on github (so that both the <code>local</code> copy on the JupyterHub and the <code>remote</code> copy on github are in sync).</p>
 <p>As seen in the picture below, the git extension indicates (with an orange dot on the cloud icon) that it is ready to <code>push</code> your changes to the <code>remote</code> (remote = your repository on github.com). To push to github, click the cloud button with an up arrow (circled in red in the picture).</p>
 <p><img src="img/JupyterHub-Tracking-GitPush.png" class="img-fluid"></p>
@@ -591,6 +593,9 @@ Conda environment
 <p>Once you generate the token, copy it and paste in the Hub window that prompted you to enter the “Personal Access Token”.</p>
 <p><img src="img/JupyterHub-Tracking-GitPush-With-Credentials.png" class="img-fluid"></p>
 <p>Git will show a message at the bottom right telling that the changes were “Successfully pushed”. Also, you will see that the “cloud icon with an up arrow” no longer has an orange dot, indicating that there are no more committed changes to push to the remote (github.com).</p>
+<blockquote class="blockquote">
+<p>Note: You have configured git extension to store your credentials. You will not be prompted for your login/token again!</p>
+</blockquote>
 <p><img src="img/JupyterHub-Tracking-GitPush-Success.png" class="img-fluid"></p>
 <p>That’s all. You can use the same workflow (<code>add &gt; commit &gt; push</code>) for any other new or modified files!</p>
 <hr>
