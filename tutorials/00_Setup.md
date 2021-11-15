@@ -59,6 +59,8 @@ Go to <https://github.com/nasa-openscapes/2021-Cloud-Hackathon> and fork the rep
 
 ![](../clinic/img/fork-tutorials.png)
 
+**Note:** if you've already done this in the Pre-Hackathon Clinic, you'll need to make sure you have the latest, following the [daily setup](https://nasa-openscapes.github.io/2021-Cloud-Hackathon/logistics/github-workflows.html#daily-setup) instructions.
+
 ## Discussion: Python and Conda environments
 
 [**Why Python?**](https://foundations.projectpythia.org/foundations/why-python.html)

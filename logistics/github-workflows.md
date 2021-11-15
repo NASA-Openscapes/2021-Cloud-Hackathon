@@ -28,6 +28,9 @@ git clone https://github.com/YOUR-USERNAME/2021-Cloud-Hackathon
 
 ## Daily Setup
 
+If you have any conflicts with the following steps, you will likely need to commit your work, or clear your work if you don't want to keep anything you've done. See below for [Git update, revert, etc](#git-update-revert-etc)
+
+
 #### GitHub: Get the latest 
 
 This has 2 steps: 
@@ -38,10 +41,13 @@ This has 2 steps:
 
 2. From the terminal in Jupyterhub: `git pull`
 
-<https://openscapes.2i2c.cloud/hub/>
+Go to <https://openscapes.2i2c.cloud/hub/>
+
+Go to your terminal and make sure you are in the `2021-Cloud-Hackathon` directory (double check with `pwd` and move with `cd`)
+
+Then git pull the repository: 
 
 ```{.bash}
-cd 2021-Cloud-Hackathon
 git pull
 ```
 
@@ -57,16 +63,18 @@ There are several ways to delete your local changes if you were playing around a
 
 If you've got changes saved, but not yet staged, committed, or pushed, you'll delete unstaged changes in the working directory with clean:
 
+You'll need to make sure you're in the github repository (use `pwd` to check your present working directory and `cd` to change directory)
+
 ```{.bash}
-cd YOUR-REPO
 git clean -df
 git checkout -- .
 ```
 
 **Burn it all down** - delete the whole repo that you have locally, and then reclone. 
 
+You'll need to make sure you're in the github repository (use `pwd` to check your present working directory and `cd` to change directory)
+
 ```{.bash}
-cd YOUR-REPO
 rm -rf YOUR-REPO
 ```
 
