@@ -28,12 +28,13 @@ site:
          - cloud-paradigm.md
       - section: "Logistics"
         contents:
-          - logistics/for-participants-helpers.md
+          - logistics/index.md
           - logistics/schedule.md
           - logistics/prerequisites.md
           - logistics/github-workflows.md
       - section: "Tutorials"
         contents: 
+          - tutorials/index.md
           - tutorials/00_Setup.md  ## tutorial 0
           - tutorials/01_Data_Discovery_CMR.ipynb ## tutorial 1
           - tutorials/02_Data_Discovery_CMR-STAC_API.ipynb ## tutorial 2
@@ -49,8 +50,7 @@ site:
           - tutorials-templates/index.md 
       - section: "Projects"
         contents:
-          - projects/projects-overview.md
-          - projects/workflow.md
+          - projects/index.md
           - projects/hackathon-projects.md
       - section: "Further Resources"
         contents:
