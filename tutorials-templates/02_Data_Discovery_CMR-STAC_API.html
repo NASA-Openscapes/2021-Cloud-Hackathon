@@ -473,7 +473,7 @@
 <h3 class="anchored" data-anchor-id="extract-the-coordinates-for-the-roi">Extract the coordinates for the ROI</h3>
 <div class="sourceCode" id="cb12"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>So, what just happen there? Let’s take a quick detour to break it down.</p>
-<p><img src="data/Read_GeoJSON_Explained.png" width="750"></p>
+<p><img src="../tutorials/data/Read_GeoJSON_Explained.png" width="750"></p>
 </section>
 <section id="specify-date-range" class="level3">
 <h3 class="anchored" data-anchor-id="specify-date-range">Specify date range</h3>
@@ -515,7 +515,7 @@
 <p>The filtering done in the previous steps produces a list of links to STAC Assets. Let’s print out the first ten links.</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>NOTE</strong> that HLS data is mapped to the Universal Transverse Mercator (UTM) projection and is tiled using the Sentinel-2 Military Grid Reference System (MGRS) UTM grid. Notice that in the list of links we have multiple tiles, i.e.&nbsp;<strong>T14TKL</strong> &amp; <strong>T13TGF</strong>, that intersect with our region of interest. In this case, these two tiles represent neighboring UTM zones. The tiles can be discern from the file name, which is the last element in a link (far right) following the last forward slash (/) - e.g., <strong>HLS.L30.T14TKL.2021133T172406.v1.5.B04.tif</strong>. The figure below explains where to find the tile/UTM zone from the file name.</p>
-<p><img src="data/HLS_Filename_Explained.png" width="750"></p>
+<p><img src="../tutorials/data/HLS_Filename_Explained.png" width="750"></p>
 <p>We will now split the list of links into separate logical sub-lists.</p>
 </section>
 <section id="split-data-links-list-into-logical-groupings" class="level2">
