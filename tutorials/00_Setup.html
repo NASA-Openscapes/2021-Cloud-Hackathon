@@ -324,7 +324,7 @@
   <div id="quarto-toc-sidebar" class=" pt-0 col col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-toc order-last"><nav id="TOC" role="doc-toc">
 <h2 id="toc-title">On this page</h2>
 <ul>
-<li><a href="#step-1.-login-to-the-hub-takes-a-few-minutes-to-load" class="nav-link active" data-scroll-target="#step-1.-login-to-the-hub-takes-a-few-minutes-to-load">Step 1. Login to the Hub (takes a few minutes to load)</a></li>
+<li><a href="#step-1.-login-to-the-hub" class="nav-link active" data-scroll-target="#step-1.-login-to-the-hub">Step 1. Login to the Hub</a></li>
 <li><a href="#discussion-cloud-environment" class="nav-link" data-scroll-target="#discussion-cloud-environment">Discussion: Cloud environment</a></li>
 <li><a href="#discussion-my-desktop-setup" class="nav-link" data-scroll-target="#discussion-my-desktop-setup">Discussion: My desktop setup</a></li>
 <li><a href="#step-2.-fork-the-hackathon-github-repository" class="nav-link" data-scroll-target="#step-2.-fork-the-hackathon-github-repository">Step 2. Fork the Hackathon GitHub repository</a></li>
@@ -357,12 +357,12 @@
 <h1 class="title d-none d-lg-block display-7">00. Setup for tutorials</h1>
 </header>
 
-<p>This tutorial will help you set up your JupyterHub (or Hub) with material for other tutorials (Hackathon Repository) and link your github account.</p>
-<section id="step-1.-login-to-the-hub-takes-a-few-minutes-to-load" class="level2">
-<h2 class="anchored" data-anchor-id="step-1.-login-to-the-hub-takes-a-few-minutes-to-load">Step 1. Login to the Hub (takes a few minutes to load)</h2>
-<p>Please go to <a href="https://openscapes.2i2c.cloud/hub/" class="uri">https://openscapes.2i2c.cloud/hub/</a>. Alternatively, you can also click this badge to launch the Hub:</p>
+<p>This tutorial will help you set up your JupyterHub (or Hub) with tutorials and other materials from our Cloud Hackathon github repository and connect your github account.</p>
+<section id="step-1.-login-to-the-hub" class="level2">
+<h2 class="anchored" data-anchor-id="step-1.-login-to-the-hub">Step 1. Login to the Hub</h2>
+<p>Please go to <a href="https://openscapes.2i2c.cloud/hub/" class="uri">https://openscapes.2i2c.cloud/hub/</a>. Log in with your GitHub Account, and select “Small”.</p>
+<p>Alternatively, you can also click this badge to launch the Hub:</p>
 <p><img src="https://img.shields.io/static/v1.svg?logo=Jupyter&amp;label=Openscapes&amp;message=AWS+us-west-2&amp;color=orange" class="img-fluid" data-fig-align="center"></p>
-<p>Log in with your GitHub Account, and select “Small”.</p>
 <p><img src="img/JupyterHub-2i2c.png" class="img-fluid" width="500"></p>
 <p><img src="img/JupyterHub-Login.png" class="img-fluid" width="500"></p>
 <p><img src="img/JupyterHub-SelectSmall.png" class="img-fluid" width="500"></p>
@@ -372,12 +372,12 @@
 </blockquote>
 <p>While the Hub loads, we’ll:</p>
 <ul>
-<li>discuss cloud environments</li>
-<li>see how my Desktop is setup</li>
+<li>Discuss cloud environments</li>
+<li>See how my Desktop is setup</li>
 <li>Fork the Hackathon repository at github.com</li>
-<li>discuss python and conda environments</li>
+<li>Discuss python and conda environments</li>
 </ul>
-<p>Then, when the Hub is loaded, we’ll get oriented and clone the forked repository into our cloud environment.</p>
+<p>Then, when the Hub is loaded, we’ll get oriented in the Hub and clone the forked repository into our cloud environment.</p>
 </section>
 <section id="discussion-cloud-environment" class="level2">
 <h2 class="anchored" data-anchor-id="discussion-cloud-environment">Discussion: Cloud environment</h2>
@@ -401,7 +401,7 @@
 <p>I’ll screenshare to show and/or talk through how I have oriented the following software we’re using:</p>
 <ul>
 <li><a href="https://openscapes.2i2c.cloud/hub/">2i2c Jupyterhub</a> (our main workspace)</li>
-<li><a href="https://nasa-openscapes.github.io/2021-Cloud-Hackathon/tutorials/">Cloud Hackathon Book</a> (my teaching notes, your reference material)</li>
+<li><a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon/">Hackathon Repo</a> &lt;&gt; <a href="https://nasa-openscapes.github.io/2021-Cloud-Hackathon/">Hackathon Book</a> (my teaching notes, your reference material)</li>
 <li>Zoom Chat</li>
 <li>Slack</li>
 </ul>
@@ -514,23 +514,20 @@ Conda environment
 </div>
 <section id="first-impressions" class="level3">
 <h3 class="anchored" data-anchor-id="first-impressions">First impressions</h3>
-<p>Reiterate a few things we just talked about (TODO - what’s useful here Luis?)</p>
 <ul>
+<li>Launcher &amp; the big blue button</li>
 <li>“home directory”</li>
-<li>big blue button</li>
-<li>environments we just talked about (?)</li>
-<li>terminal basics (?)</li>
 </ul>
 </section>
 </section>
 <section id="step-4.-clone-the-hackathon-github-repository" class="level2">
 <h2 class="anchored" data-anchor-id="step-4.-clone-the-hackathon-github-repository">Step 4. Clone the Hackathon GitHub repository</h2>
-<p>Now we’ll clone the GitHub repository, using the git extension for Hub. Go to your github account,</p>
-<p>repository that you just created by forking from the Openscapes repository.</p>
+<p>Now we’ll clone the GitHub repository, using a git extension for the JupyterHub. Go to your github account, and navigate to the repository that you just created by forking from the Openscapes repository.</p>
+<p>Click to copy the url for cloning the repository.</p>
 <p><img src="img/Github-forked-repo.png" class="img-fluid" width="2224"></p>
-<p>Now, go to your Hub and click on the git extension in the left panel and then click the blue button “Clone a Repository”.</p>
+<p>Now, go to JupyterHub and click on the git extension in the left panel and then click the blue button “Clone a Repository”.</p>
 <p><img src="img/JupyterHub-GitExtension.png" class="img-fluid"></p>
-<p>Then, paste the repository link to the forked repository that you copied from your github account into the “Clone a repo” pop up window. Then click the blue “CLONE” button. It will take a few minutes to clone the repository into your Hub.</p>
+<p>Then, paste the repository link to the forked repository that you copied from your github account into the “Clone a repo” pop up window. Then click the blue “CLONE” button. It will take a few moments to clone the repository into your Hub.</p>
 <p>Your link should look like <code>https://github.com/YOUR-USERNAME/2021-Cloud-Hackathon</code>. For example, the link is https://github.com/<strong>virdi</strong>/2021-Cloud-Hackathon. Note that it include your github username in the repo link.</p>
 <p><img src="img/JupyterHub-Clone-Extension.png" class="img-fluid"></p>
 <p>Alternatively, you can use the terminal (command line) as per <a href="https://nasa-openscapes.github.io/2021-Cloud-Hackathon/logistics/github-workflows.html">github workflows: first-time setup</a>.</p>
@@ -543,7 +540,6 @@ Conda environment
 <section id="jupyter-notebooks" class="level2">
 <h2 class="anchored" data-anchor-id="jupyter-notebooks">Jupyter notebooks</h2>
 <p>Let’s get oriented to Jupyter notebooks, which we’ll use in all the tutorials.</p>
-<p>Big blue button &gt; Notebook &gt; …</p>
 </section>
 <section id="how-do-i-end-my-session" class="level2">
 <h2 class="anchored" data-anchor-id="how-do-i-end-my-session">How do I end my session?</h2>
@@ -575,7 +571,7 @@ Conda environment
 </section>
 <section id="step-5.4.-commit-the-changes-to-the-new-file-git-commit" class="level3">
 <h3 class="anchored" data-anchor-id="step-5.4.-commit-the-changes-to-the-new-file-git-commit">Step 5.4. Commit the changes to the new file (<code>git commit</code>)</h3>
-<p>Now, you will see that the file is <strong>Staged</strong>, which means that <code>git</code> is ready to take a snapshot of this file (and the repository) with the changes that you made. This is called a <code>commit</code>. To commit the changes, Add a note (called a <em>commit message</em>) by typing in the text box that say “Summary”.</p>
+<p>Now, you will see that the file is <strong>Staged</strong>, which means that <code>git</code> is ready to take a snapshot of this file (and the repository) with the changes that you made. This snapshot is called a <code>commit</code>. To commit the changes, add a note (called a <em>commit message</em>) by typing in the text box that say “Summary”.</p>
 <p>Now, click the blue “COMMIT” button to commit this change.</p>
 <blockquote class="blockquote">
 <p>Note: A short message indicating the type of change to this file is a good practice. Optionally, a longer description may be added to the “Description” field.</p>
