@@ -324,23 +324,31 @@
   <div id="quarto-toc-sidebar" class=" pt-0 col col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-toc order-last"><nav id="TOC" role="doc-toc">
 <h2 id="toc-title">On this page</h2>
 <ul>
-<li><a href="#cloud-environment" class="nav-link active" data-scroll-target="#cloud-environment">Cloud environment</a></li>
-<li><a href="#this-is-how-my-desktop-is-setup" class="nav-link" data-scroll-target="#this-is-how-my-desktop-is-setup">This is how my desktop is setup</a></li>
-<li><a href="#fork-the-hackathon-github-repository" class="nav-link" data-scroll-target="#fork-the-hackathon-github-repository">Fork the Hackathon GitHub repository</a></li>
-<li><a href="#python-and-conda-environments" class="nav-link" data-scroll-target="#python-and-conda-environments">Python and Conda environments</a>
+<li><a href="#step-1.-login-to-the-hub-takes-a-few-minutes-to-load" class="nav-link active" data-scroll-target="#step-1.-login-to-the-hub-takes-a-few-minutes-to-load">Step 1. Login to the Hub (takes a few minutes to load)</a></li>
+<li><a href="#discussion-cloud-environment" class="nav-link" data-scroll-target="#discussion-cloud-environment">Discussion: Cloud environment</a></li>
+<li><a href="#discussion-my-desktop-setup" class="nav-link" data-scroll-target="#discussion-my-desktop-setup">Discussion: My desktop setup</a></li>
+<li><a href="#step-2.-fork-the-hackathon-github-repository" class="nav-link" data-scroll-target="#step-2.-fork-the-hackathon-github-repository">Step 2. Fork the Hackathon GitHub repository</a></li>
+<li><a href="#discussion-python-and-conda-environments" class="nav-link" data-scroll-target="#discussion-python-and-conda-environments">Discussion: Python and Conda environments</a>
 <ul class="collapse">
 <li><a href="#bash-terminal-and-installed-software" class="nav-link" data-scroll-target="#bash-terminal-and-installed-software">Bash terminal and installed software</a></li>
 <li><a href="#updating-the-environment" class="nav-link" data-scroll-target="#updating-the-environment">Updating the environment</a></li>
 <li><a href="#corn" class="nav-link" data-scroll-target="#corn"><span>corn 🌽</span></a></li>
 </ul></li>
-<li><a href="#jupyterhub-orientation" class="nav-link" data-scroll-target="#jupyterhub-orientation">JupyterHub orientation</a>
+<li><a href="#step-3.-jupyterhub-orientation" class="nav-link" data-scroll-target="#step-3.-jupyterhub-orientation">Step 3. JupyterHub orientation</a>
 <ul class="collapse">
 <li><a href="#first-impressions" class="nav-link" data-scroll-target="#first-impressions">First impressions</a></li>
-<li><a href="#terminal" class="nav-link" data-scroll-target="#terminal">Terminal</a></li>
 </ul></li>
-<li><a href="#clone-the-hackathon-github-repository" class="nav-link" data-scroll-target="#clone-the-hackathon-github-repository">Clone the Hackathon GitHub repository</a></li>
+<li><a href="#step-4.-clone-the-hackathon-github-repository" class="nav-link" data-scroll-target="#step-4.-clone-the-hackathon-github-repository">Step 4. Clone the Hackathon GitHub repository</a></li>
 <li><a href="#jupyter-notebooks" class="nav-link" data-scroll-target="#jupyter-notebooks">Jupyter notebooks</a></li>
-<li><a href="#how-to-i-end-my-session" class="nav-link" data-scroll-target="#how-to-i-end-my-session">How to I end my session?</a></li>
+<li><a href="#how-do-i-end-my-session" class="nav-link" data-scroll-target="#how-do-i-end-my-session">How do I end my session?</a></li>
+<li><a href="#step-5.-tracking-changes-optional" class="nav-link" data-scroll-target="#step-5.-tracking-changes-optional">Step 5. Tracking changes (Optional)</a>
+<ul class="collapse">
+<li><a href="#step-5.1.-configure-git-git-config" class="nav-link" data-scroll-target="#step-5.1.-configure-git-git-config">Step 5.1. Configure Git (<code>git config</code>)</a></li>
+<li><a href="#step-5.2.-create-a-new-file" class="nav-link" data-scroll-target="#step-5.2.-create-a-new-file">Step 5.2. Create a new file</a></li>
+<li><a href="#step-5.3.-track-the-changes-to-the-new-file-git-add" class="nav-link" data-scroll-target="#step-5.3.-track-the-changes-to-the-new-file-git-add">Step 5.3. Track the changes to the new file (<code>git add</code>)</a></li>
+<li><a href="#step-5.4.-commit-the-changes-to-the-new-file-git-commit" class="nav-link" data-scroll-target="#step-5.4.-commit-the-changes-to-the-new-file-git-commit">Step 5.4. Commit the changes to the new file (<code>git commit</code>)</a></li>
+<li><a href="#step-5.5.-transmit-committed-changes-to-your-github-git-push" class="nav-link" data-scroll-target="#step-5.5.-transmit-committed-changes-to-your-github-git-push">Step 5.5. Transmit committed changes to your github (<code>git push</code>)</a></li>
+</ul></li>
 </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon/edit/main/tutorials/00_Setup.md" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon/issues/new" class="toc-action">Report an issue</a></p></div></div></nav></div>
   <div class="col mx-auto col-sm-12 col-md-9 col-lg-7 col-xl-7 px-lg-4 pe-xxl-4 ps-xxl-0">
@@ -349,14 +357,19 @@
 <h1 class="title d-none d-lg-block display-7">00. Setup for tutorials</h1>
 </header>
 
-<p>We start off by getting setup and connected for the tutorials. Please login to the JupyterHub, which will take a few minutes to load.</p>
-<p>Please go to <a href="https://openscapes.2i2c.cloud/hub/" class="uri">https://openscapes.2i2c.cloud/hub/</a>. Log in with your GitHub Account, and select “Small”.</p>
-<p>You can also click this badge to launch the Hub:</p>
-<div id="fig-anonymous-1223930" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><a href="https://openscapes.2i2c.cloud"><img src="https://img.shields.io/static/v1.svg?logo=Jupyter&amp;label=Openscapes&amp;message=AWS+us-west-2&amp;color=orange" class="img-fluid figure-img"></a></p>
-</figure>
-</div>
+<p>This tutorial will help you set up your JupyterHub (or Hub) with material for other tutorials (Hackathon Repository) and link your github account.</p>
+<section id="step-1.-login-to-the-hub-takes-a-few-minutes-to-load" class="level2">
+<h2 class="anchored" data-anchor-id="step-1.-login-to-the-hub-takes-a-few-minutes-to-load">Step 1. Login to the Hub (takes a few minutes to load)</h2>
+<p>Please go to <a href="https://openscapes.2i2c.cloud/hub/" class="uri">https://openscapes.2i2c.cloud/hub/</a>. Alternatively, you can also click this badge to launch the Hub:</p>
+<p><img src="https://img.shields.io/static/v1.svg?logo=Jupyter&amp;label=Openscapes&amp;message=AWS+us-west-2&amp;color=orange" class="img-fluid" data-fig-align="center"></p>
+<p>Log in with your GitHub Account, and select “Small”.</p>
+<p><img src="img/JupyterHub-2i2c.png" class="img-fluid" width="500"></p>
+<p><img src="img/JupyterHub-Login.png" class="img-fluid" width="500"></p>
+<p><img src="img/JupyterHub-SelectSmall.png" class="img-fluid" width="500"></p>
+<p><img src="img/JupyterHub-Loading.png" class="img-fluid" width="500"></p>
+<blockquote class="blockquote">
+<p><strong>Note:</strong> It takes a few minutes for the Hub to load. Please be patient!</p>
+</blockquote>
 <p>While the Hub loads, we’ll:</p>
 <ul>
 <li>discuss cloud environments</li>
@@ -364,9 +377,10 @@
 <li>Fork the Hackathon repository at github.com</li>
 <li>discuss python and conda environments</li>
 </ul>
-<p>Then, when the hub is loaded we’ll get oriented and clone the forked repo into our cloud environment.</p>
-<section id="cloud-environment" class="level2">
-<h2 class="anchored" data-anchor-id="cloud-environment">Cloud environment</h2>
+<p>Then, when the Hub is loaded, we’ll get oriented and clone the forked repository into our cloud environment.</p>
+</section>
+<section id="discussion-cloud-environment" class="level2">
+<h2 class="anchored" data-anchor-id="discussion-cloud-environment">Discussion: Cloud environment</h2>
 <p>A brief overview about the <a href="https://nasa-openscapes.github.io/2021-Cloud-Hackathon/clinic/jupyterhub.html">NASA Openscapes Cloud Environment</a> (following lessons from the Clinic).</p>
 <section id="cloud-infrastructure" class="level4">
 <h4 class="anchored" data-anchor-id="cloud-infrastructure">Cloud infrastructure</h4>
@@ -382,8 +396,8 @@
 </ul>
 </section>
 </section>
-<section id="this-is-how-my-desktop-is-setup" class="level2">
-<h2 class="anchored" data-anchor-id="this-is-how-my-desktop-is-setup">This is how my desktop is setup</h2>
+<section id="discussion-my-desktop-setup" class="level2">
+<h2 class="anchored" data-anchor-id="discussion-my-desktop-setup">Discussion: My desktop setup</h2>
 <p>I’ll screenshare to show and/or talk through how I have oriented the following software we’re using:</p>
 <ul>
 <li><a href="https://openscapes.2i2c.cloud/hub/">2i2c Jupyterhub</a> (our main workspace)</li>
@@ -392,14 +406,14 @@
 <li>Slack</li>
 </ul>
 </section>
-<section id="fork-the-hackathon-github-repository" class="level2">
-<h2 class="anchored" data-anchor-id="fork-the-hackathon-github-repository">Fork the Hackathon GitHub repository</h2>
+<section id="step-2.-fork-the-hackathon-github-repository" class="level2">
+<h2 class="anchored" data-anchor-id="step-2.-fork-the-hackathon-github-repository">Step 2. Fork the Hackathon GitHub repository</h2>
 <p>“How do I get the tutorial repository into the Hub?”. There are 2 steps. The first is from GitHub.com to fork the tutorial repository so that there is a connected copy in your user account that you can edit and push changes that won’t affect the nasa-openscapes copy.</p>
 <p>Go to <a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon" class="uri">https://github.com/nasa-openscapes/2021-Cloud-Hackathon</a> and fork the repository.</p>
 <p><img src="../clinic/img/fork-tutorials.png" class="img-fluid"></p>
 </section>
-<section id="python-and-conda-environments" class="level2">
-<h2 class="anchored" data-anchor-id="python-and-conda-environments">Python and Conda environments</h2>
+<section id="discussion-python-and-conda-environments" class="level2">
+<h2 class="anchored" data-anchor-id="discussion-python-and-conda-environments">Discussion: Python and Conda environments</h2>
 <p><a href="https://foundations.projectpythia.org/foundations/why-python.html"><strong>Why Python?</strong></a></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -490,9 +504,14 @@ Conda environment
 <h3 class="anchored" data-anchor-id="corn"><a href="https://github.com/NASA-Openscapes/corn">corn 🌽</a></h3>
 </section>
 </section>
-<section id="jupyterhub-orientation" class="level2">
-<h2 class="anchored" data-anchor-id="jupyterhub-orientation">JupyterHub orientation</h2>
-<p>Now that the JupyterHubs have loaded, let’s get oriented.</p>
+<section id="step-3.-jupyterhub-orientation" class="level2">
+<h2 class="anchored" data-anchor-id="step-3.-jupyterhub-orientation">Step 3. JupyterHub orientation</h2>
+<p>Now that the Hub is loaded, let’s get oriented.</p>
+<div id="fig-anonymous-1223930" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><a href="img/JupyterHub-View.png"><img src="img/JupyterHub-View.png" class="img-fluid figure-img" width="500"></a></p>
+</figure>
+</div>
 <section id="first-impressions" class="level3">
 <h3 class="anchored" data-anchor-id="first-impressions">First impressions</h3>
 <p>Reiterate a few things we just talked about (TODO - what’s useful here Luis?)</p>
@@ -500,34 +519,91 @@ Conda environment
 <li>“home directory”</li>
 <li>big blue button</li>
 <li>environments we just talked about (?)</li>
+<li>terminal basics (?)</li>
 </ul>
 </section>
-<section id="terminal" class="level3">
-<h3 class="anchored" data-anchor-id="terminal">Terminal</h3>
-<p>Open terminal: Big blue “+” button &gt; Terminal</p>
-<p>You’ll start off in your home directory, <code>/home/jovyan</code>. To confirm this is your present working directory (pwd), type:</p>
-<pre class=".{bash}"><code>pwd</code></pre>
 </section>
-</section>
-<section id="clone-the-hackathon-github-repository" class="level2">
-<h2 class="anchored" data-anchor-id="clone-the-hackathon-github-repository">Clone the Hackathon GitHub repository</h2>
-<p>Now we’ll clone the GitHub repository, using the terminal.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/YOUR-USERNAME/2021-Cloud-Hackathon</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>These two github steps are also posted in <a href="https://nasa-openscapes.github.io/2021-Cloud-Hackathon/logistics/github-workflows.html">github workflows: first-time setup</a>.</p>
+<section id="step-4.-clone-the-hackathon-github-repository" class="level2">
+<h2 class="anchored" data-anchor-id="step-4.-clone-the-hackathon-github-repository">Step 4. Clone the Hackathon GitHub repository</h2>
+<p>Now we’ll clone the GitHub repository, using the git extension for Hub. Go to your github account,</p>
+<p>repository that you just created by forking from the Openscapes repository.</p>
+<p><img src="img/Github-forked-repo.png" class="img-fluid" width="2224"></p>
+<p>Now, go to your Hub and click on the git extension in the left panel and then click the blue button “Clone a Repository”.</p>
+<p><img src="img/JupyterHub-GitExtension.png" class="img-fluid"></p>
+<p>Then, paste the repository link to the forked repository that you copied from your github account into the “Clone a repo” pop up window. Then click the blue “CLONE” button. It will take a few minutes to clone the repository into your Hub.</p>
+<p>Your link should look like <code>https://github.com/YOUR-USERNAME/2021-Cloud-Hackathon</code>. For example, the link is https://github.com/<strong>virdi</strong>/2021-Cloud-Hackathon. Note that it include your github username in the repo link.</p>
+<p><img src="img/JupyterHub-Clone-Extension.png" class="img-fluid"></p>
+<p>Alternatively, you can use the terminal (command line) as per <a href="https://nasa-openscapes.github.io/2021-Cloud-Hackathon/logistics/github-workflows.html">github workflows: first-time setup</a>.</p>
+<p>Once the repository is cloned, you will see a new directory in the “File Browser” panel on the left named “2021-Cloud-Hackathon”. In this directory, you have all hackathon material including the tutorials and this book to follow along during other Tutorials. You are all set.</p>
+<p><img src="img/JupyterHub-Cloned-Repo-FileBrowser.png" class="img-fluid"></p>
+<blockquote class="blockquote">
+<p><strong>REMEMBER:</strong> This is your copy (or fork) of the hackathon materials and jupyter notebooks. So feel free to make any changes to the content of this repository.</p>
+</blockquote>
 </section>
 <section id="jupyter-notebooks" class="level2">
 <h2 class="anchored" data-anchor-id="jupyter-notebooks">Jupyter notebooks</h2>
 <p>Let’s get oriented to Jupyter notebooks, which we’ll use in all the tutorials.</p>
 <p>Big blue button &gt; Notebook &gt; …</p>
 </section>
-<section id="how-to-i-end-my-session" class="level2">
-<h2 class="anchored" data-anchor-id="how-to-i-end-my-session">How to I end my session?</h2>
+<section id="how-do-i-end-my-session" class="level2">
+<h2 class="anchored" data-anchor-id="how-do-i-end-my-session">How do I end my session?</h2>
 <p><em>(Also see <a href="https://nasa-openscapes.github.io/2021-Cloud-Hackathon/clinic/jupyterhub.html#how-do-i-end-my-openscapes-session">How do I end my Openscapes session? Will I lose all of my work?</a>)</em></p>
 <p>When you are finished working for the day it is important to explicitly log out of your Openscapes session. The reason for this is it will save us a bit of money! When you keep a session active it uses up AWS resources and keeps a series of virtual machines deployed.</p>
 <p>Stopping the server happens automatically when you log out, so navigate to “File -&gt; Log Out” and just click “Log Out”!</p>
 <p>!!! NOTE “logging out” - Logging out will <strong>NOT</strong> cause any of your work to be lost or deleted. It simply shuts down some resources. It would be equivalent to turning off your desktop computer at the end of the day.</p>
+</section>
+<section id="step-5.-tracking-changes-optional" class="level2">
+<h2 class="anchored" data-anchor-id="step-5.-tracking-changes-optional">Step 5. Tracking changes (Optional)</h2>
+<p>Now that you have forked and cloned the repository in your Hub, you can make changes (edit, add, and/or delete content) and track these files using git. In this step, we will provide an overview of how to use git using the graphical interface (the JupyterLab git extension).</p>
+<section id="step-5.1.-configure-git-git-config" class="level3">
+<h3 class="anchored" data-anchor-id="step-5.1.-configure-git-git-config">Step 5.1. Configure Git (<code>git config</code>)</h3>
+<p>Configure git with your name and email address as shown here.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.name <span class="st">"Makhan Virdi"</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.email <span class="st">"Makhan.Virdi@gmail.com"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Open a new terminal: <code>File &gt;&gt; New &gt;&gt; Terminal</code></p>
+<p><img src="img/JupyterHub-Tracking-GitConfig.png" class="img-fluid"></p>
+</section>
+<section id="step-5.2.-create-a-new-file" class="level3">
+<h3 class="anchored" data-anchor-id="step-5.2.-create-a-new-file">Step 5.2. Create a new file</h3>
+<p>Let’s create a new file: In the left panel on your Hub, click on the “directory” icon and then double click on “2021-Cloud-Hackathon” directory. Then, create a new file using the text editor in your 2i2c JupyterHub (<code>File &gt;&gt; New &gt;&gt; Text File</code>). Add some text to this file, for example: <code>A test file</code>. Save this file and rename it to <code>test.txt</code>.</p>
+<p><img src="img/JupyterHub-Tracking-NewFile.png" class="img-fluid"></p>
+</section>
+<section id="step-5.3.-track-the-changes-to-the-new-file-git-add" class="level3">
+<h3 class="anchored" data-anchor-id="step-5.3.-track-the-changes-to-the-new-file-git-add">Step 5.3. Track the changes to the new file (<code>git add</code>)</h3>
+<p>Click the git icon in the left panel. You can see that the newly added file is in the “Untracked” section. You can click the <code>+</code> icon next to the file name to let <code>git</code> track this file for changes.</p>
+<p><img src="img/JupyterHub-Tracking-GitAdd.png" class="img-fluid"></p>
+</section>
+<section id="step-5.4.-commit-the-changes-to-the-new-file-git-commit" class="level3">
+<h3 class="anchored" data-anchor-id="step-5.4.-commit-the-changes-to-the-new-file-git-commit">Step 5.4. Commit the changes to the new file (<code>git commit</code>)</h3>
+<p>Now, you will see that the file is <strong>Staged</strong>, which means that <code>git</code> is ready to take a snapshot of this file (and the repository) with the changes that you made. This is called a <code>commit</code>. To commit the changes, Add a note (called a <em>commit message</em>) by typing in the text box that say “Summary”.</p>
+<p>Now, click the blue “COMMIT” button to commit this change.</p>
+<blockquote class="blockquote">
+<p>Note: A short message indicating the type of change to this file is a good practice. Optionally, a longer description may be added to the “Description” field.</p>
+</blockquote>
+<p><img src="img/JupyterHub-Tracking-GitCommit.png" class="img-fluid"></p>
+</section>
+<section id="step-5.5.-transmit-committed-changes-to-your-github-git-push" class="level3">
+<h3 class="anchored" data-anchor-id="step-5.5.-transmit-committed-changes-to-your-github-git-push">Step 5.5. Transmit committed changes to your github (<code>git push</code>)</h3>
+<p>At this stage, you have committed the changes to your git repository on your Hub. However, these changes are still on your Hub and needs to be transmitted to your repository on github (so that both the <code>local</code> copy on the JupyterHub and the <code>remote</code> copy on github are in sync).</p>
+<p>As seen in the picture below, the git extension indicates (with an orange dot on the cloud icon) that it is ready to <code>push</code> your changes to the <code>remote</code> (remote = your repository on github.com). To push to github, click the cloud button with an up arrow (circled in red in the picture).</p>
+<p><img src="img/JupyterHub-Tracking-GitPush.png" class="img-fluid"></p>
+<p>The git extension in the Hub will prompt you to enter your github.com credentials. Enter you github.com username and a Personal Access Token (<strong>DO NOT</strong> use your password). To create a Personal Access Token, visit <a href="https://github.com/settings/tokens/new" class="uri">https://github.com/settings/tokens/new</a> and create a new token with the permission as per the image below and specify its validity for 90 days.</p>
+<p><img src="img/JupyterHub-Tracking-Credentials-Prompt.png" class="img-fluid"></p>
+<p><img src="../clinic/img/github-token.png" class="img-fluid"></p>
+<p><strong>IMPORTANT:</strong> You will see this token only once, so be sure to copy this. If you do not copy your token at this stage, you will need to generate a new token.</p>
+<p><img src="../clinic/img/github-token-generated.png" class="img-fluid"></p>
+<p>Once you generate the token, copy it and paste in the Hub window that prompted you to enter the “Personal Access Token”.</p>
+<p><img src="img/JupyterHub-Tracking-GitPush-With-Credentials.png" class="img-fluid"></p>
+<p>Git will show a message at the bottom right telling that the changes were “Successfully pushed”. Also, you will see that the “cloud icon with an up arrow” no longer has an orange dot, indicating that there are no more committed changes to push to the remote (github.com).</p>
+<p><img src="img/JupyterHub-Tracking-GitPush-Success.png" class="img-fluid"></p>
+<p>That’s all. You can use the same workflow (<code>add &gt; commit &gt; push</code>) for any other new or modified files!</p>
+<hr>
+<blockquote class="blockquote">
+<p>Note: If you are comfortable with the command line, you can use the Terminal (In Hub, New &gt; Terminal) and follow the steps outlined in <a href="https://nasa-openscapes.github.io/2021-Cloud-Hackathon/clinic/notebooks.html#introduction-version-control-git-and-github">the Clinic section</a>.</p>
+</blockquote>
 
 
+</section>
 </section>
 <script type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
