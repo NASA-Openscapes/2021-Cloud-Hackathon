@@ -3,7 +3,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="quarto-0.2.232">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>data_discovery_cmr-stac_api</title>
+  <title>harmony_subsetting</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -322,255 +322,231 @@
   <div id="quarto-toc-sidebar" class=" pt-0 col col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-toc order-last"><nav id="TOC" role="doc-toc">
 <h2 id="toc-title">On this page</h2>
 <ul>
-<li><a href="#data-discovery-with-cmr-stac-api" class="nav-link active" data-scroll-target="#data-discovery-with-cmr-stac-api">02. Data Discovery with CMR-STAC API</a>
+<li><a href="#data-subsetting-and-transformation-services-in-the-cloud" class="nav-link active" data-scroll-target="#data-subsetting-and-transformation-services-in-the-cloud">07. Data Subsetting and Transformation Services in the Cloud</a>
 <ul class="collapse">
-<li><a href="#timing" class="nav-link" data-scroll-target="#timing">Timing</a></li>
+<li><a href="#using-the-harmony-py-library-to-access-customized-data-from-nasa-earthdata" class="nav-link" data-scroll-target="#using-the-harmony-py-library-to-access-customized-data-from-nasa-earthdata">Using the Harmony-Py library to access customized data from NASA Earthdata</a></li>
 <li><a href="#summary" class="nav-link" data-scroll-target="#summary">Summary</a>
 <ul class="collapse">
-<li><a href="#but-first-what-is-stac" class="nav-link" data-scroll-target="#but-first-what-is-stac">But first, what is STAC?</a></li>
-<li><a href="#cmr-stac-api" class="nav-link" data-scroll-target="#cmr-stac-api">CMR-STAC API</a></li>
+<li><a href="#benefits" class="nav-link" data-scroll-target="#benefits">Benefits</a></li>
+<li><a href="#objectives" class="nav-link" data-scroll-target="#objectives">Objectives</a></li>
 </ul></li>
-<li><a href="#what-you-will-learn-from-this-tutorial" class="nav-link" data-scroll-target="#what-you-will-learn-from-this-tutorial">What you will learn from this tutorial</a></li>
-<li><a href="#import-required-packages" class="nav-link" data-scroll-target="#import-required-packages">Import Required Packages</a></li>
-<li><a href="#explored-available-nasa-providers" class="nav-link" data-scroll-target="#explored-available-nasa-providers">Explored available NASA Providers</a>
+<li><a href="#import-packages" class="nav-link" data-scroll-target="#import-packages">Import Packages</a></li>
+<li><a href="#discover-service-options-for-a-given-data-set" class="nav-link" data-scroll-target="#discover-service-options-for-a-given-data-set">Discover service options for a given data set</a></li>
+<li><a href="#discover-variable-names" class="nav-link" data-scroll-target="#discover-variable-names">Discover variable names</a></li>
+<li><a href="#using-harmony-py-to-subset-data" class="nav-link" data-scroll-target="#using-harmony-py-to-subset-data">Using Harmony-Py to subset data</a>
 <ul class="collapse">
-<li><a href="#connect-to-the-cmr-stac-api" class="nav-link" data-scroll-target="#connect-to-the-cmr-stac-api">Connect to the CMR-STAC API</a></li>
-</ul></li>
-<li><a href="#connect-to-the-lpcloud-providerstac-catalog" class="nav-link" data-scroll-target="#connect-to-the-lpcloud-providerstac-catalog">Connect to the <code>LPCLOUD</code> Provider/STAC Catalog</a></li>
-<li><a href="#list-stac-collections" class="nav-link" data-scroll-target="#list-stac-collections">List STAC Collections</a>
-<ul class="collapse">
-<li><a href="#print-one-of-the-stac-collection-records" class="nav-link" data-scroll-target="#print-one-of-the-stac-collection-records">Print one of the STAC Collection records</a></li>
-<li><a href="#print-the-stac-collection-ids-with-their-title" class="nav-link" data-scroll-target="#print-the-stac-collection-ids-with-their-title">Print the STAC Collection <code>id</code>s with their <code>title</code></a></li>
-</ul></li>
-<li><a href="#search-for-granulesstac-items---set-up-query-parameters-to-submit-to-the-cmr-stac-api" class="nav-link" data-scroll-target="#search-for-granulesstac-items---set-up-query-parameters-to-submit-to-the-cmr-stac-api">Search for Granules/STAC Items - Set up query parameters to submit to the CMR-STAC API</a>
-<ul class="collapse">
-<li><a href="#read-in-a-geojson-file" class="nav-link" data-scroll-target="#read-in-a-geojson-file">Read in a geojson file</a></li>
-<li><a href="#visualize-contents-of-geojson-file" class="nav-link" data-scroll-target="#visualize-contents-of-geojson-file">Visualize contents of geojson file</a></li>
-<li><a href="#extract-the-coordinates-for-the-roi" class="nav-link" data-scroll-target="#extract-the-coordinates-for-the-roi">Extract the coordinates for the ROI</a></li>
-<li><a href="#specify-date-range" class="nav-link" data-scroll-target="#specify-date-range">Specify date range</a></li>
-<li><a href="#specify-the-stac-collections" class="nav-link" data-scroll-target="#specify-the-stac-collections">Specify the STAC Collections</a></li>
-</ul></li>
-<li><a href="#search-the-cmr-stac-api-with-our-search-criteria" class="nav-link" data-scroll-target="#search-the-cmr-stac-api-with-our-search-criteria">Search the CMR-STAC API with our search criteria</a>
-<ul class="collapse">
-<li><a href="#print-out-how-many-stac-items-match-our-search-query" class="nav-link" data-scroll-target="#print-out-how-many-stac-items-match-our-search-query">Print out how many STAC Items match our search query</a></li>
-</ul></li>
-<li><a href="#filtering-stac-items" class="nav-link" data-scroll-target="#filtering-stac-items">Filtering STAC Items</a></li>
-<li><a href="#split-data-links-list-into-logical-groupings" class="nav-link" data-scroll-target="#split-data-links-list-into-logical-groupings">Split Data Links List into Logical Groupings</a>
-<ul class="collapse">
-<li><a href="#split-by-utm-tile-specified-in-the-file-name-e.g.-t14tkl-t13tgf" class="nav-link" data-scroll-target="#split-by-utm-tile-specified-in-the-file-name-e.g.-t14tkl-t13tgf">Split by UTM tile specified in the file name (e.g., T14TKL &amp; T13TGF)</a></li>
-<li><a href="#split-the-links-by-band" class="nav-link" data-scroll-target="#split-the-links-by-band">Split the links by band</a></li>
-</ul></li>
-<li><a href="#save-links-to-a-text-file" class="nav-link" data-scroll-target="#save-links-to-a-text-file">Save links to a text file</a>
-<ul class="collapse">
-<li><a href="#write-links-from-cmr-stac-api-to-a-file" class="nav-link" data-scroll-target="#write-links-from-cmr-stac-api-to-a-file">Write links from CMR-STAC API to a file</a></li>
-<li><a href="#write-links-to-file-for-s3-access" class="nav-link" data-scroll-target="#write-links-to-file-for-s3-access">Write links to file for S3 access</a></li>
+<li><a href="#create-harmony-client-object" class="nav-link" data-scroll-target="#create-harmony-client-object">Create Harmony Client object</a></li>
+<li><a href="#hurricane-ida-snapshot" class="nav-link" data-scroll-target="#hurricane-ida-snapshot">Hurricane Ida snapshot</a></li>
+<li><a href="#create-harmony-request" class="nav-link" data-scroll-target="#create-harmony-request">Create Harmony Request</a></li>
+<li><a href="#check-request-validity" class="nav-link" data-scroll-target="#check-request-validity">Check Request validity</a></li>
+<li><a href="#submit-request" class="nav-link" data-scroll-target="#submit-request">Submit request</a></li>
+<li><a href="#check-request-status" class="nav-link" data-scroll-target="#check-request-status">Check request status</a></li>
+<li><a href="#view-harmony-job-response-and-output-urls" class="nav-link" data-scroll-target="#view-harmony-job-response-and-output-urls">View Harmony job response and output URLs</a></li>
+<li><a href="#direct-cloud-access" class="nav-link" data-scroll-target="#direct-cloud-access">Direct cloud access</a></li>
+<li><a href="#open-staged-files-with-s3fs-and-xarray" class="nav-link" data-scroll-target="#open-staged-files-with-s3fs-and-xarray">Open staged files with <em>s3fs</em> and <em>xarray</em></a></li>
+<li><a href="#plot-the-data" class="nav-link" data-scroll-target="#plot-the-data">Plot the data</a></li>
 </ul></li>
 <li><a href="#resources" class="nav-link" data-scroll-target="#resources">Resources</a></li>
 </ul></li>
 </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon/edit/main/tutorials-templates/02_Data_Discovery_CMR-STAC_API.ipynb" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon/issues/new" class="toc-action">Report an issue</a></p></div></div></nav></div>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon/edit/main/tutorials-templates/07_Harmony_Subsetting.ipynb" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon/issues/new" class="toc-action">Report an issue</a></p></div></div></nav></div>
   <div class="col mx-auto col-sm-12 col-md-9 col-lg-7 col-xl-7 px-lg-4 pe-xxl-4 ps-xxl-0">
 <main>
 
-<section id="data-discovery-with-cmr-stac-api" class="level1">
-<h1>02. Data Discovery with CMR-STAC API</h1>
-<section id="timing" class="level2">
-<h2 class="anchored" data-anchor-id="timing">Timing</h2>
-<ul>
-<li>Exercise: 30 min</li>
-</ul>
+<section id="data-subsetting-and-transformation-services-in-the-cloud" class="level1">
+<h1>07. Data Subsetting and Transformation Services in the Cloud</h1>
+<section id="using-the-harmony-py-library-to-access-customized-data-from-nasa-earthdata" class="level2">
+<h2 class="anchored" data-anchor-id="using-the-harmony-py-library-to-access-customized-data-from-nasa-earthdata">Using the Harmony-Py library to access customized data from NASA Earthdata</h2>
 </section>
 <section id="summary" class="level2">
 <h2 class="anchored" data-anchor-id="summary">Summary</h2>
-<p>In this example we will access the NASA’s Harmonized Landsat Sentinel-2 (HLS) version 2 assets, which are archived in cloud optimized geoTIFF (COG) format in the LP DAAC Cumulus cloud space. The COGs can be used like any other geoTIFF file, but have some added features that make them more efficient within the cloud data access paradigm. These features include: overviews and internal tiling. Below we will demonstrate how to leverage these features.</p>
-<section id="but-first-what-is-stac" class="level3">
-<h3 class="anchored" data-anchor-id="but-first-what-is-stac">But first, what is STAC?</h3>
-<p><a href="https://stacspec.org/">SpatioTemporal Asset Catalog (STAC)</a> is a specification that provides a common language for interpreting geospatial information in order to standardize indexing and discovering data.</p>
-<p>The <a href="https://stacspec.org/core.html">STAC specification</a> is made up of a collection of related, yet independent specifications that when used together provide search and discovery capabilities for remote assets.</p>
-<section id="four-stac-specifications" class="level4">
-<h4 class="anchored" data-anchor-id="four-stac-specifications">Four STAC Specifications</h4>
-<p><a href="https://github.com/radiantearth/stac-spec/blob/master/catalog-spec/catalog-spec.md">STAC Catalog</a> (aka DAAC Archive)<br>
-<a href="https://github.com/radiantearth/stac-spec/blob/master/collection-spec/collection-spec.md">STAC Collection</a> (aka Data Product)<br>
-<a href="https://github.com/radiantearth/stac-spec/blob/master/item-spec/item-spec.md">STAC Item</a> (aka Granule)<br>
-<a href="https://github.com/radiantearth/stac-api-spec">STAC API</a></p>
-<p>In the following sections, we will explore each of STAC element using NASA’s Common Metadata Repository (CMR) STAC application programming interface (API), or <a href="https://github.com/nasa/cmr-stac">CMR-STAC API</a> for short.</p>
-</section>
-</section>
-<section id="cmr-stac-api" class="level3">
-<h3 class="anchored" data-anchor-id="cmr-stac-api">CMR-STAC API</h3>
-<p>The <a href="https://github.com/nasa/cmr-stac">CMR-STAC</a> API is NASA’s implementation of the STAC API specification for all NASA data holdings within EOSDIS. The current implementation does not allow for querries accross the entire NASA catalog. Users must execute searches within provider catalogs (e.g., LPCLOUD) to find the STAC Items they are searching for. All the providers can be found at the CMR-STAC endpoint here: <a href="https://cmr.earthdata.nasa.gov/stac/" class="uri">https://cmr.earthdata.nasa.gov/stac/</a>.</p>
-<p>In this exercise, we will query the <strong>LPCLOUD</strong> provider to identify STAC Items from the Harmonized Landsat Sentinel-2 (HLS) collection that fall within our region of interest (ROI) and within our specified time range.</p>
-</section>
-</section>
-<section id="what-you-will-learn-from-this-tutorial" class="level2">
-<h2 class="anchored" data-anchor-id="what-you-will-learn-from-this-tutorial">What you will learn from this tutorial</h2>
+<p>We have already explored direct access to the NASA EOSDIS archive in the cloud via the Amazon Simple Storage Service (S3) by using the Common Metadata Repository (CMR) to search for granule locations. In addition to directly accessing the files archived and distributed by each of the NASA DAACs, many datasets also support services that allow us to customize the data via subsetting, reformatting, reprojection, and other transformations.</p>
+<p>This tutorial demonstrates how to find, request, and use customized data from a new ecosystem of services operating within the NASA Earthdata Cloud: NASA Harmony.</p>
+<section id="benefits" class="level3">
+<h3 class="anchored" data-anchor-id="benefits">Benefits</h3>
+<p>But first, why use this option when we’ve already learned how to access data directly from the NASA Earthdata Cloud?</p>
 <ul>
-<li>how to connect to NASA CMR-STAC API using Python’s <code>pystac-client</code><br>
-</li>
-<li>how to navigate CMR-STAC records<br>
-</li>
-<li>how to read in a geojson file using <code>geopandas</code> to specify your region of interest</li>
-<li>how to use the CMR-STAC API to search for data</li>
-<li>how to perform post-search filtering of CMR-STAC API search result in Python<br>
-</li>
-<li>how to extract and save data access URLs for geospatial assets</li>
+<li>Consistent access patterns to EOSDIS holdings make cross-data center data access easier</li>
+<li>Data reduction services allow us to request only the data we want, in the format and projection we want</li>
+<li>Analysis Ready Data and cloud access will help reduce time-to-science</li>
+<li>Community Development helps reduce the barriers for re-use of code and sharing of domain knowledge</li>
 </ul>
-<p>This exercise can be found in the <a href="https://nasa-openscapes.github.io/2021-Cloud-Hackathon/tutorials/Data_Discovery__CMR-STAC_API.html">2021 Cloud Hackathon Book</a></p>
-<hr>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="data/subsetting_diagram.png" class="img-fluid figure-img"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Data file filtering and subsetting</figcaption><p></p>
+</figure>
+</div>
+<p>See more on the <a href="https://harmony.earthdata.nasa.gov/">Earthdata Harmony landing page</a>, including documentation on the Harmony API itself.</p>
 </section>
-<section id="import-required-packages" class="level2">
-<h2 class="anchored" data-anchor-id="import-required-packages">Import Required Packages</h2>
+<section id="objectives" class="level3">
+<h3 class="anchored" data-anchor-id="objectives">Objectives</h3>
+<ol type="1">
+<li>Conceptualize the data transformation service types and offerings provided by NASA Earthdata, including Harmony.</li>
+<li>Practice skills learned from the introductory CMR tutorial to discover what access and service options exist for a given data set, as well as variable metadata.</li>
+<li>Utilize the Harmony-py library to request subsetted MODIS L2 Sea Surface Temperature data over the Gulf of Mexico.</li>
+<li>Read Harmony subsetted outputs directly into xarray. ___</li>
+</ol>
+</section>
+</section>
+<section id="import-packages" class="level2">
+<h2 class="anchored" data-anchor-id="import-packages">Import Packages</h2>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="explored-available-nasa-providers" class="level2">
-<h2 class="anchored" data-anchor-id="explored-available-nasa-providers">Explored available NASA Providers</h2>
+<section id="discover-service-options-for-a-given-data-set" class="level2">
+<h2 class="anchored" data-anchor-id="discover-service-options-for-a-given-data-set">Discover service options for a given data set</h2>
+<section id="first-what-do-we-mean-by-a-service" class="level4">
+<h4 class="anchored" data-anchor-id="first-what-do-we-mean-by-a-service"><em>First, what do we mean by a “service”?</em></h4>
+<p>In the context of NASA Earthdata, we are usually referring to a service as any data transformation or customization process that packages or delivers data in a way that makes it easier to work with compared to how the data are natively archived at NASA EOSDIS. Basic customization options may include: * Subsetting (cropping) the data by: * Variable * Spatial boundary, * Temporal range * Reformatting * For example: From NetCDF-4 to Cloud Optimized GeoTIFF * Reprojection and/or Resampling * For example: From Sinusoidal to Polar Stereographic * Mosaicking * Aggregating</p>
+<p>A few main types or pathways for services that are commonly supported across the NASA DAACs include: * <a href="https://earthdata.nasa.gov/eosdis/science-system-description/eosdis-components/gibs">NASA Global Imagery Browse Service</a> * Web services providing imagery, much of which is updated daily, to broaden accessibility of NASA EOSDIS data to the media and public. * Web Map Tile Service (WMTS) * Tiled Web Map Service (TWMS) * Web Map Service (WMS) * Keyhole Markup Language (KML) * Geospatial Data Abstraction Library (GDAL) * <a href="https://opendap.earthdata.nasa.gov/">OPeNDAP</a> * The Open-source Project for a Network Data Access Protocol is a NASA community standard DAP that provides a simple way to access and work with data over the internet. OPeNDAP’s client/server software allows us to subset and reformat data using an internet browser, command line interface, and other applications. * <a href="https://harmony.earthdata.nasa.gov/">Harmony</a> * In the most basic sense, Harmony is an Application Programming Interface, or API, allowing us to request customization options described above, which are then processed and returned as file outputs. Harmony helps to reduce pre-processing steps so we can spend less time preparing the data, and more time doing science.</p>
+<p><strong>Note: These service offerings are unique to each NASA EOSDIS dataset.</strong></p>
+<p>Why is this?</p>
+<p>Due to varying <a href="https://earthdata.nasa.gov/collaborate/new-missions/level-of-service">levels of service</a>, cloud migration status, and unique characteristics of the datasets themselves, not all service options are provided for all datasets. Therefore it is important to first explore a given dataset’s metadata to discover what service options are provided.</p>
+<p>Let’s utilize the CMR API skills we learned on Day 1 to inspect service metadata:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<section id="connect-to-the-cmr-stac-api" class="level3">
-<h3 class="anchored" data-anchor-id="connect-to-the-cmr-stac-api">Connect to the CMR-STAC API</h3>
+<p>We want to search by collection to inspect the access and service options that exist:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>We’ll create a <code>providers</code> variable so we can take a deeper look into available data providers - subcategories are referred to as “children”. We can then print them as a for loop.</p>
+<p>In the CMR introduction tutorial, we explored cloud-hosted collections from different DAAC providers, and identified the CMR <code>concept-id</code> for a given data set id (also referred to as a <code>short_name</code>).</p>
+<p>Here we are jumping ahead and already know the <code>concept_id</code> we are interested in, by browsing cloud-hosted datasets from PO.DAAC in Earthdata Search: https://search.earthdata.nasa.gov/portal/podaac-cloud/search.</p>
+<p>We are going to focus on <code>MODIS_A-JPL-L2P-v2019.0</code>: GHRSST Level 2P Global Sea Surface Skin Temperature from the Moderate Resolution Imaging Spectroradiometer (MODIS) on the NASA Aqua satellite (GDS2). Let’s first save this as a variable that we can use later on once we request data from Harmony.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-</section>
-<section id="connect-to-the-lpcloud-providerstac-catalog" class="level2">
-<h2 class="anchored" data-anchor-id="connect-to-the-lpcloud-providerstac-catalog">Connect to the <code>LPCLOUD</code> Provider/STAC Catalog</h2>
-<p>For this next step we need the <code>provider title</code> (e.g., LPCLOUD) from above. We will add the provider to the end of the CMR-STAC API URL (i.e., <code>https://cmr.earthdata.nasa.gov/stac/</code>) to connect to the LPCLOUD STAC Catalog.</p>
+<p>We will view the top-level metadata for this collection to see what additional service and variable metadata exist.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Since we are using a dedicated client (i.e., <code>pystac-client.Client</code>) to connect to our STAC Provider Catalog, we will have access to some useful internal methods and functions (e.g., <code>get_children()</code> or <code>get_all_items()</code>) we can use to get information from these objects.</p>
-</section>
-<section id="list-stac-collections" class="level2">
-<h2 class="anchored" data-anchor-id="list-stac-collections">List STAC Collections</h2>
-<p>We’ll create a <code>products</code> variable to view deeper in the STAC Catalog.</p>
+<p>Print the response:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<section id="print-one-of-the-stac-collection-records" class="level3">
-<h3 class="anchored" data-anchor-id="print-one-of-the-stac-collection-records">Print one of the STAC Collection records</h3>
-<p>To view the <code>products</code> variable we just created, let’s look at one entry as a dictionary.</p>
+</section>
+<section id="what-do-each-of-these-service-values-mean" class="level4">
+<h4 class="anchored" data-anchor-id="what-do-each-of-these-service-values-mean">What do each of these service values mean?</h4>
+<ul>
+<li>Associations
+<ul>
+<li>CMR is a large web of interconnected metadata “schemas”, including Collections, Granules, Services, Tools, and Variables. In this case, this collection is associated with two unique services, two tools, and several unique variables.</li>
+</ul></li>
+<li>Tags
+<ul>
+<li>There are also tags that describe what service options exist at a high-level. In this case, we see that this dataset supports the ability to reformat, subset by space and time, as well as by variable. This is used in web applications like Earthdata Search to surface those customization options more readily.</li>
+</ul></li>
+<li>Service Features
+<ul>
+<li>In this case, we see three separate “features” listed here: esi, Harmony, and OPeNDAP.</li>
+</ul></li>
+</ul>
+<p>We will dig into more details on what Harmony offers for this dataset.</p>
+<p>First, we need to isolate the services returned for this dataset:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="print-the-stac-collection-ids-with-their-title" class="level3">
-<h3 class="anchored" data-anchor-id="print-the-stac-collection-ids-with-their-title">Print the STAC Collection <code>id</code>s with their <code>title</code></h3>
-<p>In the above output, <code>id</code> and <code>title</code> are two elements of interest that we can print for all <code>products</code> using a for loop.</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-</section>
-<section id="search-for-granulesstac-items---set-up-query-parameters-to-submit-to-the-cmr-stac-api" class="level2">
-<h2 class="anchored" data-anchor-id="search-for-granulesstac-items---set-up-query-parameters-to-submit-to-the-cmr-stac-api">Search for Granules/STAC Items - Set up query parameters to submit to the CMR-STAC API</h2>
-<p>We will define our ROI using a geojson file containing a small polygon feature in western Nebraska, USA. The geojson file is found in the <strong>~/data</strong> directory. We’ll also specify the data collections and a time range for our example.</p>
-<section id="read-in-a-geojson-file" class="level3">
-<h3 class="anchored" data-anchor-id="read-in-a-geojson-file">Read in a geojson file</h3>
-<p>Reading in a geojson file with geopandas will return the geometry of our polygon (our ROI).</p>
-<p><strong>NOTE:</strong> If you are running the notebook from the <strong>tutorials-templates</strong> directory, please use the following path to connect to the geojson file: <strong>“../tutorials/data/ne_w_agfields.geojson”</strong></p>
+<p>Inspect the first service returned. Now we’re going to search the services endpoint to view that individual service’s metadata, like we did with our dataset above. This time, we’re explicitly setting the format of the response to umm-json in the Accept Header in order to see detailed metadata about the service.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="visualize-contents-of-geojson-file" class="level3">
-<h3 class="anchored" data-anchor-id="visualize-contents-of-geojson-file">Visualize contents of geojson file</h3>
-<p>We can use that geometry to visualize the polygon: here, a square. But wait for it –</p>
+<p>Details about the service metadata record include the service options provided by the “backend” processor connected to Harmony, in this case the PODAAC Level 2 Cloud Subsetter:</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>We can plot the polygon using the <code>geoviews</code> package that we imported as <code>gv</code> with ‘bokeh’ and ‘matplotlib’ extensions. The following has reasonable width, height, color, and line widths to view our polygon when it is overlayed on a base tile map.</p>
+</section>
+</section>
+<section id="discover-variable-names" class="level2">
+<h2 class="anchored" data-anchor-id="discover-variable-names">Discover variable names</h2>
+<p>Just like services, a dataset may also be associated to metadata on their individual data variables, which can be used as input if we wish to subset by one or more variables of interest.</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>We will now start to specify the search criteria we are interested in, i.e, the <strong>date range</strong>, the <strong>ROI</strong>, and the <strong>data collections</strong>, that we will pass to the STAC API.</p>
-</section>
-<section id="extract-the-coordinates-for-the-roi" class="level3">
-<h3 class="anchored" data-anchor-id="extract-the-coordinates-for-the-roi">Extract the coordinates for the ROI</h3>
+<p>Several variable records are returned. Again, like we did for services, we’ll search the variables endpoint to view an individual variable’s metadata, and we’ll print out the list of variables for our dataset.</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>So, what just happen there? Let’s take a quick detour to break it down.</p>
-<p><img src="../assets/images/Read_GeoJSON_Explained.png" width="750"></p>
-</section>
-<section id="specify-date-range" class="level3">
-<h3 class="anchored" data-anchor-id="specify-date-range">Specify date range</h3>
-<p>Next up is to specify our date range using <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO_8601 date formatting</a>.</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="specify-the-stac-collections" class="level3">
-<h3 class="anchored" data-anchor-id="specify-the-stac-collections">Specify the STAC Collections</h3>
-<p>STAC Collection is synonomous with what we usually consider a NASA data product. Desired STAC Collections are submitted to the search API as a list containing the collection <code>id</code>. We can use the <code>id</code>s that we printed from our <code>products</code> for loop above. Let’s focus on S30 and L30 collections.</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-</section>
-<section id="search-the-cmr-stac-api-with-our-search-criteria" class="level2">
-<h2 class="anchored" data-anchor-id="search-the-cmr-stac-api-with-our-search-criteria">Search the CMR-STAC API with our search criteria</h2>
-<p>Now we can put all our search criteria together using <code>catalog.search</code> from the <code>pystac_client</code> package.</p>
+<p>Next, print out a simple list of all associated variable names by looping the same variable response we submitted above, this time for each variable:</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<section id="print-out-how-many-stac-items-match-our-search-query" class="level3">
-<h3 class="anchored" data-anchor-id="print-out-how-many-stac-items-match-our-search-query">Print out how many STAC Items match our search query</h3>
 <div class="sourceCode" id="cb16"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>We now have a search object containing the STAC Items that matched our query. Now, let’s pull out all of the STAC Items (as a PySTAC ItemCollection object) and explore the contents (i.e., the STAC Items)</p>
+</section>
+<section id="using-harmony-py-to-subset-data" class="level2">
+<h2 class="anchored" data-anchor-id="using-harmony-py-to-subset-data">Using Harmony-Py to subset data</h2>
+<p>Harmony-Py provides a pip installable Python alternative to directly using Harmony’s RESTful API to make it easier to request data and service options, especially when interacting within a Python Jupyter Notebook environment.</p>
+<p>The next steps are adopted from the <a href="https://github.com/nasa/harmony-py/blob/main/examples/intro_tutorial.ipynb">introduction tutorial</a> notebook provided in the Harmony-Py library:</p>
+<section id="create-harmony-client-object" class="level3">
+<h3 class="anchored" data-anchor-id="create-harmony-client-object">Create Harmony Client object</h3>
+<p>First, we need to create a Harmony Client, which is what we will interact with to submit and inspect a data request to Harmony, as well as to retrieve results.</p>
+<p>When creating the Client, we need to provide Earthdata Login credentials, which are required to access data from NASA EOSDIS. This basic line below assumes that we have a <code>.netrc</code> available.</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Let’s list some of the <code>Items</code> from our <code>pystac item_collection</code>:</p>
+</section>
+<section id="hurricane-ida-snapshot" class="level3">
+<h3 class="anchored" data-anchor-id="hurricane-ida-snapshot">Hurricane Ida snapshot</h3>
+<p>Using <a href="https://go.nasa.gov/3nhCwZi">NASA Worldview</a>, we can first explore SST during a tropical storm event; in this case, we can overlay L2 and L4 SST variables against true color imagery to observe Hurricane Ida in August 2021. Although this is a small sample set, this use case could be expanded to explore how SST responds during the Atlantic hurricane over the next several months. The same data that we are requesting below using Harmony-py can also be requested using <a href="https://search.earthdata.nasa.gov/search/granules?p=C1940473819-POCLOUD&amp;pg%5B0%5D%5Bv%5D=f&amp;pg%5B0%5D%5Bqt%5D=2021-08-20T00%3A00%3A00.000Z%2C2021-08-20T23%3A59%3A59.999Z&amp;pg%5B0%5D%5Bgsk%5D=-start_date&amp;q=C1940473819-POCLOUD&amp;sb%5B0%5D=-97.77667%2C21.20806%2C-83.05197%2C30.16605&amp;tl=1636520265!3!!&amp;m=30.69140625!-97.875!3!1!0!0%2C2">NASA Earthdata Search</a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="data/Worldview-snapshot-Ida.jpeg" class="img-fluid figure-img"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Hurrican Ida snapshot - Worldview</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="create-harmony-request" class="level3">
+<h3 class="anchored" data-anchor-id="create-harmony-request">Create Harmony Request</h3>
+<p>The following are common request parameters:</p>
+<ul>
+<li><code>collection</code>: Required parameter. This is the NASA EOSDIS collection, or data product. There are two options for inputting a collection of interest:
+<ul>
+<li>Provide a concept ID (e.g.&nbsp;C1940473819-POCLOUD)</li>
+<li>Data product short name (e.g.&nbsp;MODIS_A-JPL-L2P-v2019.0).</li>
+</ul></li>
+<li><code>spatial</code>: Bounding box spatial constraints on the data. The Harmony Bbox class accepts spatial coordinates as decimal degrees in w, s, e, n order, where longitude = -180, 180 and latitude = -90, 90.</li>
+<li><code>temporal</code>: Date/time constraints on the data. The example below demonstrates temporal start and end ranges using the python datetime library.</li>
+</ul>
+<p>As we identified above, only subsetting options are available for this dataset. If other service options such as reformatting are available for a given dataset, these can also be specified using Harmony-py: See the <a href="https://harmony-py.readthedocs.io/en/latest/">documentation</a> for details on how to construct these parameters.</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>We can view a single <code>Item</code> as a dictionary, as we did above with STAC <code>Collections</code>/<code>products</code>.</p>
+</section>
+<section id="check-request-validity" class="level3">
+<h3 class="anchored" data-anchor-id="check-request-validity">Check Request validity</h3>
+<p>Before submitting a Harmony Request, we can test your request to see if it’s valid and how to fix it if not. In particular, <code>request.is_valid</code> will check to ensure that the spatial BBox bounds and temporal ranges are entered correctly.</p>
 <div class="sourceCode" id="cb19"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-</section>
-<section id="filtering-stac-items" class="level2">
-<h2 class="anchored" data-anchor-id="filtering-stac-items">Filtering STAC Items</h2>
-<p>While the CMR-STAC API is a powerful search and discovery utility, it is still maturing and currently does not have the full gamut of filtering capabilities that the STAC API specification allows for. Hence, additional filtering is required if we want to filter by a property, for example cloud cover. Below we will loop through and filter the item_collection by a specified cloud cover as well as extract the band we’d need to do an Enhanced Vegetation Index (EVI) calculation for a future analysis.</p>
-<p>We’ll make a <code>cloudcover</code> variable where we will set the maximum allowable cloud cover and extract the band links for those Items that match or are less than the max cloud cover.</p>
+<section id="submit-request" class="level3">
+<h3 class="anchored" data-anchor-id="submit-request">Submit request</h3>
+<p>Now that the request is created, we can now submit it to Harmony using the Harmony Client object. A job id is returned, which is a unique identifier that represents the submitted request.</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>We will also specify the STAC Assets (i.e., bands/layers) of interest for both the S30 and L30 collections (also in our <code>collections</code> variable above).</p>
-<p>In this hypothetical workflow, we’ll extract the bands needed to calculate an enhanced vegetation index (EVI). Thus, the band needed include red, near infrared (NIR), and blue. We’ll also extract a quality band (i.e., Fmask) that we’d eventually use to perform per-pixel quality filtering.</p>
-<p>Notice that the band ids are in some case not one-to-one between the S30 and the L30 product. This is evident in the NIR band for each product where S30’s NIR band id is <strong>B8A</strong> and L30’s is <strong>B05</strong>. Note, the S30 product has an additional NIR band with a band id of <strong>B08</strong>, but the spectral ranges between <strong>B8A</strong> and <strong>B05</strong> are more closely aligned. Visit the <a href="https://lpdaac.usgs.gov/data/get-started-data/collection-overview/missions/harmonized-landsat-sentinel-2-hls-overview/#hls-spectral-bands">HLS Overview</a> page to learn more about HLS spectral bands.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>And now to loop through and filter the <code>item_collection</code> by cloud cover and bands:</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>The filtering done in the previous steps produces a list of links to STAC Assets. Let’s print out the first ten links.</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><strong>NOTE</strong> that HLS data is mapped to the Universal Transverse Mercator (UTM) projection and is tiled using the Sentinel-2 Military Grid Reference System (MGRS) UTM grid. Notice that in the list of links we have multiple tiles, i.e.&nbsp;<strong>T14TKL</strong> &amp; <strong>T13TGF</strong>, that intersect with our region of interest. In this case, these two tiles represent neighboring UTM zones. The tiles can be discern from the file name, which is the last element in a link (far right) following the last forward slash (/) - e.g., <strong>HLS.L30.T14TKL.2021133T172406.v1.5.B04.tif</strong>. The figure below explains where to find the tile/UTM zone from the file name.</p>
-<p><img src="../assets/images/HLS_Filename_Explained.png" width="750"></p>
-<p>We will now split the list of links into separate logical sub-lists.</p>
 </section>
-<section id="split-data-links-list-into-logical-groupings" class="level2">
-<h2 class="anchored" data-anchor-id="split-data-links-list-into-logical-groupings">Split Data Links List into Logical Groupings</h2>
-<p>We have a list of links to data assets that meet our search and filtering criteria. Below we’ll split our list from above into lists first by tile/UTM zone and then further by individual bands bands. The commands that follow will do the splitting with python routines.</p>
-<section id="split-by-utm-tile-specified-in-the-file-name-e.g.-t14tkl-t13tgf" class="level3">
-<h3 class="anchored" data-anchor-id="split-by-utm-tile-specified-in-the-file-name-e.g.-t14tkl-t13tgf">Split by UTM tile specified in the file name (e.g., T14TKL &amp; T13TGF)</h3>
+<section id="check-request-status" class="level3">
+<h3 class="anchored" data-anchor-id="check-request-status">Check request status</h3>
+<p>We can check on the progress of a processing job with status(). This method blocks while communicating with the server but returns quickly.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Depending on the size of the request, it may be helpful to wait until the request has completed processing before the remainder of the code is executed. The wait_for_processing() method will block subsequent lines of code while optionally showing a progress bar.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="view-harmony-job-response-and-output-urls" class="level3">
+<h3 class="anchored" data-anchor-id="view-harmony-job-response-and-output-urls">View Harmony job response and output URLs</h3>
+<p>Once the data request has finished processing, we can view details on the job that was submitted to Harmony, including the API call to Harmony, and informational messages on the request if available.</p>
+<p>result_json() calls wait_for_processing() and returns the complete job in JSON format once processing is complete.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="direct-cloud-access" class="level3">
+<h3 class="anchored" data-anchor-id="direct-cloud-access">Direct cloud access</h3>
+<p>Note that the remainder of this tutorial will only succeed when running this notebook within the AWS us-west-2 region.</p>
+<p>Harmony data outputs can be accessed within the cloud using the s3 URLs and AWS credentials provided in the Harmony job response.</p>
+<section id="retrieve-list-of-output-urls." class="level4">
+<h4 class="anchored" data-anchor-id="retrieve-list-of-output-urls.">Retrieve list of output URLs.</h4>
+<p>The result_urls() method calls wait_for_processing() and returns a list of the processed data URLs once processing is complete. You may optionally show the progress bar as shown below.</p>
 <div class="sourceCode" id="cb24"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We can see that the first file returned does not include the <code>_subsetted</code> suffix, which indicates that a blank file was returned, as no data values were located within our subsetted region. We’ll select the second URL in the list to bring into xarray below.</p>
 <div class="sourceCode" id="cb25"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<section id="print-dictionary-keys-and-values-i.e.-the-data-links" class="level4">
-<h4 class="anchored" data-anchor-id="print-dictionary-keys-and-values-i.e.-the-data-links">Print dictionary keys and values, i.e.&nbsp;the data links</h4>
+</section>
+<section id="aws-credential-retrieval" class="level4">
+<h4 class="anchored" data-anchor-id="aws-credential-retrieval">AWS credential retrieval</h4>
+<p>Using aws_credentials you can retrieve the credentials needed to access the Harmony s3 staging bucket and its contents.</p>
 <div class="sourceCode" id="cb26"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="open-staged-files-with-s3fs-and-xarray" class="level3">
+<h3 class="anchored" data-anchor-id="open-staged-files-with-s3fs-and-xarray">Open staged files with <em>s3fs</em> and <em>xarray</em></h3>
+<p>We use the AWS <code>s3fs</code> package to create a file system that can then be read by xarray:</p>
 <div class="sourceCode" id="cb27"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Now we will create a separate list of data links for each tile</p>
+<p>Now that we have our s3 file system set, including our declared credentials, we’ll use that to open the url, and read in the file through xarray. This extra step is needed because xarray cannot open the S3 location directly. Instead, the S3 file object is passed to xarray, in order to then open the dataset.</p>
 <div class="sourceCode" id="cb28"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="print-bandlayer-links-for-hls-tile-t13tgf" class="level4">
-<h4 class="anchored" data-anchor-id="print-bandlayer-links-for-hls-tile-t13tgf">Print band/layer links for HLS tile T13TGF</h4>
+<section id="plot-the-data" class="level3">
+<h3 class="anchored" data-anchor-id="plot-the-data">Plot the data</h3>
+<p>Use the xarray built in plotting function to create a simple plot along the x and y dimensions of the dataset:</p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-</section>
-<section id="split-the-links-by-band" class="level3">
-<h3 class="anchored" data-anchor-id="split-the-links-by-band">Split the links by band</h3>
-<div class="sourceCode" id="cb30"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb31"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb32"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb33"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-</section>
-<section id="save-links-to-a-text-file" class="level2">
-<h2 class="anchored" data-anchor-id="save-links-to-a-text-file">Save links to a text file</h2>
-<p>To complete this exercise, we will save the individual link lists as separate text files with descriptive names.</p>
-<p><strong>NOTE:</strong> If you are running the notebook from the <strong>tutorials-templates</strong> directory, please use the following path to write to the data directory: <strong>“../tutorials/data/{name}”</strong></p>
-<section id="write-links-from-cmr-stac-api-to-a-file" class="level3">
-<h3 class="anchored" data-anchor-id="write-links-from-cmr-stac-api-to-a-file">Write links from CMR-STAC API to a file</h3>
-<div class="sourceCode" id="cb34"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="write-links-to-file-for-s3-access" class="level3">
-<h3 class="anchored" data-anchor-id="write-links-to-file-for-s3-access">Write links to file for S3 access</h3>
-<div class="sourceCode" id="cb35"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<hr>
 </section>
 </section>
 <section id="resources" class="level2">
 <h2 class="anchored" data-anchor-id="resources">Resources</h2>
-<ul>
-<li><a href="https://stacspec.org/">STAC Specification Webpage</a></li>
-<li><a href="https://stacspec.org/STAC-api.html">STAC API Documentation</a></li>
-<li><a href="https://github.com/nasa/cmr-stac">CMR-STAC API Github</a></li>
-<li><a href="https://pystac-client.readthedocs.io/en/latest/index.html">PySTAC Client Documentation</a></li>
-<li><a href="https://stackoverflow.com/questions/26367812/appending-to-list-in-python-dictionary" class="uri">https://stackoverflow.com/questions/26367812/appending-to-list-in-python-dictionary</a></li>
-<li><a href="https://geopandas.org/en/stable/docs/user_guide.html">Geopandas</a></li>
-<li><a href="https://lpdaac.usgs.gov/data/get-started-data/collection-overview/missions/harmonized-landsat-sentinel-2-hls-overview/">HLS Overview</a></li>
-</ul>
+<ol type="1">
+<li><p>In-depth exploration of the <code>MODIS_A-JPL-L2P-v2019.0</code> data set, co-locating in-situ and remote sensing data: https://github.com/podaac/tutorials/blob/master/notebooks/SWOT-EA-2021/Colocate_satellite_insitu_ocean.ipynb</p></li>
+<li><p>Harmony-Py library introduction tutorial: https://github.com/nasa/harmony-py/blob/main/examples/intro_tutorial.ipynb</p></li>
+</ol>
 
 
 </section>
