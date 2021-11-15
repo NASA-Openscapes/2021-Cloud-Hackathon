@@ -6,7 +6,7 @@ title: Schedule
 
 An optional pre-hackathon clinic will be held on November 9 from 8-10am PST, and the recording will be made available to all hackathon participants to review on their own.
 
-All Cloud Hackathon activities are **virtual**. We will engage primarily with this group and schedule via Zoom and Slack; see [prerequisites, setup, & getting help](https://nasa-openscapes.github.io/2021-Cloud-Hackathon/logistics/prerequisites.html).
+All Cloud Hackathon activities are **virtual**. We will engage primarily with this group and schedule via Zoom and Slack; see [prerequisites & getting help](https://nasa-openscapes.github.io/2021-Cloud-Hackathon/logistics/prerequisites.html).
 
 **Zoom links** will be posted on the `2021-nasacloudhack-general` Slack channel
  
