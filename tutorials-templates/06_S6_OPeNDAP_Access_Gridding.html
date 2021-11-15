@@ -3,7 +3,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="quarto-0.2.232">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>additional_resources__direct_s3_access__gdalvrt</title>
+  <title>s6_opendap_access_gridding</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -322,185 +322,311 @@
   <div id="quarto-toc-sidebar" class=" pt-0 col col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-toc order-last"><nav id="TOC" role="doc-toc">
 <h2 id="toc-title">On this page</h2>
 <ul>
-<li><a href="#direct-s3-data-access-with-gdal-virtual-raster-format-vrt" class="nav-link active" data-scroll-target="#direct-s3-data-access-with-gdal-virtual-raster-format-vrt">Direct S3 Data Access with GDAL Virtual Raster Format (VRT)</a>
+<li><a href="#sentinel-6-mf-l2-altimetry-data-access-opendap-gridding" class="nav-link active" data-scroll-target="#sentinel-6-mf-l2-altimetry-data-access-opendap-gridding">06. Sentinel-6 MF L2 Altimetry Data Access (OPeNDAP) &amp; Gridding</a>
+<ul class="collapse">
+<li><a href="#getting-started" class="nav-link" data-scroll-target="#getting-started">Getting Started</a>
 <ul class="collapse">
 <li><a href="#summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
-<li><a href="#exercise" class="nav-link" data-scroll-target="#exercise">Exercise</a>
-<ul class="collapse">
-<li><a href="#import-required-packages" class="nav-link" data-scroll-target="#import-required-packages">Import Required Packages</a></li>
-<li><a href="#get-temporary-credentials-and-configure-local-environment" class="nav-link" data-scroll-target="#get-temporary-credentials-and-configure-local-environment">Get Temporary Credentials and Configure Local Environment</a></li>
-<li><a href="#read-in-and-process-stac-asset-links" class="nav-link" data-scroll-target="#read-in-and-process-stac-asset-links">Read In and Process STAC Asset Links</a></li>
-<li><a href="#read-in-geojson-for-subsetting" class="nav-link" data-scroll-target="#read-in-geojson-for-subsetting">Read in geoJSON for subsetting</a></li>
-<li><a href="#direct-s3-data-access" class="nav-link" data-scroll-target="#direct-s3-data-access">Direct S3 Data Access</a></li>
-<li><a href="#reading-in-an-hls-time-series" class="nav-link" data-scroll-target="#reading-in-an-hls-time-series">Reading in an HLS time series</a></li>
-<li><a href="#read-in-the-nir-and-fmask-vrt-files" class="nav-link" data-scroll-target="#read-in-the-nir-and-fmask-vrt-files">Read in the NIR and Fmask VRT files</a></li>
-<li><a href="#create-an-xarray-dataset" class="nav-link" data-scroll-target="#create-an-xarray-dataset">Create an <code>xarray dataset</code></a></li>
-<li><a href="#apply-quality-filter" class="nav-link" data-scroll-target="#apply-quality-filter">Apply quality filter</a></li>
+<li><a href="#objectives" class="nav-link" data-scroll-target="#objectives">Objectives</a></li>
+<li><a href="#requirements" class="nav-link" data-scroll-target="#requirements">Requirements</a></li>
+<li><a href="#workspace" class="nav-link" data-scroll-target="#workspace">Workspace</a></li>
 </ul></li>
-<li><a href="#references" class="nav-link" data-scroll-target="#references">References</a></li>
+<li><a href="#datasets" class="nav-link" data-scroll-target="#datasets">Dataset(s)</a>
+<ul class="collapse">
+<li><a href="#render-along-track-altimetry-data-to-the-ecco-grid" class="nav-link" data-scroll-target="#render-along-track-altimetry-data-to-the-ecco-grid">Render along-track altimetry data to the ECCO grid</a></li>
+<li><a href="#grid-ssha-or-a-similar-variable" class="nav-link" data-scroll-target="#grid-ssha-or-a-similar-variable">Grid ssha or a similar variable</a></li>
+</ul></li>
 </ul></li>
 </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon/edit/main/tutorials-templates/Additional_Resources__Direct_S3_Access__gdalvrt.ipynb" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon/issues/new" class="toc-action">Report an issue</a></p></div></div></nav></div>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon/edit/main/tutorials-templates/06_S6_OPeNDAP_Access_Gridding.ipynb" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon/issues/new" class="toc-action">Report an issue</a></p></div></div></nav></div>
   <div class="col mx-auto col-sm-12 col-md-9 col-lg-7 col-xl-7 px-lg-4 pe-xxl-4 ps-xxl-0">
 <main>
 
-<section id="direct-s3-data-access-with-gdal-virtual-raster-format-vrt" class="level1">
-<h1>Direct S3 Data Access with GDAL Virtual Raster Format (VRT)</h1>
-<section id="summary" class="level2">
-<h2 class="anchored" data-anchor-id="summary">Summary</h2>
-<p>Hello World</p>
-<hr>
+<section id="sentinel-6-mf-l2-altimetry-data-access-opendap-gridding" class="level1">
+<h1>06. Sentinel-6 MF L2 Altimetry Data Access (OPeNDAP) &amp; Gridding</h1>
+<p>To-dos: * Add tutorial objectives, e.g.&nbsp;How much data are we selecting/where? Over a certain Cycle? * What is the goal of the tutorial? e.g.&nbsp;Grab ___ cycle(s)/pass(es) to plot satellite altimetry tracks from S6 using opendap in the cloud to only select data we are interested in, reducing the data volume and time-to-data.</p>
+<section id="getting-started" class="level2">
+<h2 class="anchored" data-anchor-id="getting-started">Getting Started</h2>
+<section id="summary" class="level3">
+<h3 class="anchored" data-anchor-id="summary">Summary</h3>
+<p><em>Description goes here…</em></p>
 </section>
-<section id="exercise" class="level2">
-<h2 class="anchored" data-anchor-id="exercise">Exercise</h2>
-<section id="import-required-packages" class="level3">
-<h3 class="anchored" data-anchor-id="import-required-packages">Import Required Packages</h3>
+<section id="objectives" class="level3">
+<h3 class="anchored" data-anchor-id="objectives">Objectives</h3>
+<p>In this tutorial you will learn…</p>
+<ol type="1">
+<li>about level 2 radar altimetry data from the Sentinel-6 Michael Freilich mission;</li>
+<li>how to efficiently download variable subsets using OPeNDAP;</li>
+<li>how to grid the along-track altimetry observations produced by S6 at level 2.;</li>
+</ol>
+</section>
+<section id="requirements" class="level3">
+<h3 class="anchored" data-anchor-id="requirements">Requirements</h3>
+<p>This workflow was developed using Python 3.9 (and tested against versions 3.7, 3.8).</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="get-temporary-credentials-and-configure-local-environment" class="level3">
-<h3 class="anchored" data-anchor-id="get-temporary-credentials-and-configure-local-environment">Get Temporary Credentials and Configure Local Environment</h3>
-<p>To perform direct S3 data access one needs to acquire temporary S3 credentials. The credentials give users direct access to S3 buckets in NASA Earthdata Cloud. <strong>AWS credentials should not be shared</strong>, so take precautions when using them in notebooks our scripts. <strong>Note,</strong> these temporary credentials are valid for only <strong>1 hour</strong>. For more information regarding the temporary credentials visit <a href="https://data.lpdaac.earthdatacloud.nasa.gov/s3credentialsREADME" class="uri">https://data.lpdaac.earthdatacloud.nasa.gov/s3credentialsREADME</a>.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="workspace" class="level3">
+<h3 class="anchored" data-anchor-id="workspace">Workspace</h3>
+<p>Create some directories inside a temporary user workspace. They will be used to write outputs.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<section id="insert-the-credentials-into-our-boto3-session-and-configure-out-rasterio-environment-for-data-access" class="level4">
-<h4 class="anchored" data-anchor-id="insert-the-credentials-into-our-boto3-session-and-configure-out-rasterio-environment-for-data-access">Insert the credentials into our <code>boto3</code> session and configure out <code>rasterio</code> environment for data access</h4>
-<p>Create a boto3 Session object using your temporary credentials. This Session can then be used to pass those credentials and get S3 objects from applicable buckets.</p>
+<blockquote class="blockquote">
+<p>https://docs.python.org/3/library/os.html#os.makedirs</p>
+</blockquote>
+</section>
+</section>
+<section id="datasets" class="level2">
+<h2 class="anchored" data-anchor-id="datasets">Dataset(s)</h2>
+<p>This example operates on Level 2 Low Resolution Altimetry from Sentinel-6 Michael Freilich (the Near Real Time Reduced distribution). It is most easily identified by its collection <em>ShortName</em>, given below:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>For this exercise, we are going to open up a context manager for the notebook using the <code>rasterio.env</code> module to store the required GDAL and AWS configurations we need to access the data in Earthdata Cloud. While the context manager is open (<code>rio_env.__enter__()</code>) we will be able to run the open or get data commands that would typically be executed within a <code>with</code> statement, thus allowing us to more freely interact with the data. We’ll close the context (<code>rio_env.__exit__()</code>) at the end of the notebook.</p>
-<p>GDAL environment variables must be configured to access Earthdata Cloud data assets. Geospatial data access Python packages like <code>rasterio</code> and <code>rioxarray</code> depend on GDAL, leveraging GDAL’s “Virtual File Systems” to read remote files. GDAL has a lot of environment variables that control it’s behavior. Changing these settings can mean the difference being able to access a file or not. They can also have an impact on the performance.</p>
+<p>Search CMR using a simple function that wraps <code>requests.get</code>:</p>
+<section id="collection" class="level4">
+<h4 class="anchored" data-anchor-id="collection">collection</h4>
 <div class="sourceCode" id="cb5"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-</section>
-<section id="read-in-and-process-stac-asset-links" class="level3">
-<h3 class="anchored" data-anchor-id="read-in-and-process-stac-asset-links">Read In and Process STAC Asset Links</h3>
-<p>In the previous section, we used the NASA CMR-STAC API to discover HLS assets the intersect with our search criteria, i.e., ROI, Date range, and collections. The search results were filtered and saved as text files by individual bands for each tile. We will read in the text files for tile <strong>T13TGF</strong> for the <strong>RED</strong> (L30: B04 &amp; S30: B04), <strong>NIR</strong> (L30: B05 &amp; S30: B8A), and <strong>Fmask</strong> bands.</p>
-<section id="list-text-files-with-hls-links" class="level4">
-<h4 class="anchored" data-anchor-id="list-text-files-with-hls-links">List text files with HLS links</h4>
+<p>Get the collection’s <em>concept-id</em> from the record’s <code>meta</code> object. It uniquely identifies the collection in the CMR and is a component of the OPeNDAP endpoints for its granules.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<blockquote class="blockquote">
+<p>https://docs.python-requests.org/en/latest/api/#requests.get</p>
+</blockquote>
 </section>
-<section id="read-in-our-asset-links-for-bo4-red" class="level4">
-<h4 class="anchored" data-anchor-id="read-in-our-asset-links-for-bo4-red">Read in our asset links for <strong>BO4</strong> (RED)</h4>
+<section id="granules" class="level4">
+<h4 class="anchored" data-anchor-id="granules">granules</h4>
 <div class="sourceCode" id="cb7"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="read-in-and-combine-our-asset-links-for-bo5-landsat-nir-and-b8a-sentinel-2-nir" class="level4">
-<h4 class="anchored" data-anchor-id="read-in-and-combine-our-asset-links-for-bo5-landsat-nir-and-b8a-sentinel-2-nir">Read in and combine our asset links for <strong>BO5</strong> (Landsat NIR) and <strong>B8A</strong> (Sentinel-2 NIR)</h4>
-<p>The near-infrared (NIR) band for Landsat is <strong>B05</strong> while the NIR band for Sentinel-2 is <strong>B8A</strong>. In the next step we will read in and combine the lists into a single NIR list.</p>
+<blockquote class="blockquote">
+<p>https://docs.python.org/3/library/io.html#io.StringIO<br>
+https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html<br>
+https://docs.python-requests.org/en/latest/api/#requests.get</p>
+</blockquote>
 <div class="sourceCode" id="cb8"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="read-in-our-asset-links-for-fmask" class="level4">
-<h4 class="anchored" data-anchor-id="read-in-our-asset-links-for-fmask">Read in our asset links for <strong>Fmask</strong></h4>
+<blockquote class="blockquote">
+<p>https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.iloc.html</p>
+</blockquote>
+<p>Display the list of items created by splitting the a value in the <code>Granule UR</code> field.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>In this example we will use the <code>gdalbuildvrt.exe</code> utility to create a time series virtual raster format (VRT) file. The utility, however, expects the links to be formated with the GDAL virtual file system (VSI) path, rather than the actual asset links. We will therefore use the VSI path to access our assets. The examples below show the VSI path substitution for S3 (<code>vsis3</code>) links.</p>
-<pre class="text"><code>/vsis3/lp-prod-protected/HLSS30.015/HLS.S30.T13TGF.2020191T172901.v1.5.B04.tif</code></pre>
-<p>See the <a href="https://gdal.org/user/virtual_file_systems.html">GDAL Virtual File Systems</a> for more information regarding GDAL VSI.</p>
-</section>
-<section id="write-out-a-new-text-file-containing-the-vsis3-path" class="level4">
-<h4 class="anchored" data-anchor-id="write-out-a-new-text-file-containing-the-vsis3-path">Write out a new text file containing the <code>vsis3</code> path</h4>
+<p>References:<br>
+https://docs.python.org/3/library/stdtypes.html#str.split<br>
+https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.iloc.html</p>
+<p><em>Note that cycle and pass are items 8 and 9, respectively, after splitting the <code>Granule UR</code> field by <code>_</code>.</em> Add two columns containing the cycle/pass numbers for granules in the table.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<blockquote class="blockquote">
+<p>https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.copy.html<br>
+https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.apply.html<br>
+https://docs.python.org/3/reference/expressions.html#lambda<br>
+https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.iloc.html</p>
+</blockquote>
+<p>Now create a table with one row per cycle and with these columns:</p>
+<ol type="1">
+<li>start time</li>
+<li>end time</li>
+<li>granule names (list)</li>
+</ol>
 <div class="sourceCode" id="cb11"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<blockquote class="blockquote">
+<p>https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.to_frame.html<br>
+https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.groupby.html</p>
+</blockquote>
+</section>
+<section id="pick-a-cycle-of-interest" class="level4">
+<h4 class="anchored" data-anchor-id="pick-a-cycle-of-interest">Pick a cycle of interest</h4>
+<p>Pick one cycle that is nearly complete, &gt;= 120 orbits/files. Limit options to cycles with at least 120 granules/files available (i.e.&nbsp;orbits in S6 context).</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Choose from the nearly-complete cycles that remain in the table, which start with cycle number <code>023</code> for S6 data in the public domain (and start on June 22). Slice the table of <em>granules</em> to exclude all rows that are not from the cycle of interest.</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-</section>
-<section id="read-in-geojson-for-subsetting" class="level3">
-<h3 class="anchored" data-anchor-id="read-in-geojson-for-subsetting">Read in geoJSON for subsetting</h3>
-<p>We will use the input geoJSON file to <code>clip</code> the source data to our desired region of interest.</p>
+<section id="opendap-access-endpoints" class="level4">
+<h4 class="anchored" data-anchor-id="opendap-access-endpoints">OPeNDAP Access Endpoints</h4>
+<p>All endpoints for granules/files in OPeNDAP/Hyrax start with the server hostname and path to the parent collection, followed by <em>granules</em>. The collection is specified by the <em>concept-id</em> given right after <em>collections</em> in a valid url. The next cell formats a string giving the base url to which we will append granule filenames (stored in the <code>Granule UR</code> column of the <em>granules</em> table) to get the full url/endpoint for each granule.</p>
+<p><em>Fyi, the url printed by this cell will not be accessible from your web browser.</em></p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>To <code>clip</code> the source data to our input feature boundary, we need to transform the feature boundary from its original WGS84 coordinate reference system to the projected reference system of the source HLS file (i.e., UTM Zone 13).</p>
+<blockquote class="blockquote">
+<p>https://docs.python.org/3/library/string.html#format-string-syntax</p>
+</blockquote>
+<p>Appending the granule name (taken from the <code>Granule UR</code> column) to the end of the url above results in a valid endpoint. You can click the one printed by this cell to confirm. A new browser tab should open to the HTML access form served by Hyrax/OPeNDAP.</p>
+<p>Make a new column with the <code>nc4</code> download url for all granules.</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<section id="transform-geojson-feature-from-wgs84-to-utm" class="level4">
-<h4 class="anchored" data-anchor-id="transform-geojson-feature-from-wgs84-to-utm">Transform geoJSON feature from WGS84 to UTM</h4>
+<blockquote class="blockquote">
+<p>https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.info.html</p>
+</blockquote>
+<section id="pick-target-datacoordinate-variables" class="level5">
+<h5 class="anchored" data-anchor-id="pick-target-datacoordinate-variables">Pick target data/coordinate variables</h5>
+<p>Display the url to access the DDS file for the first granule:</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-</section>
-<section id="direct-s3-data-access" class="level3">
-<h3 class="anchored" data-anchor-id="direct-s3-data-access">Direct S3 Data Access</h3>
-<section id="start-up-a-dask-client" class="level4">
-<h4 class="anchored" data-anchor-id="start-up-a-dask-client">Start up a dask client</h4>
+<blockquote class="blockquote">
+<p>https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.iloc.html</p>
+</blockquote>
+<p>Assemble the list of target variables that you will subset from each granule/file using OPeNDAP.</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<blockquote class="blockquote">
+<p>https://docs.python.org/3/library/stdtypes.html#list</p>
+</blockquote>
+<p>Join the list of variables with commas and append the resulting string to the end of each opendap <code>nc4</code> endpoint created during the steps above. The variables given after the <code>?</code> will be subset from the source file on the server-side into a new netCDF4 file that OPeNDAP returns in response content which is downloaded over https.</p>
+<p>Here’s an example for the first granule in the selected cycle. Clicking this link should download a netCDF4 containing the target variables (4 of them, in my case). *You may be prompted to authenticate with your Earthdata Login account info.</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>There are multiple way to read COG data in as a time series. The <code>subprocess</code> package is used in this example to run GDAL’s build virtual raster file (<code>gdalbuildvrt</code>) executable outside our python session. First we’ll need to construct a string object with the command and it’s parameter parameters (including our temporary credentials). Then, we run the command using the <code>subprocess.call()</code> function.</p>
+<blockquote class="blockquote">
+<p>https://opendap.github.io/documentation/UserGuideComprehensive.html#Constraint_Expressions (Hyrax/OPeNDAP docs)</p>
+</blockquote>
 </section>
-<section id="build-gdal-vrt-files" class="level4">
-<h4 class="anchored" data-anchor-id="build-gdal-vrt-files">Build GDAL VRT Files</h4>
-<section id="construct-the-gdal-vrt-call" class="level5">
-<h5 class="anchored" data-anchor-id="construct-the-gdal-vrt-call">Construct the GDAL VRT call</h5>
+</section>
+<section id="download-subsets" class="level4">
+<h4 class="anchored" data-anchor-id="download-subsets">Download subsets</h4>
+<p>This function downloads one granule from the remote <code>url</code> to a local <code>target</code> path, and will reliably manage simultaneous streaming downloads divided between multiple threads.</p>
 <div class="sourceCode" id="cb19"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>We now have a fully configured <code>gdalbuildvrt</code> string that we can pass to Python’s <code>subprocess</code> module to run the <code>gdalbuildvrt</code> executable outside our Python environment.</p>
-</section>
-</section>
-<section id="execute-gdalbuildvrt-to-construct-a-vrt-on-disk-from-the-s3-links" class="level4">
-<h4 class="anchored" data-anchor-id="execute-gdalbuildvrt-to-construct-a-vrt-on-disk-from-the-s3-links">Execute <code>gdalbuildvrt</code> to construct a VRT on disk from the <code>S3</code> links</h4>
+<blockquote class="blockquote">
+<p>https://docs.python.org/3/library/os.path.html#os.path.isfile<br>
+https://docs.python-requests.org/en/latest/api/#requests.Response.text<br>
+https://docs.python-requests.org/en/latest/api/#requests.Response.status_code<br>
+https://docs.python-requests.org/en/latest/api/#requests.Response.iter_content</p>
+</blockquote>
 <div class="sourceCode" id="cb20"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><code>0</code> means success! We’ll have some troubleshooting to do you get any other value. In this tutorial, the path for the output VRT file or the input file list are the first things to check.</p>
-<p>While we’re here, we’ll build the VRT files for the NIR layers and the Fmask layers.</p>
+<p><em>This next cell assembles a list of local paths for the subset downloads.</em></p>
+<p>Calling <code>tolist</code> on the resulting Series will convert it to a Python list (by way of the <em>numpy</em> method, <em>tolist</em>). Use <em>zip</em> merge the lists of <em>subset</em> urls and local paths, itemwise. The result will be a list of lists, each length two and containing a remote url and local path (corresponding to two positional arguments in the <em>download</em> function that will be defined in a subsequent cell).</p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<blockquote class="blockquote">
+<p>https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.tolist.html</p>
+</blockquote>
+<p><em>This next cell creates a pool of workers to divide the list of downloads between multiple threads.</em></p>
+<p>Use the <code>ThreadPoolExecutor</code> from <code>concurrent.futures</code> module (in the Python 3 standard library) to divide the 120+ download jobs between multiple threads and run them concurrently. This should take no more than a minute or two to process all subsets on the server side and download to the local host.</p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-</section>
-<section id="reading-in-an-hls-time-series" class="level3">
-<h3 class="anchored" data-anchor-id="reading-in-an-hls-time-series">Reading in an HLS time series</h3>
-<p>We can now read the VRT files into our Python session. A drawback of reading VRTs into Python is that the <code>time</code> coordinate variable needs to be contructed. Below we not only read in the VRT file using <code>rioxarray</code>, but we also repurpose the <code>band</code> variable, which is generated automatically, to hold out time information.</p>
-<section id="read-the-red-vrt-in-as-xarray-with-dask-backing" class="level4">
-<h4 class="anchored" data-anchor-id="read-the-red-vrt-in-as-xarray-with-dask-backing">Read the RED VRT in as xarray with Dask backing</h4>
+<blockquote class="blockquote">
+<p>https://docs.python.org/3/library/concurrent.futures.html#threadpoolexecutor</p>
+</blockquote>
+<p>The source files range from 2.5MB to 3.0MB. These OPeNDAP subsets are ~100KB apiece. (anecdote: it took less than 10 minutes to download subsets for &gt;1700 granules/files when I ran this routine for all cycles going back to 2021-06-22.) Here we call the shell <em>du</em> and <em>ls</em> utilities to get the size of the directory:</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Above we use the parameter <code>chunk</code> in the <code>rioxarray.open_rasterio()</code> function to enable the Dask backing. What this allows is <em>lazy reading</em> of the data, which means the data is not actually read in into memory at this point. What we have is an object with some metadata and pointer to the source data. The data will be streamed to us when we call for it, but not stored in memory until with call the Dask <code>compute()</code> or <code>persist()</code> methods.</p>
-</section>
-<section id="print-out-the-time-coordinate" class="level4">
-<h4 class="anchored" data-anchor-id="print-out-the-time-coordinate">Print out the <code>time</code> coordinate</h4>
+<blockquote class="blockquote">
+<p>https://www.gnu.org/software/coreutils/manual/html_node/du-invocation.html</p>
+</blockquote>
+<p>Confirm that a netcdf file exists on disk for all the file paths in the <em>local</em> column.</p>
 <div class="sourceCode" id="cb24"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<blockquote class="blockquote">
+<p>https://docs.python.org/3/library/functions.html#sorted<br>
+https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.all.html</p>
+</blockquote>
 </section>
-<section id="clip-out-the-roi-and-persist-the-result-in-memory" class="level4">
-<h4 class="anchored" data-anchor-id="clip-out-the-roi-and-persist-the-result-in-memory">Clip out the ROI and persist the result in memory</h4>
-<p>Up until now, we haven’t read any of the HLS data into memory. Now we will use the <code>persist()</code> method to load the data into memory.</p>
+<section id="aggregate-to-cycle" class="level4">
+<h4 class="anchored" data-anchor-id="aggregate-to-cycle">Aggregate to cycle</h4>
+<p>Make a dictionary to rename variables so that the <code>data_01_</code> prefix is removed from each one.</p>
 <div class="sourceCode" id="cb25"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Above, we persisted the clipped results to memory using the <code>persist()</code> method. This doesn’t necessarily need to be done, but it will substantially improve the performance of the visualization of the time series below.</p>
-</section>
-<section id="plot-red_clip-with-hvplot" class="level4">
-<h4 class="anchored" data-anchor-id="plot-red_clip-with-hvplot">Plot <code>red_clip</code> with <code>hvplot</code></h4>
+<p>References:<br>
+https://docs.python.org/3/library/functions.html#map<br>
+https://docs.python.org/3/library/functions.html#zip</p>
+<p>Sort the list of local paths to the downloaded subsets to ensure they concatenate in proper order. Call <code>open_mfdataset</code> on the list to open all the subsets in memory as one dataset in xarray.</p>
 <div class="sourceCode" id="cb26"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<blockquote class="blockquote">
+<p>https://tqdm.github.io/docs/tqdm/#pandas<br>
+https://xarray.pydata.org/en/stable/generated/xarray.open_mfdataset.html<br>
+https://xarray.pydata.org/en/stable/generated/xarray.Dataset.rename.html</p>
+</blockquote>
 </section>
-</section>
-<section id="read-in-the-nir-and-fmask-vrt-files" class="level3">
-<h3 class="anchored" data-anchor-id="read-in-the-nir-and-fmask-vrt-files">Read in the NIR and Fmask VRT files</h3>
+<section id="render-along-track-altimetry-data-to-the-ecco-grid" class="level3">
+<h3 class="anchored" data-anchor-id="render-along-track-altimetry-data-to-the-ecco-grid">Render along-track altimetry data to the ECCO grid</h3>
+<blockquote class="blockquote">
+<p><strong>Acknowledgement</strong> <em>This approach using <code>pyresample</code> was shared to me by Ian Fenty, ECCO Lead.</em></p>
+</blockquote>
+<p>ECCO V4r4 products are distributed in two spatial formats. One set of collections provides the ocean state estimates on the native model grid (LLC0090) and the other provides them after interpolating to a regular grid defined in geographic coordinates with horizontal cell size of 0.5-degrees.</p>
+<section id="download-the-ecco-v4r4-0.5-deg-grid-geometry-and-mask" class="level4">
+<h4 class="anchored" data-anchor-id="download-the-ecco-v4r4-0.5-deg-grid-geometry-and-mask">Download the ECCO V4r4 0.5-Deg Grid Geometry and Mask</h4>
+<p>It’s distributed as its own dataset/collection containing just one file. We can access it over OPeNDAP like demonstrated above or simply download it from the HTTPS download endpoint – the file size is inconsequential. The next cell downloads the file into the <em>data</em> folder from the granule’s https endpoint.</p>
 <div class="sourceCode" id="cb27"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<blockquote class="blockquote">
+<p>https://docs.python.org/3/library/os.path.html#os.path.basename<br>
+https://xarray.pydata.org/en/stable/generated/xarray.open_dataset.html</p>
+</blockquote>
+<p>The <code>maskC</code> variable contains a boolean mask representing the wet/dry state of the area contained in each cell of the 3d grid defined by <code>Z</code> and <code>latitude</code> and <code>longitude</code>.</p>
+<p>Here are the variable’s attributes:</p>
 <div class="sourceCode" id="cb28"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="create-an-xarray-dataset" class="level3">
-<h3 class="anchored" data-anchor-id="create-an-xarray-dataset">Create an <code>xarray dataset</code></h3>
-<p>We will now combine the <strong>RED</strong>, <strong>NIR</strong>, and <strong>Fmask</strong> arrays into a dataset and create/add a new NDVI variable.</p>
+<p>So, the mask derives from another variable <code>hFacC</code> that essentially describes 3d space/volume contained within each model grid cell by the fractional area representing the horizontal coverage (in the <code>longitude,latitude</code> dimensions) within each vertical/depth layer.</p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Above, we created a new NDVI variable. Now, we will clip and plot our results.</p>
+<p>Select the 2d array from <code>maskC</code> that corresponds to the depth layer at ocean surface (i.e.&nbsp;at index <code>0</code> on the <code>Z</code> axis/dimension) and then produce a boolean array where True represents cells with a value greater than <code>0</code>. The resulting array/grid is our land/water mask for the 2d grids generated during the next few steps.</p>
+<p>Plot the land/water mask:</p>
 <div class="sourceCode" id="cb30"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<section id="plot-ndvi" class="level4">
-<h4 class="anchored" data-anchor-id="plot-ndvi">Plot NDVI</h4>
+<blockquote class="blockquote">
+<p>https://xarray.pydata.org/en/stable/generated/xarray.DataArray.isel.html<br>
+https://xarray.pydata.org/en/stable/generated/xarray.DataArray.plot.html</p>
+</blockquote>
+</section>
+</section>
+<section id="grid-ssha-or-a-similar-variable" class="level3">
+<h3 class="anchored" data-anchor-id="grid-ssha-or-a-similar-variable">Grid ssha or a similar variable</h3>
+<p><em>Jinbo’s recommendation: wrap this logic for parameterization by workshop attendees.</em></p>
+<p>Get a single timestamp to represent the midpoint of the cycle.</p>
 <div class="sourceCode" id="cb31"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>You may have notices that some images for some of the time step are ‘blurrier’ than other. This is because they are contaminated in some way, be it clouds, cloud shadows, snow, ice.</p>
-</section>
-</section>
-<section id="apply-quality-filter" class="level3">
-<h3 class="anchored" data-anchor-id="apply-quality-filter">Apply quality filter</h3>
-<p>We want to keep NDVI data values where Fmask equals 0 (no clouds, no cloud shadow, no snow/ice, no water.</p>
+<p>Access the target variable, <em>ssha</em> in this case, and make a nan mask.</p>
 <div class="sourceCode" id="cb32"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Define a simple function <em>get_grid_defn</em> to validate input arrays of longitudes/latitudes and return a <em>pyresample.geometry.SwathDefinition</em> object. (We use it twice to define source/target grids in the next steps.)</p>
 <div class="sourceCode" id="cb33"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<section id="aggregate-by-month" class="level4">
-<h4 class="anchored" data-anchor-id="aggregate-by-month">Aggregate by month</h4>
-<p>Finally, we will use xarray’s <code>groupby</code> operation to aggregate by month.</p>
+<p>Define source grid/geometry for the input along-track data. (They are stored as 1-dimensional arrays.)</p>
 <div class="sourceCode" id="cb34"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Define target grid based on the longitudes and latitudes from the ECCO grid geometry dataset. This time define the grid using two 2-dimensional arrays that give positions of all SSHA values in geographic/longitude-latitude coordinates.</p>
 <div class="sourceCode" id="cb35"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-</section>
-</section>
-<section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">References</h2>
+<p>Make the <em>pyresample</em> object for the target grid and proceed.</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Show the help for <code>pyresample.kdtree.resample_gauss</code> to aid during the hackathon.</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Get the target grid definition defined by the 2d arrays of lons and lats created in the cell above. Apply gaussian resampling with some optional arguments (borrowed from Ian’s implementation).</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Apply the land/water mask in the numpy array created from the ECCO layer in the steps above. Then, convert the masked numpy array to an xarray data array object named <em>gridded</em>. Print its header.</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Additional References:</strong></p>
 <ul>
-<li>https://rasterio.readthedocs.io/en/latest/</li>
-<li>https://corteva.github.io/rioxarray/stable/index.html</li>
-<li>https://tutorial.dask.org/index.html</li>
-<li>https://examples.dask.org/applications/satellite-imagery-geotiff.html</li>
+<li><em>numpy</em> (https://numpy.org/doc/stable/reference)
+<ul>
+<li><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.data.html">numpy.ndarray.data</a><br>
+</li>
+<li><a href="https://numpy.org/doc/stable/reference/generated/numpy.ravel.html">numpy.ravel</a><br>
+</li>
+<li><a href="https://numpy.org/doc/stable/reference/generated/numpy.where.html">numpy.where</a><br>
+</li>
+<li><a href="https://numpy.org/doc/stable/reference/generated/numpy.isnan.html">numpy.isnan</a><br>
+</li>
+<li><a href="https://numpy.org/doc/stable/reference/arrays.datetime.html">datetimes</a><br>
+</li>
+</ul></li>
+<li><em>xarray</em> (https://xarray.pydata.org/en/stable)
+<ul>
+<li><a href="https://xarray.pydata.org/en/stable/generated/xarray.DataArray.html">xarray.DataArray</a><br>
+</li>
+<li><a href="https://xarray.pydata.org/en/stable/generated/xarray.DataArray.values.html">xarray.DataArray.values</a><br>
+</li>
+<li><a href="https://xarray.pydata.org/en/stable/generated/xarray.DataArray.mean.html">xarray.DataArray.mean</a><br>
+</li>
+<li>https://xarray.pydata.org/en/stable/generated/xarray.DataArray.plot.pcolormesh.html (matplotlib)<br>
+</li>
+</ul></li>
+<li><em>pyresample</em> (https://pyresample.readthedocs.io/en/latest/api/pyresample)
+<ul>
+<li><a href="https://pyresample.readthedocs.io/en/latest/api/pyresample.utils.html#pyresample.utils.check_and_wrap">pyresample.utils.check_and_wrap</a><br>
+</li>
+<li><a href="https://pyresample.readthedocs.io/en/latest/api/pyresample.html#pyresample.kd_tree.resample_gauss">pyresample.kd_tree.resample_gauss</a><br>
+</li>
+<li><a href="https://pyresample.readthedocs.io/en/latest/api/pyresample.html#pyresample.geometry.SwathDefinition">pyresample.geometry.SwathDefinition</a></li>
+</ul></li>
 </ul>
-<hr>
+<p><strong>Bonus</strong>: generate a grid for every cycle and get mean/std over all the cycles</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>stack <span class="op">=</span> xr.concat(data[<span class="st">'grid'</span>].tolist(), dim<span class="op">=</span><span class="st">"time"</span>)</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>midlat <span class="op">=</span> stack.sel(latitude<span class="op">=</span><span class="bu">slice</span>(<span class="op">-</span><span class="fl">66.</span>,<span class="fl">66.0</span>))</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>stats <span class="op">=</span> xr.concat(objs<span class="op">=</span>[midlat.mean(<span class="st">"time"</span>),</span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>                        midlat.std(<span class="st">"time"</span>) ], </span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>                  dim<span class="op">=</span>pd.Index([<span class="st">'mean'</span>,<span class="st">'std'</span>], name<span class="op">=</span><span class="st">"stat"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<blockquote class="blockquote">
+<p>https://xarray.pydata.org/en/stable/generated/xarray.concat.html</p>
+</blockquote>
+<p><strong>Bonus</strong>: calculate area-weighted mean</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> to_area_weighted_mean(x):</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>    nonzero_mask <span class="op">=</span> np.where(<span class="op">~</span>np.isnan(x), <span class="dv">1</span>, np.nan)            <span class="co"># mask where nans=0 &amp; ~nans=1</span></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>    nonzero_area <span class="op">=</span> np.<span class="bu">sum</span>(nonzero_mask <span class="op">*</span> ecco_grid.area)        <span class="co"># total area where data is nonzero</span></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">float</span>(np.nansum(x <span class="op">*</span> ecco_grid.area) <span class="op">/</span> nonzero_area)  <span class="co"># area-weighted global mean</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<blockquote class="blockquote">
+<p>https://numpy.org/doc/stable/reference/generated/numpy.sum.html<br>
+https://numpy.org/doc/stable/reference/generated/numpy.nansum.html</p>
+</blockquote>
 
 
+</section>
 </section>
 </section>
 <script type="application/javascript">

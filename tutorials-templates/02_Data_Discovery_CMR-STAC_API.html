@@ -322,7 +322,7 @@
   <div id="quarto-toc-sidebar" class=" pt-0 col col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-toc order-last"><nav id="TOC" role="doc-toc">
 <h2 id="toc-title">On this page</h2>
 <ul>
-<li><a href="#data-discovery-with-cmr-stac-api" class="nav-link active" data-scroll-target="#data-discovery-with-cmr-stac-api">Data Discovery with CMR-STAC API</a>
+<li><a href="#data-discovery-with-cmr-stac-api" class="nav-link active" data-scroll-target="#data-discovery-with-cmr-stac-api">02. Data Discovery with CMR-STAC API</a>
 <ul class="collapse">
 <li><a href="#timing" class="nav-link" data-scroll-target="#timing">Timing</a></li>
 <li><a href="#summary" class="nav-link" data-scroll-target="#summary">Summary</a>
@@ -373,7 +373,7 @@
 <main>
 
 <section id="data-discovery-with-cmr-stac-api" class="level1">
-<h1>Data Discovery with CMR-STAC API</h1>
+<h1>02. Data Discovery with CMR-STAC API</h1>
 <section id="timing" class="level2">
 <h2 class="anchored" data-anchor-id="timing">Timing</h2>
 <ul>
@@ -386,12 +386,12 @@
 <section id="but-first-what-is-stac" class="level3">
 <h3 class="anchored" data-anchor-id="but-first-what-is-stac">But first, what is STAC?</h3>
 <p><a href="https://stacspec.org/">SpatioTemporal Asset Catalog (STAC)</a> is a specification that provides a common language for interpreting geospatial information in order to standardize indexing and discovering data.</p>
-<p>The <a href="https://stacspec.org/core.html">STAC specification</a> is made up of a collection of related, yet independent specifications that when used together provide search and discovery capabilities for remove assets.</p>
+<p>The <a href="https://stacspec.org/core.html">STAC specification</a> is made up of a collection of related, yet independent specifications that when used together provide search and discovery capabilities for remote assets.</p>
 <section id="four-stac-specifications" class="level4">
 <h4 class="anchored" data-anchor-id="four-stac-specifications">Four STAC Specifications</h4>
-<p><a href="https://github.com/radiantearth/stac-spec/blob/master/item-spec/item-spec.md">STAC Item</a> (aka Granule)<br>
-<a href="https://github.com/radiantearth/stac-spec/blob/master/catalog-spec/catalog-spec.md">STAC Catalog</a> (aka DAAC Archive)<br>
+<p><a href="https://github.com/radiantearth/stac-spec/blob/master/catalog-spec/catalog-spec.md">STAC Catalog</a> (aka DAAC Archive)<br>
 <a href="https://github.com/radiantearth/stac-spec/blob/master/collection-spec/collection-spec.md">STAC Collection</a> (aka Data Product)<br>
+<a href="https://github.com/radiantearth/stac-spec/blob/master/item-spec/item-spec.md">STAC Item</a> (aka Granule)<br>
 <a href="https://github.com/radiantearth/stac-api-spec">STAC API</a></p>
 <p>In the following sections, we will explore each of STAC element using NASA’s Common Metadata Repository (CMR) STAC application programming interface (API), or <a href="https://github.com/nasa/cmr-stac">CMR-STAC API</a> for short.</p>
 </section>
@@ -436,7 +436,7 @@
 <h2 class="anchored" data-anchor-id="connect-to-the-lpcloud-providerstac-catalog">Connect to the <code>LPCLOUD</code> Provider/STAC Catalog</h2>
 <p>For this next step we need the <code>provider title</code> (e.g., LPCLOUD) from above. We will add the provider to the end of the CMR-STAC API URL (i.e., <code>https://cmr.earthdata.nasa.gov/stac/</code>) to connect to the LPCLOUD STAC Catalog.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Since we are using a dedicated client (i.e., <code>pystac-client.Client</code>) to connect to our STAC Provider Catalog, we will have access to some useful internal methods and functions we can use to get information from these objects.</p>
+<p>Since we are using a dedicated client (i.e., <code>pystac-client.Client</code>) to connect to our STAC Provider Catalog, we will have access to some useful internal methods and functions (e.g., <code>get_children()</code> or <code>get_all_items()</code>) we can use to get information from these objects.</p>
 </section>
 <section id="list-stac-collections" class="level2">
 <h2 class="anchored" data-anchor-id="list-stac-collections">List STAC Collections</h2>
@@ -455,7 +455,7 @@
 </section>
 <section id="search-for-granulesstac-items---set-up-query-parameters-to-submit-to-the-cmr-stac-api" class="level2">
 <h2 class="anchored" data-anchor-id="search-for-granulesstac-items---set-up-query-parameters-to-submit-to-the-cmr-stac-api">Search for Granules/STAC Items - Set up query parameters to submit to the CMR-STAC API</h2>
-<p>We will define our ROI using the geojson file from the previous exercise, while also specifying the data collections and time range of needed for our example.</p>
+<p>We will define our ROI using a geojson file containing a small polygon feature in western Nebraska, USA. The geojson file is found in the <strong>~/data</strong> directory. We’ll also specify the data collections and a time range for our example.</p>
 <section id="read-in-a-geojson-file" class="level3">
 <h3 class="anchored" data-anchor-id="read-in-a-geojson-file">Read in a geojson file</h3>
 <p>Reading in a geojson file with geopandas will return the geometry of our polygon (our ROI).</p>
@@ -564,11 +564,11 @@
 <li><a href="https://stacspec.org/">STAC Specification Webpage</a></li>
 <li><a href="https://stacspec.org/STAC-api.html">STAC API Documentation</a></li>
 <li><a href="https://github.com/nasa/cmr-stac">CMR-STAC API Github</a></li>
+<li><a href="https://pystac-client.readthedocs.io/en/latest/index.html">PySTAC Client Documentation</a></li>
 <li><a href="https://stackoverflow.com/questions/26367812/appending-to-list-in-python-dictionary" class="uri">https://stackoverflow.com/questions/26367812/appending-to-list-in-python-dictionary</a></li>
 <li><a href="https://geopandas.org/en/stable/docs/user_guide.html">Geopandas</a></li>
 <li><a href="https://lpdaac.usgs.gov/data/get-started-data/collection-overview/missions/harmonized-landsat-sentinel-2-hls-overview/">HLS Overview</a></li>
 </ul>
-<hr>
 
 
 </section>
