@@ -2,15 +2,15 @@
 title: 00. Setup for tutorials
 ---
 
-This tutorial will help you set up your JupyterHub (or Hub) with material for other tutorials (Hackathon Repository) and link your github account.
+This tutorial will help you set up your JupyterHub (or Hub) with tutorials and other materials from our Cloud Hackathon github repository and connect your github account.
 
-## Step 1. Login to the Hub (takes a few minutes to load)
+## Step 1. Login to the Hub
 
-Please go to <https://openscapes.2i2c.cloud/hub/>. Alternatively, you can also click this badge to launch the Hub:
+Please go to <https://openscapes.2i2c.cloud/hub/>. Log in with your GitHub Account, and select "Small".
+
+Alternatively, you can also click this badge to launch the Hub:
 
 ![](https://img.shields.io/static/v1.svg?logo=Jupyter&label=Openscapes&message=AWS+us-west-2&color=orange){fig-align="center"}
-
-Log in with your GitHub Account, and select "Small".
 
 ![](img/JupyterHub-2i2c.png){width="500"}
 
@@ -24,12 +24,12 @@ Log in with your GitHub Account, and select "Small".
 
 While the Hub loads, we'll:
 
--   discuss cloud environments
--   see how my Desktop is setup
+-   Discuss cloud environments
+-   See how my Desktop is setup
 -   Fork the Hackathon repository at github.com
--   discuss python and conda environments
+-   Discuss python and conda environments
 
-Then, when the Hub is loaded, we'll get oriented and clone the forked repository into our cloud environment.
+Then, when the Hub is loaded, we'll get oriented in the Hub and clone the forked repository into our cloud environment.
 
 ## Discussion: Cloud environment
 
@@ -47,7 +47,7 @@ A brief overview about the [NASA Openscapes Cloud Environment](https://nasa-open
 I'll screenshare to show and/or talk through how I have oriented the following software we're using:
 
 -   [2i2c Jupyterhub](https://openscapes.2i2c.cloud/hub/) (our main workspace)
--   [Cloud Hackathon Book](https://nasa-openscapes.github.io/2021-Cloud-Hackathon/tutorials/) (my teaching notes, your reference material)
+-   [Hackathon Repo](https://github.com/nasa-openscapes/2021-Cloud-Hackathon/) <> [Hackathon Book](https://nasa-openscapes.github.io/2021-Cloud-Hackathon/) (my teaching notes, your reference material)
 -   Zoom Chat
 -   Slack
 
@@ -149,26 +149,22 @@ Now that the Hub is loaded, let's get oriented.
 
 ### First impressions
 
-Reiterate a few things we just talked about (TODO - what's useful here Luis?)
-
+-   Launcher & the big blue button
 -   "home directory"
--   big blue button
--   environments we just talked about (?)
--   terminal basics (?)
 
 ## Step 4. Clone the Hackathon GitHub repository
 
-Now we'll clone the GitHub repository, using the git extension for Hub. Go to your github account,
+Now we'll clone the GitHub repository, using a git extension for the JupyterHub. Go to your github account, and navigate to the repository that you just created by forking from the Openscapes repository.
 
-repository that you just created by forking from the Openscapes repository.
+Click to copy the url for cloning the repository.
 
 ![](img/Github-forked-repo.png){width="2224"}
 
-Now, go to your Hub and click on the git extension in the left panel and then click the blue button "Clone a Repository".
+Now, go to JupyterHub and click on the git extension in the left panel and then click the blue button "Clone a Repository".
 
 ![](img/JupyterHub-GitExtension.png)
 
-Then, paste the repository link to the forked repository that you copied from your github account into the "Clone a repo" pop up window. Then click the blue "CLONE" button. It will take a few minutes to clone the repository into your Hub.
+Then, paste the repository link to the forked repository that you copied from your github account into the "Clone a repo" pop up window. Then click the blue "CLONE" button. It will take a few moments to clone the repository into your Hub.
 
 Your link should look like `https://github.com/YOUR-USERNAME/2021-Cloud-Hackathon`. For example, the link is https://github.com/**virdi**/2021-Cloud-Hackathon. Note that it include your github username in the repo link.
 
@@ -229,7 +225,7 @@ Click the git icon in the left panel. You can see that the newly added file is i
 
 ### Step 5.4. Commit the changes to the new file (`git commit`)
 
-Now, you will see that the file is **Staged**, which means that `git` is ready to take a snapshot of this file (and the repository) with the changes that you made. This is called a `commit`. To commit the changes, Add a note (called a *commit message*) by typing in the text box that say "Summary".
+Now, you will see that the file is **Staged**, which means that `git` is ready to take a snapshot of this file (and the repository) with the changes that you made. This snapshot is called a `commit`. To commit the changes, add a note (called a *commit message*) by typing in the text box that say "Summary".
 
 Now, click the blue "COMMIT" button to commit this change.
 
