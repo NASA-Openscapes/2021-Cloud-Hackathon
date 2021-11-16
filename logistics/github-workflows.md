@@ -50,13 +50,21 @@ Check the status of your repository
 git status
 ```
 
-If this says `Your branch is up to date with 'origin/main'.`, you can now pull updates:
+This will likely say that your `Your branch is up to date with 'origin/main'.` and might mention that you have some files you've updated, and list them in red. This is likely ok for now, and means we are ready to pull your updates from your forked repository:
 
 ```{.bash}
 git pull
 ```
+And you are all set for today!
 
-And you are all set for today! (You could do `git status` again just to confirm).
+If `git pull` returned an error, then you need to either keep or delete the changes you made yesterday. This will depend on the work you did and whether you'd like to keep it. If you'd like to delete it, please follow [delete your local changes](#delete-your-local-changes) below, and then come back above and retype `git status` and `git pull`. If you'd like to keep your changes, you'll need to commit them. 
+
+```{.bash}
+git add --all
+git commit -m "my commit message"
+```
+
+Then you can try `git pull`.
 
 
 ### Daily setup troubleshooting
@@ -76,7 +84,9 @@ These are some useful commands to revert/delete your local changes and update yo
 
 There are several ways to delete your local changes if you were playing around and want to reset. Here are a few: 
 
-**Undo changes you've maybe saved or committed, but not pushed**. This is less time and internet intensive (no new clone/download). 
+#### Undo changes you've maybe saved or committed, but not pushed 
+
+This is less time and internet intensive (no new clone/download). 
 
 If you've got changes saved, but not yet staged, committed, or pushed, you'll delete unstaged changes in the working directory with clean:
 
@@ -87,7 +97,10 @@ git clean -df
 git checkout -- .
 ```
 
-**Burn it all down** - delete the whole repo that you have locally, and then reclone. 
+
+#### Burn it all down
+
+You'll delete the whole repo that you have locally, and then reclone. 
 
 You'll need to make sure you're in the github repository (use `pwd` to check your present working directory and `cd` to change directory)
 
