@@ -43,7 +43,7 @@ site:
           - tutorials/05_Data_Access_Direct_S3.ipynb ## tutorial 5
           - tutorials/06_S6_OPeNDAP_Access_Gridding.ipynb ## tutorial 6
           - tutorials/07_Harmony_Subsetting.ipynb ## tutorial 7
-          - tutorials/08_Data_Access_Harmonize-cloud-non-cloud.ipynb ## tutorial 8
+          - tutorials/08_On-Prem_Cloud.ipynb ## tutorial 8
           - tutorials/09_Zarr_Access.ipynb ## tutorial 9
       - section: "Tutorial Templates"
         contents: 
