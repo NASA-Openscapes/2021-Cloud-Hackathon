@@ -34,23 +34,30 @@ If you have any conflicts with the following steps, you will likely need to comm
 
 ### GitHub: Update your fork  
 
-1. **From github.com Fetch and merge**: Update your forked repo from main by clicking "Fetch upstream" beneath the big green code button, and then the green "Fetch and merge" button. You may have to refresh the page to see any recent activity.
+**From github.com Fetch and merge**: Update your forked repo from main by clicking "Fetch upstream" beneath the big green code button, and then the green "Fetch and merge" button. You may have to refresh the page to see any recent activity.
 
 ![](images/github-fetch-and-merge.png)
 
-### JupyterHub: Pull updates
-
-2. From the terminal in Jupyterhub: `git pull`
+### JupyterHub: Get your fork's updates
 
 Go to <https://openscapes.2i2c.cloud/hub/>
 
 Go to your terminal and make sure you are in the `2021-Cloud-Hackathon` directory (double check with `pwd` and move with `cd`)
 
-Then git pull the repository: 
+Check the status of your repository
+
+```{.bash}
+git status
+```
+
+If this says `Your branch is up to date with 'origin/main'.`, you can now pull updates:
 
 ```{.bash}
 git pull
 ```
+
+And you are all set for today! (You could do `git status` again just to confirm).
+
 
 ### Daily setup troubleshooting
 
