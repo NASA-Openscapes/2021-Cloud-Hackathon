@@ -8,7 +8,7 @@ Automated kyber here: <https://github.com/openscapes/kyber>
 
 ```{r}
 # First make sure to set your GitHub PAT
-Sys.setenv(GITHUB_PAT = "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")
+Sys.setenv(GITHUB_PAT = "")
 
 # usethis::create_github_token()
 
