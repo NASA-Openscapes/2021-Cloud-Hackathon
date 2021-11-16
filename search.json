@@ -305,7 +305,7 @@
     "href": "index.html#acknowledgements",
     "title": "2021 Cloud Hackathon",
     "section": "Acknowledgements",
-    "text": "Cloud Hackathon: Transitioning Earthdata Workflows to the Cloud is co-hosted by NASA’s PO.DAAC, NSIDC DAAC, LP.DAAC, with support from ASDC DAAC, GES DISC and the NASA Openscapes Project, and cloud computing infrastructure by 2i2c.   \nWe thank all of the additional NASA staff that have have joined as helpers.\nThank you to the open science community that has created software, teaching resources, and workflows that we have been able to build heavily from! These include:\n\neScience Institute, University of Washington:\n\nhttps://uwhackweek.github.io/hackweeks-as-a-service/intro.html\nhttps://snowex-hackweek.github.io/website/intro.html\nhttps://icesat-2hackweek.github.io/learning-resources/"
+    "text": "Cloud Hackathon: Transitioning Earthdata Workflows to the Cloud is co-hosted by NASA’s PO.DAAC, NSIDC DAAC, LP.DAAC, with support from ASDC DAAC, GES DISC and the NASA Openscapes Project, and cloud computing infrastructure by 2i2c.   \nWe thank all of the additional NASA staff that have have joined as helpers.\nThank you to the open science community that has created software, teaching resources, and workflows that we have been able to build heavily from! These include:\n\neScience Institute, University of Washington:\n\nhttps://uwhackweek.github.io/hackweeks-as-a-service/intro.html\nhttps://snowex-hackweek.github.io/website/intro.html\nhttps://icesat-2hackweek.github.io/learning-resources/\n\n\nThis hackathon book is made with quarto. See the earthdata-cloud-cookbook to learn more about how we work and contributing."
   },
   {
     "objectID": "tutorials/Additional_Resources__Direct_S3_Access__gdalvrt.html#summary",
