@@ -2,7 +2,7 @@
 title: "2021 Cloud Hackathon"
 subtitle: "Transitioning Earthdata Workflows to the Cloud"
  
-author: "This Hackathon is co-hosted by PODAAC, NSIDC DAAC, and LPDAAC. Additional support is provided by ASDC, GESDISC and Openscapes."
+author: "This Hackathon is co-hosted by PODAAC, NSIDC DAAC, and LPDAAC. Additional support is provided by ASDC, GESDISC, IMPACT, and Openscapes."
 ---
 
 ## Welcome
