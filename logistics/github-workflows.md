@@ -50,8 +50,7 @@ If you see
 
 You'll need to decide if you want to keep or delete the changes you made yesterday. This will depend on the work you did and how important it was. If you'd like to delete it, please follow [delete your local changes](#delete-your-local-changes) below, and then come back above and retype `git status` and `git pull`. 
 
-If you'd like to keep your changes, you'll need to commit them. You can press "Cancel" and then Stage and Commit your files.
-
+If you'd like to keep your changes, you'll need to commit them. You can press "Cancel" and look at the files in the "Changed" category and you can hover over the file to inspect them (open, diff, discard, add) and if you'd like to add them, they will be staged and then you can commit them with a message.
 
 You could also do the above in the terminal, making sure you are in the `2021-Cloud-Hackathon` directory (double check with `pwd` and move with `cd`)
 
