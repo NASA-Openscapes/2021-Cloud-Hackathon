@@ -42,34 +42,27 @@ If you have any conflicts with the following steps, you will likely need to comm
 
 Go to <https://openscapes.2i2c.cloud/hub/>
 
-Go to your terminal and make sure you are in the `2021-Cloud-Hackathon` directory (double check with `pwd` and move with `cd`)
+Go to the GitHub extension and click the "pull button"
 
-Check the status of your repository
+If you see 
+
+![](images/jupyterhub-gh-discard.png)
+
+You'll need to decide if you want to keep or delete the changes you made yesterday. This will depend on the work you did and how important it was. If you'd like to delete it, please follow [delete your local changes](#delete-your-local-changes) below, and then come back above and retype `git status` and `git pull`. 
+
+If you'd like to keep your changes, you'll need to commit them. You can press "Cancel" and then Stage and Commit your files.
+
+
+You could also do the above in the terminal, making sure you are in the `2021-Cloud-Hackathon` directory (double check with `pwd` and move with `cd`)
 
 ```{.bash}
 git status
-```
-
-This will likely say that your `Your branch is up to date with 'origin/main'.` and might mention that you have some files you've updated, and list them in red. This is likely ok for now, and means we are ready to pull your updates from your forked repository:
-
-```{.bash}
 git pull
 ```
-And you are all set for today!
-
-If `git pull` returned an error, then you need to either keep or delete the changes you made yesterday. This will depend on the work you did and whether you'd like to keep it. If you'd like to delete it, please follow [delete your local changes](#delete-your-local-changes) below, and then come back above and retype `git status` and `git pull`. If you'd like to keep your changes, you'll need to commit them. 
-
-```{.bash}
-git add --all
-git commit -m "my commit message"
-```
-
-Then you can try `git pull`.
-
 
 ### Daily setup troubleshooting
 
-**Not a git repository** - if you see the following, you likely need to `cd` change directory into your GitHub folder.
+**Not a git repository** - in your terminal if you see the following, you likely need to `cd` change directory into your GitHub folder.
 
 ```{.bash}
 fatal: not a git repository (or any parent up to mount point /home)
