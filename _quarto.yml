@@ -28,12 +28,13 @@ site:
          - cloud-paradigm.md
       - section: "Logistics"
         contents:
-          - logistics/for-participants-helpers.md
+          - logistics/index.md
           - logistics/schedule.md
           - logistics/prerequisites.md
           - logistics/github-workflows.md
       - section: "Tutorials"
         contents: 
+          - tutorials/index.md
           - tutorials/00_Setup.md  ## tutorial 0
           - tutorials/01_Data_Discovery_CMR.ipynb ## tutorial 1
           - tutorials/02_Data_Discovery_CMR-STAC_API.ipynb ## tutorial 2
@@ -42,15 +43,14 @@ site:
           - tutorials/05_Data_Access_Direct_S3.ipynb ## tutorial 5
           - tutorials/06_S6_OPeNDAP_Access_Gridding.ipynb ## tutorial 6
           - tutorials/07_Harmony_Subsetting.ipynb ## tutorial 7
-          - tutorials/08_Data_Access_Harmonize-cloud-non-cloud.ipynb ## tutorial 8
+          - tutorials/08_On-Prem_Cloud.ipynb ## tutorial 8
           - tutorials/09_Zarr_Access.ipynb ## tutorial 9
       - section: "Tutorial Templates"
         contents: 
           - tutorials-templates/index.md 
       - section: "Projects"
         contents:
-          - projects/projects-overview.md
-          - projects/workflow.md
+          - projects/index.md
           - projects/hackathon-projects.md
       - section: "Further Resources"
         contents:

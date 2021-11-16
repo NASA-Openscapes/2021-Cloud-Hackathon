@@ -47,7 +47,7 @@ A brief overview about the [NASA Openscapes Cloud Environment](https://nasa-open
 I'll screenshare to show and/or talk through how I have oriented the following software we're using:
 
 -   [2i2c Jupyterhub](https://openscapes.2i2c.cloud/hub/) (our main workspace)
--   [Hackathon Repo](https://github.com/nasa-openscapes/2021-Cloud-Hackathon/) <> [Hackathon Book](https://nasa-openscapes.github.io/2021-Cloud-Hackathon/) (my teaching notes, your reference material)
+-   [Hackathon Repo](https://github.com/nasa-openscapes/2021-Cloud-Hackathon/) \<\> [Hackathon Book](https://nasa-openscapes.github.io/2021-Cloud-Hackathon/) (my teaching notes, your reference material)
 -   Zoom Chat
 -   Slack
 
@@ -58,6 +58,8 @@ I'll screenshare to show and/or talk through how I have oriented the following s
 Go to <https://github.com/nasa-openscapes/2021-Cloud-Hackathon> and fork the repository.
 
 ![](../clinic/img/fork-tutorials.png)
+
+**Note:** if you've already done this in the Pre-Hackathon Clinic, you'll need to make sure you have the latest, following the [daily setup](https://nasa-openscapes.github.io/2021-Cloud-Hackathon/logistics/github-workflows.html#daily-setup) instructions.
 
 ## Discussion: Python and Conda environments
 
@@ -209,6 +211,12 @@ Open a new terminal: `File >> New >> Terminal`
 
 ![](img/JupyterHub-Tracking-GitConfig.png)
 
+Configure `git` to store your github credentials to avoid having to enter your github username and token each time you push changes to your repository(in [Step 5.5](#step-5.5.-transmit-committed-changes-to-your-github-(git-push),%20we%20will%20describe%20how%20to%20use%20github%20token%20instead%20of%20a%20password), we will describe how to use github token instead of a password)
+
+``` bash
+git config --global credential.helper store
+```
+
 ### Step 5.2. Create a new file
 
 Let's create a new file: In the left panel on your Hub, click on the "directory" icon and then double click on "2021-Cloud-Hackathon" directory. Then, create a new file using the text editor in your 2i2c JupyterHub (`File >> New >> Text File`). Add some text to this file, for example: `A test file`. Save this file and rename it to `test.txt`.
@@ -231,7 +239,7 @@ Now, click the blue "COMMIT" button to commit this change.
 
 ![](img/JupyterHub-Tracking-GitCommit.png)
 
-### Step 5.5. Transmit committed changes to your github (`git push`)
+### Step 5.5. Transmit committed changes to your github (`git push`) {#step-5.5.-transmit-committed-changes-to-your-github-(git-push}
 
 At this stage, you have committed the changes to your git repository on your Hub. However, these changes are still on your Hub and needs to be transmitted to your repository on github (so that both the `local` copy on the JupyterHub and the `remote` copy on github are in sync).
 
@@ -254,6 +262,8 @@ Once you generate the token, copy it and paste in the Hub window that prompted y
 ![](img/JupyterHub-Tracking-GitPush-With-Credentials.png)
 
 Git will show a message at the bottom right telling that the changes were "Successfully pushed". Also, you will see that the "cloud icon with an up arrow" no longer has an orange dot, indicating that there are no more committed changes to push to the remote (github.com).
+
+> Note: You have configured git extension to store your credentials. You will not be prompted for your login/token again!
 
 ![](img/JupyterHub-Tracking-GitPush-Success.png)
 

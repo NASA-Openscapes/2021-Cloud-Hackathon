@@ -28,21 +28,44 @@ git clone https://github.com/YOUR-USERNAME/2021-Cloud-Hackathon
 
 ## Daily Setup
 
-#### GitHub: Get the latest 
+The daily setup has 2 steps: get the latest into your forked copy of the repo, then get the latest of your fork into your JupyterHub.
 
-This has 2 steps: 
+If you have any conflicts with the following steps, you will likely need to commit your work, or clear your work if you don't want to keep anything you've done. See below for [daily setup troubleshooting](#daily-setup-troubleshooting) as well as [Git update, revert, etc](#git-update-revert-etc).
 
-1. From github.com: Update your forked repo from main by clicking "fetch and merge""
+### GitHub: Update your fork  
+
+**From github.com Fetch and merge**: Update your forked repo from main by clicking "Fetch upstream" beneath the big green code button, and then the green "Fetch and merge" button. You may have to refresh the page to see any recent activity.
 
 ![](images/github-fetch-and-merge.png)
 
-2. From the terminal in Jupyterhub: `git pull`
+### JupyterHub: Get your fork's updates
 
-<https://openscapes.2i2c.cloud/hub/>
+Go to <https://openscapes.2i2c.cloud/hub/>
+
+Go to the GitHub extension and click the "pull button"
+
+If you see 
+
+![](images/jupyterhub-gh-discard.png)
+
+You'll need to decide if you want to keep or delete the changes you made yesterday. This will depend on the work you did and how important it was. If you'd like to delete it, please follow [delete your local changes](#delete-your-local-changes) below, and then come back above and retype `git status` and `git pull`. 
+
+If you'd like to keep your changes, you'll need to commit them. You can press "Cancel" and look at the files in the "Changed" category and you can hover over the file to inspect them (open, diff, discard, add) and if you'd like to add them, they will be staged and then you can commit them with a message.
+
+You could also do the above in the terminal, making sure you are in the `2021-Cloud-Hackathon` directory (double check with `pwd` and move with `cd`)
 
 ```{.bash}
-cd 2021-Cloud-Hackathon
+git status
 git pull
+```
+
+### Daily setup troubleshooting
+
+**Not a git repository** - in your terminal if you see the following, you likely need to `cd` change directory into your GitHub folder.
+
+```{.bash}
+fatal: not a git repository (or any parent up to mount point /home)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
 ```
 
 ## Git: update, revert, etc
@@ -53,20 +76,27 @@ These are some useful commands to revert/delete your local changes and update yo
 
 There are several ways to delete your local changes if you were playing around and want to reset. Here are a few: 
 
-**Undo changes you've maybe saved or committed, but not pushed**. This is less time and internet intensive (no new clone/download). 
+#### Undo changes you've maybe saved or committed, but not pushed 
+
+This is less time and internet intensive (no new clone/download). 
 
 If you've got changes saved, but not yet staged, committed, or pushed, you'll delete unstaged changes in the working directory with clean:
 
+You'll need to make sure you're in the github repository (use `pwd` to check your present working directory and `cd` to change directory)
+
 ```{.bash}
-cd YOUR-REPO
 git clean -df
 git checkout -- .
 ```
 
-**Burn it all down** - delete the whole repo that you have locally, and then reclone. 
+
+#### Burn it all down
+
+You'll delete the whole repo that you have locally, and then reclone. 
+
+You'll need to make sure you're in the github repository (use `pwd` to check your present working directory and `cd` to change directory)
 
 ```{.bash}
-cd YOUR-REPO
 rm -rf YOUR-REPO
 ```
 
