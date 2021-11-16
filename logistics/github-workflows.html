@@ -332,7 +332,7 @@
 <li><a href="#daily-setup" class="nav-link" data-scroll-target="#daily-setup">Daily Setup</a>
 <ul class="collapse">
 <li><a href="#github-update-your-fork" class="nav-link" data-scroll-target="#github-update-your-fork">GitHub: Update your fork</a></li>
-<li><a href="#jupyterhub-pull-updates" class="nav-link" data-scroll-target="#jupyterhub-pull-updates">JupyterHub: Pull updates</a></li>
+<li><a href="#jupyterhub-get-your-forks-updates" class="nav-link" data-scroll-target="#jupyterhub-get-your-forks-updates">JupyterHub: Get your fork’s updates</a></li>
 <li><a href="#daily-setup-troubleshooting" class="nav-link" data-scroll-target="#daily-setup-troubleshooting">Daily setup troubleshooting</a></li>
 </ul></li>
 <li><a href="#git-update-revert-etc" class="nav-link" data-scroll-target="#git-update-revert-etc">Git: update, revert, etc</a>
@@ -387,26 +387,24 @@
 <p>If you have any conflicts with the following steps, you will likely need to commit your work, or clear your work if you don’t want to keep anything you’ve done. See below for <a href="#daily-setup-troubleshooting">daily setup troubleshooting</a> as well as <a href="#git-update-revert-etc">Git update, revert, etc</a>.</p>
 <section id="github-update-your-fork" class="level3">
 <h3 class="anchored" data-anchor-id="github-update-your-fork">GitHub: Update your fork</h3>
-<ol type="1">
-<li><strong>From github.com Fetch and merge</strong>: Update your forked repo from main by clicking “Fetch upstream” beneath the big green code button, and then the green “Fetch and merge” button. You may have to refresh the page to see any recent activity.</li>
-</ol>
+<p><strong>From github.com Fetch and merge</strong>: Update your forked repo from main by clicking “Fetch upstream” beneath the big green code button, and then the green “Fetch and merge” button. You may have to refresh the page to see any recent activity.</p>
 <p><img src="images/github-fetch-and-merge.png" class="img-fluid"></p>
 </section>
-<section id="jupyterhub-pull-updates" class="level3">
-<h3 class="anchored" data-anchor-id="jupyterhub-pull-updates">JupyterHub: Pull updates</h3>
-<ol start="2" type="1">
-<li>From the terminal in Jupyterhub: <code>git pull</code></li>
-</ol>
+<section id="jupyterhub-get-your-forks-updates" class="level3">
+<h3 class="anchored" data-anchor-id="jupyterhub-get-your-forks-updates">JupyterHub: Get your fork’s updates</h3>
 <p>Go to <a href="https://openscapes.2i2c.cloud/hub/" class="uri">https://openscapes.2i2c.cloud/hub/</a></p>
 <p>Go to your terminal and make sure you are in the <code>2021-Cloud-Hackathon</code> directory (double check with <code>pwd</code> and move with <code>cd</code>)</p>
-<p>Then git pull the repository:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Check the status of your repository</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If this says <code>Your branch is up to date with 'origin/main'.</code>, you can now pull updates:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>And you are all set for today! (You could do <code>git status</code> again just to confirm).</p>
 </section>
 <section id="daily-setup-troubleshooting" class="level3">
 <h3 class="anchored" data-anchor-id="daily-setup-troubleshooting">Daily setup troubleshooting</h3>
 <p><strong>Not a git repository</strong> - if you see the following, you likely need to <code>cd</code> change directory into your GitHub folder.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">fatal:</span> not a git repository <span class="er">(</span><span class="ex">or</span> any parent up to mount point /home<span class="kw">)</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Stopping</span> at filesystem boundary <span class="er">(</span><span class="ex">GIT_DISCOVERY_ACROSS_FILESYSTEM</span> not set<span class="kw">)</span><span class="bu">.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">fatal:</span> not a git repository <span class="er">(</span><span class="ex">or</span> any parent up to mount point /home<span class="kw">)</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Stopping</span> at filesystem boundary <span class="er">(</span><span class="ex">GIT_DISCOVERY_ACROSS_FILESYSTEM</span> not set<span class="kw">)</span><span class="bu">.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="git-update-revert-etc" class="level2">
@@ -418,19 +416,19 @@
 <p><strong>Undo changes you’ve maybe saved or committed, but not pushed</strong>. This is less time and internet intensive (no new clone/download).</p>
 <p>If you’ve got changes saved, but not yet staged, committed, or pushed, you’ll delete unstaged changes in the working directory with clean:</p>
 <p>You’ll need to make sure you’re in the github repository (use <code>pwd</code> to check your present working directory and <code>cd</code> to change directory)</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clean <span class="at">-df</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">--</span> .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clean <span class="at">-df</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">--</span> .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Burn it all down</strong> - delete the whole repo that you have locally, and then reclone.</p>
 <p>You’ll need to make sure you’re in the github repository (use <code>pwd</code> to check your present working directory and <code>cd</code> to change directory)</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-rf</span> YOUR-REPO</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-rf</span> YOUR-REPO</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Here is a whole blog on how to go back in time (walk back changes), with conceptual diagrams, command line code, and screenshots from RStudio. <a href="https://ohi-science.org/news/github-going-back-in-time" class="uri">https://ohi-science.org/news/github-going-back-in-time</a></p>
 </section>
 <section id="update-local-branch-with-remote-main-branch" class="level3">
 <h3 class="anchored" data-anchor-id="update-local-branch-with-remote-main-branch">Update local branch with remote main branch</h3>
 <p>If while you’re working you would like to update your local <code>your-branch</code> with the most recent updates on the <code>main</code> branch on GitHub.com, there are several ways to do this. Here’s one.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout your-branch</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> fetch</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge origin/main</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout your-branch</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> fetch</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge origin/main</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="update-from-main" class="level3">
 <h3 class="anchored" data-anchor-id="update-from-main">Update from main</h3>
