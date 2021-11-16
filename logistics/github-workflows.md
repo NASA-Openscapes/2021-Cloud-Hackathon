@@ -28,16 +28,17 @@ git clone https://github.com/YOUR-USERNAME/2021-Cloud-Hackathon
 
 ## Daily Setup
 
-If you have any conflicts with the following steps, you will likely need to commit your work, or clear your work if you don't want to keep anything you've done. See below for [Git update, revert, etc](#git-update-revert-etc)
+The daily setup has 2 steps: get the latest into your forked copy of the repo, then get the latest of your fork into your JupyterHub.
 
+If you have any conflicts with the following steps, you will likely need to commit your work, or clear your work if you don't want to keep anything you've done. See below for [daily setup troubleshooting](#daily-setup-troubleshooting) as well as [Git update, revert, etc](#git-update-revert-etc).
 
-#### GitHub: Get the latest 
+### GitHub: Update your fork  
 
-This has 2 steps: 
-
-1. From github.com: Update your forked repo from main by clicking "fetch and merge""
+1. **From github.com Fetch and merge**: Update your forked repo from main by clicking "Fetch upstream" beneath the big green code button, and then the green "Fetch and merge" button. You may have to refresh the page to see any recent activity.
 
 ![](images/github-fetch-and-merge.png)
+
+### JupyterHub: Pull updates
 
 2. From the terminal in Jupyterhub: `git pull`
 
@@ -49,6 +50,15 @@ Then git pull the repository:
 
 ```{.bash}
 git pull
+```
+
+### Daily setup troubleshooting
+
+**Not a git repository** - if you see the following, you likely need to `cd` change directory into your GitHub folder.
+
+```{.bash}
+fatal: not a git repository (or any parent up to mount point /home)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
 ```
 
 ## Git: update, revert, etc
