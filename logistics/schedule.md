@@ -38,8 +38,6 @@ _schedule-day2.md
 
 ### Welcome Day 2
 
-Any additional text we want.
-
 ```{.include}
 _welcome-day2-on.md
 ```
