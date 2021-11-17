@@ -344,13 +344,6 @@
   <div class="col mx-auto col-sm-12 col-md-9 col-lg-7 col-xl-7 px-lg-4 pe-xxl-4 ps-xxl-0">
 <main>
 
-<div class="cell" data-execution_count="1">
-<div class="sourceCode" id="cb1"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>rm <span class="op">*</span>.csv <span class="op">*</span>.nc<span class="op">*</span> <span class="op">&amp;&amp;</span> ls <span class="op">-</span>l</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
-<pre><code>rm: cannot remove '*.csv': No such file or directory
-rm: cannot remove '*.nc*': No such file or directory</code></pre>
-</div>
-</div>
 <section id="sentinel-6-mf-l2-altimetry-data-access-opendap-gridding" class="level1">
 <h1>06. Sentinel-6 MF L2 Altimetry Data Access (OPeNDAP) &amp; Gridding</h1>
 <p>In this tutorial you will learn…</p>
@@ -376,47 +369,47 @@ rm: cannot remove '*.nc*': No such file or directory</code></pre>
 <p>https://podaac.jpl.nasa.gov/Sentinel-6</p>
 <section id="mission-characteristics" class="level4">
 <h4 class="anchored" data-anchor-id="mission-characteristics">Mission Characteristics</h4>
-<div class="sourceCode" id="cb3"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Semi-major axis</span><span class="kw">:</span><span class="at"> 7,714.43 km</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Eccentricity</span><span class="kw">:</span><span class="at"> </span><span class="fl">0.000095</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">Inclination</span><span class="kw">:</span><span class="at"> 66.04°</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">Argument of periapsis</span><span class="kw">:</span><span class="at"> 90.0°</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">Mean anomaly</span><span class="kw">:</span><span class="at"> 253.13°</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">Reference altitude</span><span class="kw">:</span><span class="at"> 1,336 km</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">Nodal period</span><span class="kw">:</span><span class="at"> 6,745.72 sec</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">Repeat period</span><span class="kw">:</span><span class="at"> 9.9156 days</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="fu">Number of revolutions within a cycle</span><span class="kw">:</span><span class="at"> </span><span class="dv">127</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="fu">Number of passes within a cycle</span><span class="kw">:</span><span class="at"> </span><span class="dv">254</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="fu">Equatorial cross track separation</span><span class="kw">:</span><span class="at"> 315 km</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="fu">Ground track control band</span><span class="kw">:</span><span class="at"> +1 km</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="fu">Acute angle at Equator crossings</span><span class="kw">:</span><span class="at"> 39.5°</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="fu">Ground track speed</span><span class="kw">:</span><span class="at"> 5.8 km/s</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Semi-major axis</span><span class="kw">:</span><span class="at"> 7,714.43 km</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Eccentricity</span><span class="kw">:</span><span class="at"> </span><span class="fl">0.000095</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">Inclination</span><span class="kw">:</span><span class="at"> 66.04°</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">Argument of periapsis</span><span class="kw">:</span><span class="at"> 90.0°</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">Mean anomaly</span><span class="kw">:</span><span class="at"> 253.13°</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">Reference altitude</span><span class="kw">:</span><span class="at"> 1,336 km</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">Nodal period</span><span class="kw">:</span><span class="at"> 6,745.72 sec</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">Repeat period</span><span class="kw">:</span><span class="at"> 9.9156 days</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">Number of revolutions within a cycle</span><span class="kw">:</span><span class="at"> </span><span class="dv">127</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">Number of passes within a cycle</span><span class="kw">:</span><span class="at"> </span><span class="dv">254</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">Equatorial cross track separation</span><span class="kw">:</span><span class="at"> 315 km</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">Ground track control band</span><span class="kw">:</span><span class="at"> +1 km</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">Acute angle at Equator crossings</span><span class="kw">:</span><span class="at"> 39.5°</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">Ground track speed</span><span class="kw">:</span><span class="at"> 5.8 km/s</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="requirements" class="level3">
 <h3 class="anchored" data-anchor-id="requirements">Requirements</h3>
 <p>This workflow was developed using Python 3.9 (and tested against versions 3.7, 3.8).</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> tqdm</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> xarray <span class="im">as</span> xr</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> concurrent.futures <span class="im">import</span> ThreadPoolExecutor</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyresample.kd_tree <span class="im">import</span> resample_gauss</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyresample <span class="im">as</span> pr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> tqdm</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> xarray <span class="im">as</span> xr</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> concurrent.futures <span class="im">import</span> ThreadPoolExecutor</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyresample.kd_tree <span class="im">import</span> resample_gauss</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyresample <span class="im">as</span> pr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="dataset" class="level3">
 <h3 class="anchored" data-anchor-id="dataset">Dataset</h3>
 <p>https://podaac.jpl.nasa.gov/dataset/JASON_CS_S6A_L2_ALT_LR_RED_OST_NRT_F</p>
 <p>This example operates on Level 2 Low Resolution Altimetry from Sentinel-6 Michael Freilich (the Near Real Time Reduced distribution). It is most easily identified by its collection <em>ShortName</em>, given below with the more cryptic <em>concept-id</em>, it’s unique identifier in the CMR.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>ShortName <span class="op">=</span> <span class="st">'JASON_CS_S6A_L2_ALT_LR_RED_OST_NRT_F'</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>concept_id <span class="op">=</span> <span class="st">'C1968980576-POCLOUD'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>ShortName <span class="op">=</span> <span class="st">'JASON_CS_S6A_L2_ALT_LR_RED_OST_NRT_F'</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>concept_id <span class="op">=</span> <span class="st">'C1968980576-POCLOUD'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><img src="https://podaac.jpl.nasa.gov/Podaac/thumbnails/JASON_CS_S6A_L2_ALT_LR_RED_OST_NRT_F.jpg" width="80%"></p>
 <div class="cell" data-execution_count="4">
-<div class="sourceCode" id="cb6"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>cycle <span class="op">=</span> <span class="dv">25</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="ss">f"https://cmr.earthdata.nasa.gov/search/granules.csv?ShortName=</span><span class="sc">{</span>ShortName<span class="sc">}</span><span class="ss">&amp;cycle=</span><span class="sc">{</span>cycle<span class="sc">}</span><span class="ss">&amp;page_size=200"</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(url)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>cycle <span class="op">=</span> <span class="dv">25</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="ss">f"https://cmr.earthdata.nasa.gov/search/granules.csv?ShortName=</span><span class="sc">{</span>ShortName<span class="sc">}</span><span class="ss">&amp;cycle=</span><span class="sc">{</span>cycle<span class="sc">}</span><span class="ss">&amp;page_size=200"</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(url)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stdout">
 <pre><code>https://cmr.earthdata.nasa.gov/search/granules.csv?ShortName=JASON_CS_S6A_L2_ALT_LR_RED_OST_NRT_F&amp;cycle=25&amp;page_size=200</code></pre>
 </div>
@@ -426,11 +419,11 @@ cat
 tail --lines
 cut  --delimiter --fields</code></pre>
 <div class="cell" data-execution_count="5">
-<div class="sourceCode" id="cb9"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>curl <span class="op">--</span>silent <span class="op">--</span>output <span class="st">"results.csv"</span> <span class="st">"$url"</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>files <span class="op">=</span> <span class="op">!</span>cat results.csv <span class="op">|</span> tail <span class="op">--</span>lines<span class="op">=+</span><span class="dv">2</span> <span class="op">|</span> cut <span class="op">--</span>delimiter<span class="op">=</span><span class="st">','</span> <span class="op">--</span>fields<span class="op">=</span><span class="dv">5</span> <span class="op">|</span> cut <span class="op">--</span>delimiter<span class="op">=</span><span class="st">'/'</span> <span class="op">--</span>fields<span class="op">=</span><span class="dv">6</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(files.s.replace(<span class="st">" "</span>, <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>curl <span class="op">--</span>silent <span class="op">--</span>output <span class="st">"results.csv"</span> <span class="st">"$url"</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>files <span class="op">=</span> <span class="op">!</span>cat results.csv <span class="op">|</span> tail <span class="op">--</span>lines<span class="op">=+</span><span class="dv">2</span> <span class="op">|</span> cut <span class="op">--</span>delimiter<span class="op">=</span><span class="st">','</span> <span class="op">--</span>fields<span class="op">=</span><span class="dv">5</span> <span class="op">|</span> cut <span class="op">--</span>delimiter<span class="op">=</span><span class="st">'/'</span> <span class="op">--</span>fields<span class="op">=</span><span class="dv">6</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(files.s.replace(<span class="st">" "</span>, <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stdout">
 <pre><code>S6A_P4_2__LR_RED__NR_025_001_20210713T162644_20210713T182234_F02.nc
 S6A_P4_2__LR_RED__NR_025_003_20210713T182234_20210713T201839_F02.nc
@@ -563,25 +556,25 @@ S6A_P4_2__LR_RED__NR_025_253_20210723T122904_20210723T142514_F02.nc</code></pre>
 <h4 class="anchored" data-anchor-id="opendap">OPeNDAP</h4>
 <p>https://opendap.github.io/documentation/UserGuideComprehensive.html#Constraint_Expressions (Hyrax/OPeNDAP docs)</p>
 <div class="cell" data-execution_count="6">
-<div class="sourceCode" id="cb11"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>tmp <span class="op">=</span> files.l[<span class="dv">0</span>].split(<span class="st">'.'</span>)[<span class="dv">0</span>]</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"https://opendap.earthdata.nasa.gov/collections/</span><span class="sc">{</span>concept_id<span class="sc">}</span><span class="ss">/granules/</span><span class="sc">{</span>tmp<span class="sc">}</span><span class="ss">.html"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>tmp <span class="op">=</span> files.l[<span class="dv">0</span>].split(<span class="st">'.'</span>)[<span class="dv">0</span>]</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"https://opendap.earthdata.nasa.gov/collections/</span><span class="sc">{</span>concept_id<span class="sc">}</span><span class="ss">/granules/</span><span class="sc">{</span>tmp<span class="sc">}</span><span class="ss">.html"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stdout">
 <pre><code>https://opendap.earthdata.nasa.gov/collections/C1968980576-POCLOUD/granules/S6A_P4_2__LR_RED__NR_025_001_20210713T162644_20210713T182234_F02.html</code></pre>
 </div>
 </div>
-<div class="sourceCode" id="cb13"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>variables <span class="op">=</span> [<span class="st">'data_01_time'</span>,</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">'data_01_longitude'</span>,</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">'data_01_latitude'</span>,</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>             <span class="st">'data_01_ku_ssha'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>variables <span class="op">=</span> [<span class="st">'data_01_time'</span>,</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">'data_01_longitude'</span>,</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">'data_01_latitude'</span>,</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>             <span class="st">'data_01_ku_ssha'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell" data-execution_count="8">
-<div class="sourceCode" id="cb14"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> <span class="st">","</span>.join(variables)</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>urls <span class="op">=</span> []</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> f <span class="kw">in</span> files:</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    urls.append(<span class="ss">f"https://opendap.earthdata.nasa.gov/collections/</span><span class="sc">{</span>concept_id<span class="sc">}</span><span class="ss">/granules/</span><span class="sc">{</span>f<span class="sc">}</span><span class="ss">4?</span><span class="sc">{</span>v<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(urls[<span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> <span class="st">","</span>.join(variables)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>urls <span class="op">=</span> []</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> f <span class="kw">in</span> files:</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    urls.append(<span class="ss">f"https://opendap.earthdata.nasa.gov/collections/</span><span class="sc">{</span>concept_id<span class="sc">}</span><span class="ss">/granules/</span><span class="sc">{</span>f<span class="sc">}</span><span class="ss">4?</span><span class="sc">{</span>v<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(urls[<span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stdout">
 <pre><code>https://opendap.earthdata.nasa.gov/collections/C1968980576-POCLOUD/granules/S6A_P4_2__LR_RED__NR_025_001_20210713T162644_20210713T182234_F02.nc4?data_01_time,data_01_longitude,data_01_latitude,data_01_ku_ssha</code></pre>
 </div>
@@ -593,33 +586,33 @@ S6A_P4_2__LR_RED__NR_025_253_20210723T122904_20210723T142514_F02.nc</code></pre>
 <p>These functions download one granule from the remote <code>source</code> to a local <code>target</code>, and will reliably manage simultaneous streaming downloads divided between multiple threads.</p>
 <section id="with-python3" class="level5">
 <h5 class="anchored" data-anchor-id="with-python3">with python3:</h5>
-<div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> download(source: <span class="bu">str</span>, target: <span class="bu">str</span>):</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> requests.get(source, stream<span class="op">=</span><span class="va">True</span>) <span class="im">as</span> remote, <span class="bu">open</span>(target, <span class="st">'wb'</span>) <span class="im">as</span> local:</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> remote.status_code <span class="op">//</span> <span class="dv">100</span> <span class="op">==</span> <span class="dv">2</span>: </span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> chunk <span class="kw">in</span> remote.iter_content(chunk_size<span class="op">=</span><span class="dv">1024</span>):</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> chunk:</span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>                    local.write(chunk)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> download(source: <span class="bu">str</span>, target: <span class="bu">str</span>):</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> requests.get(source, stream<span class="op">=</span><span class="va">True</span>) <span class="im">as</span> remote, <span class="bu">open</span>(target, <span class="st">'wb'</span>) <span class="im">as</span> local:</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> remote.status_code <span class="op">//</span> <span class="dv">100</span> <span class="op">==</span> <span class="dv">2</span>: </span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> chunk <span class="kw">in</span> remote.iter_content(chunk_size<span class="op">=</span><span class="dv">1024</span>):</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> chunk:</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>                    local.write(chunk)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="with-wget" class="level5">
 <h5 class="anchored" data-anchor-id="with-wget">with wget:</h5>
-<div class="sourceCode" id="cb17"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> download(source: <span class="bu">str</span>):</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    target <span class="op">=</span> os.path.basename(source.split(<span class="st">"?"</span>)[<span class="dv">0</span>])</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> os.path.isfile(target):</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>        <span class="op">!</span>wget <span class="op">--</span>quiet <span class="op">--</span><span class="cf">continue</span> <span class="op">--</span>output<span class="op">-</span>document $target $source</span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> target</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> download(source: <span class="bu">str</span>):</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    target <span class="op">=</span> os.path.basename(source.split(<span class="st">"?"</span>)[<span class="dv">0</span>])</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> os.path.isfile(target):</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>        <span class="op">!</span>wget <span class="op">--</span>quiet <span class="op">--</span><span class="cf">continue</span> <span class="op">--</span>output<span class="op">-</span>document $target $source</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> target</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell" data-execution_count="10">
-<div class="sourceCode" id="cb18"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>n_workers <span class="op">=</span> <span class="dv">12</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> ThreadPoolExecutor(max_workers<span class="op">=</span>n_workers) <span class="im">as</span> pool:</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    workers <span class="op">=</span> pool.<span class="bu">map</span>(download, urls)</span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    files <span class="op">=</span> <span class="bu">list</span>(tqdm.tqdm(workers, total<span class="op">=</span><span class="bu">len</span>(urls)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>n_workers <span class="op">=</span> <span class="dv">12</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> ThreadPoolExecutor(max_workers<span class="op">=</span>n_workers) <span class="im">as</span> pool:</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    workers <span class="op">=</span> pool.<span class="bu">map</span>(download, urls)</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    files <span class="op">=</span> <span class="bu">list</span>(tqdm.tqdm(workers, total<span class="op">=</span><span class="bu">len</span>(urls)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stderr">
 <pre><code>100%|██████████| 125/125 [01:01&lt;00:00,  2.05it/s]</code></pre>
 </div>
@@ -627,7 +620,7 @@ S6A_P4_2__LR_RED__NR_025_253_20210723T122904_20210723T142514_F02.nc</code></pre>
 <p>https://docs.python.org/3/library/concurrent.futures.html#threadpoolexecutor</p>
 <p>The source files range from 2.5MB to 3.0MB. These OPeNDAP subsets are ~100KB apiece. (anecdote: it took less than 10 minutes to download subsets for &gt;1700 granules/files when I ran this routine for all cycles going back to 2021-06-22.)</p>
 <div class="cell" data-execution_count="11">
-<div class="sourceCode" id="cb20"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>du <span class="op">-</span>sh .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>du <span class="op">-</span>sh .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stdout">
 <pre><code>17M .</code></pre>
 </div>
@@ -638,9 +631,9 @@ S6A_P4_2__LR_RED__NR_025_253_20210723T122904_20210723T142514_F02.nc</code></pre>
 <h4 class="anchored" data-anchor-id="aggregate-cycle">Aggregate cycle</h4>
 <p>Sort the list of local subsets to ensure they concatenate in proper order. Call <code>open_mfdataset</code> on the list to open all the subsets in memory as one dataset in xarray.</p>
 <div class="cell" data-execution_count="12">
-<div class="sourceCode" id="cb22"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>ds <span class="op">=</span> xr.open_mfdataset(<span class="bu">sorted</span>(files))</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ds)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>ds <span class="op">=</span> xr.open_mfdataset(<span class="bu">sorted</span>(files))</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ds)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stdout">
 <pre><code>&lt;xarray.Dataset&gt;
 Dimensions:            (data_01_time: 827001)
@@ -669,11 +662,11 @@ Attributes: (12/63)
 <p>https://xarray.pydata.org/en/stable/generated/xarray.open_mfdataset.html</p>
 <p>Make a dictionary to rename variables so that the <code>data_01_</code> prefix is removed from each one.</p>
 <div class="cell" data-execution_count="13">
-<div class="sourceCode" id="cb24"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>new_variable_names <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="kw">lambda</span> x: x.split(<span class="st">"_"</span>)[<span class="op">-</span><span class="dv">1</span>], variables))</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>map_variable_names <span class="op">=</span> <span class="bu">dict</span>(<span class="bu">zip</span>(variables, new_variable_names))</span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>map_variable_names</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>new_variable_names <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="kw">lambda</span> x: x.split(<span class="st">"_"</span>)[<span class="op">-</span><span class="dv">1</span>], variables))</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>map_variable_names <span class="op">=</span> <span class="bu">dict</span>(<span class="bu">zip</span>(variables, new_variable_names))</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>map_variable_names</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display" data-execution_count="13">
 <pre><code>{'data_01_time': 'time',
  'data_01_longitude': 'longitude',
@@ -684,9 +677,9 @@ Attributes: (12/63)
 <p>https://docs.python.org/3/library/functions.html#map<br>
 https://docs.python.org/3/library/functions.html#zip</p>
 <div class="cell" data-execution_count="14">
-<div class="sourceCode" id="cb26"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>ds <span class="op">=</span> ds.rename(map_variable_names)</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">list</span>(ds.variables))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>ds <span class="op">=</span> ds.rename(map_variable_names)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">list</span>(ds.variables))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stdout">
 <pre><code>['longitude', 'latitude', 'ssha', 'time']</code></pre>
 </div>
@@ -696,23 +689,23 @@ https://docs.python.org/3/library/functions.html#zip</p>
 <h4 class="anchored" data-anchor-id="plot-ssha-variable">Plot <em>ssha</em> variable</h4>
 <p>https://xarray.pydata.org/en/stable/generated/xarray.Dataset.rename.html</p>
 <div class="cell" data-execution_count="15">
-<div class="sourceCode" id="cb28"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>ds.plot.scatter( y<span class="op">=</span><span class="st">"latitude"</span>,</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>                 x<span class="op">=</span><span class="st">"longitude"</span>, </span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>                 hue<span class="op">=</span><span class="st">"ssha"</span>,</span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>                 s<span class="op">=</span><span class="dv">1</span>,</span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>                 vmin<span class="op">=-</span><span class="fl">0.4</span>,</span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>                 vmax<span class="op">=</span><span class="fl">0.4</span>,</span>
-<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>                 levels<span class="op">=</span><span class="dv">9</span>, </span>
-<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>                 cmap<span class="op">=</span><span class="st">"jet"</span>,</span>
-<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>                 aspect<span class="op">=</span><span class="fl">2.5</span>,</span>
-<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>                 size<span class="op">=</span><span class="dv">9</span>, )</span>
-<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="ss">f"ssha from s6 cycle </span><span class="sc">{</span>cycle<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>plt.xlim(  <span class="fl">0.</span>, <span class="fl">360.</span>)</span>
-<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="op">-</span><span class="fl">67.</span>,  <span class="fl">67.</span>)</span>
-<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>ds.plot.scatter( y<span class="op">=</span><span class="st">"latitude"</span>,</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>                 x<span class="op">=</span><span class="st">"longitude"</span>, </span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>                 hue<span class="op">=</span><span class="st">"ssha"</span>,</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>                 s<span class="op">=</span><span class="dv">1</span>,</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>                 vmin<span class="op">=-</span><span class="fl">0.4</span>,</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>                 vmax<span class="op">=</span><span class="fl">0.4</span>,</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>                 levels<span class="op">=</span><span class="dv">9</span>, </span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>                 cmap<span class="op">=</span><span class="st">"jet"</span>,</span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>                 aspect<span class="op">=</span><span class="fl">2.5</span>,</span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>                 size<span class="op">=</span><span class="dv">9</span>, )</span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="ss">f"ssha from s6 cycle </span><span class="sc">{</span>cycle<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>plt.xlim(  <span class="fl">0.</span>, <span class="fl">360.</span>)</span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="op">-</span><span class="fl">67.</span>,  <span class="fl">67.</span>)</span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="06_S6_OPeNDAP_Access_Gridding_files/figure-html/cell-16-output-1.png" class="img-fluid"></p>
+<p><img src="06_S6_OPeNDAP_Access_Gridding_files/figure-html/cell-15-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 </section>
@@ -726,13 +719,13 @@ https://docs.python.org/3/library/functions.html#zip</p>
 <p>ECCO V4r4 products are distributed in two spatial formats. One set of collections provides the ocean state estimates on the native model grid (LLC0090) and the other provides them after interpolating to a regular grid defined in geographic coordinates with horizontal cell size of 0.5-degrees.</p>
 <p>It’s distributed as its own dataset/collection containing just one file. We can simply download it from the HTTPS download endpoint – the file size is inconsequential. The next cell downloads the file into the <em>data</em> folder from the granule’s https endpoint.</p>
 <div class="cell" data-execution_count="16">
-<div class="sourceCode" id="cb29"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>ecco_url <span class="op">=</span> <span class="st">"https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-protected/ECCO_L4_GEOMETRY_05DEG_V4R4/GRID_GEOMETRY_ECCO_V4r4_latlon_0p50deg.nc"</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>ecco_file <span class="op">=</span> download(ecco_url)</span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>ecco_grid <span class="op">=</span> xr.open_dataset(ecco_file)</span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ecco_grid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>ecco_url <span class="op">=</span> <span class="st">"https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-protected/ECCO_L4_GEOMETRY_05DEG_V4R4/GRID_GEOMETRY_ECCO_V4r4_latlon_0p50deg.nc"</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>ecco_file <span class="op">=</span> download(ecco_url)</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>ecco_grid <span class="op">=</span> xr.open_dataset(ecco_file)</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ecco_grid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stdout">
 <pre><code>&lt;xarray.Dataset&gt;
 Dimensions:         (Z: 50, latitude: 360, longitude: 720, nv: 2)
@@ -768,11 +761,11 @@ Attributes: (12/57)
 </div>
 <p>https://xarray.pydata.org/en/stable/generated/xarray.open_dataset.html</p>
 <p>Select index <code>0</code> on the <code>Z</code> axis/dimension to get the depth layer at ocean surface.</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>ecco_grid <span class="op">=</span> ecco_grid.isel(Z<span class="op">=</span><span class="dv">0</span>).copy()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>ecco_grid <span class="op">=</span> ecco_grid.isel(Z<span class="op">=</span><span class="dv">0</span>).copy()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>https://xarray.pydata.org/en/stable/generated/xarray.DataArray.isel.html</p>
 <p>The <code>maskC</code> variable contains a boolean mask representing the wet/dry state of the area contained in each cell of the 3d grid defined by <code>Z</code> and <code>latitude</code> and <code>longitude</code>. Here are the variable’s attributes:</p>
 <div class="cell" data-execution_count="18">
-<div class="sourceCode" id="cb32"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ecco_grid.maskC)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ecco_grid.maskC)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stdout">
 <pre><code>&lt;xarray.DataArray 'maskC' (latitude: 360, longitude: 720)&gt;
 [259200 values with dtype=bool]
@@ -788,81 +781,81 @@ Attributes:
 </div>
 <p>Plot the land/water mask <code>maskC</code>:</p>
 <div class="cell" data-execution_count="19">
-<div class="sourceCode" id="cb34"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>ecco_grid.maskC.plot()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>ecco_grid.maskC.plot()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display" data-execution_count="19">
 <pre><code>&lt;matplotlib.collections.QuadMesh at 0x7fed730b00a0&gt;</code></pre>
 </div>
 <div class="cell-output-display">
-<p><img src="06_S6_OPeNDAP_Access_Gridding_files/figure-html/cell-20-output-2.png" class="img-fluid"></p>
+<p><img src="06_S6_OPeNDAP_Access_Gridding_files/figure-html/cell-19-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 <p>https://xarray.pydata.org/en/stable/generated/xarray.DataArray.plot.html</p>
 <p>Define target grid based on the longitudes and latitudes from the ECCO grid geometry dataset. This time define the grid using two 2-dimensional arrays that give positions of all SSHA values in geographic/longitude-latitude coordinates.</p>
 <div class="cell" data-execution_count="20">
-<div class="sourceCode" id="cb36"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>ecco_lons <span class="op">=</span> ecco_grid.maskC.longitude.values</span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>ecco_lats <span class="op">=</span> ecco_grid.maskC.latitude.values</span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>ecco_lons_2d, ecco_lats_2d <span class="op">=</span> np.meshgrid(ecco_lons, ecco_lats)</span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ecco_lons_2d.shape, ecco_lats_2d.shape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>ecco_lons <span class="op">=</span> ecco_grid.maskC.longitude.values</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>ecco_lats <span class="op">=</span> ecco_grid.maskC.latitude.values</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>ecco_lons_2d, ecco_lats_2d <span class="op">=</span> np.meshgrid(ecco_lons, ecco_lats)</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ecco_lons_2d.shape, ecco_lats_2d.shape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stdout">
 <pre><code>(360, 720) (360, 720)</code></pre>
 </div>
 </div>
 <p>Create the target swath definition from the 2d arrays of lons and lats from ECCO V4r4 0.5-degree grid.</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>tgt <span class="op">=</span> pr.SwathDefinition(ecco_lons_2d, ecco_lats_2d)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>tgt <span class="op">=</span> pr.SwathDefinition(ecco_lons_2d, ecco_lats_2d)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><a href="https://pyresample.readthedocs.io/en/latest/api/pyresample.html#pyresample.geometry.SwathDefinition">pyresample.geometry.SwathDefinition</a></p>
 </section>
 <section id="grid-ssha-or-other-variable" class="level3">
 <h3 class="anchored" data-anchor-id="grid-ssha-or-other-variable">Grid ssha or other variable</h3>
 <p>Get one timestamp to represent the midpoint of the 10-day cycle.</p>
 <div class="cell" data-execution_count="22">
-<div class="sourceCode" id="cb39"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>time <span class="op">=</span> np.datetime64(ds[<span class="st">'time'</span>].mean().data)</span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(time)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>time <span class="op">=</span> np.datetime64(ds[<span class="st">'time'</span>].mean().data)</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(time)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stdout">
 <pre><code>2021-07-18T15:11:35.073955170</code></pre>
 </div>
 </div>
 <p>Access the target variable, <em>ssha</em> in this case. Make a nan mask from the ssha variable.</p>
 <div class="cell" data-execution_count="23">
-<div class="sourceCode" id="cb41"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>nans <span class="op">=</span> <span class="op">~</span>np.isnan(ds.ssha.values)</span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>ssha <span class="op">=</span> ds.ssha.values[nans]</span>
-<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>ssha.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>nans <span class="op">=</span> <span class="op">~</span>np.isnan(ds.ssha.values)</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>ssha <span class="op">=</span> ds.ssha.values[nans]</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>ssha.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display" data-execution_count="23">
 <pre><code>(518164,)</code></pre>
 </div>
 </div>
 <p>Create the source swath definition from the 1d arrays of lons and lats from the S6 level-2 along-track altimetry time series.</p>
 <div class="cell" data-execution_count="24">
-<div class="sourceCode" id="cb43"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>lons <span class="op">=</span> ds.longitude.values[nans]</span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>lats <span class="op">=</span> ds.latitude.values[nans]</span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(lons.shape, lats.shape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>lons <span class="op">=</span> ds.longitude.values[nans]</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>lats <span class="op">=</span> ds.latitude.values[nans]</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(lons.shape, lats.shape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stdout">
 <pre><code>(518164,) (518164,)</code></pre>
 </div>
 </div>
-<div class="sourceCode" id="cb45"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>lons <span class="op">=</span> (lons <span class="op">+</span> <span class="dv">180</span>) <span class="op">%</span> <span class="dv">360</span> <span class="op">-</span> <span class="dv">180</span></span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>src <span class="op">=</span> pr.SwathDefinition(lons, lats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>lons <span class="op">=</span> (lons <span class="op">+</span> <span class="dv">180</span>) <span class="op">%</span> <span class="dv">360</span> <span class="op">-</span> <span class="dv">180</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>src <span class="op">=</span> pr.SwathDefinition(lons, lats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><a href="https://pyresample.readthedocs.io/en/latest/api/pyresample.html#pyresample.geometry.SwathDefinition">pyresample.geometry.SwathDefinition</a></p>
 <p>Resample <em>ssha</em> data using kd-tree gaussian weighting neighbour approach.</p>
 <div class="cell" data-execution_count="26">
-<div class="sourceCode" id="cb46"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>result, stddev, counts <span class="op">=</span> resample_gauss(</span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>    src,</span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>    ssha,</span>
-<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>    tgt,</span>
-<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>    radius_of_influence<span class="op">=</span><span class="dv">175000</span>,  </span>
-<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>    sigmas<span class="op">=</span><span class="dv">25000</span>,</span>
-<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>    neighbours<span class="op">=</span><span class="dv">100</span>,</span>
-<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a>    fill_value<span class="op">=</span>np.nan,</span>
-<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a>    with_uncert<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-12"><a href="#cb46-12" aria-hidden="true" tabindex="-1"></a>result.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>result, stddev, counts <span class="op">=</span> resample_gauss(</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>    src,</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>    ssha,</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>    tgt,</span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>    radius_of_influence<span class="op">=</span><span class="dv">175000</span>,  </span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>    sigmas<span class="op">=</span><span class="dv">25000</span>,</span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>    neighbours<span class="op">=</span><span class="dv">100</span>,</span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>    fill_value<span class="op">=</span>np.nan,</span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>    with_uncert<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a>result.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stderr">
 <pre><code>/srv/conda/envs/notebook/lib/python3.9/site-packages/pyresample/kd_tree.py:384: UserWarning: Possible more than 100 neighbours within 175000 m for some data points
   warnings.warn(('Possible more than %s neighbours '</code></pre>
@@ -872,44 +865,44 @@ Attributes:
 </div>
 </div>
 <p><a href="https://pyresample.readthedocs.io/en/latest/api/pyresample.html#pyresample.kd_tree.resample_gauss">pyresample.kd_tree.resample_gauss</a></p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> to_xrda(data):</span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> xr.DataArray(data,</span>
-<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>                        dims<span class="op">=</span>[<span class="st">'latitude'</span>, <span class="st">'longitude'</span>], </span>
-<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>                        coords<span class="op">=</span>{<span class="st">'time'</span>: time, </span>
-<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>                                <span class="st">'latitude'</span>: ecco_lats, </span>
-<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>                                <span class="st">'longitude'</span>: ecco_lons})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> to_xrda(data):</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> xr.DataArray(data,</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>                        dims<span class="op">=</span>[<span class="st">'latitude'</span>, <span class="st">'longitude'</span>], </span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>                        coords<span class="op">=</span>{<span class="st">'time'</span>: time, </span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>                                <span class="st">'latitude'</span>: ecco_lats, </span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>                                <span class="st">'longitude'</span>: ecco_lons})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Apply the land/water mask in the numpy array created from the ECCO layer in the steps above. Then, convert the masked numpy array to an xarray data array object named <em>gridded</em>. Print its header.</p>
 <div class="cell" data-execution_count="28">
-<div class="sourceCode" id="cb50"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>grid <span class="op">=</span> to_xrda(result)</span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>grid.sel(latitude<span class="op">=</span><span class="bu">slice</span>(<span class="op">-</span><span class="fl">67.0</span>, <span class="fl">67.0</span>)).plot(vmin<span class="op">=-</span><span class="fl">0.4</span>, vmax<span class="op">=</span><span class="fl">0.4</span>, cmap<span class="op">=</span><span class="st">"jet"</span>, figsize<span class="op">=</span>(<span class="dv">18</span>, <span class="dv">7</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>grid <span class="op">=</span> to_xrda(result)</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>grid.sel(latitude<span class="op">=</span><span class="bu">slice</span>(<span class="op">-</span><span class="fl">67.0</span>, <span class="fl">67.0</span>)).plot(vmin<span class="op">=-</span><span class="fl">0.4</span>, vmax<span class="op">=</span><span class="fl">0.4</span>, cmap<span class="op">=</span><span class="st">"jet"</span>, figsize<span class="op">=</span>(<span class="dv">18</span>, <span class="dv">7</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display" data-execution_count="28">
 <pre><code>&lt;matplotlib.collections.QuadMesh at 0x7fed72fc43a0&gt;</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="06_S6_OPeNDAP_Access_Gridding_files/figure-html/cell-28-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="29">
+<div class="sourceCode" id="cb50"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>stddev <span class="op">=</span> to_xrda(stddev)</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>stddev.sel(latitude<span class="op">=</span><span class="bu">slice</span>(<span class="op">-</span><span class="fl">67.0</span>, <span class="fl">67.0</span>)).plot(robust<span class="op">=</span><span class="va">True</span>, cmap<span class="op">=</span><span class="st">"jet"</span>, figsize<span class="op">=</span>(<span class="dv">18</span>, <span class="dv">7</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display" data-execution_count="29">
+<pre><code>&lt;matplotlib.collections.QuadMesh at 0x7fed72892520&gt;</code></pre>
 </div>
 <div class="cell-output-display">
 <p><img src="06_S6_OPeNDAP_Access_Gridding_files/figure-html/cell-29-output-2.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="29">
-<div class="sourceCode" id="cb52"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>stddev <span class="op">=</span> to_xrda(stddev)</span>
-<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>stddev.sel(latitude<span class="op">=</span><span class="bu">slice</span>(<span class="op">-</span><span class="fl">67.0</span>, <span class="fl">67.0</span>)).plot(robust<span class="op">=</span><span class="va">True</span>, cmap<span class="op">=</span><span class="st">"jet"</span>, figsize<span class="op">=</span>(<span class="dv">18</span>, <span class="dv">7</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display" data-execution_count="29">
-<pre><code>&lt;matplotlib.collections.QuadMesh at 0x7fed72892520&gt;</code></pre>
-</div>
-<div class="cell-output-display">
-<p><img src="06_S6_OPeNDAP_Access_Gridding_files/figure-html/cell-30-output-2.png" class="img-fluid"></p>
-</div>
-</div>
 <div class="cell" data-execution_count="30">
-<div class="sourceCode" id="cb54"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>counts <span class="op">=</span> to_xrda(counts)</span>
-<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>counts.sel(latitude<span class="op">=</span><span class="bu">slice</span>(<span class="op">-</span><span class="fl">67.0</span>, <span class="fl">67.0</span>)).plot(robust<span class="op">=</span><span class="va">True</span>, cmap<span class="op">=</span><span class="st">"jet"</span>, figsize<span class="op">=</span>(<span class="dv">18</span>, <span class="dv">7</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>counts <span class="op">=</span> to_xrda(counts)</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>counts.sel(latitude<span class="op">=</span><span class="bu">slice</span>(<span class="op">-</span><span class="fl">67.0</span>, <span class="fl">67.0</span>)).plot(robust<span class="op">=</span><span class="va">True</span>, cmap<span class="op">=</span><span class="st">"jet"</span>, figsize<span class="op">=</span>(<span class="dv">18</span>, <span class="dv">7</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display" data-execution_count="30">
 <pre><code>&lt;matplotlib.collections.QuadMesh at 0x7fed732a3af0&gt;</code></pre>
 </div>
 <div class="cell-output-display">
-<p><img src="06_S6_OPeNDAP_Access_Gridding_files/figure-html/cell-31-output-2.png" class="img-fluid"></p>
+<p><img src="06_S6_OPeNDAP_Access_Gridding_files/figure-html/cell-30-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 </section>
