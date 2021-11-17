@@ -27,6 +27,7 @@ Detailed self-paced lesson on shell: [Shell Lesson from Software Carpentry](http
 
 ## Introduction :: Version Control (Git and Github)
 
+
 ### What is version control, git, github, and how to set it up?
 
 Version control is managing and tracking changes to your documents (program source code, images, websites, data files, etc.). `git` is a popular tool used for version control of software code. [github.com](https://github.com/) is popular platform that provides remote server hosting for git repositories. A repository is a collection of various files that you are tracking for changes and versions (think of it as a directory with files that are being tracked for changes, using `git` for taking snapshots of versions as you are developing).
@@ -263,3 +264,5 @@ Self-paced lesson on [Programming with Python](https://swcarpentry.github.io/pyt
 ## Introduction :: Geospatial Fundamentals (Optional)
 
 Detailed self-paced lesson on [Fundamentals of Geospatial Raster and Vector Data with Python](https://carpentries-incubator.github.io/geospatial-python/) from Data Carpentry
+
+The end! 
