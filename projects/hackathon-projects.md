@@ -2,4 +2,4 @@
 title: Hackathon Projects
 ---
 
-text here
+We'll add information about hackathon projects as they develop!

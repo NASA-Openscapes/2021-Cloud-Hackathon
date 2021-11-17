@@ -1,0 +1,38 @@
+---
+title: Create Hackathon GitHub Team
+---
+
+This was used to automate adding 41 github usernames to the cloud hackathon github team. Further refinement needed
+
+Automated kyber here: <https://github.com/openscapes/kyber>
+
+```{r}
+# First make sure to set your GitHub PAT
+Sys.setenv(GITHUB_PAT = "")
+
+# usethis::create_github_token()
+
+library(kyber) # remotes::install_github("openscapes/kyber@main")
+library(rmarkdown)
+library(tibble)
+library(fs)
+library(datapasta)
+
+members <-   tibble::tribble(
+# pasted here from internal spreadsheet 
+#                        ~Name,      ~GitHub_username,
+
+)
+
+## ideally, strip any "@"s and remove NAs
+# for the moment did this by hand.
+
+team_name <- "2021-cloud-hackathon-participants"
+
+ky_create_team(team_name, org = "nasa-openscapes", maintainers = "jules32")
+
+ky_add_team_members(team_name, members = members$GitHub_username, org = "nasa-openscapes")
+
+
+```
+

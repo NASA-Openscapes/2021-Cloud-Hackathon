@@ -1,5 +1,7 @@
 # GitHub
 
+*The following was borrowed from the excellent [SnowEx Hackathon 2021](https://snowex-hackweek.github.io/website/projects/index.html)*
+
 ## What is GitHub?
 [GitHub](https://github.com) is a hosting service for `Git` repositories,
 enabling us to share code across teams in a web environment.
