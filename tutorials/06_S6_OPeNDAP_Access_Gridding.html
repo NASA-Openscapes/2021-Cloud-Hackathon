@@ -107,9 +107,6 @@
     "type": "textbox",
     "limit": 20
   }</script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
-  <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
   <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
@@ -332,833 +329,327 @@
 <ul>
 <li><a href="#sentinel-6-mf-l2-altimetry-data-access-opendap-gridding" class="nav-link active" data-scroll-target="#sentinel-6-mf-l2-altimetry-data-access-opendap-gridding">06. Sentinel-6 MF L2 Altimetry Data Access (OPeNDAP) &amp; Gridding</a>
 <ul class="collapse">
-<li><a href="#getting-started" class="nav-link" data-scroll-target="#getting-started">Getting Started</a>
-<ul class="collapse">
-<li><a href="#summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
-<li><a href="#objectives" class="nav-link" data-scroll-target="#objectives">Objectives</a></li>
+<li><a href="#about-ocean-surface-topography-ost" class="nav-link" data-scroll-target="#about-ocean-surface-topography-ost">About Ocean Surface Topography (OST)</a></li>
+<li><a href="#about-sentinel-6-mf" class="nav-link" data-scroll-target="#about-sentinel-6-mf">About Sentinel-6 MF</a></li>
 <li><a href="#requirements" class="nav-link" data-scroll-target="#requirements">Requirements</a></li>
-<li><a href="#workspace" class="nav-link" data-scroll-target="#workspace">Workspace</a></li>
-</ul></li>
-<li><a href="#datasets" class="nav-link" data-scroll-target="#datasets">Dataset(s)</a>
-<ul class="collapse">
-<li><a href="#render-along-track-altimetry-data-to-the-ecco-grid" class="nav-link" data-scroll-target="#render-along-track-altimetry-data-to-the-ecco-grid">Render along-track altimetry data to the ECCO grid</a></li>
-<li><a href="#grid-ssha-or-a-similar-variable" class="nav-link" data-scroll-target="#grid-ssha-or-a-similar-variable">Grid ssha or a similar variable</a></li>
-</ul></li>
+<li><a href="#dataset" class="nav-link" data-scroll-target="#dataset">Dataset</a></li>
+<li><a href="#download-subsets" class="nav-link" data-scroll-target="#download-subsets">Download Subsets</a></li>
+<li><a href="#borrow-0.5-degree-grid-and-mask-from-ecco-v4r4" class="nav-link" data-scroll-target="#borrow-0.5-degree-grid-and-mask-from-ecco-v4r4">Borrow 0.5-Degree Grid and Mask from ECCO V4r4</a></li>
+<li><a href="#grid-ssha-or-other-variable" class="nav-link" data-scroll-target="#grid-ssha-or-other-variable">Grid ssha or other variable</a></li>
+<li><a href="#exercise" class="nav-link" data-scroll-target="#exercise">Exercise</a></li>
+<li><a href="#references" class="nav-link" data-scroll-target="#references">References</a></li>
 </ul></li>
 </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon/edit/main/tutorials/06_S6_OPeNDAP_Access_Gridding.ipynb" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon/issues/new" class="toc-action">Report an issue</a></p></div></div></nav></div>
   <div class="col mx-auto col-sm-12 col-md-9 col-lg-7 col-xl-7 px-lg-4 pe-xxl-4 ps-xxl-0">
 <main>
 
+<div class="cell" data-execution_count="1">
+<div class="sourceCode" id="cb1"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>rm <span class="op">*</span>.csv <span class="op">*</span>.nc<span class="op">*</span> <span class="op">&amp;&amp;</span> ls <span class="op">-</span>l</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>rm: cannot remove '*.csv': No such file or directory
+rm: cannot remove '*.nc*': No such file or directory</code></pre>
+</div>
+</div>
 <section id="sentinel-6-mf-l2-altimetry-data-access-opendap-gridding" class="level1">
 <h1>06. Sentinel-6 MF L2 Altimetry Data Access (OPeNDAP) &amp; Gridding</h1>
-<p>To-dos: * Add tutorial objectives, e.g.&nbsp;How much data are we selecting/where? Over a certain Cycle? * What is the goal of the tutorial? e.g.&nbsp;Grab ___ cycle(s)/pass(es) to plot satellite altimetry tracks from S6 using opendap in the cloud to only select data we are interested in, reducing the data volume and time-to-data.</p>
-<section id="getting-started" class="level2">
-<h2 class="anchored" data-anchor-id="getting-started">Getting Started</h2>
-<section id="summary" class="level3">
-<h3 class="anchored" data-anchor-id="summary">Summary</h3>
-<p><em>Description goes here…</em></p>
-</section>
-<section id="objectives" class="level3">
-<h3 class="anchored" data-anchor-id="objectives">Objectives</h3>
 <p>In this tutorial you will learn…</p>
 <ol type="1">
 <li>about level 2 radar altimetry data from the Sentinel-6 Michael Freilich mission;</li>
 <li>how to efficiently download variable subsets using OPeNDAP;</li>
 <li>how to grid the along-track altimetry observations produced by S6 at level 2.;</li>
 </ol>
+<section id="about-ocean-surface-topography-ost" class="level3">
+<h3 class="anchored" data-anchor-id="about-ocean-surface-topography-ost">About Ocean Surface Topography (OST)</h3>
+<p><img src="https://podaac.jpl.nasa.gov/sites/default/files/content/PO.DAAC_SAT_Timeline_high_res.jpg" width="60%"></p>
+<p>The primary contribution of satellite altimetry to satellite oceanography has been to:</p>
+<ul>
+<li>Improve the knowledge of ocean tides and develop global tide models.</li>
+<li>Monitor the variation of global mean sea level and its relationship to changes in ocean mass and heat content.</li>
+<li>Map the general circulation variability of the ocean, including the ocean mesoscale, over decades and in near real-time using multi-satellite altimetric sampling.</li>
+</ul>
+</section>
+<section id="about-sentinel-6-mf" class="level3">
+<h3 class="anchored" data-anchor-id="about-sentinel-6-mf">About Sentinel-6 MF</h3>
+<p>https://search.earthdata.nasa.gov/search?fpj=Sentinel-6</p>
+<p><img src="https://sealevel.jpl.nasa.gov/system/downloadable_items/348_Image13-Sentinel6-1000.jpg" width="55%"></p>
+<p>https://podaac.jpl.nasa.gov/Sentinel-6</p>
+<section id="mission-characteristics" class="level4">
+<h4 class="anchored" data-anchor-id="mission-characteristics">Mission Characteristics</h4>
+<div class="sourceCode" id="cb3"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Semi-major axis</span><span class="kw">:</span><span class="at"> 7,714.43 km</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Eccentricity</span><span class="kw">:</span><span class="at"> </span><span class="fl">0.000095</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">Inclination</span><span class="kw">:</span><span class="at"> 66.04°</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">Argument of periapsis</span><span class="kw">:</span><span class="at"> 90.0°</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">Mean anomaly</span><span class="kw">:</span><span class="at"> 253.13°</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">Reference altitude</span><span class="kw">:</span><span class="at"> 1,336 km</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">Nodal period</span><span class="kw">:</span><span class="at"> 6,745.72 sec</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">Repeat period</span><span class="kw">:</span><span class="at"> 9.9156 days</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="fu">Number of revolutions within a cycle</span><span class="kw">:</span><span class="at"> </span><span class="dv">127</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="fu">Number of passes within a cycle</span><span class="kw">:</span><span class="at"> </span><span class="dv">254</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="fu">Equatorial cross track separation</span><span class="kw">:</span><span class="at"> 315 km</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="fu">Ground track control band</span><span class="kw">:</span><span class="at"> +1 km</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="fu">Acute angle at Equator crossings</span><span class="kw">:</span><span class="at"> 39.5°</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="fu">Ground track speed</span><span class="kw">:</span><span class="at"> 5.8 km/s</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
 </section>
 <section id="requirements" class="level3">
 <h3 class="anchored" data-anchor-id="requirements">Requirements</h3>
 <p>This workflow was developed using Python 3.9 (and tested against versions 3.7, 3.8).</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os.path</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> xarray <span class="im">as</span> xr</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tqdm <span class="im">import</span> tqdm</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> io <span class="im">import</span> StringIO</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> concurrent.futures <span class="im">import</span> ThreadPoolExecutor</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">"ignore"</span>)</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyresample <span class="im">as</span> pr</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyresample.kd_tree <span class="im">import</span> resample_gauss</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell" data-execution_count="2">
-<div class="sourceCode" id="cb2"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st"># TEMPORARY, CHECK ENVIRONMENT:</span><span class="ch">\n</span><span class="st">"</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k,v <span class="kw">in</span> <span class="bu">dict</span>(<span class="bu">globals</span>()).items():</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">'module'</span> <span class="kw">in</span> <span class="bu">str</span>(<span class="bu">type</span>(v)):</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">hasattr</span>(v, <span class="st">"__path__"</span>):</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"  </span><span class="sc">{</span>v<span class="sc">.</span><span class="va">__name__</span><span class="sc">}</span><span class="ss">  </span><span class="ch">\t</span><span class="sc">{</span>v<span class="sc">.</span>__version__ <span class="sc">}</span><span class="ch">\t</span><span class="ss">(</span><span class="sc">{</span>v<span class="sc">.</span>__path__[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> tqdm</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> xarray <span class="im">as</span> xr</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> concurrent.futures <span class="im">import</span> ThreadPoolExecutor</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyresample.kd_tree <span class="im">import</span> resample_gauss</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyresample <span class="im">as</span> pr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="dataset" class="level3">
+<h3 class="anchored" data-anchor-id="dataset">Dataset</h3>
+<p>https://podaac.jpl.nasa.gov/dataset/JASON_CS_S6A_L2_ALT_LR_RED_OST_NRT_F</p>
+<p>This example operates on Level 2 Low Resolution Altimetry from Sentinel-6 Michael Freilich (the Near Real Time Reduced distribution). It is most easily identified by its collection <em>ShortName</em>, given below with the more cryptic <em>concept-id</em>, it’s unique identifier in the CMR.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>ShortName <span class="op">=</span> <span class="st">'JASON_CS_S6A_L2_ALT_LR_RED_OST_NRT_F'</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>concept_id <span class="op">=</span> <span class="st">'C1968980576-POCLOUD'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="https://podaac.jpl.nasa.gov/Podaac/thumbnails/JASON_CS_S6A_L2_ALT_LR_RED_OST_NRT_F.jpg" width="80%"></p>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode" id="cb6"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>cycle <span class="op">=</span> <span class="dv">25</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="ss">f"https://cmr.earthdata.nasa.gov/search/granules.csv?ShortName=</span><span class="sc">{</span>ShortName<span class="sc">}</span><span class="ss">&amp;cycle=</span><span class="sc">{</span>cycle<span class="sc">}</span><span class="ss">&amp;page_size=200"</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(url)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stdout">
-<pre><code>
-# TEMPORARY, CHECK ENVIRONMENT:
-
-  json      2.0.9   (/srv/conda/envs/notebook/lib/python3.9/json)
-  requests      2.26.0  (/srv/conda/envs/notebook/lib/python3.9/site-packages/requests)
-  numpy     1.21.4  (/srv/conda/envs/notebook/lib/python3.9/site-packages/numpy)
-  pandas    1.3.4   (/srv/conda/envs/notebook/lib/python3.9/site-packages/pandas)
-  xarray    0.20.1  (/srv/conda/envs/notebook/lib/python3.9/site-packages/xarray)
-  pyresample    1.22.0  (/srv/conda/envs/notebook/lib/python3.9/site-packages/pyresample)</code></pre>
+<pre><code>https://cmr.earthdata.nasa.gov/search/granules.csv?ShortName=JASON_CS_S6A_L2_ALT_LR_RED_OST_NRT_F&amp;cycle=25&amp;page_size=200</code></pre>
 </div>
 </div>
-</section>
-<section id="workspace" class="level3">
-<h3 class="anchored" data-anchor-id="workspace">Workspace</h3>
-<p>Create some directories inside a temporary user workspace. They will be used to write outputs.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>workspace <span class="op">=</span> <span class="st">"data/"</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> d <span class="kw">in</span> [<span class="st">'subsets'</span>, <span class="st">'cycles'</span>]:</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    os.makedirs(os.path.join(workspace, d), exist_ok<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<blockquote class="blockquote">
-<p>https://docs.python.org/3/library/os.html#os.makedirs</p>
-</blockquote>
-</section>
-</section>
-<section id="datasets" class="level2">
-<h2 class="anchored" data-anchor-id="datasets">Dataset(s)</h2>
-<p>This example operates on Level 2 Low Resolution Altimetry from Sentinel-6 Michael Freilich (the Near Real Time Reduced distribution). It is most easily identified by its collection <em>ShortName</em>, given below:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>ShortName <span class="op">=</span> <span class="st">'JASON_CS_S6A_L2_ALT_LR_RED_OST_NRT_F'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Search CMR using a simple function that wraps <code>requests.get</code>:</p>
-<section id="collection" class="level4">
-<h4 class="anchored" data-anchor-id="collection">collection</h4>
+<pre class="shell"><code>curl --silent --output
+cat
+tail --lines
+cut  --delimiter --fields</code></pre>
 <div class="cell" data-execution_count="5">
-<div class="sourceCode" id="cb6"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(url<span class="op">=</span><span class="ss">f"https://cmr.earthdata.nasa.gov/search/collections.umm_json"</span>, </span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>                        params<span class="op">=</span><span class="bu">dict</span>(ShortName<span class="op">=</span>ShortName))</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'hits:'</span>, response.headers[<span class="st">"cmr-hits"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>curl <span class="op">--</span>silent <span class="op">--</span>output <span class="st">"results.csv"</span> <span class="st">"$url"</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>files <span class="op">=</span> <span class="op">!</span>cat results.csv <span class="op">|</span> tail <span class="op">--</span>lines<span class="op">=+</span><span class="dv">2</span> <span class="op">|</span> cut <span class="op">--</span>delimiter<span class="op">=</span><span class="st">','</span> <span class="op">--</span>fields<span class="op">=</span><span class="dv">5</span> <span class="op">|</span> cut <span class="op">--</span>delimiter<span class="op">=</span><span class="st">'/'</span> <span class="op">--</span>fields<span class="op">=</span><span class="dv">6</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(files.s.replace(<span class="st">" "</span>, <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stdout">
-<pre><code>hits: 1</code></pre>
+<pre><code>S6A_P4_2__LR_RED__NR_025_001_20210713T162644_20210713T182234_F02.nc
+S6A_P4_2__LR_RED__NR_025_003_20210713T182234_20210713T201839_F02.nc
+S6A_P4_2__LR_RED__NR_025_006_20210713T201839_20210713T215450_F02.nc
+S6A_P4_2__LR_RED__NR_025_007_20210713T215450_20210713T234732_F02.nc
+S6A_P4_2__LR_RED__NR_025_009_20210713T234732_20210714T014224_F02.nc
+S6A_P4_2__LR_RED__NR_025_011_20210714T014224_20210714T033812_F02.nc
+S6A_P4_2__LR_RED__NR_025_013_20210714T033812_20210714T053356_F02.nc
+S6A_P4_2__LR_RED__NR_025_015_20210714T053357_20210714T072934_F02.nc
+S6A_P4_2__LR_RED__NR_025_017_20210714T072934_20210714T090919_F02.nc
+S6A_P4_2__LR_RED__NR_025_019_20210714T090919_20210714T110146_F02.nc
+S6A_P4_2__LR_RED__NR_025_021_20210714T110146_20210714T125702_F02.nc
+S6A_P4_2__LR_RED__NR_025_023_20210714T125702_20210714T145316_F02.nc
+S6A_P4_2__LR_RED__NR_025_025_20210714T145317_20210714T164922_F02.nc
+S6A_P4_2__LR_RED__NR_025_027_20210714T164922_20210714T184510_F02.nc
+S6A_P4_2__LR_RED__NR_025_029_20210714T184510_20210714T204143_F02.nc
+S6A_P4_2__LR_RED__NR_025_032_20210714T204143_20210714T221611_F02.nc
+S6A_P4_2__LR_RED__NR_025_033_20210714T221611_20210715T000941_F02.nc
+S6A_P4_2__LR_RED__NR_025_035_20210715T000941_20210715T020456_F02.nc
+S6A_P4_2__LR_RED__NR_025_037_20210715T020456_20210715T040047_F02.nc
+S6A_P4_2__LR_RED__NR_025_039_20210715T040047_20210715T055630_F02.nc
+S6A_P4_2__LR_RED__NR_025_041_20210715T055630_20210715T075208_F02.nc
+S6A_P4_2__LR_RED__NR_025_043_20210715T075208_20210715T093037_F02.nc
+S6A_P4_2__LR_RED__NR_025_045_20210715T093037_20210715T112356_F02.nc
+S6A_P4_2__LR_RED__NR_025_047_20210715T112356_20210715T131944_F02.nc
+S6A_P4_2__LR_RED__NR_025_049_20210715T131944_20210715T151600_F02.nc
+S6A_P4_2__LR_RED__NR_025_051_20210715T151602_20210715T165851_F02.nc
+S6A_P4_2__LR_RED__NR_025_053_20210715T171228_20210715T190748_F02.nc
+S6A_P4_2__LR_RED__NR_025_056_20210715T190748_20210715T204627_F02.nc
+S6A_P4_2__LR_RED__NR_025_057_20210715T204627_20210715T223758_F02.nc
+S6A_P4_2__LR_RED__NR_025_059_20210715T223758_20210716T003159_F02.nc
+S6A_P4_2__LR_RED__NR_025_061_20210716T003159_20210716T022732_F02.nc
+S6A_P4_2__LR_RED__NR_025_063_20210716T022732_20210716T042333_F02.nc
+S6A_P4_2__LR_RED__NR_025_065_20210716T042333_20210716T061901_F02.nc
+S6A_P4_2__LR_RED__NR_025_067_20210716T061901_20210716T081446_F02.nc
+S6A_P4_2__LR_RED__NR_025_070_20210716T081446_20210716T095203_F02.nc
+S6A_P4_2__LR_RED__NR_025_071_20210716T095203_20210716T114624_F02.nc
+S6A_P4_2__LR_RED__NR_025_073_20210716T114624_20210716T134228_F02.nc
+S6A_P4_2__LR_RED__NR_025_075_20210716T134228_20210716T153841_F02.nc
+S6A_P4_2__LR_RED__NR_025_077_20210716T153841_20210716T173433_F02.nc
+S6A_P4_2__LR_RED__NR_025_079_20210716T173433_20210716T193033_F02.nc
+S6A_P4_2__LR_RED__NR_025_082_20210716T193033_20210716T210718_F02.nc
+S6A_P4_2__LR_RED__NR_025_083_20210716T210718_20210716T225942_F02.nc
+S6A_P4_2__LR_RED__NR_025_085_20210716T225942_20210717T005425_F02.nc
+S6A_P4_2__LR_RED__NR_025_087_20210717T005425_20210717T025012_F02.nc
+S6A_P4_2__LR_RED__NR_025_089_20210717T025012_20210717T044557_F02.nc
+S6A_P4_2__LR_RED__NR_025_091_20210717T044557_20210717T064133_F02.nc
+S6A_P4_2__LR_RED__NR_025_093_20210717T064133_20210717T082134_F02.nc
+S6A_P4_2__LR_RED__NR_025_095_20210717T082134_20210717T101352_F02.nc
+S6A_P4_2__LR_RED__NR_025_097_20210717T101352_20210717T120859_F02.nc
+S6A_P4_2__LR_RED__NR_025_099_20210717T120859_20210717T140513_F02.nc
+S6A_P4_2__LR_RED__NR_025_101_20210717T140513_20210717T160120_F02.nc
+S6A_P4_2__LR_RED__NR_025_103_20210717T160120_20210717T175708_F02.nc
+S6A_P4_2__LR_RED__NR_025_105_20210717T175708_20210717T195329_F02.nc
+S6A_P4_2__LR_RED__NR_025_108_20210717T195329_20210717T212832_F02.nc
+S6A_P4_2__LR_RED__NR_025_109_20210717T212832_20210717T232147_F02.nc
+S6A_P4_2__LR_RED__NR_025_111_20210717T232147_20210718T011655_F02.nc
+S6A_P4_2__LR_RED__NR_025_113_20210718T011655_20210718T031245_F02.nc
+S6A_P4_2__LR_RED__NR_025_115_20210718T031245_20210718T050829_F02.nc
+S6A_P4_2__LR_RED__NR_025_117_20210718T050829_20210718T070406_F02.nc
+S6A_P4_2__LR_RED__NR_025_119_20210718T070406_20210718T084306_F02.nc
+S6A_P4_2__LR_RED__NR_025_121_20210718T084306_20210718T103559_F02.nc
+S6A_P4_2__LR_RED__NR_025_123_20210718T103559_20210718T123140_F02.nc
+S6A_P4_2__LR_RED__NR_025_125_20210718T123140_20210718T142756_F02.nc
+S6A_P4_2__LR_RED__NR_025_127_20210718T142756_20210718T162356_F02.nc
+S6A_P4_2__LR_RED__NR_025_129_20210718T162356_20210718T181945_F02.nc
+S6A_P4_2__LR_RED__NR_025_132_20210718T181945_20210718T195907_F02.nc
+S6A_P4_2__LR_RED__NR_025_133_20210718T195907_20210718T215014_F02.nc
+S6A_P4_2__LR_RED__NR_025_135_20210718T215014_20210718T234402_F02.nc
+S6A_P4_2__LR_RED__NR_025_137_20210718T234402_20210719T013937_F02.nc
+S6A_P4_2__LR_RED__NR_025_139_20210719T013937_20210719T033531_F02.nc
+S6A_P4_2__LR_RED__NR_025_141_20210719T033531_20210719T053101_F02.nc
+S6A_P4_2__LR_RED__NR_025_143_20210719T053101_20210719T072643_F02.nc
+S6A_P4_2__LR_RED__NR_025_146_20210719T072643_20210719T090425_F02.nc
+S6A_P4_2__LR_RED__NR_025_147_20210719T090425_20210719T105824_F02.nc
+S6A_P4_2__LR_RED__NR_025_149_20210719T105824_20210719T125424_F02.nc
+S6A_P4_2__LR_RED__NR_025_151_20210719T125424_20210719T145038_F02.nc
+S6A_P4_2__LR_RED__NR_025_153_20210719T145541_20210719T164632_F02.nc
+S6A_P4_2__LR_RED__NR_025_155_20210719T164632_20210719T184227_F02.nc
+S6A_P4_2__LR_RED__NR_025_158_20210719T184227_20210719T201949_F02.nc
+S6A_P4_2__LR_RED__NR_025_159_20210719T201949_20210719T221154_F02.nc
+S6A_P4_2__LR_RED__NR_025_161_20210719T221154_20210720T000626_F02.nc
+S6A_P4_2__LR_RED__NR_025_163_20210720T000626_20210720T020212_F02.nc
+S6A_P4_2__LR_RED__NR_025_165_20210720T020212_20210720T035756_F02.nc
+S6A_P4_2__LR_RED__NR_025_167_20210720T035756_20210720T055333_F02.nc
+S6A_P4_2__LR_RED__NR_025_169_20210720T055333_20210720T073350_F02.nc
+S6A_P4_2__LR_RED__NR_025_171_20210720T073350_20210720T092602_F02.nc
+S6A_P4_2__LR_RED__NR_025_173_20210720T092602_20210720T112057_F02.nc
+S6A_P4_2__LR_RED__NR_025_175_20210720T112057_20210720T131708_F02.nc
+S6A_P4_2__LR_RED__NR_025_177_20210720T131708_20210720T151317_F02.nc
+S6A_P4_2__LR_RED__NR_025_184_20210720T190549_20210720T204056_F02.nc
+S6A_P4_2__LR_RED__NR_025_185_20210720T204056_20210720T223355_F02.nc
+S6A_P4_2__LR_RED__NR_025_187_20210720T223355_20210721T002855_F02.nc
+S6A_P4_2__LR_RED__NR_025_189_20210721T002855_20210721T022443_F02.nc
+S6A_P4_2__LR_RED__NR_025_191_20210721T022443_20210721T042029_F02.nc
+S6A_P4_2__LR_RED__NR_025_193_20210721T042029_20210721T061605_F02.nc
+S6A_P4_2__LR_RED__NR_025_195_20210721T061605_20210721T075531_F02.nc
+S6A_P4_2__LR_RED__NR_025_197_20210721T075531_20210721T094805_F02.nc
+S6A_P4_2__LR_RED__NR_025_199_20210721T094805_20210721T114336_F02.nc
+S6A_P4_2__LR_RED__NR_025_201_20210721T114336_20210721T133952_F02.nc
+S6A_P4_2__LR_RED__NR_025_203_20210721T133952_20210721T153555_F02.nc
+S6A_P4_2__LR_RED__NR_025_205_20210721T153555_20210721T173143_F02.nc
+S6A_P4_2__LR_RED__NR_025_207_20210721T173143_20210721T191151_F02.nc
+S6A_P4_2__LR_RED__NR_025_209_20210721T191151_20210721T210223_F02.nc
+S6A_P4_2__LR_RED__NR_025_211_20210721T210223_20210721T225607_F02.nc
+S6A_P4_2__LR_RED__NR_025_213_20210721T225607_20210722T005131_F02.nc
+S6A_P4_2__LR_RED__NR_025_215_20210722T005131_20210722T024724_F02.nc
+S6A_P4_2__LR_RED__NR_025_217_20210722T024724_20210722T044301_F02.nc
+S6A_P4_2__LR_RED__NR_025_219_20210722T044301_20210722T063841_F02.nc
+S6A_P4_2__LR_RED__NR_025_221_20210722T063841_20210722T081646_F02.nc
+S6A_P4_2__LR_RED__NR_025_223_20210722T081646_20210722T101025_F02.nc
+S6A_P4_2__LR_RED__NR_025_225_20210722T101025_20210722T120619_F02.nc
+S6A_P4_2__LR_RED__NR_025_227_20210722T120619_20210722T140235_F02.nc
+S6A_P4_2__LR_RED__NR_025_229_20210722T140235_20210722T155831_F02.nc
+S6A_P4_2__LR_RED__NR_025_231_20210722T155831_20210722T175423_F02.nc
+S6A_P4_2__LR_RED__NR_025_234_20210722T175423_20210722T193222_F02.nc
+S6A_P4_2__LR_RED__NR_025_235_20210722T193222_20210722T212406_F02.nc
+S6A_P4_2__LR_RED__NR_025_237_20210722T212406_20210722T231828_F02.nc
+S6A_P4_2__LR_RED__NR_025_239_20210722T231828_20210723T011405_F02.nc
+S6A_P4_2__LR_RED__NR_025_241_20210723T011405_20210723T030955_F02.nc
+S6A_P4_2__LR_RED__NR_025_243_20210723T030955_20210723T050533_F02.nc
+S6A_P4_2__LR_RED__NR_025_245_20210723T050533_20210723T064603_F02.nc
+S6A_P4_2__LR_RED__NR_025_247_20210723T064603_20210723T083817_F02.nc
+S6A_P4_2__LR_RED__NR_025_249_20210723T083817_20210723T103256_F02.nc
+S6A_P4_2__LR_RED__NR_025_251_20210723T103256_20210723T122904_F02.nc
+S6A_P4_2__LR_RED__NR_025_253_20210723T122904_20210723T142514_F02.nc</code></pre>
 </div>
 </div>
-<p>Get the collection’s <em>concept-id</em> from the record’s <code>meta</code> object. It uniquely identifies the collection in the CMR and is a component of the OPeNDAP endpoints for its granules.</p>
+<section id="opendap" class="level4">
+<h4 class="anchored" data-anchor-id="opendap">OPeNDAP</h4>
+<p>https://opendap.github.io/documentation/UserGuideComprehensive.html#Constraint_Expressions (Hyrax/OPeNDAP docs)</p>
 <div class="cell" data-execution_count="6">
-<div class="sourceCode" id="cb8"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>collection <span class="op">=</span> response.json().get(<span class="st">"items"</span>)[<span class="dv">0</span>]</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>concept_id <span class="op">=</span> collection.get(<span class="st">"meta"</span>).get(<span class="st">"concept-id"</span>)</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(concept_id)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>tmp <span class="op">=</span> files.l[<span class="dv">0</span>].split(<span class="st">'.'</span>)[<span class="dv">0</span>]</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"https://opendap.earthdata.nasa.gov/collections/</span><span class="sc">{</span>concept_id<span class="sc">}</span><span class="ss">/granules/</span><span class="sc">{</span>tmp<span class="sc">}</span><span class="ss">.html"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stdout">
-<pre><code>C1968980576-POCLOUD</code></pre>
+<pre><code>https://opendap.earthdata.nasa.gov/collections/C1968980576-POCLOUD/granules/S6A_P4_2__LR_RED__NR_025_001_20210713T162644_20210713T182234_F02.html</code></pre>
 </div>
 </div>
-<blockquote class="blockquote">
-<p>https://docs.python-requests.org/en/latest/api/#requests.get</p>
-</blockquote>
-</section>
-<section id="granules" class="level4">
-<h4 class="anchored" data-anchor-id="granules">granules</h4>
-<div class="cell" data-execution_count="7">
-<div class="sourceCode" id="cb10"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(url<span class="op">=</span><span class="ss">f"https://cmr.earthdata.nasa.gov/search/granules.csv"</span>, </span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>                        params<span class="op">=</span><span class="bu">dict</span>(ShortName<span class="op">=</span>ShortName, page_size<span class="op">=</span><span class="dv">2000</span>))</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'hits:'</span>, response.headers[<span class="st">"cmr-hits"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
-<pre><code>hits: 1783</code></pre>
-</div>
-</div>
-<blockquote class="blockquote">
-<p>https://docs.python.org/3/library/io.html#io.StringIO<br>
-https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html<br>
-https://docs.python-requests.org/en/latest/api/#requests.get</p>
-</blockquote>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>variables <span class="op">=</span> [<span class="st">'data_01_time'</span>,</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">'data_01_longitude'</span>,</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">'data_01_latitude'</span>,</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>             <span class="st">'data_01_ku_ssha'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell" data-execution_count="8">
-<div class="sourceCode" id="cb12"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>granules <span class="op">=</span> pd.read_csv(StringIO(response.text))</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>granules.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display" data-execution_count="8">
-<div>
-
-<table class="dataframe table">
-  <thead>
-    <tr>
-      <th></th>
-      <th>Granule UR</th>
-      <th>Producer Granule ID</th>
-      <th>Start Time</th>
-      <th>End Time</th>
-      <th>Online Access URLs</th>
-      <th>Browse URLs</th>
-      <th>Cloud Cover</th>
-      <th>Day/Night</th>
-      <th>Size</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>S6A_P4_2__LR_RED__NR_022_215_20210622T065556_2...</td>
-      <td>NaN</td>
-      <td>2021-06-22T06:55:56.542Z</td>
-      <td>2021-06-22T08:51:49.469Z</td>
-      <td>https://archive.podaac.earthdata.nasa.gov/poda...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>UNSPECIFIED</td>
-      <td>5.447547</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>S6A_P4_2__LR_RED__NR_022_217_20210622T085149_2...</td>
-      <td>NaN</td>
-      <td>2021-06-22T08:51:49.519Z</td>
-      <td>2021-06-22T10:47:27.453Z</td>
-      <td>https://archive.podaac.earthdata.nasa.gov/poda...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>UNSPECIFIED</td>
-      <td>0.308941</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>S6A_P4_2__LR_RED__NR_022_219_20210622T104727_2...</td>
-      <td>NaN</td>
-      <td>2021-06-22T10:47:27.504Z</td>
-      <td>2021-06-22T12:43:06.457Z</td>
-      <td>https://archive.podaac.earthdata.nasa.gov/poda...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>UNSPECIFIED</td>
-      <td>5.511004</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>S6A_P4_2__LR_RED__NR_022_221_20210622T124306_2...</td>
-      <td>NaN</td>
-      <td>2021-06-22T12:43:06.507Z</td>
-      <td>2021-06-22T14:21:12.461Z</td>
-      <td>https://archive.podaac.earthdata.nasa.gov/poda...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>UNSPECIFIED</td>
-      <td>2.322583</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>S6A_P4_2__LR_RED__NR_022_223_20210622T142112_2...</td>
-      <td>NaN</td>
-      <td>2021-06-22T14:21:12.511Z</td>
-      <td>2021-06-22T16:14:50.491Z</td>
-      <td>https://archive.podaac.earthdata.nasa.gov/poda...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>UNSPECIFIED</td>
-      <td>5.497045</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-</div>
-<blockquote class="blockquote">
-<p>https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.iloc.html</p>
-</blockquote>
-<p>Display the list of items created by splitting the a value in the <code>Granule UR</code> field.</p>
-<div class="cell" data-execution_count="9">
-<div class="sourceCode" id="cb13"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>granules[<span class="st">'Granule UR'</span>].iloc[<span class="dv">0</span>].split(<span class="st">"_"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display" data-execution_count="9">
-<pre><code>['S6A',
- 'P4',
- '2',
- '',
- 'LR',
- 'RED',
- '',
- 'NR',
- '022',
- '215',
- '20210622T065556',
- '20210622T085149',
- 'F02']</code></pre>
-</div>
-</div>
-<p>References:<br>
-https://docs.python.org/3/library/stdtypes.html#str.split<br>
-https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.iloc.html</p>
-<p><em>Note that cycle and pass are items 8 and 9, respectively, after splitting the <code>Granule UR</code> field by <code>_</code>.</em> Add two columns containing the cycle/pass numbers for granules in the table.</p>
-<div class="cell" data-execution_count="10">
-<div class="sourceCode" id="cb15"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>granules <span class="op">=</span> granules[[<span class="st">'Granule UR'</span>, <span class="st">'Start Time'</span>, <span class="st">'End Time'</span>, <span class="st">'Online Access URLs'</span>]].copy()</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>granules[<span class="st">'cycle'</span>] <span class="op">=</span> granules[<span class="st">'Granule UR'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: x.split(<span class="st">"_"</span>)[<span class="dv">8</span>])</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>granules[<span class="st">'pass'</span>] <span class="op">=</span> granules[<span class="st">'Granule UR'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: x.split(<span class="st">"_"</span>)[<span class="dv">9</span>])</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>granules.iloc[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display" data-execution_count="10">
-<pre><code>Granule UR            S6A_P4_2__LR_RED__NR_022_215_20210622T065556_2...
-Start Time                                     2021-06-22T06:55:56.542Z
-End Time                                       2021-06-22T08:51:49.469Z
-Online Access URLs    https://archive.podaac.earthdata.nasa.gov/poda...
-cycle                                                               022
-pass                                                                215
-Name: 0, dtype: object</code></pre>
-</div>
-</div>
-<blockquote class="blockquote">
-<p>https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.copy.html<br>
-https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.apply.html<br>
-https://docs.python.org/3/reference/expressions.html#lambda<br>
-https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.iloc.html</p>
-</blockquote>
-<p>Now create a table with one row per cycle and with these columns:</p>
-<ol type="1">
-<li>start time</li>
-<li>end time</li>
-<li>granule names (list)</li>
-</ol>
-<div class="cell" data-execution_count="11">
-<div class="sourceCode" id="cb17"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>tmp <span class="op">=</span> granules.groupby(<span class="st">"cycle"</span>)</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>cycles <span class="op">=</span> tmp[<span class="st">'pass'</span>].count().to_frame(<span class="st">"count"</span>)</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>cycles[<span class="st">'start'</span>] <span class="op">=</span> tmp[<span class="st">'Start Time'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: x.tolist()) <span class="op">\</span></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>                                   .<span class="bu">apply</span>(<span class="bu">sorted</span>) <span class="op">\</span></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>                                   .<span class="bu">apply</span>(<span class="kw">lambda</span> x: x[<span class="dv">0</span>])  <span class="co"># index 0</span></span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>cycles[<span class="st">'end'</span>]   <span class="op">=</span> tmp[<span class="st">'End Time'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: x.tolist()) <span class="op">\</span></span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>                                 .<span class="bu">apply</span>(<span class="bu">sorted</span>) <span class="op">\</span></span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>                                 .<span class="bu">apply</span>(<span class="kw">lambda</span> x: x[<span class="op">-</span><span class="dv">1</span>])  <span class="co"># index -1</span></span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>cycles[<span class="st">'grans'</span>] <span class="op">=</span> tmp[<span class="st">'Granule UR'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: x.tolist())</span>
-<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>display(cycles)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-
-<table class="dataframe table">
-  <thead>
-    <tr>
-      <th></th>
-      <th>count</th>
-      <th>start</th>
-      <th>end</th>
-      <th>grans</th>
-    </tr>
-    <tr>
-      <th>cycle</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>022</th>
-      <td>20</td>
-      <td>2021-06-22T06:55:56.542Z</td>
-      <td>2021-06-23T20:29:40.464Z</td>
-      <td>[S6A_P4_2__LR_RED__NR_022_215_20210622T065556_...</td>
-    </tr>
-    <tr>
-      <th>023</th>
-      <td>126</td>
-      <td>2021-06-23T20:29:40.515Z</td>
-      <td>2021-07-03T18:28:12.477Z</td>
-      <td>[S6A_P4_2__LR_RED__NR_023_001_20210623T202940_...</td>
-    </tr>
-    <tr>
-      <th>024</th>
-      <td>122</td>
-      <td>2021-07-03T18:28:12.528Z</td>
-      <td>2021-07-13T16:26:44.463Z</td>
-      <td>[S6A_P4_2__LR_RED__NR_024_001_20210703T182812_...</td>
-    </tr>
-    <tr>
-      <th>025</th>
-      <td>125</td>
-      <td>2021-07-13T16:26:44.514Z</td>
-      <td>2021-07-23T14:25:14.452Z</td>
-      <td>[S6A_P4_2__LR_RED__NR_025_001_20210713T162644_...</td>
-    </tr>
-    <tr>
-      <th>026</th>
-      <td>126</td>
-      <td>2021-07-23T14:25:15.513Z</td>
-      <td>2021-08-02T12:23:46.465Z</td>
-      <td>[S6A_P4_2__LR_RED__NR_026_001_20210723T142515_...</td>
-    </tr>
-    <tr>
-      <th>027</th>
-      <td>126</td>
-      <td>2021-08-02T12:23:46.515Z</td>
-      <td>2021-08-12T10:22:45.463Z</td>
-      <td>[S6A_P4_2__LR_RED__NR_027_001_20210802T122346_...</td>
-    </tr>
-    <tr>
-      <th>028</th>
-      <td>125</td>
-      <td>2021-08-12T10:22:45.514Z</td>
-      <td>2021-08-22T08:21:16.466Z</td>
-      <td>[S6A_P4_2__LR_RED__NR_028_001_20210812T102245_...</td>
-    </tr>
-    <tr>
-      <th>029</th>
-      <td>125</td>
-      <td>2021-08-22T08:21:16.516Z</td>
-      <td>2021-09-01T06:19:48.489Z</td>
-      <td>[S6A_P4_2__LR_RED__NR_029_001_20210822T082116_...</td>
-    </tr>
-    <tr>
-      <th>030</th>
-      <td>118</td>
-      <td>2021-09-01T06:19:48.540Z</td>
-      <td>2021-09-11T04:18:20.452Z</td>
-      <td>[S6A_P4_2__LR_RED__NR_030_001_20210901T061948_...</td>
-    </tr>
-    <tr>
-      <th>031</th>
-      <td>111</td>
-      <td>2021-09-11T04:18:20.503Z</td>
-      <td>2021-09-21T02:16:52.490Z</td>
-      <td>[S6A_P4_2__LR_RED__NR_031_001_20210911T041820_...</td>
-    </tr>
-    <tr>
-      <th>032</th>
-      <td>126</td>
-      <td>2021-09-21T02:16:52.541Z</td>
-      <td>2021-10-01T00:15:23.477Z</td>
-      <td>[S6A_P4_2__LR_RED__NR_032_001_20210921T021652_...</td>
-    </tr>
-    <tr>
-      <th>033</th>
-      <td>127</td>
-      <td>2021-10-01T00:15:23.528Z</td>
-      <td>2021-10-10T22:13:54.473Z</td>
-      <td>[S6A_P4_2__LR_RED__NR_033_001_20211001T001523_...</td>
-    </tr>
-    <tr>
-      <th>034</th>
-      <td>127</td>
-      <td>2021-10-10T22:13:54.523Z</td>
-      <td>2021-10-20T20:12:26.484Z</td>
-      <td>[S6A_P4_2__LR_RED__NR_034_001_20211010T221354_...</td>
-    </tr>
-    <tr>
-      <th>035</th>
-      <td>127</td>
-      <td>2021-10-20T20:12:26.534Z</td>
-      <td>2021-10-30T18:10:57.471Z</td>
-      <td>[S6A_P4_2__LR_RED__NR_035_001_20211020T201226_...</td>
-    </tr>
-    <tr>
-      <th>036</th>
-      <td>127</td>
-      <td>2021-10-30T18:10:57.521Z</td>
-      <td>2021-11-09T16:09:28.454Z</td>
-      <td>[S6A_P4_2__LR_RED__NR_036_001_20211030T181057_...</td>
-    </tr>
-    <tr>
-      <th>037</th>
-      <td>25</td>
-      <td>2021-11-09T16:09:28.504Z</td>
-      <td>2021-11-11T14:58:45.468Z</td>
-      <td>[S6A_P4_2__LR_RED__NR_037_001_20211109T160928_...</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-</div>
-<blockquote class="blockquote">
-<p>https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.to_frame.html<br>
-https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.groupby.html</p>
-</blockquote>
-</section>
-<section id="pick-a-cycle-of-interest" class="level4">
-<h4 class="anchored" data-anchor-id="pick-a-cycle-of-interest">Pick a cycle of interest</h4>
-<p>Pick one cycle that is nearly complete, &gt;= 120 orbits/files. Limit options to cycles with at least 120 granules/files available (i.e.&nbsp;orbits in S6 context).</p>
-<div class="cell" data-execution_count="12">
-<div class="sourceCode" id="cb18"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>cycles <span class="op">=</span> cycles[cycles[<span class="st">'count'</span>]<span class="op">&gt;=</span><span class="dv">120</span>].copy()</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>cycles.index.tolist()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display" data-execution_count="12">
-<pre><code>['023',
- '024',
- '025',
- '026',
- '027',
- '028',
- '029',
- '032',
- '033',
- '034',
- '035',
- '036']</code></pre>
-</div>
-</div>
-<p>Choose from the nearly-complete cycles that remain in the table, which start with cycle number <code>023</code> for S6 data in the public domain (and start on June 22). Slice the table of <em>granules</em> to exclude all rows that are not from the cycle of interest.</p>
-<div class="cell" data-execution_count="13">
-<div class="sourceCode" id="cb20"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>my_cycle <span class="op">=</span> <span class="dv">25</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>granules <span class="op">=</span> granules[granules.cycle.astype(<span class="bu">int</span>)<span class="op">==</span>my_cycle].copy()</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>granules.index.size</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display" data-execution_count="13">
-<pre><code>125</code></pre>
-</div>
-</div>
-</section>
-<section id="opendap-access-endpoints" class="level4">
-<h4 class="anchored" data-anchor-id="opendap-access-endpoints">OPeNDAP Access Endpoints</h4>
-<p>All endpoints for granules/files in OPeNDAP/Hyrax start with the server hostname and path to the parent collection, followed by <em>granules</em>. The collection is specified by the <em>concept-id</em> given right after <em>collections</em> in a valid url. The next cell formats a string giving the base url to which we will append granule filenames (stored in the <code>Granule UR</code> column of the <em>granules</em> table) to get the full url/endpoint for each granule.</p>
-<p><em>Fyi, the url printed by this cell will not be accessible from your web browser.</em></p>
-<div class="cell" data-execution_count="14">
-<div class="sourceCode" id="cb22"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>collection_opendap_endpoint <span class="op">=</span> <span class="ss">f"https://opendap.earthdata.nasa.gov/collections/</span><span class="sc">{</span>concept_id<span class="sc">}</span><span class="ss">/granules"</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(collection_opendap_endpoint)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
-<pre><code>https://opendap.earthdata.nasa.gov/collections/C1968980576-POCLOUD/granules</code></pre>
-</div>
-</div>
-<blockquote class="blockquote">
-<p>https://docs.python.org/3/library/string.html#format-string-syntax</p>
-</blockquote>
-<p>Appending the granule name (taken from the <code>Granule UR</code> column) to the end of the url above results in a valid endpoint. You can click the one printed by this cell to confirm. A new browser tab should open to the HTML access form served by Hyrax/OPeNDAP.</p>
-<p>Make a new column with the <code>nc4</code> download url for all granules.</p>
-<div class="cell" data-execution_count="15">
-<div class="sourceCode" id="cb24"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>granules[<span class="st">'nc4'</span>] <span class="op">=</span> granules[<span class="st">'Granule UR'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="ss">f"</span><span class="sc">{</span>collection_opendap_endpoint<span class="sc">}</span><span class="ss">/</span><span class="sc">{</span>x<span class="sc">}</span><span class="ss">.nc4"</span>)</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>granules.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
-<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
-Int64Index: 125 entries, 268 to 392
-Data columns (total 7 columns):
- #   Column              Non-Null Count  Dtype 
----  ------              --------------  ----- 
- 0   Granule UR          125 non-null    object
- 1   Start Time          125 non-null    object
- 2   End Time            125 non-null    object
- 3   Online Access URLs  125 non-null    object
- 4   cycle               125 non-null    object
- 5   pass                125 non-null    object
- 6   nc4                 125 non-null    object
-dtypes: object(7)
-memory usage: 7.8+ KB</code></pre>
-</div>
-</div>
-<blockquote class="blockquote">
-<p>https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.info.html</p>
-</blockquote>
-<section id="pick-target-datacoordinate-variables" class="level5">
-<h5 class="anchored" data-anchor-id="pick-target-datacoordinate-variables">Pick target data/coordinate variables</h5>
-<p>Display the url to access the DDS file for the first granule:</p>
-<div class="cell" data-execution_count="16">
-<div class="sourceCode" id="cb26"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>dds <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>collection_opendap_endpoint<span class="sc">}</span><span class="ss">/</span><span class="sc">{</span>granules[<span class="st">'Granule UR'</span>]<span class="sc">.</span>iloc[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">.dds"</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> requests.get(url<span class="op">=</span>dds) <span class="im">as</span> r:</span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(r.text)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
-<pre><code>Dataset {
-    Int16 data_01_rad_tb_238[data_01_time = 6950];
-    Int16 data_01_rad_wet_tropo_cor[data_01_time = 6950];
-    Int16 data_01_wind_speed_mod_v[data_01_time = 6950];
-    Int32 data_01_rad_distance_to_land[data_01_time = 6950];
-    Int16 data_01_rad_tmb_340_qual[data_01_time = 6950];
-    Int16 data_01_iono_cor_alt_filtered_mle3[data_01_time = 6950];
-    Int16 data_01_rad_tmb_187_qual[data_01_time = 6950];
-    Int16 data_01_rad_water_vapor[data_01_time = 6950];
-    Int16 data_01_mean_sea_surface_sol1_qual[data_01_time = 6950];
-    Int16 data_01_climato_use_flag[data_01_time = 6950];
-    Int16 data_01_wind_speed_mod_u[data_01_time = 6950];
-    Int16 data_01_distance_to_coast[data_01_time = 6950];
-    Int16 data_01_pass_direction_flag[data_01_time = 6950];
-    Int32 data_01_altitude_rate_mean_sea_surface[data_01_time = 6950];
-    Int16 data_01_mean_sea_surface_sol2_acc[data_01_time = 6950];
-    Int16 data_01_model_dry_tropo_cor_measurement_altitude[data_01_time = 6950];
-    Int16 data_01_rad_tmb_187[data_01_time = 6950];
-    Int16 data_01_pole_tide[data_01_time = 6950];
-    Int16 data_01_rad_tmb_238[data_01_time = 6950];
-    Int16 data_01_mean_dynamic_topography_acc[data_01_time = 6950];
-    Int16 data_01_rad_land_frac_238[data_01_time = 6950];
-    Int16 data_01_load_tide_sol2[data_01_time = 6950];
-    Int16 data_01_ocean_tide_non_eq[data_01_time = 6950];
-    Int16 data_01_ocean_tide_sol1_qual[data_01_time = 6950];
-    Int16 data_01_iono_cor_alt_filtered[data_01_time = 6950];
-    Int16 data_01_rad_water_vapor_qual[data_01_time = 6950];
-    Int16 data_01_depth_or_elevation[data_01_time = 6950];
-    Int16 data_01_rad_tb_340[data_01_time = 6950];
-    Int32 data_01_off_nadir_roll_angle_pf[data_01_time = 6950];
-    Int16 data_01_rad_tb_187_qual[data_01_time = 6950];
-    Int16 data_01_rad_tb_238_qual[data_01_time = 6950];
-    Int32 data_01_longitude[data_01_time = 6950];
-    Int16 data_01_manoeuvre_flag[data_01_time = 6950];
-    Int32 data_01_latitude[data_01_time = 6950];
-    Int16 data_01_model_dry_tropo_cor_zero_altitude[data_01_time = 6950];
-    Int16 data_01_orbit_type_flag[data_01_time = 6950];
-    Int32 data_01_mean_sea_surface_sol1[data_01_time = 6950];
-    Int16 data_01_solid_earth_tide[data_01_time = 6950];
-    Int16 data_01_c_net_instr_cor_sig0_ocean[data_01_time = 6950];
-    Int32 data_01_c_net_instr_cor_range_ocean[data_01_time = 6950];
-    Int16 data_01_c_rad_atm_cor_sig0_qual[data_01_time = 6950];
-    Int16 data_01_c_sig0_ocean_numval[data_01_time = 6950];
-    Int32 data_01_c_range_ocean[data_01_time = 6950];
-    Int16 data_01_c_swh_ocean_rms[data_01_time = 6950];
-    Int16 data_01_c_sig0_ocean[data_01_time = 6950];
-    Int16 data_01_c_net_instr_cor_swh_ocean[data_01_time = 6950];
-    Int16 data_01_c_sig0_ocean_rms[data_01_time = 6950];
-    Int16 data_01_c_sea_state_bias[data_01_time = 6950];
-    Int16 data_01_c_range_ocean_rms[data_01_time = 6950];
-    Int16 data_01_c_swh_ocean_numval[data_01_time = 6950];
-    Int16 data_01_c_swh_ocean[data_01_time = 6950];
-    Int16 data_01_c_iono_cor_gim[data_01_time = 6950];
-    Int16 data_01_c_swh_ocean_qual[data_01_time = 6950];
-    Int32 data_01_c_index_first_20hz_measurement[data_01_time = 6950];
-    Int32 data_01_c_model_instr_cor_range_ocean[data_01_time = 6950];
-    Int16 data_01_c_range_ocean_qual[data_01_time = 6950];
-    Int16 data_01_c_sig0_ocean_qual[data_01_time = 6950];
-    Int16 data_01_c_model_instr_cor_swh_ocean[data_01_time = 6950];
-    Int16 data_01_c_atm_cor_sig0[data_01_time = 6950];
-    Int16 data_01_c_model_instr_cor_sig0_ocean[data_01_time = 6950];
-    Int16 data_01_c_range_ocean_numval[data_01_time = 6950];
-    Int32 data_01_c_range_cor_doppler[data_01_time = 6950];
-    Int16 data_01_c_numtotal_20hz_measurement[data_01_time = 6950];
-    Int16 data_01_dac[data_01_time = 6950];
-    Int16 data_01_surface_classification_flag[data_01_time = 6950];
-    Float64 data_01_time_tai[data_01_time = 6950];
-    Int32 data_01_altitude[data_01_time = 6950];
-    Int32 data_01_off_nadir_pitch_angle_pf[data_01_time = 6950];
-    Int16 data_01_rain_attenuation[data_01_time = 6950];
-    Int16 data_01_ocean_tide_eq[data_01_time = 6950];
-    Int16 data_01_mean_dynamic_topography_qual[data_01_time = 6950];
-    Int32 data_01_delta_ellipsoid_tp_wgs84[data_01_time = 6950];
-    Int16 data_01_rad_tmb_340[data_01_time = 6950];
-    Int16 data_01_rad_rain_flag[data_01_time = 6950];
-    Int16 data_01_rad_tb_340_qual[data_01_time = 6950];
-    Int16 data_01_mean_sea_surface_sol2_qual[data_01_time = 6950];
-    Int16 data_01_rad_surface_type_flag[data_01_time = 6950];
-    Int16 data_01_rad_land_frac_340[data_01_time = 6950];
-    Int16 data_01_ku_sig0_ocean_mle3_qual[data_01_time = 6950];
-    Int16 data_01_ku_net_instr_cor_sig0_ocean[data_01_time = 6950];
-    Int32 data_01_ku_net_instr_cor_range_ocean[data_01_time = 6950];
-    Int16 data_01_ku_range_ocean_mle3_rms[data_01_time = 6950];
-    Int16 data_01_ku_rad_atm_cor_sig0_qual[data_01_time = 6950];
-    Int16 data_01_ku_sea_state_bias_mle3[data_01_time = 6950];
-    Int16 data_01_ku_off_nadir_angle_wf_ocean_rms[data_01_time = 6950];
-    Int32 data_01_ku_net_instr_cor_range_ocean_mle3[data_01_time = 6950];
-    Int16 data_01_ku_net_instr_cor_swh_ocean_mle3[data_01_time = 6950];
-    Int16 data_01_ku_sig0_ocean_numval[data_01_time = 6950];
-    Int16 data_01_ku_swh_ocean_mle3_qual[data_01_time = 6950];
-    Int32 data_01_ku_range_ocean[data_01_time = 6950];
-    Int32 data_01_ku_ssha_mle3[data_01_time = 6950];
-    Int16 data_01_ku_model_instr_cor_sig0_ocean_mle3[data_01_time = 6950];
-    Int16 data_01_ku_swh_ocean_rms[data_01_time = 6950];
-    Int16 data_01_ku_net_instr_cor_sig0_ocean_mle3[data_01_time = 6950];
-    Int16 data_01_ku_sig0_ocean[data_01_time = 6950];
-    Int16 data_01_ku_sig0_ocean_mle3_numval[data_01_time = 6950];
-    Int16 data_01_ku_net_instr_cor_swh_ocean[data_01_time = 6950];
-    Int16 data_01_ku_swh_ocean_mle3_numval[data_01_time = 6950];
-    Int16 data_01_ku_sig0_ocean_mle3[data_01_time = 6950];
-    Int16 data_01_ku_off_nadir_angle_wf_ocean_numval[data_01_time = 6950];
-    Int16 data_01_ku_model_instr_cor_off_nadir_angle_wf_ocean[data_01_time = 6950];
-    Int16 data_01_ku_sig0_ocean_rms[data_01_time = 6950];
-    Int16 data_01_ku_sea_state_bias[data_01_time = 6950];
-    Int32 data_01_ku_ocean_geo_corrections_mle3[data_01_time = 6950];
-    Int16 data_01_ku_range_ocean_rms[data_01_time = 6950];
-    Int16 data_01_ku_swh_ocean_numval[data_01_time = 6950];
-    Int16 data_01_ku_off_nadir_angle_wf_ocean[data_01_time = 6950];
-    Int16 data_01_ku_swh_ocean[data_01_time = 6950];
-    Int16 data_01_ku_iono_cor_gim[data_01_time = 6950];
-    Int32 data_01_ku_ocean_geo_corrections[data_01_time = 6950];
-    Int16 data_01_ku_range_ocean_mle3_qual[data_01_time = 6950];
-    Int16 data_01_ku_swh_ocean_qual[data_01_time = 6950];
-    Int32 data_01_ku_index_first_20hz_measurement[data_01_time = 6950];
-    Int32 data_01_ku_model_instr_cor_range_ocean[data_01_time = 6950];
-    Int16 data_01_ku_range_ocean_qual[data_01_time = 6950];
-    Int32 data_01_ku_model_instr_cor_range_ocean_mle3[data_01_time = 6950];
-    Int16 data_01_ku_sig0_ocean_qual[data_01_time = 6950];
-    Int32 data_01_ku_range_ocean_mle3[data_01_time = 6950];
-    Int16 data_01_ku_range_ocean_mle3_numval[data_01_time = 6950];
-    Int16 data_01_ku_net_instr_cor_off_nadir_angle_wf_ocean[data_01_time = 6950];
-    Int16 data_01_ku_off_nadir_angle_wf_ocean_qual[data_01_time = 6950];
-    Int32 data_01_ku_ssha[data_01_time = 6950];
-    Int16 data_01_ku_model_instr_cor_swh_ocean[data_01_time = 6950];
-    Int16 data_01_ku_model_instr_cor_swh_ocean_mle3[data_01_time = 6950];
-    Int16 data_01_ku_swh_ocean_mle3_rms[data_01_time = 6950];
-    Int16 data_01_ku_atm_cor_sig0[data_01_time = 6950];
-    Int16 data_01_ku_model_instr_cor_sig0_ocean[data_01_time = 6950];
-    Int16 data_01_ku_swh_ocean_mle3[data_01_time = 6950];
-    Int16 data_01_ku_range_ocean_numval[data_01_time = 6950];
-    Int32 data_01_ku_range_cor_doppler[data_01_time = 6950];
-    Int16 data_01_ku_sig0_ocean_mle3_rms[data_01_time = 6950];
-    Int16 data_01_ku_numtotal_20hz_measurement[data_01_time = 6950];
-    Int16 data_01_iono_cor_alt_mle3[data_01_time = 6950];
-    Int16 data_01_load_tide_sol1[data_01_time = 6950];
-    Int16 data_01_rad_wet_tropo_cor_qual[data_01_time = 6950];
-    Int16 data_01_rad_land_frac_187[data_01_time = 6950];
-    Int16 data_01_rad_tb_187[data_01_time = 6950];
-    Int16 data_01_inv_bar_cor[data_01_time = 6950];
-    Int32 data_01_geoid[data_01_time = 6950];
-    Int16 data_01_internal_tide[data_01_time = 6950];
-    Int16 data_01_mean_dynamic_topography[data_01_time = 6950];
-    Int32 data_01_altitude_rate[data_01_time = 6950];
-    Int16 data_01_rad_sea_ice_flag[data_01_time = 6950];
-    Int16 data_01_rad_wind_speed[data_01_time = 6950];
-    Int16 data_01_total_electron_content[data_01_time = 6950];
-    Int16 data_01_ocean_tide_sol2[data_01_time = 6950];
-    Int16 data_01_angle_of_approach_to_coast[data_01_time = 6950];
-    Int16 data_01_meteo_map_availability_flag[data_01_time = 6950];
-    Int32 data_01_l2_record_counter[data_01_time = 6950];
-    Int16 data_01_wind_speed_alt[data_01_time = 6950];
-    Int16 data_01_rad_state_oper_flag[data_01_time = 6950];
-    Int16 data_01_wind_speed_alt_mle3[data_01_time = 6950];
-    Int16 data_01_rain_flag[data_01_time = 6950];
-    Int32 data_01_mean_sea_surface_sol2[data_01_time = 6950];
-    Int16 data_01_rad_wind_speed_qual[data_01_time = 6950];
-    Int16 data_01_rad_cloud_liquid_water_qual[data_01_time = 6950];
-    Int16 data_01_iono_cor_alt[data_01_time = 6950];
-    Int16 data_01_rad_tmb_238_qual[data_01_time = 6950];
-    Int16 data_01_ocean_tide_sol1[data_01_time = 6950];
-    Int16 data_01_ocean_tide_sol2_qual[data_01_time = 6950];
-    Int16 data_01_rad_cloud_liquid_water[data_01_time = 6950];
-    Int16 data_01_model_wet_tropo_cor_zero_altitude[data_01_time = 6950];
-    Int16 data_01_mean_sea_surface_sol1_acc[data_01_time = 6950];
-    Int32 data_01_off_nadir_yaw_angle_pf[data_01_time = 6950];
-    Int16 data_01_model_wet_tropo_cor_measurement_altitude[data_01_time = 6950];
-    Float64 data_01_time[data_01_time = 6950];
-} S6A_P4_2__LR_RED__NR_025_001_20210713T162644_20210713T182234_F02.nc;
-</code></pre>
-</div>
-</div>
-<blockquote class="blockquote">
-<p>https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.iloc.html</p>
-</blockquote>
-<p>Assemble the list of target variables that you will subset from each granule/file using OPeNDAP.</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>variables <span class="op">=</span> [<span class="st">'data_01_time'</span>,</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">'data_01_longitude'</span>,</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">'data_01_latitude'</span>,</span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>             <span class="st">'data_01_ku_ssha'</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<blockquote class="blockquote">
-<p>https://docs.python.org/3/library/stdtypes.html#list</p>
-</blockquote>
-<p>Join the list of variables with commas and append the resulting string to the end of each opendap <code>nc4</code> endpoint created during the steps above. The variables given after the <code>?</code> will be subset from the source file on the server-side into a new netCDF4 file that OPeNDAP returns in response content which is downloaded over https.</p>
-<p>Here’s an example for the first granule in the selected cycle. Clicking this link should download a netCDF4 containing the target variables (4 of them, in my case). *You may be prompted to authenticate with your Earthdata Login account info.</p>
-<div class="cell" data-execution_count="18">
-<div class="sourceCode" id="cb29"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>granules[<span class="st">'subset'</span>] <span class="op">=</span> granules[<span class="st">'nc4'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> url: <span class="ss">f"</span><span class="sc">{</span>url<span class="sc">}</span><span class="ss">?</span><span class="sc">{</span><span class="st">','</span><span class="sc">.</span>join(variables)<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(granules[<span class="st">'subset'</span>].iloc[<span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> <span class="st">","</span>.join(variables)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>urls <span class="op">=</span> []</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> f <span class="kw">in</span> files:</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    urls.append(<span class="ss">f"https://opendap.earthdata.nasa.gov/collections/</span><span class="sc">{</span>concept_id<span class="sc">}</span><span class="ss">/granules/</span><span class="sc">{</span>f<span class="sc">}</span><span class="ss">4?</span><span class="sc">{</span>v<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(urls[<span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stdout">
 <pre><code>https://opendap.earthdata.nasa.gov/collections/C1968980576-POCLOUD/granules/S6A_P4_2__LR_RED__NR_025_001_20210713T162644_20210713T182234_F02.nc4?data_01_time,data_01_longitude,data_01_latitude,data_01_ku_ssha</code></pre>
 </div>
 </div>
-<blockquote class="blockquote">
-<p>https://opendap.github.io/documentation/UserGuideComprehensive.html#Constraint_Expressions (Hyrax/OPeNDAP docs)</p>
-</blockquote>
 </section>
 </section>
-<section id="download-subsets" class="level4">
-<h4 class="anchored" data-anchor-id="download-subsets">Download subsets</h4>
-<p>This function downloads one granule from the remote <code>url</code> to a local <code>target</code> path, and will reliably manage simultaneous streaming downloads divided between multiple threads.</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> download(url: <span class="bu">str</span>, target: <span class="bu">str</span>, force: <span class="bu">bool</span><span class="op">=</span><span class="va">False</span>):</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> os.path.isfile(target) <span class="kw">or</span> force <span class="kw">is</span> <span class="va">True</span>:</span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> requests.get(url) <span class="im">as</span> response, <span class="bu">open</span>(target, <span class="st">'wb'</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="kw">not</span> response.status_code <span class="op">//</span> <span class="dv">100</span> <span class="op">==</span> <span class="dv">2</span>: </span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>                <span class="cf">raise</span> <span class="pp">Exception</span>(response.text)</span>
-<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> chunk <span class="kw">in</span> response.iter_content(chunk_size<span class="op">=</span><span class="dv">1024</span>):</span>
-<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> chunk:</span>
-<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>                    <span class="bu">file</span>.write(chunk)</span>
-<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> target</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<blockquote class="blockquote">
-<p>https://docs.python.org/3/library/os.path.html#os.path.isfile<br>
-https://docs.python-requests.org/en/latest/api/#requests.Response.text<br>
-https://docs.python-requests.org/en/latest/api/#requests.Response.status_code<br>
-https://docs.python-requests.org/en/latest/api/#requests.Response.iter_content</p>
-</blockquote>
-<div class="sourceCode" id="cb32"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!ls data/subsets/*NR_025*.nc4 | wc -l</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="co">#!rm data/subsets/*NR_025*.nc4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><em>This next cell assembles a list of local paths for the subset downloads.</em></p>
-<p>Calling <code>tolist</code> on the resulting Series will convert it to a Python list (by way of the <em>numpy</em> method, <em>tolist</em>). Use <em>zip</em> merge the lists of <em>subset</em> urls and local paths, itemwise. The result will be a list of lists, each length two and containing a remote url and local path (corresponding to two positional arguments in the <em>download</em> function that will be defined in a subsequent cell).</p>
-<div class="cell" data-execution_count="21">
-<div class="sourceCode" id="cb33"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>download_targets <span class="op">=</span> granules[<span class="st">'Granule UR'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="ss">f"data/subsets/</span><span class="sc">{</span>x<span class="sc">}</span><span class="ss">.nc4"</span>)</span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>download_arguments <span class="op">=</span> <span class="bu">list</span>(<span class="bu">zip</span>(granules[<span class="st">'subset'</span>].tolist(), download_targets.tolist()))</span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(download_arguments), <span class="bu">len</span>(download_arguments)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display" data-execution_count="21">
-<pre><code>(list, 125)</code></pre>
-</div>
-</div>
-<blockquote class="blockquote">
-<p>https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.tolist.html</p>
-</blockquote>
-<p><em>This next cell creates a pool of workers to divide the list of downloads between multiple threads.</em></p>
-<p>Use the <code>ThreadPoolExecutor</code> from <code>concurrent.futures</code> module (in the Python 3 standard library) to divide the 120+ download jobs between multiple threads and run them concurrently. This should take no more than a minute or two to process all subsets on the server side and download to the local host.</p>
-<div class="cell" data-execution_count="22">
-<div class="sourceCode" id="cb35"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> ThreadPoolExecutor(max_workers<span class="op">=</span><span class="dv">12</span>) <span class="im">as</span> pool:</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>    workers <span class="op">=</span> pool.<span class="bu">map</span>(<span class="kw">lambda</span> x: download(<span class="op">*</span>x), download_arguments)</span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>    granules[<span class="st">'local'</span>] <span class="op">=</span> <span class="bu">list</span>(tqdm(workers, total<span class="op">=</span><span class="bu">len</span>(download_arguments)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="download-subsets" class="level3">
+<h3 class="anchored" data-anchor-id="download-subsets">Download Subsets</h3>
+<p>These functions download one granule from the remote <code>source</code> to a local <code>target</code>, and will reliably manage simultaneous streaming downloads divided between multiple threads.</p>
+<section id="with-python3" class="level5">
+<h5 class="anchored" data-anchor-id="with-python3">with python3:</h5>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> download(source: <span class="bu">str</span>, target: <span class="bu">str</span>):</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> requests.get(source, stream<span class="op">=</span><span class="va">True</span>) <span class="im">as</span> remote, <span class="bu">open</span>(target, <span class="st">'wb'</span>) <span class="im">as</span> local:</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> remote.status_code <span class="op">//</span> <span class="dv">100</span> <span class="op">==</span> <span class="dv">2</span>: </span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> chunk <span class="kw">in</span> remote.iter_content(chunk_size<span class="op">=</span><span class="dv">1024</span>):</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> chunk:</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>                    local.write(chunk)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="with-wget" class="level5">
+<h5 class="anchored" data-anchor-id="with-wget">with wget:</h5>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> download(source: <span class="bu">str</span>):</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    target <span class="op">=</span> os.path.basename(source.split(<span class="st">"?"</span>)[<span class="dv">0</span>])</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> os.path.isfile(target):</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>        <span class="op">!</span>wget <span class="op">--</span>quiet <span class="op">--</span><span class="cf">continue</span> <span class="op">--</span>output<span class="op">-</span>document $target $source</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> target</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode" id="cb18"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>n_workers <span class="op">=</span> <span class="dv">12</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> ThreadPoolExecutor(max_workers<span class="op">=</span>n_workers) <span class="im">as</span> pool:</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    workers <span class="op">=</span> pool.<span class="bu">map</span>(download, urls)</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    files <span class="op">=</span> <span class="bu">list</span>(tqdm.tqdm(workers, total<span class="op">=</span><span class="bu">len</span>(urls)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stderr">
-<pre><code>100%|██████████| 125/125 [00:00&lt;00:00, 4377.71it/s]</code></pre>
+<pre><code>100%|██████████| 125/125 [01:01&lt;00:00,  2.05it/s]</code></pre>
 </div>
 </div>
-<blockquote class="blockquote">
 <p>https://docs.python.org/3/library/concurrent.futures.html#threadpoolexecutor</p>
-</blockquote>
-<p>The source files range from 2.5MB to 3.0MB. These OPeNDAP subsets are ~100KB apiece. (anecdote: it took less than 10 minutes to download subsets for &gt;1700 granules/files when I ran this routine for all cycles going back to 2021-06-22.) Here we call the shell <em>du</em> and <em>ls</em> utilities to get the size of the directory:</p>
-<div class="cell" data-execution_count="23">
-<div class="sourceCode" id="cb37"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>bash</span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>du <span class="op">-</span>sh data<span class="op">/</span>subsets<span class="op">/</span></span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>ls data<span class="op">/</span>subsets<span class="op">/*</span>.nc4 <span class="op">|</span> wc <span class="op">-</span>l</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The source files range from 2.5MB to 3.0MB. These OPeNDAP subsets are ~100KB apiece. (anecdote: it took less than 10 minutes to download subsets for &gt;1700 granules/files when I ran this routine for all cycles going back to 2021-06-22.)</p>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode" id="cb20"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>du <span class="op">-</span>sh .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stdout">
-<pre><code>184M    data/subsets/
-1758</code></pre>
+<pre><code>17M .</code></pre>
 </div>
 </div>
-<blockquote class="blockquote">
 <p>https://www.gnu.org/software/coreutils/manual/html_node/du-invocation.html</p>
-</blockquote>
-<p>Confirm that a netcdf file exists on disk for all the file paths in the <em>local</em> column.</p>
-<div class="cell" data-execution_count="24">
-<div class="sourceCode" id="cb39"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>granules[<span class="st">'local'</span>].<span class="bu">apply</span>(os.path.isfile).<span class="bu">all</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display" data-execution_count="24">
-<pre><code>True</code></pre>
-</div>
-</div>
-<blockquote class="blockquote">
-<p>https://docs.python.org/3/library/functions.html#sorted<br>
-https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.all.html</p>
-</blockquote>
 </section>
-<section id="aggregate-to-cycle" class="level4">
-<h4 class="anchored" data-anchor-id="aggregate-to-cycle">Aggregate to cycle</h4>
-<p>Make a dictionary to rename variables so that the <code>data_01_</code> prefix is removed from each one.</p>
-<div class="cell" data-execution_count="25">
-<div class="sourceCode" id="cb41"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>new_variable_names <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="kw">lambda</span> x: x.split(<span class="st">"_"</span>)[<span class="op">-</span><span class="dv">1</span>], variables))</span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>map_variable_names <span class="op">=</span> <span class="bu">dict</span>(<span class="bu">zip</span>(variables, new_variable_names))</span>
-<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>map_variable_names</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display" data-execution_count="25">
-<pre><code>{'data_01_time': 'time',
- 'data_01_longitude': 'longitude',
- 'data_01_latitude': 'latitude',
- 'data_01_ku_ssha': 'ssha'}</code></pre>
-</div>
-</div>
-<p>References:<br>
-https://docs.python.org/3/library/functions.html#map<br>
-https://docs.python.org/3/library/functions.html#zip</p>
-<p>Sort the list of local paths to the downloaded subsets to ensure they concatenate in proper order. Call <code>open_mfdataset</code> on the list to open all the subsets in memory as one dataset in xarray.</p>
-<div class="cell" data-execution_count="26">
-<div class="sourceCode" id="cb43"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>local <span class="op">=</span> <span class="bu">sorted</span>(granules[<span class="st">'local'</span>].tolist())</span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>dataset <span class="op">=</span> xr.open_mfdataset(local).rename(map_variable_names)</span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(dataset)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="aggregate-cycle" class="level4">
+<h4 class="anchored" data-anchor-id="aggregate-cycle">Aggregate cycle</h4>
+<p>Sort the list of local subsets to ensure they concatenate in proper order. Call <code>open_mfdataset</code> on the list to open all the subsets in memory as one dataset in xarray.</p>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode" id="cb22"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>ds <span class="op">=</span> xr.open_mfdataset(<span class="bu">sorted</span>(files))</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ds)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stdout">
 <pre><code>&lt;xarray.Dataset&gt;
-Dimensions:    (time: 827001)
+Dimensions:            (data_01_time: 827001)
 Coordinates:
-  * time       (time) datetime64[ns] 2021-07-13T16:26:45 ... 2021-07-23T14:25:14
+  * data_01_time       (data_01_time) datetime64[ns] 2021-07-13T16:26:45 ... ...
 Data variables:
-    longitude  (time) float64 dask.array&lt;chunksize=(6950,), meta=np.ndarray&gt;
-    latitude   (time) float64 dask.array&lt;chunksize=(6950,), meta=np.ndarray&gt;
-    ssha       (time) float64 dask.array&lt;chunksize=(6950,), meta=np.ndarray&gt;
+    data_01_longitude  (data_01_time) float64 dask.array&lt;chunksize=(6950,), meta=np.ndarray&gt;
+    data_01_latitude   (data_01_time) float64 dask.array&lt;chunksize=(6950,), meta=np.ndarray&gt;
+    data_01_ku_ssha    (data_01_time) float64 dask.array&lt;chunksize=(6950,), meta=np.ndarray&gt;
 Attributes: (12/63)
     Convention:                             CF-1.7
     institution:                            EUMETSAT
@@ -1175,29 +666,73 @@ Attributes: (12/63)
     history_json:                           [{"$schema":"https:\/\/harmony.ea...</code></pre>
 </div>
 </div>
-<blockquote class="blockquote">
-<p>https://tqdm.github.io/docs/tqdm/#pandas<br>
-https://xarray.pydata.org/en/stable/generated/xarray.open_mfdataset.html<br>
-https://xarray.pydata.org/en/stable/generated/xarray.Dataset.rename.html</p>
-</blockquote>
+<p>https://xarray.pydata.org/en/stable/generated/xarray.open_mfdataset.html</p>
+<p>Make a dictionary to rename variables so that the <code>data_01_</code> prefix is removed from each one.</p>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode" id="cb24"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>new_variable_names <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="kw">lambda</span> x: x.split(<span class="st">"_"</span>)[<span class="op">-</span><span class="dv">1</span>], variables))</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>map_variable_names <span class="op">=</span> <span class="bu">dict</span>(<span class="bu">zip</span>(variables, new_variable_names))</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>map_variable_names</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display" data-execution_count="13">
+<pre><code>{'data_01_time': 'time',
+ 'data_01_longitude': 'longitude',
+ 'data_01_latitude': 'latitude',
+ 'data_01_ku_ssha': 'ssha'}</code></pre>
+</div>
+</div>
+<p>https://docs.python.org/3/library/functions.html#map<br>
+https://docs.python.org/3/library/functions.html#zip</p>
+<div class="cell" data-execution_count="14">
+<div class="sourceCode" id="cb26"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>ds <span class="op">=</span> ds.rename(map_variable_names)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">list</span>(ds.variables))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>['longitude', 'latitude', 'ssha', 'time']</code></pre>
+</div>
+</div>
 </section>
-<section id="render-along-track-altimetry-data-to-the-ecco-grid" class="level3">
-<h3 class="anchored" data-anchor-id="render-along-track-altimetry-data-to-the-ecco-grid">Render along-track altimetry data to the ECCO grid</h3>
+<section id="plot-ssha-variable" class="level4">
+<h4 class="anchored" data-anchor-id="plot-ssha-variable">Plot <em>ssha</em> variable</h4>
+<p>https://xarray.pydata.org/en/stable/generated/xarray.Dataset.rename.html</p>
+<div class="cell" data-execution_count="15">
+<div class="sourceCode" id="cb28"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>ds.plot.scatter( y<span class="op">=</span><span class="st">"latitude"</span>,</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>                 x<span class="op">=</span><span class="st">"longitude"</span>, </span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>                 hue<span class="op">=</span><span class="st">"ssha"</span>,</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>                 s<span class="op">=</span><span class="dv">1</span>,</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>                 vmin<span class="op">=-</span><span class="fl">0.4</span>,</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>                 vmax<span class="op">=</span><span class="fl">0.4</span>,</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>                 levels<span class="op">=</span><span class="dv">9</span>, </span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>                 cmap<span class="op">=</span><span class="st">"jet"</span>,</span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>                 aspect<span class="op">=</span><span class="fl">2.5</span>,</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>                 size<span class="op">=</span><span class="dv">9</span>, )</span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="ss">f"ssha from s6 cycle </span><span class="sc">{</span>cycle<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>plt.xlim(  <span class="fl">0.</span>, <span class="fl">360.</span>)</span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="op">-</span><span class="fl">67.</span>,  <span class="fl">67.</span>)</span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="06_S6_OPeNDAP_Access_Gridding_files/figure-html/cell-16-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="borrow-0.5-degree-grid-and-mask-from-ecco-v4r4" class="level3">
+<h3 class="anchored" data-anchor-id="borrow-0.5-degree-grid-and-mask-from-ecco-v4r4">Borrow 0.5-Degree Grid and Mask from ECCO V4r4</h3>
 <blockquote class="blockquote">
-<p><strong>Acknowledgement</strong> <em>This approach using <code>pyresample</code> was shared to me by Ian Fenty, ECCO Lead.</em></p>
+<p><em><strong>Acknowledgement</strong>: This approach using <a href="https://pyresample.readthedocs.io/en/latest/api/pyresample"><em>pyresample</em></a> was shared to me by Ian Fenty, ECCO Lead.</em></p>
 </blockquote>
+<p>https://search.earthdata.nasa.gov/search/granules?p=C2013583732-POCLOUD</p>
 <p>ECCO V4r4 products are distributed in two spatial formats. One set of collections provides the ocean state estimates on the native model grid (LLC0090) and the other provides them after interpolating to a regular grid defined in geographic coordinates with horizontal cell size of 0.5-degrees.</p>
-<section id="download-the-ecco-v4r4-0.5-deg-grid-geometry-and-mask" class="level4">
-<h4 class="anchored" data-anchor-id="download-the-ecco-v4r4-0.5-deg-grid-geometry-and-mask">Download the ECCO V4r4 0.5-Deg Grid Geometry and Mask</h4>
-<p>It’s distributed as its own dataset/collection containing just one file. We can access it over OPeNDAP like demonstrated above or simply download it from the HTTPS download endpoint – the file size is inconsequential. The next cell downloads the file into the <em>data</em> folder from the granule’s https endpoint.</p>
-<div class="cell" data-execution_count="27">
-<div class="sourceCode" id="cb45"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>ecco_url <span class="op">=</span> <span class="st">"https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-protected/ECCO_L4_GEOMETRY_05DEG_V4R4/GRID_GEOMETRY_ECCO_V4r4_latlon_0p50deg.nc"</span></span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>ecco_file <span class="op">=</span> download(ecco_url, target<span class="op">=</span><span class="ss">f"data/</span><span class="sc">{</span>os<span class="sc">.</span>path<span class="sc">.</span>basename(ecco_url)<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>ecco_grid <span class="op">=</span> xr.open_dataset(ecco_file)</span>
-<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ecco_grid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>It’s distributed as its own dataset/collection containing just one file. We can simply download it from the HTTPS download endpoint – the file size is inconsequential. The next cell downloads the file into the <em>data</em> folder from the granule’s https endpoint.</p>
+<div class="cell" data-execution_count="16">
+<div class="sourceCode" id="cb29"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>ecco_url <span class="op">=</span> <span class="st">"https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-protected/ECCO_L4_GEOMETRY_05DEG_V4R4/GRID_GEOMETRY_ECCO_V4r4_latlon_0p50deg.nc"</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>ecco_file <span class="op">=</span> download(ecco_url)</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>ecco_grid <span class="op">=</span> xr.open_dataset(ecco_file)</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ecco_grid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stdout">
 <pre><code>&lt;xarray.Dataset&gt;
 Dimensions:         (Z: 50, latitude: 360, longitude: 720, nv: 2)
@@ -1231,213 +766,162 @@ Attributes: (12/57)
     uuid:                            b4795c62-86e5-11eb-9c5f-f8f21e2ee3e0</code></pre>
 </div>
 </div>
-<blockquote class="blockquote">
-<p>https://docs.python.org/3/library/os.path.html#os.path.basename<br>
-https://xarray.pydata.org/en/stable/generated/xarray.open_dataset.html</p>
-</blockquote>
-<p>The <code>maskC</code> variable contains a boolean mask representing the wet/dry state of the area contained in each cell of the 3d grid defined by <code>Z</code> and <code>latitude</code> and <code>longitude</code>.</p>
-<p>Here are the variable’s attributes:</p>
+<p>https://xarray.pydata.org/en/stable/generated/xarray.open_dataset.html</p>
+<p>Select index <code>0</code> on the <code>Z</code> axis/dimension to get the depth layer at ocean surface.</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>ecco_grid <span class="op">=</span> ecco_grid.isel(Z<span class="op">=</span><span class="dv">0</span>).copy()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>https://xarray.pydata.org/en/stable/generated/xarray.DataArray.isel.html</p>
+<p>The <code>maskC</code> variable contains a boolean mask representing the wet/dry state of the area contained in each cell of the 3d grid defined by <code>Z</code> and <code>latitude</code> and <code>longitude</code>. Here are the variable’s attributes:</p>
+<div class="cell" data-execution_count="18">
+<div class="sourceCode" id="cb32"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ecco_grid.maskC)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>&lt;xarray.DataArray 'maskC' (latitude: 360, longitude: 720)&gt;
+[259200 values with dtype=bool]
+Coordinates:
+    Z          float32 -5.0
+  * latitude   (latitude) float32 -89.75 -89.25 -88.75 ... 88.75 89.25 89.75
+  * longitude  (longitude) float32 -179.8 -179.2 -178.8 ... 178.8 179.2 179.8
+Attributes:
+    coverage_content_type:  modelResult
+    long_name:              wet/dry boolean mask for grid cell
+    comment:                True for grid cells with nonzero open vertical fr...</code></pre>
+</div>
+</div>
+<p>Plot the land/water mask <code>maskC</code>:</p>
+<div class="cell" data-execution_count="19">
+<div class="sourceCode" id="cb34"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>ecco_grid.maskC.plot()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display" data-execution_count="19">
+<pre><code>&lt;matplotlib.collections.QuadMesh at 0x7fed730b00a0&gt;</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="06_S6_OPeNDAP_Access_Gridding_files/figure-html/cell-20-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<p>https://xarray.pydata.org/en/stable/generated/xarray.DataArray.plot.html</p>
+<p>Define target grid based on the longitudes and latitudes from the ECCO grid geometry dataset. This time define the grid using two 2-dimensional arrays that give positions of all SSHA values in geographic/longitude-latitude coordinates.</p>
+<div class="cell" data-execution_count="20">
+<div class="sourceCode" id="cb36"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>ecco_lons <span class="op">=</span> ecco_grid.maskC.longitude.values</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>ecco_lats <span class="op">=</span> ecco_grid.maskC.latitude.values</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>ecco_lons_2d, ecco_lats_2d <span class="op">=</span> np.meshgrid(ecco_lons, ecco_lats)</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ecco_lons_2d.shape, ecco_lats_2d.shape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>(360, 720) (360, 720)</code></pre>
+</div>
+</div>
+<p>Create the target swath definition from the 2d arrays of lons and lats from ECCO V4r4 0.5-degree grid.</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>tgt <span class="op">=</span> pr.SwathDefinition(ecco_lons_2d, ecco_lats_2d)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><a href="https://pyresample.readthedocs.io/en/latest/api/pyresample.html#pyresample.geometry.SwathDefinition">pyresample.geometry.SwathDefinition</a></p>
+</section>
+<section id="grid-ssha-or-other-variable" class="level3">
+<h3 class="anchored" data-anchor-id="grid-ssha-or-other-variable">Grid ssha or other variable</h3>
+<p>Get one timestamp to represent the midpoint of the 10-day cycle.</p>
+<div class="cell" data-execution_count="22">
+<div class="sourceCode" id="cb39"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>time <span class="op">=</span> np.datetime64(ds[<span class="st">'time'</span>].mean().data)</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(time)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>2021-07-18T15:11:35.073955170</code></pre>
+</div>
+</div>
+<p>Access the target variable, <em>ssha</em> in this case. Make a nan mask from the ssha variable.</p>
+<div class="cell" data-execution_count="23">
+<div class="sourceCode" id="cb41"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>nans <span class="op">=</span> <span class="op">~</span>np.isnan(ds.ssha.values)</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>ssha <span class="op">=</span> ds.ssha.values[nans]</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>ssha.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display" data-execution_count="23">
+<pre><code>(518164,)</code></pre>
+</div>
+</div>
+<p>Create the source swath definition from the 1d arrays of lons and lats from the S6 level-2 along-track altimetry time series.</p>
+<div class="cell" data-execution_count="24">
+<div class="sourceCode" id="cb43"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>lons <span class="op">=</span> ds.longitude.values[nans]</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>lats <span class="op">=</span> ds.latitude.values[nans]</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(lons.shape, lats.shape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>(518164,) (518164,)</code></pre>
+</div>
+</div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>lons <span class="op">=</span> (lons <span class="op">+</span> <span class="dv">180</span>) <span class="op">%</span> <span class="dv">360</span> <span class="op">-</span> <span class="dv">180</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>src <span class="op">=</span> pr.SwathDefinition(lons, lats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><a href="https://pyresample.readthedocs.io/en/latest/api/pyresample.html#pyresample.geometry.SwathDefinition">pyresample.geometry.SwathDefinition</a></p>
+<p>Resample <em>ssha</em> data using kd-tree gaussian weighting neighbour approach.</p>
+<div class="cell" data-execution_count="26">
+<div class="sourceCode" id="cb46"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>result, stddev, counts <span class="op">=</span> resample_gauss(</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>    src,</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>    ssha,</span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>    tgt,</span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>    radius_of_influence<span class="op">=</span><span class="dv">175000</span>,  </span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>    sigmas<span class="op">=</span><span class="dv">25000</span>,</span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>    neighbours<span class="op">=</span><span class="dv">100</span>,</span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a>    fill_value<span class="op">=</span>np.nan,</span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a>    with_uncert<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-12"><a href="#cb46-12" aria-hidden="true" tabindex="-1"></a>result.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stderr">
+<pre><code>/srv/conda/envs/notebook/lib/python3.9/site-packages/pyresample/kd_tree.py:384: UserWarning: Possible more than 100 neighbours within 175000 m for some data points
+  warnings.warn(('Possible more than %s neighbours '</code></pre>
+</div>
+<div class="cell-output-display" data-execution_count="26">
+<pre><code>(360, 720)</code></pre>
+</div>
+</div>
+<p><a href="https://pyresample.readthedocs.io/en/latest/api/pyresample.html#pyresample.kd_tree.resample_gauss">pyresample.kd_tree.resample_gauss</a></p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> to_xrda(data):</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> xr.DataArray(data,</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>                        dims<span class="op">=</span>[<span class="st">'latitude'</span>, <span class="st">'longitude'</span>], </span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>                        coords<span class="op">=</span>{<span class="st">'time'</span>: time, </span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>                                <span class="st">'latitude'</span>: ecco_lats, </span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>                                <span class="st">'longitude'</span>: ecco_lons})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Apply the land/water mask in the numpy array created from the ECCO layer in the steps above. Then, convert the masked numpy array to an xarray data array object named <em>gridded</em>. Print its header.</p>
 <div class="cell" data-execution_count="28">
-<div class="sourceCode" id="cb47"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>ecco_grid.maskC.attrs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>grid <span class="op">=</span> to_xrda(result)</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>grid.sel(latitude<span class="op">=</span><span class="bu">slice</span>(<span class="op">-</span><span class="fl">67.0</span>, <span class="fl">67.0</span>)).plot(vmin<span class="op">=-</span><span class="fl">0.4</span>, vmax<span class="op">=</span><span class="fl">0.4</span>, cmap<span class="op">=</span><span class="st">"jet"</span>, figsize<span class="op">=</span>(<span class="dv">18</span>, <span class="dv">7</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display" data-execution_count="28">
-<pre><code>{'coverage_content_type': 'modelResult',
- 'long_name': 'wet/dry boolean mask for grid cell',
- 'comment': 'True for grid cells with nonzero open vertical fraction (hFacC &gt; 0), otherwise False.'}</code></pre>
+<pre><code>&lt;matplotlib.collections.QuadMesh at 0x7fed72fc43a0&gt;</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="06_S6_OPeNDAP_Access_Gridding_files/figure-html/cell-29-output-2.png" class="img-fluid"></p>
 </div>
 </div>
-<p>So, the mask derives from another variable <code>hFacC</code> that essentially describes 3d space/volume contained within each model grid cell by the fractional area representing the horizontal coverage (in the <code>longitude,latitude</code> dimensions) within each vertical/depth layer.</p>
 <div class="cell" data-execution_count="29">
-<div class="sourceCode" id="cb49"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>ecco_grid.hFacC.attrs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>stddev <span class="op">=</span> to_xrda(stddev)</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>stddev.sel(latitude<span class="op">=</span><span class="bu">slice</span>(<span class="op">-</span><span class="fl">67.0</span>, <span class="fl">67.0</span>)).plot(robust<span class="op">=</span><span class="va">True</span>, cmap<span class="op">=</span><span class="st">"jet"</span>, figsize<span class="op">=</span>(<span class="dv">18</span>, <span class="dv">7</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display" data-execution_count="29">
-<pre><code>{'coverage_content_type': 'modelResult',
- 'long_name': 'vertical open fraction of grid cell',
- 'units': '1',
- 'comment': 'Grid cells may be fractionally closed in the vertical. The open vertical fraction is hFacC. The model allows for partially-filled cells to represent topographic variations more smoothly (hFacC &lt; 1). Completely closed (dry) tracer grid cells have hFacC = 0. Note: the lat-lon gridded hFacC is spatially-averaged from the hFacC field on the lat-lon-cap (llc90) model native grid. The total ocean volume of the ECCO V4r4 lat-lon gridded fields is within 0.05% of the total ocean volume of the native grid fields.'}</code></pre>
+<pre><code>&lt;matplotlib.collections.QuadMesh at 0x7fed72892520&gt;</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="06_S6_OPeNDAP_Access_Gridding_files/figure-html/cell-30-output-2.png" class="img-fluid"></p>
 </div>
 </div>
-<p>Select the 2d array from <code>maskC</code> that corresponds to the depth layer at ocean surface (i.e.&nbsp;at index <code>0</code> on the <code>Z</code> axis/dimension) and then produce a boolean array where True represents cells with a value greater than <code>0</code>. The resulting array/grid is our land/water mask for the 2d grids generated during the next few steps.</p>
-<p>Plot the land/water mask:</p>
 <div class="cell" data-execution_count="30">
-<div class="sourceCode" id="cb51"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>ecco_mask <span class="op">=</span> ecco_grid.maskC.isel(Z<span class="op">=</span><span class="dv">0</span>)<span class="op">&gt;</span><span class="dv">0</span></span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>ecco_mask.plot(figsize<span class="op">=</span>(<span class="dv">13</span>, <span class="dv">6</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>counts <span class="op">=</span> to_xrda(counts)</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>counts.sel(latitude<span class="op">=</span><span class="bu">slice</span>(<span class="op">-</span><span class="fl">67.0</span>, <span class="fl">67.0</span>)).plot(robust<span class="op">=</span><span class="va">True</span>, cmap<span class="op">=</span><span class="st">"jet"</span>, figsize<span class="op">=</span>(<span class="dv">18</span>, <span class="dv">7</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display" data-execution_count="30">
-<pre><code>&lt;matplotlib.collections.QuadMesh at 0x7f3157ef2970&gt;</code></pre>
+<pre><code>&lt;matplotlib.collections.QuadMesh at 0x7fed732a3af0&gt;</code></pre>
 </div>
 <div class="cell-output-display">
 <p><img src="06_S6_OPeNDAP_Access_Gridding_files/figure-html/cell-31-output-2.png" class="img-fluid"></p>
 </div>
 </div>
-<blockquote class="blockquote">
-<p>https://xarray.pydata.org/en/stable/generated/xarray.DataArray.isel.html<br>
-https://xarray.pydata.org/en/stable/generated/xarray.DataArray.plot.html</p>
-</blockquote>
 </section>
+<section id="exercise" class="level3">
+<h3 class="anchored" data-anchor-id="exercise">Exercise</h3>
+<p>Calculate area-weighted mean sea level.</p>
 </section>
-<section id="grid-ssha-or-a-similar-variable" class="level3">
-<h3 class="anchored" data-anchor-id="grid-ssha-or-a-similar-variable">Grid ssha or a similar variable</h3>
-<p><em>Jinbo’s recommendation: wrap this logic for parameterization by workshop attendees.</em></p>
-<p>Get a single timestamp to represent the midpoint of the cycle.</p>
-<div class="cell" data-execution_count="31">
-<div class="sourceCode" id="cb53"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>time <span class="op">=</span> np.datetime64(dataset[<span class="st">'time'</span>].mean().data)</span>
-<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(time)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
-<pre><code>2021-07-18T15:11:35.073955170</code></pre>
-</div>
-</div>
-<p>Access the target variable, <em>ssha</em> in this case, and make a nan mask.</p>
-<div class="cell" data-execution_count="32">
-<div class="sourceCode" id="cb55"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>ssha <span class="op">=</span> dataset.ssha</span>
-<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>nans <span class="op">=</span> <span class="op">~</span>np.isnan(ssha.values)</span>
-<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ssha)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
-<pre><code>&lt;xarray.DataArray 'ssha' (time: 827001)&gt;
-dask.array&lt;concatenate, shape=(827001,), dtype=float64, chunksize=(6981,), chunktype=numpy.ndarray&gt;
-Coordinates:
-  * time     (time) datetime64[ns] 2021-07-13T16:26:45 ... 2021-07-23T14:25:14
-Attributes:
-    long_name:      sea surface height anomaly
-    standard_name:  sea_surface_height_above_sea_level
-    units:          m
-    comment:        Sea surface height anomaly = altitude of satellite (altit...
-    coordinates:    /data_01/longitude /data_01/latitude
-    origname:       ssha
-    fullnamepath:   /data_01/ku/ssha</code></pre>
-</div>
-</div>
-<p>Define a simple function <em>get_grid_defn</em> to validate input arrays of longitudes/latitudes and return a <em>pyresample.geometry.SwathDefinition</em> object. (We use it twice to define source/target grids in the next steps.)</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_grid_defn(lons: np.ndarray, lats: np.ndarray):</span>
-<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> lats.<span class="bu">min</span>() <span class="op">&lt;</span>  <span class="op">-</span><span class="fl">90.</span> <span class="kw">or</span> lats.<span class="bu">max</span>() <span class="op">&gt;</span> <span class="fl">90.</span>:  <span class="co">#1</span></span>
-<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">'Found invalid latitudes, aborting - see if condition 1</span><span class="ch">\n</span><span class="st">'</span>)</span>
-<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> lons.<span class="bu">min</span>() <span class="op">&lt;</span> <span class="op">-</span><span class="fl">180.</span> <span class="kw">or</span> lons.<span class="bu">max</span>() <span class="op">&gt;=</span> <span class="fl">180.</span>:  <span class="co">#2</span></span>
-<span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">'Found invalid longitudes, wrapping - see if condition 2</span><span class="ch">\n</span><span class="st">'</span>)</span>
-<span id="cb57-8"><a href="#cb57-8" aria-hidden="true" tabindex="-1"></a>        lons <span class="op">=</span> (lons <span class="op">+</span> <span class="dv">180</span>) <span class="op">%</span> <span class="dv">360</span> <span class="op">-</span> <span class="dv">180</span></span>
-<span id="cb57-9"><a href="#cb57-9" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb57-10"><a href="#cb57-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> pr.SwathDefinition(lons, lats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Define source grid/geometry for the input along-track data. (They are stored as 1-dimensional arrays.)</p>
-<div class="cell" data-execution_count="34">
-<div class="sourceCode" id="cb58"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>lons <span class="op">=</span> dataset.longitude.values</span>
-<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>lats <span class="op">=</span> dataset.latitude.values</span>
-<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>alt_grid_defn <span class="op">=</span> get_grid_defn(lons[nans], lats[nans])</span>
-<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(alt_grid_defn)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
-<pre><code>Found invalid longitudes, wrapping - see if condition 2
-</code></pre>
-</div>
-<div class="cell-output-display" data-execution_count="34">
-<pre><code>pyresample.geometry.SwathDefinition</code></pre>
-</div>
-</div>
-<p>Define target grid based on the longitudes and latitudes from the ECCO grid geometry dataset. This time define the grid using two 2-dimensional arrays that give positions of all SSHA values in geographic/longitude-latitude coordinates.</p>
-<div class="cell" data-execution_count="35">
-<div class="sourceCode" id="cb61"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>ecco_lons <span class="op">=</span> ecco_grid.longitude.values</span>
-<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>ecco_lats <span class="op">=</span> ecco_grid.latitude.values</span>
-<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a>ecco_lons_2d, ecco_lats_2d <span class="op">=</span> np.meshgrid(ecco_lons, ecco_lats)</span>
-<span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-6"><a href="#cb61-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ecco_lons_2d.shape, ecco_lats_2d.shape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
-<pre><code>(360, 720) (360, 720)</code></pre>
-</div>
-</div>
-<p>Make the <em>pyresample</em> object for the target grid and proceed.</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>ecco_grid_defn <span class="op">=</span> get_grid_defn(ecco_lons_2d, ecco_lats_2d)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Show the help for <code>pyresample.kdtree.resample_gauss</code> to aid during the hackathon.</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co">#help(resample_gauss)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Get the target grid definition defined by the 2d arrays of lons and lats created in the cell above. Apply gaussian resampling with some optional arguments (borrowed from Ian’s implementation).</p>
-<div class="cell" data-execution_count="38">
-<div class="sourceCode" id="cb65"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>result, stddev, counts <span class="op">=</span> resample_gauss(</span>
-<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>    alt_grid_defn,      <span class="co"># source grid</span></span>
-<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>    ssha.values[nans],  <span class="co"># source data</span></span>
-<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a>    ecco_grid_defn,     <span class="co"># target grid</span></span>
-<span id="cb65-5"><a href="#cb65-5" aria-hidden="true" tabindex="-1"></a>    radius_of_influence <span class="op">=</span> <span class="fl">1.75e5</span>,  </span>
-<span id="cb65-6"><a href="#cb65-6" aria-hidden="true" tabindex="-1"></a>    sigmas              <span class="op">=</span> <span class="dv">25000</span>,</span>
-<span id="cb65-7"><a href="#cb65-7" aria-hidden="true" tabindex="-1"></a>    fill_value          <span class="op">=</span> np.nan, </span>
-<span id="cb65-8"><a href="#cb65-8" aria-hidden="true" tabindex="-1"></a>    neighbours          <span class="op">=</span> <span class="dv">100</span>, </span>
-<span id="cb65-9"><a href="#cb65-9" aria-hidden="true" tabindex="-1"></a>    with_uncert         <span class="op">=</span> <span class="va">True</span>,</span>
-<span id="cb65-10"><a href="#cb65-10" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb65-11"><a href="#cb65-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-12"><a href="#cb65-12" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(result), <span class="bu">type</span>(stddev), <span class="bu">type</span>(counts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display" data-execution_count="38">
-<pre><code>(numpy.ndarray, numpy.ma.core.MaskedArray, numpy.ndarray)</code></pre>
-</div>
-</div>
-<p>Apply the land/water mask in the numpy array created from the ECCO layer in the steps above. Then, convert the masked numpy array to an xarray data array object named <em>gridded</em>. Print its header.</p>
-<div class="cell" data-execution_count="39">
-<div class="sourceCode" id="cb67"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>masked <span class="op">=</span> np.where(ecco_mask, result, np.nan)</span>
-<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a>gridded <span class="op">=</span> xr.DataArray(masked, </span>
-<span id="cb67-4"><a href="#cb67-4" aria-hidden="true" tabindex="-1"></a>                       name<span class="op">=</span><span class="st">"ssha"</span>,</span>
-<span id="cb67-5"><a href="#cb67-5" aria-hidden="true" tabindex="-1"></a>                       dims<span class="op">=</span>[<span class="st">'latitude'</span>, <span class="st">'longitude'</span>], </span>
-<span id="cb67-6"><a href="#cb67-6" aria-hidden="true" tabindex="-1"></a>                       coords<span class="op">=</span>{<span class="st">'time'</span>: time, <span class="st">'longitude'</span>: ecco_lons, <span class="st">'latitude'</span>: ecco_lats})</span>
-<span id="cb67-7"><a href="#cb67-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-8"><a href="#cb67-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(gridded)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
-<pre><code>&lt;xarray.DataArray 'ssha' (latitude: 360, longitude: 720)&gt;
-array([[nan, nan, nan, ..., nan, nan, nan],
-       [nan, nan, nan, ..., nan, nan, nan],
-       [nan, nan, nan, ..., nan, nan, nan],
-       ...,
-       [nan, nan, nan, ..., nan, nan, nan],
-       [nan, nan, nan, ..., nan, nan, nan],
-       [nan, nan, nan, ..., nan, nan, nan]])
-Coordinates:
-    time       datetime64[ns] 2021-07-18T15:11:35.073955170
-  * longitude  (longitude) float32 -179.8 -179.2 -178.8 ... 178.8 179.2 179.8
-  * latitude   (latitude) float32 -89.75 -89.25 -88.75 ... 88.75 89.25 89.75</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="40">
-<div class="sourceCode" id="cb69"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>gridded.sel(latitude<span class="op">=</span><span class="bu">slice</span>(<span class="op">-</span><span class="fl">70.0</span>, <span class="fl">70.0</span>)).plot.pcolormesh(vmin<span class="op">=-</span><span class="fl">0.4</span>, vmax<span class="op">=</span><span class="fl">0.4</span>, cmap<span class="op">=</span><span class="st">"jet"</span>, figsize<span class="op">=</span>(<span class="dv">18</span>,<span class="dv">7</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display" data-execution_count="40">
-<pre><code>&lt;matplotlib.collections.QuadMesh at 0x7f3157b58040&gt;</code></pre>
-</div>
-<div class="cell-output-display">
-<p><img src="06_S6_OPeNDAP_Access_Gridding_files/figure-html/cell-41-output-2.png" class="img-fluid"></p>
-</div>
-</div>
-<div class="cell" data-execution_count="41">
-<div class="sourceCode" id="cb71"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>stddev <span class="op">=</span> xr.DataArray(np.where(ecco_mask, stddev, np.nan), </span>
-<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>                      name<span class="op">=</span><span class="st">"stddev"</span>,</span>
-<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a>                      dims<span class="op">=</span>[<span class="st">'latitude'</span>, <span class="st">'longitude'</span>], </span>
-<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a>                      coords<span class="op">=</span>{<span class="st">'time'</span>: time, <span class="st">'longitude'</span>: ecco_lons, <span class="st">'latitude'</span>: ecco_lats})</span>
-<span id="cb71-5"><a href="#cb71-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb71-6"><a href="#cb71-6" aria-hidden="true" tabindex="-1"></a>stddev.sel(latitude<span class="op">=</span><span class="bu">slice</span>(<span class="op">-</span><span class="fl">70.0</span>, <span class="fl">70.0</span>)).plot.pcolormesh(vmax<span class="op">=</span><span class="fl">0.4</span>, cmap<span class="op">=</span><span class="st">"jet"</span>, figsize<span class="op">=</span>(<span class="dv">18</span>, <span class="dv">7</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display" data-execution_count="41">
-<pre><code>&lt;matplotlib.collections.QuadMesh at 0x7f3157d7c640&gt;</code></pre>
-</div>
-<div class="cell-output-display">
-<p><img src="06_S6_OPeNDAP_Access_Gridding_files/figure-html/cell-42-output-2.png" class="img-fluid"></p>
-</div>
-</div>
-<div class="cell" data-execution_count="42">
-<div class="sourceCode" id="cb73"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>counts <span class="op">=</span> xr.DataArray(np.where(ecco_mask, counts, np.nan), </span>
-<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>                      name<span class="op">=</span><span class="st">"counts"</span>,</span>
-<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a>                      dims<span class="op">=</span>[<span class="st">'latitude'</span>, <span class="st">'longitude'</span>], </span>
-<span id="cb73-4"><a href="#cb73-4" aria-hidden="true" tabindex="-1"></a>                      coords<span class="op">=</span>{<span class="st">'time'</span>: time, <span class="st">'longitude'</span>: ecco_lons, <span class="st">'latitude'</span>: ecco_lats})</span>
-<span id="cb73-5"><a href="#cb73-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb73-6"><a href="#cb73-6" aria-hidden="true" tabindex="-1"></a>counts.sel(latitude<span class="op">=</span><span class="bu">slice</span>(<span class="op">-</span><span class="fl">70.0</span>, <span class="fl">70.0</span>)).plot.pcolormesh(cmap<span class="op">=</span><span class="st">"jet"</span>, figsize<span class="op">=</span>(<span class="dv">18</span>, <span class="dv">7</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display" data-execution_count="42">
-<pre><code>&lt;matplotlib.collections.QuadMesh at 0x7f31579966a0&gt;</code></pre>
-</div>
-<div class="cell-output-display">
-<p><img src="06_S6_OPeNDAP_Access_Gridding_files/figure-html/cell-43-output-2.png" class="img-fluid"></p>
-</div>
-</div>
-<p><strong>Additional References:</strong></p>
-<ul>
-<li><em>numpy</em> (https://numpy.org/doc/stable/reference)
+<section id="references" class="level3">
+<h3 class="anchored" data-anchor-id="references">References</h3>
+<p><em>numpy</em> (https://numpy.org/doc/stable/reference)</p>
 <ul>
 <li><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.data.html">numpy.ndarray.data</a><br>
-</li>
-<li><a href="https://numpy.org/doc/stable/reference/generated/numpy.ravel.html">numpy.ravel</a><br>
 </li>
 <li><a href="https://numpy.org/doc/stable/reference/generated/numpy.where.html">numpy.where</a><br>
 </li>
@@ -1445,50 +929,20 @@ Coordinates:
 </li>
 <li><a href="https://numpy.org/doc/stable/reference/arrays.datetime.html">datetimes</a><br>
 </li>
-</ul></li>
-<li><em>xarray</em> (https://xarray.pydata.org/en/stable)
+<li><a href="https://numpy.org/doc/stable/reference/generated/numpy.sum.html">numpy.sum</a><br>
+</li>
+<li><a href="https://numpy.org/doc/stable/reference/generated/numpy.nansum.html">numpy.nansum</a></li>
+</ul>
+<p><em>xarray</em> (https://xarray.pydata.org/en/stable)</p>
 <ul>
 <li><a href="https://xarray.pydata.org/en/stable/generated/xarray.DataArray.html">xarray.DataArray</a><br>
 </li>
 <li><a href="https://xarray.pydata.org/en/stable/generated/xarray.DataArray.values.html">xarray.DataArray.values</a><br>
 </li>
-<li><a href="https://xarray.pydata.org/en/stable/generated/xarray.DataArray.mean.html">xarray.DataArray.mean</a><br>
-</li>
-<li>https://xarray.pydata.org/en/stable/generated/xarray.DataArray.plot.pcolormesh.html (matplotlib)<br>
-</li>
-</ul></li>
-<li><em>pyresample</em> (https://pyresample.readthedocs.io/en/latest/api/pyresample)
-<ul>
-<li><a href="https://pyresample.readthedocs.io/en/latest/api/pyresample.utils.html#pyresample.utils.check_and_wrap">pyresample.utils.check_and_wrap</a><br>
-</li>
-<li><a href="https://pyresample.readthedocs.io/en/latest/api/pyresample.html#pyresample.kd_tree.resample_gauss">pyresample.kd_tree.resample_gauss</a><br>
-</li>
-<li><a href="https://pyresample.readthedocs.io/en/latest/api/pyresample.html#pyresample.geometry.SwathDefinition">pyresample.geometry.SwathDefinition</a></li>
-</ul></li>
+<li><a href="https://xarray.pydata.org/en/stable/generated/xarray.DataArray.mean.html">xarray.DataArray.mean</a></li>
 </ul>
-<p><strong>Bonus</strong>: generate a grid for every cycle and get mean/std over all the cycles</p>
-<div class="sourceCode" id="cb75"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>stack <span class="op">=</span> xr.concat(data[<span class="st">'grid'</span>].tolist(), dim<span class="op">=</span><span class="st">"time"</span>)</span>
-<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a>midlat <span class="op">=</span> stack.sel(latitude<span class="op">=</span><span class="bu">slice</span>(<span class="op">-</span><span class="fl">66.</span>,<span class="fl">66.0</span>))</span>
-<span id="cb75-4"><a href="#cb75-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb75-5"><a href="#cb75-5" aria-hidden="true" tabindex="-1"></a>stats <span class="op">=</span> xr.concat(objs<span class="op">=</span>[midlat.mean(<span class="st">"time"</span>),</span>
-<span id="cb75-6"><a href="#cb75-6" aria-hidden="true" tabindex="-1"></a>                        midlat.std(<span class="st">"time"</span>) ], </span>
-<span id="cb75-7"><a href="#cb75-7" aria-hidden="true" tabindex="-1"></a>                  dim<span class="op">=</span>pd.Index([<span class="st">'mean'</span>,<span class="st">'std'</span>], name<span class="op">=</span><span class="st">"stat"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<blockquote class="blockquote">
-<p>https://xarray.pydata.org/en/stable/generated/xarray.concat.html</p>
-</blockquote>
-<p><strong>Bonus</strong>: calculate area-weighted mean</p>
-<div class="sourceCode" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> to_area_weighted_mean(x):</span>
-<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>    nonzero_mask <span class="op">=</span> np.where(<span class="op">~</span>np.isnan(x), <span class="dv">1</span>, np.nan)            <span class="co"># mask where nans=0 &amp; ~nans=1</span></span>
-<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a>    nonzero_area <span class="op">=</span> np.<span class="bu">sum</span>(nonzero_mask <span class="op">*</span> ecco_grid.area)        <span class="co"># total area where data is nonzero</span></span>
-<span id="cb76-4"><a href="#cb76-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">float</span>(np.nansum(x <span class="op">*</span> ecco_grid.area) <span class="op">/</span> nonzero_area)  <span class="co"># area-weighted global mean</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<blockquote class="blockquote">
-<p>https://numpy.org/doc/stable/reference/generated/numpy.sum.html<br>
-https://numpy.org/doc/stable/reference/generated/numpy.nansum.html</p>
-</blockquote>
 
 
-</section>
 </section>
 </section>
 <script type="application/javascript">
