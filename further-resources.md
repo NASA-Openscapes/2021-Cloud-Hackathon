@@ -19,3 +19,4 @@ title: Additional resources
 - [Direct_S3_Access__rioxarray_clipping](https://github.com/NASA-Openscapes/2021-Cloud-Hackathon/blob/main/tutorials/Additional_Resources__Direct_S3_Access__rioxarray_clipping.ipynb)
 - [Getting Started with Cloud-Native Harmonized Landsat Sentinel-2 (HLS) Data in R](https://lpdaac.usgs.gov/resources/e-learning/getting-started-with-cloud-native-harmonized-landsat-sentinel-2-hls-data-in-r/)
 - [Calculate black-sky, white-sky, and actual albedo (MCD43A) from MCD43A1 BRDF Parameters using R](https://github.com/jjmcnelis/mcd43-calculated-albedo)
+- [Xarray Zonal Statistics](https://corteva.github.io/geocube/html/examples/zonal_statistics.html)
