@@ -74,7 +74,7 @@
     "href": "further-resources.html#additional-tutorials",
     "title": "Additional resources",
     "section": "Additional tutorials",
-    "text": "Data_Access__Direct_S3_Access__PODAAC_ECCO_SSH using CMR-STAC API to retrieve S3 links\nDirect access to ECCO data in S3 (from us-west-2) example, with netCDF data\nDirect_S3_Access__gdalvrt\nDirect_S3_Access__rioxarray_clipping\nGetting Started with Cloud-Native Harmonized Landsat Sentinel-2 (HLS) Data in R\nCalculate black-sky, white-sky, and actual albedo (MCD43A) from MCD43A1 BRDF Parameters using R"
+    "text": "Data_Access__Direct_S3_Access__PODAAC_ECCO_SSH using CMR-STAC API to retrieve S3 links\nDirect access to ECCO data in S3 (from us-west-2) example, with netCDF data\nDirect_S3_Access__gdalvrt\nDirect_S3_Access__rioxarray_clipping\nGetting Started with Cloud-Native Harmonized Landsat Sentinel-2 (HLS) Data in R\nCalculate black-sky, white-sky, and actual albedo (MCD43A) from MCD43A1 BRDF Parameters using R\nXarray Zonal Statistics"
   },
   {
     "objectID": "clinic/earthdata.html#overview",
