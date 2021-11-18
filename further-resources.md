@@ -17,3 +17,5 @@ title: Additional resources
 - [Direct access to ECCO data in S3 (from us-west-2)](https://github.com/podaac/ECCO/blob/main/Data_Access/cloud_direct_access_s3.ipynb) example, with netCDF data
 - [Direct_S3_Access__gdalvrt](https://github.com/NASA-Openscapes/2021-Cloud-Hackathon/blob/main/tutorials/Additional_Resources__Direct_S3_Access__gdalvrt.ipynb)
 - [Direct_S3_Access__rioxarray_clipping](https://github.com/NASA-Openscapes/2021-Cloud-Hackathon/blob/main/tutorials/Additional_Resources__Direct_S3_Access__rioxarray_clipping.ipynb)
+- [Getting Started with Cloud-Native Harmonized Landsat Sentinel-2 (HLS) Data in R](https://lpdaac.usgs.gov/resources/e-learning/getting-started-with-cloud-native-harmonized-landsat-sentinel-2-hls-data-in-r/)
+- [Calculate black-sky, white-sky, and actual albedo (MCD43A) from MCD43A1 BRDF Parameters using R](https://github.com/jjmcnelis/mcd43-calculated-albedo)
