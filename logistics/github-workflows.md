@@ -157,3 +157,13 @@ Here are instructions for a [workflow with branches](https://nasa-openscapes.git
 
 Do this using the "Upload Files" button in JupyterHub in 2i2c, the UP arrow two over from the big blue + button.
 
+## GitHub Q&A
+
+### When should I fork+clone instead of just clone?
+From Mike Gangl: 
+
+A fork becomes ‘independent’ of the repository you’re forking. So you control if/when you pull in changes. a clone on the other hand, will be linked to the original repository- so if you do “pull” you’ll get the changes from the parent repository as well. 
+
+If you plan on contributing to a project, a fork is usually the best way to do that, if you plan on simply consuming the project (e.g. run a tutorial) then cloning is fine. A fork can always be appropriate. 
+
+Or, if you plan on updating and making changes that you’d want to preserve, a fork allows you to do that in your own repository, whereas cloning would need you to have permissions to write (push) to the repository. 
