@@ -67,14 +67,14 @@
     "href": "further-resources.html#a-growing-list-of-resources",
     "title": "Additional resources",
     "section": "A growing list of resources!",
-    "text": "NASA Earthdata: How to Cloud\nUSGS Eyes on Earth Podcast: Satellites and Cloud Computing - with Aaron Friesz (LP DAAC!)\nPO.DAAC Cloud Data Page\nPO.DAAC Earthdata Webinar (Aug 2021): Surfing Ocean Data in the Cloud - The Beginner’s Guide to PO.DAAC in the NASA Earthdata Cloud\nPO.DAAC Github Repository"
+    "text": "NASA Earthdata: How to Cloud\nUSGS Eyes on Earth Podcast: Satellites and Cloud Computing - with Aaron Friesz (LP DAAC!)\nPO.DAAC Cloud Data Page\nPO.DAAC Earthdata Webinar (Aug 2021): Surfing Ocean Data in the Cloud - The Beginner’s Guide to PO.DAAC in the NASA Earthdata Cloud\nPO.DAAC Github Repository\nNASA Earthdata Cloud Primer -AWS cloud primer: helpful tutorials for how to set up your own EC2 cloud instance in AWS, attach storeage, move files back and forth, and more.\nSetting up Jupyter Notebooks in a user EC2 instance in AWS - helpful blog post for setting up jupyter notebooks in an EC2 instance in AWS. (Builds on the Cloud Primer tutorials, which are missing that next step)"
   },
   {
     "objectID": "further-resources.html#additional-tutorials",
     "href": "further-resources.html#additional-tutorials",
     "title": "Additional resources",
     "section": "Additional tutorials",
-    "text": "Data_Access__Direct_S3_Access__PODAAC_ECCO_SSH using CMR-STAC API to retrieve S3 links\nDirect access to ECCO data in S3 (from us-west-2) - Direct S3 access example with netCDF data\nDirect_S3_Access__gdalvrt\nDirect_S3_Access__rioxarray_clipping\nGetting Started with Cloud-Native Harmonized Landsat Sentinel-2 (HLS) Data in R\nCalculate black-sky, white-sky, and actual albedo (MCD43A) from MCD43A1 BRDF Parameters using R\nXarray Zonal Statistics\nNASA Earthdata Cloud Primer -AWS cloud primer: helpful tutorials for how to set up your own EC2 cloud instance in AWS, attach storeage, move files back and forth, and more.\nSetting up Jupyter Notebooks in a user EC2 instance in AWS - helpful blog post for setting up jupyter notebooks in an EC2 instance in AWS. (Builds on the Cloud Primer tutorials, which are missing that next step)"
+    "text": "Data_Access__Direct_S3_Access__PODAAC_ECCO_SSH using CMR-STAC API to retrieve S3 links\nDirect access to ECCO data in S3 (from us-west-2) - Direct S3 access example with netCDF data\nDirect_S3_Access__gdalvrt\nDirect_S3_Access__rioxarray_clipping\nGetting Started with Cloud-Native Harmonized Landsat Sentinel-2 (HLS) Data in R\nCalculate black-sky, white-sky, and actual albedo (MCD43A) from MCD43A1 BRDF Parameters using R\nXarray Zonal Statistics"
   },
   {
     "objectID": "clinic/earthdata.html#overview",
