@@ -14,9 +14,11 @@ title: Additional resources
 ## Additional tutorials
 
 - [Data_Access__Direct_S3_Access__PODAAC_ECCO_SSH](https://github.com/NASA-Openscapes/2021-Cloud-Hackathon/blob/main/tutorials/Additional_Resources__Data_Access__Direct_S3_Access__PODAAC_ECCO_SSH.ipynb) using CMR-STAC API to retrieve S3 links
-- [Direct access to ECCO data in S3 (from us-west-2)](https://github.com/podaac/ECCO/blob/main/Data_Access/cloud_direct_access_s3.ipynb) example, with netCDF data
+- [Direct access to ECCO data in S3 (from us-west-2)](https://github.com/podaac/ECCO/blob/main/Data_Access/cloud_direct_access_s3.ipynb) - Direct S3 access example with netCDF data
 - [Direct_S3_Access__gdalvrt](https://github.com/NASA-Openscapes/2021-Cloud-Hackathon/blob/main/tutorials/Additional_Resources__Direct_S3_Access__gdalvrt.ipynb)
 - [Direct_S3_Access__rioxarray_clipping](https://github.com/NASA-Openscapes/2021-Cloud-Hackathon/blob/main/tutorials/Additional_Resources__Direct_S3_Access__rioxarray_clipping.ipynb)
 - [Getting Started with Cloud-Native Harmonized Landsat Sentinel-2 (HLS) Data in R](https://lpdaac.usgs.gov/resources/e-learning/getting-started-with-cloud-native-harmonized-landsat-sentinel-2-hls-data-in-r/)
 - [Calculate black-sky, white-sky, and actual albedo (MCD43A) from MCD43A1 BRDF Parameters using R](https://github.com/jjmcnelis/mcd43-calculated-albedo)
 - [Xarray Zonal Statistics](https://corteva.github.io/geocube/html/examples/zonal_statistics.html)
+- [NASA Earthdata Cloud Primer](https://earthdata.nasa.gov/learn/user-resources/webinars-and-tutorials/cloud-primer) -AWS cloud primer: helpful tutorials for how to set up your own EC2 cloud instance in AWS, attach storeage, move files back and forth, and more. 
+- [Setting up Jupyter Notebooks in a user EC2 instance in AWS](https://medium.com/@alexjsanchez/python-3-notebooks-on-aws-ec2-in-15-mostly-easy-steps-2ec5e662c6c6) - helpful blog post for setting up jupyter notebooks in an EC2 instance in AWS. (Builds on the Cloud Primer tutorials, which are missing that next step)
