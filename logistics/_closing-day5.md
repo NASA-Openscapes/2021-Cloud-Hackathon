@@ -1,0 +1,6 @@
+- **Thank you**
+- **Continued hacking on the cloud - next 3 months**. You will continue to have access to the 2i2c JupyterHub in AWS for three months following the Cloud Hackathon so you can continue to work and we all learn more about what is involved with migrating data access and science workflows to the Cloud. This cloud compute environment is supported by the [NASA Openscapes](https://nasa-openscapes.github.io/) project. 
+- **Upcoming events - all virtual**
+  - **[AGU Fall Meeting Workshop](https://agu.confex.com/agu/fm21/meetingapp.cgi/Session/124026)** - December 12 2021. The DAAC mentors will hold a short, half-day, virtual workshop at AGU on Sunday, Dec 12. 
+  - **[AGU Open science in action session](https://agu.confex.com/agu/fm21/meetingapp.cgi/Session/122142)** - December 17, 2021. Talks and tutorials by Hackathon Mentors, among other leaders in open science.
+  - **[NASA Openscapes Champions Cohort](https://nasa-openscapes.github.io/champions.html)** - March-April 2022. Openscapes will lead a NASA Champions Cohort for 7 research teams. This is  a professional development and leadership opportunity for scientists that use data from NASA DAACs and are interested in collaborative open data science practices and migrating their workflows to the cloud. Nominate your team by February 1. 

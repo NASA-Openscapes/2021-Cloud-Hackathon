@@ -96,9 +96,15 @@ _schedule-day5.md
 _welcome-day2-on.md
 ```
 
+### What's next 
+
+[Slides](https://docs.google.com/presentation/d/1LKpdrssV97BFN3yh0LJEmj64wU0kaZp42in_SlsHFmc/edit#slide=id.gfbd87e8abc_0_0) sharing about upcoming opportunities with the [NASA Openscapes](https://nasa-openscapes.github.io/) project.
+
 ### Closing Day 5
 
-Thank you! More details upcoming
+```{.include} 
+_closing-day5.md
+``` 
 
 ## Pre-Hackathon Clinic: November 9
 
