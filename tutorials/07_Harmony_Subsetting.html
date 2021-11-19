@@ -339,7 +339,10 @@
 <li><a href="#objectives" class="nav-link" data-scroll-target="#objectives">Objectives</a></li>
 </ul></li>
 <li><a href="#import-packages" class="nav-link" data-scroll-target="#import-packages">Import Packages</a></li>
-<li><a href="#discover-service-options-for-a-given-data-set" class="nav-link" data-scroll-target="#discover-service-options-for-a-given-data-set">Discover service options for a given data set</a></li>
+<li><a href="#discover-service-options-for-a-given-data-set" class="nav-link" data-scroll-target="#discover-service-options-for-a-given-data-set">Discover service options for a given data set</a>
+<ul class="collapse">
+<li><a href="#discover-all-datasets-that-support-harmony-services" class="nav-link" data-scroll-target="#discover-all-datasets-that-support-harmony-services"><em>Discover all datasets that support Harmony services</em></a></li>
+</ul></li>
 <li><a href="#discover-variable-names" class="nav-link" data-scroll-target="#discover-variable-names">Discover variable names</a></li>
 <li><a href="#using-harmony-py-to-subset-data" class="nav-link" data-scroll-target="#using-harmony-py-to-subset-data">Using Harmony-Py to subset data</a>
 <ul class="collapse">
@@ -607,7 +610,7 @@
                      'version_id': '2019.0'}],
           'id': 'https://cmr.earthdata.nasa.gov:443/search/collections.json?concept_id=C1940473819-POCLOUD',
           'title': 'ECHO dataset metadata',
-          'updated': '2021-11-17T04:17:54.070Z'}}</code></pre>
+          'updated': '2021-11-19T17:44:29.026Z'}}</code></pre>
 </div>
 </div>
 </section>
@@ -696,7 +699,381 @@
                     'URL': {'Description': 'PROJECT HOME PAGE',
                             'URLValue': 'https://harmony.earthdata.nasa.gov'},
                     'Version': '1.1.0'}}],
- 'took': 10}</code></pre>
+ 'took': 9}</code></pre>
+</div>
+</div>
+</section>
+<section id="discover-all-datasets-that-support-harmony-services" class="level3">
+<h3 class="anchored" data-anchor-id="discover-all-datasets-that-support-harmony-services"><em>Discover all datasets that support Harmony services</em></h3>
+<p>Instead of searching for services on a known dataset of interest, we may want to discovery all available datasets that are supported for a given service. We can utilize <a href="https://graphql.org/">GraphQL</a>, which is a way for us to efficiently gain information across service and collection metadata so that we can print out all supported Harmony datasets. First, we need to specify a query string. Here we are asking to query all collections with service type “Harmony”, and to provide details on the service options attached to those services:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>query <span class="op">=</span> <span class="st">"""query {</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="st">  collections(limit: 2000, serviceType: "Harmony") {</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="st">    count</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="st">    items {</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="st">      shortName</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="st">      conceptId</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="st">      services {</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="st">        count</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="st">        items {</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="st">          name</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="st">          supportedReformattings</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="st">          supportedInputProjections</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="st">          supportedOutputProjections</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="st">          serviceOptions</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="st">        }</span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="st">      }</span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="st">      variables {</span></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a><span class="st">        count</span></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a><span class="st">      }</span></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a><span class="st">    }</span></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a><span class="st">  }</span></span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a><span class="st">}"""</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This utilizes a different API endpoint to query CMR metdata using GraphQL. Here we set up another request, passing our query string above:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>graphql_url <span class="op">=</span> <span class="st">'https://graphql.earthdata.nasa.gov/api'</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>graphql_response <span class="op">=</span> requests.get(graphql_url,</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>                        params<span class="op">=</span>{<span class="st">"query"</span>: query},</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>                        headers<span class="op">=</span>{</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'Accept'</span>: <span class="st">'application/json'</span>,</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>                        }</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>                       )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>A json response is returned that provides all collections with Harmony-supported services. We can then extract just the collection<code>shortName</code>, <code>conceptID</code>, and the service names supported for each collection:</p>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode" id="cb16"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>services <span class="op">=</span> graphql_response.json()[<span class="st">'data'</span>][<span class="st">'collections'</span>][<span class="st">'items'</span>]</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> service <span class="kw">in</span> services:</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(service[<span class="st">'shortName'</span>], <span class="st">","</span>, service[<span class="st">'conceptId'</span>])</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(service[<span class="st">'services'</span>][<span class="st">'items'</span>])):</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Services:"</span>, service[<span class="st">'services'</span>][<span class="st">'items'</span>][i][<span class="st">'name'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>ECCO_L4_ATM_STATE_05DEG_DAILY_V4R4 , C1990404801-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_ATM_STATE_LLC0090GRID_DAILY_V4R4 , C1991543823-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_ATM_STATE_05DEG_MONTHLY_V4R4 , C1990404814-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_ATM_STATE_LLC0090GRID_MONTHLY_V4R4 , C1991543805-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_OCEAN_BOLUS_STREAMFUNCTION_LLC0090GRID_DAILY_V4R4 , C1991543818-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_OCEAN_BOLUS_STREAMFUNCTION_LLC0090GRID_MONTHLY_V4R4 , C1991543733-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_BOLUS_05DEG_DAILY_V4R4 , C1990404807-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_BOLUS_LLC0090GRID_DAILY_V4R4 , C1991543824-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_BOLUS_05DEG_MONTHLY_V4R4 , C1990404805-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_BOLUS_LLC0090GRID_MONTHLY_V4R4 , C1991543745-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_GEOMETRY_05DEG_V4R4 , C2013583732-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_GEOMETRY_LLC0090GRID_V4R4 , C2013557893-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_GMAP_TIME_SERIES_SNAPSHOT_V4R4 , C1991543729-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_GMAP_TIME_SERIES_SNAPSHOT_V4R4B , C2133160276-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_GMSL_TIME_SERIES_DAILY_V4R4 , C1991543819-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_GMSL_TIME_SERIES_MONTHLY_V4R4 , C1991543742-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_OCEAN_3D_MIX_COEFFS_05DEG_V4R4 , C2013584708-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_OCEAN_3D_MIX_COEFFS_LLC0090GRID_V4R4 , C2013583906-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_FRESH_FLUX_05DEG_DAILY_V4R4 , C1990404818-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_FRESH_FLUX_LLC0090GRID_DAILY_V4R4 , C1991543820-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_FRESH_FLUX_05DEG_MONTHLY_V4R4 , C1990404792-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_FRESH_FLUX_LLC0090GRID_MONTHLY_V4R4 , C1991543803-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_HEAT_FLUX_05DEG_DAILY_V4R4 , C1990404788-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_HEAT_FLUX_LLC0090GRID_DAILY_V4R4 , C1991543712-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_HEAT_FLUX_05DEG_MONTHLY_V4R4 , C1990404812-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_HEAT_FLUX_LLC0090GRID_MONTHLY_V4R4 , C1991543811-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_STRESS_05DEG_DAILY_V4R4 , C1990404808-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_STRESS_LLC0090GRID_DAILY_V4R4 , C1991543704-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_STRESS_05DEG_MONTHLY_V4R4 , C1990404796-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_STRESS_LLC0090GRID_MONTHLY_V4R4 , C1991543760-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_OBP_05DEG_DAILY_V4R4 , C1990404797-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_OBP_05DEG_DAILY_V4R4B , C2129192243-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_OBP_LLC0090GRID_DAILY_V4R4 , C1991543737-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_OBP_LLC0090GRID_DAILY_V4R4B , C2129195053-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_OBP_05DEG_MONTHLY_V4R4 , C1990404791-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_OBP_05DEG_MONTHLY_V4R4B , C2129193421-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_OBP_LLC0090GRID_MONTHLY_V4R4 , C1991543806-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_OBP_LLC0090GRID_MONTHLY_V4R4B , C2129197196-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_OBP_LLC0090GRID_SNAPSHOT_V4R4 , C1991543804-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_DENS_STRAT_PRESS_05DEG_DAILY_V4R4 , C1990404793-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_DENS_STRAT_PRESS_LLC0090GRID_DAILY_V4R4 , C1991543727-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_DENS_STRAT_PRESS_05DEG_MONTHLY_V4R4 , C1990404798-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_DENS_STRAT_PRESS_LLC0090GRID_MONTHLY_V4R4 , C1991543735-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_MIXED_LAYER_DEPTH_05DEG_DAILY_V4R4 , C1990404810-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_MIXED_LAYER_DEPTH_LLC0090GRID_DAILY_V4R4 , C1991543734-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_MIXED_LAYER_DEPTH_05DEG_MONTHLY_V4R4 , C1990404819-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_MIXED_LAYER_DEPTH_LLC0090GRID_MONTHLY_V4R4 , C1991543741-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_TEMP_SALINITY_05DEG_DAILY_V4R4 , C1990404821-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_TEMP_SALINITY_LLC0090GRID_DAILY_V4R4 , C1991543736-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_TEMP_SALINITY_05DEG_MONTHLY_V4R4 , C1990404795-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_TEMP_SALINITY_LLC0090GRID_MONTHLY_V4R4 , C1991543728-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_TEMP_SALINITY_LLC0090GRID_SNAPSHOT_V4R4 , C1991543757-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_OCEAN_3D_MOMENTUM_TEND_LLC0090GRID_DAILY_V4R4 , C1991543726-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_OCEAN_3D_MOMENTUM_TEND_LLC0090GRID_MONTHLY_V4R4 , C1991543702-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_OCEAN_3D_TEMPERATURE_FLUX_LLC0090GRID_DAILY_V4R4 , C1991543812-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_OCEAN_3D_TEMPERATURE_FLUX_LLC0090GRID_MONTHLY_V4R4 , C1991543740-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_OCEAN_3D_SALINITY_FLUX_LLC0090GRID_DAILY_V4R4 , C1991543814-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_OCEAN_3D_SALINITY_FLUX_LLC0090GRID_MONTHLY_V4R4 , C1991543752-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_OCEAN_3D_VOLUME_FLUX_LLC0090GRID_DAILY_V4R4 , C1991543699-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_OCEAN_3D_VOLUME_FLUX_LLC0090GRID_MONTHLY_V4R4 , C1991543739-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_OCEAN_VEL_05DEG_DAILY_V4R4 , C1990404811-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_OCEAN_VEL_LLC0090GRID_DAILY_V4R4 , C1991543808-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_OCEAN_VEL_05DEG_MONTHLY_V4R4 , C1990404823-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_OCEAN_VEL_LLC0090GRID_MONTHLY_V4R4 , C1991543732-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_SBO_CORE_TIME_SERIES_SNAPSHOT_V4R4 , C1991543766-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_SBO_CORE_TIME_SERIES_SNAPSHOT_V4R4B , C2133162585-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_SSH_05DEG_DAILY_V4R4 , C1990404813-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_SSH_05DEG_DAILY_V4R4B , C2129181904-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_SSH_LLC0090GRID_DAILY_V4R4 , C1991543744-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_SSH_LLC0090GRID_DAILY_V4R4B , C2129186341-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_SSH_05DEG_MONTHLY_V4R4 , C1990404799-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_SSH_05DEG_MONTHLY_V4R4B , C2129189405-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_SSH_LLC0090GRID_MONTHLY_V4R4 , C1991543813-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_SSH_LLC0090GRID_MONTHLY_V4R4B , C2129189870-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_SSH_LLC0090GRID_SNAPSHOT_V4R4 , C1991543817-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_SEA_ICE_CONC_THICKNESS_05DEG_DAILY_V4R4 , C1990404815-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_SEA_ICE_CONC_THICKNESS_LLC0090GRID_DAILY_V4R4 , C1991543763-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_SEA_ICE_CONC_THICKNESS_05DEG_MONTHLY_V4R4 , C1990404820-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_SEA_ICE_CONC_THICKNESS_LLC0090GRID_MONTHLY_V4R4 , C1991543764-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_SEA_ICE_CONC_THICKNESS_LLC0090GRID_SNAPSHOT_V4R4 , C1991543821-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_SEA_ICE_HORIZ_VOLUME_FLUX_LLC0090GRID_DAILY_V4R4 , C1991543731-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_SEA_ICE_HORIZ_VOLUME_FLUX_LLC0090GRID_MONTHLY_V4R4 , C1991543724-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_SEA_ICE_SALT_PLUME_FLUX_LLC0090GRID_DAILY_V4R4 , C1991543807-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_SEA_ICE_SALT_PLUME_FLUX_LLC0090GRID_MONTHLY_V4R4 , C1991543730-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_SEA_ICE_VELOCITY_05DEG_DAILY_V4R4 , C1990404817-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_SEA_ICE_VELOCITY_LLC0090GRID_DAILY_V4R4 , C1991543765-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_SEA_ICE_VELOCITY_05DEG_MONTHLY_V4R4 , C1990404790-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_SEA_ICE_VELOCITY_LLC0090GRID_MONTHLY_V4R4 , C1991543700-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+ECCO_L4_SEA_ICE_VELOCITY_LLC0090GRID_SNAPSHOT_V4R4 , C1991543768-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PO.DAAC harmony-netcdf-to-zarr
+VIIRS_NPP-NAVO-L2P-v1.0 , C1996881807-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PODAAC L2 Cloud Subsetter
+VIIRS_NPP-NAVO-L2P-v3.0 , C1996881636-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PODAAC L2 Cloud Subsetter
+MSG03-OSPO-L2P-v1.0 , C2036878029-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PODAAC L2 Cloud Subsetter
+VIIRS_NPP-JPL-L2P-v2016.2 , C1996881456-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PODAAC L2 Cloud Subsetter
+MODIS_A-JPL-L2P-v2019.0 , C1940473819-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PODAAC L2 Cloud Subsetter
+MODIS_A-JPL-L2P-v2019.0 , C1693233348-PODAAC
+Services: PODAAC L2 Cloud Subsetter
+MODIS_T-JPL-L2P-v2019.0 , C1940475563-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PODAAC L2 Cloud Subsetter
+MODIS_T-JPL-L2P-v2019.0 , C1693233387-PODAAC
+Services: PODAAC L2 Cloud Subsetter
+TMI-REMSS-L2P-v4 , C2036879048-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PODAAC L2 Cloud Subsetter
+VIIRS_NPP-OSPO-L2P-v2.61 , C1996880725-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PODAAC L2 Cloud Subsetter
+VIIRS_N20-OSPO-L2P-v2.61 , C1996880450-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PODAAC L2 Cloud Subsetter
+AVHRR_SST_METOP_B-OSISAF-L2P-v1.0 , C2036880717-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PODAAC L2 Cloud Subsetter
+JASON-1_L2_OST_GPR_E , C1684065156-PODAAC
+Services: PODAAC L2 Cloud Subsetter
+JASON-1_L2_OST_GPN_E , C1684065153-PODAAC
+Services: PODAAC L2 Cloud Subsetter
+JASON-1_L2_OST_GPS_E , C1684065158-PODAAC
+Services: PODAAC L2 Cloud Subsetter
+CYGNSS_NOAA_L2_SWSP_25KM_V1.1 , C2036882072-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PODAAC L2 Cloud Subsetter
+JASON_CS_S6A_L2_AMR_RAD_NRT , C1968979997-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PODAAC L2 Cloud Subsetter
+JASON_CS_S6A_L2_AMR_RAD_STC , C1968979762-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PODAAC L2 Cloud Subsetter
+JASON_CS_S6A_L2_ALT_LR_STD_OST_NRT_F , C1968979597-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PODAAC L2 Cloud Subsetter
+JASON_CS_S6A_L2_ALT_LR_RED_OST_NRT_F , C1968980576-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PODAAC L2 Cloud Subsetter
+JASON_CS_S6A_L2_ALT_LR_STD_OST_STC_F , C1968980609-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PODAAC L2 Cloud Subsetter
+JASON_CS_S6A_L2_ALT_LR_RED_OST_STC_F , C1968979561-POCLOUD
+Services: PO.DAAC Cloud OPeNDAP
+Services: PODAAC L2 Cloud Subsetter</code></pre>
 </div>
 </div>
 </section>
@@ -704,26 +1081,26 @@
 <section id="discover-variable-names" class="level2">
 <h2 class="anchored" data-anchor-id="discover-variable-names">Discover variable names</h2>
 <p>Just like services, a dataset may also be associated to metadata on their individual data variables, which can be used as input if we wish to subset by one or more variables of interest.</p>
-<div class="cell" data-execution_count="11">
-<div class="sourceCode" id="cb14"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>variables <span class="op">=</span> response[<span class="st">'feed'</span>][<span class="st">'entry'</span>][<span class="dv">0</span>][<span class="st">'associations'</span>][<span class="st">'variables'</span>]</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(variables)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="14">
+<div class="sourceCode" id="cb18"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>variables <span class="op">=</span> response[<span class="st">'feed'</span>][<span class="st">'entry'</span>][<span class="dv">0</span>][<span class="st">'associations'</span>][<span class="st">'variables'</span>]</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(variables)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stdout">
 <pre><code>['V1997812737-POCLOUD', 'V1997812697-POCLOUD', 'V2112014688-POCLOUD', 'V1997812756-POCLOUD', 'V1997812688-POCLOUD', 'V1997812670-POCLOUD', 'V1997812724-POCLOUD', 'V2112014684-POCLOUD', 'V1997812701-POCLOUD', 'V1997812681-POCLOUD', 'V2112014686-POCLOUD', 'V1997812663-POCLOUD', 'V1997812676-POCLOUD', 'V1997812744-POCLOUD', 'V1997812714-POCLOUD']</code></pre>
 </div>
 </div>
 <p>Several variable records are returned. Again, like we did for services, we’ll search the variables endpoint to view an individual variable’s metadata, and we’ll print out the list of variables for our dataset.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>var_url <span class="op">=</span> <span class="st">"https://cmr.earthdata.nasa.gov/search/variables"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb17"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>var_response <span class="op">=</span> requests.get(var_url, </span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>                        params<span class="op">=</span>{</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'concept_id'</span>: variables[<span class="dv">0</span>],</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>                            },</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>                        headers<span class="op">=</span>{</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'Accept'</span>: <span class="st">'application/vnd.nasa.cmr.umm_results+json'</span></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>                            }</span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>                       )</span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>var_response <span class="op">=</span> var_response.json()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell" data-execution_count="14">
-<div class="sourceCode" id="cb18"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>pprint(var_response)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>var_url <span class="op">=</span> <span class="st">"https://cmr.earthdata.nasa.gov/search/variables"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>var_response <span class="op">=</span> requests.get(var_url, </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>                        params<span class="op">=</span>{</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'concept_id'</span>: variables[<span class="dv">0</span>],</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>                            },</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>                        headers<span class="op">=</span>{</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'Accept'</span>: <span class="st">'application/vnd.nasa.cmr.umm_results+json'</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>                            }</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>                       )</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>var_response <span class="op">=</span> var_response.json()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="17">
+<div class="sourceCode" id="cb22"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>pprint(var_response)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stdout">
 <pre><code>{'hits': 1,
  'items': [{'associations': {'collections': [{'concept-id': 'C1940473819-POCLOUD'}]},
@@ -766,24 +1143,24 @@
                     'Units': 'kelvin',
                     'ValidRanges': [{'Max': 127, 'Min': -127}],
                     'VariableType': 'ANCILLARY_VARIABLE'}}],
- 'took': 10}</code></pre>
+ 'took': 9}</code></pre>
 </div>
 </div>
 <p>Next, print out a simple list of all associated variable names by looping the same variable response we submitted above, this time for each variable:</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>var_list <span class="op">=</span> []</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(variables)):</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    var_response <span class="op">=</span> requests.get(var_url, </span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>                            params<span class="op">=</span>{</span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>                                <span class="st">'concept_id'</span>: variables[i],</span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>                                },</span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>                            headers<span class="op">=</span>{</span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>                                <span class="st">'Accept'</span>: <span class="st">'application/vnd.nasa.cmr.umm_results+json'</span></span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>                                }</span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>                           )</span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>    var_response <span class="op">=</span> var_response.json()</span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>    var_list.append(var_response[<span class="st">'items'</span>][<span class="dv">0</span>][<span class="st">'umm'</span>][<span class="st">'Name'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell" data-execution_count="16">
-<div class="sourceCode" id="cb21"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>pprint(var_list)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>var_list <span class="op">=</span> []</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(variables)):</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    var_response <span class="op">=</span> requests.get(var_url, </span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>                            params<span class="op">=</span>{</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>                                <span class="st">'concept_id'</span>: variables[i],</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>                                },</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>                            headers<span class="op">=</span>{</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>                                <span class="st">'Accept'</span>: <span class="st">'application/vnd.nasa.cmr.umm_results+json'</span></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>                                }</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>                           )</span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>    var_response <span class="op">=</span> var_response.json()</span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>    var_list.append(var_response[<span class="st">'items'</span>][<span class="dv">0</span>][<span class="st">'umm'</span>][<span class="st">'Name'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="19">
+<div class="sourceCode" id="cb25"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>pprint(var_list)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stdout">
 <pre><code>['sses_standard_deviation_4um',
  'l2p_flags',
@@ -811,7 +1188,7 @@
 <h3 class="anchored" data-anchor-id="create-harmony-client-object">Create Harmony Client object</h3>
 <p>First, we need to create a Harmony Client, which is what we will interact with to submit and inspect a data request to Harmony, as well as to retrieve results.</p>
 <p>When creating the Client, we need to provide Earthdata Login credentials, which are required to access data from NASA EOSDIS. This basic line below assumes that we have a <code>.netrc</code> available.</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>harmony_client <span class="op">=</span> Client()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>harmony_client <span class="op">=</span> Client()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="hurricane-ida-snapshot" class="level3">
 <h3 class="anchored" data-anchor-id="hurricane-ida-snapshot">Hurricane Ida snapshot</h3>
@@ -836,21 +1213,21 @@
 <li><code>temporal</code>: Date/time constraints on the data. The example below demonstrates temporal start and end ranges using the python datetime library.</li>
 </ul>
 <p>As we identified above, only subsetting options are available for this dataset. If other service options such as reformatting are available for a given dataset, these can also be specified using Harmony-py: See the <a href="https://harmony-py.readthedocs.io/en/latest/">documentation</a> for details on how to construct these parameters.</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>request <span class="op">=</span> Request(</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    collection<span class="op">=</span>Collection(<span class="bu">id</span><span class="op">=</span>short_name),</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    spatial<span class="op">=</span>BBox(<span class="op">-</span><span class="fl">97.77667</span>,<span class="fl">21.20806</span>,<span class="op">-</span><span class="fl">83.05197</span>,<span class="fl">30.16605</span>),</span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    temporal<span class="op">=</span>{</span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">'start'</span>: dt.datetime(<span class="dv">2021</span>, <span class="dv">8</span>, <span class="dv">20</span>),</span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">'stop'</span>: dt.datetime(<span class="dv">2021</span>, <span class="dv">8</span>, <span class="dv">21</span>),</span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>    },</span>
-<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>request <span class="op">=</span> Request(</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>    collection<span class="op">=</span>Collection(<span class="bu">id</span><span class="op">=</span>short_name),</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>    spatial<span class="op">=</span>BBox(<span class="op">-</span><span class="fl">97.77667</span>,<span class="fl">21.20806</span>,<span class="op">-</span><span class="fl">83.05197</span>,<span class="fl">30.16605</span>),</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>    temporal<span class="op">=</span>{</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">'start'</span>: dt.datetime(<span class="dv">2021</span>, <span class="dv">8</span>, <span class="dv">20</span>),</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">'stop'</span>: dt.datetime(<span class="dv">2021</span>, <span class="dv">8</span>, <span class="dv">21</span>),</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>    },</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="check-request-validity" class="level3">
 <h3 class="anchored" data-anchor-id="check-request-validity">Check Request validity</h3>
 <p>Before submitting a Harmony Request, we can test your request to see if it’s valid and how to fix it if not. In particular, <code>request.is_valid</code> will check to ensure that the spatial BBox bounds and temporal ranges are entered correctly.</p>
-<div class="cell" data-execution_count="19">
-<div class="sourceCode" id="cb25"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>request.is_valid()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display" data-execution_count="19">
+<div class="cell" data-execution_count="22">
+<div class="sourceCode" id="cb29"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>request.is_valid()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display" data-execution_count="22">
 <pre><code>True</code></pre>
 </div>
 </div>
@@ -858,32 +1235,32 @@
 <section id="submit-request" class="level3">
 <h3 class="anchored" data-anchor-id="submit-request">Submit request</h3>
 <p>Now that the request is created, we can now submit it to Harmony using the Harmony Client object. A job id is returned, which is a unique identifier that represents the submitted request.</p>
-<div class="cell" data-execution_count="20">
-<div class="sourceCode" id="cb27"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>job_id <span class="op">=</span> harmony_client.submit(request)</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>job_id</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display" data-execution_count="20">
-<pre><code>'02072e53-6035-426e-8235-4ec542e337a4'</code></pre>
+<div class="cell" data-execution_count="23">
+<div class="sourceCode" id="cb31"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>job_id <span class="op">=</span> harmony_client.submit(request)</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>job_id</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display" data-execution_count="23">
+<pre><code>'e36f6916-a7d9-4d82-a5fa-924d48d464ef'</code></pre>
 </div>
 </div>
 </section>
 <section id="check-request-status" class="level3">
 <h3 class="anchored" data-anchor-id="check-request-status">Check request status</h3>
 <p>We can check on the progress of a processing job with status(). This method blocks while communicating with the server but returns quickly.</p>
-<div class="cell" data-execution_count="21">
-<div class="sourceCode" id="cb29"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>harmony_client.status(job_id)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display" data-execution_count="21">
+<div class="cell" data-execution_count="24">
+<div class="sourceCode" id="cb33"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>harmony_client.status(job_id)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display" data-execution_count="24">
 <pre><code>{'status': 'running',
  'message': 'There were 2 collections that matched the provided short name MODIS_A-JPL-L2P-v2019.0. See https://cmr.earthdata.nasa.gov/concepts/C1940473819-POCLOUD for details on the selected collection. The version ID for the selected collection is 2019.0. To use a different collection submit a new request specifying the desired CMR concept ID instead of the collection short name.',
  'progress': 0,
- 'created_at': datetime.datetime(2021, 11, 17, 4, 17, 59, 718000, tzinfo=tzlocal()),
- 'updated_at': datetime.datetime(2021, 11, 17, 4, 17, 59, 718000, tzinfo=tzlocal()),
+ 'created_at': datetime.datetime(2021, 11, 19, 17, 44, 40, 768000, tzinfo=tzlocal()),
+ 'updated_at': datetime.datetime(2021, 11, 19, 17, 44, 40, 768000, tzinfo=tzlocal()),
  'request': 'https://harmony.earthdata.nasa.gov/MODIS_A-JPL-L2P-v2019.0/ogc-api-coverages/1.0.0/collections/all/coverage/rangeset?forceAsync=true&amp;subset=lat(21.20806%3A30.16605)&amp;subset=lon(-97.77667%3A-83.05197)&amp;subset=time(%222021-08-20T00%3A00%3A00%22%3A%222021-08-21T00%3A00%3A00%22)',
  'num_input_granules': 6}</code></pre>
 </div>
 </div>
 <p>Depending on the size of the request, it may be helpful to wait until the request has completed processing before the remainder of the code is executed. The wait_for_processing() method will block subsequent lines of code while optionally showing a progress bar.</p>
-<div class="cell" data-execution_count="22">
-<div class="sourceCode" id="cb31"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>harmony_client.wait_for_processing(job_id, show_progress<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="25">
+<div class="sourceCode" id="cb35"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>harmony_client.wait_for_processing(job_id, show_progress<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stderr">
 <pre><code> [ Processing: 100% ] |###################################################| [|]</code></pre>
 </div>
@@ -893,59 +1270,59 @@
 <h3 class="anchored" data-anchor-id="view-harmony-job-response-and-output-urls">View Harmony job response and output URLs</h3>
 <p>Once the data request has finished processing, we can view details on the job that was submitted to Harmony, including the API call to Harmony, and informational messages on the request if available.</p>
 <p>result_json() calls wait_for_processing() and returns the complete job in JSON format once processing is complete.</p>
-<div class="cell" data-execution_count="23">
-<div class="sourceCode" id="cb33"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> harmony_client.result_json(job_id)</span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>pprint(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="26">
+<div class="sourceCode" id="cb37"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> harmony_client.result_json(job_id)</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>pprint(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stdout">
-<pre><code>{'createdAt': '2021-11-17T04:17:59.718Z',
- 'jobID': '02072e53-6035-426e-8235-4ec542e337a4',
- 'links': [{'href': 'https://harmony.earthdata.nasa.gov/stac/02072e53-6035-426e-8235-4ec542e337a4/',
+<pre><code>{'createdAt': '2021-11-19T17:44:40.768Z',
+ 'jobID': 'e36f6916-a7d9-4d82-a5fa-924d48d464ef',
+ 'links': [{'href': 'https://harmony.earthdata.nasa.gov/stac/e36f6916-a7d9-4d82-a5fa-924d48d464ef/',
             'rel': 'stac-catalog-json',
             'title': 'STAC catalog',
             'type': 'application/json'},
            {'bbox': [-83.612, 1.103, -58.391, 22.005],
-            'href': 'https://harmony.earthdata.nasa.gov/service-results/harmony-prod-staging/public/podaac/l2-subsetter/e10fca74-1931-4ce7-a384-6accfd2005fe/20210820062501-JPL-L2P_GHRSST-SSTskin-MODIS_A-N-v02.0-fv01.0.nc4',
+            'href': 'https://harmony.earthdata.nasa.gov/service-results/harmony-prod-staging/public/podaac/l2-subsetter/cef7a7c7-c01c-4186-ac73-3e03f2940259/20210820062501-JPL-L2P_GHRSST-SSTskin-MODIS_A-N-v02.0-fv01.0.nc4',
             'rel': 'data',
             'temporal': {'end': '2021-08-20T06:29:58.000Z',
                          'start': '2021-08-20T06:25:01.000Z'},
             'title': '20210820062501-JPL-L2P_GHRSST-SSTskin-MODIS_A-N-v02.0-fv01.0.nc4',
             'type': 'application/x-netcdf4'},
            {'bbox': [-97.8, 21.2, -83.1, 30.2],
-            'href': 'https://harmony.earthdata.nasa.gov/service-results/harmony-prod-staging/public/podaac/l2-subsetter/e10fca74-1931-4ce7-a384-6accfd2005fe/20210820080001-JPL-L2P_GHRSST-SSTskin-MODIS_A-N-v02.0-fv01.0_subsetted.nc4',
+            'href': 'https://harmony.earthdata.nasa.gov/service-results/harmony-prod-staging/public/podaac/l2-subsetter/cef7a7c7-c01c-4186-ac73-3e03f2940259/20210820080001-JPL-L2P_GHRSST-SSTskin-MODIS_A-N-v02.0-fv01.0_subsetted.nc4',
             'rel': 'data',
             'temporal': {'end': '2021-08-20T08:04:58.000Z',
                          'start': '2021-08-20T08:00:01.000Z'},
             'title': '20210820080001-JPL-L2P_GHRSST-SSTskin-MODIS_A-N-v02.0-fv01.0_subsetted.nc4',
             'type': 'application/x-netcdf4'},
            {'bbox': [-128.335, 29.006, -95.854, 49.87],
-            'href': 'https://harmony.earthdata.nasa.gov/service-results/harmony-prod-staging/public/podaac/l2-subsetter/e10fca74-1931-4ce7-a384-6accfd2005fe/20210820093501-JPL-L2P_GHRSST-SSTskin-MODIS_A-N-v02.0-fv01.0.nc4',
+            'href': 'https://harmony.earthdata.nasa.gov/service-results/harmony-prod-staging/public/podaac/l2-subsetter/cef7a7c7-c01c-4186-ac73-3e03f2940259/20210820093501-JPL-L2P_GHRSST-SSTskin-MODIS_A-N-v02.0-fv01.0.nc4',
             'rel': 'data',
             'temporal': {'end': '2021-08-20T09:39:49.000Z',
                          'start': '2021-08-20T09:35:01.000Z'},
             'title': '20210820093501-JPL-L2P_GHRSST-SSTskin-MODIS_A-N-v02.0-fv01.0.nc4',
             'type': 'application/x-netcdf4'},
            {'bbox': [-96.8, 21.2, -83.1, 27.7],
-            'href': 'https://harmony.earthdata.nasa.gov/service-results/harmony-prod-staging/public/podaac/l2-subsetter/e10fca74-1931-4ce7-a384-6accfd2005fe/20210820185501-JPL-L2P_GHRSST-SSTskin-MODIS_A-D-v02.0-fv01.0_subsetted.nc4',
+            'href': 'https://harmony.earthdata.nasa.gov/service-results/harmony-prod-staging/public/podaac/l2-subsetter/cef7a7c7-c01c-4186-ac73-3e03f2940259/20210820185501-JPL-L2P_GHRSST-SSTskin-MODIS_A-D-v02.0-fv01.0_subsetted.nc4',
             'rel': 'data',
             'temporal': {'end': '2021-08-20T18:59:58.000Z',
                          'start': '2021-08-20T18:55:01.000Z'},
             'title': '20210820185501-JPL-L2P_GHRSST-SSTskin-MODIS_A-D-v02.0-fv01.0_subsetted.nc4',
             'type': 'application/x-netcdf4'},
            {'bbox': [-97.8, 25.3, -83.1, 30.2],
-            'href': 'https://harmony.earthdata.nasa.gov/service-results/harmony-prod-staging/public/podaac/l2-subsetter/e10fca74-1931-4ce7-a384-6accfd2005fe/20210820190001-JPL-L2P_GHRSST-SSTskin-MODIS_A-D-v02.0-fv01.0_subsetted.nc4',
+            'href': 'https://harmony.earthdata.nasa.gov/service-results/harmony-prod-staging/public/podaac/l2-subsetter/cef7a7c7-c01c-4186-ac73-3e03f2940259/20210820190001-JPL-L2P_GHRSST-SSTskin-MODIS_A-D-v02.0-fv01.0_subsetted.nc4',
             'rel': 'data',
             'temporal': {'end': '2021-08-20T19:04:58.000Z',
                          'start': '2021-08-20T19:00:01.000Z'},
             'title': '20210820190001-JPL-L2P_GHRSST-SSTskin-MODIS_A-D-v02.0-fv01.0_subsetted.nc4',
             'type': 'application/x-netcdf4'},
            {'bbox': [-97.8, 21.2, -97.3, 24.6],
-            'href': 'https://harmony.earthdata.nasa.gov/service-results/harmony-prod-staging/public/podaac/l2-subsetter/e10fca74-1931-4ce7-a384-6accfd2005fe/20210820203501-JPL-L2P_GHRSST-SSTskin-MODIS_A-D-v02.0-fv01.0_subsetted.nc4',
+            'href': 'https://harmony.earthdata.nasa.gov/service-results/harmony-prod-staging/public/podaac/l2-subsetter/cef7a7c7-c01c-4186-ac73-3e03f2940259/20210820203501-JPL-L2P_GHRSST-SSTskin-MODIS_A-D-v02.0-fv01.0_subsetted.nc4',
             'rel': 'data',
             'temporal': {'end': '2021-08-20T20:39:58.000Z',
                          'start': '2021-08-20T20:35:01.000Z'},
             'title': '20210820203501-JPL-L2P_GHRSST-SSTskin-MODIS_A-D-v02.0-fv01.0_subsetted.nc4',
             'type': 'application/x-netcdf4'},
-           {'href': 'https://harmony.earthdata.nasa.gov/jobs/02072e53-6035-426e-8235-4ec542e337a4?linktype=https&amp;page=1&amp;limit=2000',
+           {'href': 'https://harmony.earthdata.nasa.gov/jobs/e36f6916-a7d9-4d82-a5fa-924d48d464ef?linktype=https&amp;page=1&amp;limit=2000',
             'rel': 'self',
             'title': 'The current page',
             'type': 'application/json'}],
@@ -960,7 +1337,7 @@
  'progress': 100,
  'request': 'https://harmony.earthdata.nasa.gov/MODIS_A-JPL-L2P-v2019.0/ogc-api-coverages/1.0.0/collections/all/coverage/rangeset?forceAsync=true&amp;subset=lat(21.20806%3A30.16605)&amp;subset=lon(-97.77667%3A-83.05197)&amp;subset=time(%222021-08-20T00%3A00%3A00%22%3A%222021-08-21T00%3A00%3A00%22)',
  'status': 'successful',
- 'updatedAt': '2021-11-17T04:18:35.954Z',
+ 'updatedAt': '2021-11-19T17:45:17.148Z',
  'username': 'amy.steiker'}</code></pre>
 </div>
 </div>
@@ -972,49 +1349,49 @@
 <section id="retrieve-list-of-output-urls." class="level4">
 <h4 class="anchored" data-anchor-id="retrieve-list-of-output-urls.">Retrieve list of output URLs.</h4>
 <p>The result_urls() method calls wait_for_processing() and returns a list of the processed data URLs once processing is complete. You may optionally show the progress bar as shown below.</p>
-<div class="cell" data-execution_count="24">
-<div class="sourceCode" id="cb35"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> harmony_client.result_urls(job_id, link_type<span class="op">=</span>LinkType.s3)</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>urls <span class="op">=</span> <span class="bu">list</span>(results)</span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>pprint(urls)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="27">
+<div class="sourceCode" id="cb39"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> harmony_client.result_urls(job_id, link_type<span class="op">=</span>LinkType.s3)</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>urls <span class="op">=</span> <span class="bu">list</span>(results)</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>pprint(urls)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stdout">
-<pre><code>['s3://harmony-prod-staging/public/podaac/l2-subsetter/e10fca74-1931-4ce7-a384-6accfd2005fe/20210820062501-JPL-L2P_GHRSST-SSTskin-MODIS_A-N-v02.0-fv01.0.nc4',
- 's3://harmony-prod-staging/public/podaac/l2-subsetter/e10fca74-1931-4ce7-a384-6accfd2005fe/20210820080001-JPL-L2P_GHRSST-SSTskin-MODIS_A-N-v02.0-fv01.0_subsetted.nc4',
- 's3://harmony-prod-staging/public/podaac/l2-subsetter/e10fca74-1931-4ce7-a384-6accfd2005fe/20210820093501-JPL-L2P_GHRSST-SSTskin-MODIS_A-N-v02.0-fv01.0.nc4',
- 's3://harmony-prod-staging/public/podaac/l2-subsetter/e10fca74-1931-4ce7-a384-6accfd2005fe/20210820185501-JPL-L2P_GHRSST-SSTskin-MODIS_A-D-v02.0-fv01.0_subsetted.nc4',
- 's3://harmony-prod-staging/public/podaac/l2-subsetter/e10fca74-1931-4ce7-a384-6accfd2005fe/20210820190001-JPL-L2P_GHRSST-SSTskin-MODIS_A-D-v02.0-fv01.0_subsetted.nc4',
- 's3://harmony-prod-staging/public/podaac/l2-subsetter/e10fca74-1931-4ce7-a384-6accfd2005fe/20210820203501-JPL-L2P_GHRSST-SSTskin-MODIS_A-D-v02.0-fv01.0_subsetted.nc4']</code></pre>
+<pre><code>['s3://harmony-prod-staging/public/podaac/l2-subsetter/cef7a7c7-c01c-4186-ac73-3e03f2940259/20210820062501-JPL-L2P_GHRSST-SSTskin-MODIS_A-N-v02.0-fv01.0.nc4',
+ 's3://harmony-prod-staging/public/podaac/l2-subsetter/cef7a7c7-c01c-4186-ac73-3e03f2940259/20210820080001-JPL-L2P_GHRSST-SSTskin-MODIS_A-N-v02.0-fv01.0_subsetted.nc4',
+ 's3://harmony-prod-staging/public/podaac/l2-subsetter/cef7a7c7-c01c-4186-ac73-3e03f2940259/20210820093501-JPL-L2P_GHRSST-SSTskin-MODIS_A-N-v02.0-fv01.0.nc4',
+ 's3://harmony-prod-staging/public/podaac/l2-subsetter/cef7a7c7-c01c-4186-ac73-3e03f2940259/20210820185501-JPL-L2P_GHRSST-SSTskin-MODIS_A-D-v02.0-fv01.0_subsetted.nc4',
+ 's3://harmony-prod-staging/public/podaac/l2-subsetter/cef7a7c7-c01c-4186-ac73-3e03f2940259/20210820190001-JPL-L2P_GHRSST-SSTskin-MODIS_A-D-v02.0-fv01.0_subsetted.nc4',
+ 's3://harmony-prod-staging/public/podaac/l2-subsetter/cef7a7c7-c01c-4186-ac73-3e03f2940259/20210820203501-JPL-L2P_GHRSST-SSTskin-MODIS_A-D-v02.0-fv01.0_subsetted.nc4']</code></pre>
 </div>
 </div>
 <p>We can see that the first file returned does not include the <code>_subsetted</code> suffix, which indicates that a blank file was returned, as no data values were located within our subsetted region. We’ll select the second URL in the list to bring into xarray below.</p>
-<div class="cell" data-execution_count="25">
-<div class="sourceCode" id="cb37"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> urls[<span class="dv">1</span>]</span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>url</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display" data-execution_count="25">
-<pre><code>'s3://harmony-prod-staging/public/podaac/l2-subsetter/e10fca74-1931-4ce7-a384-6accfd2005fe/20210820080001-JPL-L2P_GHRSST-SSTskin-MODIS_A-N-v02.0-fv01.0_subsetted.nc4'</code></pre>
+<div class="cell" data-execution_count="28">
+<div class="sourceCode" id="cb41"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> urls[<span class="dv">1</span>]</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>url</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display" data-execution_count="28">
+<pre><code>'s3://harmony-prod-staging/public/podaac/l2-subsetter/cef7a7c7-c01c-4186-ac73-3e03f2940259/20210820080001-JPL-L2P_GHRSST-SSTskin-MODIS_A-N-v02.0-fv01.0_subsetted.nc4'</code></pre>
 </div>
 </div>
 </section>
 <section id="aws-credential-retrieval" class="level4">
 <h4 class="anchored" data-anchor-id="aws-credential-retrieval">AWS credential retrieval</h4>
 <p>Using aws_credentials you can retrieve the credentials needed to access the Harmony s3 staging bucket and its contents.</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>creds <span class="op">=</span> harmony_client.aws_credentials()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>creds <span class="op">=</span> harmony_client.aws_credentials()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="open-staged-files-with-s3fs-and-xarray" class="level3">
 <h3 class="anchored" data-anchor-id="open-staged-files-with-s3fs-and-xarray">Open staged files with <em>s3fs</em> and <em>xarray</em></h3>
 <p>We use the AWS <code>s3fs</code> package to create a file system that can then be read by xarray:</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>s3_fs <span class="op">=</span> s3fs.S3FileSystem(</span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>    key<span class="op">=</span>creds[<span class="st">'aws_access_key_id'</span>],</span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>    secret<span class="op">=</span>creds[<span class="st">'aws_secret_access_key'</span>],</span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>    token<span class="op">=</span>creds[<span class="st">'aws_session_token'</span>],</span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>    client_kwargs<span class="op">=</span>{<span class="st">'region_name'</span>:<span class="st">'us-west-2'</span>},</span>
-<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>s3_fs <span class="op">=</span> s3fs.S3FileSystem(</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>    key<span class="op">=</span>creds[<span class="st">'aws_access_key_id'</span>],</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>    secret<span class="op">=</span>creds[<span class="st">'aws_secret_access_key'</span>],</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>    token<span class="op">=</span>creds[<span class="st">'aws_session_token'</span>],</span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>    client_kwargs<span class="op">=</span>{<span class="st">'region_name'</span>:<span class="st">'us-west-2'</span>},</span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Now that we have our s3 file system set, including our declared credentials, we’ll use that to open the url, and read in the file through xarray. This extra step is needed because xarray cannot open the S3 location directly. Instead, the S3 file object is passed to xarray, in order to then open the dataset.</p>
-<div class="cell" data-execution_count="28">
-<div class="sourceCode" id="cb41"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> s3_fs.<span class="bu">open</span>(url, mode<span class="op">=</span><span class="st">'rb'</span>)</span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>ds <span class="op">=</span> xr.open_dataset(f)</span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>ds</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display" data-execution_count="28">
+<div class="cell" data-execution_count="31">
+<div class="sourceCode" id="cb45"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> s3_fs.<span class="bu">open</span>(url, mode<span class="op">=</span><span class="st">'rb'</span>)</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>ds <span class="op">=</span> xr.open_dataset(f)</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>ds</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display" data-execution_count="31">
 <div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
 <defs>
 <symbol id="icon-database" viewbox="0 0 32 32">
@@ -1392,25 +1769,25 @@ Attributes: (12/50)
     summary:                    Sea surface temperature retrievals produced a...
     references:                 GHRSST Data Processing Specification v2r5
     institution:                NASA/JPL/OBPG/RSMAS
-    history:                    MODIS L2P created at JPL PO.DAAC\n2021-11-17 ...
+    history:                    MODIS L2P created at JPL PO.DAAC\n2021-11-19 ...
     ...                         ...
     processing_level:           L2P
     cdm_data_type:              swath
     startDirection:             Descending
     endDirection:               Descending
     day_night_flag:             Night
-    history_json:               [{"date_time": "2021-11-17T04:18:15.487113+00...</pre><div class="xr-wrap" hidden=""><div class="xr-header"><div class="xr-obj-type">xarray.Dataset</div></div><ul class="xr-sections"><li class="xr-section-item"><input id="section-7f11659f-7351-4a23-a0ea-b9377fd4af0e" class="xr-section-summary-in" type="checkbox" disabled=""><label for="section-7f11659f-7351-4a23-a0ea-b9377fd4af0e" class="xr-section-summary" title="Expand/collapse section">Dimensions:</label><div class="xr-section-inline-details"><ul class="xr-dim-list"><li><span>nj</span>: 1232</li><li><span>ni</span>: 1132</li><li><span class="xr-has-index">time</span>: 1</li></ul></div><div class="xr-section-details"></div></li><li class="xr-section-item"><input id="section-ce891b64-1f5f-444f-872f-927c315c59b8" class="xr-section-summary-in" type="checkbox" checked=""><label for="section-ce891b64-1f5f-444f-872f-927c315c59b8" class="xr-section-summary">Coordinates: <span>(3)</span></label><div class="xr-section-inline-details"></div><div class="xr-section-details"><ul class="xr-var-list"><li class="xr-var-item"><div class="xr-var-name"><span>lat</span></div><div class="xr-var-dims">(nj, ni, time)</div><div class="xr-var-dtype">float32</div><div class="xr-var-preview xr-preview">...</div><input id="attrs-e65f2183-e884-4950-9e7c-fa499c26a37c" class="xr-var-attrs-in" type="checkbox"><label for="attrs-e65f2183-e884-4950-9e7c-fa499c26a37c" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-3d27bb69-165b-4ee6-ab5e-e5e975c923c6" class="xr-var-data-in" type="checkbox"><label for="data-3d27bb69-165b-4ee6-ab5e-e5e975c923c6" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>long_name :</span></dt><dd>latitude</dd><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd><dt><span>valid_min :</span></dt><dd>[-90.]</dd><dt><span>valid_max :</span></dt><dd>[90.]</dd><dt><span>comment :</span></dt><dd>geographical coordinates, WGS84 projection</dd><dt><span>coverage_content_type :</span></dt><dd>coordinate</dd></dl></div><div class="xr-var-data"><pre>[1394624 values with dtype=float32]</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>lon</span></div><div class="xr-var-dims">(nj, ni, time)</div><div class="xr-var-dtype">float32</div><div class="xr-var-preview xr-preview">...</div><input id="attrs-7595c305-cd21-427d-861c-72747ae23354" class="xr-var-attrs-in" type="checkbox"><label for="attrs-7595c305-cd21-427d-861c-72747ae23354" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-11579f99-d849-4f1b-97e0-dde0fc8928c3" class="xr-var-data-in" type="checkbox"><label for="data-11579f99-d849-4f1b-97e0-dde0fc8928c3" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>long_name :</span></dt><dd>longitude</dd><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degrees_east</dd><dt><span>valid_min :</span></dt><dd>[-180.]</dd><dt><span>valid_max :</span></dt><dd>[180.]</dd><dt><span>comment :</span></dt><dd>geographical coordinates, WGS84 projection</dd><dt><span>coverage_content_type :</span></dt><dd>coordinate</dd></dl></div><div class="xr-var-data"><pre>[1394624 values with dtype=float32]</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span class="xr-has-index">time</span></div><div class="xr-var-dims">(time)</div><div class="xr-var-dtype">datetime64[ns]</div><div class="xr-var-preview xr-preview">2021-08-20T08:00:01</div><input id="attrs-17583a99-d42f-45bd-b08a-356fa64bce4e" class="xr-var-attrs-in" type="checkbox"><label for="attrs-17583a99-d42f-45bd-b08a-356fa64bce4e" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-bc13e4c8-b6e7-45cb-9ae4-2b47d07d5ce4" class="xr-var-data-in" type="checkbox"><label for="data-bc13e4c8-b6e7-45cb-9ae4-2b47d07d5ce4" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>long_name :</span></dt><dd>reference time of sst file</dd><dt><span>standard_name :</span></dt><dd>time</dd><dt><span>comment :</span></dt><dd>time of first sensor observation</dd><dt><span>coverage_content_type :</span></dt><dd>coordinate</dd></dl></div><div class="xr-var-data"><pre>array(['2021-08-20T08:00:01.000000000'], dtype='datetime64[ns]')</pre></div></li></ul></div></li><li class="xr-section-item"><input id="section-848d698d-56d8-4090-88ca-9ac476101787" class="xr-section-summary-in" type="checkbox" checked=""><label for="section-848d698d-56d8-4090-88ca-9ac476101787" class="xr-section-summary">Data variables: <span>(12)</span></label><div class="xr-section-inline-details"></div><div class="xr-section-details"><ul class="xr-var-list"><li class="xr-var-item"><div class="xr-var-name"><span>sea_surface_temperature</span></div><div class="xr-var-dims">(time, nj, ni)</div><div class="xr-var-dtype">float32</div><div class="xr-var-preview xr-preview">...</div><input id="attrs-06d27fe7-8965-4ea4-a2dd-2d646593366b" class="xr-var-attrs-in" type="checkbox"><label for="attrs-06d27fe7-8965-4ea4-a2dd-2d646593366b" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-66929494-47f1-4475-8432-5b333b71d924" class="xr-var-data-in" type="checkbox"><label for="data-66929494-47f1-4475-8432-5b333b71d924" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>long_name :</span></dt><dd>sea surface temperature</dd><dt><span>standard_name :</span></dt><dd>sea_surface_skin_temperature</dd><dt><span>units :</span></dt><dd>kelvin</dd><dt><span>valid_min :</span></dt><dd>[-1000]</dd><dt><span>valid_max :</span></dt><dd>[10000]</dd><dt><span>comment :</span></dt><dd>sea surface temperature from thermal IR (11 um) channels</dd><dt><span>source :</span></dt><dd>NASA and University of Miami</dd><dt><span>coverage_content_type :</span></dt><dd>physicalMeasurement</dd></dl></div><div class="xr-var-data"><pre>[1394624 values with dtype=float32]</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>sst_dtime</span></div><div class="xr-var-dims">(time, nj, ni)</div><div class="xr-var-dtype">timedelta64[ns]</div><div class="xr-var-preview xr-preview">...</div><input id="attrs-731a7669-caa9-401a-b119-4c66b3d69582" class="xr-var-attrs-in" type="checkbox"><label for="attrs-731a7669-caa9-401a-b119-4c66b3d69582" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-51469bb3-67aa-430d-9392-a7c2eaf0d0b6" class="xr-var-data-in" type="checkbox"><label for="data-51469bb3-67aa-430d-9392-a7c2eaf0d0b6" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>long_name :</span></dt><dd>time difference from reference time</dd><dt><span>valid_min :</span></dt><dd>[-32767]</dd><dt><span>valid_max :</span></dt><dd>[32767]</dd><dt><span>comment :</span></dt><dd>time plus sst_dtime gives seconds after 00:00:00 UTC January 1, 1981</dd><dt><span>coverage_content_type :</span></dt><dd>referenceInformation</dd></dl></div><div class="xr-var-data"><pre>[1394624 values with dtype=timedelta64[ns]]</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>quality_level</span></div><div class="xr-var-dims">(time, nj, ni)</div><div class="xr-var-dtype">float32</div><div class="xr-var-preview xr-preview">...</div><input id="attrs-6ffa87fb-5045-493a-b4ff-75626a2e38b8" class="xr-var-attrs-in" type="checkbox"><label for="attrs-6ffa87fb-5045-493a-b4ff-75626a2e38b8" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-41b0a1eb-d5a9-4868-8e20-e36e9ea0a967" class="xr-var-data-in" type="checkbox"><label for="data-41b0a1eb-d5a9-4868-8e20-e36e9ea0a967" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>long_name :</span></dt><dd>quality level of SST pixel</dd><dt><span>valid_min :</span></dt><dd>[0]</dd><dt><span>valid_max :</span></dt><dd>[5]</dd><dt><span>comment :</span></dt><dd>thermal IR SST proximity confidence value; signed byte array: WARNING Some applications are unable to properly handle signed byte values. If values are encountered &gt; 127, please subtract 256 from this reported value</dd><dt><span>flag_values :</span></dt><dd>[0 1 2 3 4 5]</dd><dt><span>flag_meanings :</span></dt><dd>no_data bad_data worst_quality low_quality acceptable_quality best_quality</dd><dt><span>coverage_content_type :</span></dt><dd>qualityInformation</dd></dl></div><div class="xr-var-data"><pre>[1394624 values with dtype=float32]</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>sses_bias</span></div><div class="xr-var-dims">(time, nj, ni)</div><div class="xr-var-dtype">float32</div><div class="xr-var-preview xr-preview">...</div><input id="attrs-a7579718-67bc-4c02-afc8-d414366c8e24" class="xr-var-attrs-in" type="checkbox"><label for="attrs-a7579718-67bc-4c02-afc8-d414366c8e24" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-a62fb2f3-d7bc-40cd-9d02-c5b2fad3031c" class="xr-var-data-in" type="checkbox"><label for="data-a62fb2f3-d7bc-40cd-9d02-c5b2fad3031c" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>long_name :</span></dt><dd>SSES bias error based on proximity confidence flags</dd><dt><span>units :</span></dt><dd>kelvin</dd><dt><span>valid_min :</span></dt><dd>[-127]</dd><dt><span>valid_max :</span></dt><dd>[127]</dd><dt><span>comment :</span></dt><dd>thermal IR SST bias error; signed byte array: WARNING Some applications are unable to properly handle signed byte values. If values are encountered &gt; 127, please subtract 256 from this reported value</dd><dt><span>coverage_content_type :</span></dt><dd>auxiliaryInformation</dd></dl></div><div class="xr-var-data"><pre>[1394624 values with dtype=float32]</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>sses_standard_deviation</span></div><div class="xr-var-dims">(time, nj, ni)</div><div class="xr-var-dtype">float32</div><div class="xr-var-preview xr-preview">...</div><input id="attrs-46ab0275-86aa-4759-8f31-aa4145fe257f" class="xr-var-attrs-in" type="checkbox"><label for="attrs-46ab0275-86aa-4759-8f31-aa4145fe257f" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-78c35121-0c49-4b55-b2d5-84af0b3e57ee" class="xr-var-data-in" type="checkbox"><label for="data-78c35121-0c49-4b55-b2d5-84af0b3e57ee" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>long_name :</span></dt><dd>SSES standard deviation error based on proximity confidence flags</dd><dt><span>units :</span></dt><dd>kelvin</dd><dt><span>valid_min :</span></dt><dd>[-127]</dd><dt><span>valid_max :</span></dt><dd>[127]</dd><dt><span>comment :</span></dt><dd>thermal IR SST standard deviation error; signed byte array: WARNING Some applications are unable to properly handle signed byte values. If values are encountered &gt; 127, please subtract 256 from this reported value</dd><dt><span>coverage_content_type :</span></dt><dd>auxiliaryInformation</dd></dl></div><div class="xr-var-data"><pre>[1394624 values with dtype=float32]</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>l2p_flags</span></div><div class="xr-var-dims">(time, nj, ni)</div><div class="xr-var-dtype">int16</div><div class="xr-var-preview xr-preview">...</div><input id="attrs-63b1080a-e411-4b74-96d8-7e0a8bd7167a" class="xr-var-attrs-in" type="checkbox"><label for="attrs-63b1080a-e411-4b74-96d8-7e0a8bd7167a" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-ec1e77df-21f5-4f95-9eaf-7bda1de37c71" class="xr-var-data-in" type="checkbox"><label for="data-ec1e77df-21f5-4f95-9eaf-7bda1de37c71" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>long_name :</span></dt><dd>L2P flags</dd><dt><span>valid_min :</span></dt><dd>[0]</dd><dt><span>valid_max :</span></dt><dd>[16]</dd><dt><span>comment :</span></dt><dd>These flags can be used to further filter data variables</dd><dt><span>flag_meanings :</span></dt><dd>microwave land ice lake river</dd><dt><span>flag_masks :</span></dt><dd>[ 1  2  4  8 16]</dd><dt><span>coverage_content_type :</span></dt><dd>qualityInformation</dd></dl></div><div class="xr-var-data"><pre>[1394624 values with dtype=int16]</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>sea_surface_temperature_4um</span></div><div class="xr-var-dims">(time, nj, ni)</div><div class="xr-var-dtype">float32</div><div class="xr-var-preview xr-preview">...</div><input id="attrs-aabc04a0-d0d1-4491-88e6-b53e60007f1b" class="xr-var-attrs-in" type="checkbox"><label for="attrs-aabc04a0-d0d1-4491-88e6-b53e60007f1b" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-a125cc27-a302-4d3b-9eb3-cfebd403b452" class="xr-var-data-in" type="checkbox"><label for="data-a125cc27-a302-4d3b-9eb3-cfebd403b452" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>long_name :</span></dt><dd>sea surface temperature</dd><dt><span>units :</span></dt><dd>kelvin</dd><dt><span>valid_min :</span></dt><dd>[-1000]</dd><dt><span>valid_max :</span></dt><dd>[10000]</dd><dt><span>comment :</span></dt><dd>sea surface temperature from mid-IR (4 um) channels; non L2P core field</dd><dt><span>coverage_content_type :</span></dt><dd>physicalMeasurement</dd></dl></div><div class="xr-var-data"><pre>[1394624 values with dtype=float32]</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>quality_level_4um</span></div><div class="xr-var-dims">(time, nj, ni)</div><div class="xr-var-dtype">float32</div><div class="xr-var-preview xr-preview">...</div><input id="attrs-74e0cd6c-5a15-491f-b0cb-99e2d8d7b73b" class="xr-var-attrs-in" type="checkbox"><label for="attrs-74e0cd6c-5a15-491f-b0cb-99e2d8d7b73b" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-f18f61a2-c2c4-4019-b5e8-5b8d6a2813f0" class="xr-var-data-in" type="checkbox"><label for="data-f18f61a2-c2c4-4019-b5e8-5b8d6a2813f0" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>long_name :</span></dt><dd>quality level of SST pixel</dd><dt><span>valid_min :</span></dt><dd>[0]</dd><dt><span>valid_max :</span></dt><dd>[5]</dd><dt><span>comment :</span></dt><dd>mid-IR SST proximity confidence value; non L2P core field; signed byte array:  WARNING Some applications are unable to properly handle signed byte values. If values are encountered &gt; 127, please subtract 256 from this reported value</dd><dt><span>flag_values :</span></dt><dd>[0 1 2 3 4 5]</dd><dt><span>flag_meanings :</span></dt><dd>no_data bad_data worst_quality low_quality acceptable_quality best_quality</dd><dt><span>coverage_content_type :</span></dt><dd>qualityInformation</dd></dl></div><div class="xr-var-data"><pre>[1394624 values with dtype=float32]</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>sses_bias_4um</span></div><div class="xr-var-dims">(time, nj, ni)</div><div class="xr-var-dtype">float32</div><div class="xr-var-preview xr-preview">...</div><input id="attrs-adfc37fa-5fa9-4c3f-9c50-6faa8087661c" class="xr-var-attrs-in" type="checkbox"><label for="attrs-adfc37fa-5fa9-4c3f-9c50-6faa8087661c" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-e56c4480-9c1c-4b91-94e0-51e02501bff2" class="xr-var-data-in" type="checkbox"><label for="data-e56c4480-9c1c-4b91-94e0-51e02501bff2" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>long_name :</span></dt><dd>SSES bias error based on proximity confidence flags</dd><dt><span>units :</span></dt><dd>kelvin</dd><dt><span>valid_min :</span></dt><dd>[-127]</dd><dt><span>valid_max :</span></dt><dd>[127]</dd><dt><span>comment :</span></dt><dd>mid-IR SST bias error; non L2P core field; signed byte array:  WARNING Some applications are unable to properly handle signed byte values. If values are encountered &gt; 127, please subtract 256 from this reported value</dd><dt><span>coverage_content_type :</span></dt><dd>auxiliaryInformation</dd></dl></div><div class="xr-var-data"><pre>[1394624 values with dtype=float32]</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>sses_standard_deviation_4um</span></div><div class="xr-var-dims">(time, nj, ni)</div><div class="xr-var-dtype">float32</div><div class="xr-var-preview xr-preview">...</div><input id="attrs-f81f5bc8-4e74-467c-8014-7728a9631113" class="xr-var-attrs-in" type="checkbox"><label for="attrs-f81f5bc8-4e74-467c-8014-7728a9631113" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-a21b650d-1e80-4cbe-a8f5-45f6c2cbcfa0" class="xr-var-data-in" type="checkbox"><label for="data-a21b650d-1e80-4cbe-a8f5-45f6c2cbcfa0" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>long_name :</span></dt><dd>SSES standard deviation error based on proximity confidence flags</dd><dt><span>units :</span></dt><dd>kelvin</dd><dt><span>valid_min :</span></dt><dd>[-127]</dd><dt><span>valid_max :</span></dt><dd>[127]</dd><dt><span>comment :</span></dt><dd>mid-IR SST standard deviation error; non L2P core field; signed byte array:  WARNING Some applications are unable to properly handle signed byte values. If values are encountered &gt; 127, please subtract 256 from this reported value</dd><dt><span>coverage_content_type :</span></dt><dd>auxiliaryInformation</dd></dl></div><div class="xr-var-data"><pre>[1394624 values with dtype=float32]</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>wind_speed</span></div><div class="xr-var-dims">(time, nj, ni)</div><div class="xr-var-dtype">float32</div><div class="xr-var-preview xr-preview">...</div><input id="attrs-e45dff56-9581-4573-b16d-1a54614c81e0" class="xr-var-attrs-in" type="checkbox"><label for="attrs-e45dff56-9581-4573-b16d-1a54614c81e0" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-75b210d2-cdc8-42c9-9817-87ed09c98018" class="xr-var-data-in" type="checkbox"><label for="data-75b210d2-cdc8-42c9-9817-87ed09c98018" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>long_name :</span></dt><dd>10m wind speed</dd><dt><span>standard_name :</span></dt><dd>wind_speed</dd><dt><span>units :</span></dt><dd>m s-1</dd><dt><span>valid_min :</span></dt><dd>[-127]</dd><dt><span>valid_max :</span></dt><dd>[127]</dd><dt><span>comment :</span></dt><dd>Wind at 10 meters above the sea surface</dd><dt><span>source :</span></dt><dd>TBD.  Placeholder.  Currently empty</dd><dt><span>grid_mapping :</span></dt><dd>TBD</dd><dt><span>time_offset :</span></dt><dd>[2.]</dd><dt><span>height :</span></dt><dd>10 m</dd><dt><span>coverage_content_type :</span></dt><dd>auxiliaryInformation</dd></dl></div><div class="xr-var-data"><pre>[1394624 values with dtype=float32]</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>dt_analysis</span></div><div class="xr-var-dims">(time, nj, ni)</div><div class="xr-var-dtype">float32</div><div class="xr-var-preview xr-preview">...</div><input id="attrs-fe514f23-8f82-4b6b-9c9e-b3ad3a7f4aa2" class="xr-var-attrs-in" type="checkbox"><label for="attrs-fe514f23-8f82-4b6b-9c9e-b3ad3a7f4aa2" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-466a8367-51f9-42b2-ba73-262140d84196" class="xr-var-data-in" type="checkbox"><label for="data-466a8367-51f9-42b2-ba73-262140d84196" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>long_name :</span></dt><dd>deviation from SST reference climatology</dd><dt><span>units :</span></dt><dd>kelvin</dd><dt><span>valid_min :</span></dt><dd>[-127]</dd><dt><span>valid_max :</span></dt><dd>[127]</dd><dt><span>comment :</span></dt><dd>TBD</dd><dt><span>source :</span></dt><dd>TBD. Placeholder.  Currently empty</dd><dt><span>coverage_content_type :</span></dt><dd>auxiliaryInformation</dd></dl></div><div class="xr-var-data"><pre>[1394624 values with dtype=float32]</pre></div></li></ul></div></li><li class="xr-section-item"><input id="section-4da62665-b01e-475b-b245-e53e56474f73" class="xr-section-summary-in" type="checkbox"><label for="section-4da62665-b01e-475b-b245-e53e56474f73" class="xr-section-summary">Attributes: <span>(50)</span></label><div class="xr-section-inline-details"></div><div class="xr-section-details"><dl class="xr-attrs"><dt><span>Conventions :</span></dt><dd>CF-1.7, ACDD-1.3</dd><dt><span>title :</span></dt><dd>MODIS Aqua L2P SST</dd><dt><span>summary :</span></dt><dd>Sea surface temperature retrievals produced at the NASA OBPG for the MODIS Aqua sensor.  These have been reformatted to GHRSST GDS specifications by the JPL PO.DAAC</dd><dt><span>references :</span></dt><dd>GHRSST Data Processing Specification v2r5</dd><dt><span>institution :</span></dt><dd>NASA/JPL/OBPG/RSMAS</dd><dt><span>history :</span></dt><dd>MODIS L2P created at JPL PO.DAAC
-2021-11-17 04:18:15.487076 l2ss-py v1.1.0 (bbox=[[-97.77667, -83.05197], [21.20806, 30.16605]] cut=True)</dd><dt><span>comment :</span></dt><dd>L2P Core without DT analysis or other ancillary fields; Night, Start Node:Descending, End Node:Descending; WARNING Some applications are unable to properly handle signed byte values. If values are encountered &gt; 127, please subtract 256 from this reported value; Quicklook</dd><dt><span>license :</span></dt><dd>GHRSST and PO.DAAC protocol allow data use as free and open.</dd><dt><span>id :</span></dt><dd>MODIS_A-JPL-L2P-v2019.0</dd><dt><span>naming_authority :</span></dt><dd>org.ghrsst</dd><dt><span>product_version :</span></dt><dd>2019.0</dd><dt><span>uuid :</span></dt><dd>f6e1f61d-c4a4-4c17-8354-0c15e12d688b</dd><dt><span>gds_version_id :</span></dt><dd>2.0</dd><dt><span>netcdf_version_id :</span></dt><dd>4.1</dd><dt><span>date_created :</span></dt><dd>20210820T110619Z</dd><dt><span>file_quality_level :</span></dt><dd>[3]</dd><dt><span>spatial_resolution :</span></dt><dd>1km</dd><dt><span>start_time :</span></dt><dd>20210820T080001Z</dd><dt><span>time_coverage_start :</span></dt><dd>20210820T080001Z</dd><dt><span>stop_time :</span></dt><dd>20210820T080458Z</dd><dt><span>time_coverage_end :</span></dt><dd>20210820T080458Z</dd><dt><span>northernmost_latitude :</span></dt><dd>[35.9455]</dd><dt><span>southernmost_latitude :</span></dt><dd>[14.8953]</dd><dt><span>easternmost_longitude :</span></dt><dd>[-78.2345]</dd><dt><span>westernmost_longitude :</span></dt><dd>[-105.765]</dd><dt><span>source :</span></dt><dd>MODIS sea surface temperature observations for the OBPG</dd><dt><span>platform :</span></dt><dd>Aqua</dd><dt><span>sensor :</span></dt><dd>MODIS</dd><dt><span>metadata_link :</span></dt><dd>http://podaac.jpl.nasa.gov/ws/metadata/dataset/?format=iso&amp;shortName=MODIS_A-JPL-L2P-v2019.0</dd><dt><span>keywords :</span></dt><dd>Oceans &gt; Ocean Temperature &gt; Sea Surface Temperature</dd><dt><span>keywords_vocabulary :</span></dt><dd>NASA Global Change Master Directory (GCMD) Science Keywords</dd><dt><span>standard_name_vocabulary :</span></dt><dd>NetCDF Climate and Forecast (CF) Metadata Convention</dd><dt><span>geospatial_lat_units :</span></dt><dd>degrees_north</dd><dt><span>geospatial_lat_resolution :</span></dt><dd>[0.01]</dd><dt><span>geospatial_lon_units :</span></dt><dd>degrees_east</dd><dt><span>geospatial_lon_resolution :</span></dt><dd>[0.01]</dd><dt><span>acknowledgment :</span></dt><dd>The MODIS L2P sea surface temperature data are sponsored by NASA</dd><dt><span>creator_name :</span></dt><dd>Ed Armstrong, JPL PO.DAAC</dd><dt><span>creator_email :</span></dt><dd>edward.m.armstrong@jpl.nasa.gov</dd><dt><span>creator_url :</span></dt><dd>http://podaac.jpl.nasa.gov</dd><dt><span>project :</span></dt><dd>Group for High Resolution Sea Surface Temperature</dd><dt><span>publisher_name :</span></dt><dd>The GHRSST Project Office</dd><dt><span>publisher_url :</span></dt><dd>http://www.ghrsst.org</dd><dt><span>publisher_email :</span></dt><dd>ghrsst-po@nceo.ac.uk</dd><dt><span>processing_level :</span></dt><dd>L2P</dd><dt><span>cdm_data_type :</span></dt><dd>swath</dd><dt><span>startDirection :</span></dt><dd>Descending</dd><dt><span>endDirection :</span></dt><dd>Descending</dd><dt><span>day_night_flag :</span></dt><dd>Night</dd><dt><span>history_json :</span></dt><dd>[{"date_time": "2021-11-17T04:18:15.487113+00:00", "derived_from": "https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-protected/MODIS_A-JPL-L2P-v2019.0/20210820080001-JPL-L2P_GHRSST-SSTskin-MODIS_A-N-v02.0-fv01.0.nc", "program": "l2ss-py", "version": "1.1.0", "parameters": "bbox=[[-97.77667, -83.05197], [21.20806, 30.16605]] cut=True", "program_ref": "https://cmr.earthdata.nasa.gov:443/search/concepts/S1962070864-POCLOUD", "$schema": "https://harmony.earthdata.nasa.gov/schemas/history/0.1.0/history-v0.1.0.json"}]</dd></dl></div></li></ul></div></div>
+    history_json:               [{"date_time": "2021-11-19T17:44:56.897126+00...</pre><div class="xr-wrap" hidden=""><div class="xr-header"><div class="xr-obj-type">xarray.Dataset</div></div><ul class="xr-sections"><li class="xr-section-item"><input id="section-59d882a7-bd6a-4699-91c6-1253762f1f9e" class="xr-section-summary-in" type="checkbox" disabled=""><label for="section-59d882a7-bd6a-4699-91c6-1253762f1f9e" class="xr-section-summary" title="Expand/collapse section">Dimensions:</label><div class="xr-section-inline-details"><ul class="xr-dim-list"><li><span>nj</span>: 1232</li><li><span>ni</span>: 1132</li><li><span class="xr-has-index">time</span>: 1</li></ul></div><div class="xr-section-details"></div></li><li class="xr-section-item"><input id="section-48e03c7d-329c-4f16-9d98-0f454decc4e8" class="xr-section-summary-in" type="checkbox" checked=""><label for="section-48e03c7d-329c-4f16-9d98-0f454decc4e8" class="xr-section-summary">Coordinates: <span>(3)</span></label><div class="xr-section-inline-details"></div><div class="xr-section-details"><ul class="xr-var-list"><li class="xr-var-item"><div class="xr-var-name"><span>lat</span></div><div class="xr-var-dims">(nj, ni, time)</div><div class="xr-var-dtype">float32</div><div class="xr-var-preview xr-preview">...</div><input id="attrs-4823364c-b86f-45ea-9d8f-07166919431c" class="xr-var-attrs-in" type="checkbox"><label for="attrs-4823364c-b86f-45ea-9d8f-07166919431c" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-cf74b7ba-a9f0-40ab-a75e-e6156e48514f" class="xr-var-data-in" type="checkbox"><label for="data-cf74b7ba-a9f0-40ab-a75e-e6156e48514f" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>long_name :</span></dt><dd>latitude</dd><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd><dt><span>valid_min :</span></dt><dd>[-90.]</dd><dt><span>valid_max :</span></dt><dd>[90.]</dd><dt><span>comment :</span></dt><dd>geographical coordinates, WGS84 projection</dd><dt><span>coverage_content_type :</span></dt><dd>coordinate</dd></dl></div><div class="xr-var-data"><pre>[1394624 values with dtype=float32]</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>lon</span></div><div class="xr-var-dims">(nj, ni, time)</div><div class="xr-var-dtype">float32</div><div class="xr-var-preview xr-preview">...</div><input id="attrs-838c7786-a99c-45f6-8ab3-ce4fdfd61a21" class="xr-var-attrs-in" type="checkbox"><label for="attrs-838c7786-a99c-45f6-8ab3-ce4fdfd61a21" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-d280d459-feaf-4fb6-a5e8-4e6d6317882b" class="xr-var-data-in" type="checkbox"><label for="data-d280d459-feaf-4fb6-a5e8-4e6d6317882b" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>long_name :</span></dt><dd>longitude</dd><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degrees_east</dd><dt><span>valid_min :</span></dt><dd>[-180.]</dd><dt><span>valid_max :</span></dt><dd>[180.]</dd><dt><span>comment :</span></dt><dd>geographical coordinates, WGS84 projection</dd><dt><span>coverage_content_type :</span></dt><dd>coordinate</dd></dl></div><div class="xr-var-data"><pre>[1394624 values with dtype=float32]</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span class="xr-has-index">time</span></div><div class="xr-var-dims">(time)</div><div class="xr-var-dtype">datetime64[ns]</div><div class="xr-var-preview xr-preview">2021-08-20T08:00:01</div><input id="attrs-38055c4b-b80d-4ab5-8228-7dfcb463e080" class="xr-var-attrs-in" type="checkbox"><label for="attrs-38055c4b-b80d-4ab5-8228-7dfcb463e080" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-c5081d15-9b2f-4ccd-8abb-387bdde44ffc" class="xr-var-data-in" type="checkbox"><label for="data-c5081d15-9b2f-4ccd-8abb-387bdde44ffc" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>long_name :</span></dt><dd>reference time of sst file</dd><dt><span>standard_name :</span></dt><dd>time</dd><dt><span>comment :</span></dt><dd>time of first sensor observation</dd><dt><span>coverage_content_type :</span></dt><dd>coordinate</dd></dl></div><div class="xr-var-data"><pre>array(['2021-08-20T08:00:01.000000000'], dtype='datetime64[ns]')</pre></div></li></ul></div></li><li class="xr-section-item"><input id="section-9522e110-7708-46d1-a8aa-bc4ec5761251" class="xr-section-summary-in" type="checkbox" checked=""><label for="section-9522e110-7708-46d1-a8aa-bc4ec5761251" class="xr-section-summary">Data variables: <span>(12)</span></label><div class="xr-section-inline-details"></div><div class="xr-section-details"><ul class="xr-var-list"><li class="xr-var-item"><div class="xr-var-name"><span>sea_surface_temperature</span></div><div class="xr-var-dims">(time, nj, ni)</div><div class="xr-var-dtype">float32</div><div class="xr-var-preview xr-preview">...</div><input id="attrs-1da94112-b4b0-402f-a119-e8b73304dcad" class="xr-var-attrs-in" type="checkbox"><label for="attrs-1da94112-b4b0-402f-a119-e8b73304dcad" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-e2694d69-0b07-4d35-80ef-5c84b24cb8a5" class="xr-var-data-in" type="checkbox"><label for="data-e2694d69-0b07-4d35-80ef-5c84b24cb8a5" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>long_name :</span></dt><dd>sea surface temperature</dd><dt><span>standard_name :</span></dt><dd>sea_surface_skin_temperature</dd><dt><span>units :</span></dt><dd>kelvin</dd><dt><span>valid_min :</span></dt><dd>[-1000]</dd><dt><span>valid_max :</span></dt><dd>[10000]</dd><dt><span>comment :</span></dt><dd>sea surface temperature from thermal IR (11 um) channels</dd><dt><span>source :</span></dt><dd>NASA and University of Miami</dd><dt><span>coverage_content_type :</span></dt><dd>physicalMeasurement</dd></dl></div><div class="xr-var-data"><pre>[1394624 values with dtype=float32]</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>sst_dtime</span></div><div class="xr-var-dims">(time, nj, ni)</div><div class="xr-var-dtype">timedelta64[ns]</div><div class="xr-var-preview xr-preview">...</div><input id="attrs-378b74af-0674-4b07-8a46-6e8e60ab1252" class="xr-var-attrs-in" type="checkbox"><label for="attrs-378b74af-0674-4b07-8a46-6e8e60ab1252" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-cdd0deff-5d3a-4dd0-b1e9-486fcf64915a" class="xr-var-data-in" type="checkbox"><label for="data-cdd0deff-5d3a-4dd0-b1e9-486fcf64915a" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>long_name :</span></dt><dd>time difference from reference time</dd><dt><span>valid_min :</span></dt><dd>[-32767]</dd><dt><span>valid_max :</span></dt><dd>[32767]</dd><dt><span>comment :</span></dt><dd>time plus sst_dtime gives seconds after 00:00:00 UTC January 1, 1981</dd><dt><span>coverage_content_type :</span></dt><dd>referenceInformation</dd></dl></div><div class="xr-var-data"><pre>[1394624 values with dtype=timedelta64[ns]]</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>quality_level</span></div><div class="xr-var-dims">(time, nj, ni)</div><div class="xr-var-dtype">float32</div><div class="xr-var-preview xr-preview">...</div><input id="attrs-77fb1fd8-7cd4-4084-b582-ccd605738578" class="xr-var-attrs-in" type="checkbox"><label for="attrs-77fb1fd8-7cd4-4084-b582-ccd605738578" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-b5197253-d99d-4bd2-9d2e-e7424bc53402" class="xr-var-data-in" type="checkbox"><label for="data-b5197253-d99d-4bd2-9d2e-e7424bc53402" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>long_name :</span></dt><dd>quality level of SST pixel</dd><dt><span>valid_min :</span></dt><dd>[0]</dd><dt><span>valid_max :</span></dt><dd>[5]</dd><dt><span>comment :</span></dt><dd>thermal IR SST proximity confidence value; signed byte array: WARNING Some applications are unable to properly handle signed byte values. If values are encountered &gt; 127, please subtract 256 from this reported value</dd><dt><span>flag_values :</span></dt><dd>[0 1 2 3 4 5]</dd><dt><span>flag_meanings :</span></dt><dd>no_data bad_data worst_quality low_quality acceptable_quality best_quality</dd><dt><span>coverage_content_type :</span></dt><dd>qualityInformation</dd></dl></div><div class="xr-var-data"><pre>[1394624 values with dtype=float32]</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>sses_bias</span></div><div class="xr-var-dims">(time, nj, ni)</div><div class="xr-var-dtype">float32</div><div class="xr-var-preview xr-preview">...</div><input id="attrs-7b950c49-8428-41bf-a35b-27f43b9b5c6a" class="xr-var-attrs-in" type="checkbox"><label for="attrs-7b950c49-8428-41bf-a35b-27f43b9b5c6a" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-e2c53c0a-388b-4dd3-843f-3b540363dc8f" class="xr-var-data-in" type="checkbox"><label for="data-e2c53c0a-388b-4dd3-843f-3b540363dc8f" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>long_name :</span></dt><dd>SSES bias error based on proximity confidence flags</dd><dt><span>units :</span></dt><dd>kelvin</dd><dt><span>valid_min :</span></dt><dd>[-127]</dd><dt><span>valid_max :</span></dt><dd>[127]</dd><dt><span>comment :</span></dt><dd>thermal IR SST bias error; signed byte array: WARNING Some applications are unable to properly handle signed byte values. If values are encountered &gt; 127, please subtract 256 from this reported value</dd><dt><span>coverage_content_type :</span></dt><dd>auxiliaryInformation</dd></dl></div><div class="xr-var-data"><pre>[1394624 values with dtype=float32]</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>sses_standard_deviation</span></div><div class="xr-var-dims">(time, nj, ni)</div><div class="xr-var-dtype">float32</div><div class="xr-var-preview xr-preview">...</div><input id="attrs-45049839-0343-4373-a58f-f43ab9265925" class="xr-var-attrs-in" type="checkbox"><label for="attrs-45049839-0343-4373-a58f-f43ab9265925" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-499e1f37-f2bf-4cc5-be30-3b8dc09e4516" class="xr-var-data-in" type="checkbox"><label for="data-499e1f37-f2bf-4cc5-be30-3b8dc09e4516" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>long_name :</span></dt><dd>SSES standard deviation error based on proximity confidence flags</dd><dt><span>units :</span></dt><dd>kelvin</dd><dt><span>valid_min :</span></dt><dd>[-127]</dd><dt><span>valid_max :</span></dt><dd>[127]</dd><dt><span>comment :</span></dt><dd>thermal IR SST standard deviation error; signed byte array: WARNING Some applications are unable to properly handle signed byte values. If values are encountered &gt; 127, please subtract 256 from this reported value</dd><dt><span>coverage_content_type :</span></dt><dd>auxiliaryInformation</dd></dl></div><div class="xr-var-data"><pre>[1394624 values with dtype=float32]</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>l2p_flags</span></div><div class="xr-var-dims">(time, nj, ni)</div><div class="xr-var-dtype">int16</div><div class="xr-var-preview xr-preview">...</div><input id="attrs-dc7a4c15-f270-462a-a810-d8494f7c8a5d" class="xr-var-attrs-in" type="checkbox"><label for="attrs-dc7a4c15-f270-462a-a810-d8494f7c8a5d" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-79e18fcb-a18c-4248-9bf4-e32f9e80f0b1" class="xr-var-data-in" type="checkbox"><label for="data-79e18fcb-a18c-4248-9bf4-e32f9e80f0b1" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>long_name :</span></dt><dd>L2P flags</dd><dt><span>valid_min :</span></dt><dd>[0]</dd><dt><span>valid_max :</span></dt><dd>[16]</dd><dt><span>comment :</span></dt><dd>These flags can be used to further filter data variables</dd><dt><span>flag_meanings :</span></dt><dd>microwave land ice lake river</dd><dt><span>flag_masks :</span></dt><dd>[ 1  2  4  8 16]</dd><dt><span>coverage_content_type :</span></dt><dd>qualityInformation</dd></dl></div><div class="xr-var-data"><pre>[1394624 values with dtype=int16]</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>sea_surface_temperature_4um</span></div><div class="xr-var-dims">(time, nj, ni)</div><div class="xr-var-dtype">float32</div><div class="xr-var-preview xr-preview">...</div><input id="attrs-80940a1b-6f94-4042-a2b5-4389662332b3" class="xr-var-attrs-in" type="checkbox"><label for="attrs-80940a1b-6f94-4042-a2b5-4389662332b3" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-55bcae52-e011-47d5-9794-dce62aeb40fc" class="xr-var-data-in" type="checkbox"><label for="data-55bcae52-e011-47d5-9794-dce62aeb40fc" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>long_name :</span></dt><dd>sea surface temperature</dd><dt><span>units :</span></dt><dd>kelvin</dd><dt><span>valid_min :</span></dt><dd>[-1000]</dd><dt><span>valid_max :</span></dt><dd>[10000]</dd><dt><span>comment :</span></dt><dd>sea surface temperature from mid-IR (4 um) channels; non L2P core field</dd><dt><span>coverage_content_type :</span></dt><dd>physicalMeasurement</dd></dl></div><div class="xr-var-data"><pre>[1394624 values with dtype=float32]</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>quality_level_4um</span></div><div class="xr-var-dims">(time, nj, ni)</div><div class="xr-var-dtype">float32</div><div class="xr-var-preview xr-preview">...</div><input id="attrs-1ba1ca61-2555-44ae-8348-851f68af22b6" class="xr-var-attrs-in" type="checkbox"><label for="attrs-1ba1ca61-2555-44ae-8348-851f68af22b6" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-83a56939-c993-4357-9bc1-eb93ee713120" class="xr-var-data-in" type="checkbox"><label for="data-83a56939-c993-4357-9bc1-eb93ee713120" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>long_name :</span></dt><dd>quality level of SST pixel</dd><dt><span>valid_min :</span></dt><dd>[0]</dd><dt><span>valid_max :</span></dt><dd>[5]</dd><dt><span>comment :</span></dt><dd>mid-IR SST proximity confidence value; non L2P core field; signed byte array:  WARNING Some applications are unable to properly handle signed byte values. If values are encountered &gt; 127, please subtract 256 from this reported value</dd><dt><span>flag_values :</span></dt><dd>[0 1 2 3 4 5]</dd><dt><span>flag_meanings :</span></dt><dd>no_data bad_data worst_quality low_quality acceptable_quality best_quality</dd><dt><span>coverage_content_type :</span></dt><dd>qualityInformation</dd></dl></div><div class="xr-var-data"><pre>[1394624 values with dtype=float32]</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>sses_bias_4um</span></div><div class="xr-var-dims">(time, nj, ni)</div><div class="xr-var-dtype">float32</div><div class="xr-var-preview xr-preview">...</div><input id="attrs-82795a22-406d-4039-851c-374f2cd1ccf7" class="xr-var-attrs-in" type="checkbox"><label for="attrs-82795a22-406d-4039-851c-374f2cd1ccf7" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-931c3ecc-e59c-4e93-8b14-d9ca8e185005" class="xr-var-data-in" type="checkbox"><label for="data-931c3ecc-e59c-4e93-8b14-d9ca8e185005" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>long_name :</span></dt><dd>SSES bias error based on proximity confidence flags</dd><dt><span>units :</span></dt><dd>kelvin</dd><dt><span>valid_min :</span></dt><dd>[-127]</dd><dt><span>valid_max :</span></dt><dd>[127]</dd><dt><span>comment :</span></dt><dd>mid-IR SST bias error; non L2P core field; signed byte array:  WARNING Some applications are unable to properly handle signed byte values. If values are encountered &gt; 127, please subtract 256 from this reported value</dd><dt><span>coverage_content_type :</span></dt><dd>auxiliaryInformation</dd></dl></div><div class="xr-var-data"><pre>[1394624 values with dtype=float32]</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>sses_standard_deviation_4um</span></div><div class="xr-var-dims">(time, nj, ni)</div><div class="xr-var-dtype">float32</div><div class="xr-var-preview xr-preview">...</div><input id="attrs-4876c5f8-3840-447d-ac86-d16900581107" class="xr-var-attrs-in" type="checkbox"><label for="attrs-4876c5f8-3840-447d-ac86-d16900581107" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-d864045e-922f-495c-8d1a-a322c2033be8" class="xr-var-data-in" type="checkbox"><label for="data-d864045e-922f-495c-8d1a-a322c2033be8" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>long_name :</span></dt><dd>SSES standard deviation error based on proximity confidence flags</dd><dt><span>units :</span></dt><dd>kelvin</dd><dt><span>valid_min :</span></dt><dd>[-127]</dd><dt><span>valid_max :</span></dt><dd>[127]</dd><dt><span>comment :</span></dt><dd>mid-IR SST standard deviation error; non L2P core field; signed byte array:  WARNING Some applications are unable to properly handle signed byte values. If values are encountered &gt; 127, please subtract 256 from this reported value</dd><dt><span>coverage_content_type :</span></dt><dd>auxiliaryInformation</dd></dl></div><div class="xr-var-data"><pre>[1394624 values with dtype=float32]</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>wind_speed</span></div><div class="xr-var-dims">(time, nj, ni)</div><div class="xr-var-dtype">float32</div><div class="xr-var-preview xr-preview">...</div><input id="attrs-b6455be6-bbee-4bc8-aee6-3a196b229f4c" class="xr-var-attrs-in" type="checkbox"><label for="attrs-b6455be6-bbee-4bc8-aee6-3a196b229f4c" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-e9939b8e-644e-4bb8-8c23-49bc0d674655" class="xr-var-data-in" type="checkbox"><label for="data-e9939b8e-644e-4bb8-8c23-49bc0d674655" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>long_name :</span></dt><dd>10m wind speed</dd><dt><span>standard_name :</span></dt><dd>wind_speed</dd><dt><span>units :</span></dt><dd>m s-1</dd><dt><span>valid_min :</span></dt><dd>[-127]</dd><dt><span>valid_max :</span></dt><dd>[127]</dd><dt><span>comment :</span></dt><dd>Wind at 10 meters above the sea surface</dd><dt><span>source :</span></dt><dd>TBD.  Placeholder.  Currently empty</dd><dt><span>grid_mapping :</span></dt><dd>TBD</dd><dt><span>time_offset :</span></dt><dd>[2.]</dd><dt><span>height :</span></dt><dd>10 m</dd><dt><span>coverage_content_type :</span></dt><dd>auxiliaryInformation</dd></dl></div><div class="xr-var-data"><pre>[1394624 values with dtype=float32]</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>dt_analysis</span></div><div class="xr-var-dims">(time, nj, ni)</div><div class="xr-var-dtype">float32</div><div class="xr-var-preview xr-preview">...</div><input id="attrs-ded04083-8786-405c-a0fe-d62aefe0eacd" class="xr-var-attrs-in" type="checkbox"><label for="attrs-ded04083-8786-405c-a0fe-d62aefe0eacd" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-5c6929d0-9349-4d7b-ac76-c47fc423ecbc" class="xr-var-data-in" type="checkbox"><label for="data-5c6929d0-9349-4d7b-ac76-c47fc423ecbc" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>long_name :</span></dt><dd>deviation from SST reference climatology</dd><dt><span>units :</span></dt><dd>kelvin</dd><dt><span>valid_min :</span></dt><dd>[-127]</dd><dt><span>valid_max :</span></dt><dd>[127]</dd><dt><span>comment :</span></dt><dd>TBD</dd><dt><span>source :</span></dt><dd>TBD. Placeholder.  Currently empty</dd><dt><span>coverage_content_type :</span></dt><dd>auxiliaryInformation</dd></dl></div><div class="xr-var-data"><pre>[1394624 values with dtype=float32]</pre></div></li></ul></div></li><li class="xr-section-item"><input id="section-216288ec-be23-4160-92db-5f16ef29e125" class="xr-section-summary-in" type="checkbox"><label for="section-216288ec-be23-4160-92db-5f16ef29e125" class="xr-section-summary">Attributes: <span>(50)</span></label><div class="xr-section-inline-details"></div><div class="xr-section-details"><dl class="xr-attrs"><dt><span>Conventions :</span></dt><dd>CF-1.7, ACDD-1.3</dd><dt><span>title :</span></dt><dd>MODIS Aqua L2P SST</dd><dt><span>summary :</span></dt><dd>Sea surface temperature retrievals produced at the NASA OBPG for the MODIS Aqua sensor.  These have been reformatted to GHRSST GDS specifications by the JPL PO.DAAC</dd><dt><span>references :</span></dt><dd>GHRSST Data Processing Specification v2r5</dd><dt><span>institution :</span></dt><dd>NASA/JPL/OBPG/RSMAS</dd><dt><span>history :</span></dt><dd>MODIS L2P created at JPL PO.DAAC
+2021-11-19 17:44:56.897087 l2ss-py v1.1.0 (bbox=[[-97.77667, -83.05197], [21.20806, 30.16605]] cut=True)</dd><dt><span>comment :</span></dt><dd>L2P Core without DT analysis or other ancillary fields; Night, Start Node:Descending, End Node:Descending; WARNING Some applications are unable to properly handle signed byte values. If values are encountered &gt; 127, please subtract 256 from this reported value; Quicklook</dd><dt><span>license :</span></dt><dd>GHRSST and PO.DAAC protocol allow data use as free and open.</dd><dt><span>id :</span></dt><dd>MODIS_A-JPL-L2P-v2019.0</dd><dt><span>naming_authority :</span></dt><dd>org.ghrsst</dd><dt><span>product_version :</span></dt><dd>2019.0</dd><dt><span>uuid :</span></dt><dd>f6e1f61d-c4a4-4c17-8354-0c15e12d688b</dd><dt><span>gds_version_id :</span></dt><dd>2.0</dd><dt><span>netcdf_version_id :</span></dt><dd>4.1</dd><dt><span>date_created :</span></dt><dd>20210820T110619Z</dd><dt><span>file_quality_level :</span></dt><dd>[3]</dd><dt><span>spatial_resolution :</span></dt><dd>1km</dd><dt><span>start_time :</span></dt><dd>20210820T080001Z</dd><dt><span>time_coverage_start :</span></dt><dd>20210820T080001Z</dd><dt><span>stop_time :</span></dt><dd>20210820T080458Z</dd><dt><span>time_coverage_end :</span></dt><dd>20210820T080458Z</dd><dt><span>northernmost_latitude :</span></dt><dd>[35.9455]</dd><dt><span>southernmost_latitude :</span></dt><dd>[14.8953]</dd><dt><span>easternmost_longitude :</span></dt><dd>[-78.2345]</dd><dt><span>westernmost_longitude :</span></dt><dd>[-105.765]</dd><dt><span>source :</span></dt><dd>MODIS sea surface temperature observations for the OBPG</dd><dt><span>platform :</span></dt><dd>Aqua</dd><dt><span>sensor :</span></dt><dd>MODIS</dd><dt><span>metadata_link :</span></dt><dd>http://podaac.jpl.nasa.gov/ws/metadata/dataset/?format=iso&amp;shortName=MODIS_A-JPL-L2P-v2019.0</dd><dt><span>keywords :</span></dt><dd>Oceans &gt; Ocean Temperature &gt; Sea Surface Temperature</dd><dt><span>keywords_vocabulary :</span></dt><dd>NASA Global Change Master Directory (GCMD) Science Keywords</dd><dt><span>standard_name_vocabulary :</span></dt><dd>NetCDF Climate and Forecast (CF) Metadata Convention</dd><dt><span>geospatial_lat_units :</span></dt><dd>degrees_north</dd><dt><span>geospatial_lat_resolution :</span></dt><dd>[0.01]</dd><dt><span>geospatial_lon_units :</span></dt><dd>degrees_east</dd><dt><span>geospatial_lon_resolution :</span></dt><dd>[0.01]</dd><dt><span>acknowledgment :</span></dt><dd>The MODIS L2P sea surface temperature data are sponsored by NASA</dd><dt><span>creator_name :</span></dt><dd>Ed Armstrong, JPL PO.DAAC</dd><dt><span>creator_email :</span></dt><dd>edward.m.armstrong@jpl.nasa.gov</dd><dt><span>creator_url :</span></dt><dd>http://podaac.jpl.nasa.gov</dd><dt><span>project :</span></dt><dd>Group for High Resolution Sea Surface Temperature</dd><dt><span>publisher_name :</span></dt><dd>The GHRSST Project Office</dd><dt><span>publisher_url :</span></dt><dd>http://www.ghrsst.org</dd><dt><span>publisher_email :</span></dt><dd>ghrsst-po@nceo.ac.uk</dd><dt><span>processing_level :</span></dt><dd>L2P</dd><dt><span>cdm_data_type :</span></dt><dd>swath</dd><dt><span>startDirection :</span></dt><dd>Descending</dd><dt><span>endDirection :</span></dt><dd>Descending</dd><dt><span>day_night_flag :</span></dt><dd>Night</dd><dt><span>history_json :</span></dt><dd>[{"date_time": "2021-11-19T17:44:56.897126+00:00", "derived_from": "https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-protected/MODIS_A-JPL-L2P-v2019.0/20210820080001-JPL-L2P_GHRSST-SSTskin-MODIS_A-N-v02.0-fv01.0.nc", "program": "l2ss-py", "version": "1.1.0", "parameters": "bbox=[[-97.77667, -83.05197], [21.20806, 30.16605]] cut=True", "program_ref": "https://cmr.earthdata.nasa.gov:443/search/concepts/S1962070864-POCLOUD", "$schema": "https://harmony.earthdata.nasa.gov/schemas/history/0.1.0/history-v0.1.0.json"}]</dd></dl></div></li></ul></div></div>
 </div>
 </div>
 </section>
 <section id="plot-the-data" class="level3">
 <h3 class="anchored" data-anchor-id="plot-the-data">Plot the data</h3>
 <p>Use the xarray built in plotting function to create a simple plot along the x and y dimensions of the dataset:</p>
-<div class="cell" data-execution_count="29">
-<div class="sourceCode" id="cb42"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>ds.sea_surface_temperature.plot() <span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="32">
+<div class="sourceCode" id="cb46"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>ds.sea_surface_temperature.plot() <span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="07_Harmony_Subsetting_files/figure-html/cell-30-output-1.png" class="img-fluid"></p>
+<p><img src="07_Harmony_Subsetting_files/figure-html/cell-33-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 </section>
