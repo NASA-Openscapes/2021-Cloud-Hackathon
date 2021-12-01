@@ -6,68 +6,69 @@ execute:
   freeze: true
 
 site:
+  title: "2021 Cloud Hackathon"
   site-url: https://nasa-openscapes.github.io/2021-Cloud-Hackathon
   repo-url: https://github.com/nasa-openscapes/2021-Cloud-Hackathon
   repo-actions: [edit, issue]
   page-navigation: true
-  sidebar:
-    title: "2021 Cloud Hackathon"
-    logo: https://user-images.githubusercontent.com/2915555/133525653-2a2278b1-1015-4350-b2a5-160d125aaaf7.png
-    style: "docked"
+  page-footer: "PODAAC, NSIDC DAAC and LPDAAC (2021). 2021 Cloud Hackathon" 
+ 
+  navbar: 
     background: light
-    search: true
-    collapse-level: 1
-    align: left
-    tools:
+    right: 
+      - sidebar:welcome
       - icon: github
         href: https://github.com/nasa-openscapes/2021-Cloud-Hackathon
-    contents:
-      - section: "Welcome"
-        contents:
-         - index.md
-         - cloud-paradigm.md
-      - section: "Logistics"
-        contents:
-          - logistics/index.md
-          - logistics/schedule.md
-          - logistics/prerequisites.md
-          - logistics/github-workflows.md
-      - section: "Tutorials"
-        contents: 
-          - tutorials/index.md
-          - tutorials/00_Setup.md  ## tutorial 0
-          - tutorials/01_Data_Discovery_CMR.ipynb ## tutorial 1
-          - tutorials/02_Data_Discovery_CMR-STAC_API.ipynb ## tutorial 2
-          - tutorials/03_Xarray.ipynb ## tutorial 3
-          - tutorials/04_NASA_Earthdata_Authentication.ipynb ## tutorial 4
-          - tutorials/05_Data_Access_Direct_S3.ipynb ## tutorial 5
-          - tutorials/06_S6_OPeNDAP_Access_Gridding.ipynb ## tutorial 6
-          - tutorials/07_Harmony_Subsetting.ipynb ## tutorial 7
-          - tutorials/08_On-Prem_Cloud.ipynb ## tutorial 8
-          - tutorials/09_Zarr_Access.ipynb ## tutorial 9
-      - section: "Tutorial Templates"
-        contents: 
-          - tutorials-templates/index.md 
-      - section: "Projects"
-        contents:
-          - projects/index.md
-          - projects/hackathon-projects.md
-      - section: "Further Resources"
-        contents:
-          - further-resources.md
-      - section: "Pre-Hackathon-Clinic"
-        contents:
-          - clinic/index.md
-          - clinic/jupyterhub.md
-          - clinic/notebooks.md
-          - clinic/github.md
-          - clinic/earthdata.md
  
-  footer: "PODAAC, NSIDC DAAC and LPDAAC (2021). 2021 Cloud Hackathon"
+  sidebar:
+    - id: welcome
+      title: "Menu"
+      logo: https://user-images.githubusercontent.com/2915555/133525653-2a2278b1-1015-4350-b2a5-160d125aaaf7.png
+      style: "docked"
+      collapse-level: 1
+      align: left
+      contents:
+        - section: "Welcome"
+          contents:
+            - index.md
+            - cloud-paradigm.md
+        - section: "Logistics"
+          contents:
+            - logistics/index.md
+            - logistics/schedule.md
+            - logistics/prerequisites.md
+            - logistics/github-workflows.md
+        - section: "Tutorials"
+          contents: 
+            - tutorials/index.md
+            - tutorials/00_Setup.md  ## tutorial 0
+            - tutorials/01_Data_Discovery_CMR.ipynb ## tutorial 1
+            - tutorials/02_Data_Discovery_CMR-STAC_API.ipynb ## tutorial 2
+            - tutorials/03_Xarray.ipynb ## tutorial 3
+            - tutorials/04_NASA_Earthdata_Authentication.ipynb ## tutorial 4
+            - tutorials/05_Data_Access_Direct_S3.ipynb ## tutorial 5
+            - tutorials/06_S6_OPeNDAP_Access_Gridding.ipynb ## tutorial 6
+            - tutorials/07_Harmony_Subsetting.ipynb ## tutorial 7
+            - tutorials/08_On-Prem_Cloud.ipynb ## tutorial 8
+            - tutorials/09_Zarr_Access.ipynb ## tutorial 9
+        - section: "Tutorial Templates"
+          contents: 
+            - tutorials-templates/index.md 
+        - section: "Projects"
+          contents:
+            - projects/index.md
+            - projects/hackathon-projects.md
+        - section: "Further Resources"
+          contents:
+            - further-resources.md
+        - section: "Pre-Hackathon-Clinic"
+          contents:
+            - clinic/index.md
+            - clinic/jupyterhub.md
+            - clinic/notebooks.md
+            - clinic/github.md
+            - clinic/earthdata.md
 
-filters:
-  - include-files.lua
-  
 format:
   html:
     theme:
@@ -77,3 +78,8 @@ format:
     code-copy: true
     css: styles.css
     toc: true
+
+filters:
+  - include-files.lua
+  - quarto
+
