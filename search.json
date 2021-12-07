@@ -872,7 +872,21 @@
     "href": "projects/hackathon-projects.html#global-upwelling-patterns",
     "title": "Hackathon Projects",
     "section": "2: Global Upwelling Patterns",
-    "text": "Team: Eli Holmes, Jorge Vazquez\nPrimary Helpers: Aaron Friesz, Andy Barrett, Jack McNelis\nSlides, GitHub:\nProject Goals: Climate change is predicted to change coastal upwelling. This study explores the use of simple SST metrics for studying upwelling signatures."
+    "text": "Team: Eli Holmes, Jorge Vazquez\nPrimary Helpers: Aaron Friesz, Andy Barrett, Jack McNelis\nSlides, GitHub: https://github.com/NASA-Openscapes/nhw21-projects-upwelling\nProject Goals: Climate change is predicted to change coastal upwelling. This study explores the use of simple SST metrics for studying upwelling signatures."
+  },
+  {
+    "objectID": "projects/hackathon-projects.html#surface-body-water",
+    "href": "projects/hackathon-projects.html#surface-body-water",
+    "title": "Hackathon Projects",
+    "section": "3/8: Surface Body Water",
+    "text": "Team: Matthew Bonnema, Maximilian Parzen\nSlides, GitHub: https://github.com/pz-max/NASA_projectX\nProject Goals: Estimate surface area of surface water body and track changes over time. Test Case: Oroville Reservoir, California"
+  },
+  {
+    "objectID": "projects/hackathon-projects.html#pypsicle-cryo-computing-in-the-cloud",
+    "href": "projects/hackathon-projects.html#pypsicle-cryo-computing-in-the-cloud",
+    "title": "Hackathon Projects",
+    "section": "4: Pypsicle: cryo computing in the cloud",
+    "text": "Team: Chad Greene, Susan Howard, Luis Lopez, Cassandra Nickles, Christine Sadlik, Jessica Scheick\nPrimary Helpers: Luis Lopez\nSlides, GitHub: https://github.com/NASA-Openscapes/nch2021-projects-pypsicle, Notebook:  https://nbviewer.org/github/NASA-Openscapes/nch2021-projects-pypsicle/blob/main/S3-h5_example_rendered.ipynb\nProject Goals: Selectively read in part of an hdf5 file, explore a dataset on the cloud"
   },
   {
     "objectID": "projects/index.html#purpose-of-the-projects",
