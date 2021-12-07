@@ -31,7 +31,7 @@ Extract and visualize multiple data sets that can be used to give context to fie
 
 **Primary Helpers:** Aaron Friesz, Andy Barrett, Jack McNelis
 
-[**Slides**](https://docs.google.com/presentation/d/1YjBrNRHCPWUKjoT5FC3FgqhzcVuJsqtmrFdRW29FkGs/edit#slide=id.p), **GitHub:** <https://github.com/NASA-Openscapes/nhw21-projects-upwelling>
+[**Slides**](https://docs.google.com/presentation/d/1YjBrNRHCPWUKjoT5FC3FgqhzcVuJsqtmrFdRW29FkGs/edit#slide=id.p), **GitHub:** <https://github.com/NASA-Openscapes/nhw21-projects-upwelling>, **Notebook**: <http://nbviewer.org/github/NASA-Openscapes/nhw21-projects-upwelling/blob/main/notebooks/05-Multi-year-upi-plots.ipynb>
 
 **Project Goals:** 
 Climate change is predicted to change coastal upwelling. This study explores the use of simple SST metrics for studying upwelling signatures.
