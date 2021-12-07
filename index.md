@@ -16,6 +16,7 @@ The Cloud Hackathon will take place **virtually** from **November 15-19, 2021.**
 
 [![](https://img.shields.io/static/v1.svg?logo=Jupyter&label=Openscapes&message=AWS+us-west-2&color=orange)](https://openscapes.2i2c.cloud)
 
+**Post-workshop resources.** Learn about the [2021 Projects](https://nasa-openscapes.github.io/2021-Cloud-Hackathon/projects/hackathon-projects.html), and the event summary: <https://earthdata.nasa.gov/learn/articles/2021-cloud-hackathon>.
 
 ## About
 
