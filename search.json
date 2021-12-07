@@ -864,29 +864,57 @@
     "objectID": "projects/hackathon-projects.html#field-campaigns",
     "href": "projects/hackathon-projects.html#field-campaigns",
     "title": "Hackathon Projects",
-    "section": "1: Field Campaigns",
+    "section": "Field Campaigns",
     "text": "Team: Tom Farrar, Kyla Drushka, Bia Villas Boas., Matthew Archer, Kathleen Dohan, Severine Fournier, Eli Hunter, John Wilkin\nPrimary Helpers: Jinbo Wang, Jack McNelis, Ed Armstrong\nSlides\nGitHub: https://github.com/NASA-Openscapes/nch2021-projects-contexdata\nProject Goals: Extract and visualize multiple data sets that can be used to give context to field campaigns or other regional events (e.g., the “Warm Blob” or the recent atmospheric river event on the West Coast). For example, choose a target region and time period, cycle through all available high-resolution sea surface temperature data, identify clear images, catalog them. Extract wind, wave, sea surface height, salinity data."
   },
   {
     "objectID": "projects/hackathon-projects.html#global-upwelling-patterns",
     "href": "projects/hackathon-projects.html#global-upwelling-patterns",
     "title": "Hackathon Projects",
-    "section": "2: Global Upwelling Patterns",
+    "section": "Global Upwelling Patterns",
     "text": "Team: Eli Holmes, Jorge Vazquez\nPrimary Helpers: Aaron Friesz, Andy Barrett, Jack McNelis\nSlides, GitHub: https://github.com/NASA-Openscapes/nhw21-projects-upwelling\nProject Goals: Climate change is predicted to change coastal upwelling. This study explores the use of simple SST metrics for studying upwelling signatures."
   },
   {
     "objectID": "projects/hackathon-projects.html#surface-body-water",
     "href": "projects/hackathon-projects.html#surface-body-water",
     "title": "Hackathon Projects",
-    "section": "3/8: Surface Body Water",
+    "section": "Surface Body Water",
     "text": "Team: Matthew Bonnema, Maximilian Parzen\nSlides, GitHub: https://github.com/pz-max/NASA_projectX\nProject Goals: Estimate surface area of surface water body and track changes over time. Test Case: Oroville Reservoir, California"
   },
   {
     "objectID": "projects/hackathon-projects.html#pypsicle-cryo-computing-in-the-cloud",
     "href": "projects/hackathon-projects.html#pypsicle-cryo-computing-in-the-cloud",
     "title": "Hackathon Projects",
-    "section": "4: Pypsicle: cryo computing in the cloud",
+    "section": "Pypsicle: cryo computing in the cloud",
     "text": "Team: Chad Greene, Susan Howard, Luis Lopez, Cassandra Nickles, Christine Sadlik, Jessica Scheick\nPrimary Helpers: Luis Lopez\nSlides, GitHub: https://github.com/NASA-Openscapes/nch2021-projects-pypsicle, Notebook:  https://nbviewer.org/github/NASA-Openscapes/nch2021-projects-pypsicle/blob/main/S3-h5_example_rendered.ipynb\nProject Goals: Selectively read in part of an hdf5 file, explore a dataset on the cloud"
+  },
+  {
+    "objectID": "projects/hackathon-projects.html#query-stact-for-hls-data-and-load-as-a-time-series",
+    "href": "projects/hackathon-projects.html#query-stact-for-hls-data-and-load-as-a-time-series",
+    "title": "Hackathon Projects",
+    "section": "Query stact for HLS data and load as a time series",
+    "text": "Team: Todd Hawbaker, Jodi Riegle, and Kehan Yang\nGitHub: https://github.com/tjhawbaker/nch21_hls_timeseries\nProject Goals: A cloud-deployable framework to identify burned areas in the harmonized Landsat Sentinel-2 data, and possibly other remotely sensed data sources. Basically, extending what we’ve done with Landsat to HLS data (Hawbaker et. al., 2020). The end product we are planning is code or a container that users could run in the cloud to generate a time series of burned area products for their area of interest."
+  },
+  {
+    "objectID": "projects/hackathon-projects.html#drought-monitor",
+    "href": "projects/hackathon-projects.html#drought-monitor",
+    "title": "Hackathon Projects",
+    "section": "Drought Monitor",
+    "text": "Team: Colin Brust, Arthur Endsley\nProject Goals: Build a data pipeline library that clips, reprojects and aggregates a given dataset to a desired spatial and temporal resolution. Then, use this library to feed GHRSST data into a neural network that forecasts changes in the U.S. Drought Monitor."
+  },
+  {
+    "objectID": "projects/hackathon-projects.html#county-temperatures",
+    "href": "projects/hackathon-projects.html#county-temperatures",
+    "title": "Hackathon Projects",
+    "section": "County Temperatures",
+    "text": "Team: Binita KC, Xiaohua Pan\nPrimary Helpers: Alexis Hunzinger\nGitHub: https://github.com/NASA-Openscapes/nch21-projects-counties-temp, Notebook: https://github.com/NASA-Openscapes/nch21-projects-counties-temp/blob/main/Project9.ipynb\nProject Goals: Read the hourly MERRA-2 data from the GES DISC S3 bucket, subset by temperature and calculate the monthly average, ideally extract zonal mean using county shapefile"
+  },
+  {
+    "objectID": "projects/hackathon-projects.html#retrieval-of-pre-swot-data",
+    "href": "projects/hackathon-projects.html#retrieval-of-pre-swot-data",
+    "title": "Hackathon Projects",
+    "section": "Retrieval of Pre SWOT data",
+    "text": "Team: Prof. J. Indu, Kaushlendra V., Nitish K., Manu K.S., Girish P.\nSlides, GitHub:\nProject Goals: To access multi-mission altimetry data sets and merge them to generate high temporal resolution altimetry data"
   },
   {
     "objectID": "projects/index.html#purpose-of-the-projects",
