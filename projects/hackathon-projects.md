@@ -105,7 +105,7 @@ Read the hourly MERRA-2 data from the GES DISC S3 bucket, subset by temperature 
 
 **Team:** Prof. J. Indu, Kaushlendra V., Nitish K., Manu K.S., Girish P. 
 
-[**Slides**](https://docs.google.com/presentation/d/1Z9cmmMZ8Ow0a3PpdyRIyicppwxh5kpN-/edit?usp=sharing&ouid=117588048875901229534&rtpof=true&sd=true), **GitHub:**
+[**Slides**](https://docs.google.com/presentation/d/1Z9cmmMZ8Ow0a3PpdyRIyicppwxh5kpN-/edit?usp=sharing&ouid=117588048875901229534&rtpof=true&sd=true)
 
 **Project Goals:** 
 To access multi-mission altimetry data sets and merge them to generate high temporal resolution altimetry data
