@@ -865,7 +865,14 @@
     "href": "projects/hackathon-projects.html#field-campaigns",
     "title": "Hackathon Projects",
     "section": "1: Field Campaigns",
-    "text": "Team: Tom Farrar, Kyla Drushka, Bia Villas Boas., Matthew Archer, Kathleen Dohan, Severine Fournier, Eli Hunter, John Wilkin\nPrimary Helpers: Jinbo Wang, Jack McNelis, Ed Armstrong\nSlides\nGitHub: https://github.com/NASA-Openscapes/nch2021-projects-contexdata\nProject Goals: Extract and visualize multiple data sets that can be used to give context to field campaigns or other regional events (e.g., the “Warm Blob” or the recent atmospheric river event on the West Coast). For example, choose a target region and time period, cycle through all available high-resolution sea surface temperature data, identify clear images, catalog them. Extract wind, wave, sea surface height, salinity data.\n\nIdentify a region and time period\nIngest/subset several datasets\nCreate specific functions to operate on the datasets, specifically regrid to a common space/time"
+    "text": "Team: Tom Farrar, Kyla Drushka, Bia Villas Boas., Matthew Archer, Kathleen Dohan, Severine Fournier, Eli Hunter, John Wilkin\nPrimary Helpers: Jinbo Wang, Jack McNelis, Ed Armstrong\nSlides\nGitHub: https://github.com/NASA-Openscapes/nch2021-projects-contexdata\nProject Goals: Extract and visualize multiple data sets that can be used to give context to field campaigns or other regional events (e.g., the “Warm Blob” or the recent atmospheric river event on the West Coast). For example, choose a target region and time period, cycle through all available high-resolution sea surface temperature data, identify clear images, catalog them. Extract wind, wave, sea surface height, salinity data."
+  },
+  {
+    "objectID": "projects/hackathon-projects.html#global-upwelling-patterns",
+    "href": "projects/hackathon-projects.html#global-upwelling-patterns",
+    "title": "Hackathon Projects",
+    "section": "2: Global Upwelling Patterns",
+    "text": "Team: Eli Holmes, Jorge Vazquez\nPrimary Helpers: Aaron Friesz, Andy Barrett, Jack McNelis\nSlides, GitHub:\nProject Goals: Climate change is predicted to change coastal upwelling. This study explores the use of simple SST metrics for studying upwelling signatures."
   },
   {
     "objectID": "projects/index.html#purpose-of-the-projects",
