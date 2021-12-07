@@ -872,7 +872,7 @@
     "href": "projects/hackathon-projects.html#global-upwelling-patterns",
     "title": "Hackathon Projects",
     "section": "Global Upwelling Patterns",
-    "text": "Team: Eli Holmes, Jorge Vazquez\nPrimary Helpers: Aaron Friesz, Andy Barrett, Jack McNelis\nSlides, GitHub: https://github.com/NASA-Openscapes/nhw21-projects-upwelling\nProject Goals: Climate change is predicted to change coastal upwelling. This study explores the use of simple SST metrics for studying upwelling signatures."
+    "text": "Team: Eli Holmes, Jorge Vazquez\nPrimary Helpers: Aaron Friesz, Andy Barrett, Jack McNelis\nSlides, GitHub: https://github.com/NASA-Openscapes/nhw21-projects-upwelling, Notebook: http://nbviewer.org/github/NASA-Openscapes/nhw21-projects-upwelling/blob/main/notebooks/05-Multi-year-upi-plots.ipynb\nProject Goals: Climate change is predicted to change coastal upwelling. This study explores the use of simple SST metrics for studying upwelling signatures."
   },
   {
     "objectID": "projects/hackathon-projects.html#surface-body-water",
