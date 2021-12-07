@@ -19,7 +19,14 @@ Below is brief information about each project team, with links to slides and not
 **Project Goals:** 
 Extract and visualize multiple data sets that can be used to give context to field campaigns or other regional events (e.g., the "Warm Blob" or the recent atmospheric river event on the West Coast).  For example, choose a target region and time period, cycle through all available high-resolution sea surface temperature data, identify clear images, catalog them.  Extract wind, wave, sea surface height, salinity data. 
 
-- Identify a region and time period
-- Ingest/subset several datasets
-- Create specific functions to operate on the datasets, specifically regrid to a common space/time
+## 2: Global Upwelling Patterns
+
+**Team:** Eli Holmes, Jorge Vazquez
+
+**Primary Helpers:** Aaron Friesz, Andy Barrett, Jack McNelis
+
+[**Slides**](https://docs.google.com/presentation/d/1YjBrNRHCPWUKjoT5FC3FgqhzcVuJsqtmrFdRW29FkGs/edit#slide=id.p), **GitHub:**
+
+**Project Goals:** 
+Climate change is predicted to change coastal upwelling. This study explores the use of simple SST metrics for studying upwelling signatures.
 
