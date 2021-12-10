@@ -2,11 +2,11 @@
 title: Hackathon Projects
 ---
 
-9 awesome teams presented work-in-progress projects they had been hacking on during the Hackathon, we were so excited to see what they had already done and their ongoing momentum. Teams evolved throughout the Hackathon, some joined as a team and welcomed others, and other teams formed and merged throughout the week.
+On the final day of the Hackathon, 9 awesome teams presented work-in-progress projects they had been hacking on, and we were so excited to see what they had already done and their ongoing momentum. Teams evolved throughout the Hackathon, some joined as a team and welcomed others, and other teams formed and merged throughout the week.
 
-Hackathon participants will have 3 months of continued access to the 2i2c JupyterHub and our Hackathon Slack Channel as they continue experimenting. This way we can all learn more about what the transition to the Cloud looks like (and costs) and support more researchers using NASA Earthdata on the Cloud. 
+Hackathon participants will have 3 months of continued access to the 2i2c JupyterHub and Slack as they continue experimenting. This way we can all learn more about what the transition to the Cloud looks like (and costs) and support more researchers using NASA Earthdata on the Cloud. 
 
-Below is brief information about each project team, with links to slides and notebooks in GitHub repos that they shared on the final day of the Hackathon.
+Below is brief information about each project team, with links and screenshots from slides and notebooks in GitHub repos that they shared on the final day of the Hackathon.
 
 ## Field Campaigns
 
@@ -16,12 +16,12 @@ Below is brief information about each project team, with links to slides and not
 
 **Primary Helpers:** Jinbo Wang, Jack McNelis, Ed Armstrong
 
-[**Slides**](https://docs.google.com/presentation/d/1l2RxFG1tO-0piDvKUkdUQC0wHwp7lFhPSSbLCpESSW4/edit#slide=id.p)
-
-**GitHub:** <https://github.com/NASA-Openscapes/nch2021-projects-contexdata>
+[**Slides**](https://docs.google.com/presentation/d/1l2RxFG1tO-0piDvKUkdUQC0wHwp7lFhPSSbLCpESSW4/edit#slide=id.p); **GitHub:** <https://github.com/NASA-Openscapes/nch2021-projects-contexdata>
 
 **Project Goals:** 
 Extract and visualize multiple data sets that can be used to give context to field campaigns or other regional events (e.g., the "Warm Blob" or the recent atmospheric river event on the West Coast).  For example, choose a target region and time period, cycle through all available high-resolution sea surface temperature data, identify clear images, catalog them.  Extract wind, wave, sea surface height, salinity data. 
+
+![](images/field-campaigns.png)
 
 ## Global Upwelling Patterns
 
@@ -36,6 +36,7 @@ Extract and visualize multiple data sets that can be used to give context to fie
 **Project Goals:** 
 Climate change is predicted to change coastal upwelling. This study explores the use of simple SST metrics for studying upwelling signatures.
 
+![](images/global-upwelling.png)
 
 ## Surface Body Water
 
@@ -48,6 +49,7 @@ Climate change is predicted to change coastal upwelling. This study explores the
 **Project Goals:** 
 Estimate surface area of surface water body and track changes over time. Test Case: Oroville Reservoir, California
 
+![](images/surface-body-water.png)
 
 ## Pypsicle: cryo computing in the cloud
 
@@ -63,17 +65,21 @@ Estimate surface area of surface water body and track changes over time. Test Ca
 Selectively read in part of an hdf5 file, explore a dataset on the cloud
 
 
+![](images/pypsicle.png)
+
+
 ## Query stact for HLS data and load as a time series 
 
 <!---Proj 5--->
 
 **Team:** Todd Hawbaker, Jodi Riegle, and Kehan Yang
 
-**GitHub:** https://github.com/tjhawbaker/nch21_hls_timeseries
+[**Slides**](https://github.com/tjhawbaker/nch21_hls_timeseries/blob/main/2021%20Cloud%20Hackathon%20-%20Final%20Project%20Presentation%20-%20hls_timeseries.pptx); **GitHub:** <https://github.com/tjhawbaker/nch21_hls_timeseries>
 
 **Project Goals:** 
 A cloud-deployable framework to identify burned areas in the harmonized Landsat Sentinel-2 data, and possibly other remotely sensed data sources. Basically, extending what we've done with Landsat to HLS data (Hawbaker et. al., 2020). The end product we are planning is code or a container that users could run in the cloud to generate a time series of burned area products for their area of interest.
 
+![](images/hls-timeseries.png)
 
 ## Drought Monitor
 
@@ -98,6 +104,7 @@ Build a data pipeline library that clips, reprojects and aggregates a given data
 **Project Goals:** 
 Read the hourly MERRA-2 data from the GES DISC S3 bucket, subset by temperature and calculate the monthly average, ideally extract zonal mean using county shapefile
 
+![](images/county-temps.png)
 
 ## Retrieval of Pre SWOT data
 
@@ -110,3 +117,4 @@ Read the hourly MERRA-2 data from the GES DISC S3 bucket, subset by temperature 
 **Project Goals:** 
 To access multi-mission altimetry data sets and merge them to generate high temporal resolution altimetry data
 
+![](images/pre-swot-data.png)
