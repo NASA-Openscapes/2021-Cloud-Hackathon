@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang=""><head>
   <meta charset="utf-8">
-  <meta name="generator" content="quarto-0.2.232">
+  <meta name="generator" content="quarto-0.2.339">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>2021 Cloud Hackathon – harmony_subsetting</title>
   <style>
@@ -86,8 +86,6 @@
   <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
   <script src="../site_libs/quarto-search/fuse.min.js"></script>
   <script src="../site_libs/quarto-search/quarto-search.js"></script>
-  <link href="../tutorials/08_On-Prem_Cloud.html" rel="next">
-  <link href="../tutorials/06_S6_OPeNDAP_Access_Gridding.html" rel="prev">
   <script src="../site_libs/quarto-html/quarto.js"></script>
   <script src="../site_libs/quarto-html/popper.min.js"></script>
   <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -105,26 +103,37 @@
     "collapse-after": 2,
     "panel-placement": "end",
     "type": "overlay",
-    "limit": 20
+    "limit": 20,
+    "language": {
+      "search-no-results-text": "No results",
+      "search-matching-documents-text": "matching documents",
+      "search-copy-link-title": "Copy link to search",
+      "search-hide-matches-text": "Hide additional matches",
+      "search-more-match-text": "more match in this document",
+      "search-more-matches-text": "more matches in this document",
+      "search-clear-button-title": "Clear",
+      "search-detached-cancel-button-title": "Cancel",
+      "search-submit-button-title": "Submit"
+    }
   }</script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
   <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
   <link rel="stylesheet" href="../styles.css">
 </head>
-<body>
+<body class="docked">
 <div id="quarto-search-results"></div>
-<header id="quarto-header" class="headroom fixed-top">
-<nav class="navbar navbar-expand-lg navbar-light ">
-    <div class="container-fluid">
-  <a class="navbar-brand" href="../index.html">
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-light ">
+      <div class="navbar-container container-fluid">
+      <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">2021 Cloud Hackathon</span>
   </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav navbar-nav-scroll ms-auto">
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-menu" role="button" data-bs-toggle="dropdown" aria-expanded="false">Menu</a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-menu">    
@@ -227,42 +236,40 @@
  </a>
   </li>  
 </ul>
-          <div>
-            <a href="" class="quarto-color-scheme-toggle nav-link" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
-          </div>
-          <div id="quarto-search" class="mb-0 " title="Search">
-</div>
-      </div> <!-- /navcollapse -->
-  </div> <!-- /container-fluid -->
-</nav>
-<nav class="quarto-secondary-nav py-2 d-lg-none d-md-block " data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-  <div class="container-fluid d-flex justify-content-between">
-    <h1 class="quarto-secondary-nav-title mb-0 fs-3 d-inline">(Untitled)</h1>
-    <button type="button" class="quarto-btn-toggle btn d-lg-none py-0 px-1 d-inline-block border-0 ">
-      <i class="bi bi-chevron-right"></i>
-    </button>
-  </div>
-</nav>
+              <div>
+                <a href="" class="quarto-color-scheme-toggle nav-link" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+              </div>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">(Untitled)</h1>
+      <button type="button" class="quarto-btn-toggle btn">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
 </header>
- <!-- /navbar/sidebar -->
-<div class="container-fluid quarto-container d-flex flex-column page-layout-article">
-<div class="row flex-fill" id="quarto-content">
-  <div id="quarto-sidebar" class="col col-12 col-lg-3 d-lg-flex px-0 pt-0 sidebar collapse sidebar-navigation">
-    <nav class="me-lg-auto docked overflow-auto">
-  <div class="px-3 pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+  <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
     <img src="https://user-images.githubusercontent.com/2915555/133525653-2a2278b1-1015-4350-b2a5-160d125aaaf7.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
   </div>
   <div class="sidebar-menu-container"> 
-  <ul class="list-unstyled mt-1 px-3">
+  <ul class="list-unstyled mt-1">
       <ul class="list-unstyled sidebar-section depth1">
     <li class="">
         <div class="me-auto">
-            <a class="sidebar-section-item d-inline-flex text-start w-100 collapsed" data-bs-toggle="collapse" data-bs-target="#welcome-collapse" aria-expanded="false">
+            <a class="sidebar-section-item d-inline-flex text-start w-100 collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-welcome" aria-expanded="false">
               <div class="me-auto sidebar-section-item">Welcome</div>
             <div><i class="bi bi-chevron-right ms-2"></i></div>
             </a>
         </div>
-      <div class="collapse  " id="welcome-collapse">
+      <div class="collapse  " id="quarto-sidebar-section-welcome">
         <ul class="list-unstyled sidebar-item-contents">
           <li class="sidebar-item">
   <a href="../index.html" class="">2021 Cloud Hackathon</a>
@@ -277,12 +284,12 @@
       <ul class="list-unstyled sidebar-section depth1">
     <li class="">
         <div class="me-auto">
-            <a class="sidebar-section-item d-inline-flex text-start w-100 collapsed" data-bs-toggle="collapse" data-bs-target="#logistics-collapse" aria-expanded="false">
+            <a class="sidebar-section-item d-inline-flex text-start w-100 collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-logistics" aria-expanded="false">
               <div class="me-auto sidebar-section-item">Logistics</div>
             <div><i class="bi bi-chevron-right ms-2"></i></div>
             </a>
         </div>
-      <div class="collapse  " id="logistics-collapse">
+      <div class="collapse  " id="quarto-sidebar-section-logistics">
         <ul class="list-unstyled sidebar-item-contents">
           <li class="sidebar-item">
   <a href="../logistics/index.html" class="">Logistics overview</a>
@@ -303,12 +310,12 @@
       <ul class="list-unstyled sidebar-section depth1">
     <li class="">
         <div class="me-auto">
-            <a class="sidebar-section-item d-inline-flex text-start w-100 " data-bs-toggle="collapse" data-bs-target="#tutorials-collapse" aria-expanded="true">
+            <a class="sidebar-section-item d-inline-flex text-start w-100 " data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-tutorials" aria-expanded="true">
               <div class="me-auto sidebar-section-item">Tutorials</div>
             <div><i class="bi bi-chevron-right ms-2"></i></div>
             </a>
         </div>
-      <div class="collapse  show" id="tutorials-collapse">
+      <div class="collapse  show" id="quarto-sidebar-section-tutorials">
         <ul class="list-unstyled sidebar-item-contents">
           <li class="sidebar-item">
   <a href="../tutorials/index.html" class="">Tutorials Overview</a>
@@ -350,12 +357,12 @@
       <ul class="list-unstyled sidebar-section depth1">
     <li class="">
         <div class="me-auto">
-            <a class="sidebar-section-item d-inline-flex text-start w-100 collapsed" data-bs-toggle="collapse" data-bs-target="#tutorialtemplates-collapse" aria-expanded="false">
+            <a class="sidebar-section-item d-inline-flex text-start w-100 collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-tutorial-templates" aria-expanded="false">
               <div class="me-auto sidebar-section-item">Tutorial Templates</div>
             <div><i class="bi bi-chevron-right ms-2"></i></div>
             </a>
         </div>
-      <div class="collapse  " id="tutorialtemplates-collapse">
+      <div class="collapse  " id="quarto-sidebar-section-tutorial-templates">
         <ul class="list-unstyled sidebar-item-contents">
           <li class="sidebar-item">
   <a href="../tutorials-templates/index.html" class="">Notebooks for live-coding</a>
@@ -367,12 +374,12 @@
       <ul class="list-unstyled sidebar-section depth1">
     <li class="">
         <div class="me-auto">
-            <a class="sidebar-section-item d-inline-flex text-start w-100 collapsed" data-bs-toggle="collapse" data-bs-target="#projects-collapse" aria-expanded="false">
+            <a class="sidebar-section-item d-inline-flex text-start w-100 collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-projects" aria-expanded="false">
               <div class="me-auto sidebar-section-item">Projects</div>
             <div><i class="bi bi-chevron-right ms-2"></i></div>
             </a>
         </div>
-      <div class="collapse  " id="projects-collapse">
+      <div class="collapse  " id="quarto-sidebar-section-projects">
         <ul class="list-unstyled sidebar-item-contents">
           <li class="sidebar-item">
   <a href="../projects/index.html" class="">Projects Overview</a>
@@ -387,12 +394,12 @@
       <ul class="list-unstyled sidebar-section depth1">
     <li class="">
         <div class="me-auto">
-            <a class="sidebar-section-item d-inline-flex text-start w-100 collapsed" data-bs-toggle="collapse" data-bs-target="#furtherresources-collapse" aria-expanded="false">
+            <a class="sidebar-section-item d-inline-flex text-start w-100 collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-further-resources" aria-expanded="false">
               <div class="me-auto sidebar-section-item">Further Resources</div>
             <div><i class="bi bi-chevron-right ms-2"></i></div>
             </a>
         </div>
-      <div class="collapse  " id="furtherresources-collapse">
+      <div class="collapse  " id="quarto-sidebar-section-further-resources">
         <ul class="list-unstyled sidebar-item-contents">
           <li class="sidebar-item">
   <a href="../further-resources.html" class="">Additional resources</a>
@@ -404,12 +411,12 @@
       <ul class="list-unstyled sidebar-section depth1">
     <li class="">
         <div class="me-auto">
-            <a class="sidebar-section-item d-inline-flex text-start w-100 collapsed" data-bs-toggle="collapse" data-bs-target="#pre-hackathon-clinic-collapse" aria-expanded="false">
+            <a class="sidebar-section-item d-inline-flex text-start w-100 collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-pre-hackathon-clinic" aria-expanded="false">
               <div class="me-auto sidebar-section-item">Pre-Hackathon-Clinic</div>
             <div><i class="bi bi-chevron-right ms-2"></i></div>
             </a>
         </div>
-      <div class="collapse  " id="pre-hackathon-clinic-collapse">
+      <div class="collapse  " id="quarto-sidebar-section-pre-hackathon-clinic">
         <ul class="list-unstyled sidebar-item-contents">
           <li class="sidebar-item">
   <a href="../clinic/index.html" class="">Overview and Agenda</a>
@@ -433,13 +440,17 @@
   </ul>
   </div>
 </nav>
-  </div>
-  <div id="quarto-toc-sidebar" class=" pt-0 col col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-toc order-last"><nav id="TOC" role="doc-toc">
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+      <nav id="TOC" role="doc-toc">
 <h2 id="toc-title">On this page</h2>
 <ul>
 <li><a href="#data-subsetting-and-transformation-services-in-the-cloud" class="nav-link active" data-scroll-target="#data-subsetting-and-transformation-services-in-the-cloud">07. Data Subsetting and Transformation Services in the Cloud</a>
 <ul class="collapse">
-<li><a href="#using-the-harmony-py-library-to-access-customized-data-from-nasa-earthdata" class="nav-link" data-scroll-target="#using-the-harmony-py-library-to-access-customized-data-from-nasa-earthdata">Using the Harmony-Py library to access customized data from NASA Earthdata</a></li>
+<li><a href="#using-the-harmony-py-library-to-access-customized-data-from-nasa-earthdata" class="nav-link" data-scroll-target="#using-the-harmony-py-library-to-access-customized-data-from-nasa-earthdata">Using the Harmony-Py library to access customized data from NASA Earthdata</a>
+<ul class="collapse">
+<li><a href="#timing" class="nav-link" data-scroll-target="#timing">Timing:</a></li>
+</ul></li>
 <li><a href="#summary" class="nav-link" data-scroll-target="#summary">Summary</a>
 <ul class="collapse">
 <li><a href="#benefits" class="nav-link" data-scroll-target="#benefits">Benefits</a></li>
@@ -467,14 +478,23 @@
 <li><a href="#resources" class="nav-link" data-scroll-target="#resources">Resources</a></li>
 </ul></li>
 </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon/edit/main/tutorials/07_Harmony_Subsetting.ipynb" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon/issues/new" class="toc-action">Report an issue</a></p></div></div></nav></div>
-  <div class="col mx-auto col-sm-12 col-md-9 col-lg-7 col-xl-7 px-lg-4 pe-xxl-4 ps-xxl-0">
-<main>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon/edit/main/tutorials/07_Harmony_Subsetting.ipynb" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content">
 
 <section id="data-subsetting-and-transformation-services-in-the-cloud" class="level1">
 <h1>07. Data Subsetting and Transformation Services in the Cloud</h1>
 <section id="using-the-harmony-py-library-to-access-customized-data-from-nasa-earthdata" class="level2">
 <h2 class="anchored" data-anchor-id="using-the-harmony-py-library-to-access-customized-data-from-nasa-earthdata">Using the Harmony-Py library to access customized data from NASA Earthdata</h2>
+<hr>
+<section id="timing" class="level3">
+<h3 class="anchored" data-anchor-id="timing">Timing:</h3>
+<ul>
+<li>Exercise: 40 minutes</li>
+</ul>
+<hr>
+</section>
 </section>
 <section id="summary" class="level2">
 <h2 class="anchored" data-anchor-id="summary">Summary</h2>
@@ -1909,6 +1929,7 @@ Attributes: (12/50)
 
 </section>
 </section>
+</main> <!-- /main -->
 <script type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const disableStylesheet = (stylesheets) => {
@@ -1937,13 +1958,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleColorMode = (alternate) => {
     // Switch the stylesheets
     const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
-    manageTransitions('div.sidebar-toc .nav-link', false);
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
     if (alternate) {
       enableStylesheet(alternateStylesheets);
     } else {
       disableStylesheet(alternateStylesheets);
     }
-    manageTransitions('.quarto-toc-sidebar .nav-link', true);
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
     // Switch the toggles
     const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
     for (let i=0; i < toggles.length; i++) {
@@ -2033,17 +2054,21 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     e.clearSelection();
   });
   function tippyHover(el, contentFn) {
-    window.tippy(el, {
+    const config = {
       allowHTML: true,
       content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
       placement: 'bottom-start'
-    }); 
+    };
+    window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
   for (var i=0; i<noterefs.length; i++) {
@@ -2077,22 +2102,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-</main>
-<div class="page-navigation page-navigation-docked">
+<nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../tutorials/06_S6_OPeNDAP_Access_Gridding.html">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">06. Sentinel-6 MF L2 Altimetry Data Access (OPeNDAP) &amp; Gridding</span>
-      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../tutorials/08_On-Prem_Cloud.html">
-        <span class="nav-page-text">08. Pairing Cloud and non-Cloud Data</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
-</div>
-</div> <!-- /main column -->
-</div> <!-- /row -->
-</div> <!-- /container fluid -->
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+      <div class="nav-footer-center">PODAAC, NSIDC DAAC and LPDAAC (2021). 2021 Cloud Hackathon</div>
+  </div>
+</footer>
 
 
 </body></html>
