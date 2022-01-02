@@ -93,7 +93,7 @@ _schedule-day5.md
 ### Welcome Day 5
 
 - JupyterHub: Log in. 
-  - Log into 2i2c at <https://openscapes.2i2c.cloud/hub/>. This takes a few minutes so please start this as soon we reconvene each day
+  - Log into 2i2c. This takes a few minutes so please start this as soon we reconvene each day
 - Group Photo!  
 
 ### What's next 
