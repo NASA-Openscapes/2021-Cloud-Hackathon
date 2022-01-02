@@ -1103,7 +1103,7 @@
     "href": "index.html#welcome",
     "title": "2021 Cloud Hackathon",
     "section": "Welcome",
-    "text": "Welcome\n\nWelcome to Cloud Hackathon: Transitioning Earthdata Workflows to the Cloud, co-hosted by the NASA EOSDIS Physical Oceanography Distributed Active Archive Center (PO.DAAC), National Snow and Ice Data Center DAAC (NSIDC DAAC), Land Processes Distributed Active Archive Center (LP.DAAC), with support provided by ASDC DAAC, GES DISC, IMPACT, and NASA Openscapes.\nThe Cloud Hackathon will take place virtually from November 15-19, 2021. The event is free to attend, but an application is required. The application period (September 21 - October 12, 2021) is now closed. Those who applied will be informed of the outcome on or around October 20th, 2021.\n\n\n\nPost-workshop resources. Learn about the 2021 Projects, and the event summary: https://earthdata.nasa.gov/learn/articles/2021-cloud-hackathon."
+    "text": "Welcome\n\nWelcome to Cloud Hackathon: Transitioning Earthdata Workflows to the Cloud, co-hosted by the NASA EOSDIS Physical Oceanography Distributed Active Archive Center (PO.DAAC), National Snow and Ice Data Center DAAC (NSIDC DAAC), Land Processes Distributed Active Archive Center (LP.DAAC), with support provided by ASDC DAAC, GES DISC, IMPACT, and NASA Openscapes.\nThe Cloud Hackathon will take place virtually from November 15-19, 2021. The event is free to attend, but an application is required. The application period (September 21 - October 12, 2021) is now closed. Those who applied will be informed of the outcome on or around October 20th, 2021.\nPost-workshop resources. Learn about the 2021 Projects, and the event summary: https://earthdata.nasa.gov/learn/articles/2021-cloud-hackathon."
   },
   {
     "objectID": "index.html#about",
@@ -1278,7 +1278,7 @@
     "href": "clinic/jupyterhub.html#openscapes-hub-and-cloud-infrastructure",
     "title": "NASA Openscapes Cloud Environment",
     "section": "Openscapes Hub and Cloud Infrastructure",
-    "text": "Openscapes Hub and Cloud Infrastructure\nThere is no cloud, it’s someone else’s computer\nGo to https://openscapes.2i2c.cloud/hub/. You will be asked to log in with your GitHub Account\n\n\n\nOpenscapes JupyterHub Login\n\n\nOnce we are logged with our Github account we need to select our server type. There are different hardware configurations for each profile, for the duration of the Hackweek we’ll use small instances, the option at the top.\n\n\n\nMachine Profiles\n\n\nAfter we select our server type and click on start, Jupyterhub will allocate our instance using Amazon Web Services (AWS). This may take several minutes. While we wait, we’ll get set up with GitHub and a brief overview.\n\n\n\nJupyterhub Spawning"
+    "text": "Openscapes Hub and Cloud Infrastructure\nThere is no cloud, it’s someone else’s computer\nGo to Openscapes Jupyter Hub. You will be asked to log in with your GitHub Account\n\n\n\nOpenscapes JupyterHub Login\n\n\nOnce we are logged with our Github account we need to select our server type. There are different hardware configurations for each profile, for the duration of the Hackweek we’ll use small instances, the option at the top.\n\n\n\nMachine Profiles\n\n\nAfter we select our server type and click on start, Jupyterhub will allocate our instance using Amazon Web Services (AWS). This may take several minutes. While we wait, we’ll get set up with GitHub and a brief overview.\n\n\n\nJupyterhub Spawning"
   },
   {
     "objectID": "clinic/jupyterhub.html#jupyter-ecosystem",
