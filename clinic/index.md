@@ -26,7 +26,7 @@ Thanks for being here
 
 Welcome to the Cloud Hackathon Clinic!
 
-Please go to https://openscapes.2i2c.cloud/hub/ - log in with your GitHub Account, and select "Small"
+Please go to 2i2c Openscapes Hub - log in with your GitHub Account, and select "Small"
 
 Clinic materials that we'll cover today are here: https://nasa-openscapes.github.io/2021-Cloud-Hackathon/clinic/
 :::
