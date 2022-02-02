@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang=""><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
   <meta charset="utf-8">
-  <meta name="generator" content="quarto-0.2.339">
+  <meta name="generator" content="quarto-0.3.79">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>2021 Cloud Hackathon – data_access_direct_s3</title>
   <style>
@@ -76,9 +76,6 @@
     code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
 
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
   <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
   <script src="../site_libs/quarto-nav/headroom.min.js"></script>
   <script src="../site_libs/clipboard/clipboard.min.js"></script>
@@ -116,12 +113,15 @@
       "search-submit-button-title": "Submit"
     }
   }</script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
   <link rel="stylesheet" href="../styles.css">
 </head>
 <body class="docked">
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-light ">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">2021 Cloud Hackathon</span>
@@ -233,8 +233,8 @@
  </a>
   </li>  
 </ul>
-              <div>
-                <a href="" class="quarto-color-scheme-toggle nav-link" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+              <div class="quarto-toggle-container">
+                  <a href="" class="quarto-color-scheme-toggle nav-link" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
               </div>
               <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
@@ -253,193 +253,219 @@
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
-  <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-    <img src="https://user-images.githubusercontent.com/2915555/133525653-2a2278b1-1015-4350-b2a5-160d125aaaf7.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../">
+      <img src="https://user-images.githubusercontent.com/2915555/133525653-2a2278b1-1015-4350-b2a5-160d125aaaf7.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a class="sidebar-item-text text-start  collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-welcome" aria-expanded="false">Welcome</a>
+      <a class="sidebar-item-toggle text-start collapsed " data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-welcome" aria-expanded="false">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-welcome" class="collapse list-unstyled sidebar-section depth1 ">  
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text ">2021 Cloud Hackathon</a>
   </div>
-  <div class="sidebar-menu-container"> 
-  <ul class="list-unstyled mt-1">
-      <ul class="list-unstyled sidebar-section depth1">
-    <li class="">
-        <div class="me-auto">
-            <a class="sidebar-section-item d-inline-flex text-start w-100 collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-welcome" aria-expanded="false">
-              <div class="me-auto sidebar-section-item">Welcome</div>
-            <div><i class="bi bi-chevron-right ms-2"></i></div>
-            </a>
-        </div>
-      <div class="collapse  " id="quarto-sidebar-section-welcome">
-        <ul class="list-unstyled sidebar-item-contents">
-          <li class="sidebar-item">
-  <a href="../index.html" class="">2021 Cloud Hackathon</a>
 </li>
-          <li class="sidebar-item">
-  <a href="../cloud-paradigm.html" class="">Cloud Paradigm</a>
-</li>
-        </ul>
-      </div>
-    </li>
-  </ul>
-      <ul class="list-unstyled sidebar-section depth1">
-    <li class="">
-        <div class="me-auto">
-            <a class="sidebar-section-item d-inline-flex text-start w-100 collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-logistics" aria-expanded="false">
-              <div class="me-auto sidebar-section-item">Logistics</div>
-            <div><i class="bi bi-chevron-right ms-2"></i></div>
-            </a>
-        </div>
-      <div class="collapse  " id="quarto-sidebar-section-logistics">
-        <ul class="list-unstyled sidebar-item-contents">
-          <li class="sidebar-item">
-  <a href="../logistics/index.html" class="">Logistics overview</a>
-</li>
-          <li class="sidebar-item">
-  <a href="../logistics/schedule.html" class="">Schedule</a>
-</li>
-          <li class="sidebar-item">
-  <a href="../logistics/prerequisites.html" class="">Prerequisites &amp; help</a>
-</li>
-          <li class="sidebar-item">
-  <a href="../logistics/github-workflows.html" class="">GitHub workflows</a>
-</li>
-        </ul>
-      </div>
-    </li>
-  </ul>
-      <ul class="list-unstyled sidebar-section depth1">
-    <li class="">
-        <div class="me-auto">
-            <a class="sidebar-section-item d-inline-flex text-start w-100 collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-tutorials" aria-expanded="false">
-              <div class="me-auto sidebar-section-item">Tutorials</div>
-            <div><i class="bi bi-chevron-right ms-2"></i></div>
-            </a>
-        </div>
-      <div class="collapse  " id="quarto-sidebar-section-tutorials">
-        <ul class="list-unstyled sidebar-item-contents">
-          <li class="sidebar-item">
-  <a href="../tutorials/index.html" class="">Tutorials Overview</a>
-</li>
-          <li class="sidebar-item">
-  <a href="../tutorials/00_Setup.html" class="">00. Setup for tutorials</a>
-</li>
-          <li class="sidebar-item">
-  <a href="../tutorials/01_Data_Discovery_CMR.html" class="">01. Data discovery with CMR</a>
-</li>
-          <li class="sidebar-item">
-  <a href="../tutorials/02_Data_Discovery_CMR-STAC_API.html" class="">02. Data Discovery with CMR-STAC API</a>
-</li>
-          <li class="sidebar-item">
-  <a href="../tutorials/03_Xarray.html" class="">03. Introduction to <code>xarray</code></a>
-</li>
-          <li class="sidebar-item">
-  <a href="../tutorials/04_NASA_Earthdata_Authentication.html" class="">04. Authentication for NASA Earthdata</a>
-</li>
-          <li class="sidebar-item">
-  <a href="../tutorials/05_Data_Access_Direct_S3.html" class="">05. Direct S3 Data Access with rioxarray</a>
-</li>
-          <li class="sidebar-item">
-  <a href="../tutorials/06_S6_OPeNDAP_Access_Gridding.html" class="">06. Sentinel-6 MF L2 Altimetry Data Access (OPeNDAP) &amp; Gridding</a>
-</li>
-          <li class="sidebar-item">
-  <a href="../tutorials/07_Harmony_Subsetting.html" class="">07. Data Subsetting and Transformation Services in the Cloud</a>
-</li>
-          <li class="sidebar-item">
-  <a href="../tutorials/08_On-Prem_Cloud.html" class="">08. Pairing Cloud and non-Cloud Data</a>
-</li>
-          <li class="sidebar-item">
-  <a href="../tutorials/09_Zarr_Access.html" class="">09. Zarr Access for NetCDF4 files</a>
-</li>
-        </ul>
-      </div>
-    </li>
-  </ul>
-      <ul class="list-unstyled sidebar-section depth1">
-    <li class="">
-        <div class="me-auto">
-            <a class="sidebar-section-item d-inline-flex text-start w-100 collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-tutorial-templates" aria-expanded="false">
-              <div class="me-auto sidebar-section-item">Tutorial Templates</div>
-            <div><i class="bi bi-chevron-right ms-2"></i></div>
-            </a>
-        </div>
-      <div class="collapse  " id="quarto-sidebar-section-tutorial-templates">
-        <ul class="list-unstyled sidebar-item-contents">
-          <li class="sidebar-item">
-  <a href="../tutorials-templates/index.html" class="">Notebooks for live-coding</a>
-</li>
-        </ul>
-      </div>
-    </li>
-  </ul>
-      <ul class="list-unstyled sidebar-section depth1">
-    <li class="">
-        <div class="me-auto">
-            <a class="sidebar-section-item d-inline-flex text-start w-100 collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-projects" aria-expanded="false">
-              <div class="me-auto sidebar-section-item">Projects</div>
-            <div><i class="bi bi-chevron-right ms-2"></i></div>
-            </a>
-        </div>
-      <div class="collapse  " id="quarto-sidebar-section-projects">
-        <ul class="list-unstyled sidebar-item-contents">
-          <li class="sidebar-item">
-  <a href="../projects/index.html" class="">Projects Overview</a>
-</li>
-          <li class="sidebar-item">
-  <a href="../projects/hackathon-projects.html" class="">Hackathon Projects</a>
-</li>
-        </ul>
-      </div>
-    </li>
-  </ul>
-      <ul class="list-unstyled sidebar-section depth1">
-    <li class="">
-        <div class="me-auto">
-            <a class="sidebar-section-item d-inline-flex text-start w-100 collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-further-resources" aria-expanded="false">
-              <div class="me-auto sidebar-section-item">Further Resources</div>
-            <div><i class="bi bi-chevron-right ms-2"></i></div>
-            </a>
-        </div>
-      <div class="collapse  " id="quarto-sidebar-section-further-resources">
-        <ul class="list-unstyled sidebar-item-contents">
-          <li class="sidebar-item">
-  <a href="../further-resources.html" class="">Additional resources</a>
-</li>
-        </ul>
-      </div>
-    </li>
-  </ul>
-      <ul class="list-unstyled sidebar-section depth1">
-    <li class="">
-        <div class="me-auto">
-            <a class="sidebar-section-item d-inline-flex text-start w-100 collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-pre-hackathon-clinic" aria-expanded="false">
-              <div class="me-auto sidebar-section-item">Pre-Hackathon-Clinic</div>
-            <div><i class="bi bi-chevron-right ms-2"></i></div>
-            </a>
-        </div>
-      <div class="collapse  " id="quarto-sidebar-section-pre-hackathon-clinic">
-        <ul class="list-unstyled sidebar-item-contents">
-          <li class="sidebar-item">
-  <a href="../clinic/index.html" class="">Overview and Agenda</a>
-</li>
-          <li class="sidebar-item">
-  <a href="../clinic/jupyterhub.html" class="">NASA Openscapes Cloud Environment</a>
-</li>
-          <li class="sidebar-item">
-  <a href="../clinic/notebooks.html" class="">Notebooks, Python, Git</a>
-</li>
-          <li class="sidebar-item">
-  <a href="../clinic/github.html" class="">GitHub</a>
-</li>
-          <li class="sidebar-item">
-  <a href="../clinic/earthdata.html" class="">Earthdata Login</a>
-</li>
-        </ul>
-      </div>
-    </li>
-  </ul>
-  </ul>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../cloud-paradigm.html" class="sidebar-item-text ">Cloud Paradigm</a>
   </div>
+</li>
+    </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a class="sidebar-item-text text-start  collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-logistics" aria-expanded="false">Logistics</a>
+      <a class="sidebar-item-toggle text-start collapsed " data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-logistics" aria-expanded="false">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-logistics" class="collapse list-unstyled sidebar-section depth1 ">  
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../logistics/index.html" class="sidebar-item-text ">Logistics overview</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../logistics/schedule.html" class="sidebar-item-text ">Schedule</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../logistics/prerequisites.html" class="sidebar-item-text ">Prerequisites &amp; help</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../logistics/github-workflows.html" class="sidebar-item-text ">GitHub workflows</a>
+  </div>
+</li>
+    </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a class="sidebar-item-text text-start  collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-tutorials" aria-expanded="false">Tutorials</a>
+      <a class="sidebar-item-toggle text-start collapsed " data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-tutorials" aria-expanded="false">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-tutorials" class="collapse list-unstyled sidebar-section depth1 ">  
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorials/index.html" class="sidebar-item-text ">Tutorials Overview</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorials/00_Setup.html" class="sidebar-item-text ">00. Setup for tutorials</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorials/01_Data_Discovery_CMR.html" class="sidebar-item-text ">01. Data discovery with CMR</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorials/02_Data_Discovery_CMR-STAC_API.html" class="sidebar-item-text ">02. Data Discovery with CMR-STAC API</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorials/03_Xarray.html" class="sidebar-item-text ">03. Introduction to <code>xarray</code></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorials/04_NASA_Earthdata_Authentication.html" class="sidebar-item-text ">04. Authentication for NASA Earthdata</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorials/05_Data_Access_Direct_S3.html" class="sidebar-item-text ">05. Direct S3 Data Access with rioxarray</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorials/06_S6_OPeNDAP_Access_Gridding.html" class="sidebar-item-text ">06. Sentinel-6 MF L2 Altimetry Data Access (OPeNDAP) &amp; Gridding</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorials/07_Harmony_Subsetting.html" class="sidebar-item-text ">07. Data Subsetting and Transformation Services in the Cloud</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorials/08_On-Prem_Cloud.html" class="sidebar-item-text ">08. Pairing Cloud and non-Cloud Data</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorials/09_Zarr_Access.html" class="sidebar-item-text ">09. Zarr Access for NetCDF4 files</a>
+  </div>
+</li>
+    </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a class="sidebar-item-text text-start  collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-tutorial-templates" aria-expanded="false">Tutorial Templates</a>
+      <a class="sidebar-item-toggle text-start collapsed " data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-tutorial-templates" aria-expanded="false">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-tutorial-templates" class="collapse list-unstyled sidebar-section depth1 ">  
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorials-templates/index.html" class="sidebar-item-text ">Notebooks for live-coding</a>
+  </div>
+</li>
+    </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a class="sidebar-item-text text-start  collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-projects" aria-expanded="false">Projects</a>
+      <a class="sidebar-item-toggle text-start collapsed " data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-projects" aria-expanded="false">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-projects" class="collapse list-unstyled sidebar-section depth1 ">  
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../projects/index.html" class="sidebar-item-text ">Projects Overview</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../projects/hackathon-projects.html" class="sidebar-item-text ">Hackathon Projects</a>
+  </div>
+</li>
+    </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a class="sidebar-item-text text-start  collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-further-resources" aria-expanded="false">Further Resources</a>
+      <a class="sidebar-item-toggle text-start collapsed " data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-further-resources" aria-expanded="false">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-further-resources" class="collapse list-unstyled sidebar-section depth1 ">  
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../further-resources.html" class="sidebar-item-text ">Additional resources</a>
+  </div>
+</li>
+    </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a class="sidebar-item-text text-start  collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-pre-hackathon-clinic" aria-expanded="false">Pre-Hackathon-Clinic</a>
+      <a class="sidebar-item-toggle text-start collapsed " data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-pre-hackathon-clinic" aria-expanded="false">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-pre-hackathon-clinic" class="collapse list-unstyled sidebar-section depth1 ">  
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../clinic/index.html" class="sidebar-item-text ">Overview and Agenda</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../clinic/jupyterhub.html" class="sidebar-item-text ">NASA Openscapes Cloud Environment</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../clinic/notebooks.html" class="sidebar-item-text ">Notebooks, Python, Git</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../clinic/github.html" class="sidebar-item-text ">GitHub</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../clinic/earthdata.html" class="sidebar-item-text ">Earthdata Login</a>
+  </div>
+</li>
+    </ul>
+  </li>
+    </ul>
+    </div>
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-      <nav id="TOC" role="doc-toc">
+        <nav id="TOC" role="doc-toc">
 <h2 id="toc-title">On this page</h2>
 <ul>
 <li><a href="#direct-s3-data-access-with-rioxarray" class="nav-link active" data-scroll-target="#direct-s3-data-access-with-rioxarray">05. Direct S3 Data Access with rioxarray</a>
@@ -541,21 +567,33 @@
 </section>
 <section id="import-required-packages" class="level2">
 <h2 class="anchored" data-anchor-id="import-required-packages">Import Required Packages</h2>
+<div class="cell">
 <div class="sourceCode" id="cb1"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="configure-local-environment-and-get-temporary-credentials" class="level2">
 <h2 class="anchored" data-anchor-id="configure-local-environment-and-get-temporary-credentials">Configure Local Environment and Get Temporary Credentials</h2>
 <p>To perform direct S3 data access one needs to acquire temporary S3 credentials. The credentials give users direct access to S3 buckets in NASA Earthdata Cloud. <strong>AWS credentials should not be shared</strong>, so take precautions when using them in notebooks our scripts. <strong>Note,</strong> these temporary credentials are valid for only <strong>1 hour</strong>. For more information regarding the temporary credentials visit <a href="https://data.lpdaac.earthdatacloud.nasa.gov/s3credentialsREADME" class="uri">https://data.lpdaac.earthdatacloud.nasa.gov/s3credentialsREADME</a>. A <code>netrc</code> file is required to aquire these credentials. Use the <a href="NASA_Earthdata_Authentication.ipynb">NASA Earthdata Authentication</a> to create a <code>netrc</code> file in your home directory.</p>
+<div class="cell">
 <div class="sourceCode" id="cb2"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
 <div class="sourceCode" id="cb3"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
 <div class="sourceCode" id="cb4"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <section id="insert-the-credentials-into-our-boto3-session-and-configure-our-rasterio-environment-for-data-access" class="level3">
 <h3 class="anchored" data-anchor-id="insert-the-credentials-into-our-boto3-session-and-configure-our-rasterio-environment-for-data-access">Insert the credentials into our <code>boto3</code> session and configure our <code>rasterio</code> environment for data access</h3>
 <p>Create a boto3 Session object using your temporary credentials. This Session is used to pass credentials and configuration to AWS so we can interact wit S3 objects from applicable buckets.</p>
+<div class="cell">
 <div class="sourceCode" id="cb5"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>For this exercise, we are going to open up a context manager for the notebook using the <code>rasterio.env</code> module to store the required GDAL and AWS configurations we need to access the data in Earthdata Cloud. While the context manager is open (<code>rio_env.__enter__()</code>) we will be able to run the open or get data commands that would typically be executed within a <code>with</code> statement, thus allowing us to more freely interact with the data. We’ll close the context (<code>rio_env.__exit__()</code>) at the end of the notebook.</p>
 <p>GDAL environment variables must be configured to access Earthdata Cloud data assets. Geospatial data access Python packages like <code>rasterio</code> and <code>rioxarray</code> depend on GDAL, leveraging GDAL’s “Virtual File Systems” to read remote files. GDAL has a lot of environment variables that control it’s behavior. Changing these settings can mean the difference being able to access a file or not. They can also have an impact on the performance.</p>
+<div class="cell">
 <div class="sourceCode" id="cb6"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 </section>
 <section id="read-in-s3-links" class="level2">
@@ -564,45 +602,79 @@
 <section id="list-the-available-files-in-the-data-directory" class="level3">
 <h3 class="anchored" data-anchor-id="list-the-available-files-in-the-data-directory">List the available files in the data directory</h3>
 <p><strong>NOTE:</strong> If you are running the notebook from the tutorials-templates directory, please use the following path to connect to the data directoy: “<strong>../tutorials/data</strong>”</p>
+<div class="cell">
 <div class="sourceCode" id="cb7"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>We will save our list of links and a single link as Python objects for use later.</p>
 <p><strong>NOTE:</strong> If you are running the notebook from the tutorials-templates directory, please use the following path to connect to the data directoy: “<strong>../tutorials/data</strong>”</p>
+<div class="cell">
 <div class="sourceCode" id="cb8"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
 <div class="sourceCode" id="cb9"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 </section>
 <section id="read-in-a-single-hls-file" class="level2">
 <h2 class="anchored" data-anchor-id="read-in-a-single-hls-file">Read in a single HLS file</h2>
 <p>We’ll access the HLS S3 object using the <a href="https://corteva.github.io/rioxarray/stable/"><code>rioxarray</code></a> Python package. The package is an extension of <code>xarray</code> and <code>rasterio</code>, allowing users to read in and interact with geospatial data using xarray data structures. We will also be leveraging the tight integration between xarray and dask to lazily read in data via the <code>chunks</code> parameter. This allows us to connect to the HLS S3 object, reading only metadata, an not load the data into memory until we request it via the <code>loads()</code> function.</p>
+<div class="cell">
 <div class="sourceCode" id="cb10"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>When GeoTIFFS/Cloud Optimized GeoTIFFS are read in, a <code>band</code> coordinate variable is automatically created (see the print out above). In this exercise we will not use that coordinate variable, so we will remove it using the <code>squeeze()</code> function to avoid confusion.</p>
+<div class="cell">
 <div class="sourceCode" id="cb11"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <section id="plot-the-hls-s3-object" class="level3">
 <h3 class="anchored" data-anchor-id="plot-the-hls-s3-object">Plot the HLS S3 object</h3>
+<div class="cell">
 <div class="sourceCode" id="cb12"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>We can print out the data value as a numpy array by typing <code>.values</code></p>
+<div class="cell">
 <div class="sourceCode" id="cb13"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>Up to this point, we have not saved anything but metadata into memory. To save or load the data into memory we can call the <code>.load()</code> function.</p>
+<div class="cell">
 <div class="sourceCode" id="cb14"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
 <div class="sourceCode" id="cb15"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 </section>
 <section id="read-in-hls-as-a-time-series" class="level2">
 <h2 class="anchored" data-anchor-id="read-in-hls-as-a-time-series">Read in HLS as a time series</h2>
 <p>Now we’ll read in multiple HLS S3 objects as a time series xarray. Let’s print the links list again to see what we’re working with.</p>
+<div class="cell">
 <div class="sourceCode" id="cb16"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>Currently, the utilities and packages used in Python to read in GeoTIFF/COG file do not recognize associated dates stored in the internal metadata. To account for the dates for each file we must create a time variable and add it as a dimension in our final time series xarray. We’ll create a function that extracts the date from the file link and create an xarray variable with a time array of datetime objects.</p>
+<div class="cell">
 <div class="sourceCode" id="cb17"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
 <div class="sourceCode" id="cb18"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>We’ll now specify a chunk size to use that matches the internal tiling of HLS files. This will help improve performance.</p>
+<div class="cell">
 <div class="sourceCode" id="cb19"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>Now, we will create our time series.</p>
+<div class="cell">
 <div class="sourceCode" id="cb20"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>Since we used the <code>chunks</code> parameter while reading the data, the <code>hls_ts_da</code> object is not read into memory yet. To do that we’ll use the <code>load()</code> function.</p>
 <p>Now, we’ll see what we have. Use <code>hvplot</code> to plot our time series</p>
+<div class="cell">
 <div class="sourceCode" id="cb21"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
 <div class="sourceCode" id="cb22"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
 <div class="sourceCode" id="cb23"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <hr>
 </section>
 <section id="concluding-remarks" class="level2">
@@ -798,12 +870,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-  </div>
-  <div class="nav-page nav-page-next">
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

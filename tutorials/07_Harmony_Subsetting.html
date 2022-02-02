@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang=""><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
   <meta charset="utf-8">
-  <meta name="generator" content="quarto-0.2.339">
+  <meta name="generator" content="quarto-0.3.79">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>2021 Cloud Hackathon – harmony_subsetting</title>
   <style>
@@ -76,9 +76,6 @@
     code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
 
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
   <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
   <script src="../site_libs/quarto-nav/headroom.min.js"></script>
   <script src="../site_libs/clipboard/clipboard.min.js"></script>
@@ -86,6 +83,8 @@
   <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
   <script src="../site_libs/quarto-search/fuse.min.js"></script>
   <script src="../site_libs/quarto-search/quarto-search.js"></script>
+  <link href="../tutorials/08_On-Prem_Cloud.html" rel="next">
+  <link href="../tutorials/06_S6_OPeNDAP_Access_Gridding.html" rel="prev">
   <script src="../site_libs/quarto-html/quarto.js"></script>
   <script src="../site_libs/quarto-html/popper.min.js"></script>
   <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -119,12 +118,15 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
   <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
   <link rel="stylesheet" href="../styles.css">
 </head>
 <body class="docked">
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-light ">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">2021 Cloud Hackathon</span>
@@ -236,8 +238,8 @@
  </a>
   </li>  
 </ul>
-              <div>
-                <a href="" class="quarto-color-scheme-toggle nav-link" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+              <div class="quarto-toggle-container">
+                  <a href="" class="quarto-color-scheme-toggle nav-link" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
               </div>
               <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
@@ -256,193 +258,219 @@
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
-  <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-    <img src="https://user-images.githubusercontent.com/2915555/133525653-2a2278b1-1015-4350-b2a5-160d125aaaf7.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../">
+      <img src="https://user-images.githubusercontent.com/2915555/133525653-2a2278b1-1015-4350-b2a5-160d125aaaf7.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a class="sidebar-item-text text-start  collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-welcome" aria-expanded="false">Welcome</a>
+      <a class="sidebar-item-toggle text-start collapsed " data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-welcome" aria-expanded="false">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-welcome" class="collapse list-unstyled sidebar-section depth1 ">  
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text ">2021 Cloud Hackathon</a>
   </div>
-  <div class="sidebar-menu-container"> 
-  <ul class="list-unstyled mt-1">
-      <ul class="list-unstyled sidebar-section depth1">
-    <li class="">
-        <div class="me-auto">
-            <a class="sidebar-section-item d-inline-flex text-start w-100 collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-welcome" aria-expanded="false">
-              <div class="me-auto sidebar-section-item">Welcome</div>
-            <div><i class="bi bi-chevron-right ms-2"></i></div>
-            </a>
-        </div>
-      <div class="collapse  " id="quarto-sidebar-section-welcome">
-        <ul class="list-unstyled sidebar-item-contents">
-          <li class="sidebar-item">
-  <a href="../index.html" class="">2021 Cloud Hackathon</a>
 </li>
-          <li class="sidebar-item">
-  <a href="../cloud-paradigm.html" class="">Cloud Paradigm</a>
-</li>
-        </ul>
-      </div>
-    </li>
-  </ul>
-      <ul class="list-unstyled sidebar-section depth1">
-    <li class="">
-        <div class="me-auto">
-            <a class="sidebar-section-item d-inline-flex text-start w-100 collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-logistics" aria-expanded="false">
-              <div class="me-auto sidebar-section-item">Logistics</div>
-            <div><i class="bi bi-chevron-right ms-2"></i></div>
-            </a>
-        </div>
-      <div class="collapse  " id="quarto-sidebar-section-logistics">
-        <ul class="list-unstyled sidebar-item-contents">
-          <li class="sidebar-item">
-  <a href="../logistics/index.html" class="">Logistics overview</a>
-</li>
-          <li class="sidebar-item">
-  <a href="../logistics/schedule.html" class="">Schedule</a>
-</li>
-          <li class="sidebar-item">
-  <a href="../logistics/prerequisites.html" class="">Prerequisites &amp; help</a>
-</li>
-          <li class="sidebar-item">
-  <a href="../logistics/github-workflows.html" class="">GitHub workflows</a>
-</li>
-        </ul>
-      </div>
-    </li>
-  </ul>
-      <ul class="list-unstyled sidebar-section depth1">
-    <li class="">
-        <div class="me-auto">
-            <a class="sidebar-section-item d-inline-flex text-start w-100 " data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-tutorials" aria-expanded="true">
-              <div class="me-auto sidebar-section-item">Tutorials</div>
-            <div><i class="bi bi-chevron-right ms-2"></i></div>
-            </a>
-        </div>
-      <div class="collapse  show" id="quarto-sidebar-section-tutorials">
-        <ul class="list-unstyled sidebar-item-contents">
-          <li class="sidebar-item">
-  <a href="../tutorials/index.html" class="">Tutorials Overview</a>
-</li>
-          <li class="sidebar-item">
-  <a href="../tutorials/00_Setup.html" class="">00. Setup for tutorials</a>
-</li>
-          <li class="sidebar-item">
-  <a href="../tutorials/01_Data_Discovery_CMR.html" class="">01. Data discovery with CMR</a>
-</li>
-          <li class="sidebar-item">
-  <a href="../tutorials/02_Data_Discovery_CMR-STAC_API.html" class="">02. Data Discovery with CMR-STAC API</a>
-</li>
-          <li class="sidebar-item">
-  <a href="../tutorials/03_Xarray.html" class="">03. Introduction to <code>xarray</code></a>
-</li>
-          <li class="sidebar-item">
-  <a href="../tutorials/04_NASA_Earthdata_Authentication.html" class="">04. Authentication for NASA Earthdata</a>
-</li>
-          <li class="sidebar-item">
-  <a href="../tutorials/05_Data_Access_Direct_S3.html" class="">05. Direct S3 Data Access with rioxarray</a>
-</li>
-          <li class="sidebar-item">
-  <a href="../tutorials/06_S6_OPeNDAP_Access_Gridding.html" class="">06. Sentinel-6 MF L2 Altimetry Data Access (OPeNDAP) &amp; Gridding</a>
-</li>
-          <li class="sidebar-item">
-  <a href="../tutorials/07_Harmony_Subsetting.html" class="active">07. Data Subsetting and Transformation Services in the Cloud</a>
-</li>
-          <li class="sidebar-item">
-  <a href="../tutorials/08_On-Prem_Cloud.html" class="">08. Pairing Cloud and non-Cloud Data</a>
-</li>
-          <li class="sidebar-item">
-  <a href="../tutorials/09_Zarr_Access.html" class="">09. Zarr Access for NetCDF4 files</a>
-</li>
-        </ul>
-      </div>
-    </li>
-  </ul>
-      <ul class="list-unstyled sidebar-section depth1">
-    <li class="">
-        <div class="me-auto">
-            <a class="sidebar-section-item d-inline-flex text-start w-100 collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-tutorial-templates" aria-expanded="false">
-              <div class="me-auto sidebar-section-item">Tutorial Templates</div>
-            <div><i class="bi bi-chevron-right ms-2"></i></div>
-            </a>
-        </div>
-      <div class="collapse  " id="quarto-sidebar-section-tutorial-templates">
-        <ul class="list-unstyled sidebar-item-contents">
-          <li class="sidebar-item">
-  <a href="../tutorials-templates/index.html" class="">Notebooks for live-coding</a>
-</li>
-        </ul>
-      </div>
-    </li>
-  </ul>
-      <ul class="list-unstyled sidebar-section depth1">
-    <li class="">
-        <div class="me-auto">
-            <a class="sidebar-section-item d-inline-flex text-start w-100 collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-projects" aria-expanded="false">
-              <div class="me-auto sidebar-section-item">Projects</div>
-            <div><i class="bi bi-chevron-right ms-2"></i></div>
-            </a>
-        </div>
-      <div class="collapse  " id="quarto-sidebar-section-projects">
-        <ul class="list-unstyled sidebar-item-contents">
-          <li class="sidebar-item">
-  <a href="../projects/index.html" class="">Projects Overview</a>
-</li>
-          <li class="sidebar-item">
-  <a href="../projects/hackathon-projects.html" class="">Hackathon Projects</a>
-</li>
-        </ul>
-      </div>
-    </li>
-  </ul>
-      <ul class="list-unstyled sidebar-section depth1">
-    <li class="">
-        <div class="me-auto">
-            <a class="sidebar-section-item d-inline-flex text-start w-100 collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-further-resources" aria-expanded="false">
-              <div class="me-auto sidebar-section-item">Further Resources</div>
-            <div><i class="bi bi-chevron-right ms-2"></i></div>
-            </a>
-        </div>
-      <div class="collapse  " id="quarto-sidebar-section-further-resources">
-        <ul class="list-unstyled sidebar-item-contents">
-          <li class="sidebar-item">
-  <a href="../further-resources.html" class="">Additional resources</a>
-</li>
-        </ul>
-      </div>
-    </li>
-  </ul>
-      <ul class="list-unstyled sidebar-section depth1">
-    <li class="">
-        <div class="me-auto">
-            <a class="sidebar-section-item d-inline-flex text-start w-100 collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-pre-hackathon-clinic" aria-expanded="false">
-              <div class="me-auto sidebar-section-item">Pre-Hackathon-Clinic</div>
-            <div><i class="bi bi-chevron-right ms-2"></i></div>
-            </a>
-        </div>
-      <div class="collapse  " id="quarto-sidebar-section-pre-hackathon-clinic">
-        <ul class="list-unstyled sidebar-item-contents">
-          <li class="sidebar-item">
-  <a href="../clinic/index.html" class="">Overview and Agenda</a>
-</li>
-          <li class="sidebar-item">
-  <a href="../clinic/jupyterhub.html" class="">NASA Openscapes Cloud Environment</a>
-</li>
-          <li class="sidebar-item">
-  <a href="../clinic/notebooks.html" class="">Notebooks, Python, Git</a>
-</li>
-          <li class="sidebar-item">
-  <a href="../clinic/github.html" class="">GitHub</a>
-</li>
-          <li class="sidebar-item">
-  <a href="../clinic/earthdata.html" class="">Earthdata Login</a>
-</li>
-        </ul>
-      </div>
-    </li>
-  </ul>
-  </ul>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../cloud-paradigm.html" class="sidebar-item-text ">Cloud Paradigm</a>
   </div>
+</li>
+    </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a class="sidebar-item-text text-start  collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-logistics" aria-expanded="false">Logistics</a>
+      <a class="sidebar-item-toggle text-start collapsed " data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-logistics" aria-expanded="false">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-logistics" class="collapse list-unstyled sidebar-section depth1 ">  
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../logistics/index.html" class="sidebar-item-text ">Logistics overview</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../logistics/schedule.html" class="sidebar-item-text ">Schedule</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../logistics/prerequisites.html" class="sidebar-item-text ">Prerequisites &amp; help</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../logistics/github-workflows.html" class="sidebar-item-text ">GitHub workflows</a>
+  </div>
+</li>
+    </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a class="sidebar-item-text text-start  " data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-tutorials" aria-expanded="true">Tutorials</a>
+      <a class="sidebar-item-toggle text-start  " data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-tutorials" aria-expanded="true">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-tutorials" class="collapse list-unstyled sidebar-section depth1 show">  
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorials/index.html" class="sidebar-item-text ">Tutorials Overview</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorials/00_Setup.html" class="sidebar-item-text ">00. Setup for tutorials</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorials/01_Data_Discovery_CMR.html" class="sidebar-item-text ">01. Data discovery with CMR</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorials/02_Data_Discovery_CMR-STAC_API.html" class="sidebar-item-text ">02. Data Discovery with CMR-STAC API</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorials/03_Xarray.html" class="sidebar-item-text ">03. Introduction to <code>xarray</code></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorials/04_NASA_Earthdata_Authentication.html" class="sidebar-item-text ">04. Authentication for NASA Earthdata</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorials/05_Data_Access_Direct_S3.html" class="sidebar-item-text ">05. Direct S3 Data Access with rioxarray</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorials/06_S6_OPeNDAP_Access_Gridding.html" class="sidebar-item-text ">06. Sentinel-6 MF L2 Altimetry Data Access (OPeNDAP) &amp; Gridding</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorials/07_Harmony_Subsetting.html" class="sidebar-item-text active">07. Data Subsetting and Transformation Services in the Cloud</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorials/08_On-Prem_Cloud.html" class="sidebar-item-text ">08. Pairing Cloud and non-Cloud Data</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorials/09_Zarr_Access.html" class="sidebar-item-text ">09. Zarr Access for NetCDF4 files</a>
+  </div>
+</li>
+    </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a class="sidebar-item-text text-start  collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-tutorial-templates" aria-expanded="false">Tutorial Templates</a>
+      <a class="sidebar-item-toggle text-start collapsed " data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-tutorial-templates" aria-expanded="false">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-tutorial-templates" class="collapse list-unstyled sidebar-section depth1 ">  
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorials-templates/index.html" class="sidebar-item-text ">Notebooks for live-coding</a>
+  </div>
+</li>
+    </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a class="sidebar-item-text text-start  collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-projects" aria-expanded="false">Projects</a>
+      <a class="sidebar-item-toggle text-start collapsed " data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-projects" aria-expanded="false">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-projects" class="collapse list-unstyled sidebar-section depth1 ">  
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../projects/index.html" class="sidebar-item-text ">Projects Overview</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../projects/hackathon-projects.html" class="sidebar-item-text ">Hackathon Projects</a>
+  </div>
+</li>
+    </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a class="sidebar-item-text text-start  collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-further-resources" aria-expanded="false">Further Resources</a>
+      <a class="sidebar-item-toggle text-start collapsed " data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-further-resources" aria-expanded="false">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-further-resources" class="collapse list-unstyled sidebar-section depth1 ">  
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../further-resources.html" class="sidebar-item-text ">Additional resources</a>
+  </div>
+</li>
+    </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a class="sidebar-item-text text-start  collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-pre-hackathon-clinic" aria-expanded="false">Pre-Hackathon-Clinic</a>
+      <a class="sidebar-item-toggle text-start collapsed " data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-pre-hackathon-clinic" aria-expanded="false">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-pre-hackathon-clinic" class="collapse list-unstyled sidebar-section depth1 ">  
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../clinic/index.html" class="sidebar-item-text ">Overview and Agenda</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../clinic/jupyterhub.html" class="sidebar-item-text ">NASA Openscapes Cloud Environment</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../clinic/notebooks.html" class="sidebar-item-text ">Notebooks, Python, Git</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../clinic/github.html" class="sidebar-item-text ">GitHub</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../clinic/earthdata.html" class="sidebar-item-text ">Earthdata Login</a>
+  </div>
+</li>
+    </ul>
+  </li>
+    </ul>
+    </div>
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-      <nav id="TOC" role="doc-toc">
+        <nav id="TOC" role="doc-toc">
 <h2 id="toc-title">On this page</h2>
 <ul>
 <li><a href="#data-subsetting-and-transformation-services-in-the-cloud" class="nav-link active" data-scroll-target="#data-subsetting-and-transformation-services-in-the-cloud">07. Data Subsetting and Transformation Services in the Cloud</a>
@@ -529,6 +557,7 @@
 </section>
 <section id="import-packages" class="level2">
 <h2 class="anchored" data-anchor-id="import-packages">Import Packages</h2>
+<div class="cell" data-execution_count="1">
 <div class="sourceCode" id="cb1"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> harmony <span class="im">import</span> BBox, Client, Collection, Request, LinkType</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> harmony.config <span class="im">import</span> Environment</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
@@ -536,6 +565,7 @@
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> datetime <span class="im">as</span> dt</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> s3fs</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> xarray <span class="im">as</span> xr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="discover-service-options-for-a-given-data-set" class="level2">
 <h2 class="anchored" data-anchor-id="discover-service-options-for-a-given-data-set">Discover service options for a given data set</h2>
@@ -547,15 +577,22 @@
 <p>Why is this?</p>
 <p>Due to varying <a href="https://earthdata.nasa.gov/collaborate/new-missions/level-of-service">levels of service</a>, cloud migration status, and unique characteristics of the datasets themselves, not all service options are provided for all datasets. Therefore it is important to first explore a given dataset’s metadata to discover what service options are provided.</p>
 <p>Let’s utilize the CMR API skills we learned on Day 1 to inspect service metadata:</p>
+<div class="cell" data-execution_count="2">
 <div class="sourceCode" id="cb2"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">'https://cmr.earthdata.nasa.gov/search'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>We want to search by collection to inspect the access and service options that exist:</p>
+<div class="cell" data-execution_count="3">
 <div class="sourceCode" id="cb3"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>collection_url <span class="op">=</span> <span class="ss">f'</span><span class="sc">{</span>url<span class="sc">}</span><span class="ss">/</span><span class="sc">{</span><span class="st">"collections"</span><span class="sc">}</span><span class="ss">'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>In the CMR introduction tutorial, we explored cloud-hosted collections from different DAAC providers, and identified the CMR <code>concept-id</code> for a given data set id (also referred to as a <code>short_name</code>).</p>
 <p>Here we are jumping ahead and already know the <code>concept_id</code> we are interested in, by browsing cloud-hosted datasets from PO.DAAC in Earthdata Search: https://search.earthdata.nasa.gov/portal/podaac-cloud/search.</p>
 <p>We are going to focus on <code>MODIS_A-JPL-L2P-v2019.0</code>: GHRSST Level 2P Global Sea Surface Skin Temperature from the Moderate Resolution Imaging Spectroradiometer (MODIS) on the NASA Aqua satellite (GDS2). Let’s first save this as a variable that we can use later on once we request data from Harmony.</p>
+<div class="cell" data-execution_count="4">
 <div class="sourceCode" id="cb4"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>short_name<span class="op">=</span> <span class="st">'MODIS_A-JPL-L2P-v2019.0'</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>concept_id <span class="op">=</span> <span class="st">'C1940473819-POCLOUD'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>We will view the top-level metadata for this collection to see what additional service and variable metadata exist.</p>
+<div class="cell" data-execution_count="5">
 <div class="sourceCode" id="cb5"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(collection_url, </span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>                        params<span class="op">=</span>{</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'concept_id'</span>: concept_id,</span>
@@ -565,8 +602,9 @@
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>                            }</span>
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>                       )</span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> response.json()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>Print the response:</p>
-<div class="cell" data-execution_count="6">
+<div class="cell" data-tags="[]" data-execution_count="6">
 <div class="sourceCode" id="cb6"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>pprint(response)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stdout">
 <pre><code>{'feed': {'entry': [{'archive_center': 'NASA/JPL/PODAAC',
@@ -766,8 +804,11 @@
 <pre><code>['S1962070864-POCLOUD', 'S2004184019-POCLOUD']</code></pre>
 </div>
 </div>
+<div class="cell" data-execution_count="8">
 <div class="sourceCode" id="cb10"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>service_url <span class="op">=</span> <span class="st">"https://cmr.earthdata.nasa.gov/search/services"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>Inspect the first service returned. Now we’re going to search the services endpoint to view that individual service’s metadata, like we did with our dataset above. This time, we’re explicitly setting the format of the response to umm-json in the Accept Header in order to see detailed metadata about the service.</p>
+<div class="cell" data-execution_count="9">
 <div class="sourceCode" id="cb11"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>service_response <span class="op">=</span> requests.get(service_url, </span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>                        params<span class="op">=</span>{</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'concept_id'</span>: services[<span class="dv">0</span>],</span>
@@ -777,6 +818,7 @@
 <span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>                            }</span>
 <span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>                       )</span>
 <span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>service_response <span class="op">=</span> service_response.json()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>Details about the service metadata record include the service options provided by the “backend” processor connected to Harmony, in this case the PODAAC Level 2 Cloud Subsetter:</p>
 <div class="cell" data-execution_count="10">
 <div class="sourceCode" id="cb12"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>pprint(service_response)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -833,6 +875,7 @@
 <section id="discover-all-datasets-that-support-harmony-services" class="level3">
 <h3 class="anchored" data-anchor-id="discover-all-datasets-that-support-harmony-services"><em>Discover all datasets that support Harmony services</em></h3>
 <p>Instead of searching for services on a known dataset of interest, we may want to discovery all available datasets that are supported for a given service. We can utilize <a href="https://graphql.org/">GraphQL</a>, which is a way for us to efficiently gain information across service and collection metadata so that we can print out all supported Harmony datasets. First, we need to specify a query string. Here we are asking to query all collections with service type “Harmony”, and to provide details on the service options attached to those services:</p>
+<div class="cell" data-execution_count="11">
 <div class="sourceCode" id="cb14"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>query <span class="op">=</span> <span class="st">"""query {</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="st">  collections(limit: 2000, serviceType: "Harmony") {</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="st">    count</span></span>
@@ -855,7 +898,9 @@
 <span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a><span class="st">    }</span></span>
 <span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a><span class="st">  }</span></span>
 <span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a><span class="st">}"""</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>This utilizes a different API endpoint to query CMR metdata using GraphQL. Here we set up another request, passing our query string above:</p>
+<div class="cell" data-execution_count="12">
 <div class="sourceCode" id="cb15"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>graphql_url <span class="op">=</span> <span class="st">'https://graphql.earthdata.nasa.gov/api'</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>graphql_response <span class="op">=</span> requests.get(graphql_url,</span>
@@ -864,6 +909,7 @@
 <span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'Accept'</span>: <span class="st">'application/json'</span>,</span>
 <span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>                        }</span>
 <span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>                       )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>A json response is returned that provides all collections with Harmony-supported services. We can then extract just the collection<code>shortName</code>, <code>conceptID</code>, and the service names supported for each collection:</p>
 <div class="cell" data-execution_count="13">
 <div class="sourceCode" id="cb16"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>services <span class="op">=</span> graphql_response.json()[<span class="st">'data'</span>][<span class="st">'collections'</span>][<span class="st">'items'</span>]</span>
@@ -1208,7 +1254,7 @@ Services: PODAAC L2 Cloud Subsetter</code></pre>
 <section id="discover-variable-names" class="level2">
 <h2 class="anchored" data-anchor-id="discover-variable-names">Discover variable names</h2>
 <p>Just like services, a dataset may also be associated to metadata on their individual data variables, which can be used as input if we wish to subset by one or more variables of interest.</p>
-<div class="cell" data-execution_count="14">
+<div class="cell" data-tags="[]" data-execution_count="14">
 <div class="sourceCode" id="cb18"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>variables <span class="op">=</span> response[<span class="st">'feed'</span>][<span class="st">'entry'</span>][<span class="dv">0</span>][<span class="st">'associations'</span>][<span class="st">'variables'</span>]</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(variables)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stdout">
@@ -1216,7 +1262,10 @@ Services: PODAAC L2 Cloud Subsetter</code></pre>
 </div>
 </div>
 <p>Several variable records are returned. Again, like we did for services, we’ll search the variables endpoint to view an individual variable’s metadata, and we’ll print out the list of variables for our dataset.</p>
+<div class="cell" data-tags="[]" data-execution_count="15">
 <div class="sourceCode" id="cb20"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>var_url <span class="op">=</span> <span class="st">"https://cmr.earthdata.nasa.gov/search/variables"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="16">
 <div class="sourceCode" id="cb21"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>var_response <span class="op">=</span> requests.get(var_url, </span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>                        params<span class="op">=</span>{</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'concept_id'</span>: variables[<span class="dv">0</span>],</span>
@@ -1226,6 +1275,7 @@ Services: PODAAC L2 Cloud Subsetter</code></pre>
 <span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>                            }</span>
 <span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>                       )</span>
 <span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>var_response <span class="op">=</span> var_response.json()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <div class="cell" data-execution_count="17">
 <div class="sourceCode" id="cb22"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>pprint(var_response)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stdout">
@@ -1274,6 +1324,7 @@ Services: PODAAC L2 Cloud Subsetter</code></pre>
 </div>
 </div>
 <p>Next, print out a simple list of all associated variable names by looping the same variable response we submitted above, this time for each variable:</p>
+<div class="cell" data-execution_count="18">
 <div class="sourceCode" id="cb24"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>var_list <span class="op">=</span> []</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(variables)):</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    var_response <span class="op">=</span> requests.get(var_url, </span>
@@ -1286,6 +1337,7 @@ Services: PODAAC L2 Cloud Subsetter</code></pre>
 <span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>                           )</span>
 <span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>    var_response <span class="op">=</span> var_response.json()</span>
 <span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>    var_list.append(var_response[<span class="st">'items'</span>][<span class="dv">0</span>][<span class="st">'umm'</span>][<span class="st">'Name'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <div class="cell" data-execution_count="19">
 <div class="sourceCode" id="cb25"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>pprint(var_list)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stdout">
@@ -1315,7 +1367,9 @@ Services: PODAAC L2 Cloud Subsetter</code></pre>
 <h3 class="anchored" data-anchor-id="create-harmony-client-object">Create Harmony Client object</h3>
 <p>First, we need to create a Harmony Client, which is what we will interact with to submit and inspect a data request to Harmony, as well as to retrieve results.</p>
 <p>When creating the Client, we need to provide Earthdata Login credentials, which are required to access data from NASA EOSDIS. This basic line below assumes that we have a <code>.netrc</code> available.</p>
+<div class="cell" data-execution_count="20">
 <div class="sourceCode" id="cb27"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>harmony_client <span class="op">=</span> Client()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="hurricane-ida-snapshot" class="level3">
 <h3 class="anchored" data-anchor-id="hurricane-ida-snapshot">Hurricane Ida snapshot</h3>
@@ -1340,6 +1394,7 @@ Services: PODAAC L2 Cloud Subsetter</code></pre>
 <li><code>temporal</code>: Date/time constraints on the data. The example below demonstrates temporal start and end ranges using the python datetime library.</li>
 </ul>
 <p>As we identified above, only subsetting options are available for this dataset. If other service options such as reformatting are available for a given dataset, these can also be specified using Harmony-py: See the <a href="https://harmony-py.readthedocs.io/en/latest/">documentation</a> for details on how to construct these parameters.</p>
+<div class="cell" data-execution_count="21">
 <div class="sourceCode" id="cb28"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>request <span class="op">=</span> Request(</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>    collection<span class="op">=</span>Collection(<span class="bu">id</span><span class="op">=</span>short_name),</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>    spatial<span class="op">=</span>BBox(<span class="op">-</span><span class="fl">97.77667</span>,<span class="fl">21.20806</span>,<span class="op">-</span><span class="fl">83.05197</span>,<span class="fl">30.16605</span>),</span>
@@ -1348,6 +1403,7 @@ Services: PODAAC L2 Cloud Subsetter</code></pre>
 <span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">'stop'</span>: dt.datetime(<span class="dv">2021</span>, <span class="dv">8</span>, <span class="dv">21</span>),</span>
 <span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>    },</span>
 <span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="check-request-validity" class="level3">
 <h3 class="anchored" data-anchor-id="check-request-validity">Check Request validity</h3>
@@ -1501,18 +1557,22 @@ Services: PODAAC L2 Cloud Subsetter</code></pre>
 <section id="aws-credential-retrieval" class="level4">
 <h4 class="anchored" data-anchor-id="aws-credential-retrieval">AWS credential retrieval</h4>
 <p>Using aws_credentials you can retrieve the credentials needed to access the Harmony s3 staging bucket and its contents.</p>
+<div class="cell" data-tags="[]" data-execution_count="29">
 <div class="sourceCode" id="cb43"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>creds <span class="op">=</span> harmony_client.aws_credentials()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 </section>
 <section id="open-staged-files-with-s3fs-and-xarray" class="level3">
 <h3 class="anchored" data-anchor-id="open-staged-files-with-s3fs-and-xarray">Open staged files with <em>s3fs</em> and <em>xarray</em></h3>
 <p>We use the AWS <code>s3fs</code> package to create a file system that can then be read by xarray:</p>
+<div class="cell" data-execution_count="30">
 <div class="sourceCode" id="cb44"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>s3_fs <span class="op">=</span> s3fs.S3FileSystem(</span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>    key<span class="op">=</span>creds[<span class="st">'aws_access_key_id'</span>],</span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>    secret<span class="op">=</span>creds[<span class="st">'aws_secret_access_key'</span>],</span>
 <span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>    token<span class="op">=</span>creds[<span class="st">'aws_session_token'</span>],</span>
 <span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>    client_kwargs<span class="op">=</span>{<span class="st">'region_name'</span>:<span class="st">'us-west-2'</span>},</span>
 <span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>Now that we have our s3 file system set, including our declared credentials, we’ll use that to open the url, and read in the file through xarray. This extra step is needed because xarray cannot open the S3 location directly. Instead, the S3 file object is passed to xarray, in order to then open the dataset.</p>
 <div class="cell" data-execution_count="31">
 <div class="sourceCode" id="cb45"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> s3_fs.<span class="bu">open</span>(url, mode<span class="op">=</span><span class="st">'rb'</span>)</span>
@@ -2104,8 +2164,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="../tutorials/06_S6_OPeNDAP_Access_Gridding.html">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">06. Sentinel-6 MF L2 Altimetry Data Access (OPeNDAP) &amp; Gridding</span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../tutorials/08_On-Prem_Cloud.html">
+        <span class="nav-page-text">08. Pairing Cloud and non-Cloud Data</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
