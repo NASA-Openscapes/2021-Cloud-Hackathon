@@ -1,5 +1,5 @@
 ---
-title: GitHub workflows
+title: GitHub/Jupyter workflows
 ---
 
 We will be live-coding during the tutorials and collaborating during the project hack-time, using GitHub in both cases. Here is how to setup and work for each. 
@@ -167,3 +167,10 @@ A fork becomes ‘independent’ of the repository you’re forking. So you cont
 If you plan on contributing to a project, a fork is usually the best way to do that, if you plan on simply consuming the project (e.g. run a tutorial) then cloning is fine. A fork can always be appropriate. 
 
 Or, if you plan on updating and making changes that you’d want to preserve, a fork allows you to do that in your own repository, whereas cloning would need you to have permissions to write (push) to the repository. 
+
+## Jupyter Q&A
+
+### Jupyter notebook question: is there a way to copy multiple cells at once and paste in a new notebook? 
+(rather than having to go into each cell individually to copy that snippet of code)
+
+Answer: while pressing shift, with the mouse or the arrow keys select the cells you want then you can press 'C' or right click and copy the cells and then go to a different notebook and paste them. To make this work you need to focus on the notebook not in a cell (press ESC if so)
