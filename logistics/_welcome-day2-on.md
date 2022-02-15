@@ -1,4 +1,4 @@
 - JupyterHub: Log in. 
-  - Log into 2i2c at <https://openscapes.2i2c.cloud/hub/>. This takes a few minutes so please start this as soon we reconvene each day
+  - Log into 2i2c. This takes a few minutes so please start this as soon we reconvene each day
 - GitHub: Get the latest.
   - You'll need to git fetch, merge, and pull: follow the github workflows  [daily setup](https://nasa-openscapes.github.io/2021-Cloud-Hackathon/logistics/github-workflows.html#daily-setup).

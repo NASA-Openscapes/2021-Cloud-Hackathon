@@ -40,7 +40,7 @@ If you have any conflicts with the following steps, you will likely need to comm
 
 ### JupyterHub: Get your fork's updates
 
-Go to <https://openscapes.2i2c.cloud/hub/>
+Go to the JupyterHub 
 
 Go to the GitHub extension and click the "pull button"
 

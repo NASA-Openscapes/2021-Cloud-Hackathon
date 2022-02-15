@@ -60,7 +60,7 @@ A **fork** is a copy of a repository from another github account (for example **
 
 Now you have a fork of the demo repository in your github account that we can `clone` it in your 2i2c instance. In the code below, commands beginning with `git` is a git command for version control and synching; commands that don't start with `git` are bash/linux/command line commands.
 
-1.  Start your [2i2c JupyterHub](https://openscapes.2i2c.cloud) and open a terminal
+1.  Start your 2i2c JupyterHub and open a terminal
 
     `File >> New >> Terminal`
 

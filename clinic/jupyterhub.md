@@ -36,7 +36,7 @@ The community is waking up to the idea that we can’t simply expect scientists 
 
 *There is no cloud, it's someone else's computer*
 
-Go to <https://openscapes.2i2c.cloud/hub/>. You will be asked to log in with your GitHub Account
+Go to Openscapes Jupyter Hub. You will be asked to log in with your GitHub Account
 
 ![Openscapes JupyterHub Login](./img/openscapes-hub.png)
 

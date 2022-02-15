@@ -90,4 +90,4 @@ Hackathon repo: **<https://github.com/NASA-Openscapes/2021-Cloud-Hackathon>**; a
 
 ### 2i2c JupyterHub
 
-Log-in before we start each day: <https://openscapes.2i2c.cloud/hub/>
+Log-in before we start each day to our JupyterHub instance. 
