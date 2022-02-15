@@ -1,9 +1,5 @@
-project:
-  type: site
-  output-dir: _site
-
-execute:
-  freeze: true
+project: 
+  type: website
 
 site:
   title: "2021 Cloud Hackathon"
@@ -32,6 +28,7 @@ site:
           contents:
             - index.md
             - cloud-paradigm.md
+            - team.md
         - section: "Logistics"
           contents:
             - logistics/index.md

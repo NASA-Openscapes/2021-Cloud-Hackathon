@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+  <meta charset="utf-8">
+  <meta name="generator" content="quarto-0.9.17">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>2021 Cloud Hackathon – data_discovery_cmr-stac_api</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+
+  <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+  <script src="../site_libs/quarto-nav/headroom.min.js"></script>
+  <script src="../site_libs/clipboard/clipboard.min.js"></script>
+  <meta name="quarto:offset" content="../">
+  <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+  <script src="../site_libs/quarto-search/fuse.min.js"></script>
+  <script src="../site_libs/quarto-search/quarto-search.js"></script>
+  <script src="../site_libs/quarto-html/quarto.js"></script>
+  <script src="../site_libs/quarto-html/popper.min.js"></script>
+  <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+  <script src="../site_libs/quarto-html/anchor.min.js"></script>
+  <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+  <link class="quarto-color-scheme" href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
+  <link class="quarto-color-scheme quarto-color-alternate" rel="prefetch" href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css">
+  <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+  <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+  <link class="quarto-color-scheme" href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+  <link class="quarto-color-scheme quarto-color-alternate" rel="prefetch" href="../site_libs/bootstrap/bootstrap-dark.min.css">
+  <script id="quarto-search-options" type="application/json">{
+    "location": "navbar",
+    "copy-button": false,
+    "collapse-after": 2,
+    "panel-placement": "end",
+    "type": "overlay",
+    "limit": 20,
+    "language": {
+      "search-no-results-text": "No results",
+      "search-matching-documents-text": "matching documents",
+      "search-copy-link-title": "Copy link to search",
+      "search-hide-matches-text": "Hide additional matches",
+      "search-more-match-text": "more match in this document",
+      "search-more-matches-text": "more matches in this document",
+      "search-clear-button-title": "Clear",
+      "search-detached-cancel-button-title": "Cancel",
+      "search-submit-button-title": "Submit"
+    }
+  }</script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="docked">
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">2021 Cloud Hackathon</span>
+  </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-menu" role="button" data-bs-toggle="dropdown" aria-expanded="false">Menu</a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-menu">    
+        <li class="dropdown-header">Welcome</li>
+        <li>
+    <a class="dropdown-item" href="../index.html">2021 Cloud Hackathon</a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../cloud-paradigm.html">Cloud Paradigm</a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../team.html">Our Team</a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Logistics</li>
+        <li>
+    <a class="dropdown-item" href="../logistics/index.html">Logistics overview</a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../logistics/schedule.html">Schedule</a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../logistics/prerequisites.html">Prerequisites &amp; help</a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../logistics/github-workflows.html">GitHub/Jupyter workflows</a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Tutorials</li>
+        <li>
+    <a class="dropdown-item" href="../tutorials/index.html">Tutorials Overview</a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../tutorials/00_Setup.html">00. Setup for tutorials</a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../tutorials/01_Data_Discovery_CMR.html">01. Data discovery with CMR</a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../tutorials/02_Data_Discovery_CMR-STAC_API.html">02. Data Discovery with CMR-STAC API</a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../tutorials/03_Xarray.html">03. Introduction to <code>xarray</code></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../tutorials/04_NASA_Earthdata_Authentication.html">04. Authentication for NASA Earthdata</a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../tutorials/05_Data_Access_Direct_S3.html">05. Direct S3 Data Access with rioxarray</a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../tutorials/06_S6_OPeNDAP_Access_Gridding.html">06. Sentinel-6 MF L2 Altimetry Data Access (OPeNDAP) &amp; Gridding</a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../tutorials/07_Harmony_Subsetting.html">07. Data Subsetting and Transformation Services in the Cloud</a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../tutorials/08_On-Prem_Cloud.html">08. Pairing Cloud and non-Cloud Data</a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../tutorials/09_Zarr_Access.html">09. Zarr Access for NetCDF4 files</a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Tutorial Templates</li>
+        <li>
+    <a class="dropdown-item" href="../tutorials-templates/index.html">Notebooks for live-coding</a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Projects</li>
+        <li>
+    <a class="dropdown-item" href="../projects/index.html">Projects Overview</a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../projects/hackathon-projects.html">Hackathon Projects</a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Further Resources</li>
+        <li>
+    <a class="dropdown-item" href="../further-resources.html">Additional resources</a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Pre-Hackathon-Clinic</li>
+        <li>
+    <a class="dropdown-item" href="../clinic/index.html">Overview and Agenda</a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../clinic/jupyterhub.html">NASA Openscapes Cloud Environment</a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../clinic/notebooks.html">Notebooks, Python, Git</a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../clinic/github.html">GitHub</a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../clinic/earthdata.html">Earthdata Login</a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon"><i class="bi-github" role="img">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div class="quarto-toggle-container">
+                  <a href="" class="quarto-color-scheme-toggle nav-link" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+              </div>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">(Untitled)</h1>
+      <button type="button" class="quarto-btn-toggle btn">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../">
+      <img src="https://user-images.githubusercontent.com/2915555/133525653-2a2278b1-1015-4350-b2a5-160d125aaaf7.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-welcome" aria-expanded="false">Welcome</a>
+      <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-welcome" aria-expanded="false">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-welcome" class="collapse list-unstyled sidebar-section depth1 ">  
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">2021 Cloud Hackathon</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../cloud-paradigm.html" class="sidebar-item-text sidebar-link">Cloud Paradigm</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../team.html" class="sidebar-item-text sidebar-link">Our Team</a>
+  </div>
+</li>
+    </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-logistics" aria-expanded="false">Logistics</a>
+      <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-logistics" aria-expanded="false">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-logistics" class="collapse list-unstyled sidebar-section depth1 ">  
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../logistics/index.html" class="sidebar-item-text sidebar-link">Logistics overview</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../logistics/schedule.html" class="sidebar-item-text sidebar-link">Schedule</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../logistics/prerequisites.html" class="sidebar-item-text sidebar-link">Prerequisites &amp; help</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../logistics/github-workflows.html" class="sidebar-item-text sidebar-link">GitHub/Jupyter workflows</a>
+  </div>
+</li>
+    </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-tutorials" aria-expanded="false">Tutorials</a>
+      <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-tutorials" aria-expanded="false">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-tutorials" class="collapse list-unstyled sidebar-section depth1 ">  
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorials/index.html" class="sidebar-item-text sidebar-link">Tutorials Overview</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorials/00_Setup.html" class="sidebar-item-text sidebar-link">00. Setup for tutorials</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorials/01_Data_Discovery_CMR.html" class="sidebar-item-text sidebar-link">01. Data discovery with CMR</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorials/02_Data_Discovery_CMR-STAC_API.html" class="sidebar-item-text sidebar-link">02. Data Discovery with CMR-STAC API</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorials/03_Xarray.html" class="sidebar-item-text sidebar-link">03. Introduction to <code>xarray</code></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorials/04_NASA_Earthdata_Authentication.html" class="sidebar-item-text sidebar-link">04. Authentication for NASA Earthdata</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorials/05_Data_Access_Direct_S3.html" class="sidebar-item-text sidebar-link">05. Direct S3 Data Access with rioxarray</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorials/06_S6_OPeNDAP_Access_Gridding.html" class="sidebar-item-text sidebar-link">06. Sentinel-6 MF L2 Altimetry Data Access (OPeNDAP) &amp; Gridding</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorials/07_Harmony_Subsetting.html" class="sidebar-item-text sidebar-link">07. Data Subsetting and Transformation Services in the Cloud</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorials/08_On-Prem_Cloud.html" class="sidebar-item-text sidebar-link">08. Pairing Cloud and non-Cloud Data</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorials/09_Zarr_Access.html" class="sidebar-item-text sidebar-link">09. Zarr Access for NetCDF4 files</a>
+  </div>
+</li>
+    </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-tutorial-templates" aria-expanded="false">Tutorial Templates</a>
+      <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-tutorial-templates" aria-expanded="false">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-tutorial-templates" class="collapse list-unstyled sidebar-section depth1 ">  
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorials-templates/index.html" class="sidebar-item-text sidebar-link">Notebooks for live-coding</a>
+  </div>
+</li>
+    </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-projects" aria-expanded="false">Projects</a>
+      <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-projects" aria-expanded="false">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-projects" class="collapse list-unstyled sidebar-section depth1 ">  
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../projects/index.html" class="sidebar-item-text sidebar-link">Projects Overview</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../projects/hackathon-projects.html" class="sidebar-item-text sidebar-link">Hackathon Projects</a>
+  </div>
+</li>
+    </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-further-resources" aria-expanded="false">Further Resources</a>
+      <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-further-resources" aria-expanded="false">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-further-resources" class="collapse list-unstyled sidebar-section depth1 ">  
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../further-resources.html" class="sidebar-item-text sidebar-link">Additional resources</a>
+  </div>
+</li>
+    </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-pre-hackathon-clinic" aria-expanded="false">Pre-Hackathon-Clinic</a>
+      <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-pre-hackathon-clinic" aria-expanded="false">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-pre-hackathon-clinic" class="collapse list-unstyled sidebar-section depth1 ">  
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../clinic/index.html" class="sidebar-item-text sidebar-link">Overview and Agenda</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../clinic/jupyterhub.html" class="sidebar-item-text sidebar-link">NASA Openscapes Cloud Environment</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../clinic/notebooks.html" class="sidebar-item-text sidebar-link">Notebooks, Python, Git</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../clinic/github.html" class="sidebar-item-text sidebar-link">GitHub</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../clinic/earthdata.html" class="sidebar-item-text sidebar-link">Earthdata Login</a>
+  </div>
+</li>
+    </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+<h2 id="toc-title">On this page</h2>
+<ul>
+<li><a href="#data-discovery-with-cmr-stac-api" class="nav-link active" data-scroll-target="#data-discovery-with-cmr-stac-api">02. Data Discovery with CMR-STAC API</a>
+<ul class="collapse">
+<li><a href="#timing" class="nav-link" data-scroll-target="#timing">Timing</a></li>
+<li><a href="#summary" class="nav-link" data-scroll-target="#summary">Summary</a>
+<ul class="collapse">
+<li><a href="#but-first-what-is-stac" class="nav-link" data-scroll-target="#but-first-what-is-stac">But first, what is STAC?</a></li>
+<li><a href="#cmr-stac-api" class="nav-link" data-scroll-target="#cmr-stac-api">CMR-STAC API</a></li>
+</ul></li>
+<li><a href="#what-you-will-learn-from-this-tutorial" class="nav-link" data-scroll-target="#what-you-will-learn-from-this-tutorial">What you will learn from this tutorial</a></li>
+<li><a href="#import-required-packages" class="nav-link" data-scroll-target="#import-required-packages">Import Required Packages</a></li>
+<li><a href="#explored-available-nasa-providers" class="nav-link" data-scroll-target="#explored-available-nasa-providers">Explored available NASA Providers</a>
+<ul class="collapse">
+<li><a href="#connect-to-the-cmr-stac-api" class="nav-link" data-scroll-target="#connect-to-the-cmr-stac-api">Connect to the CMR-STAC API</a></li>
+</ul></li>
+<li><a href="#connect-to-the-lpcloud-providerstac-catalog" class="nav-link" data-scroll-target="#connect-to-the-lpcloud-providerstac-catalog">Connect to the <code>LPCLOUD</code> Provider/STAC Catalog</a></li>
+<li><a href="#list-stac-collections" class="nav-link" data-scroll-target="#list-stac-collections">List STAC Collections</a>
+<ul class="collapse">
+<li><a href="#print-one-of-the-stac-collection-records" class="nav-link" data-scroll-target="#print-one-of-the-stac-collection-records">Print one of the STAC Collection records</a></li>
+<li><a href="#print-the-stac-collection-ids-with-their-title" class="nav-link" data-scroll-target="#print-the-stac-collection-ids-with-their-title">Print the STAC Collection <code>id</code>s with their <code>title</code></a></li>
+</ul></li>
+<li><a href="#search-for-granulesstac-items---set-up-query-parameters-to-submit-to-the-cmr-stac-api" class="nav-link" data-scroll-target="#search-for-granulesstac-items---set-up-query-parameters-to-submit-to-the-cmr-stac-api">Search for Granules/STAC Items - Set up query parameters to submit to the CMR-STAC API</a>
+<ul class="collapse">
+<li><a href="#read-in-a-geojson-file" class="nav-link" data-scroll-target="#read-in-a-geojson-file">Read in a geojson file</a></li>
+<li><a href="#visualize-contents-of-geojson-file" class="nav-link" data-scroll-target="#visualize-contents-of-geojson-file">Visualize contents of geojson file</a></li>
+<li><a href="#extract-the-coordinates-for-the-roi" class="nav-link" data-scroll-target="#extract-the-coordinates-for-the-roi">Extract the coordinates for the ROI</a></li>
+<li><a href="#specify-date-range" class="nav-link" data-scroll-target="#specify-date-range">Specify date range</a></li>
+<li><a href="#specify-the-stac-collections" class="nav-link" data-scroll-target="#specify-the-stac-collections">Specify the STAC Collections</a></li>
+</ul></li>
+<li><a href="#search-the-cmr-stac-api-with-our-search-criteria" class="nav-link" data-scroll-target="#search-the-cmr-stac-api-with-our-search-criteria">Search the CMR-STAC API with our search criteria</a>
+<ul class="collapse">
+<li><a href="#print-out-how-many-stac-items-match-our-search-query" class="nav-link" data-scroll-target="#print-out-how-many-stac-items-match-our-search-query">Print out how many STAC Items match our search query</a></li>
+</ul></li>
+<li><a href="#filtering-stac-items" class="nav-link" data-scroll-target="#filtering-stac-items">Filtering STAC Items</a></li>
+<li><a href="#split-data-links-list-into-logical-groupings" class="nav-link" data-scroll-target="#split-data-links-list-into-logical-groupings">Split Data Links List into Logical Groupings</a>
+<ul class="collapse">
+<li><a href="#split-by-utm-tile-specified-in-the-file-name-e.g.-t14tkl-t13tgf" class="nav-link" data-scroll-target="#split-by-utm-tile-specified-in-the-file-name-e.g.-t14tkl-t13tgf">Split by UTM tile specified in the file name (e.g., T14TKL &amp; T13TGF)</a></li>
+<li><a href="#split-the-links-by-band" class="nav-link" data-scroll-target="#split-the-links-by-band">Split the links by band</a></li>
+</ul></li>
+<li><a href="#save-links-to-a-text-file" class="nav-link" data-scroll-target="#save-links-to-a-text-file">Save links to a text file</a>
+<ul class="collapse">
+<li><a href="#write-links-from-cmr-stac-api-to-a-file" class="nav-link" data-scroll-target="#write-links-from-cmr-stac-api-to-a-file">Write links from CMR-STAC API to a file</a></li>
+<li><a href="#write-links-to-file-for-s3-access" class="nav-link" data-scroll-target="#write-links-to-file-for-s3-access">Write links to file for S3 access</a></li>
+</ul></li>
+<li><a href="#resources" class="nav-link" data-scroll-target="#resources">Resources</a></li>
+</ul></li>
+</ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon/edit/main/tutorials-templates/02_Data_Discovery_CMR-STAC_API.ipynb" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<section id="data-discovery-with-cmr-stac-api" class="level1">
+<h1>02. Data Discovery with CMR-STAC API</h1>
+<section id="timing" class="level2">
+<h2 class="anchored" data-anchor-id="timing">Timing</h2>
+<ul>
+<li>Exercise: 30 min</li>
+</ul>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>In this example we will access the NASA’s Harmonized Landsat Sentinel-2 (HLS) version 2 assets, which are archived in cloud optimized geoTIFF (COG) format in the LP DAAC Cumulus cloud space. The COGs can be used like any other geoTIFF file, but have some added features that make them more efficient within the cloud data access paradigm. These features include: overviews and internal tiling. Below we will demonstrate how to leverage these features.</p>
+<section id="but-first-what-is-stac" class="level3">
+<h3 class="anchored" data-anchor-id="but-first-what-is-stac">But first, what is STAC?</h3>
+<p><a href="https://stacspec.org/">SpatioTemporal Asset Catalog (STAC)</a> is a specification that provides a common language for interpreting geospatial information in order to standardize indexing and discovering data.</p>
+<p>The <a href="https://stacspec.org/core.html">STAC specification</a> is made up of a collection of related, yet independent specifications that when used together provide search and discovery capabilities for remote assets.</p>
+<section id="four-stac-specifications" class="level4">
+<h4 class="anchored" data-anchor-id="four-stac-specifications">Four STAC Specifications</h4>
+<p><a href="https://github.com/radiantearth/stac-spec/blob/master/catalog-spec/catalog-spec.md">STAC Catalog</a> (aka DAAC Archive)<br>
+<a href="https://github.com/radiantearth/stac-spec/blob/master/collection-spec/collection-spec.md">STAC Collection</a> (aka Data Product)<br>
+<a href="https://github.com/radiantearth/stac-spec/blob/master/item-spec/item-spec.md">STAC Item</a> (aka Granule)<br>
+<a href="https://github.com/radiantearth/stac-api-spec">STAC API</a></p>
+<p>In the following sections, we will explore each of STAC element using NASA’s Common Metadata Repository (CMR) STAC application programming interface (API), or <a href="https://github.com/nasa/cmr-stac">CMR-STAC API</a> for short.</p>
+</section>
+</section>
+<section id="cmr-stac-api" class="level3">
+<h3 class="anchored" data-anchor-id="cmr-stac-api">CMR-STAC API</h3>
+<p>The <a href="https://github.com/nasa/cmr-stac">CMR-STAC</a> API is NASA’s implementation of the STAC API specification for all NASA data holdings within EOSDIS. The current implementation does not allow for querries accross the entire NASA catalog. Users must execute searches within provider catalogs (e.g., LPCLOUD) to find the STAC Items they are searching for. All the providers can be found at the CMR-STAC endpoint here: <a href="https://cmr.earthdata.nasa.gov/stac/" class="uri">https://cmr.earthdata.nasa.gov/stac/</a>.</p>
+<p>In this exercise, we will query the <strong>LPCLOUD</strong> provider to identify STAC Items from the Harmonized Landsat Sentinel-2 (HLS) collection that fall within our region of interest (ROI) and within our specified time range.</p>
+</section>
+</section>
+<section id="what-you-will-learn-from-this-tutorial" class="level2">
+<h2 class="anchored" data-anchor-id="what-you-will-learn-from-this-tutorial">What you will learn from this tutorial</h2>
+<ul>
+<li>how to connect to NASA CMR-STAC API using Python’s <code>pystac-client</code><br>
+</li>
+<li>how to navigate CMR-STAC records<br>
+</li>
+<li>how to read in a geojson file using <code>geopandas</code> to specify your region of interest</li>
+<li>how to use the CMR-STAC API to search for data</li>
+<li>how to perform post-search filtering of CMR-STAC API search result in Python<br>
+</li>
+<li>how to extract and save data access URLs for geospatial assets</li>
+</ul>
+<p>This exercise can be found in the <a href="https://nasa-openscapes.github.io/2021-Cloud-Hackathon/tutorials/02_Data_Discovery_CMR-STAC_API.html">2021 Cloud Hackathon Book</a></p>
+<hr>
+</section>
+<section id="import-required-packages" class="level2">
+<h2 class="anchored" data-anchor-id="import-required-packages">Import Required Packages</h2>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="explored-available-nasa-providers" class="level2">
+<h2 class="anchored" data-anchor-id="explored-available-nasa-providers">Explored available NASA Providers</h2>
+<div class="cell">
+<div class="sourceCode" id="cb2"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="connect-to-the-cmr-stac-api" class="level3">
+<h3 class="anchored" data-anchor-id="connect-to-the-cmr-stac-api">Connect to the CMR-STAC API</h3>
+<div class="cell">
+<div class="sourceCode" id="cb3"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We’ll create a <code>providers</code> variable so we can take a deeper look into available data providers - subcategories are referred to as “children”. We can then print them as a for loop.</p>
+<div class="cell">
+<div class="sourceCode" id="cb4"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="connect-to-the-lpcloud-providerstac-catalog" class="level2">
+<h2 class="anchored" data-anchor-id="connect-to-the-lpcloud-providerstac-catalog">Connect to the <code>LPCLOUD</code> Provider/STAC Catalog</h2>
+<p>For this next step we need the <code>provider title</code> (e.g., LPCLOUD) from above. We will add the provider to the end of the CMR-STAC API URL (i.e., <code>https://cmr.earthdata.nasa.gov/stac/</code>) to connect to the LPCLOUD STAC Catalog.</p>
+<div class="cell">
+<div class="sourceCode" id="cb5"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Since we are using a dedicated client (i.e., <code>pystac-client.Client</code>) to connect to our STAC Provider Catalog, we will have access to some useful internal methods and functions (e.g., <code>get_children()</code> or <code>get_all_items()</code>) we can use to get information from these objects.</p>
+</section>
+<section id="list-stac-collections" class="level2">
+<h2 class="anchored" data-anchor-id="list-stac-collections">List STAC Collections</h2>
+<p>We’ll create a <code>products</code> variable to view deeper in the STAC Catalog.</p>
+<div class="cell">
+<div class="sourceCode" id="cb6"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="print-one-of-the-stac-collection-records" class="level3">
+<h3 class="anchored" data-anchor-id="print-one-of-the-stac-collection-records">Print one of the STAC Collection records</h3>
+<p>To view the <code>products</code> variable we just created, let’s look at one entry as a dictionary.</p>
+<div class="cell">
+<div class="sourceCode" id="cb7"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="print-the-stac-collection-ids-with-their-title" class="level3">
+<h3 class="anchored" data-anchor-id="print-the-stac-collection-ids-with-their-title">Print the STAC Collection <code>id</code>s with their <code>title</code></h3>
+<p>In the above output, <code>id</code> and <code>title</code> are two elements of interest that we can print for all <code>products</code> using a for loop.</p>
+<div class="cell">
+<div class="sourceCode" id="cb8"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="search-for-granulesstac-items---set-up-query-parameters-to-submit-to-the-cmr-stac-api" class="level2">
+<h2 class="anchored" data-anchor-id="search-for-granulesstac-items---set-up-query-parameters-to-submit-to-the-cmr-stac-api">Search for Granules/STAC Items - Set up query parameters to submit to the CMR-STAC API</h2>
+<p>We will define our ROI using a geojson file containing a small polygon feature in western Nebraska, USA. The geojson file is found in the <strong>~/data</strong> directory. We’ll also specify the data collections and a time range for our example.</p>
+<section id="read-in-a-geojson-file" class="level3">
+<h3 class="anchored" data-anchor-id="read-in-a-geojson-file">Read in a geojson file</h3>
+<p>Reading in a geojson file with geopandas will return the geometry of our polygon (our ROI).</p>
+<p><strong>NOTE:</strong> If you are running the notebook from the <strong>tutorials-templates</strong> directory, please use the following path to connect to the geojson file: <strong>“../tutorials/data/ne_w_agfields.geojson”</strong></p>
+<div class="cell">
+<div class="sourceCode" id="cb9"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="visualize-contents-of-geojson-file" class="level3">
+<h3 class="anchored" data-anchor-id="visualize-contents-of-geojson-file">Visualize contents of geojson file</h3>
+<p>We can use that geometry to visualize the polygon: here, a square. But wait for it –</p>
+<div class="cell">
+<div class="sourceCode" id="cb10"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can plot the polygon using the <code>geoviews</code> package that we imported as <code>gv</code> with ‘bokeh’ and ‘matplotlib’ extensions. The following has reasonable width, height, color, and line widths to view our polygon when it is overlayed on a base tile map.</p>
+<div class="cell">
+<div class="sourceCode" id="cb11"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We will now start to specify the search criteria we are interested in, i.e, the <strong>date range</strong>, the <strong>ROI</strong>, and the <strong>data collections</strong>, that we will pass to the STAC API.</p>
+</section>
+<section id="extract-the-coordinates-for-the-roi" class="level3">
+<h3 class="anchored" data-anchor-id="extract-the-coordinates-for-the-roi">Extract the coordinates for the ROI</h3>
+<div class="cell">
+<div class="sourceCode" id="cb12"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>So, what just happen there? Let’s take a quick detour to break it down.</p>
+<p><img src="../assets/images/Read_GeoJSON_Explained.png" width="750"></p>
+</section>
+<section id="specify-date-range" class="level3">
+<h3 class="anchored" data-anchor-id="specify-date-range">Specify date range</h3>
+<p>Next up is to specify our date range using <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO_8601 date formatting</a>.</p>
+<div class="cell">
+<div class="sourceCode" id="cb13"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="specify-the-stac-collections" class="level3">
+<h3 class="anchored" data-anchor-id="specify-the-stac-collections">Specify the STAC Collections</h3>
+<p>STAC Collection is synonomous with what we usually consider a NASA data product. Desired STAC Collections are submitted to the search API as a list containing the collection <code>id</code>. We can use the <code>id</code>s that we printed from our <code>products</code> for loop above. Let’s focus on S30 and L30 collections.</p>
+<div class="cell">
+<div class="sourceCode" id="cb14"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="search-the-cmr-stac-api-with-our-search-criteria" class="level2">
+<h2 class="anchored" data-anchor-id="search-the-cmr-stac-api-with-our-search-criteria">Search the CMR-STAC API with our search criteria</h2>
+<p>Now we can put all our search criteria together using <code>catalog.search</code> from the <code>pystac_client</code> package.</p>
+<div class="cell">
+<div class="sourceCode" id="cb15"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="print-out-how-many-stac-items-match-our-search-query" class="level3">
+<h3 class="anchored" data-anchor-id="print-out-how-many-stac-items-match-our-search-query">Print out how many STAC Items match our search query</h3>
+<div class="cell">
+<div class="sourceCode" id="cb16"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We now have a search object containing the STAC Items that matched our query. Now, let’s pull out all of the STAC Items (as a PySTAC ItemCollection object) and explore the contents (i.e., the STAC Items)</p>
+<div class="cell">
+<div class="sourceCode" id="cb17"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let’s list some of the <code>Items</code> from our <code>pystac item_collection</code>:</p>
+<div class="cell">
+<div class="sourceCode" id="cb18"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can view a single <code>Item</code> as a dictionary, as we did above with STAC <code>Collections</code>/<code>products</code>.</p>
+<div class="cell">
+<div class="sourceCode" id="cb19"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="filtering-stac-items" class="level2">
+<h2 class="anchored" data-anchor-id="filtering-stac-items">Filtering STAC Items</h2>
+<p>While the CMR-STAC API is a powerful search and discovery utility, it is still maturing and currently does not have the full gamut of filtering capabilities that the STAC API specification allows for. Hence, additional filtering is required if we want to filter by a property, for example cloud cover. Below we will loop through and filter the item_collection by a specified cloud cover as well as extract the band we’d need to do an Enhanced Vegetation Index (EVI) calculation for a future analysis.</p>
+<p>We’ll make a <code>cloudcover</code> variable where we will set the maximum allowable cloud cover and extract the band links for those Items that match or are less than the max cloud cover.</p>
+<div class="cell">
+<div class="sourceCode" id="cb20"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We will also specify the STAC Assets (i.e., bands/layers) of interest for both the S30 and L30 collections (also in our <code>collections</code> variable above).</p>
+<p>In this hypothetical workflow, we’ll extract the bands needed to calculate an enhanced vegetation index (EVI). Thus, the band needed include red, near infrared (NIR), and blue. We’ll also extract a quality band (i.e., Fmask) that we’d eventually use to perform per-pixel quality filtering.</p>
+<p>Notice that the band ids are in some case not one-to-one between the S30 and the L30 product. This is evident in the NIR band for each product where S30’s NIR band id is <strong>B8A</strong> and L30’s is <strong>B05</strong>. Note, the S30 product has an additional NIR band with a band id of <strong>B08</strong>, but the spectral ranges between <strong>B8A</strong> and <strong>B05</strong> are more closely aligned. Visit the <a href="https://lpdaac.usgs.gov/data/get-started-data/collection-overview/missions/harmonized-landsat-sentinel-2-hls-overview/#hls-spectral-bands">HLS Overview</a> page to learn more about HLS spectral bands.</p>
+<div class="cell">
+<div class="sourceCode" id="cb21"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>And now to loop through and filter the <code>item_collection</code> by cloud cover and bands:</p>
+<div class="cell">
+<div class="sourceCode" id="cb22"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The filtering done in the previous steps produces a list of links to STAC Assets. Let’s print out the first ten links.</p>
+<div class="cell">
+<div class="sourceCode" id="cb23"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>NOTE</strong> that HLS data is mapped to the Universal Transverse Mercator (UTM) projection and is tiled using the Sentinel-2 Military Grid Reference System (MGRS) UTM grid. Notice that in the list of links we have multiple tiles, i.e.&nbsp;<strong>T14TKL</strong> &amp; <strong>T13TGF</strong>, that intersect with our region of interest. In this case, these two tiles represent neighboring UTM zones. The tiles can be discern from the file name, which is the last element in a link (far right) following the last forward slash (/) - e.g., <strong>HLS.L30.T14TKL.2021133T172406.v1.5.B04.tif</strong>. The figure below explains where to find the tile/UTM zone from the file name.</p>
+<p><img src="../assets/images/HLS_Filename_Explained.png" width="750"></p>
+<p>We will now split the list of links into separate logical sub-lists.</p>
+</section>
+<section id="split-data-links-list-into-logical-groupings" class="level2">
+<h2 class="anchored" data-anchor-id="split-data-links-list-into-logical-groupings">Split Data Links List into Logical Groupings</h2>
+<p>We have a list of links to data assets that meet our search and filtering criteria. Below we’ll split our list from above into lists first by tile/UTM zone and then further by individual bands bands. The commands that follow will do the splitting with python routines.</p>
+<section id="split-by-utm-tile-specified-in-the-file-name-e.g.-t14tkl-t13tgf" class="level3">
+<h3 class="anchored" data-anchor-id="split-by-utm-tile-specified-in-the-file-name-e.g.-t14tkl-t13tgf">Split by UTM tile specified in the file name (e.g., T14TKL &amp; T13TGF)</h3>
+<div class="cell">
+<div class="sourceCode" id="cb24"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb25"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="print-dictionary-keys-and-values-i.e.-the-data-links" class="level4">
+<h4 class="anchored" data-anchor-id="print-dictionary-keys-and-values-i.e.-the-data-links">Print dictionary keys and values, i.e.&nbsp;the data links</h4>
+<div class="cell">
+<div class="sourceCode" id="cb26"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb27"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now we will create a separate list of data links for each tile</p>
+<div class="cell">
+<div class="sourceCode" id="cb28"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="print-bandlayer-links-for-hls-tile-t13tgf" class="level4">
+<h4 class="anchored" data-anchor-id="print-bandlayer-links-for-hls-tile-t13tgf">Print band/layer links for HLS tile T13TGF</h4>
+<div class="cell">
+<div class="sourceCode" id="cb29"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="split-the-links-by-band" class="level3">
+<h3 class="anchored" data-anchor-id="split-the-links-by-band">Split the links by band</h3>
+<div class="cell">
+<div class="sourceCode" id="cb30"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb31"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb32"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb33"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="save-links-to-a-text-file" class="level2">
+<h2 class="anchored" data-anchor-id="save-links-to-a-text-file">Save links to a text file</h2>
+<p>To complete this exercise, we will save the individual link lists as separate text files with descriptive names.</p>
+<p><strong>NOTE:</strong> If you are running the notebook from the <strong>tutorials-templates</strong> directory, please use the following path to write to the data directory: <strong>“../tutorials/data/{name}”</strong></p>
+<section id="write-links-from-cmr-stac-api-to-a-file" class="level3">
+<h3 class="anchored" data-anchor-id="write-links-from-cmr-stac-api-to-a-file">Write links from CMR-STAC API to a file</h3>
+<div class="cell">
+<div class="sourceCode" id="cb34"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="write-links-to-file-for-s3-access" class="level3">
+<h3 class="anchored" data-anchor-id="write-links-to-file-for-s3-access">Write links to file for S3 access</h3>
+<div class="cell">
+<div class="sourceCode" id="cb35"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<hr>
+</section>
+</section>
+<section id="resources" class="level2">
+<h2 class="anchored" data-anchor-id="resources">Resources</h2>
+<ul>
+<li><a href="https://stacspec.org/">STAC Specification Webpage</a></li>
+<li><a href="https://stacspec.org/STAC-api.html">STAC API Documentation</a></li>
+<li><a href="https://github.com/nasa/cmr-stac">CMR-STAC API Github</a></li>
+<li><a href="https://pystac-client.readthedocs.io/en/latest/index.html">PySTAC Client Documentation</a></li>
+<li><a href="https://stackoverflow.com/questions/26367812/appending-to-list-in-python-dictionary" class="uri">https://stackoverflow.com/questions/26367812/appending-to-list-in-python-dictionary</a></li>
+<li><a href="https://geopandas.org/en/stable/docs/user_guide.html">Geopandas</a></li>
+<li><a href="https://lpdaac.usgs.gov/data/get-started-data/collection-overview/missions/harmonized-landsat-sentinel-2-hls-overview/">HLS Overview</a></li>
+</ul>
+
+
+</section>
+</section>
+</main> <!-- /main -->
+<script type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+    } else {
+      disableStylesheet(alternateStylesheets);
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } 
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    setTimeout(function() {
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+      <div class="nav-footer-center">PODAAC, NSIDC DAAC and LPDAAC (2021). 2021 Cloud Hackathon</div>
+  </div>
+</footer>
+
+
+</body></html>
