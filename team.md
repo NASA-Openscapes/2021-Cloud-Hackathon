@@ -42,7 +42,7 @@ This effort was supported by the whole NASA Openscapes Mentors cohort, with the 
 
 ![](https://avatars.githubusercontent.com/u/51928352?v=4){width=20% fig-alt="picture of Catalina Oaida"}
 
-**Affiliations:** PO.DAAC
+**Affiliations:** PO.DAAC, NASA Jet Propulsion Laboratory/California Institute of Technology
 
 
 ### Erin Robinson
