@@ -11,13 +11,6 @@ website:
   
   page-footer: "PODAAC, NSIDC DAAC and LPDAAC (2021). 2021 Cloud Hackathon" 
  
-  # navbar: 
-  #   background: light
-  #   right: 
-  #     - sidebar:welcome
-  #     - icon: github
-  #       href: https://github.com/nasa-openscapes/2021-Cloud-Hackathon
- 
   sidebar:
     logo: https://user-images.githubusercontent.com/2915555/133525653-2a2278b1-1015-4350-b2a5-160d125aaaf7.png
     pinned: true
@@ -32,7 +25,7 @@ website:
     
     style: "docked"
     search: true
-    collapse-level: 1
+    collapse-level: 2
     contents:
       - section: "Welcome"
         contents:

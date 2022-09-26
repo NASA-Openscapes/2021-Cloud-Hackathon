@@ -239,17 +239,26 @@ Now, click the blue "COMMIT" button to commit this change.
 
 ![](img/JupyterHub-Tracking-GitCommit.png)
 
-### Step 5.5. Transmit committed changes to your github (`git push`) {#step-5.5.-transmit-committed-changes-to-your-github-(git-push}
+### Step 5.5. Transmit committed changes to your github (`git push`) {#step-5.5.-transmit-committed-changes-to-your-github-git-push}
 
 At this stage, you have committed the changes to your git repository on your Hub. However, these changes are still on your Hub and needs to be transmitted to your repository on github (so that both the `local` copy on the JupyterHub and the `remote` copy on github are in sync).
 
 As seen in the picture below, the git extension indicates (with an orange dot on the cloud icon) that it is ready to `push` your changes to the `remote` (remote = your repository on github.com). To push to github, click the cloud button with an up arrow (circled in red in the picture).
 
+
 ![](img/JupyterHub-Tracking-GitPush.png)
 
-The git extension in the Hub will prompt you to enter your github.com credentials. Enter you github.com username and a Personal Access Token (**DO NOT** use your password). To create a Personal Access Token, visit <https://github.com/settings/tokens/new> and create a new token with the permission as per the image below and specify its validity for 90 days.
+When you push for the first time, it will ask that you input your credentials. You will need to set this up with your Personal Access Token (PAT), explained next. 
+
+### Step 5.6. Setup your Personal Access Token (PAT) {#step-5.6.-setup-pat}
+
+When you see the following screenshot, GitHub is asking for you to input your credentials. (Note: you see this screenshot when you have committed work to push to GitHub.com, as detailed above).
 
 ![](img/JupyterHub-Tracking-Credentials-Prompt.png)
+
+The git extension in the Hub is prompting you to enter your github.com credentials. Enter you github.com username and a Personal Access Token (PAT);  **DO NOT** use your password. 
+
+To create a PAT, visit **<https://github.com/settings/tokens/new>** and create a new token with the permission as per the image below and specify its validity for 90 days.
 
 ![](/clinic/img/github-token.png)
 
