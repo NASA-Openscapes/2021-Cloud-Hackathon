@@ -2,4 +2,4 @@
 title: Cloud Paradigm
 ---
 
-[Slides](https://docs.google.com/presentation/d/1PI6bA8UIc4w9NcmxHXv9Aq7e9oeTh0PHivrGuOjGHXQ/edit?pli=1#slide=id.g1016a99180e_0_65) that introduce NASA Earthdata Cloud & the Cloud Paradigm.
+[Slides](https://docs.google.com/presentation/d/e/2PACX-1vQrE02SghwHyfAl0j9otI9KeLMbIN4rdMhj2G6MlQ2kXHARVaE2H1_BK5iEzamoH_IkQmvaroP2lkwi/pub?start=false&loop=false&delayms=3000) that introduce NASA Earthdata Cloud & the Cloud Paradigm.

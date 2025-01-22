@@ -38,7 +38,7 @@ This is an opportunity for researchers that might not yet have had the opportuni
 The Cloud Hackathon will be a virtual event held November 15-19, 2021, where participants will explore the intersection of Earth science data, cloud computing, and big data analysis through demonstration tutorials and hands-on “hacking” projects. To best benefit from the event, we recommend some familiarity or experience with:
 
 * NASA Earthdata data (focusing on oceanography, cryosphere, hydrology, cryosphere and land data, including interdisciplinary applications); and
-* Programming skills using Python. We plan to accept participants with diverse skill levels and backgrounds in programming. However, to best benefit from and contribute to the program, participants are expected to have some experience with Python programming.
+* Programming skills using Python. We plan to accept participants with broad skill levels and backgrounds in programming. However, to best benefit from and contribute to the program, participants are expected to have some experience with Python programming.
 
 No cloud computing experience is required, but we encourage both beginner and more experienced participants with AWS cloud to apply.
 
